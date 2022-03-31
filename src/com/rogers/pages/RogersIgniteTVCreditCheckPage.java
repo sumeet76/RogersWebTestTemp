@@ -15,46 +15,45 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[1]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlCreditCheckYear;
 
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[2]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlCreditCheckMonth;
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.month']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlCreditCheckMonthMigration;
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[3]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlCreditCheckDay;
 	
-	@FindBy(xpath = "//rch-dropdown[@ng-reflect-accessibility-context='global.accessibility.dob.day']//select[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//rch-date-selection[@section='DOB']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlCreditCheckDayMigration;
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[4]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.firstIdOption']//select")
 	WebElement ddlFirstID;
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[5]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.enterYourProvince']//select")
 	WebElement ddlProvince;
 		
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[6]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlExpiryYear;
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[7]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Mois' or text()='Month']/..")
 	WebElement ddlExpiryMonth;
 
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[8]")
+	@FindBy(xpath = "//rch-date-selection[@section='Driving License']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlExpiryDay;
 		
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//div[@class='input_container']//input")
 	WebElement txtLicenseNumber;
 	//input[contains(@aria-label,'license number') or  contains(@aria-label,'de licence')]
 
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[9]")
+	@FindBy(xpath = "//rch-dropdown[@accessibilitycontext='global.accessibility.secondIdOption']//select")
 	WebElement ddlSecondIdOption;
 	
-	@FindBy(xpath = "//div[@class='passport-component']//input[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//div[@class='passport-component']//input")
 	WebElement txtPasportNumber;
-	//div[@class='passport-component']//input[@aria-label='Please enter your passport number']
 
 	@FindBy(xpath = "//div[@class='birth-certificate-component']//input[contains(@id,'ds-form-input-id')]")
 	WebElement txtBirthCertificateNumber;
@@ -71,13 +70,13 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal//input[contains(@id,'canada-post-address-complete')]")
 	WebElement TxtReskRuleaddress;
 
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[10]")
+	@FindBy(xpath = "//rch-date-selection[@section='passport expiry']//select/option[text()='Année' or text()='Year']/..")
 	WebElement ddlPassportExpiryYear;
 		
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[11]")
+	@FindBy(xpath = "//rch-date-selection[@section='passport expiry']//select/option[text()='Moir' or text()='Month']/..")
 	WebElement ddlPassportExpiryMonth;
 	
-	@FindBy(xpath = "(//rch-dropdown/div[@class='dropdown-component']//select[contains(@id,'ds-form-input-id-')])[12]")
+	@FindBy(xpath = "//rch-date-selection[@section='passport expiry']//select/option[text()='Jour' or text()='Day']/..")
 	WebElement ddlPassportExpiryDay;
 		
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
@@ -88,16 +87,16 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	//button[@class='ute-btn-primary']
 	//button[contains(@class,'-primary -large')]
 	
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]/..")
+	@FindBy(xpath = "//div[@class='input_container']//input/..")
 	WebElement txtContainer;
 	
-	@FindBy(xpath = "//div[@class='passport-component']//input[contains(@id,'ds-form-input-id-')]/..")
+	@FindBy(xpath = "//div[@class='passport-component']//input/..")
 	WebElement txtContainerPasportNumber;
 
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
 	WebElement txtContainerBirthCertificateNumber;
 
-		@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
+	@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
 	WebElement popCartAbandonmentForm;
 	
 	@FindBy(xpath = "//form[@name='cartAbandonmentForm']//button[@class='ute-btn-primary']")

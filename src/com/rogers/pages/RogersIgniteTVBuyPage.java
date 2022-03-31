@@ -79,7 +79,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 
-	@FindBy(xpath = "//ds-checkbox[@ng-reflect-name=\"homephone\"]//div[contains(@class,'ds-checkbox__box')]")
+	@FindBy(xpath = "//span[contains(text(),'Home Phone')]/parent::div")
 	WebElement checkboxHomephone;
 
 	@FindBy(xpath = "//h2[@id='channels-tab']")
@@ -106,7 +106,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnHomePhoneContinue;
 
-	@FindBy(xpath = "//h1[@class='cart-summary__header']")
+	@FindBy(xpath = "//a[@aria-label='Press here to continue with this number']/span[@role='text']")
+	WebElement btnHomePhoneAddOnContinue;
+
+	@FindBy(xpath = "//h1[@translate='global.rhpAddOns.homePhoneAddons']")
+	WebElement headerHomePageAddOn;
+
+	@FindBy(xpath ="//div/h1[@class='cart-summary__header']")
 	WebElement txtCartSummary;
 
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select Yes']//div[contains(@id,'ds-radio-input')]")
@@ -296,7 +302,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	
 	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
 	WebElement rdoKeepExistingPhoneNumber;
-	
+
+
 	/**
 	 * Click Starter package button for anonymous customer
 	 * @param	bundleName : name of the bundle package
@@ -366,7 +373,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 120);
 		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
 	}
-
 	/**
 	 * To click on the chevron of your cart
 	 * @author Chinnarao.vattam
@@ -630,6 +636,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkHomePhone() {
 		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 30);
 		getReusableActionsInstance().getWhenReady(btnHomePhoneContinue, 10).click();
+	}
+
+	/**
+	 * Click Home phone button on Ignite Home Phone popup
+	 * @author chinnarao.vattam
+	 */
+	public void clkHomePhoneAddOn() {
+		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneAddOnContinue, 30);
+		getReusableActionsInstance().getWhenReady(btnHomePhoneAddOnContinue, 10).click();
 	}
 
 	/**
@@ -1172,11 +1187,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyFlex5PackageCost() {
 		return	getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
 	}
-;
-;
-;
-;
-;
-;
-;
+
+	public boolean verifyHomePhoneAddOnPage() {
+		return getReusableActionsInstance().isElementVisible(headerHomePageAddOn, 40);
+	}
 }

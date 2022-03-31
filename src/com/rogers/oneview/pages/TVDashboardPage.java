@@ -19,6 +19,7 @@ public class TVDashboardPage  extends BasePageClass {
 		super(driver);
 	}
 
+
 	@FindBy(xpath = "//span[text()='Reset Parental Controls & PIN' or text()='Réinitialiser le contrôle parental et le NIP']")
 	WebElement btnResetParentalControl;
 
@@ -32,7 +33,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']/ancestor::button")
 	WebElement btnViewChannelLineUp;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])[1]")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | (//rch-conflict-modals/descendant::span[@ng-reflect-translate='global.modals.conflictWarnings'])")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
@@ -46,6 +47,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
 	WebElement btnOk;
+
 
 	@FindBy(xpath = "//span[text()='Restart box(es)' or text()='Redémarrer les terminaux numériques']")
 	WebElement btnRestartSetupbox;
@@ -125,8 +127,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@ng-reflect-translate='global.dashboard.tv.recordAndS']")
 	WebElement txtRecordAndSave;
 
-	@FindBy(xpath = "//span[text()='Change TV package' or text()='Modifier le forfait Télé']/ancestor::button")
-	WebElement btnChangeTvPackage;
+	@FindBy(xpath = "//span[text()='Change package' or text()='Changer de forfait']/ancestor::button")
+	WebElement btnChangePackage;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.changeTVPackage']")
 	WebElement btnManageChannelAndThemePack;
@@ -202,7 +204,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
 	WebElement immediateDateChange;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button")
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
@@ -218,10 +220,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindAll({
-			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']"),
-			@FindBy(xpath = "//span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button")
-	})
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks'] | //span[contains(text(),'Theme Packs') or contains(text(), 'Forfaits à thème')]/ancestor::button | //button[@class='a-tablet']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
@@ -258,10 +257,11 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h4[contains(@translate,'manageChannelsAndThemePacks.vpThemepacks')]")
 	WebElement existingThemepackSection;
 
+
 	@FindBy(xpath = "//div[@class='cart-removed-list']//div[@class='add-remove-themepack__name']")
 	WebElement removedItems;
 
-	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue')]")
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue') or contains(text(),'Continuer')]")
 	WebElement yourChangeContinue;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
@@ -270,18 +270,57 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'View my Flex Channels')]")
 	WebElement ViewMyFlexChannelsLink;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='Cloud Storage records and save']")
+	@FindBy(xpath = "//label[text()='What is Cloud Storage?']/parent::div/ds-popover")
 	WebElement CloudStorageBubble;
 
-	@FindBy(xpath = "//ds-popover[@ng-reflect-content='The Download & Go feature of t']")
+	@FindBy(xpath = "//label[text()='What is Download & Go?']/parent::div/ds-popover")
 	WebElement DownloadGoBubble;
 
+	@FindBy(xpath = "//button[@title='Reset purchase PIN']/span")
+	WebElement ResetPurchasePin;
+
+	//@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]")
 	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
 	WebElement resetPurchasePin;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
 	WebElement addThemepackFromBundle;
 
+
+	@FindBy(xpath = "//*[text()='View offers']")
+	WebElement viewOffer;
+
+	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::button")
+	WebElement closeButton;
+
+	@FindBy(xpath = "//*[text()='Exchange now']/ancestor::button")
+	WebElement exchangeNow;
+
+
+	@FindBy(xpath = "//*[text()='Select']")
+	WebElement selectChannel;
+
+	@FindBy(xpath = "//*[text()=' I have reviewed all issues with the customer. ']/ancestor::button")
+	WebElement reviewedIssuesWithCustomer;
+
+
+	@FindBy(xpath = "//*[text()='No, they don’t']")
+	WebElement noTheyDontBtn;
+
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	WebElement continueBottomOfPage;
+
+	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
+	WebElement viewMyChannelLineUpLink;
+
+	@FindBy(xpath = "//button[@id='cl-65619']")
+	WebElement removeChannel;
+
+	@FindBy(xpath = "//button[@id='cl-76222']")
+	WebElement addChannelBtn;
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -355,6 +394,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		getReusableActionsInstance().executeJavaScriptClick(manageChannelsAndThemeparks);
 	}
+
 
 	/**
 	 * To click Click Channel Tab
@@ -489,8 +529,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void selectTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
 		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
@@ -602,10 +642,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 *
 	 * @author chinnarao.vattam
 	 */
-	public void clickChangeTvPackage() {
-		WebElement select = getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120);
+	public void clickChangePackage() {
+		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(btnChangeTvPackage, 120).click();
+		getReusableActionsInstance().getWhenReady(btnChangePackage, 120).click();
 	}
 
 
@@ -707,8 +747,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickViewChannelLineUp() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
-		//	getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+//		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
+			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 	}
 
 	/**
@@ -974,11 +1014,11 @@ public class TVDashboardPage  extends BasePageClass {
 		 * @author suganya p*/
 		public void yourChangeContinue ()
 		{
-			if (getReusableActionsInstance().isElementVisible(removedItems, 30)) {
+			if (getReusableActionsInstance().isElementVisible(removedItems, 60)) {
 				getReusableActionsInstance().clickWhenReady(yourChangeContinue);
 			} else {
-				getReusableActionsInstance().clickWhenReady(yourChanges);
-				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 30);
+			//	getReusableActionsInstance().clickWhenReady(yourChanges);
+				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 60);
 			}
 		}
 
@@ -1007,11 +1047,11 @@ public class TVDashboardPage  extends BasePageClass {
 		}
 
 		public void clickResetPurchasePin () {
-			//getReusableActionsInstance().staticWait(3000);
-			getReusableActionsInstance().getWhenReady(resetPurchasePin, 60);
-			//getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y -900);
-			getReusableActionsInstance().clickWhenReady(resetPurchasePin);
 
+			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
+			getReusableActionsInstance().javascriptScrollToBottomOfPage();
+			getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
+			getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
 		}
 		public void clickSecondLowestpackage () {
 			//getReusableActionsInstance().staticWait(10000);
@@ -1042,7 +1082,128 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(ExchangeFlexChannels,30);
 		getReusableActionsInstance().executeJavaScriptClick(ExchangeFlexChannels);
 	}
-}
+
+	public void clickViewOffers() {
+		getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
+	}
+
+	public void selectRecommendedOffer() {
+		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(recommendedOffer);
+	}
+
+	public boolean verifyRecommendedOffer() {
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+	}
+
+	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
+		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div");
+		WebElement btn = getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		WebElement pkg = getDriver().findElement(packageNameLocator);
+		getReusableActionsInstance().executeJavaScriptClick(pkg);
+	}
+	public void clickCloseButton() {
+		getReusableActionsInstance().waitForElementVisibility(closeButton, 30);
+		getReusableActionsInstance().executeJavaScriptClick(closeButton);
+	}
+
+	public void clickExchangeNow() {
+		getReusableActionsInstance().waitForElementVisibility(exchangeNow, 30);
+		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
+	}
+
+
+	public void clickSelectChannel() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(selectChannel, 30);
+		getReusableActionsInstance().executeJavaScriptClick(selectChannel);
+
+
+	}
+
+	public void clickReviewedAllIssuesWithCustomer() {
+		getReusableActionsInstance().waitForElementVisibility(reviewedIssuesWithCustomer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(reviewedIssuesWithCustomer);
+
+
+	}
+
+	public void clickNoTheyDont() {
+		//getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 20);
+		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
+
+
+	}
+
+	public void clickContinueBottomOfPage() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 30);
+		getReusableActionsInstance().executeJavaScriptClick(continueBottomOfPage);
+
+
+	}
+
+	public boolean verifyManageChannelsAndThemePacks() {
+			return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks , 30);
+		}
+
+	public boolean verifyExchangeFlexChannels() {
+		return getReusableActionsInstance().isElementVisible(btnExchangeFlexChannels , 30);
+	}
+
+	public boolean verifyChangeTvPackage() {
+		return getReusableActionsInstance().isElementVisible(btnChangePackage, 30);
+	}
+
+	public boolean verifyRestartSetUpBox() {
+		return getReusableActionsInstance().isElementVisible(btnRestartSetupbox, 30);
+	}
+
+	public boolean verifyResetPurchasePin() {
+		return getReusableActionsInstance().isElementVisible(resetPurchasePin, 30);
+	}
+
+	public boolean verifyResetParentalControl() {
+		return getReusableActionsInstance().isElementVisible(btnResetParentalControl, 30);
+	}
+
+	public boolean verifyViewMyFlexChannelsLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+
+	public boolean verifyViewMyChannelLineUpLink() {
+		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
+	}
+	public void clickRemoveChannel() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
+		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
+
+
+	}
+
+	public void clickAddChannelBtn() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
+
+
+	}
+
+
+	}
+
+
+
+
+
 
 
 

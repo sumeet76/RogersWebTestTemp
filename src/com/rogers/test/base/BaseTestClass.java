@@ -778,6 +778,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_login":

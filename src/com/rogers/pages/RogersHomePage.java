@@ -107,7 +107,6 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
-			//@FindBy(xpath = "//a[contains(@title,'See bundles with Ignite TV and Internet') or  contains(@title,'Voir les offres groupées avec la Télé Élan et Élan Internet')]"),
 			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
 	WebElement btnServiceability;
 
@@ -162,6 +161,9 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnUseAddress;
+
+	@FindBy(xpath="//p[contains(text(),'Good news!')]")
+	WebElement msgIgniteAddressFound;
 
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
@@ -220,9 +222,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'ds-modal')]//button[@variant='tertiary']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
 	WebElement btnNoThanks;
 	
-	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large ng-star-inserted']")
+	@FindBy(xpath = "//button[@aria-label='No, thanks – close this window']/span")
 	WebElement btnNoThnx;
-	
+
 	@FindBy(xpath = "//button[@class='btn btn-lg btn-red']")
 	WebElement btnAddNow;
 	
@@ -844,6 +846,11 @@ public class RogersHomePage extends BasePageClass {
 	public boolean verifyIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
 		return getReusableActionsInstance().isElementVisible(btnIgniteAddressLookupSubmit, 60);
+	}
+
+	public boolean verifyIgniteAddressFoundModal(){
+		getReusableActionsInstance().getWhenReady(msgIgniteAddressFound,60);
+		return getReusableActionsInstance().isElementVisible(msgIgniteAddressFound,60);
 	}
 
 	/**

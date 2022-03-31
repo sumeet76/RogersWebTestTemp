@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test extends BaseTestClass {
    @Test
-    public void OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test(){
+       public void OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test(){
        getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
 
        reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -86,9 +86,9 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
        reporter.reportLogWithScreenshot("Entered card detail");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Submit order");
+		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
        reporter.reportLogWithScreenshot("Order Placed");
 
@@ -97,7 +97,9 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+//        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
     }
 
     @AfterMethod(alwaysRun = true)

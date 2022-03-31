@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test() {
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHP_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
@@ -32,7 +32,7 @@ public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestCla
 
         getHomePhonedashboard().clickManageAddOns();
         reporter.reportLogWithScreenshot("Clicked on Manage Add-Ons");
-        //reporter.hardAssert(getHomePhonedashboard().verifyText(),"Manage Add Ons link works", "Manage Add Ons link is not working");
+        reporter.hardAssert(getHomePhonedashboard().verifyText(),"Manage Add Ons link works", "Manage Add Ons link is not working");
     }
 
         @BeforeMethod(alwaysRun=true)

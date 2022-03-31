@@ -36,7 +36,7 @@ public class OneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test  extends BaseTe
         reporter.reportLogWithScreenshot("Download & Go Bubble closed");
         getTVDashboardPage().goToPageBottom();
         getTVDashboardPage().clickRestartSetupbox();
-        reporter.reportLogWithScreenshot("Clicked on reset Set Top Box link");
+        reporter.reportLogWithScreenshot("Clicked on restart Set Top Box link");
         getTVDashboardPage().clickContinueReset();
         reporter.reportLogWithScreenshot("Clicked Continue on Reset Set Top Box popup");
         getTVDashboardPage().clickOK();

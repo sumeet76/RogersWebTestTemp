@@ -26,7 +26,10 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 
 	@FindBy(xpath = "(//span[@ng-reflect-translate='global.cta.continue' and text()='Continue']/ancestor::button)[2]")
 	WebElement ContinueBtn;
-	
+
+	@FindBy(xpath = "//span[text()='Continue']/ancestor::button")
+	WebElement removeAddonContinueButton;
+
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
 	WebElement checkOut;
 
@@ -36,7 +39,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueChangeDate;
 
-	@FindBy(xpath="//span[@translate='global.cta.confirm']/ancestor::button")
+	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement confirmButton;
 
 	@FindBy(xpath= "//span[text()='Continue']")
@@ -95,6 +98,17 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	public void clickButtonContinue()
 	{
 		getReusableActionsInstance().getWhenReady(btnContinue,60).click();
+	}
+
+
+	/*
+	 * To click on confirm button
+	 * @author Jarman Batth
+	 */
+
+	public void clickContinueButton()
+	{
+		getReusableActionsInstance().getWhenReady(removeAddonContinueButton,60).click();
 	}
 
 
