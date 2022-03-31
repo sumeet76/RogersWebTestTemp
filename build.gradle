@@ -53,7 +53,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
-		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer","org.testng.reporters.XMLReporter:generateTestResultAttributes=true"]
+		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
 		if (project.hasProperty('test_groupName')){
 			includeGroups test_groupName
