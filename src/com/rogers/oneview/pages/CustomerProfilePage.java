@@ -14,11 +14,20 @@ public class CustomerProfilePage  extends BasePageClass {
 	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Profile']")
 	WebElement customerProfile;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]")
 	WebElement continueButton;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
+
+	@FindBy(xpath = "//span[contains(text(),'Yes, cancel')]")
+	WebElement YesCancelButton;
+
+	@FindBy(xpath = "//span[contains(text(),'No, continue')]")
+	WebElement NoContinue;
+
+	@FindBy(xpath = "//p[@class='ds-modal__heading mb-24 text-title-3' and contains(text(),'Are you sure you want to cancel?')]")
+	WebElement AreYouSureToCancelModal;
 	
 	/**
 	 * Verify the Customer Profile Page is Displayed
@@ -36,7 +45,9 @@ public class CustomerProfilePage  extends BasePageClass {
 	 */	
 	public void clkContinue() {	
 		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		getReusableActionsInstance().getWhenReady(continueButton,60);
+		getReusableActionsInstance().staticWait(5000);
+	//	getReusableActionsInstance().clickWhenReady(continueButton,60);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
@@ -47,5 +58,23 @@ public class CustomerProfilePage  extends BasePageClass {
 	public void goToTheBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 
+	}
+
+	public void clickBackButton(){
+		getReusableActionsInstance().backToPreviousPage();
+	}
+
+
+	public void clickYesCancelButton(){
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().clickWhenReady(YesCancelButton);
+	}
+
+	public void clickNoContinue(){
+		getReusableActionsInstance().clickWhenReady(NoContinue);
+	}
+
+	public boolean verifyAreYouSureModal(){
+		return getReusableActionsInstance().isElementVisible(AreYouSureToCancelModal,60);
 	}
 }

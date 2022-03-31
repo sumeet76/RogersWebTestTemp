@@ -251,6 +251,8 @@ public class TestDataHandler {
 	public static MigrationData targetedMigration_3P_to_2P;
 	public static MigrationData targetedMigration_3P_to_3P_same_numb;
 	public static MigrationData targetedMigration_3P_to_3P_change_numb;
+	public static MigrationData Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation;
+	public static MigrationData ValidationofNotificationAlertBackbutton;
 	public static PaymentDetails ovPaymentInfo;
 	public static AccountData tc60;
 	public static RedesignConfig redesignConfig;
@@ -714,11 +716,15 @@ public class TestDataHandler {
 		MaxSAI_Cx_Pods= YamlHandler.getOVAccountData("MaxSAICx_Pods");
 		Max2pCx_Pods= YamlHandler.getOVAccountData("Max2pCx_Pods");
 		Max3pCx_Pods= YamlHandler.getOVAccountData("Max3pCx_Pods");
+
 		Ignite_Mapped_Offers_2p= YamlHandler.getOVAccountData("IgniteMappedOffers2p");
 		Ignite_Mapped_Offers_3p= YamlHandler.getOVAccountData("IgniteMappedOffers3p");
 		Tv_Dashboard_Validation=YamlHandler.getOVAccountData("TvDashboardValidation");
 		Internet_Dashboard_Validation=YamlHandler.getOVAccountData("InternetDashboardValidation");
 		RHP_Dashboard_Validation=YamlHandler.getOVAccountData("RHPDashboardValidation");
+		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
+		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
+
 
 	}
 
