@@ -105,7 +105,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
         getRogersCheckoutPage().clkCreditAuthorizationChkBox();
         getRogersCheckoutPage().clkCreditEvalContinue();
-        reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+        //reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
         /*reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
@@ -116,7 +116,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc01NACTermNpotgSS.getRiskClass(),deviceCost);
         reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
                "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
-        //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
+        reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
        // ***************Choose a Number Stepper*************//      
