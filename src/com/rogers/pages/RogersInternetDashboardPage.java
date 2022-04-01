@@ -21,18 +21,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
-		
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
-        @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
+        @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-internet']")})
 	WebElement btnSolarisInternetBadge;
 
 	@FindAll({
 	@FindBy(xpath = "//h1[@class='-mb8']"),
-	@FindBy(xpath = "//*[@translate='global.label.internet']")})
+	@FindBy(xpath = "//div[@rchapiexposer='global.cta.at']")})
 	WebElement infoInternet;
 
-	//@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
 	@FindBy(xpath = "//*[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']")
 	WebElement lnkInternetUsageAlerts;
 
@@ -141,6 +139,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@aria-label,'continue')]/span/span")
 	WebElement btnContinue;
 
+	@FindBy(xpath = "//button[@aria-label='See more details about your internet package' and @aria-expanded='false']/span")
+	WebElement lnkShowDetails;
+
+	@FindBy(xpath = "//button[@aria-label='See more details about your internet package' and @aria-expanded='true']")
+	WebElement lnkHideDetails;
+
+	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
+	WebElement lnkCallUs;
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @return true if the Internet usage displayed; else false
@@ -277,7 +283,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
-	
+	/**
+	 * verify the Change Internet Package button on Solaris Internet dash board is present or not
+	 *  @return true if button is not present, else false
+	 *  @author manpreet.kaur3
+	 */
+	public boolean verifyChangeInternetPackageBtnNotPresent() {
+		return !(getReusableActionsInstance().isElementVisible(btnSolChangeInternetPackage, 10));
+	}
 	/**
 	 * Click the Change Internet Package button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
@@ -579,8 +592,36 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	}
 
+
     public void clkContinueToChangeInternetPackage() {
 		getReusableActionsInstance().waitForElementVisibility(btnContinue, 20);
 		getReusableActionsInstance().getWhenReady(btnContinue, 20).click();
     }
+
+	/**
+	 * Click Show Details link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkShowDetails() {
+		getReusableActionsInstance().getWhenReady(lnkShowDetails, 20).click();
+	}
+
+	/**
+	 * Verify Show Details link is expanded
+	 * @retun true if Hide Details link is visible , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyShowDetailsExpanded() {
+		return getReusableActionsInstance().isElementVisible(lnkHideDetails, 20);
+	}
+
+	/**
+	 * Verify the number is text or link for Bulk Tenant
+	 * @retun true if the number is clickable , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallUs() {
+		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
 }

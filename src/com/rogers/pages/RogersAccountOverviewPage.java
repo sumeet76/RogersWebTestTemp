@@ -226,7 +226,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
         @FindBy(xpath = "//*[@data-translate='ute.common.second.level.navigation.wireless.phone.prepaid']"),
         @FindBy(xpath = "//span[@data-translate='ute.common.second.level.navigation.wireless.phone']")})	
 	WebElement subMenuUsageDropDown;
-	
+
+	@FindBy (xpath = "//div[@class='c-dropdown-menu-holder']/a/span[contains(text(), 'Home Phone') or contains(text(),'Téléphonie')]")
+	WebElement submenuHomePhone;
+
+	@FindBy (xpath = "//div[@class='c-dropdown-menu-holder']/a/span[text() = 'TV' or text() = 'Télévision']")
+	WebElement submenuTV;
+
 	@FindBy (xpath = "//div[@class='account-number-ctn']")
 	WebElement selectAccountMultipleSubscription;
 	
@@ -2324,5 +2330,28 @@ public boolean verifyPTPWidgetIsDisplayed() {
 
 	public boolean isNewOfferModalDisplayed() {
 		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
+	}
+
+	/**
+	 * Click on Sub-Menu Option Home Phone under Menu Usage and Services
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkHomePhoneUnderUsageAndServiceMenu() {
+		getReusableActionsInstance().getWhenReady(menuUsageAndService,30).click();
+		if(getReusableActionsInstance().isElementVisible(subMenuUsageDropDown, 10)) {
+			getReusableActionsInstance().getWhenReady(submenuHomePhone, 10).click();
+		}
+	}
+
+	/**
+	 * Click on Sub-Menu Option TV under Menu Usage and Services
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkTVUnderUsageAndServiceMenu() {
+		getReusableActionsInstance().getWhenReady(menuUsageAndService,30).click();
+		getReusableActionsInstance().waitForElementVisibility(subMenuUsageDropDown, 10);
+		if(getReusableActionsInstance().isElementVisible(subMenuUsageDropDown, 10)){
+			getReusableActionsInstance().getWhenReady(submenuTV, 10).click();
+		}
 	}
 }

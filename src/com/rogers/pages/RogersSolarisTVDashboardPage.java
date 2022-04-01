@@ -39,6 +39,30 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='FR']")
 	WebElement lnkFR;
 
+	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='false']/span")
+	WebElement lnkMoreDetails;
+
+	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='true']/span")
+	WebElement lnkMoreDetailsExpanded;
+
+	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
+	WebElement lnkCallUs;
+
+	@FindBy(xpath = "//span[contains(@class,'ds-color-success')]")
+	WebElement iconSuccessLTQModal;
+
+	@FindBy(xpath = "//h1[@class='modal-header-copy']")
+	WebElement headerLTQModal;
+
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.tvMDUPackageDisplayNumber']/ancestor::a[@href='tel:1 8557595856']")
+	WebElement lnkCallUsLTQModal;
+
+	@FindBy(xpath = "//h1[@class='modal-header-copy']/parent::div/following-sibling::div")
+	WebElement txtLTQModalContent;
+
+	@FindBy(xpath = " //span[contains(@class,'rds-icon-close')]")
+	WebElement imgCloseLTQModal;
+
 	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
 	//div[@class='channel-list-block']
@@ -56,7 +80,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement btnChangeTVPackage;
 	//ins[@translate='global.cta.changeTVPackage']
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']/ancestor::span[@role='text']")
 	WebElement btnManageChannelsAndThemePacks;
 	//ins[@translate='global.cta.addChannelsOrThemePacksTv']
 
@@ -100,6 +124,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@class='ute-btn-primary']")
 	WebElement btnConfirmExchange;
+
+	@FindBy(xpath = "//a[@aria-label='Exchange now']")
+	WebElement btnExchangeNow;
 
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
@@ -270,6 +297,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(lnkViewMyChannelLineup);
 	}
 
+	/**
+	 * Verify Exchange Now Button is present or not
+	 * @return true if the Exchange Now button is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyExchangeNow() {
+		return getReusableActionsInstance().isElementVisible(btnExchangeNow);
+	}
 	/**
 	 * Click the view my channel lineup link on Solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -730,5 +765,80 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkFR() {
 		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+	}
+
+	/**
+	 * Click More Details link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkMoreDetails() {
+		getReusableActionsInstance().getWhenReady(lnkMoreDetails, 20).click();
+	}
+
+	/**
+	 * Verify More Details link is expanded
+	 * @retun true if More Details link is expanded , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyMoreDetailsExpanded() {
+		return getReusableActionsInstance().isElementVisible(lnkMoreDetailsExpanded, 20);
+	}
+
+	/**
+	 * Verify the number is text or link for Bulk Tenant on TV Dashboard page
+	 * @retun true if the number is clickable , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallUs() {
+		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
+	/**
+	 * Verify the LTQ modal
+	 * @retun true if the success icon is visible , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModal() {
+		getReusableActionsInstance().waitForElementVisibility(iconSuccessLTQModal, 20);
+		return getReusableActionsInstance().isElementVisible(iconSuccessLTQModal);
+	}
+
+	/**
+	 * Verify the LTQ modal Header
+	 * @retun true if the LTQ modal Header is as per requirement , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalHeader() {
+		String expectedLTQHeader = "Add Channels & Theme Packs to your bundle.";
+		String actualLTQHeader = getReusableActionsInstance().getWhenReady(headerLTQModal).getText();
+		return actualLTQHeader.equals(expectedLTQHeader);
+	}
+
+	/**
+	 * Verify the LTQ modal content
+	 * @retun true if the LTQ modal copy is as per requirement , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalContent() {
+		String expectedLTQModalCopy = "Call us at 1 855 759-5856 and we'll help you with all the details";
+		String actualLTQModalCopy = getReusableActionsInstance().getWhenReady(txtLTQModalContent).getText();
+	    return actualLTQModalCopy.equals(expectedLTQModalCopy);
+	}
+
+	/**
+	 * Verify LTQ modal Call Us Link
+	 * @retun true if the LTQ modal Call Us is a Link , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalCallUsLink() {
+		return getReusableActionsInstance().isElementVisible(lnkCallUsLTQModal);
+	}
+
+	/**
+	 * Clicks on close icon on LTQ modal
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseLTQMOdal() {
+		getReusableActionsInstance().getWhenReady(imgCloseLTQModal, 10).click();
 	}
 }
