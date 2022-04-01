@@ -54,7 +54,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Update Directory Listing']/ancestor::button")
 	WebElement updateDirectoryListingbtn;
 
-	@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	//@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	@FindBy(xpath = "//input[@id='ds-radio-input-id-29']")
 	WebElement selectedPhoneNo;
 	/**
 	 * Click Generate Phone Number Button  
