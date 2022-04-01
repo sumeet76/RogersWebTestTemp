@@ -257,10 +257,11 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h4[contains(@translate,'manageChannelsAndThemePacks.vpThemepacks')]")
 	WebElement existingThemepackSection;
 
+
 	@FindBy(xpath = "//div[@class='cart-removed-list']//div[@class='add-remove-themepack__name']")
 	WebElement removedItems;
 
-	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue')]")
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue') or contains(text(),'Continuer')]")
 	WebElement yourChangeContinue;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
@@ -1023,11 +1024,11 @@ public class TVDashboardPage  extends BasePageClass {
 		 * @author suganya p*/
 		public void yourChangeContinue ()
 		{
-			if (getReusableActionsInstance().isElementVisible(removedItems, 30)) {
+			if (getReusableActionsInstance().isElementVisible(removedItems, 60)) {
 				getReusableActionsInstance().clickWhenReady(yourChangeContinue);
 			} else {
-				getReusableActionsInstance().clickWhenReady(yourChanges);
-				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 30);
+			//	getReusableActionsInstance().clickWhenReady(yourChanges);
+				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 60);
 			}
 		}
 

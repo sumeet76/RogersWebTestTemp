@@ -42,7 +42,7 @@ public class RogersCH_TC_099_2L7ContractType_3P_AnonymousCxBulkBuildingGetsCTAdu
          String  strAddressLine2=TestDataHandler.tc92_2L7ContractType3PBulkTenant.getAccountDetails().getAddress().get("line2");
          getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
          getRogersHomePage().clkIgniteAddressLookupSubmit();
-         reporter.hardAssert(getRogersHomePage().verifyIgniteAddressLookupSubmit(),"Serviceability success model is displayed","Serviceability success model is not displayed");
+         reporter.hardAssert(getRogersHomePage().verifyIgniteAddressFoundModal(),"Serviceability success model is displayed","Serviceability success model is not displayed");
          reporter.reportLogWithScreenshot("Serviceability success model");
 	 }
 
