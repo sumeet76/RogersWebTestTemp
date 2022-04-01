@@ -26,9 +26,9 @@ public class RogersBFA_TC34_RPP_PPC_ML_SE_FinOutTermToBYODPlanOnAdditionalLine_T
     @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC34_ML_SE_FinOutTerm_SelectingBYODPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getPassword());

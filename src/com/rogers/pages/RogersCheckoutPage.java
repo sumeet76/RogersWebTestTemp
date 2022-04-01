@@ -847,18 +847,6 @@ public class RogersCheckoutPage extends BasePageClass {
 		}*/
 	}
 
-
-	public String setDownPayment(String riskClass, String deviceCost) {
-		if(riskClass.toUpperCase().contains("HIGH")) {
-			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 40.0;
-			return String.valueOf(expectedDownPayment);
-		}
-		else if(riskClass.toUpperCase().contains("MEDIUM")) {
-			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
-			return String.valueOf(expectedDownPayment);
-		}
-		else return "0";
-	}
 	/**
 	 * This method calculates expected mandatory down payment amount(deviceCost-upfrontEdgeAmt) based on Risk
 	 * @param upfrontEdgeAmt upfrontEdge Offer for the device
@@ -868,15 +856,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt) {
 		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt));
-		if(riskClass.toUpperCase().contains("HIGH")) {
-			double expectedDownPayment = (mandatoryDownPayment/100) * 40.0;
+		if (riskClass.toUpperCase().contains("HIGH")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100) * 40.0;
 			return String.valueOf(expectedDownPayment);
-		}
-		else if(riskClass.toUpperCase().contains("MEDIUM")) {
+		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
 			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
 			return String.valueOf(expectedDownPayment);
-		}
-		else return "0";
+		} else return "0";
 	}
 
 	/**
