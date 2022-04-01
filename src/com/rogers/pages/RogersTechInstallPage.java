@@ -74,10 +74,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement txtMobielNumberExistingCustomer;	
 		
 		
-	@FindBy(xpath ="(//span[@class='ds-icon rds-icon-calendar'])[1]")
+	@FindBy(xpath ="//input[@id='preferredDate']//following::span[contains(@class,'rds-icon-calendar')]")
 	WebElement imgStartingTechInstallSlot;
 			
-	@FindBy(xpath ="(//span[@class='ds-icon rds-icon-calendar'])[2]")
+	@FindBy(xpath ="//input[@id='backupDate']//following::span[contains(@class,'rds-icon-calendar')]")
 	WebElement imgEndingTechInstallSlot;
 	
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
@@ -183,10 +183,10 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='row ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")})
 	WebElement txtIgniteExpressSetupCost;
 
-	@FindBy(xpath ="(//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div)[1]")
+	@FindBy(xpath ="//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div[1]")
 	WebElement txtStartDateContainer;
 
-	@FindBy(xpath ="(//input[@id='backupDate']/ancestor::ds-form-field/div/div)[1]")
+	@FindBy(xpath ="//input[@id='backupDate']/ancestor::ds-form-field/div/div[1]")
 	WebElement txtEndDateContainer;
 
 	@FindBy(xpath ="//input[@format='MM/DD/YYYY']")
@@ -640,7 +640,7 @@ public class RogersTechInstallPage extends BasePageClass {
 		int iMonth=calendar.get(Calendar.MONTH) + 1;
 		int iDate = intDate + 10;
 		if(iDate >= 30) {
-			int selDate = intDate - 6 ;
+			int selDate = intDate - 11 ;
 			int selMonth= iMonth+1;
 			String strDate= Integer.toString(selDate+10);
 			String strStartDate= selMonth+"/"+strDate +"/"+calendar.get(Calendar.YEAR);
