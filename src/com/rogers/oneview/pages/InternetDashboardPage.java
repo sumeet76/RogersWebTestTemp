@@ -37,7 +37,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnFooter;
 
-	@FindBy(xpath = "//div[@class='second-level-nav__cta']//button[@class='b-linkCta']")
+	@FindBy(xpath = "//span[text()='Back to Overview' or text()='Retourner à l’aperçu']")
 	WebElement btnBackToAccountOverview;
 
 	@FindBy(xpath = "//span[text()='View your usage and alerts' or text()='Consulter votre historique d’utilisation et vos avis' ]")
@@ -170,6 +170,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
+
+	@FindBy(xpath = "//span[text()='Change package']")
+	WebElement changePackageBtnEN;
+
+	@FindBy(xpath = "//span[text()='Changer de forfait']")
+	WebElement changePackageBtnFR;
 
 	/**
 	 * Verify the result
@@ -730,5 +736,20 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility( addPodsButton, 30);
 		return getReusableActionsInstance().isElementVisible( addPodsButton);
 	}
+
+	public boolean verifyChangePackageButtonEN() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnEN, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().waitForElementVisibility( changePackageBtnEN, 30);
+		return getReusableActionsInstance().isElementVisible( changePackageBtnEN);
+	}
+
+	public boolean verifyChangePackageButtonFR() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnFR, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().waitForElementVisibility( changePackageBtnFR, 30);
+		return getReusableActionsInstance().isElementVisible( changePackageBtnFR);
+	}
+
 }
 

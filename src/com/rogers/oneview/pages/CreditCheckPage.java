@@ -160,6 +160,10 @@ public class CreditCheckPage  extends BasePageClass {
 	WebElement specialInstructions;
 
 
+
+	@FindBy(xpath = "//span[text()='Online billing' or text()='Facture en ligne']/parent::div/preceding-sibling::div")
+	WebElement onlineBillingOption;
+
 	/**
              * Validates that the 'Installation Option(s)' is displayed
              * @author aditi.jain
@@ -354,6 +358,8 @@ public class CreditCheckPage  extends BasePageClass {
 			getReusableActionsInstance().waitForElementVisibility(paymentOption, 45);
 			getReusableActionsInstance().scrollToElement(paymentOption);
 			getReusableActionsInstance().selectWhenReady(paymentOption, index);
+			getReusableActionsInstance().staticWait(5000);
+
 	}
 
 	/**
@@ -416,7 +422,7 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(emailAddressContainer);
 		getReusableActionsInstance().executeJavaScriptClick(emailAddressContainer);
 		emailMailAddress.clear();
-		emailMailAddress.sendKeys("emailAddress");
+		emailMailAddress.sendKeys(emailAddress);
 	}
 
 	public void selectDeliveryByAppointment() {
@@ -430,6 +436,12 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(specialInstructions);
 		specialInstructions.clear();
 		specialInstructions.sendKeys("test");
+	}
+
+	public void selectOnlineBilling()
+	{
+		getReusableActionsInstance().isElementVisible(onlineBillingOption);
+		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
 	}
 }
 

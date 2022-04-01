@@ -33,6 +33,9 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
+	@FindBy(xpath = "//*[text()='No, they don’t']")
+	WebElement noTheyDontBtn;
+
 
 	/**
 	 * Click Exchange Later btn
@@ -98,6 +101,12 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnContinueOn4kTv);
 	}
 
+	public void clickNoTheyDont() {
+		//getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 20);
+		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
+
+
+	}
 
 
 }
