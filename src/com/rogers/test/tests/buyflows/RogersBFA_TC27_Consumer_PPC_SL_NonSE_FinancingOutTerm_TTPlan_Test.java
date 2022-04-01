@@ -26,9 +26,9 @@ public class RogersBFA_TC27_Consumer_PPC_SL_NonSE_FinancingOutTerm_TTPlan_Test e
     @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC27_SLSE_FinancingOutTerm_TTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getPassword());

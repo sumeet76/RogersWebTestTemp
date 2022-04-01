@@ -26,9 +26,9 @@ public class RogersBFA_TC33_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
     @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC36_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc33_RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc33_RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getPassword());
