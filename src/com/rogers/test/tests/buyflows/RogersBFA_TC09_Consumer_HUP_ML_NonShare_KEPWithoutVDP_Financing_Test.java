@@ -19,9 +19,9 @@ public class RogersBFA_TC09_Consumer_HUP_ML_NonShare_KEPWithoutVDP_Financing_Tes
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPNpotgMLTest() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09HUPNpotgML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HUPNpotgML.getPassword());
@@ -69,7 +69,7 @@ public class RogersBFA_TC09_Consumer_HUP_ML_NonShare_KEPWithoutVDP_Financing_Tes
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
-        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        //getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");

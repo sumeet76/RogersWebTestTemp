@@ -18,9 +18,9 @@ public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_DBValidation_Test exten
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
         public void rogersHUPNonShareNoTermSLTest() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10HUPNonShareNoTermSL.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10HUPNonShareNoTermSL.getPassword());

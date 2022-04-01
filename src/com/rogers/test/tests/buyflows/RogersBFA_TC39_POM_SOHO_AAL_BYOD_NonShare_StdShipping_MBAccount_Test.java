@@ -26,9 +26,9 @@ public class RogersBFA_TC39_POM_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Tes
     @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA","POM"})
     public void sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getPassword());
