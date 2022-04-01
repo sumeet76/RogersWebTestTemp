@@ -48,6 +48,9 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath="(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
 	WebElement IncompatibleRadioBTn2;
 
+	@FindBy(xpath = "//h2[@translate='global.label.homePhoneAddons']")
+	WebElement homePhoneAddOnsHeader;
+
 	/*
 	 * Select the specified add on
 	 * @author suganya P
@@ -169,6 +172,10 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().isElementVisible(ContinueBtn,30);
 		getReusableActionsInstance().clickWhenReady(ContinueBtn);
+	}
+
+	public boolean verifyHomePhoneAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible((homePhoneAddOnsHeader));
 	}
 }
 
