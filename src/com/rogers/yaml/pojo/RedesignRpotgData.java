@@ -29,6 +29,9 @@ public class RedesignRpotgData {
 	private String businessNumber;
 	private String passcode;
 	private String promoCode;
+	private String dpIMEI;
+	private String dpDeviceStorage;
+	private String dpDeviceColor;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -251,5 +254,40 @@ public class RedesignRpotgData {
 	public void setPromoCode(String promoCode){
 		this.promoCode = promoCode;
 	}
-
+	/**
+	 * @return the DP IMEI from yaml
+	 */
+    public String getDpIMEI() {
+		return dpIMEI;
+    }
+	/**
+	 * @param dpIMEI DP IMEI to set
+	 */
+	public void setDpIMEI(String dpIMEI) {
+		this.dpIMEI = dpIMEI;
+	}
+	/**
+	 * @return the DP Device Storage from yaml
+	 */
+	public String getDpDeviceStorage() {
+		return dpDeviceStorage;
+	}
+	/**
+	 * @param dpDeviceStorage DP IMEI to set
+	 */
+	public void setDpDeviceStorage(String dpDeviceStorage) {
+		this.dpDeviceStorage = dpDeviceStorage;
+	}
+	/**
+	 * @return the DP Device Color from yaml
+	 */
+	public String getDpDeviceColor() {
+		return dpDeviceColor;
+	}
+	/**
+	 * @param dpDeviceColor DP IMEI to set
+	 */
+	public void setDpDeviceColor(String dpDeviceColor) {
+		this.dpDeviceColor = dpDeviceColor;
+	}
 }

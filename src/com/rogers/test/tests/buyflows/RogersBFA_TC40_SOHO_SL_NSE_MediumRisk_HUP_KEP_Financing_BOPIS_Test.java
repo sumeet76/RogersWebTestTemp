@@ -19,9 +19,9 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
         @Test(groups = {"RegressionBFA","HUPBFA"})
         public void sohoHUP_tc40_NS_MediumRisk_KeepCurrentPlanSL_BOPIS_Test() {
 
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getPassword());

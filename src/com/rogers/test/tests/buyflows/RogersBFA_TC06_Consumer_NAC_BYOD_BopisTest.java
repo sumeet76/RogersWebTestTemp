@@ -32,10 +32,22 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		//getRogersPlanConfigPage().clickGetBPOOffer();
+		getRogersPlanConfigPage().selectBYODdpAddon();
+		reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
+		getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc06NACByodTermBopis.getDpIMEI());
+		reporter.reportLogPassWithScreenshot("DP Addon IMEI Entered");
+		getRogersPlanConfigPage().setDPDeviceStorage(TestDataHandler.tc06NACByodTermBopis.getDpDeviceStorage());
+		reporter.reportLogPassWithScreenshot("DP Addon Device Storage Selected");
+		getRogersPlanConfigPage().setDPDeviceColor(TestDataHandler.tc06NACByodTermBopis.getDpDeviceColor());
+		reporter.reportLogPassWithScreenshot("DP Addon Device Color Selected");
+		getRogersPlanConfigPage().clkDpEligCheckBtn();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyEligibilityMsg(),"Entered IMEI is eligible for Device Protection Addon","Entered IMEI is not eligible");
+		getRogersPlanConfigPage().selectNoDeviceProtection();
+		reporter.reportLogPassWithScreenshot("No Device Protection option selected after checking the eligibility(success)");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
+		reporter.reportLogPassWithScreenshot("Device Protection Pop-up is not displayed and Proceed to checkout clicked");
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
@@ -70,7 +82,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-		reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
+		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
 		// ***************Choose a Number Stepper*************//
@@ -81,6 +93,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");

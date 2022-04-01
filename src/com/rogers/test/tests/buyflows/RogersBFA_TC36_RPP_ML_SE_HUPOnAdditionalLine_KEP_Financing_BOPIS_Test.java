@@ -19,9 +19,9 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
 
 	@Test(groups = {"RegressionBFA","RPPHUPBFA"})
     public void rppHUP_tc36_ML_SE_HUPOnAdditionaLineByKEP_BOPIS_Test() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getPassword());
