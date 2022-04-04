@@ -21,7 +21,7 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_Test exten
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
 		reporter.reportLogWithScreenshot("use this address");
-		getRogersIgniteBundlesPage().clkUsethisAddress();
+	//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkTVCheckbox();

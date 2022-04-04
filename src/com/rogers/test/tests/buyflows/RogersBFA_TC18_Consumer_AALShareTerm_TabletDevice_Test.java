@@ -20,9 +20,9 @@ public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_Test extends Base
     @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc18AALTermTablet.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc18AALTermTablet.getPassword());

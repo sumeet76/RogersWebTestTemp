@@ -388,6 +388,8 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(btnInternetBadge, 45);
     }
 
+
+
     /**
      * Selects the Home Phone Badge on the account dashbaord
      *
@@ -921,6 +923,18 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().waitForPageLoad();
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
 //        getReusableActionsInstance().scrollToElement(requiredmessage);
+    }
+
+    public boolean verifyInternetBadge(){
+
+        getReusableActionsInstance().waitForElementVisibility( btnInternetBadge, 30);
+        return getReusableActionsInstance().isElementVisible( btnInternetBadge);
+    }
+
+    public boolean verifyTvBadge(){
+
+        getReusableActionsInstance().waitForElementVisibility( btnTVBadge, 30);
+        return getReusableActionsInstance().isElementVisible( btnTVBadge);
     }
 
 }

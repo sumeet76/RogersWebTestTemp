@@ -26,9 +26,9 @@ public class RogersBFA_TC46_SOHO_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan
     @Test(groups = {"RegressionBFA","PPCBF"})
     public void sohoPPC_TC46_ML_SE_BYODPlanToDTTPlanOnAdditionalLine() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getPassword());

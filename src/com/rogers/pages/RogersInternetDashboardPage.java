@@ -60,12 +60,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
-	
-	@FindBy(xpath = "//span[text()='Continue']")
+
+	@FindBy(xpath="//span[contains(text(),'Add it now')]")
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath = "//span[@id='ariaNoInternetOnly']/ancestor::a//ds-icon[@name='chevron-right']")
+	@FindBy(xpath="//a[contains(@aria-label,'AddSmartStream')]/following::span[contains(text(),'Add')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
@@ -306,6 +306,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetChangeOK() {		
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
+		getReusableActionsInstance().staticWait(8000);
 	}
 
 	/**
