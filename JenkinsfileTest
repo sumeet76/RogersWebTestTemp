@@ -198,11 +198,13 @@ pipeline {
                                       }
                                   }
                               }'''
+
            if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
-               echo "Create Execution record / New Testcase in JIRA"
+                stage('JIRA - XRay Results upload'){
                sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' -F info='${testExecInfo}' -F testInfo='${testInfoImport}' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
                echo "Upload execution results to JIRA"
                sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
+                    }
                 }
            }
         }
