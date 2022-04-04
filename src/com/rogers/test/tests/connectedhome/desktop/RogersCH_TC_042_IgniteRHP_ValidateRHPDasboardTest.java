@@ -45,15 +45,15 @@ public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestC
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 
 
-		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(), "Verification of Configure Your Current Features link is success", "Verification of Configure Your Current Features link is Failed");
+		reporter.softAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(), "Verification of Configure Your Current Features link is success", "Verification of Configure Your Current Features link is Failed");
 		getRogersSolarisRHPDashboardPage().clkConfigureYourCurrentFeatures();
 		reporter.reportLogWithScreenshot("Clicked on Configure Your Current Features link");
 
-		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verfyAccessYourVoicemailSettings(), "Verification of Access Your Voicemail Settings link is success", "Verification of Access Your Voicemail Settings link is successFailed");
+		reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyAccessYourVoicemailSettings(), "Verification of Access Your Voicemail Settings link is success", "Verification of Access Your Voicemail Settings link is successFailed");
 		getRogersSolarisRHPDashboardPage().clkAccessYourVoicemailSettings();
 		reporter.reportLogWithScreenshot("Clicked on Access Your Voicemail Settings link");
 
-		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verfyResetYourVoicemailPassword(), "Verification of Reset Your Voicemail Password link is success", "Verification of Reset Your Voicemail Password link is success Failed");
+		reporter.softAssert(getRogersSolarisRHPDashboardPage().verfyResetYourVoicemailPassword(), "Verification of Reset Your Voicemail Password link is success", "Verification of Reset Your Voicemail Password link is success Failed");
 		getRogersSolarisRHPDashboardPage().clkResetYourVoicemailPassword();
 		reporter.reportLogWithScreenshot("Launched the Reset Voice mail password popup");
 		getRogersSolarisRHPDashboardPage().clkCancelResetVoicemailpswd();
