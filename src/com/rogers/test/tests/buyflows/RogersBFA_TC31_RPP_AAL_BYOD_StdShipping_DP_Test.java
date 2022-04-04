@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_Test extends BaseTestClass {
+public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -23,12 +23,12 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_Test extends BaseTestClass 
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","DPBYOD"})
     public void rogersRPPAalByodStdShipTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getPassword());
@@ -57,9 +57,22 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_Test extends BaseTestClass 
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc31_RPP_AALBYODStdShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+        getRogersPlanConfigPage().selectBYODdpAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
+        getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc31_RPP_AALBYODStdShipping.getDpIMEI());
+        reporter.reportLogPassWithScreenshot("Device Protection Addon IMEI Entered");
+        getRogersPlanConfigPage().setDPDeviceStorage(TestDataHandler.tc31_RPP_AALBYODStdShipping.getDpDeviceStorage());
+        reporter.reportLogPassWithScreenshot("Device Protection Addon Device Storage Selected");
+        getRogersPlanConfigPage().setDPDeviceColor(TestDataHandler.tc31_RPP_AALBYODStdShipping.getDpDeviceColor());
+        reporter.reportLogPassWithScreenshot("Device Protection Addon Device Color Selected");
+        getRogersPlanConfigPage().clkDpEligCheckBtn();
+        reporter.hardAssert(getRogersPlanConfigPage().verifyEligibilityMsg(),"Entered IMEI is eligible for Device Protection Addon","Entered IMEI is not eligible");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
@@ -91,6 +104,9 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_Test extends BaseTestClass 
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
+        reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
+        getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         //getRogersReviewOrderPage().clkAllAgreementConsentCheckbox("financing");
         getRogersReviewOrderPage().clkBopisConsentCheckbox();

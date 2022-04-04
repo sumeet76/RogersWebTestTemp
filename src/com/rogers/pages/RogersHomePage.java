@@ -162,6 +162,9 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnUseAddress;
 
+	@FindBy(xpath="//p[contains(text(),'Good news!')]")
+	WebElement msgIgniteAddressFound;
+
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
 
@@ -843,6 +846,11 @@ public class RogersHomePage extends BasePageClass {
 	public boolean verifyIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
 		return getReusableActionsInstance().isElementVisible(btnIgniteAddressLookupSubmit, 60);
+	}
+
+	public boolean verifyIgniteAddressFoundModal(){
+		getReusableActionsInstance().getWhenReady(msgIgniteAddressFound,60);
+		return getReusableActionsInstance().isElementVisible(msgIgniteAddressFound,60);
 	}
 
 	/**

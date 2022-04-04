@@ -28,7 +28,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionBFA","RPPTEST"})
+	@Test(groups = {"RegressionBFA","RPPTEST","SanityBFA"})
 	public void tc29_RPP_NACBYOD_QCProvinceTest() throws InterruptedException {
 		//############################Plan config page###############################
 
