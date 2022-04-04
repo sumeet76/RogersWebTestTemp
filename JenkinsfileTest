@@ -1,19 +1,19 @@
 boolean success(String message) {
     currentBuild.result = 'SUCCESS'
-    echo message
-    return false;
+        echo message
+        return false;
 }
 
 boolean shouldRun() {
     String message = sh(label: 'Get Commit Message', script: 'git log -1 --pretty=%B', returnStdout: true).trim()
 
-    if (message.matches('.*\\[skip ci].*')) {
-        return success('[skip] commit message contains [skip ci]')
-    } else if (env.BRANCH_NAME != 'master' && message.matches("^\\[release] 'v.*")) {
-        return success('[skip] only build releases on the master branch')
-    } else {
-        return true
-    }
+        if (message.matches('.*\\[skip ci].*')) {
+            return success('[skip] commit message contains [skip ci]')
+        } else if (env.BRANCH_NAME != 'master' && message.matches("^\\[release] 'v.*")) {
+            return success('[skip] only build releases on the master branch')
+        } else {
+            return true
+        }
 }
 
 void toolSh(String command) {
@@ -23,7 +23,7 @@ void toolSh(String command) {
 }
 
 def REPORT_URL = "https://qa1.rogers.com/Digital-QE/"
-def readProp;
+    def readProp;
 pipeline {
     agent {
         kubernetes {
@@ -54,185 +54,212 @@ pipeline {
     }
 
     triggers {
-        parameterizedCron(env.BRANCH_NAME == 'OVC-April-Sanity' ?'''
-                    # leave spaces where you want them around the parameters. They'll be trimmed.
-                    # we let the build run with the default name
-                  //  05 5,6 * * 1-5 %Browser=saucechrome;Language=en;Groups=AprilSanity;ThreadCount=2;TestProfile=ConnectedHome
-                ''':'')
-    }
-
-    environment {
-        SAUCE_USERNAME = credentials('SAUCE_USERNAME')
-        SAUCE_ACCESS_KEY = credentials('SAUCE_ACCESS_KEY')
-        FTP_SERVER = credentials('FTP_SERVER')
-        FTP_USERNAME = credentials('FTP_USERNAME')
-        FTP_PASSWORD = credentials('FTP_PASSWORD')
-        ENS_USERNAME= credentials('ENS_USERNAME')
-        ENS_PASSWORD= credentials('ENS_PASSWORD')
-        XRAY_PROD_CRED_USR = credentials('XRAY_PROD_CRED_USR')
-        XRAY_PROD_CRED_PSW = credentials('XRAY_PROD_CRED_PSW')
-    }
-    stages {
-        stage('Run CI?') {
-            when { expression { shouldRun() } }
-            stages {
-
-                stage('Environment Variables') {
-                    steps { sh 'env | sort' }
-                }
-                stage('Credentials') {
-                    environment {
-                        GITHUB_CREDENTIALS = credentials('github_daws_svc_account')
-                        ARTIFACTORY_CREDENTIALS = credentials('artifactory_serv_svc_dawsdev')
-                        SONARQUBE_TOKEN = credentials('sonarqube_serv_svc_dawsdev')
-                    }
-                    steps {
-
-                        toolSh 'github-credentials.sh'
-                        toolSh 'artifactory-credentials.sh'
-                        toolSh 'sonarqube-credentials.sh'
-                    }
+        parameterizedCron(env.BRANCH_NAME == 'OVC-April-Sanity' ? '' '
+                                # leave spaces where you want them around the parameters. They' ll be trimmed.
+             # we let the build run with the default name
+            //  05 5,6 * * 1-5 %Browser=saucechrome;Language=en;Groups=AprilSanity;ThreadCount=2;TestProfile=ConnectedHome
+            '' ':' ')
                 }
 
-                stage('Regression Tests') {
-                    steps {
-                        script {
-                            readProp = readProperties file: 'gradle.properties';
-                            String urlLink="";
-                            if(!params.QaUrl.isEmpty()){
-                                if (params.QaUrl.toUpperCase().contains("ROGERS")) {
-                                     if (!params.QaUrl.contains("qa1.")  && !params.QaUrl.contains("qa5.")  && !params.QaUrl.contains("qa6.")  && !params.QaUrl.contains("qa7.") && !params.QaUrl.contains("qa2.") && !params.QaUrl.contains("qa3.") && !params.QaUrl.contains("qa4.") ) {
-                                            error "Invalid QA url provided. We only accept QAURL from QA 1 to QA7. Please correct it."
-                                     }
-                                }
-                                urlLink = urlLink + "-Ptest_qaURL=${params.QaUrl}";
-                            }
-                            if(!params.QaOVUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_qaOVURL=${params.QaOVUrl}";
-                            }
-                            if(!params.DbEnvUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_DbEnvUrl=${params.DbEnvUrl}";
-                             }
-                            if(!params.AWSUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_awsURL=${params.AWSUrl}";
-                            }
-                            if(!params.AWSPRODUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_awsPRODURL=${params.AWSPRODUrl}";
-                            }
-                            if(!params.SearchUrl.isEmpty()){
-                                urlLink = urlLink + "-Ptest_searchURL=${params.SearchUrl}";
-                            }
-                            if(!params.OneViewEnv.isEmpty()){
-                                urlLink = urlLink + "-Ptest_oneViewEnv=${params.OneViewEnv}";
-                            }
-                            if (params.IndividualTests.isEmpty()){
-                                if(urlLink.isEmpty()){
-                                    toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName='${params.Groups}' -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
-                                }else{
-                                    toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName='${params.Groups}' -Ptest_threadCount=${params.ThreadCount} ${urlLink} -i --stacktrace"
-                                }
-                            }
-                            else
-                                if(urlLink.isEmpty()){
-                                    toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
-                                }else{
-                                    toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} ${urlLink} -i --stacktrace"
-                                }
-                        }
-                    }
-                    post {
-                        always {
-                            junit 'build/test-results/**/*.xml'
-                            script {
-                                def jobName = "${env.JOB_NAME}"
-                                def buildTimeStamp = "${env.BUILD_TIMESTAMP}"
-                                def testProfile = "${env.TestProfile}"
-                                def destinationFolder = jobName.replaceAll("\\s+", "").replace("digital-qe/", "") + "/" + testProfile + "/" + buildTimeStamp.replaceAll("\\s+", "") + "/"
-                                sh label: 'NS upload', script: """ 
-                                netstorage-upload.sh /mnt/ns/nskey.pem ./report Digital-QE/
-                                """
-                                REPORT_URL = "${REPORT_URL}" + "/report/" + destinationFolder + "/results.html"
-                            }
-
-                        }
-                    }
+                environment {
+                    SAUCE_USERNAME = credentials(' SAUCE_USERNAME ')
+                    SAUCE_ACCESS_KEY = credentials(' SAUCE_ACCESS_KEY ')
+                    FTP_SERVER = credentials(' FTP_SERVER ')
+                    FTP_USERNAME = credentials(' FTP_USERNAME ')
+                    FTP_PASSWORD = credentials(' FTP_PASSWORD ')
+                    ENS_USERNAME= credentials(' ENS_USERNAME ')
+                    ENS_PASSWORD= credentials(' ENS_PASSWORD ')
+                    XRAY_PROD_CRED_USR = credentials(' XRAY_PROD_CRED_USR ')
+                    XRAY_PROD_CRED_PSW = credentials(' XRAY_PROD_CRED_PSW ')
                 }
+                stages {
+                    stage(' Run CI ? ') {
+                        when { expression { shouldRun() } }
+                        stages {
 
+                            stage(' Environment Variables ') {
+                                steps { sh ' env | sort ' }
+                            }
+                            stage(' Credentials ') {
+                                environment {
+                                    GITHUB_CREDENTIALS = credentials(' github_daws_svc_account ')
+                                    ARTIFACTORY_CREDENTIALS = credentials(' artifactory_serv_svc_dawsdev ')
+                                    SONARQUBE_TOKEN = credentials(' sonarqube_serv_svc_dawsdev ')
+                                }
+                                steps {
 
+                                    toolSh ' github - credentials.sh '
+                                    toolSh ' artifactory - credentials.sh '
+                                    toolSh ' sonarqube - credentials.sh '
+                                }
+                            }
+
+                            stage(' Regression Tests ') {
+                                steps {
+                                    script {
+                                        readProp = readProperties file: ' gradle.properties ';
+                                        String urlLink="";
+                                        if(!params.QaUrl.isEmpty()){
+                                            if (params.QaUrl.toUpperCase().contains("ROGERS")) {
+                                                 if (!params.QaUrl.contains("qa1.")  && !params.QaUrl.contains("qa5.")  && !params.QaUrl.contains("qa6.")  && !params.QaUrl.contains("qa7.") && !params.QaUrl.contains("qa2.") && !params.QaUrl.contains("qa3.") && !params.QaUrl.contains("qa4.") ) {
+                                                        error "Invalid QA url provided. We only accept QAURL from QA 1 to QA7. Please correct it."
+                                                 }
+                                            }
+                                            urlLink = urlLink + "-Ptest_qaURL=${params.QaUrl}";
+                                        }
+                                        if(!params.QaOVUrl.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_qaOVURL=${params.QaOVUrl}";
+                                        }
+                                        if(!params.DbEnvUrl.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_DbEnvUrl=${params.DbEnvUrl}";
+                                         }
+                                        if(!params.AWSUrl.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_awsURL=${params.AWSUrl}";
+                                        }
+                                        if(!params.AWSPRODUrl.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_awsPRODURL=${params.AWSPRODUrl}";
+                                        }
+                                        if(!params.SearchUrl.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_searchURL=${params.SearchUrl}";
+                                        }
+                                        if(!params.OneViewEnv.isEmpty()){
+                                            urlLink = urlLink + "-Ptest_oneViewEnv=${params.OneViewEnv}";
+                                        }
+                                        if (params.IndividualTests.isEmpty()){
+                                            if(urlLink.isEmpty()){
+                                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName=' $ {
+                params.Groups
             }
-        }
-    }
+            ' -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+                                            }else{
+                                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} -Ptest_groupName=' $ {
+                params.Groups
+            }
+            ' -Ptest_threadCount=${params.ThreadCount} ${urlLink} -i --stacktrace"
+                                            }
+                                        }
+                                        else
+                                            if(urlLink.isEmpty()){
+                                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} -i --stacktrace"
+                                            }else{
+                                                toolSh "gradle sauceTest -Ptest_browser=${params.Browser} -Ptest_language=${params.Language} ${generateTestString(params.IndividualTests)} -Ptest_threadCount=${params.ThreadCount} ${urlLink} -i --stacktrace"
+                                            }
+                                    }
+                                }
+                                post {
+                                    always {
+                                        junit ' build / test - results /**/ * .xml '
+                                        script {
+                                            def jobName = "${env.JOB_NAME}"
+                                            def buildTimeStamp = "${env.BUILD_TIMESTAMP}"
+                                            def testProfile = "${env.TestProfile}"
+                                            def destinationFolder = jobName.replaceAll("\\s+", "").replace("digital-qe/", "") + "/" + testProfile + "/" + buildTimeStamp.replaceAll("\\s+", "") + "/"
+                                            sh label: ' NS upload ', script: """
+                                            netstorage-upload.sh /mnt/ns/nskey.pem ./report Digital-QE/
+                                            """
+                                            REPORT_URL = "${REPORT_URL}" + "/report/" + destinationFolder + "/results.html"
+                                        }
+
+                                    }
+                                }
+                            }
 
 
-    post {
-
-        always{
-           script{
-            def testExecInfo = '''{
-                                  "fields": {
-                                      "project": {
-                                          "key": "RTM"
-                                      },
-                                      "summary": "''' + env.BUILD_TAG + '''",
-                                      "description": "''' + REPORT_URL + '''",
-                                      "customfield_21635": ["RTM-112530"]
-                                  }
-                              }'''
-            def testInfoImport = '''{
-                                  "fields": {
-                                      "project": {
-                                          "key": "RTM"
-                                      },
-                                      "description": "''' + REPORT_URL + '''",
-                                      "customfield_26619": {
-                                          "id": "52538"
-                                      },
-                                      "customfield_21608": {
-                                          "self": "https://reqcentral.com/rest/api/2/customFieldOption/53215",
-                                          "value": "Auto",
-                                          "id": "53215",
-                                          "disabled": false
-                                      },
-                                      "priority": {
-                                          "id": "10011"
-                                      }
-                                  }
-                              }'''
-
-           if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
-                stage('JIRA - XRay Results upload'){
-               sh("curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' -F info='${testExecInfo}' -F testInfo='${testInfoImport}' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
-               echo "Upload execution results to JIRA"
-               sh(script : "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
+                        }
                     }
                 }
-           }
-        }
 
-        success {
-            echo "${env.BUILD_URL} has result success"
-            office365ConnectorSend message: "Finished ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${REPORT_URL}>)", webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd', status: "SUCCESS"
+
+                post {
+
+                    always{
+                       script{
+                        def testExecInfo = ' '' {
+                "fields": {
+                    "project": {
+                        "key": "RTM"
+                    },
+                    "summary": "''' + env.BUILD_TAG + '''",
+                    "description": "''' + REPORT_URL + '''",
+                    "customfield_21635": ["RTM-112530"]
+                }
+            }
+            '' '
+            /* Json testInfoImport details
+                Key - Project ket - RTM / CH etc.
+                customfield_26619 - Test Class in Jira - Regression - 52538 (specific to RTM project)
+                customfield_21608 - Test Type in Jira - Auto - 53215
+                Priority - 3 - 10011
+            */
+            def testInfoImport = ' '' {
+                "fields": {
+                    "project": {
+                        "key": "RTM"
+                    },
+                    "description": "''' + REPORT_URL + '''",
+                    "customfield_26619": {
+                        "id": "52538"
+                    },
+                    "customfield_21608": {
+                        "self": "https://reqcentral.com/rest/api/2/customFieldOption/53215",
+                        "value": "Auto",
+                        "id": "53215",
+                        "disabled": false
+                    },
+                    "priority": {
+                        "id": "10011"
+                    }
+                }
+            }
+            '' '
+
+                       if (params.XrayImportFlag == ' true ' && params.TestPlanKey != null && params.TestExecutionKey != null) {
+                            stage(' JIRA - XRay Results upload '){
+                           sh("curl -H ' Accept - Charset:
+            utf - 8 ' -H ' Content - Type : multipart / form - data ' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F ' file =  @ build / testngOutput / testng - results.xml ' -F info=' $ {
+                testExecInfo
+            }
+            ' -F testInfo=' $ {
+            testInfoImport
         }
-        failure {
-            echo "${env.BUILD_URL} has result fail"
-            office365ConnectorSend message: "Finished ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${REPORT_URL}>)", webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd', status: "FAIL"
-        }
-        unstable {
-            echo "${env.BUILD_URL} is unstable"
-            office365ConnectorSend message: "Finished ${env.JOB_NAME} build #${env.BUILD_NUMBER} (<${REPORT_URL}>)", webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd', status: "UNSTABLE"
+            ' ' https : //reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
+            echo "Upload execution results to JIRA"
+            sh(script: "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
         }
     }
-
-}
-
-String generateTestString(String tests) {
-    //  String tests="OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout OneViewCH_TC_004_MigrationTriplePlayON OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest OneViewCH_TC_018b_Internet_HeaderFooterUsageTest OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest";
-    tests =tests.trim();
-    String[] strArray=tests.split(" ");
-    String finalTestString="";
-    for (int i=0;i<=strArray.length-1;i++){
-        finalTestString=finalTestString+"--tests '"+strArray[i].replace(".java","")+"' ";
+    }
     }
 
-    return finalTestString;
-}
+    success {
+        echo "${env.BUILD_URL} has result success"
+        office365ConnectorSend message: "Finished ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${REPORT_URL}>)",
+        webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd',
+        status: "SUCCESS"
+    }
+    failure {
+        echo "${env.BUILD_URL} has result fail"
+        office365ConnectorSend message: "Finished ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${REPORT_URL}>)",
+        webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd',
+        status: "FAIL"
+    }
+    unstable {
+        echo "${env.BUILD_URL} is unstable"
+        office365ConnectorSend message: "Finished ${env.JOB_NAME} build #${env.BUILD_NUMBER} (<${REPORT_URL}>)",
+        webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd',
+        status: "UNSTABLE"
+    }
+    }
+
+    }
+
+    String generateTestString(String tests) {
+        //  String tests="OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout OneViewCH_TC_004_MigrationTriplePlayON OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest OneViewCH_TC_018b_Internet_HeaderFooterUsageTest OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest";
+        tests = tests.trim();
+        String[]strArray = tests.split(" ");
+        String finalTestString = "";
+        for (int i = 0; i <= strArray.length - 1; i++) {
+            finalTestString = finalTestString + "--tests '" + strArray[i].replace(".java", "") + "' ";
+        }
+
+        return finalTestString;
+    }
