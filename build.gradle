@@ -101,7 +101,7 @@ task "localTest"(type: Test) {
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer","com.rogers.test.listeners.XrayListener"]
 		setListeners(listeners)
-		generateTestResultAttributes = true
+
 		if (project.hasProperty('test_groupName')){
 			includeGroups test_groupName
 			System.out.println("**************************************"+test_groupName)
