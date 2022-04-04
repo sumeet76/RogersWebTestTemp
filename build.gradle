@@ -99,7 +99,7 @@ task "localTest"(type: Test) {
 		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
-		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer","com.rogers.test.listeners.XrayListener"]
+		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
 		setListeners(listeners)
 
 		if (project.hasProperty('test_groupName')){
