@@ -61,7 +61,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/support/internet/IgniteInternet']")
 	WebElement lnkGoToSupportSection;
 
-	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changeInternetPackage']/ancestor::button")
+	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changePackage']/ancestor::button")
 	WebElement btnChangeInternetPackage;
 
 	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button")
@@ -154,7 +154,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
-	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
@@ -346,9 +346,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganay P
 	 * */
 	public void clickContinueChangeInternetPackage() {
-//		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
-		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+//		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+//		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
 	}
 	/*
 	 * Click on continue in Select billing date pop up

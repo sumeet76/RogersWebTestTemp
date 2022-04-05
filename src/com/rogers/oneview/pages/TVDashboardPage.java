@@ -414,9 +414,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-		/*if (getReusableActionsInstance().isElementVisible(cancelOrder)) {
-			getReusableActionsInstance().clickWhenReady(cancelOrder);
-		}*/
+
+//		if (getReusableActionsInstance().isElementVisible(cancel)) {
+//			clickCancel();
+//		}
 		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
 		getReusableActionsInstance().scrollToElement(themePacksTab);
 		getReusableActionsInstance().executeJavaScriptClick(themePacksTab);
@@ -568,6 +569,16 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinue4kChannelPack() {
 		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
 		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate, 120);
+	}
+
+	/**
+	 * Clicks continue on change TV package
+	 *
+	 * @author jarmanjeet.batth
+	 */
+
+	public void clickContinueToCancelOrder(){
+		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
 	}
 
 	/**
