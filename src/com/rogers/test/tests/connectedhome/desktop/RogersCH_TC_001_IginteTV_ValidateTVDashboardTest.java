@@ -31,18 +31,12 @@ public class RogersCH_TC_001_IginteTV_ValidateTVDashboardTest extends BaseTestCl
 
 	 @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
     public void checkTVDashboard() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -52,15 +46,16 @@ public class RogersCH_TC_001_IginteTV_ValidateTVDashboardTest extends BaseTestCl
         //Verifying the My Channel Line up
         getRogersSolarisTVDashboardPage().clkViewMyChannelLineup();
         reporter.reportLogWithScreenshot("Displayed the available channels"); 
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"Channels are avilable","None of the Channels are avialabe");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the channels are displayed in PDF","PDF is not displying");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"Channels are available","None of the Channels are available");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the channels are displayed in PDF","PDF is not displaying");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
-                    
-        //Verifying the Flexchannels                     
+         reporter.reportLogWithScreenshot("Closed the available channels popup");
+
+         //Verifying the Flexchannels
         getRogersSolarisTVDashboardPage().clkViewfelxChannels();
         reporter.reportLogWithScreenshot("Displayed the available flex channels");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are avilable","There are no felx channels");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displying");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are available","There are no flex channels");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displaying");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
     	}       
 

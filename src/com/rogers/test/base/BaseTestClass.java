@@ -745,6 +745,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 //captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 getDriver().get(strUrl + "?setLanguage=" + language);
+                getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_shm":
