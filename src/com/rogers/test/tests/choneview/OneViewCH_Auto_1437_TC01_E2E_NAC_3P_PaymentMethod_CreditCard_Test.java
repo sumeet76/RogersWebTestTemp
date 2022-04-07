@@ -85,7 +85,6 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 			//getRogersOVCheckoutPage().clkSubmit();
 //			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			//reporter.reportLogWithScreenshot("Order Placed");
-		
     }
 
 	@BeforeMethod (alwaysRun=true)

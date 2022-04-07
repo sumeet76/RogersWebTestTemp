@@ -147,6 +147,25 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
 	WebElement lnkCallUs;
+
+	@FindBy(xpath = "//span[text()='Want to change your internet package?' or text()='Vous voulez changer votre forfait Internet?']")
+	WebElement headerChangepkg;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	WebElement txtContactUsPopupModal;
+
+	@FindBy(xpath = "//ds-icon[@name='call']/span[@role='img']")
+	WebElement imgBookACallBack;
+
+	@FindBy(xpath = "//span[text()='Book a call back' or text()='Fixer une heure de rappel']")
+	WebElement lnkBookACallBack;
+
+	@FindBy(xpath = "//ds-icon[@name='text']/span[@role='img']")
+	WebElement imgLiveChat;
+
+	@FindBy(xpath = "//div[@class='live-chat-section d-flex align-items-center']/descendant::span[text()='Live Chat']")
+	WebElement lnkLiveChat;
+
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @return true if the Internet usage displayed; else false
@@ -496,7 +515,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(5000);
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite') or contains(@aria-label, 'Élan Premier')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().getWhenReady(pkg,60).click();
@@ -623,6 +642,65 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyCallUs() {
 		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
+	/**
+	 * Verifies if Change Package Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangePackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
+	}
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContent() {
+		String contactUsContentDesired = "Great! Contact us or book a call back – we’ll help you with all the details.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Verifies if Book a call back link is present
+	 * @return true if Book a call back link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyBookACallBack() {
+		getReusableActionsInstance().waitForElementVisibility(imgBookACallBack, 10);
+		return getReusableActionsInstance().isElementVisible(lnkBookACallBack, 20);
+
+	}
+
+	/**
+	 * Verifies if Live Chat link is present
+	 * @return true if Live Chat link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyLiveChat() {
+		getReusableActionsInstance().waitForElementVisibility(imgLiveChat, 10);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat, 20);
+	}
+
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContentFR() {
+		String contactUsContentDesired = "Super! Communiquez avec nous ou choisissez une heure de rappel et nous réglerons les détails avec vous.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
 	}
 
 }
