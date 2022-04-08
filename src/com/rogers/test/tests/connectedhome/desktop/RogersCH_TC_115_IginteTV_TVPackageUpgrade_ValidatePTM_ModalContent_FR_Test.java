@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 /**
  * This class contains the test method to verify the solaris TV package upgarde flow for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author manpreet.kaur3
  * 
  * Test steps:
  *
@@ -23,16 +23,13 @@ import java.lang.reflect.Method;
  *3. Click on a TV account
  *4. Click on chage package button
  *5. Choose a tv package whose price is higher than the current package and click on Submit
- *6. Scroll down to the last in the page and Click on Checkout
- *7. Enter appropriate Contact details
- *8. Pick a date time in step 2 - Most Convenient Time for us to call
- *9. Click on Continue
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
- *11. Click on Submit
+ *6. Validate the PTM Modal header
+ *7. Validate PTM modal Content
+ *8. Validate PTM modal Continue and Cancel button
  *
  **/
 
-public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
+public class RogersCH_TC_115_IginteTV_TVPackageUpgrade_ValidatePTM_ModalContent_FR_Test extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisTVPackageUpgrade() 
@@ -54,25 +51,11 @@ public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopUp(),"Displayed the Change TV Package popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the ChangeTV Package popup");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContent(),"Verified the Change Package modal content", "Change Package Modal content is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeaderFR(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentFR(),"Verified the Change Package modal content", "Change Package Modal content is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyPopupChangeTVPackageContinueBtn(),"Verified Change TV Package continue button", "continue button verification failed");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
-        getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
-        reporter.reportLogWithScreenshot("Launched the personalize channel page");
-        getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
-        reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-        getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
-        reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-        getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
-        reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-        getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
-        getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmitUpdateTV();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
-        reporter.reportLogWithScreenshot("Verified the Confirmation page");
+
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
