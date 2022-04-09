@@ -32,6 +32,12 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
     WebElement orderReviewPageHeader;
 
+    @FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+    WebElement smartHomeMonitoringMonthlyCharges;
+
+    @FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+    WebElement smartHomeMonitoringOneTimeCharges;
+
     public void clkContinue(){
         getReusableActionsInstance().waitForElementTobeClickable(continueBtn, 10);
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
@@ -61,7 +67,23 @@ public class OVROrderReviewPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
     }
 
-    public boolean verifySHMaddOns(){
-        return true;
+    /**
+     * Expands the Monthly charges on Order Review page and validates SHM add ons charges are present
+     * @return True if SHM Add on charges are present in monthly charges.
+     * @author Sameer.Ahuja
+     */
+    public boolean validateSHMMonthlyChargesInCartSummary(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
+        return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
+    }
+
+    /**
+     * Expands the One Time charges on Order Review Page and validates SHM add ons charges are present
+     * @return True if SHM Add on charges are present in one time charges.
+     * @author Sameer.Ahuja
+     */
+    public boolean validateSHMOnetimeChargesInCartSummary(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
+        return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
     }
 }

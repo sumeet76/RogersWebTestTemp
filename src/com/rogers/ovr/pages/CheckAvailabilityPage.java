@@ -79,7 +79,7 @@ public class CheckAvailabilityPage extends BasePageClass {
         }
         getReusableActionsInstance().clickAndHoldFor(searchResult, 333);
         getReusableActionsInstance().staticWait(2000);
-        getReusableActionsInstance().clickWhenReady(checkAvailabilityBtn, 10);
+        getReusableActionsInstance().clickWhenReady(checkAvailabilityBtn, 15);
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }

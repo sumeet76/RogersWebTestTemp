@@ -93,7 +93,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[@title='Rogers']/ancestor::div[2]//child::span")
     WebElement ovrSessionTimer;
 
-    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']/ancestor::button")
+    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
     WebElement continueBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
@@ -127,8 +127,9 @@ public class BundleBuilderPage extends BasePageClass {
     }
     public void scrollAndClickContinue() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
-        getReusableActionsInstance().clickWhenReady(continueBtn, 5);
+        getReusableActionsInstance().scrollToElement(continueBtn);
+        //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
+        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
     }
 
 
@@ -176,10 +177,10 @@ public class BundleBuilderPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(txtContainerMobile, 10).click();
             getReusableActionsInstance().getWhenReady(txtMobileNumber, 10).clear();
             getReusableActionsInstance().getWhenReady(txtMobileNumber, 3).sendKeys(strPhoneNumber);
-            getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
-            getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
-            getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
-            getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
+//            getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
+//            getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+//            getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
+//            getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
         }
     }
 
