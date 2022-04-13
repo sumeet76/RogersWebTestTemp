@@ -64,17 +64,17 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		reporter.reportLogWithScreenshot("4k continue");
 		getRogersIgniteBundlesPage().fourKContinue();
 		reporter.reportLogWithScreenshot("4k content continue");
-		getRogersIgniteBundlesPage().fourKContentContinue();
+//		getRogersIgniteBundlesPage().fourKContentContinue();
 
 
 
 //		reporter.reportLogWithScreenshot("continue");
-//		getTVDashboardPage().immediateDateChangeOption();
-//		reporter.reportLogWithScreenshot("manage channel and themepack tab");
-//		getTVDashboardPage().clickCancel();
-//		reporter.reportLogWithScreenshot("ready to submit");
-////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-//		reporter.reportLogWithScreenshot("Order Confirmation page");
+		getTVDashboardPage().immediateDateChangeOption();
+		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+		getTVDashboardPage().clickContinueOnSelectDateChange();
+		reporter.reportLogWithScreenshot("ready to submit");
+		getRogersOVOrderReviewPage().clickSubmitOrder();
+		reporter.reportLogWithScreenshot("Order Confirmation page");
 
 
 	}

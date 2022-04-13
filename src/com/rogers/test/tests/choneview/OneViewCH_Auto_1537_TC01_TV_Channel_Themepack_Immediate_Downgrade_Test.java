@@ -44,8 +44,8 @@ public class OneViewCH_Auto_1537_TC01_TV_Channel_Themepack_Immediate_Downgrade_T
 		getTVDashboardPage().continueFromChangeDate();
 		reporter.reportLogWithScreenshot("Continue");
 
-//		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
-//		reporter.reportLogWithScreenshot("Order Confirmation page");
+		getRogersOVOrderReviewPage().clickSubmitOrder();
+		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
 	@BeforeMethod (alwaysRun=true)

@@ -36,8 +36,8 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Apply' or text()='Appliquer']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement apply;
 	
-	//@FindBy(xpath = "//*[@translate='global.selfServe.reviewConfirm.totalMonthlyFees']/parent::div")
-	@FindBy(xpath = "//p[text()='Total after taxes']/following::div[@class='ds-price']")
+	@FindBy(xpath = "//*[@translate='global.selfServe.reviewConfirm.totalMonthlyFees']/parent::div")
+//	@FindBy(xpath = "//p[text()='Total after taxes']/following::div[@class='ds-price']")
 	WebElement totalMonthlyFees;
 	
 	@FindBy(xpath = "//label[@for='termsCheckbox']")
