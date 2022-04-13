@@ -26,9 +26,9 @@ public class RogersBFA_TC24_Consumer_PPC_SL_SE_FinancingInTerm_SelectingBYODPlan
     @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC24_SLSE_FINInTerm_BYODPlan_DowngradeFeeTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc24PPCSLSEBYODPlan.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc24PPCSLSEBYODPlan.getPassword());

@@ -52,8 +52,6 @@ public class OneViewCH_Auto_TVDashboard_Validation_Test extends BaseTestClass {
         getTVDashboardPage().clickCancel();
         reporter.reportLogWithScreenshot("Closing Reset Parent control");
 
-
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})

@@ -31,11 +31,13 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		reporter.reportLogWithScreenshot("Add channel");
 		getTVDashboardPage().clickYourChanges();
 		reporter.reportLogWithScreenshot("collapse");
-		getTVDashboardPage().clickManageChannelsAndThemepacks();
-		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+//		getTVDashboardPage().clickManageChannelsAndThemepacks();
+//		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+//		getTVDashboardPage().clickContinueToCancelOrder();
+//		reporter.reportLogWithScreenshot("Cancel the changed ");
+
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("themepack tab");
-
 		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().addThemepack();

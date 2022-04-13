@@ -67,7 +67,8 @@ public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest exten
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		
+        getRogersOrderReviewPage().clkverifyAgeCheckbox();
+        reporter.reportLogWithScreenshot("Verified the age");
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitUpdateSAI();

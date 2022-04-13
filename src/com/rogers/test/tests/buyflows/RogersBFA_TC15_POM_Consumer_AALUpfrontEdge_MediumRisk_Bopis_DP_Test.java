@@ -27,9 +27,9 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
     @Test(groups = {"RegressionBFA","AALBFA","POM","DP"})
     public void rogersAalTermBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15AALShareTermBopis.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15AALShareTermBopis.getPassword());
@@ -68,7 +68,7 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-        String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc15AALShareTermBopis.getRiskClass(),deviceCost);
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15AALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
         reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
                 "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -96,11 +96,11 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         getRogersPlanConfigPage().selectDeviceProtectionAddon();
         reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().setUserNameCallerID();
+        reporter.reportLogWithScreenshot("CalledID details entered");
         reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
         String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
         reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
-        getRogersPlanConfigPage().setUserNameCallerID();
-        reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);

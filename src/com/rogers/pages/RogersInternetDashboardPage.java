@@ -21,18 +21,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
-		
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
-        @FindBy(xpath = "//span[@class='ds-icon rds-icon-internet']")})	
+        @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-internet']")})
 	WebElement btnSolarisInternetBadge;
 
 	@FindAll({
 	@FindBy(xpath = "//h1[@class='-mb8']"),
-	@FindBy(xpath = "//*[@translate='global.label.internet']")})
+	@FindBy(xpath = "//div[@rchapiexposer='global.cta.at']")})
 	WebElement infoInternet;
 
-	//@FindBy(xpath = "//span[@translate='global.dashboard.internetUsage.usageAndAlerts']")
 	@FindBy(xpath = "//*[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']")
 	WebElement lnkInternetUsageAlerts;
 
@@ -62,12 +60,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
-	
-	@FindBy(xpath = "//span[text()='Continue']")
+
+	@FindBy(xpath="//span[contains(text(),'Add it now')]")
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath = "//span[@id='ariaNoInternetOnly']/ancestor::a//ds-icon[@name='chevron-right']")
+	@FindBy(xpath="//a[contains(@aria-label,'AddSmartStream')]/following::span[contains(text(),'Add')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
@@ -140,6 +138,33 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[contains(@aria-label,'continue')]/span/span")
 	WebElement btnContinue;
+
+	@FindBy(xpath = "//button[@aria-label='See more details about your internet package' and @aria-expanded='false']/span")
+	WebElement lnkShowDetails;
+
+	@FindBy(xpath = "//button[@aria-label='See more details about your internet package' and @aria-expanded='true']")
+	WebElement lnkHideDetails;
+
+	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
+	WebElement lnkCallUs;
+
+	@FindBy(xpath = "//span[text()='Want to change your internet package?' or text()='Vous voulez changer votre forfait Internet?']")
+	WebElement headerChangepkg;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	WebElement txtContactUsPopupModal;
+
+	@FindBy(xpath = "//ds-icon[@name='call']/span[@role='img']")
+	WebElement imgBookACallBack;
+
+	@FindBy(xpath = "//span[text()='Book a call back' or text()='Fixer une heure de rappel']")
+	WebElement lnkBookACallBack;
+
+	@FindBy(xpath = "//ds-icon[@name='text']/span[@role='img']")
+	WebElement imgLiveChat;
+
+	@FindBy(xpath = "//div[@class='live-chat-section d-flex align-items-center']/descendant::span[text()='Live Chat']")
+	WebElement lnkLiveChat;
 
 	/**
 	 * Verify the Internet usage on the Internet dash board page
@@ -277,7 +302,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
-	
+	/**
+	 * verify the Change Internet Package button on Solaris Internet dash board is present or not
+	 *  @return true if button is not present, else false
+	 *  @author manpreet.kaur3
+	 */
+	public boolean verifyChangeInternetPackageBtnNotPresent() {
+		return !(getReusableActionsInstance().isElementVisible(btnSolChangeInternetPackage, 10));
+	}
 	/**
 	 * Click the Change Internet Package button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
@@ -293,6 +325,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void clkInternetChangeOK() {		
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
+		getReusableActionsInstance().staticWait(8000);
 	}
 
 	/**
@@ -482,7 +515,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(5000);
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite')]/span");
+		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'Add Rogers Ignite') or contains(@aria-label, 'Élan Premier')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().getWhenReady(pkg,60).click();
@@ -579,8 +612,95 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	}
 
+
     public void clkContinueToChangeInternetPackage() {
 		getReusableActionsInstance().waitForElementVisibility(btnContinue, 20);
 		getReusableActionsInstance().getWhenReady(btnContinue, 20).click();
     }
+
+	/**
+	 * Click Show Details link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkShowDetails() {
+		getReusableActionsInstance().getWhenReady(lnkShowDetails, 20).click();
+	}
+
+	/**
+	 * Verify Show Details link is expanded
+	 * @retun true if Hide Details link is visible , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyShowDetailsExpanded() {
+		return getReusableActionsInstance().isElementVisible(lnkHideDetails, 20);
+	}
+
+	/**
+	 * Verify the number is text or link for Bulk Tenant
+	 * @retun true if the number is clickable , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallUs() {
+		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
+	/**
+	 * Verifies if Change Package Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangePackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
+	}
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContent() {
+		String contactUsContentDesired = "Great! Contact us or book a call back – we’ll help you with all the details.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Verifies if Book a call back link is present
+	 * @return true if Book a call back link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyBookACallBack() {
+		getReusableActionsInstance().waitForElementVisibility(imgBookACallBack, 10);
+		return getReusableActionsInstance().isElementVisible(lnkBookACallBack, 20);
+
+	}
+
+	/**
+	 * Verifies if Live Chat link is present
+	 * @return true if Live Chat link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyLiveChat() {
+		getReusableActionsInstance().waitForElementVisibility(imgLiveChat, 10);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat, 20);
+	}
+
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContentFR() {
+		String contactUsContentDesired = "Super! Communiquez avec nous ou choisissez une heure de rappel et nous réglerons les détails avec vous.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
 }

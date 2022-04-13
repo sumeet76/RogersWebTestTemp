@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
  */
 
-public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTestClass {
+public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -27,7 +27,7 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","DPBYOD"})
 	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
@@ -38,8 +38,21 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickGetBPOOffer();
+		getRogersPlanConfigPage().selectBYODdpAddon();
+		reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
+		getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc05NACByodSS.getDpIMEI());
+		reporter.reportLogPassWithScreenshot("DP Addon IMEI Entered");
+		getRogersPlanConfigPage().setDPDeviceStorage(TestDataHandler.tc05NACByodSS.getDpDeviceStorage());
+		reporter.reportLogPassWithScreenshot("DP Addon Device Storage Selected");
+		getRogersPlanConfigPage().setDPDeviceColor(TestDataHandler.tc05NACByodSS.getDpDeviceColor());
+		reporter.reportLogPassWithScreenshot("DP Addon Device Color Selected");
+		getRogersPlanConfigPage().clkDpEligCheckBtn();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyEligibilityMsg(),"Entered IMEI is eligible for Device Protection Addon","Entered IMEI is not eligible");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+		String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
+		reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
@@ -76,7 +89,7 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-		reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
+		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
 		// ***************Choose a Number Stepper*************//      
@@ -107,6 +120,9 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_Test extends BaseTest
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
+		reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+		String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
+		getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
 //		String contactNameReviewPage=getRogersReviewOrderPage().getContactName();
 //		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage),"Contact Name in Order Review Page matches as entered in Create Profile stepper","Contact Name in Order Review Page not matches as entered in Create Profile stepper");
 //		String contactEmailReviewPage=getRogersReviewOrderPage().getContactEmail();

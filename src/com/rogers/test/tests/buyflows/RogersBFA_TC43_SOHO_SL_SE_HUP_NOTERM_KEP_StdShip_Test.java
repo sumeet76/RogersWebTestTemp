@@ -18,9 +18,9 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
 
         @Test(groups = {"RegressionBFA","NACBFABC"})
         public void sohoHUP_tc43_SL_SE_HUP_NOTERM_KEP_StdShip_Test() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getPassword());
