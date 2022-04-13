@@ -13,7 +13,7 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	}
 	
 	//@FindBy(xpath = "//*[text()='Thanks! We received the order.' or text()='Merci!  Nous avons reçu la commande.']")
-	@FindBy(xpath = "//*[text()='We received the order.']")
+	@FindBy(xpath = "//*[contains(text(),'Thanks!')]")
 	WebElement orderConfirmation;
 	
 	@FindAll({

@@ -34,7 +34,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkCheckOut();
+		//getRogersIgniteBundlesPage().clkCheckOut();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
@@ -63,6 +64,12 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
 		reporter.reportLogWithScreenshot("digital front line");
+		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("payment details entered");
+	/*	getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("digital front line");
 
 
 		getCreditCheckPage().selectPaymentOption(2);
@@ -72,7 +79,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		getRogersOVCheckoutPage().enterInstitutionNumber("003");
 		reporter.reportLogWithScreenshot("Institution Number");
 		getRogersOVCheckoutPage().enterAccountNumber("1234003");
-		reporter.reportLogWithScreenshot("Account Number");
+		reporter.reportLogWithScreenshot("Account Number");*/
 
 
 		getPaymentOptionsPage().clkContinue();
