@@ -637,7 +637,9 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickProfileLink() {
-        getReusableActionsInstance().clickWhenReady(ProfileLink, 30);
+        getReusableActionsInstance().waitForElementVisibility(ProfileLink,60);
+        getReusableActionsInstance().executeJavaScriptClick(ProfileLink);
+//        getReusableActionsInstance().clickWhenReady(ProfileLink, 30);
     }
 
     /**
