@@ -44,6 +44,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
+		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
