@@ -13,7 +13,7 @@ public class RogersIgniteExchangePage extends BasePageClass{
 		super(driver);
 		
 	}
-	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater'] | //span[@ng-reflect-translate='global.cta.bysSwapNow']/ancestor::button")
+	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeNow'] | //span[@ng-reflect-translate='global.cta.bysSwapNow']/ancestor::button")
 	WebElement buttonExchangeNow;
 
 	@FindBy(xpath = "//h3[@translate='global.label.channelsToSwapOut']")
