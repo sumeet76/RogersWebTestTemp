@@ -730,7 +730,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			//clkNoThanks();
+			clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
 			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
