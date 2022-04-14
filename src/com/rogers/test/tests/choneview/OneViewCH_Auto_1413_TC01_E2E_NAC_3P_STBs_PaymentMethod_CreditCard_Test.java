@@ -42,11 +42,11 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 		    reporter.reportLogWithScreenshot("Cart Summary");
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
-//			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"cart summary header found","cart summary header not found");
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"cart summary header found","cart summary header not found");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-//			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		    reporter.reportLogWithScreenshot("verify Customer Profile");
 			getRogersIgniteBundlesPage().customerWishtoContinue();
+			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 			reporter.reportLogWithScreenshot("Customer Profile");
 			getCustomerProfilePage().clkContinue();
 			reporter.reportLogWithScreenshot("Evaluation form");
@@ -66,6 +66,8 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			getCreditCheckPage().goToPageBottom();
 			reporter.reportLogWithScreenshot("Page bottom");
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+			reporter.reportLogWithScreenshot("phone number generated.");
+			getHomePhoneSelectionPage().clkContinue();
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();
 			reporter.reportLogWithScreenshot("installation options");
@@ -88,6 +90,7 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

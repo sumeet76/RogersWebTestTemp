@@ -15,7 +15,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	WebElement btnContnue;
 
 	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle']")
-	@FindBy(xpath = "//p[text()='Success!']")
+	@FindBy(xpath = "//p[text()='Success']")
 	WebElement imgSuccess;
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
