@@ -58,10 +58,10 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         reporter.reportLogWithScreenshot("click Immediate bill option ");
         getTVDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("click continue");
-        //getRogersOVOrderReviewPage().clkSubmit();
+        getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
-        
+        reporter.reportLogWithScreenshot("Order Placed");
+
 
 
 
