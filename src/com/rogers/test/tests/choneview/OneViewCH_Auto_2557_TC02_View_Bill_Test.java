@@ -20,17 +20,13 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("Billing link is opened");
         getAccountOverViewPage().scrollToViewBill();
         reporter.reportLogWithScreenshot("scroll To View Bill");
-       // reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
-        reporter.reportLogWithScreenshot("Verify Bill Amount");
-        getAccountOverViewPage().verifyBillAmount();
-        reporter.reportLogWithScreenshot("Verify Welcome text");
-        getAccountOverViewPage().verifyWelcomeText();
-        reporter.reportLogWithScreenshot("Verify Bill Message");
-        getAccountOverViewPage().verifyBillMessage();
-        reporter.reportLogWithScreenshot("Verify product display");
-        getAccountOverViewPage().verifyProductDisplayed();
-        reporter.reportLogWithScreenshot("Verify Account Messages");
-        getAccountOverViewPage().verifyAccountMessages();
+        getAccountOverViewPage().moveToiframe();
+        reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displayed","Bill amount is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displayed","Welcome text is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displayed","Bill message is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displayed","Product is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displayed","Account message is not displayed");
         reporter.reportLogWithScreenshot("Test Passed");
     }
 

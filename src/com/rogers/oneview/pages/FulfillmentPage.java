@@ -26,10 +26,10 @@ public class FulfillmentPage  extends BasePageClass {
 	WebElement agreeCondition;
 	
 	@FindBy(xpath = "//div[contains(@class,'alert-box-copy')]")
-	WebElement alert;
+	WebElement 	alert;
 	
 	@FindBy(xpath = "//div[@class='date-picker']")
-	WebElement datePicker;
+	WebElement 	datePicker;
 	
 	@FindBy(xpath = "//div[contains(@class,'fadeInPicker')]")
 	WebElement dates;

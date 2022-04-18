@@ -132,7 +132,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='No' or text()='Non']/ancestor::button")
 	WebElement noPortInServices;
 
-	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+//	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement fourKContinue;
 
 
@@ -458,10 +459,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkContinue() {
 
-		//getReusableActionsInstance().waitForElementVisibility(continueButton);
-		//getReusableActionsInstance().executeJavaScriptClick(continueButton);
+		getReusableActionsInstance().waitForElementVisibility(continueButton);
+
+		//getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().scrollToElement(continueButton);
-		getReusableActionsInstance().clickWhenReady(continueButton,30);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+		//getReusableActionsInstance().clickWhenReady(continueButton,30);
 
 	}
 
