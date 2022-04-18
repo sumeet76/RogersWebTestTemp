@@ -18,15 +18,19 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         getAccountOverViewPage().clickBillinglink();
 //        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("Billing link is opened");
-//        getAccountOverViewPage().scrollToViewBill();
+        getAccountOverViewPage().scrollToViewBill();
         reporter.reportLogWithScreenshot("scroll To View Bill");
-        reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displaye","Bill amount is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displaye","Welcome text is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displaye","Bill message is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displaye","Product is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displaye","Account message is not displayed");
-
+       // reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
+        reporter.reportLogWithScreenshot("Verify Bill Amount");
+        getAccountOverViewPage().verifyBillAmount();
+        reporter.reportLogWithScreenshot("Verify Welcome text");
+        getAccountOverViewPage().verifyWelcomeText();
+        reporter.reportLogWithScreenshot("Verify Bill Message");
+        getAccountOverViewPage().verifyBillMessage();
+        reporter.reportLogWithScreenshot("Verify product display");
+        getAccountOverViewPage().verifyProductDisplayed();
+        reporter.reportLogWithScreenshot("Verify Account Messages");
+        getAccountOverViewPage().verifyAccountMessages();
         reporter.reportLogWithScreenshot("Test Passed");
     }
 

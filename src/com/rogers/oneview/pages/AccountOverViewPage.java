@@ -74,7 +74,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
     WebElement btnTVBadge;
 
-    @FindBy(xpath = "//a[contains(text(),'Billing')]")
+    @FindBy(xpath = "//a[contains(text(),' Billing ')]")
     WebElement Billinglink;
 
     @FindBy(xpath = "//a[contains(text(),'Profile')]")
@@ -215,10 +215,10 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='impersonate-code']")
     WebElement inputDealerCode;
 
-    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[1]")
+    @FindBy(xpath = "//div[@id='bb-bs-bill-total']/child::div/child::div[@ng-repeat='message in $ctrl.data.paymentMessages.messages']")
     WebElement requiredmessage;
 
-    @FindBy(xpath = "//span[@class='bb-amount ng-scope amount-xl']")
+    @FindBy(xpath = "//div[@id='bb-bs-bill-total']/child::div/child::div/child::div/child::bb-amount/child::span[@class='bb-amount ng-scope amount-xl']")
     WebElement billamount;
 
     @FindBy(xpath = "//div[@ng-class='message.textClass']")
@@ -230,7 +230,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='product-header']")
     WebElement product;
 
-    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']")
+    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']/child::div/child::div[text()=' Account Messages']")
     WebElement accountMessages;
 
     /**
@@ -566,7 +566,15 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickBillinglink() {
-        getReusableActionsInstance().clickWhenReady(Billinglink);
+        /*if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
+            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+            getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
+        }
+        if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
+            getReusableActionsInstance().clickWhenReady(skipNotification);
+        }*/
+        WebElement btn = getReusableActionsInstance().getWhenReady(Billinglink, 90);
+        getReusableActionsInstance().clickWhenReady(btn, 45);
     }
 
     /**
@@ -860,9 +868,9 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyRequiredMessage() {
-        getReusableActionsInstance().staticWait(6000);
-        return getReusableActionsInstance().isElementVisible(requiredmessage,60);
+    public void verifyRequiredMessage() {
+        getReusableActionsInstance().staticWait(120);
+        getReusableActionsInstance().isElementVisible(requiredmessage,60);
 
 
     }
@@ -871,8 +879,10 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyBillAmount() {
-        return getReusableActionsInstance().isElementVisible(billamount,30);
+    public void verifyBillAmount() {
+        //WebElement btn = getReusableActionsInstance().getWhenReady(billamount, 120);
+        //getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+        getReusableActionsInstance().isElementVisible(billamount,120);
 
 
     }
@@ -881,8 +891,8 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyWelcomeText() {
-        return getReusableActionsInstance().isElementVisible(welcometext,30);
+    public void verifyWelcomeText() {
+        getReusableActionsInstance().isElementVisible(welcometext,120);
     }
 
 
@@ -891,16 +901,16 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyBillMessage() {
-        return getReusableActionsInstance().isElementVisible(billmessage,30);
+    public void verifyBillMessage() {
+        getReusableActionsInstance().isElementVisible(billmessage,120);
     }
     /**
      * verify product
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyProductDisplayed() {
-        return getReusableActionsInstance().isElementVisible(product, 30);
+    public void verifyProductDisplayed() {
+        getReusableActionsInstance().isElementVisible(product, 120);
     }
 
 
@@ -909,8 +919,8 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyAccountMessages() {
-        return getReusableActionsInstance().isElementVisible(accountMessages, 30);
+    public void verifyAccountMessages() {
+        getReusableActionsInstance().isElementVisible(accountMessages, 120);
 
     }
 
@@ -921,7 +931,8 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public void scrollToViewBill() {
         getReusableActionsInstance().waitForPageLoad();
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        getReusableActionsInstance().staticWait(6000);
+        getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 //        getReusableActionsInstance().scrollToElement(requiredmessage);
     }
 
