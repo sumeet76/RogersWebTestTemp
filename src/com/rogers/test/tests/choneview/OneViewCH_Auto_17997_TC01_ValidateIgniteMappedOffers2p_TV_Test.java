@@ -12,9 +12,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers2p_TV_Test extends BaseTestClass {
+public class OneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test extends BaseTestClass {
     @Test()
-    public void oneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers2p_TV_Test(){
+    public void oneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getBan(),TestDataHandler.Ignite_Mapped_Offers_2p.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
         getAccountOverViewPage().selectTVBadage();
@@ -26,10 +26,10 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         reporter.hardAssert(getTVDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
         getTVDashboardPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("Recommended offer selected");
-        getTVDashboardPage().clickViewDetails(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferEn(),TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferFr());
-        reporter.reportLogWithScreenshot("click of view details of recommended offer");
-        getTVDashboardPage().clickCloseButton();
-        reporter.reportLogWithScreenshot("close view details window");
+        //getTVDashboardPage().clickViewDetails(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferEn(),TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferFr());
+        //reporter.reportLogWithScreenshot("click of view details of recommended offer");
+        //getTVDashboardPage().clickCloseButton();
+        //reporter.reportLogWithScreenshot("close view details window");
         getTVDashboardPage().selectTVPackage(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferEn(),TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferFr());
         reporter.reportLogWithScreenshot("recommended offer TV Package selected");
         getTVDashboardPage().clickContinueChangeTVPackage();
@@ -46,8 +46,8 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         reporter.reportLogWithScreenshot("Channel Add selected");
         getTVDashboardPage().clickContinueBottomOfPage();
         reporter.reportLogWithScreenshot("click continue");
-        getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
-        reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
+        //getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
+        //reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
         getTVDashboardPage().clickThemepacksTab();
         reporter.reportLogWithScreenshot("click Theme pack Tab");
         getTVDashboardPage().clickContinueChangeTVPackage();
@@ -58,10 +58,10 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
         reporter.reportLogWithScreenshot("click Immediate bill option ");
         getTVDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("click continue");
-        //getRogersOVOrderReviewPage().clkSubmit();
+        getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
-        
+        reporter.reportLogWithScreenshot("Order Placed");
+
 
 
 
@@ -75,7 +75,7 @@ public class OneViewCH_Auto_17997__Code_Refactor_TC01_ValidateIgniteMappedOffers
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+        //closeSession();
     }
 }
 

@@ -319,7 +319,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@id='cl-65619']")
 	WebElement removeChannel;
 
-	@FindBy(xpath = "//button[@id='cl-76222']")
+	@FindBy(xpath = "//button[@id='cl-73142']")
 	WebElement addChannelBtn;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -1037,12 +1037,12 @@ public class TVDashboardPage  extends BasePageClass {
 		 * @author suganya p*/
 		public void yourChangeContinue ()
 		{
-			if (getReusableActionsInstance().isElementVisible(removedItems, 60)) {
+			/*if (getReusableActionsInstance().isElementVisible(removedItems, 60)) {
 				getReusableActionsInstance().clickWhenReady(yourChangeContinue);
-			} else {
+			} else {*/
 			//	getReusableActionsInstance().clickWhenReady(yourChanges);
 				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 60);
-			}
+			//}
 		}
 
 		/*
@@ -1107,7 +1107,8 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickViewOffers() {
-		getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().staticWait(20);
+		//getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
 	}
 
@@ -1136,7 +1137,8 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickExchangeNow() {
-		getReusableActionsInstance().waitForElementVisibility(exchangeNow, 30);
+		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
 
@@ -1166,7 +1168,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinueBottomOfPage() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 30);
-		getReusableActionsInstance().executeJavaScriptClick(continueBottomOfPage);
+		getReusableActionsInstance().clickWhenReady(continueBottomOfPage);
 
 
 	}

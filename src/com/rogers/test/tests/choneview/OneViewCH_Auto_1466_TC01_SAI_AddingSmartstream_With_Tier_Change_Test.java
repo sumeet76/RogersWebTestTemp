@@ -17,7 +17,7 @@ public class OneViewCH_Auto_1466_TC01_SAI_AddingSmartstream_With_Tier_Change_Tes
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickChangeInternetPackage();
+        getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().clickCheckBoxSmartStream();
         reporter.reportLogWithScreenshot("Smart Stream option selected");

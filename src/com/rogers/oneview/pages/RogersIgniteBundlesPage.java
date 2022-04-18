@@ -311,7 +311,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
 	WebElement exchangeNow;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted']")
+	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
 	WebElement internetCollapse;
 
 	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
