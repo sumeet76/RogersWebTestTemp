@@ -126,7 +126,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
 	WebElement addRestrictedPodToCart;
 
-	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	//@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	@FindBy(xpath = "//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span")
 	WebElement plusButtonToAddPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
