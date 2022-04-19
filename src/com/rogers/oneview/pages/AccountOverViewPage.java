@@ -337,7 +337,7 @@ public class AccountOverViewPage extends BasePageClass {
     public void clickIgnite() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
-        if (getReusableActionsInstance().isElementVisible(OK, 120)) {
+       if (getReusableActionsInstance().isElementVisible(OK, 60)) {
             getReusableActionsInstance().executeJavaScriptClick(OK);
         }
     }

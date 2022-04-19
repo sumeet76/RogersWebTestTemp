@@ -19,9 +19,10 @@ public class OneViewCH_Auto_1545_TC01_TargetedMigration_1P_Internet_to_SAITest e
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
-        getRogersIgniteBundlesPage().clkUsethisAddress();
+     //   getRogersIgniteBundlesPage().clkUsethisAddress();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinueServiceable();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -35,7 +36,7 @@ public class OneViewCH_Auto_1545_TC01_TargetedMigration_1P_Internet_to_SAITest e
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+    //    reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -63,8 +64,8 @@ public class OneViewCH_Auto_1545_TC01_TargetedMigration_1P_Internet_to_SAITest e
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 

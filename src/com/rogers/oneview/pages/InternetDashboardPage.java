@@ -126,7 +126,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
 	WebElement addRestrictedPodToCart;
 
-	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	@FindBy(xpath="(//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']/ancestor::button)[3]")
 	WebElement plusButtonToAddPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
@@ -567,8 +567,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickAddPodsButton() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(addPodsButton, 30);
-		getReusableActionsInstance().scrollToElement(addPodsButton);
+	//	getReusableActionsInstance().scrollToElement(addPodsButton);
 		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
 	}
 
