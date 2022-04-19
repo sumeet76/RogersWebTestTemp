@@ -16,7 +16,8 @@ public class RogersOVInstallationPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath="//div[@id='ds-checkbox-id-2-label-container']/preceding-sibling::div")
+
+    @FindBy(xpath="//div[@class='ds-checkbox__box my-12']")
     WebElement activationCheckbox;
 
     @FindBy(xpath="//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")

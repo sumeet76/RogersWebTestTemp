@@ -11,10 +11,10 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_Test extends BaseTestClass {
+public class OneViewCH_Auto_OVS1_TC01_TargetedMigration_Delivery_By_Appointment_Online_Billing_SAI_to_SAITest extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void TargetedMigrationFlow_2P_InternetAndTV_to_SAITest(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVToSAI.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVToSAI.getContactID() );
+    public void oneViewCH_Auto_OVS1_TC01_TargetedMigration_Delivery_By_Appointment_Online_Billing_SAI_to_SAITest(){
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PInternetToSAI.getAccountNo(), TestDataHandler.targetedMigration1PInternetToSAI.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
@@ -32,7 +32,6 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clickInternetCollapse();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clickReviewTearmAndConditionsContinueButton();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyInternetAddOnsHeader(),"Internet Add ons header Available","Internet Add ons header not available");
@@ -57,17 +56,31 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("Delivery By Appointment");
+        getCreditCheckPage().selectDeliveryByAppointment();
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        reporter.reportLogWithScreenshot("Continue button clicked");
         getPaymentOptionsPage().clkContinue();
+        reporter.reportLogWithScreenshot("Verifying billing and Payment options available");
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        getCreditCheckPage().verifyBillingAndPaymentOption();
-        getCreditCheckPage().clickDigitalFrontline();
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		getPaymentOptionsPage().clkContinue();
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("select oline billing option");
+        getCreditCheckPage().selectOnlineBilling();
+        reporter.reportLogWithScreenshot("select monthly payment options from dropdown");
+        getCreditCheckPage().selectPaymentOption(1);
+        reporter.reportLogWithScreenshot("Continue button clicked");
+        getPaymentOptionsPage().clkContinue();
+        reporter.reportLogWithScreenshot("One Time fee available at order review page");
+        //reporter.hardAssert(getRogersOVOrderReviewPage().,"One time fees and credit amount is correct"," One time fees and credit amount is not correct");
+       // getOVROrderReviewPage().checkOneTimeFee();
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -81,8 +94,10 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
-
 }
+
+
+

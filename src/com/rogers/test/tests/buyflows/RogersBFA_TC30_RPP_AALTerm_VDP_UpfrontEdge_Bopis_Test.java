@@ -27,9 +27,9 @@ public class RogersBFA_TC30_RPP_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseT
     @Test(groups = {"RegressionBFA","RPPTEST"})
     public void tc30_RPP_AALTerm_VDP_UpfronEdge_BopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getPassword());

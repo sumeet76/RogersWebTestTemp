@@ -74,7 +74,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
     WebElement btnTVBadge;
 
-    @FindBy(xpath = "//a[contains(text(),'Billing')]")
+    @FindBy(xpath = "//a[contains(text(),' Billing ')]")
     WebElement Billinglink;
 
     @FindBy(xpath = "//a[contains(text(),'Profile')]")
@@ -215,10 +215,10 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='impersonate-code']")
     WebElement inputDealerCode;
 
-    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[1]")
+    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[2]")
     WebElement requiredmessage;
 
-    @FindBy(xpath = "//span[@class='bb-amount ng-scope amount-xl']")
+    @FindBy(xpath = "(//span[@class='bb-amount ng-scope amount-xl'])[2]")
     WebElement billamount;
 
     @FindBy(xpath = "//div[@ng-class='message.textClass']")
@@ -230,8 +230,11 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='product-header']")
     WebElement product;
 
-    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']")
+    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']/child::div/child::div[text()=' Account Messages']")
     WebElement accountMessages;
+
+    @FindBy(xpath ="//iframe[contains(@class,'bill ng-tns-c288')]")
+    WebElement iframewindow;
 
     /**
      * Validate if either TV or channel header is visible
@@ -387,6 +390,8 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
         getReusableActionsInstance().clickWhenReady(btnInternetBadge, 45);
     }
+
+
 
     /**
      * Selects the Home Phone Badge on the account dashbaord
@@ -564,7 +569,15 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickBillinglink() {
-        getReusableActionsInstance().clickWhenReady(Billinglink);
+        /*if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
+            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
+            getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
+        }
+        if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
+            getReusableActionsInstance().clickWhenReady(skipNotification);
+        }*/
+        WebElement btn = getReusableActionsInstance().getWhenReady(Billinglink, 90);
+        getReusableActionsInstance().clickWhenReady(btn, 45);
     }
 
     /**
@@ -635,7 +648,9 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickProfileLink() {
-        getReusableActionsInstance().clickWhenReady(ProfileLink, 30);
+        getReusableActionsInstance().waitForElementVisibility(ProfileLink,60);
+        getReusableActionsInstance().executeJavaScriptClick(ProfileLink);
+//        getReusableActionsInstance().clickWhenReady(ProfileLink, 30);
     }
 
     /**
@@ -859,8 +874,9 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Aditi.jain
      */
     public boolean verifyRequiredMessage() {
-        getReusableActionsInstance().staticWait(6000);
+        getReusableActionsInstance().scrollToElement(requiredmessage);
         return getReusableActionsInstance().isElementVisible(requiredmessage,60);
+
 
 
     }
@@ -869,58 +885,85 @@ public class AccountOverViewPage extends BasePageClass {
      * @return true if available, else false
      * @author Aditi.jain
      */
-    public boolean verifyBillAmount() {
-        return getReusableActionsInstance().isElementVisible(billamount,30);
+            public boolean verifyBillAmount() {
+                getReusableActionsInstance().scrollToElement(billamount);
+                return getReusableActionsInstance().isElementVisible(billamount, 30);
+
+            }
+            /**
+             * verify  welcome text
+             * @return true if available, else false
+             * @author Aditi.jain
+             */
+
+                public boolean verifyWelcomeText() {
+                    getReusableActionsInstance().scrollToElement(welcometext);
+                    return getReusableActionsInstance().isElementVisible(welcometext, 30);
+
+                }
 
 
-    }
-    /**
-     * verify  welcome text
-     * @return true if available, else false
-     * @author Aditi.jain
-     */
-    public boolean verifyWelcomeText() {
-        return getReusableActionsInstance().isElementVisible(welcometext,30);
-    }
+                /**
+                 * verify bill message
+                 * @return true if available, else false
+                 * @author Aditi.jain
+                 */
+                public boolean verifyBillMessage() {
+                    getReusableActionsInstance().scrollToElement(billmessage);
+                    return getReusableActionsInstance().isElementVisible(billmessage, 30);
+                }
+                /**
+                 * verify product
+                 * @return true if available, else false
+                 * @author Aditi.jain
+                 */
+                public boolean verifyProductDisplayed() {
+                    // getReusableActionsInstance().scrollToElement(product);
+                    return getReusableActionsInstance().isElementVisible(product, 30);
+                }
 
 
-    /**
-     * verify bill message
-     * @return true if available, else false
-     * @author Aditi.jain
-     */
-    public boolean verifyBillMessage() {
-        return getReusableActionsInstance().isElementVisible(billmessage,30);
-    }
-    /**
-     * verify product
-     * @return true if available, else false
-     * @author Aditi.jain
-     */
-    public boolean verifyProductDisplayed() {
-        return getReusableActionsInstance().isElementVisible(product, 30);
-    }
+                /**
+                 * verify accountMessages
+                 * @return true if available, else false
+                 * @author Aditi.jain
+                 */
+                public boolean verifyAccountMessages() {
+                    getReusableActionsInstance().scrollToElement(accountMessages);
+                    return getReusableActionsInstance().isElementVisible(accountMessages, 30);
 
+                }
 
-    /**
-     * verify accountMessages
-     * @return true if available, else false
-     * @author Aditi.jain
-     */
-    public boolean verifyAccountMessages() {
-        return getReusableActionsInstance().isElementVisible(accountMessages, 30);
-
-    }
-
-    /**
-     * verify scroll To View Bill
-     * @return true if available, else false
-     * @author Aditi.jain
-     */
-    public void scrollToViewBill() {
-        getReusableActionsInstance().waitForPageLoad();
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+                /**
+                 * verify scroll To View Bill
+                 * @return true if available, else false
+                 * @author Aditi.jain
+                 */
+                public void scrollToViewBill() {
+                    getReusableActionsInstance().waitForPageLoad();
+                    getReusableActionsInstance().staticWait(6000);
+                    getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 //        getReusableActionsInstance().scrollToElement(requiredmessage);
-    }
+                }
 
-}
+                public boolean verifyInternetBadge () {
+
+                    getReusableActionsInstance().waitForElementVisibility(btnInternetBadge, 30);
+                    return getReusableActionsInstance().isElementVisible(btnInternetBadge);
+                }
+
+                public boolean verifyTvBadge() {
+
+                    getReusableActionsInstance().waitForElementVisibility(btnTVBadge, 30);
+                    return getReusableActionsInstance().isElementVisible(btnTVBadge);
+                }
+                /**
+                 * verify  required message
+                 * @return true if available, else false
+                 * @author Aditi.jain
+                 */
+                public void moveToiframe() {
+                    getReusableActionsInstance().staticWait(10000);
+                    getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(iframewindow, 20);
+                }
+            }

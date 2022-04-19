@@ -26,9 +26,9 @@ public class RogersBFA_TC44_SOHO_PPC_SL_NonSE_TTPlanToDTTPlan_Test extends BaseT
     @Test(groups = {"RegressionBFA","PPCBF"})
     public void sohoPPC_TC44_SLNonSE_TTPlanToDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan.getPassword());

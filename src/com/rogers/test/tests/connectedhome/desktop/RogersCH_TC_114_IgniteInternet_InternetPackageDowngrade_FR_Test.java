@@ -12,31 +12,34 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to verify the solaris internet package downgrade flow for Rogers.com   
+ * This class contains the test method to verify the solaris TV package downgrade flow for Rogers.com
  * 
- * @author chinnarao.vattam
+ * @author manpreet.kaur3
  * 
  * Test steps:
  *
  *1. Launch the Rogers.com url.
  *2. Log into rogers.com url with valid credentials.
- *3. Click on internet package.
- *4. Click on change package button.
- *5. Select a package which has price lower to the current package.
- *
+ *3. Click on a Internet badge
+ *4. Click on change package button
+ *5. Choose a tv package whose price is lower than the current package and click on Select
+ *6. Verify the Contact Us Popup
+ *7. Verify the contact us header
+ *8. Verify the content of contact us popup
+ *9. Verify the book a call link
  **/
 
-public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends BaseTestClass {
+public class RogersCH_TC_114_IgniteInternet_InternetPackageDowngrade_FR_Test extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
-    public void checkInternetPackageDowngrade() {
-
+    @Test(groups = {"SanityCH","RegressionCH"})
+    public void checkInternetPackageDowngradeFR()
+    {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
@@ -44,22 +47,23 @@ public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends
         reporter.reportLogWithScreenshot("Account Selected");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        getRogersInternetDashboardPage().clkInternetPopup();
+        //getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");        
+        reporter.reportLogWithScreenshot("Launched the Interent packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         //getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customercare popup");
+
         reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
-    	}
-	
+        reporter.reportLogWithScreenshot("Verified the customer care popup content");
+    }
+
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 	}
@@ -69,4 +73,6 @@ public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends
 		closeSession();
 	}
 
+
 }
+

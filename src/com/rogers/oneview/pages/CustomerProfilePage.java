@@ -14,7 +14,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Profile']")
 	WebElement customerProfile;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]")
+	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]/ancestor::button")
 	WebElement continueButton;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")

@@ -45,7 +45,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 reporter.reportLogWithScreenshot("Cart Summary");
 		 getRogersIgniteBundlesPage().fourKTVPopup();
 		 getRogersIgniteBundlesPage().fourKContentPopup();
-//		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		 getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		 reporter.reportLogWithScreenshot("continue from cart summary");
 		 getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -80,7 +80,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 getPaymentOptionsPage().clkContinue();
 		 getRogersOVCheckoutPage().clkSubmit();
 		 reporter.reportLogWithScreenshot("submit order");
-//		 reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		 reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		 reporter.reportLogWithScreenshot("Order Placed");
 			
 	    }

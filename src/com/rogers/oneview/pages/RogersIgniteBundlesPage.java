@@ -132,7 +132,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='No' or text()='Non']/ancestor::button")
 	WebElement noPortInServices;
 
-	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+//	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement fourKContinue;
 
 
@@ -179,7 +180,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
 	WebElement personalizeYourChannels;
 
-	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 
 	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
@@ -301,7 +302,23 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
 
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']/ancestor::div[@class='col-10 py-16']/following-sibling::div/child::div/child::button")
+	WebElement reviewTermsAndConditionsContinueButton;
 
+	@FindBy(xpath = "//div[@class='header']")
+	WebElement internetAddOnsHeader;
+
+	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
+	WebElement exchangeNow;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	WebElement internetCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
+	WebElement homePhoneCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
+	WebElement batteryBackUpCollapse;
 
 	/**
 	 * Click Load Offers button
@@ -443,8 +460,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkContinue() {
 
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
+
+		//getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
-//		getReusableActionsInstance().clickWhenReady(continueButton,120);
+		//getReusableActionsInstance().clickWhenReady(continueButton,30);
 
 	}
 
@@ -537,8 +557,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 45);
-		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(checkOut, 45);
+		getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
 
 	}
 
@@ -1102,6 +1122,41 @@ public void activateHomePhoneltrPopUp() {
 	public boolean validateInternetAddOnsHeader(){
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
+
+	public void clickReviewTearmAndConditionsContinueButton()
+	{
+		getReusableActionsInstance().getWhenReady(reviewTermsAndConditionsContinueButton, 10);
+		getReusableActionsInstance().clickWhenReady(reviewTermsAndConditionsContinueButton);
+	}
+
+	public boolean verifyInternetAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible((internetAddOnsHeader));
+	}
+
+	public void clickExchangeNow()
+	{
+		getReusableActionsInstance().getWhenReady(exchangeNow, 10);
+		getReusableActionsInstance().clickWhenReady(exchangeNow);
+	}
+
+	public void clickInternetCollapse()
+	{
+		getReusableActionsInstance().getWhenReady(internetCollapse, 10);
+		getReusableActionsInstance().clickWhenReady(internetCollapse);
+	}
+
+	public void clickHomePhoneCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(homePhoneCollapse);
+		getReusableActionsInstance().clickWhenReady(homePhoneCollapse);
+	}
+
+	public void clickBatteryBackUpCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(batteryBackUpCollapse);
+		getReusableActionsInstance().clickWhenReady(batteryBackUpCollapse);
+	}
+
 
 }
 
