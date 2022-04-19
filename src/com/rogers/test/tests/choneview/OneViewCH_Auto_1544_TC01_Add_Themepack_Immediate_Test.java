@@ -17,7 +17,7 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("Enter dealer code");
-		getAccountOverViewPage().goToPageBottom();
+	//	getAccountOverViewPage().goToPageBottom();
 		getAccountOverViewPage().clickIgniteTVBadge();
 		reporter.reportLogWithScreenshot("TV Ignite Badge");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
@@ -30,9 +30,9 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().addThemepack();
 		reporter.reportLogWithScreenshot("4k popup");
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		reporter.reportLogWithScreenshot("4k continue");
-		getRogersIgniteBundlesPage().fourKContinue();
+	//	getRogersIgniteBundlesPage().fourKTVPopup();
+	//	reporter.reportLogWithScreenshot("4k continue");
+	//	getRogersIgniteBundlesPage().fourKContinue();
 
 
 		getTVDashboardPage().clickYesContinueIfPresent();
@@ -41,7 +41,7 @@ public class OneViewCH_Auto_1544_TC01_Add_Themepack_Immediate_Test extends BaseT
 		reporter.reportLogWithScreenshot("immediate date");
 		getTVDashboardPage().immediateDateChangeOption();
 //		reporter.reportLogWithScreenshot("Collapse");
-//		getTVDashboardPage().clickCancel();
+		getTVDashboardPage().continueFromChangeDate();
 ////		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 //		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
