@@ -27,7 +27,6 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displayed","Bill message is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displayed","Product is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displayed","Account message is not displayed");
-
         reporter.reportLogWithScreenshot("Test Passed");
     }
 

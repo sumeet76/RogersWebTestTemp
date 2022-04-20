@@ -311,7 +311,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
 	WebElement exchangeNow;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted']")
+	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
 	WebElement internetCollapse;
 
 	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
@@ -578,8 +578,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().scrollToElement(checkOut);
-		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
+	//	getReusableActionsInstance().scrollToElement(checkOut);
+	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
@@ -629,7 +629,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 
 	}
@@ -656,7 +656,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkHomePhoneCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
 	}	
 	/**

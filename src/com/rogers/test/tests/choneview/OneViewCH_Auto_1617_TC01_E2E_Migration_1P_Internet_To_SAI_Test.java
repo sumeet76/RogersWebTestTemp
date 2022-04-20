@@ -19,7 +19,7 @@ public class OneViewCH_Auto_1617_TC01_E2E_Migration_1P_Internet_To_SAI_Test exte
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
-		getRogersIgniteBundlesPage().clkUsethisAddress();
+	//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
