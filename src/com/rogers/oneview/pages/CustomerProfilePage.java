@@ -35,7 +35,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyCustomerProfile() {
-		getReusableActionsInstance().clickIfAvailable(collapse,60);
+		//getReusableActionsInstance().clickIfAvailable(collapse,60);
 		return getReusableActionsInstance().isElementVisible(customerProfile,120);
 	
 	}

@@ -336,6 +336,7 @@ public class TestDataHandler {
 	public static AccountData Tv_Dashboard_Validation;
 	public static AccountData Internet_Dashboard_Validation;
 	public static AccountData RHP_Dashboard_Validation;
+	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 
 
@@ -726,7 +727,7 @@ public class TestDataHandler {
 		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 		TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges=YamlHandler.getMigrationData("TargetedMigration_3P_to_3P_Delivery_by_Appointment_MonthlyCharges");
-
+		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
