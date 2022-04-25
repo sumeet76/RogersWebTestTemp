@@ -11,7 +11,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
+	//@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
+	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[2]")
@@ -80,7 +81,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */	
 	public void clkGeneratePhoneNo() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().getWhenReady(generatePhoneNumber,60);
+		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
 	}
 	/**

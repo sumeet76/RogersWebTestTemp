@@ -337,10 +337,10 @@ public class TestDataHandler {
 	public static AccountData Internet_Dashboard_Validation;
 	public static AccountData RHP_Dashboard_Validation;
 	public static AccountData SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan;
+	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 
-
-
+	
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
 
@@ -729,6 +729,7 @@ public class TestDataHandler {
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 		TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges=YamlHandler.getMigrationData("TargetedMigration_3P_to_3P_Delivery_by_Appointment_MonthlyCharges");
 		SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan = YamlHandler.getOVAccountData("SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan");
+		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
