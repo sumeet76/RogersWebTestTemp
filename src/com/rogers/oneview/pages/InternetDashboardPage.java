@@ -158,6 +158,15 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	WebElement btnViewDetails;
+
+	@FindBy(xpath = "//span[text()='Pricing details']/ancestor::div[3]")
+	WebElement collapsePricingDetails;
+
+	@FindBy(xpath = "//span[text()='Package Details']/ancestor::div[3]")
+    WebElement expandPackageDetails;
+
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
 	WebElement RemovePods;
 
@@ -171,6 +180,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
+
+	@FindBy(xpath = "//li[text()='Download speeds up to: 50 Mbps']")
+	WebElement DownloadSpeedReview;
+
+    @FindBy(xpath = "//li[text()='Upload speeds up to: 50 Mbps']")
+    WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
 	WebElement changePackageBtnEN;
@@ -560,6 +575,26 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	/*
 	 * clicks  Select button
+	 * @author Jarmanjeet.Batth
+	 * */
+	public void clickViewDetails() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewDetails, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnViewDetails,60).click(); }
+
+	public void clickPackageDetails(){
+		getReusableActionsInstance().waitForElementVisibility(expandPackageDetails, 60);
+		getReusableActionsInstance().getWhenReady(expandPackageDetails, 30).click();
+//		getReusableActionsInstance().executeJavaScriptClick(expandPackageDetails);
+	}
+
+	public void clickPricingDetails(){
+		getReusableActionsInstance().waitForElementVisibility(collapsePricingDetails, 60);
+		getReusableActionsInstance().getWhenReady(collapsePricingDetails, 30).click();
+	}
+
+	/*
+	 * clicks  Select button
 	 * @author aditi.jain
 	 * */
 	public void clickSelectbutton() {
@@ -751,6 +786,26 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility( changePackageBtnFR, 30);
 		return getReusableActionsInstance().isElementVisible( changePackageBtnFR);
 	}
+
+	/*
+	 * verify  Order Review
+	 * @author Jarmanjeet.Batth
+	 * */
+	public boolean verifyDownloadSpeed() {
+		getReusableActionsInstance().waitForElementVisibility( DownloadSpeedReview, 30);
+		return getReusableActionsInstance().isElementVisible( DownloadSpeedReview);
+	}
+
+    public boolean verifyUploadSpeed() {
+//        getReusableActionsInstance().waitForElementVisibility( UploadSpeedReview, 30);
+		if(getReusableActionsInstance().isElementVisible(UploadSpeedReview, 30)){
+			return true;
+		}else {
+			return false;
+		}
+    }
+
+
 
 }
 
