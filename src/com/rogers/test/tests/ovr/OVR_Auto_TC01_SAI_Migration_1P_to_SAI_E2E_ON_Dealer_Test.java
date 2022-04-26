@@ -19,10 +19,10 @@ public class OVR_Auto_TC01_SAI_Migration_1P_to_SAI_E2E_ON_Dealer_Test extends Ba
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR"})
+    @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity"})
     public void ovr_Auto_tc_01_SAI_Migration_1P_to_SAI_E2E_ON_Dealer_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
