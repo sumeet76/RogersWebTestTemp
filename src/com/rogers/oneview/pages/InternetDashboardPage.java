@@ -37,7 +37,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnFooter;
 
-	@FindBy(xpath = "//div[@class='second-level-nav__cta']//button[@class='b-linkCta']")
+	@FindBy(xpath = "//span[text()='Back to Overview' or text()='Retourner à l’aperçu']")
 	WebElement btnBackToAccountOverview;
 
 	@FindBy(xpath = "//span[text()='View your usage and alerts' or text()='Consulter votre historique d’utilisation et vos avis' ]")
@@ -61,7 +61,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/support/internet/IgniteInternet']")
 	WebElement lnkGoToSupportSection;
 
-	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changeInternetPackage']/ancestor::button")
+	@FindBy(xpath="//span[(contains(text(),'Change internet package') or contains(text(),'Changer de forfait Internet')) or @translate='global.dashboard.common.changePackage']/ancestor::button")
 	WebElement btnChangeInternetPackage;
 
 	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button")
@@ -126,7 +126,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
 	WebElement addRestrictedPodToCart;
 
-	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	//@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	@FindBy(xpath = "//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span")
 	WebElement plusButtonToAddPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
@@ -154,7 +155,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
-	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
@@ -170,6 +171,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
+
+	@FindBy(xpath = "//span[text()='Change package']")
+	WebElement changePackageBtnEN;
+
+	@FindBy(xpath = "//span[text()='Changer de forfait']")
+	WebElement changePackageBtnFR;
 
 	/**
 	 * Verify the result
@@ -340,9 +347,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganay P
 	 * */
 	public void clickContinueChangeInternetPackage() {
-//		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
-		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
+		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+//		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
+//		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
 	}
 	/*
 	 * Click on continue in Select billing date pop up
@@ -730,5 +737,20 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility( addPodsButton, 30);
 		return getReusableActionsInstance().isElementVisible( addPodsButton);
 	}
+
+	public boolean verifyChangePackageButtonEN() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnEN, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().waitForElementVisibility( changePackageBtnEN, 30);
+		return getReusableActionsInstance().isElementVisible( changePackageBtnEN);
+	}
+
+	public boolean verifyChangePackageButtonFR() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnFR, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().waitForElementVisibility( changePackageBtnFR, 30);
+		return getReusableActionsInstance().isElementVisible( changePackageBtnFR);
+	}
+
 }
 

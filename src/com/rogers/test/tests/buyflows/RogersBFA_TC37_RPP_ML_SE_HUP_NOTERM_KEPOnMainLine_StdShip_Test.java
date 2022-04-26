@@ -18,9 +18,9 @@ public class RogersBFA_TC37_RPP_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test exte
 
         @Test(groups = {"RegressionBFA","RPPHUPBFA"})
         public void rppHUP_tc37_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getPassword());

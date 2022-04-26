@@ -20,9 +20,9 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
     @Test(groups = {"RegressionBFA","AALBFA"})
     public void rogersAalNonShareNoTermQCProvTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getPassword());

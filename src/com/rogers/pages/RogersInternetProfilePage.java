@@ -26,7 +26,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//button[@ng-reflect-variant='primary']//span[@ng-reflect-klass='ds-button__copy text-button te']")
 	WebElement btnContinueSession;
 	
-	@FindBy(xpath = "//input[@name='email']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@name='email']/..")
 	WebElement txtContainerEmail;
 	
 	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")

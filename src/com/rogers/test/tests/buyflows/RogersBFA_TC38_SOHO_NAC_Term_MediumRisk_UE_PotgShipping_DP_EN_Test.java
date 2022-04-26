@@ -24,7 +24,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP"})
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityBFA"})
 	public void sohoNACTermMediumRiskPotgTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
@@ -61,6 +61,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 				"Postal Code not matching");
 		String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+		String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
 		getRogersDeviceConfigPage().selectDeviceProtectionAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon is selected in Device Config Page");
 		getRogersDeviceConfigPage().clickContinueButton();
@@ -140,7 +141,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
 				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
 		reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-		String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost);
+		String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost,upfrontEdgeAmt);
 		reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
 				"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
 		getRogersCheckoutPage().clkAcceptButton();
@@ -157,7 +158,6 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
 				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");

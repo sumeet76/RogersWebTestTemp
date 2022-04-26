@@ -11,15 +11,15 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC13 - Regression - HUP-E2E-SL Non Shared-Validate the HUP by selecting Keep current plan _Chrome_EN_ON
+ * TC13 - Regression - HUP-E2E-SL Non Shared-Validate the HUP by selecting Keep current plan(Fin) and VDP _Chrome_EN_ON
  */
 public class RogersBFA_TC13_Consumer_HUPNonShareKeepCurrentPlanSL_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
         public void rogersHUPNonShareKeepCurrentPlanSLTest() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13HUPNonShareKeepCurrentPlanSL.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13HUPNonShareKeepCurrentPlanSL.getPassword());

@@ -1,11 +1,14 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RogersSolarisRHPDashboardPage extends BasePageClass {
 
@@ -43,6 +46,25 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Cancel']")
 	WebElement btnCancelResetVoicemailpswd;
 
+	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
+	WebElement lnkCallUs;
+
+	@FindAll({
+			@FindBy(xpath = "//h1[@class='-mb10 -mt30']"),
+			@FindBy(xpath = "//h1[text() = 'Home Phone' or text() = 'Téléphonie résidentielle']"),
+			@FindBy(xpath = "//p[@class='rch-home-phone-address']")})
+	WebElement headerHomePage;
+
+
+	/**
+	 * Verifies the Home Phone Header
+	 * @return true if Home Phone header is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyHomePhone() {
+		return getReusableActionsInstance().isElementVisible(headerHomePage, 30);
+	}
+
 	/**
 	 * Click on the Solaris RHP badge 
      * @param strBrowser - Browser
@@ -73,8 +95,10 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyConfigureYourCurrentFeatures() {
-		getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 120);
-		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures);
+		wait = new WebDriverWait(getDriver(), 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")));
+		//getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 60);
+		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures, 30);
 	}
 	/**
 	 * Verify the access your voice mail settings link onSolaris RHP dashboard
@@ -82,7 +106,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyAccessYourVoicemailSettings() {
-		return getReusableActionsInstance().isElementVisible(lnkAccessYourVoicemailSettings);
+		return getReusableActionsInstance().isElementVisible(lnkAccessYourVoicemailSettings, 60);
 	}
 	/**
 	 * Verify the reset your voice mail password link on Solaris RHP dashboard
@@ -90,7 +114,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyResetYourVoicemailPassword() {
-		return getReusableActionsInstance().isElementVisible(lnkResetYourVoicemailPassword);
+		return getReusableActionsInstance().isElementVisible(lnkResetYourVoicemailPassword, 30);
 	}
 	/**
 	 * Verify the live chat on RHP dashboard link on Solaris RHP dashboard
@@ -158,5 +182,15 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	public void clkResetYourVoicemailPassword() {
 		getReusableActionsInstance().getWhenReady(lnkResetYourVoicemailPassword,60).click();
 	}
+
+	/**
+	 * Verify the number is text or link for Bulk Tenant on Home Phone Dashboard page
+	 * @retun true if the number is clickable , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallUs() {
+		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
 
 }

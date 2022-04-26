@@ -52,7 +52,7 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortIn_PaymentMethod_CreditCard
 		reporter.reportLogWithScreenshot("portin continue");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("continue");
@@ -69,12 +69,14 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortIn_PaymentMethod_CreditCard
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		reporter.reportLogWithScreenshot("generate phone number");
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.reportLogWithScreenshot("Phone Number Selected");
+		reporter.reportLogWithScreenshot("generate phone number");
+		//reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("continue");
+		//reporter.reportLogWithScreenshot("continue");
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+		reporter.reportLogWithScreenshot("Phone number generated");
+		getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
@@ -94,7 +96,7 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortIn_PaymentMethod_CreditCard
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("submit payment");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

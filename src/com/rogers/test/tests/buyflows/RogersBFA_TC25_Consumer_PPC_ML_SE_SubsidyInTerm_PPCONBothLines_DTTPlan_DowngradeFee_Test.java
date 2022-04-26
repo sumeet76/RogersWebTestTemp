@@ -26,9 +26,9 @@ public class RogersBFA_TC25_Consumer_PPC_ML_SE_SubsidyInTerm_PPCONBothLines_DTTP
     @Test(groups = {"RegressionBFA","PPCBFA"})
     public void rogersPPC_TC25_MLSE_SubsidyInTerm_PPCONBothLines_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc25PPCMLSESubsidyPlanToDTTPLan.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc25PPCMLSESubsidyPlanToDTTPLan.getPassword());

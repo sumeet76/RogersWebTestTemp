@@ -131,7 +131,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='No' or text()='Non']/ancestor::button")
 	WebElement noPortInServices;
 
-	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+//	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement fourKContinue;
 
 
@@ -178,10 +179,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
 	WebElement personalizeYourChannels;
 
-	@FindAll({
-			@FindBy(xpath = "//h1[@translate='global.label.cartSummary']"),
-			@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
-	})
+	@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 
 	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
@@ -322,6 +320,35 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement smartHomeMonitoringOneTimeCharges;
 
 
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']/ancestor::div[@class='col-10 py-16']/following-sibling::div/child::div/child::button")
+	WebElement reviewTermsAndConditionsContinueButton;
+
+	@FindBy(xpath = "//div[@class='header']")
+	WebElement internetAddOnsHeader;
+
+	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
+	WebElement exchangeNow;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	WebElement internetCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
+	WebElement homePhoneCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
+	WebElement batteryBackUpCollapse;
+
+	@FindBy(xpath = "(//span[text()='View details'])[1]")
+	WebElement viewDetails;
+
+	@FindBy(xpath="//span[@translate='sai.modals.pricingModal.packageDetail']")
+	WebElement expandPackageDetails;
+
+	@FindBy(xpath="//button[@title='close']")
+	WebElement closeBtn;
+
+	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
+	WebElement fibreActivationMsg;
 
 	/**
 	 * Click Load Offers button
@@ -463,9 +490,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkContinue() {
 
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
-//		getReusableActionsInstance().clickWhenReady(continueButton,120);
-
 	}
 
 
@@ -557,8 +584,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 45);
-		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(checkOut, 45);
+		getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
 
 	}
 
@@ -578,8 +605,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().scrollToElement(checkOut);
-		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
+	//	getReusableActionsInstance().scrollToElement(checkOut);
+	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
@@ -629,7 +656,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 
 	}
@@ -656,7 +683,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkHomePhoneCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
 	}	
 	/**
@@ -1155,6 +1182,62 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
 	}
+
+	public void clickReviewTearmAndConditionsContinueButton()
+	{
+		getReusableActionsInstance().getWhenReady(reviewTermsAndConditionsContinueButton, 10);
+		getReusableActionsInstance().clickWhenReady(reviewTermsAndConditionsContinueButton);
+	}
+
+	public boolean verifyInternetAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible((internetAddOnsHeader));
+	}
+
+	public void clickExchangeNow()
+	{
+		getReusableActionsInstance().getWhenReady(exchangeNow, 10);
+		getReusableActionsInstance().clickWhenReady(exchangeNow);
+	}
+
+	public void clickInternetCollapse()
+	{
+		getReusableActionsInstance().getWhenReady(internetCollapse, 10);
+		getReusableActionsInstance().clickWhenReady(internetCollapse);
+	}
+
+	public void clickHomePhoneCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(homePhoneCollapse);
+		getReusableActionsInstance().clickWhenReady(homePhoneCollapse);
+	}
+
+	public void clickBatteryBackUpCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(batteryBackUpCollapse);
+		getReusableActionsInstance().clickWhenReady(batteryBackUpCollapse);
+	}
+
+	public void clickViewDetails()
+	{
+		getReusableActionsInstance().waitForElementTobeClickable(viewDetails, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewDetails);
+	}
+
+	public void clkExpandPackageDetails(){
+		getReusableActionsInstance().getWhenReady(expandPackageDetails);
+		getReusableActionsInstance().clickWhenReady(expandPackageDetails);
+	}
+
+	public void clkCloseBtn(){
+		getReusableActionsInstance().getWhenReady(closeBtn);
+		getReusableActionsInstance().clickWhenReady(closeBtn);
+	}
+
+	public boolean verifyFibreActivationMSg(){
+		getReusableActionsInstance().waitForElementVisibility(fibreActivationMsg,20);
+		return getReusableActionsInstance().isElementVisible(fibreActivationMsg);
+	}
+
 }
 
 

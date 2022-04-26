@@ -24,7 +24,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
 
-	@FindBy(xpath = "(//span[@ng-reflect-translate='global.cta.continue' and text()='Continue']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and text()='Continue'])[2]/ancestor:: button")
 	WebElement ContinueBtn;
 
 	@FindBy(xpath = "//span[text()='Continue']/ancestor::button")
@@ -47,6 +47,9 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 
 	@FindBy(xpath="(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
 	WebElement IncompatibleRadioBTn2;
+
+	@FindBy(xpath = "//h2[@translate='global.label.homePhoneAddons']")
+	WebElement homePhoneAddOnsHeader;
 
 	/*
 	 * Select the specified add on
@@ -167,9 +170,13 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 
 	public void incompatibleAddonRadioBtn(){
 		getReusableActionsInstance().clickWhenReady(IncompatibleRadioBTn2);
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().isElementVisible(ContinueBtn,30);
+		getReusableActionsInstance().staticWait(3000);
+	//	getReusableActionsInstance().isElementVisible(ContinueBtn,30);
 		getReusableActionsInstance().clickWhenReady(ContinueBtn);
+	}
+
+	public boolean verifyHomePhoneAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible((homePhoneAddOnsHeader));
 	}
 }
 

@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
 		reporter.reportLogWithScreenshot("date change option");
-		getTVDashboardPage().clickCancel();
+		getTVDashboardPage().continueFromChangeDate();
 //		getRogersOVOrderReviewPage().clickSubmitToManageThemepackOrChannel();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");

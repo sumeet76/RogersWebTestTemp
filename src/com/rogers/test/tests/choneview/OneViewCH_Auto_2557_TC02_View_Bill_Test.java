@@ -18,15 +18,15 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         getAccountOverViewPage().clickBillinglink();
 //        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("Billing link is opened");
-//        getAccountOverViewPage().scrollToViewBill();
+        getAccountOverViewPage().scrollToViewBill();
         reporter.reportLogWithScreenshot("scroll To View Bill");
+        getAccountOverViewPage().moveToiframe();
         reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displaye","Bill amount is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displaye","Welcome text is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displaye","Bill message is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displaye","Product is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displaye","Account message is not displayed");
-
+        reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displayed","Bill amount is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displayed","Welcome text is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displayed","Bill message is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displayed","Product is not displayed");
+        reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displayed","Account message is not displayed");
         reporter.reportLogWithScreenshot("Test Passed");
     }
 

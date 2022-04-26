@@ -58,6 +58,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAI_DeliveryByAppointment_PaymentM
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		getCreditCheckPage().clkContinue();
+		reporter.reportLogWithScreenshot("click Continue");
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();

@@ -14,6 +14,7 @@ public class OVROrderReviewPage extends BasePageClass {
     public OVROrderReviewPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
@@ -38,6 +39,7 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
     WebElement smartHomeMonitoringOneTimeCharges;
 
+
     public void clkContinue(){
         getReusableActionsInstance().waitForElementTobeClickable(continueBtn, 10);
         getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
@@ -49,7 +51,7 @@ public class OVROrderReviewPage extends BasePageClass {
     }
 
     public boolean verifyOneTimeFees(){
-        return getReusableActionsInstance().isElementVisible(oneTimeFees, 60);
+        return getReusableActionsInstance().isElementVisible(oneTimeFees, 120);
     }
 
     public boolean verifyMonthlyCharges(){
@@ -86,4 +88,5 @@ public class OVROrderReviewPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
         return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
     }
+
 }

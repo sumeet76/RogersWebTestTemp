@@ -23,6 +23,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPageInternet;
+
+	@FindBy(xpath = "//span[contains(text(),'18')]//ancestor::div[contains(@class,'ds-checkbox')]")
+	WebElement chkageVerify;
 	
 	@FindBy(xpath = "//h2[@translate='global.label.OrderReview']")
 	WebElement txtAgreementPageBuy;
@@ -271,6 +274,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @return true if the Agreement is present on the order review page, else false
 	 * @author chinnarao.vattam
 	 */
+
 	public boolean verifyAgreementPageInternet() {
 		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageInternet, 90);
 	return	getReusableActionsInstance().isElementVisible(txtAgreementPageInternet, 60);
@@ -313,6 +317,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	{
 		getReusableActionsInstance().getWhenReady(clkCheckboxAcceptInstallContent, 90);
 		getReusableActionsInstance().executeJavaScriptClick(clkCheckboxAcceptInstallContent);
+	}
+
+	public void clkverifyAgeCheckbox() {
+		getReusableActionsInstance().executeJavaScriptClick(chkageVerify);
 	}
 
 	/**

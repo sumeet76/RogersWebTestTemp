@@ -11,7 +11,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[1]")
+	//@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
+	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
@@ -63,7 +64,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Update Directory Listing']/ancestor::button")
 	WebElement updateDirectoryListingbtn;
 
-	@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	//@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	@FindBy(xpath = "//input[@id='ds-radio-input-id-29']")
 	WebElement selectedPhoneNo;
 
 	@FindBy(xpath = "//li[contains(text(),'You may use ampersands, hyphens and spaces but not at the beginning or end of a name')] or //li[contains(text(),'Vous pouvez utiliser des perluètes, des traits d’union et des espaces, mais pas au début ni à la fin d’un nom')]")
@@ -81,7 +83,11 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkGeneratePhoneNo() {
-		getReusableActionsInstance().getWhenReady(generatePhoneNumber,30);
+		getReusableActionsInstance().waitForElementVisibility(homePhonePersonalizationHeader, 120);
+		//getReusableActionsInstance().staticWait(5000);
+		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+
 		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
 	}
 	/**

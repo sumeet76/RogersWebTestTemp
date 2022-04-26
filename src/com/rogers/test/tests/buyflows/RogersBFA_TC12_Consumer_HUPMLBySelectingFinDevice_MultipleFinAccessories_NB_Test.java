@@ -17,9 +17,9 @@ public class RogersBFA_TC12_Consumer_HUPMLBySelectingFinDevice_MultipleFinAccess
 
     @Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPMLFinDeviceMultiplAccessories_NB_Test() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12HUPWithPPC_MultipleFinAccessoriesML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12HUPWithPPC_MultipleFinAccessoriesML.getPassword());

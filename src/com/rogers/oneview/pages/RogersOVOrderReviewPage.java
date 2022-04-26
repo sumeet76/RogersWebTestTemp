@@ -18,7 +18,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='Monthly Bill' or text()='Facture mensuelle']/ancestor::button")
 	WebElement monthlyBill;
 	
-	@FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']/ancestor::button")
+	@FindBy(xpath = "//*[text()='One-Time Fees and Credits' or text()='Frais et crédits uniques']")
 	WebElement oneTimeFees;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button | //span[text()='Submit' or text()='Soumettre']/ancestor::button")
@@ -37,6 +37,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	WebElement apply;
 	
 	@FindBy(xpath = "//*[@translate='global.selfServe.reviewConfirm.totalMonthlyFees']/parent::div")
+//	@FindBy(xpath = "//p[text()='Total after taxes']/following::div[@class='ds-price']")
 	WebElement totalMonthlyFees;
 	
 	@FindBy(xpath = "//label[@for='termsCheckbox']")
@@ -73,6 +74,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button")
 	WebElement submitOrder;
 
+
 	/**
 	 * Verify order review page is loaded properly
 	 * @return true if page loaded else false
@@ -105,7 +107,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 120);
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
 		getReusableActionsInstance().staticWait(10000);
 	}
@@ -114,7 +116,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * @return true if Monthly Charges Appear, else false
 	 * @author chinnarao.vattam
 	 */	
-	public boolean verifyMonthlyCharges() {	
+	public boolean verifyMonthlyCharges() {
 	if(getReusableActionsInstance().isElementVisible(totalMonthlyFees,120)){
 		WebElement btn=getReusableActionsInstance().getWhenReady(totalMonthlyFees);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
@@ -191,6 +193,5 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(submitOrder);
 		getReusableActionsInstance().staticWait(10000);
 	}
-
 }
 

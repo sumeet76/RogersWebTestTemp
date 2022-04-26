@@ -18,9 +18,9 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends Bas
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPOnAdditonalLineTest() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08HUPAdditionalLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08HUPAdditionalLine.getPassword());

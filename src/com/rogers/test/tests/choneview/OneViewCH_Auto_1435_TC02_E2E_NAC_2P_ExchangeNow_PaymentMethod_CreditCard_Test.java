@@ -58,7 +58,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue from cart summary");
         getRogersIgniteBundlesPage().customerWishtoContinue();
