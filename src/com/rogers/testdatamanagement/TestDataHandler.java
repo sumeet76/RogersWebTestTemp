@@ -315,6 +315,8 @@ public class TestDataHandler {
 	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
 	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
 	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
+	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
+	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
 	public static OvrConfigData ovrConfigData;
 	public static OvrReusableData legacy1PtoNac3pNewAddress;
 	public static OvrReusableData existingIgniteCxToNac3pON;
@@ -752,5 +754,8 @@ public class TestDataHandler {
 		tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods = YamlHandler.getOvrReusableData("TC26_Mig_Data_1P_INT_to_1P_INT_AddPods");
 		tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM = YamlHandler.getOvrReusableData("TC29_Mig_Data_1P_INT_to_2P_TV_INT_with_SHM");
 		tc_22_Ovr_Mig_Data_3p_to_3p_AddPods = YamlHandler.getOvrReusableData("TC22_Mig_Data_3P_to_3P_AddPods");
+		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
+		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
+		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
 	}
 }

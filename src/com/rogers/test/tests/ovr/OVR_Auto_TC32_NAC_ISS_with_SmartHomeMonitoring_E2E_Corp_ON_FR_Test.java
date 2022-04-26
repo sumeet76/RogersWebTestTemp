@@ -19,10 +19,10 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ON_FR_Test 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test() {
+    public void ovr_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ON_FR_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
@@ -119,7 +119,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ON_FR_Test 
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Frais mensuels");
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
