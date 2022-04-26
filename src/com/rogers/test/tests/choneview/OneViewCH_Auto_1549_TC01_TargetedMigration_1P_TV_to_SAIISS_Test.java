@@ -19,7 +19,8 @@ public class OneViewCH_Auto_1549_TC01_TargetedMigration_1P_TV_to_SAIISS_Test ext
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
-        getRogersIgniteBundlesPage().clkUsethisAddress();
+        //getRogersIgniteBundlesPage().clkUsethisAddress();
+        getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
