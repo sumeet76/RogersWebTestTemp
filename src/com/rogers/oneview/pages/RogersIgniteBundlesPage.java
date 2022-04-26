@@ -320,6 +320,18 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
 	WebElement batteryBackUpCollapse;
 
+	@FindBy(xpath = "(//span[text()='View details'])[1]")
+	WebElement viewDetails;
+
+	@FindBy(xpath="//span[@translate='sai.modals.pricingModal.packageDetail']")
+	WebElement expandPackageDetails;
+
+	@FindBy(xpath="//button[@title='close']")
+	WebElement closeBtn;
+
+	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
+	WebElement fibreActivationMsg;
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -461,7 +473,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 
-		//getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 		//getReusableActionsInstance().clickWhenReady(continueButton,30);
@@ -1157,6 +1169,26 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().clickWhenReady(batteryBackUpCollapse);
 	}
 
+	public void clickViewDetails()
+	{
+		getReusableActionsInstance().waitForElementTobeClickable(viewDetails, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewDetails);
+	}
+
+	public void clkExpandPackageDetails(){
+		getReusableActionsInstance().getWhenReady(expandPackageDetails);
+		getReusableActionsInstance().clickWhenReady(expandPackageDetails);
+	}
+
+	public void clkCloseBtn(){
+		getReusableActionsInstance().getWhenReady(closeBtn);
+		getReusableActionsInstance().clickWhenReady(closeBtn);
+	}
+
+	public boolean verifyFibreActivationMSg(){
+		getReusableActionsInstance().waitForElementVisibility(fibreActivationMsg,20);
+		return getReusableActionsInstance().isElementVisible(fibreActivationMsg);
+	}
 
 }
 
