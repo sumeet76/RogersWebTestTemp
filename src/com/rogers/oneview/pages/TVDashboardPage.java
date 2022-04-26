@@ -1,6 +1,7 @@
 package com.rogers.oneview.pages;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -204,7 +205,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
 	WebElement immediateDateChange;
 
-	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button | //button[@title='close']")
 	WebElement cancel;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
@@ -333,6 +334,16 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//p[@class='ds-modal__heading mb-24 text-title-3']/following::*[text()='Cancel']")
 	WebElement cancelOrder;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-12'] | //span[text()='Package Details' or text()='Détails du forfait']")
+	WebElement packageDetailsExpander;
+
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
+	WebElement downloadSpeed;
+
+	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+	WebElement uploadSpeed;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -509,6 +520,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickCancel() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(cancel);
 		getReusableActionsInstance().getWhenReady(cancel, 60).click();
 	}
@@ -577,7 +589,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author jarmanjeet.batth
 	 */
 
-	public void clickContinueToCancelOrder(){
+	public void clickContinueToCancelOrder() {
 		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
 	}
 
@@ -771,7 +783,7 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement btn = getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 //		getReusableActionsInstance().clickWhenReady(btnViewChannelLineUp, 120);
-			getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
+		getReusableActionsInstance().getWhenReady(btnViewChannelLineUp, 60).click();
 	}
 
 	/**
@@ -977,118 +989,117 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeLater);
 	}
-		/*
-		 * To click on Continue in Channels and Theme pack page
-		 * @author suganya P
-		 * */
-		public void clickContinueChannelsAndThemePacks () {
-			getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
 
+	/*
+	 * To click on Continue in Channels and Theme pack page
+	 * @author suganya P
+	 * */
+	public void clickContinueChannelsAndThemePacks() {
+		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
+
+	}
+
+	/*To check for the existing themepacks
+	 * @suganya p*/
+	public boolean verifyExistingThemepack() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
+		return getReusableActionsInstance().isElementVisible(existingThemepackSection);
+	}
+
+	/*To get the count of added number of themepacks
+	 * @suganya p*/
+	public int getExistingThemepackCount() {
+		return existingThemepackNames.size();
+	}
+
+	/*To list the names of existing themepacks
+	 * @suganya p*/
+	public List getExistingThemepackNames() {
+		List packnames = new LinkedList();
+
+		for (int i = 0; i < existingThemepackNames.size(); i++) {
+			WebElement themepack = existingThemepackNames.get(i);
+			packnames.add(i, themepack.getText());
 		}
-
-		/*To check for the existing themepacks
-		 * @suganya p*/
-		public boolean verifyExistingThemepack ()
-		{
-			getReusableActionsInstance().staticWait(3000);
-			getReusableActionsInstance().waitForElementVisibility(existingThemepackSection, 90);
-			return getReusableActionsInstance().isElementVisible(existingThemepackSection);
-		}
-		/*To get the count of added number of themepacks
-		 * @suganya p*/
-		public int getExistingThemepackCount ()
-		{
-			return existingThemepackNames.size();
-		}
-
-		/*To list the names of existing themepacks
-		 * @suganya p*/
-		public List getExistingThemepackNames ()
-		{
-			List packnames = new LinkedList();
-
-			for (int i = 0; i < existingThemepackNames.size(); i++) {
-				WebElement themepack = existingThemepackNames.get(i);
-				packnames.add(i, themepack.getText());
-			}
-			return packnames;
-		}
+		return packnames;
+	}
 
 
-		/*To remove the specifed themepack
-		 * @suganya p*/
-		public void removeThemepack (String themepackNameEn, String themepackNameFr)
-		{
-			By removeThemepack = By.xpath("//div[contains(text(),'" + themepackNameEn + "') or contains(text(),'" + themepackNameFr + "')]/parent::div//button/span");
-			//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
+	/*To remove the specifed themepack
+	 * @suganya p*/
+	public void removeThemepack(String themepackNameEn, String themepackNameFr) {
+		By removeThemepack = By.xpath("//div[contains(text(),'" + themepackNameEn + "') or contains(text(),'" + themepackNameFr + "')]/parent::div//button/span");
+		//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
 
-			WebElement btn = getReusableActionsInstance().getWhenReady(removeThemepack, 60);
-			getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
-			getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
-		}
+		WebElement btn = getReusableActionsInstance().getWhenReady(removeThemepack, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(removeThemepack, 90).click();
+	}
 
-		/*To verify the your change section and expanding it if not
-		 * @author suganya p*/
-		public boolean verifyYourChangeSection ()
-		{
-			return getReusableActionsInstance().isElementVisible(yourChanges, 30);
-		}
-		/*To click on continue in the your chnage section
-		 * @author suganya p*/
-		public void yourChangeContinue ()
-		{
+	/*To verify the your change section and expanding it if not
+	 * @author suganya p*/
+	public boolean verifyYourChangeSection() {
+		return getReusableActionsInstance().isElementVisible(yourChanges, 30);
+	}
+
+	/*To click on continue in the your chnage section
+	 * @author suganya p*/
+	public void yourChangeContinue() {
 			/*if (getReusableActionsInstance().isElementVisible(removedItems, 60)) {
 				getReusableActionsInstance().clickWhenReady(yourChangeContinue);
 			} else {*/
-			//	getReusableActionsInstance().clickWhenReady(yourChanges);
-				getReusableActionsInstance().clickWhenReady(yourChangeContinue, 60);
-			//}
-		}
+		//	getReusableActionsInstance().clickWhenReady(yourChanges);
+		getReusableActionsInstance().clickWhenReady(yourChangeContinue, 60);
+		//}
+	}
 
-		/*
-		 * Select first TV package
-		 * @author aditi.jain
-		 * */
-		public void selectFirstTVPackage () {
-			getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
-			getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
-		}
+	/*
+	 * Select first TV package
+	 * @author aditi.jain
+	 * */
+	public void selectFirstTVPackage() {
+		getReusableActionsInstance().waitForElementVisibility(selectFirstChannel, 45);
+		getReusableActionsInstance().executeJavaScriptClick(selectFirstChannel);
+	}
 
-		public void clickViewMyFlexChannelsLink () {
-			getReusableActionsInstance().clickWhenReady(ViewMyFlexChannelsLink);
-		}
+	public void clickViewMyFlexChannelsLink() {
+		getReusableActionsInstance().clickWhenReady(ViewMyFlexChannelsLink);
+	}
 
-		public void clickCloudStorageBubble () {
-			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(CloudStorageBubble);
-		}
+	public void clickCloudStorageBubble() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickWhenReady(CloudStorageBubble);
+	}
 
-		public void clickDownloadGoBubble () {
-			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(DownloadGoBubble);
+	public void clickDownloadGoBubble() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickWhenReady(DownloadGoBubble);
 
-		}
+	}
 
-		public void clickResetPurchasePin () {
+	public void clickResetPurchasePin() {
 
-			getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
-			getReusableActionsInstance().javascriptScrollToBottomOfPage();
-			getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
-			getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
-		}
-		public void clickSecondLowestpackage () {
-			//getReusableActionsInstance().staticWait(10000);
-			getReusableActionsInstance().getWhenReady(secondLowestTvPackage, 30);
-			getReusableActionsInstance().executeJavaScriptClick(secondLowestTvPackage);
-		}
+		getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
+		getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
+	}
 
-		public void SelectLowestPackage(){
-			getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage);
-			getReusableActionsInstance().executeJavaScriptClick(btnSelectLowestTvPackage);
-		}
+	public void clickSecondLowestpackage() {
+		//getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().getWhenReady(secondLowestTvPackage, 30);
+		getReusableActionsInstance().executeJavaScriptClick(secondLowestTvPackage);
+	}
+
+	public void SelectLowestPackage() {
+		getReusableActionsInstance().getWhenReady(btnSelectLowestTvPackage);
+		getReusableActionsInstance().executeJavaScriptClick(btnSelectLowestTvPackage);
+	}
 
 	/**
 	 * Click Add Themepack
+	 *
 	 * @author Aditi.jain
 	 */
 	public void clickThemepackTabFromBundle() {
@@ -1096,13 +1107,13 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(addThemepackFromBundle);
 	}
 
-	public void ScrolltoConfirmExchangeBtn(){
+	public void ScrolltoConfirmExchangeBtn() {
 		getReusableActionsInstance().scrollToElement(btnConfirmExchange);
 	}
 
-	public void clkExchangeFlexChannels(){
+	public void clkExchangeFlexChannels() {
 		//getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().getWhenReady(ExchangeFlexChannels,30);
+		getReusableActionsInstance().getWhenReady(ExchangeFlexChannels, 30);
 		getReusableActionsInstance().executeJavaScriptClick(ExchangeFlexChannels);
 	}
 
@@ -1122,15 +1133,13 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
-		//getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		//getReusableActionsInstance().staticWait(5000);
-		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
-		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div/child::button");
 		WebElement btn = getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
+
 	public void clickCloseButton() {
 		getReusableActionsInstance().waitForElementVisibility(closeButton, 30);
 		getReusableActionsInstance().executeJavaScriptClick(closeButton);
@@ -1174,11 +1183,11 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyManageChannelsAndThemePacks() {
-			return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks , 30);
-		}
+		return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks, 30);
+	}
 
 	public boolean verifyExchangeFlexChannels() {
-		return getReusableActionsInstance().isElementVisible(btnExchangeFlexChannels , 30);
+		return getReusableActionsInstance().isElementVisible(btnExchangeFlexChannels, 30);
 	}
 
 	public boolean verifyChangeTvPackage() {
@@ -1204,6 +1213,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public boolean verifyViewMyChannelLineUpLink() {
 		return getReusableActionsInstance().isElementVisible(viewMyChannelLineUpLink, 30);
 	}
+
 	public void clickRemoveChannel() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(removeChannel, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
@@ -1221,25 +1231,63 @@ public class TVDashboardPage  extends BasePageClass {
 
 
 	}
+
 	public boolean verifyChangePackageButtonEN() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnEN, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().waitForElementVisibility( changePackageBtnEN, 30);
-		return getReusableActionsInstance().isElementVisible( changePackageBtnEN);
+		WebElement btn = getReusableActionsInstance().getWhenReady(changePackageBtnEN, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().waitForElementVisibility(changePackageBtnEN, 30);
+		return getReusableActionsInstance().isElementVisible(changePackageBtnEN);
 	}
 
 	public boolean verifyChangePackageButtonFR() {
-		WebElement btn=getReusableActionsInstance().getWhenReady(changePackageBtnFR, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().waitForElementVisibility( changePackageBtnFR, 30);
-		return getReusableActionsInstance().isElementVisible( changePackageBtnFR);
+		WebElement btn = getReusableActionsInstance().getWhenReady(changePackageBtnFR, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().waitForElementVisibility(changePackageBtnFR, 30);
+		return getReusableActionsInstance().isElementVisible(changePackageBtnFR);
 	}
 
 	public void clickContinue() {
-		getReusableActionsInstance().getWhenReady(btnContnue,30).click();
+		getReusableActionsInstance().getWhenReady(btnContnue, 30).click();
 	}
 
+	public void clickPackageDetailsExpander() {
+
+		getReusableActionsInstance().getWhenReady(packageDetailsExpander, 30);
+		getReusableActionsInstance().executeJavaScriptClick(packageDetailsExpander);
 	}
+
+	/**
+	 * Verifies download and upload speed whether symmetrical or not
+	 *
+	 * @author jasmeen.kaur
+	 */
+	public boolean verifyDownloadAndUploadSpeed() {
+		getReusableActionsInstance().scrollToElement(downloadSpeed);
+		getReusableActionsInstance().scrollToElement(uploadSpeed);
+		String download = getReusableActionsInstance().getElementText(downloadSpeed);
+		String upload = getReusableActionsInstance().getElementText(uploadSpeed);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
+
+	public boolean verifyContinueAndCancelButton() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().isElementVisible(cancel);
+		getReusableActionsInstance().isElementVisible(btnContnueReset);
+		return true;
+	}
+}
+
 
 
 
