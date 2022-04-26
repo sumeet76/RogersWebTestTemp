@@ -70,8 +70,8 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
         getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
-        getRogersIgniteBundlesPage().addPods(0);
-        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+//        getRogersIgniteBundlesPage().addPods(0);
+//        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
         //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");

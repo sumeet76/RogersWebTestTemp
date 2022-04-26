@@ -1114,6 +1114,7 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateInternetAddOnsInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
@@ -1137,9 +1138,9 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Sameer.Ahuja
 	 */
 	public boolean validateSHMMonthlyChargesInCartSummary(){
-		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
+		getReusableActionsInstance().getWhenReady(monthlyCharges, 20);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
-		getReusableActionsInstance().clickWhenReady(monthlyChargesExpandButton);
+		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
@@ -1149,8 +1150,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Sameer.Ahuja
 	 */
 	public boolean validateSHMOnetimeChargesInCartSummary(){
-		getReusableActionsInstance().getWhenReady(oneTimeCharges, 10);
-		getReusableActionsInstance().clickWhenReady(oneTimeChargesExpandButton);
+		getReusableActionsInstance().getWhenReady(oneTimeCharges, 20);
+		getReusableActionsInstance().executeJavaScriptClick(oneTimeChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
 	}

@@ -99,7 +99,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	public void clkContinue() {	
 		//getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(finalcontinueOnGeneratePhone,10);
+		getReusableActionsInstance().clickWhenReady(finalcontinueOnGeneratePhone,120);
 	}
 	
 	

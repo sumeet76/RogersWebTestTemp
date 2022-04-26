@@ -93,7 +93,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[@title='Rogers']/ancestor::div[2]//child::span")
     WebElement ovrSessionTimer;
 
-    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
+    @FindBy(xpath = "//span[text()='Continue' or @translate='global.cta.continue']")
     WebElement continueBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
@@ -126,10 +126,12 @@ public class BundleBuilderPage extends BasePageClass {
 
     }
     public void scrollAndClickContinue() {
+        getReusableActionsInstance().staticWait(2000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().scrollToElement(continueBtn);
+        //getReusableActionsInstance().scrollToElement(continueBtn);
         //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
-        getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+        //getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+        getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
 
@@ -197,11 +199,11 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void clkContinueInstallation() {
-        getReusableActionsInstance().clickWhenReady(continueInstallation);
+        getReusableActionsInstance().clickWhenReady(continueInstallation,30);
     }
 
     public boolean verifyBillingAndPaymentPage(){
-        return getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60);
+        return getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 180);
     }
 
     public boolean verifyBundleBuilderPage(){

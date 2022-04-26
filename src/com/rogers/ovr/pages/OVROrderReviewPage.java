@@ -14,10 +14,10 @@ public class OVROrderReviewPage extends BasePageClass {
     public OVROrderReviewPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//div[@translate='global.label.oneTimeHeader']")
+    @FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//p[@translate='global.label.monthlyBill']")
+    @FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
     WebElement monthlyCharges;
 
     @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']//ancestor::button")

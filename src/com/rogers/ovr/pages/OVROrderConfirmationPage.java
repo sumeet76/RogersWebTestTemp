@@ -21,10 +21,10 @@ public class OVROrderConfirmationPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(text(),'order number is') or contains(text(),'Le numéro de commande est le')]")
     WebElement orderNumberLbl;
 
-    @FindBy(xpath = "//div[@translate='global.label.oneTimeHeader']")
+    @FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//p[@translate='global.label.monthlyBill']")
+    @FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
     WebElement monthlyCharges;
 
     @FindBy(xpath = "//span[@translate='global.label.backToOverView']/ancestor::button")

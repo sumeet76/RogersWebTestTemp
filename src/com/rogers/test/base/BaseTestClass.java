@@ -957,47 +957,6 @@ public class BaseTestClass {
         init(strGroupName);
     }
 
-    public void startOVRStgSession(String strUrl, String strBrowser, String strLanguage, RogersEnums.GroupName enumGroupName, Method currentTestMethodName) throws ClientProtocolException, IOException {
-        RunParameters = getExecutionParameters(strBrowser, strLanguage);
-        String browser = RunParameters.get("Browser").toLowerCase();
-        String language = RunParameters.get("Language").toLowerCase();
-        String strGroupName = enumGroupName.toString().toLowerCase().trim();
-        if (browser.contains("sauce")) {
-            sauceParameters = initializeSauceParamsMap(browser);
-        }
-
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.setAcceptInsecureCerts(true);
-        options.addArguments("--start-maximized");
-        //options.addArguments("--incognito");
-        options.addExtensions(new File("C:/Users/sameer.ahuja/Downloads/extension.crx"));
-
-        if (!(System.getProperty("PageLoadStrategy") == null || System.getProperty("PageLoadStrategy").isEmpty())) {
-            options.setPageLoadStrategy(PageLoadStrategy.valueOf(System.getProperty("PageLoadStrategy")));
-        }
-
-        WebDriver webDriver = new ChromeDriver(options);
-        webDriverThreadLocal.set(webDriver);
-        ExtentListener.setDriver(webDriver);
-        // set the context on the extension so the localStorage can be accessed
-        webDriver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/_generated_background_page.html");
-        //JS Script to add http request headers in modheader plugin
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
-        jsExecutor.executeScript(
-                "localStorage.setItem('profiles', JSON.stringify([{  title: 'Selenium', hideComment: true, appendMode: '', headers: [                        \n" +
-                        "               {enabled: true, name: 'env', value: 'stg', comment: ''},\n" +
-                        "             ],                          \n" +
-                        "             respHeaders: [],\n" +
-                        "             filters: []\n" +
-                        "          }]));"
-
-        );
-        webDriver.get(strUrl);
-        System.out.println(strUrl + "----------------------------------------------------------------------------");
-        init(strGroupName);
-    }
-
 
     /**
      * To initiate the page objects based on test case group, will read group name from xml file.

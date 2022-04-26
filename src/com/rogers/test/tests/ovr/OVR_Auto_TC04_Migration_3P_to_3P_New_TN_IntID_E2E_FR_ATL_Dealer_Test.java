@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Dealer_FR_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ATL_Dealer_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -19,11 +19,11 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Dealer_FR_ON_Test ex
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+         //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Dealer_FR_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC04_Migration_3P_to_3P_New_TN_IntID_E2E_FR_ATL_Dealer_Test()  {
         //getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
@@ -34,37 +34,59 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Dealer_FR_ON_Test ex
         //getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacON.getBanNumber(),TestDataHandler.ovrWirelessNacON.getPostalCode(),TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrMigrationData3PTo3PATL.getBanNumber(), TestDataHandler.ovrMigrationData3PTo3PATL.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().changeLangToFR();
-        reporter.reportLogWithScreenshot("Ignite language Changed to French");
+        reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
-        getCheckAvailabilityPage().addressIsServiceable();
-        reporter.reportLogWithScreenshot("Address is serviceable");
-        reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
-        reporter.reportLogWithScreenshot("Bundle Builder Page");
+        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
+        reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
+        reporter.reportLogWithScreenshot("Bundle Builder Page displayed");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Smart Stream and Internet are Selected");
+        reporter.reportLogWithScreenshot("Internet Selected");
+        getRogersIgniteBundlesPage().clkTVCheckbox();
+        reporter.reportLogWithScreenshot("TV Check box selected");
+        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+        reporter.reportLogWithScreenshot("HomePhone selected");
+        reporter.reportLogWithScreenshot("3P services selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Ignite Bundle Offers loaded");
+        reporter.reportLogWithScreenshot("Click on Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
-        reporter.reportLogWithScreenshot("Bundle added to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
-        reporter.reportLogWithScreenshot("NO to Port-In pop-up");
+        reporter.reportLogWithScreenshot("Add to cart 1st offer");
+        getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
+        reporter.reportLogWithScreenshot("Choose a new Telephone number");
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Review Points to mention");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+
+        reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
+        getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Channels and theme packs page");
+        getRogersIgniteBundlesPage().clkCustomerAddonReview();
+        reporter.reportLogWithScreenshot("Reviewed the customer's add on");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("4k tv pop up");
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        reporter.reportLogWithScreenshot("4k Content Popup");
+        getRogersIgniteBundlesPage().contiue4KContent();
 
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Addons loaded", "Internet Add ons not loaded");
         getRogersIgniteBundlesPage().clkContinue();
 
+        getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
+        reporter.reportLogWithScreenshot("Addons selected for addition");
+        getHomePhoneAddonsPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Cart Summary Page");
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -72,45 +94,57 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Dealer_FR_ON_Test ex
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile Page");
         getCustomerProfilePage().clkContinue();
-
         reporter.reportLogWithScreenshot("Continue to Credit Check Page");
-        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
-        reporter.reportLogWithScreenshot("Credit Check Page");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("Credit Check DOB entered");
+        reporter.reportLogWithScreenshot("Credit Evaluation DOB set");
         getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
                 FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check Authorized");
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
-
         getCreditCheckPage().clkContinue();
+
+        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
+        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("continue from generate phone number");
+        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        reporter.reportLogWithScreenshot("continue from call display");
+        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+        reporter.reportLogWithScreenshot("continue from directory listing");
+        getHomePhoneSelectionPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
+
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
-        reporter.reportLogWithScreenshot("Launched the install options  page");
+        getCreditCheckPage().verifyInstallationOption();
+        reporter.reportLogWithScreenshot("Installation Page");
+        //For GPON Address, skip select pro install as it's the only available install option.
         getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
+        reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Select a time slot");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
-        reporter.reportLogWithScreenshot("Continue to Billing and Payment page");
+        reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        reporter.reportLogWithScreenshot("Billing and Payment Page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
-        reporter.reportLogWithScreenshot("Order Review Page");
-        reporter.softAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        reporter.softAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.reportLogWithScreenshot("Continue to Order Review Page");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Sign Agreement Page");
-        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         getOVRAgreementPage().signAgreement();
         reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
-        reporter.reportLogWithScreenshot("Agreement checkbox clicked");
+        reporter.reportLogWithScreenshot("Click Agreement Checkbox");
         getOVRAgreementPage().clkCompleteOrder();
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");

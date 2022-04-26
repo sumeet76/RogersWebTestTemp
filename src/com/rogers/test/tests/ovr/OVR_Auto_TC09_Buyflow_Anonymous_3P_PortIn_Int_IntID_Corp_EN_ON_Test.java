@@ -143,12 +143,19 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test
 //        reporter.softAssert(getCallerInformationPage().callerInfoPageLoad(), "Caller Info Review Page loaded", "Caller Info Review Page not loaded");
 //        reporter.reportLogWithScreenshot("Continue from Caller Info Review Page");
 //        getCallerInformationPage().clickContinue();
-        reporter.reportLogWithScreenshot("Continue to Home Phone Selection Page");
+
+        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.hardAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-        reporter.reportLogWithScreenshot("Phone Number Selected");
-        reporter.hardAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("continue from generate phone number");
+        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        reporter.reportLogWithScreenshot("continue from call display");
+        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+        reporter.reportLogWithScreenshot("continue from directory listing");
         getHomePhoneSelectionPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();

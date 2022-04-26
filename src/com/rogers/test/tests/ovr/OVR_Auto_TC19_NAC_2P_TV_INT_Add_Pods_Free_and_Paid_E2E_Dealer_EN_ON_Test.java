@@ -67,7 +67,7 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("Continue to Internet Add ons page");
 
-        reporter.reportLogWithScreenshot("Lands in Internet Addons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add ons page loaded","Internet Add ons page not loaded");
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
