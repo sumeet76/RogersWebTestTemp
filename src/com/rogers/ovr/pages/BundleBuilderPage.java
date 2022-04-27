@@ -5,6 +5,8 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FormFiller;
 
 /**
@@ -91,7 +93,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//*[@title='Rogers']/ancestor::div[2]//child::span")
     WebElement ovrSessionTimer;
 
-    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']/ancestor::button")
+    @FindBy(xpath = "//span[text()='Continue' or @translate='global.cta.continue']")
     WebElement continueBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
@@ -124,8 +126,12 @@ public class BundleBuilderPage extends BasePageClass {
 
     }
     public void scrollAndClickContinue() {
-        getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
-        getReusableActionsInstance().clickWhenReady(continueBtn);
+        getReusableActionsInstance().staticWait(2000);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        //getReusableActionsInstance().scrollToElement(continueBtn);
+        //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
+        //getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+        getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
 
@@ -173,10 +179,10 @@ public class BundleBuilderPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(txtContainerMobile, 10).click();
             getReusableActionsInstance().getWhenReady(txtMobileNumber, 10).clear();
             getReusableActionsInstance().getWhenReady(txtMobileNumber, 3).sendKeys(strPhoneNumber);
-            getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
-            getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
-            getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
-            getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
+//            getReusableActionsInstance().waitForElementVisibility(txtContainerEmail, 30);
+//            getReusableActionsInstance().getWhenReady(txtContainerEmail, 10).click();
+//            getReusableActionsInstance().getWhenReady(txtEmail, 10).clear();
+//            getReusableActionsInstance().getWhenReady(txtEmail, 10).sendKeys(strEmail);
         }
     }
 
@@ -193,11 +199,11 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void clkContinueInstallation() {
-        getReusableActionsInstance().clickWhenReady(continueInstallation);
+        getReusableActionsInstance().clickWhenReady(continueInstallation,30);
     }
 
     public boolean verifyBillingAndPaymentPage(){
-        return getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 60);
+        return getReusableActionsInstance().isElementVisible(billingAndPaymentH1, 180);
     }
 
     public boolean verifyBundleBuilderPage(){
@@ -220,7 +226,7 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public boolean verifyCustomerCurrentPlan(){
-        return getReusableActionsInstance().isElementVisible(currentPlanSection, 5);
+        return getReusableActionsInstance().isElementVisible(currentPlanSection, 60);
     }
 
     public boolean verifyOvrSessionTimer(){
