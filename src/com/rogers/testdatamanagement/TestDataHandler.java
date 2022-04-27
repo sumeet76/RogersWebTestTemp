@@ -310,6 +310,13 @@ public class TestDataHandler {
 	public static OvrReusableData ovrWirelessNacATL;
 	public static  OvrReusableData ovrWirelessNacON;
 	public static OvrReusableData ovrMigrationData1pINTtoISSATL;
+	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
+	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
+	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
+	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
+	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
+	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
+	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
 	public static OvrConfigData ovrConfigData;
 	public static OvrReusableData legacy1PtoNac3pNewAddress;
 	public static OvrReusableData existingIgniteCxToNac3pON;
@@ -687,8 +694,8 @@ public class TestDataHandler {
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
-		SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
-		SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
+		//SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
+		//SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
 		InternetDashboardSupportLinks=YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
@@ -750,5 +757,12 @@ public class TestDataHandler {
 		ovrMigrationData1Pto2PAddPods = YamlHandler.getOvrReusableData("Migration_Data_1P_to_2P_Add_Pods");
 		existingIgnite3PtoNac2pON = YamlHandler.getOvrReusableData("ExistingIgnite_3PCx_to_Nac_3P_ON");
 		ovrMigrationData1pINTto2pTVINTAddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
+		tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
+		tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods = YamlHandler.getOvrReusableData("TC26_Mig_Data_1P_INT_to_1P_INT_AddPods");
+		tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM = YamlHandler.getOvrReusableData("TC29_Mig_Data_1P_INT_to_2P_TV_INT_with_SHM");
+		tc_22_Ovr_Mig_Data_3p_to_3p_AddPods = YamlHandler.getOvrReusableData("TC22_Mig_Data_3P_to_3P_AddPods");
+		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
+		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
+		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
 	}
 }

@@ -19,13 +19,17 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	WebElement continueOnCallDisplayName;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	WebElement continueOnCallDisplayName;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[3]")
+
 	WebElement continueOnDirectoryListing;
 
 	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
 	WebElement generatePhoneNumber;
 
 
-	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[4]")
 	WebElement finalcontinueOnGeneratePhone;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
@@ -74,17 +78,24 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'You may use hyphens, apostrophes and spaces but not at the beginning or end of a name')]  or //li[contains(text(),'Vous pouvez utiliser des traits d’union, des apostrophes et des espaces, mais pas au début ni à la fin d’un nom')]")
 	WebElement thingsToKnowLastName;
 
+
 	@FindBy(xpath = "//div/h1[@class='mb-0 ng-star-inserted' and contains(text(),' Review Call Display Name and Directory Listing ')]")
 	WebElement callDisplayNameAndDiretoryListingHeader;
+
+	@FindBy(xpath = "//span[text()='Home Phone Personalization' or text()='Personnalisation du téléphone résidentiel']")
+	WebElement homePhonePersonalizationHeader;
+
 
 	/**
 	 * Click Generate Phone Number Button  
 	 * @author chinnarao.vattam
 	 */	
 	public void clkGeneratePhoneNo() {
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(homePhonePersonalizationHeader, 120);
+		//getReusableActionsInstance().staticWait(5000);
 		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+
 		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
 	}
 	/**
@@ -100,8 +111,9 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().executeJavaScriptClick(finalcontinueOnGeneratePhone);
+		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(finalcontinueOnGeneratePhone,120);
 	}
 	
 	
@@ -130,18 +142,24 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnGeneratePhone);
+		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone,10);
 
 	}
 
 	public void clickOnContinueCallDisplay(){
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().executeJavaScriptClick(continueOnCallDisplayName);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnCallDisplayName);
+		getReusableActionsInstance().clickWhenReady(continueOnCallDisplayName,10);
 	}
 	public void clickContinueDirectoryListing(){
+<<<<<<< HEAD
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
+=======
+		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnDirectoryListing);
+		getReusableActionsInstance().clickWhenReady(continueOnDirectoryListing,10);
+>>>>>>> d34017479b1ac02d0c73d8d28a708cf5c48a8009
 	}
 
 	public boolean verifythingsToKnowFirstname(){
@@ -153,8 +171,13 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(thingsToKnowLastName);
 	}
 
+<<<<<<< HEAD
 	public boolean verifyConfigureCallDisplayAndDirectoryListingHeader(){
 		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader,45);
+=======
+	public boolean verifyHomePhonePersonalizationHeader(){
+		return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
+>>>>>>> d34017479b1ac02d0c73d8d28a708cf5c48a8009
 	}
 
 
