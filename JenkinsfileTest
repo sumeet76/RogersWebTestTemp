@@ -66,6 +66,8 @@ pipeline {
         FTP_PASSWORD = credentials('FTP_PASSWORD')
         ENS_USERNAME= credentials('ENS_USERNAME')
         ENS_PASSWORD= credentials('ENS_PASSWORD')
+        MaestroLoginID= credentials('MaestroLoginID')
+        MaestroUsrID= credentials('MaestroUsrID')
     }
     stages {
         stage('Run CI?') {

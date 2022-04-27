@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TVDashboard_Validation_Test extends BaseTestClass {
-    @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp"})
+    @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp","MaySanity"})
     public void oneViewCH_Auto_TVDashboard_Validation_Test(){
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Tv_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.Tv_Dashboard_Validation.getContactID());
