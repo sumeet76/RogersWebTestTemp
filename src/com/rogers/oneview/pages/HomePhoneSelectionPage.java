@@ -15,10 +15,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[1]")
 	WebElement continueOnCallDisplayName;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[3]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
 	WebElement continueOnDirectoryListing;
 
 	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
@@ -74,6 +74,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'You may use hyphens, apostrophes and spaces but not at the beginning or end of a name')]  or //li[contains(text(),'Vous pouvez utiliser des traits d’union, des apostrophes et des espaces, mais pas au début ni à la fin d’un nom')]")
 	WebElement thingsToKnowLastName;
 
+	@FindBy(xpath = "//div/h1[@class='mb-0 ng-star-inserted' and contains(text(),' Review Call Display Name and Directory Listing ')]")
+	WebElement callDisplayNameAndDiretoryListingHeader;
 
 	/**
 	 * Click Generate Phone Number Button  
@@ -138,6 +140,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	}
 	public void clickContinueDirectoryListing(){
 		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
 	}
 
@@ -148,6 +151,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 	public boolean verifyThingsToKnowLastName(){
 		return getReusableActionsInstance().isElementVisible(thingsToKnowLastName);
+	}
+
+	public boolean verifyConfigureCallDisplayAndDirectoryListingHeader(){
+		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader,45);
 	}
 
 
