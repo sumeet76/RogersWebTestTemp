@@ -19,17 +19,12 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	WebElement continueOnCallDisplayName;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
-	WebElement continueOnCallDisplayName;
-
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[3]")
-
 	WebElement continueOnDirectoryListing;
 
 	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
 	WebElement generatePhoneNumber;
 
-
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[4]")
+	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
 	WebElement finalcontinueOnGeneratePhone;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
@@ -77,7 +72,6 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 	@FindBy(xpath = "//li[contains(text(),'You may use hyphens, apostrophes and spaces but not at the beginning or end of a name')]  or //li[contains(text(),'Vous pouvez utiliser des traits d’union, des apostrophes et des espaces, mais pas au début ni à la fin d’un nom')]")
 	WebElement thingsToKnowLastName;
-
 
 	@FindBy(xpath = "//div/h1[@class='mb-0 ng-star-inserted' and contains(text(),' Review Call Display Name and Directory Listing ')]")
 	WebElement callDisplayNameAndDiretoryListingHeader;
@@ -152,14 +146,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(continueOnCallDisplayName,10);
 	}
 	public void clickContinueDirectoryListing(){
-<<<<<<< HEAD
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
-=======
-		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnDirectoryListing);
-		getReusableActionsInstance().clickWhenReady(continueOnDirectoryListing,10);
->>>>>>> d34017479b1ac02d0c73d8d28a708cf5c48a8009
+
 	}
 
 	public boolean verifythingsToKnowFirstname(){
@@ -171,15 +161,14 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(thingsToKnowLastName);
 	}
 
-<<<<<<< HEAD
-	public boolean verifyConfigureCallDisplayAndDirectoryListingHeader(){
-		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader,45);
-=======
-	public boolean verifyHomePhonePersonalizationHeader(){
-		return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
->>>>>>> d34017479b1ac02d0c73d8d28a708cf5c48a8009
+	public boolean verifyConfigureCallDisplayAndDirectoryListingHeader() {
+		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader, 45);
 	}
 
+		public boolean verifyHomePhonePersonalizationHeader () {
+			return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
+
+		}
 
 
 
