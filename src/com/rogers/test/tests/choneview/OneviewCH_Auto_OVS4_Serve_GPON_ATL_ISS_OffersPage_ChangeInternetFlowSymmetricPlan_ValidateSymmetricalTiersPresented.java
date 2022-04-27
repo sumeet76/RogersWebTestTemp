@@ -25,8 +25,7 @@ public class OneviewCH_Auto_OVS4_Serve_GPON_ATL_ISS_OffersPage_ChangeInternetFlo
         reporter.reportLogWithScreenshot("Collapse Price details");
         getInternetDashboardPage().clickPackageDetails();
         reporter.reportLogWithScreenshot("Expand Package Details");
-        reporter.hardAssert(getInternetDashboardPage().verifyDownloadSpeed(),"Download speed is verified","Download speed is not same as the selected Package");
-        reporter.hardAssert(getInternetDashboardPage().verifyUploadSpeed(),"Upload speed is same as Download speed","Upload speed is not same as Download speed");
+        reporter.hardAssert(getInternetDashboardPage().verifyDownloadAndUploadSpeed(),"Download and upload speed symmetrical"," Download and upload speed not symmetrical");
         reporter.reportLogWithScreenshot("Download and Upload speed validated");
     }
     @BeforeMethod(alwaysRun=true)

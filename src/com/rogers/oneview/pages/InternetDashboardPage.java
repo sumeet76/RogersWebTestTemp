@@ -181,10 +181,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
 
-	@FindBy(xpath = "//li[text()='Download speeds up to: 50 Mbps']")
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
 	WebElement DownloadSpeedReview;
 
-    @FindBy(xpath = "//li[text()='Upload speeds up to: 50 Mbps']")
+    @FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
     WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -791,10 +791,6 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * verify  Order Review
 	 * @author Jarmanjeet.Batth
 	 * */
-	public boolean verifyDownloadSpeed() {
-		getReusableActionsInstance().waitForElementVisibility( DownloadSpeedReview, 30);
-		return getReusableActionsInstance().isElementVisible( DownloadSpeedReview);
-	}
 
     public boolean verifyUploadSpeed() {
 //        getReusableActionsInstance().waitForElementVisibility( UploadSpeedReview, 30);
@@ -805,7 +801,24 @@ public class InternetDashboardPage  extends BasePageClass {
 		}
     }
 
-
+	public boolean verifyDownloadAndUploadSpeed() {
+//		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
+//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
 
 }
 
