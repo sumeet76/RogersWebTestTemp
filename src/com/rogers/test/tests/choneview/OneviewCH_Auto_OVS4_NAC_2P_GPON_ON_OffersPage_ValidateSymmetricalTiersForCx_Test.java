@@ -19,7 +19,7 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.GponData.getcontactDetails().getAddress());
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.GponData.contactDetails.getAddress()+" is serviceable",TestDataHandler.GponData.contactDetails.getAddress()+" not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -68,13 +68,10 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in-person deliver");
-        getCreditCheckPage().clickInPersonDelivery();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
+        reporter.reportLogWithScreenshot("professional Installation");
+        getCreditCheckPage().enterSpecialInstructions();
         getPaymentOptionsPage().clkContinue();
-        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("billing options");
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("select oline billing option");
         getCreditCheckPage().selectOnlineBilling();
