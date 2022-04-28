@@ -25,7 +25,7 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//rch-dropdown/descendant::select")
     WebElement multipleAddressDropdown;
 
-    @FindBy(xpath = "//button[@ng-reflect-rch-track-click-event='checkServiceability']")
+    @FindBy(xpath = "//span[@translate='global.cta.checkAvailability']//ancestor::button")
     WebElement checkAvailabilityBtn;
 
     //@FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
@@ -45,7 +45,7 @@ public class CheckAvailabilityPage extends BasePageClass {
     WebElement otherAddressRadioButton;
 
 
-    public void useThisAddress() {
+    public void useThisAddress()  {
         getReusableActionsInstance().getWhenVisible(btnContinue, 60).click();
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown,2,  5);
@@ -78,8 +78,8 @@ public class CheckAvailabilityPage extends BasePageClass {
             getReusableActionsInstance().staticWait(3000);
         }
         getReusableActionsInstance().clickAndHoldFor(searchResult, 333);
-        getReusableActionsInstance().staticWait(3000);
-        getReusableActionsInstance().clickWhenReady(checkAvailabilityBtn);
+        getReusableActionsInstance().staticWait(2000);
+        getReusableActionsInstance().clickWhenReady(checkAvailabilityBtn, 15);
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }

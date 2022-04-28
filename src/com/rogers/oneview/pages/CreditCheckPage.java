@@ -117,6 +117,9 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
 	WebElement creditEvaluationHeader;
 
+	@FindBy(xpath = "//div[contains(text(),'Please do not proceed with order') or contains(text(),'Les renseignements du client doivent être validés auprès de')]/ancestor::div[@class='nfdb']")
+	WebElement fraudErrorMessage;
+
 	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
 	WebElement internationalIdRadioBtn;
 
@@ -349,6 +352,15 @@ public class CreditCheckPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(creditEvaluationHeader,45);
 	}
 
+	/**
+	 * Verify Credit Evaluation Header
+	 * @return true if available, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyFraudErrorMessage() {
+		getReusableActionsInstance().waitForElementVisibility(fraudErrorMessage, 45);
+		return getReusableActionsInstance().isElementVisible(fraudErrorMessage,45);
+	}
 
 	/**
 	 * Select Payment Option
