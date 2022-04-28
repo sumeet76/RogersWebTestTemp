@@ -161,10 +161,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
-	@FindBy(xpath = "//span[text()='Pricing details']/ancestor::div[3]")
+	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails des prix']/ancestor::div[3]")
 	WebElement collapsePricingDetails;
 
-	@FindBy(xpath = "//span[text()='Package Details']/ancestor::div[3]")
+	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']]/ancestor::div[3]")
     WebElement expandPackageDetails;
 
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
