@@ -15,16 +15,16 @@ public class OVROrderConfirmationPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//div[@translate='global.label.receivedTheOrder']")
+    @FindBy(xpath = "//h1[@translate='global.label.orderConfirmation']")
     WebElement orderConfirmation;
 
     @FindBy(xpath = "//p[contains(text(),'order number is') or contains(text(),'Le numéro de commande est le')]")
     WebElement orderNumberLbl;
 
-    @FindBy(xpath = "//h2[@translate='global.label.oneTimeHeader']")
+    @FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
     WebElement oneTimeFees;
 
-    @FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
+    @FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
     WebElement monthlyCharges;
 
     @FindBy(xpath = "//span[@translate='global.label.backToOverView']/ancestor::button")

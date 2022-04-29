@@ -19,7 +19,7 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -34,7 +34,7 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("12294-247 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A4X3", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"This address is serviceable","This Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -67,8 +67,8 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
         getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
-        getRogersIgniteBundlesPage().addPods(0);
-        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+        //getRogersIgniteBundlesPage().addPods(0);
+        //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
         //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
@@ -105,7 +105,7 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation Page");
-        getBundleBuilderPage().selectExpressProInstall();
+        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Select a time slot");
@@ -134,7 +134,7 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
 
 
     }

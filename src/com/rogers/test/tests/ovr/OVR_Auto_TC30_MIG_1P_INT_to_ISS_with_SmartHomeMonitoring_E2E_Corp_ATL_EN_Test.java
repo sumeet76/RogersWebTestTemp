@@ -1,4 +1,5 @@
 package com.rogers.test.tests.ovr;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -9,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -20,101 +21,119 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
     public void afterTest() {
         //closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test() throws InterruptedException {
-        System.out.println(System.getenv("champCorpUserName")+" "+ System.getenv("champCorpPassword"));
+    public void ovr_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_EN_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getChampLoginPage().changeChampToFR();
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacON.getBanNumber(),TestDataHandler.ovrWirelessNacON.getPostalCode(),TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM.getBanNumber(), TestDataHandler.tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        getOvrDashboardPage().changeLangToFR();
-        reporter.reportLogWithScreenshot("Ignite language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
-        getCheckAvailabilityPage().addressIsServiceable();
-        reporter.reportLogWithScreenshot("Address is serviceable");
-        reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
-        reporter.reportLogWithScreenshot("Bundle Builder Page");
+        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
+        reporter.reportLogWithScreenshot("Bundle Builder Page displayed");
         getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Smart Stream and Internet are Selected");
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
+        reporter.reportLogWithScreenshot("Internet and smart stream with SHM are Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Ignite Bundle Offers loaded");
+        reporter.reportLogWithScreenshot("Load Offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
-        reporter.reportLogWithScreenshot("Bundle added to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
-        reporter.reportLogWithScreenshot("NO to Port-In pop-up");
+        reporter.reportLogWithScreenshot("Add to cart 1st offer");
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-
+        reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Review Points to mention");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
+
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"SHM Add ons page loaded","SHM add ons page not loaded");
+        getRogersIgniteBundlesPage().addSHMAddOn();
+        reporter.reportLogWithScreenshot("SHM Add on added to cart");
         getRogersIgniteBundlesPage().clkContinue();
 
-        reporter.reportLogWithScreenshot("Cart Summary");
+        reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        //Validation for SHM Addon
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMOnetimeChargesInCartSummary(),"One time SHM charges present", "One time SHM charges not Present");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
+        reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.reportLogWithScreenshot("Customer Profile Page");
+        reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Credit Check Page");
-        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Eval Page displayed", "Credit Eval Page not displayed");
-        reporter.reportLogWithScreenshot("Credit Check Page");
+
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("Credit Check DOB entered");
-        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        reporter.reportLogWithScreenshot("Drivers License Details entered in FR");
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        reporter.reportLogWithScreenshot("Passport details entered in FR");
+        reporter.reportLogWithScreenshot("Credit Evaluation DOB set");
+        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
-        reporter.reportLogWithScreenshot("Credit Check authorized");
+        reporter.reportLogWithScreenshot("Credit Check Authorized");
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
-
         getCreditCheckPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
+        reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Select a time slot");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
-        reporter.reportLogWithScreenshot("Continue to Billing and Payment page");
+        reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        reporter.reportLogWithScreenshot("Billing and Payment Page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
-        reporter.reportLogWithScreenshot("Order Review Page");
+
+        reporter.reportLogWithScreenshot("Continue to Order Review Page");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        //validate SHM charges one time fees
+        reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        //Validation for SHM Addon monthly fees.
+        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+        reporter.reportLogWithScreenshot("Order review Page");
+
         getOVROrderReviewPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Sign Agreement Page");
-        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
         getOVRAgreementPage().signAgreement();
         reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
-        reporter.reportLogWithScreenshot("Agreement checkbox clicked");
+        reporter.reportLogWithScreenshot("Click Agreement Checkbox");
         getOVRAgreementPage().clkCompleteOrder();
+
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        //validate SHM charges one time fees
+        reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        //Validation for SHM Addon monthly fees.
+        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+
 
     }
 }
