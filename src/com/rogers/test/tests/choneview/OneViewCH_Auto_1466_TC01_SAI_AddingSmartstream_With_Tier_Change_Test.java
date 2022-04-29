@@ -27,6 +27,7 @@ public class OneViewCH_Auto_1466_TC01_SAI_AddingSmartstream_With_Tier_Change_Tes
         reporter.reportLogWithScreenshot(" Smart Stream Selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
+        getCreditCheckPage().clkCourierDelivery();
         getRogersOVInstallationPage().clickInstallationCheckBox();
         reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         getRogersOVInstallationPage().clickContinue();

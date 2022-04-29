@@ -16,7 +16,7 @@ public class OneViewCH_Auto_Internet_Dashboard_Validation_Test extends BaseTestC
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Internet_Dashboard_Validation.accountDetails.getBan(),TestDataHandler.Internet_Dashboard_Validation.getContactID());
         reporter.reportLogWithScreenshot("One view page launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
-        reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
+        //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
