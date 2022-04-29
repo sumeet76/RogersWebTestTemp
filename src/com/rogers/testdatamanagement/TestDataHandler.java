@@ -694,7 +694,7 @@ public class TestDataHandler {
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
 		//SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
-		//SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
+		SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
 		InternetDashboardSupportLinks=YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
