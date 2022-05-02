@@ -20,15 +20,17 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().clickCheckBoxSmartStream();
+/*        getInternetDashboardPage().clickCheckBoxSmartStream();
         reporter.reportLogWithScreenshot("Smart Stream option selected");
         getInternetDashboardPage().clickLoadOffers();
-        reporter.reportLogWithScreenshot("Load offers button clicked");
+        reporter.reportLogWithScreenshot("Load offers button clicked");*/
         getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        getRogersOVInstallationPage().clickInstallationCheckBox();
+        getCreditCheckPage().clkCourierDelivery();
+        getCreditCheckPage().clickInPersonDelivery();
+        /*getRogersOVInstallationPage().clickInstallationCheckBox();*/
         reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
