@@ -26,14 +26,18 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
         reporter.reportLogWithScreenshot("Load offers button clicked");*/
         getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        getInternetDashboardPage().clickContinue();
+        reporter.reportLogWithScreenshot("Clicked Continue");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        getCreditCheckPage().clkCourierDelivery();
+        reporter.reportLogWithScreenshot("Continue clicked on billing cycle");
+        /*reporter.hardAssert(getRogersOVCheckoutPage().verifyOrderReviewPage(),"Verified Review Order Page",
+                                        "Not landed on Order Review page");*/
+/*        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
-        /*getRogersOVInstallationPage().clickInstallationCheckBox();*/
+        *//*getRogersOVInstallationPage().clickInstallationCheckBox();*//*
         reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         getRogersOVInstallationPage().clickContinue();
-        reporter.reportLogWithScreenshot("Continue clicked");
+        reporter.reportLogWithScreenshot("Continue clicked");*/
 //        getInternetDashboardPage().clickImmediateBill();
 //        reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
 //        getInternetDashboardPage().clickContinueOnSelectDateChange();
@@ -41,7 +45,7 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
 
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
