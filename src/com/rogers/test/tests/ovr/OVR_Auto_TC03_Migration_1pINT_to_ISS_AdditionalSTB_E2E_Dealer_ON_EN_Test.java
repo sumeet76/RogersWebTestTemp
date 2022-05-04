@@ -84,16 +84,21 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
-        getBundleBuilderPage().selectExpressProInstall();
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
+//        getBundleBuilderPage().selectExpressProInstall();
+//        getBundleBuilderPage().clkTechInstallSlot();
+//        reporter.reportLogWithScreenshot("Time Slot selected");
+//        getBundleBuilderPage().setMobileNumber();
+
+        //Courier Delivery Install Method
+        getBundleBuilderPage().selectDeliveryByCourier();
+        reporter.reportLogWithScreenshot("Selected Delivery by Courier");
+
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
 
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        //reporter.hardAssert(getBundleBuilderPage().verifyStoredPaymentCardPresent(), "Stored Payment Card present", "Stored Payment card not present");
+//        //reporter.hardAssert(getBundleBuilderPage().verifyStoredPaymentCardPresent(), "Stored Payment Card present", "Stored Payment card not present");
 //        reporter.reportLogWithScreenshot("Continue billing with stored payment method");
 //        getBundleBuilderPage().clkContinueBillingAndPayment();
 //        reporter.reportLogWithScreenshot("Order Review Page");

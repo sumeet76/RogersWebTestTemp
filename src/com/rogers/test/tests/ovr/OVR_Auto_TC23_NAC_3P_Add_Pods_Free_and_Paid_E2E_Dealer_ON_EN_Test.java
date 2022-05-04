@@ -34,7 +34,8 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
+        //getCheckAvailabilityPage().checkAvailability("7 Australia Drive, L6R3E4", "chrome");
+        //getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
         //getCheckAvailabilityPage().checkAvailability("1191 Addison Dr, LONDON ON N5V 2N8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
@@ -91,7 +92,7 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         //validation for pods
-        //reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -137,11 +138,16 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Options loaded","Installation options not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
+//        getBundleBuilderPage().selectExpressProInstall();
+//        reporter.reportLogWithScreenshot("Install Options");
+//        getBundleBuilderPage().clkTechInstallSlot();
+//        reporter.reportLogWithScreenshot("Time Slot selected");
+//        getBundleBuilderPage().setMobileNumber();
+
+        //Courier Delivery Install Method
+        getBundleBuilderPage().selectDeliveryByCourier();
+        reporter.reportLogWithScreenshot("Selected Delivery by Courier");
+
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
@@ -167,5 +173,6 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
+
     }
 }
