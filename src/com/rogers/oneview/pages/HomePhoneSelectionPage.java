@@ -11,8 +11,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-	//@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
-	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
+	//@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
