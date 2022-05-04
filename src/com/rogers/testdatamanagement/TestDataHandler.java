@@ -748,7 +748,6 @@ public class TestDataHandler {
 		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P_to_2P_PortIn_Internet");
 		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
 		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
-		anonymousData = YamlHandler.getContactData("AnonymousData");
 		ovrMigrationData1pINTtoISSATL = YamlHandler.getOvrReusableData("Migration_Data_1pINT_to_ISS");
 		ovrMigrationData3PTo3PATL = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ATL");
 		ovrMigrationData3PTo3PON = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ON");
