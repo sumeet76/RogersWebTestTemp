@@ -137,6 +137,9 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='IPTV active-ind service-badge tv'] | //div[@class='service-badge tv active-ind DigitalTV']")
     WebElement btnGetIgniteTVBadge;
 
+    @FindBy(xpath="//t[contains(text(),'Ignite')]")
+    WebElement btnGetIgniteBadge;
+
     @FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
     WebElement infoBalanceLable;
 
@@ -438,7 +441,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
+        getReusableActionsInstance().getWhenReady(btnGetIgniteBadge, 50).click();
     }
 
     /**
