@@ -93,6 +93,7 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc15AALShareTermBopis.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+        getRogersPlanConfigPage().clickGetBPOOffer();
         getRogersPlanConfigPage().selectDeviceProtectionAddon();
         reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
@@ -115,8 +116,10 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
-        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+        //getRogersCheckoutPage().clkNoThanks();
+        //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
