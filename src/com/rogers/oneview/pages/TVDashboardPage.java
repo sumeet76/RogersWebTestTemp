@@ -224,7 +224,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
+	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")

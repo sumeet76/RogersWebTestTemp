@@ -18,7 +18,7 @@ def sauce = [
 ]
 
 
-task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
+task "sauceTest"(type: Test) {
 	if(!test_browser){
 		test_browser='saucechrome'
 	}
@@ -44,6 +44,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 
 	useTestNG(){
 		parallel = test_parallel

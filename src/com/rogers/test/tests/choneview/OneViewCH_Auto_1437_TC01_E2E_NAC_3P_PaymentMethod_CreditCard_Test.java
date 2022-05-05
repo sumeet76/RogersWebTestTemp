@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV","MaySanity"})
     public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 			reporter.reportLogWithScreenshot("Service Availability");
-			getRogersIgniteBundlesPage().clkContinue();
+			//getRogersIgniteBundlesPage().clkContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 			reporter.reportLogWithScreenshot("Select Services Customer Wants");
 			getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -40,14 +40,14 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 		    getRogersIgniteBundlesPage().clkExpressCheckOut();
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
-			reporter.reportLogWithScreenshot("continue to exchange later");
+//			reporter.reportLogWithScreenshot("continue to exchange later");
 //			getRogersIgniteBundlesPage().clkExpressCheckOut();
 //			reporter.reportLogWithScreenshot("Cart Summary");
 //			getRogersIgniteBundlesPage().fourKTVPopup();
 //			getRogersIgniteBundlesPage().fourKContinue();
-//			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-			reporter.reportLogWithScreenshot("checkout to cart summary");
+			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+			reporter.reportLogWithScreenshot("checkout to cart summary");
 			getRogersIgniteBundlesPage().customerWishtoContinue();
 			reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 			reporter.reportLogWithScreenshot("Customer Profile");
@@ -66,12 +66,13 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 			reporter.reportLogWithScreenshot("Phone display name");
-			getHomePhoneSelectionPage().clkContinue();
+			//getHomePhoneSelectionPage().clkContinue();
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();
 			getCreditCheckPage().goToPageBottom();
 			reporter.reportLogWithScreenshot("in-person delivery");
+			getCreditCheckPage().clkCourierDelivery();
 			getCreditCheckPage().clickInPersonDelivery();
 			getPaymentOptionsPage().clkContinue();
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -82,15 +83,16 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-            getPaymentOptionsPage().clkContinue();
+/*            getPaymentOptionsPage().clkContinue();
 	        reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
 			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			reporter.reportLogWithScreenshot("Order Placed");
+			reporter.reportLogWithScreenshot("Order Placed");*/
     }
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
+
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}

@@ -51,13 +51,10 @@ pipeline {
     }
 
     triggers {
-        parameterizedCron(env.BRANCH_NAME == 'master' ?'''
+        parameterizedCron(env.BRANCH_NAME == 'OVC_May_Sanity' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-                    00 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityCH;ThreadCount=2;TestProfile=ConnectedHome
-                    30 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanitySS;ThreadCount=3;TestProfile=SelfServe
-                    45 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityBFA;ThreadCount=2;TestProfile=BuyFlows
-                    30 07 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityCHOV;ThreadCount=2;TestProfile=OneView
+                     05 5,6 * * 1-5 %Browser=saucechrome;Language=en;Groups=MaySanity;ThreadCount=2;TestProfile=ConnectedHome
                 ''':'')
     }
 
@@ -69,6 +66,8 @@ pipeline {
         NETSTORAGE_ACCESS_KEY = credentials('NETSTORAGE_ACCESS_KEY')
         ENS_USERNAME= credentials('ENS_USERNAME')
         ENS_PASSWORD= credentials('ENS_PASSWORD')
+        MaestroLoginID= credentials('MaestroLoginID')
+        MaestroUsrID= credentials('MaestroUsrID')
     }
     stages {
         stage('Run CI?') {
