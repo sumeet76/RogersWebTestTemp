@@ -15,19 +15,22 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		super(driver);
 		
 	}
-	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+//	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+	@FindBy(xpath="//input[@id='algoliaInput']")
 	WebElement addressInput;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
-	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+//	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
-	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+//	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement inputContainer;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
@@ -440,7 +443,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickIfAvailable(continueButton);
+//		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 	/**
