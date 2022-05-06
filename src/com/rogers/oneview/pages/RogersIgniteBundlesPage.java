@@ -444,7 +444,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickIfAvailable(continueButton);
+		//getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 	/**
@@ -664,6 +664,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 
