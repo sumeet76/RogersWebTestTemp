@@ -591,7 +591,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(checkOut, 45);
-		getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementTobeClickable(checkOut,30);
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 
 	}
 
@@ -614,7 +616,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(checkOut,60);
 	//	getReusableActionsInstance().scrollToElement(checkOut);
 	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
-		getReusableActionsInstance().waitForElementTobeClickable(checkOut,60);
+		getReusableActionsInstance().waitForElementTobeClickable(checkOut,90);
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 
@@ -623,6 +625,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
+		getReusableActionsInstance().staticWait(10000);
 		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
 			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
 			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
@@ -675,8 +678,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkInternetCheckbox() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().scrollToElement(internetCheckbox);
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
+		//getReusableActionsInstance().scrollToElement(internetCheckbox);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 90);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 	/**
@@ -887,6 +890,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clkContinueFor3PPortIn() {
+		getReusableActionsInstance().waitForElementVisibility(clickContinue3PPortIn);
 		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
 		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
 	}
