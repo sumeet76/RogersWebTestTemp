@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
-    public void checkTVPackageDowngrade() {
+    public void checkTVPackageUpgrade() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),  TestDataHandler.TC030_Internet_PackageUpgrade.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -20,8 +20,7 @@ public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest 
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-//        getInternetDashboardPage().selectInternetPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
-
+        getInternetDashboardPage().selectInternetPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
         getInternetDashboardPage().goToPageBottom();
         getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");

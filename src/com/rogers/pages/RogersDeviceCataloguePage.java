@@ -150,7 +150,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'New customer') or contains(.,'Nouveau client')]")
     WebElement txtNewCustomerInExistingCustModal;
 
-    
+    @FindBy(xpath = "//button[@data-test='rpp-migration-accept-cta']//span[contains(text(),'Continue')]")
+    WebElement btnContinuemigrationRpp;
     /**
      * To verify the Home page
      * @return true if the signin link is available on home page, else false
@@ -835,6 +836,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public boolean verifyPasscode() {
        return getReusableActionsInstance().isElementVisible(txtNewCustomerInExistingCustModal);
+    }
+
+    /**
+     * This method will click on the continue button in RPP Migration Fee modal during the consumer to RPP migration flow
+     * @author subash.nedunchezhian
+     */
+    public void clkContinueBtnMigrationFeeRpp() {
+        getReusableActionsInstance().clickIfAvailable(btnContinuemigrationRpp);
     }
 
 }

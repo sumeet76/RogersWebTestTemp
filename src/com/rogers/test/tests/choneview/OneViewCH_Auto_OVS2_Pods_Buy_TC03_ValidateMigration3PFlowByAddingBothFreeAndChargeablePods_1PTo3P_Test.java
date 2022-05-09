@@ -19,9 +19,10 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        reporter.reportLogWithScreenshot("OneView Interface has Launched");
        getAccountOverViewPage().clickIgnite();
        reporter.reportLogWithScreenshot("use this address");
-       getRogersIgniteBundlesPage().clkUsethisAddress();
+   //    getRogersIgniteBundlesPage().clkUsethisAddress();
        reporter.reportLogWithScreenshot("Service Availability");
        getRogersIgniteBundlesPage().clkContinue();
+       getRogersIgniteBundlesPage().clkContinueServiceable();
        getRogersIgniteBundlesPage().clkTVCheckbox();
        getRogersIgniteBundlesPage().clkInternetCheckbox();
        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
@@ -40,6 +41,7 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
        getRogersIgniteBundlesPage().clickExchangeLater();
        reporter.reportLogWithScreenshot("After Exchange later");
+       getRogersIgniteBundlesPage().clkContinue();
        getRogersIgniteBundlesPage().fourKTVPopup();
        getRogersIgniteBundlesPage().contiue4KContent();
        getCustomerProfilePage().clkContinue();
@@ -51,12 +53,11 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersIgniteBundlesPage().addPods(0);
        reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
        getRogersIgniteBundlesPage().clkContinueInternetAddon();
-       getRogersIgniteBundlesPage().clkContinue();
+    //   getRogersIgniteBundlesPage().clkContinue();
        reporter.reportLogWithScreenshot("Cart Summary");
-       getRogersIgniteBundlesPage().clkCheckOut();
-       reporter.reportLogWithScreenshot("Cart Summary");
-       reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
        getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+       reporter.reportLogWithScreenshot("Cart Summary");
+   //    reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
        getRogersIgniteBundlesPage().customerWishtoContinue();
        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
        reporter.reportLogWithScreenshot("Customer Profile");
@@ -70,8 +71,9 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getCreditCheckPage().clkContinue();
        getHomePhoneSelectionPage().clkGeneratePhoneNo();
        reporter.reportLogWithScreenshot("Phone Number Selected");
-       getCreditCheckPage().goToPageBottom();
+   //    getCreditCheckPage().goToPageBottom();
        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+       getHomePhoneSelectionPage().clkContinue();
        getCreditCheckPage().verifyInstallationOption();
        reporter.reportLogWithScreenshot("installation options");
        getCreditCheckPage().goToPageBottom();

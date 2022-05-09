@@ -29,7 +29,7 @@ public class OneViewCH_Auto_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest ext
 		reporter.reportLogWithScreenshot("Reset Voice mail button clicked");
 		getHomePhonedashboard().clickYesResetPassword();;
 		reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
-//		reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
+		reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
         reporter.reportLogWithScreenshot("reset success");
     }
 

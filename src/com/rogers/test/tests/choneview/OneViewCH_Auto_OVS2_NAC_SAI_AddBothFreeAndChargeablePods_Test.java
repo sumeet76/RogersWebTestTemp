@@ -18,8 +18,8 @@ public class OneViewCH_Auto_OVS2_NAC_SAI_AddBothFreeAndChargeablePods_Test exten
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.MaxSAI_Cx_Pods.getAccountNo(),TestDataHandler.MaxSAI_Cx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-        reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
+     //   reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
+     //   reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click Add Pods Button ");
         getInternetDashboardPage().clickAddToCartForPods();
@@ -27,7 +27,7 @@ public class OneViewCH_Auto_OVS2_NAC_SAI_AddBothFreeAndChargeablePods_Test exten
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRestrictedDoesNotAppear(),"Restricted appeared","Restricted did not appeared");
+    //    reporter.hardAssert(getInternetDashboardPage().verifyRestrictedDoesNotAppear(),"Restricted appeared","Restricted did not appeared");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
         reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");

@@ -22,6 +22,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test extends Ba
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_Corp_FR_ON_Test() throws InterruptedException {
+        System.out.println(System.getenv("champCorpUserName")+" "+ System.getenv("champCorpPassword"));
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();

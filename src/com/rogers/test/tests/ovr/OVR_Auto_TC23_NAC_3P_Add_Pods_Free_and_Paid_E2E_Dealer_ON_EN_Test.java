@@ -22,7 +22,7 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         //closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR"})
+    @Test(groups = {"OVR", "RegressionOVR", "OVRSanity"})
     public void ovr_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
@@ -78,18 +78,20 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
-        getRogersIgniteBundlesPage().addAdditionalPods(5);
+        //getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
-        getRogersIgniteBundlesPage().addPods(0);
-        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+        //getRogersIgniteBundlesPage().addPods(0);
+        //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
         //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
-        reporter.reportLogWithScreenshot("Addons selected for addition");
+        reporter.reportLogWithScreenshot("Addons selected for home phone add ons");
         getHomePhoneAddonsPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        //validation for pods
+        //reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -118,12 +120,19 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
 
-        reporter.reportLogWithScreenshot("Continue to Home Phone Selection Page");
+        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.hardAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-        reporter.reportLogWithScreenshot("Phone Number Selected");
-        reporter.hardAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("continue from generate phone number");
+        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        reporter.reportLogWithScreenshot("continue from call display");
+        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+        reporter.reportLogWithScreenshot("continue from directory listing");
         getHomePhoneSelectionPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
+
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Options loaded","Installation options not loaded");
@@ -143,6 +152,7 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         reporter.reportLogWithScreenshot("Order review Page");
         getOVROrderReviewPage().clkContinue();
         reporter.reportLogWithScreenshot("Sign Agreement Page");
@@ -156,6 +166,6 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
     }
 }
