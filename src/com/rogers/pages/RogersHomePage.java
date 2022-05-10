@@ -244,8 +244,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
-	//@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
+	//@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
+	@FindBy(xpath = "//a[@aria-label='Check availability Check if Ignite Internet is available at your address']")
 	})
 	WebElement lnkInternetAvailability;
 
@@ -253,11 +253,10 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
-			@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
-			@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
+			@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
+			//@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")
+			})
 	WebElement txtInternetBuyPage;
-  //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
