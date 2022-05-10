@@ -1073,7 +1073,7 @@ public void activateHomePhoneltrPopUp() {
 	public void addPods(int amount)
 	{
 		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
-		getReusableActionsInstance().getWhenReady(podsLocator, 20);
+		getReusableActionsInstance().getWhenReady(podsLocator, 60);
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}

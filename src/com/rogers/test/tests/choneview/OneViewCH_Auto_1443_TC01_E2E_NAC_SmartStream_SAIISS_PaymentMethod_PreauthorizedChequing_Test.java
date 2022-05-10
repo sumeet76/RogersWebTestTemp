@@ -57,6 +57,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -82,11 +83,11 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		reporter.reportLogWithScreenshot("Account Number");*/
 
 
-		getPaymentOptionsPage().clkContinue();
+/*		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");*/
 
     }
 

@@ -67,12 +67,12 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			reporter.reportLogWithScreenshot("Page bottom");
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 			reporter.reportLogWithScreenshot("phone number generated.");
-			getHomePhoneSelectionPage().clkContinue();
+			//getHomePhoneSelectionPage().clkContinue();
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();
 			reporter.reportLogWithScreenshot("installation options");
 			getCreditCheckPage().goToPageBottom();
-			reporter.reportLogWithScreenshot("In person delivery");
+			getCreditCheckPage().clkCourierDelivery();
 			getCreditCheckPage().clickInPersonDelivery();
 			reporter.reportLogWithScreenshot("IN PERSON DELIVERY");
 			getPaymentOptionsPage().clkContinue();
@@ -88,10 +88,10 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("card details entered");
 			getPaymentOptionsPage().clkContinue();
-			reporter.reportLogWithScreenshot("submit order");
+/*			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
 			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			reporter.reportLogWithScreenshot("Order Placed");
+			reporter.reportLogWithScreenshot("Order Placed");*/
 		
     }
 

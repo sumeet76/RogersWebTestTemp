@@ -51,13 +51,13 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getRogersIgniteExchangePage().clickSelectButton();
 		reporter.reportLogWithScreenshot("Channel Swapped");
 		getRogersIgniteExchangePage().clkContinue();
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContentPopup();
+/*		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();*/
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
-		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
+		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue from cart summary");
@@ -79,6 +79,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -90,10 +91,12 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("Payment screen");
+/*
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Placed");
+*/
 
 
 	}

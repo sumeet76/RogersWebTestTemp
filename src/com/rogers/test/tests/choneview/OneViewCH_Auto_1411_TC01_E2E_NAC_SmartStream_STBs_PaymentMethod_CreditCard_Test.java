@@ -59,6 +59,7 @@ public class OneViewCH_Auto_1411_TC01_E2E_NAC_SmartStream_STBs_PaymentMethod_Cre
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Installation bottom");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();
@@ -72,11 +73,11 @@ public class OneViewCH_Auto_1411_TC01_E2E_NAC_SmartStream_STBs_PaymentMethod_Cre
 		reporter.reportLogWithScreenshot("mmyy");
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("CVV");
-		getPaymentOptionsPage().clkContinue();
+		/*getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");*/
 
     }
 

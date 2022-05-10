@@ -37,8 +37,8 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		 reporter.reportLogWithScreenshot("Product Added");
 		 getRogersIgniteBundlesPage().clkContinue();
-		 getRogersIgniteBundlesPage().fourKTVPopup();
-		 getRogersIgniteBundlesPage().fourKContentPopup();
+		 /*getRogersIgniteBundlesPage().fourKTVPopup();
+		 getRogersIgniteBundlesPage().fourKContentPopup();*/
 		 reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
 		 getRogersIgniteBundlesPage().clkExpressCheckOut();
@@ -66,6 +66,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 getCreditCheckPage().verifyInstallationOption();
 		 getCreditCheckPage().goToPageBottom();
 		 reporter.reportLogWithScreenshot("in person delivery");
+		 getCreditCheckPage().clkCourierDelivery();
 		 getCreditCheckPage().clickInPersonDelivery();
 		 getPaymentOptionsPage().clkContinue();
 		 reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -77,11 +78,11 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		 getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		 reporter.reportLogWithScreenshot("card details entered");
-		 getPaymentOptionsPage().clkContinue();
+/*		 getPaymentOptionsPage().clkContinue();
 		 getRogersOVCheckoutPage().clkSubmit();
 		 reporter.reportLogWithScreenshot("submit order");
 		 reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		 reporter.reportLogWithScreenshot("Order Placed");
+		 reporter.reportLogWithScreenshot("Order Placed");*/
 			
 	    }
 
