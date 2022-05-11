@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import utils.FormFiller;
 
 public class RogersIgniteTVBuyPage extends BasePageClass {
@@ -33,24 +34,38 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnSolarisStarterPackage;
 
 	@FindAll({
-   @FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::a"),
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']//span[text()='Add to cart']")})
+   			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Order Rogers Ignite Premier online now']/span"),
+			@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/span"),
+			@FindBy(xpath = "//a[@aria-label='Order Rogers Ignite Premier online now']//span[text()='Order online']")})
 	WebElement btnSolarisPremierPackage;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 5 Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
+			@FindBy(xpath = "//div[@class='bundle-tile-row']//a[@aria-label='Order Rogers Ignite Flex 5 online now']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")})
 	WebElement txtFlex5PackageCost;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 10 Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
+			@FindBy(xpath = "//div[@class='bundle-tile-row']//a[@aria-label='Order Rogers Ignite Flex 10 online now']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")})
 	WebElement txtFlex10PackageCost;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 20+']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
+			@FindBy(xpath = "//div[@class='bundle-tile-row']//a[@aria-label='Order Rogers Ignite Flex 20 + Sports online now']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")})
 	WebElement txtFlex20PackageCost;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
+			@FindBy(xpath = "//div[@class='bundle-tile-row']//a[@aria-label='Order Rogers Ignite Starter online now']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")})
 	WebElement txtStarterPackageCost;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Premier']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
+			@FindBy(xpath = "//div[@class='bundle-tile-row']//a[@aria-label='Order Rogers Ignite Premier online now']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")})
 	WebElement txtPremierPackageCost;
+
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']")
+	WebElement txtPremierPackage;
 
 	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']")
 	WebElement txtPopularPackageCost;
@@ -156,6 +171,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtBundlesPage;
+
+	@FindBy(xpath = "//h2[@translate='global.label.ourBundles']")
+	WebElement txtOffersPage;
+
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnTypeOfContract;
 
 	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.successModal.primaryButtonLabel']")
 	WebElement btnOkay;
@@ -399,6 +420,27 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyBundlesPage() {
 		getReusableActionsInstance().waitForElementVisibility(txtBundlesPage, 120);
 		return	getReusableActionsInstance().isElementVisible(txtBundlesPage);
+	}
+
+	/**
+	 * To verify Offers Page
+	 * @return true if the Offers are available else return false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyOffersPage() {
+		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 120);
+		return	getReusableActionsInstance().isElementVisible(txtOffersPage);
+	}
+
+
+	/**
+	 * To select type of contract to month-to-month
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectMonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
 	/**
@@ -1150,6 +1192,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifyPremierPackageCost() {
 		return	getReusableActionsInstance().isElementVisible(txtPremierPackageCost,10);
+	}
+
+	/**
+	 * To verify Premier Package
+	 * @return true if the Premier Package is available else return false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyPremierPackage() {
+		return	getReusableActionsInstance().isElementVisible(txtPremierPackage,10);
 	}
 
 	/**
