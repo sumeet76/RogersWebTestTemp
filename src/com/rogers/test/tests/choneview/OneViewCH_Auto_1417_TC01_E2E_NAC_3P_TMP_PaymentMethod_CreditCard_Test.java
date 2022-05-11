@@ -45,7 +45,7 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR1");
+		getRogersIgniteCampaignPage().enterCoupon("KDT");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
@@ -77,6 +77,7 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in-person delivery");
@@ -91,11 +92,11 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("added cart details");
-		getPaymentOptionsPage().clkContinue();
+/*		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");*/
     }
 
 	@BeforeMethod (alwaysRun=true)

@@ -19,7 +19,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//input[@id='algoliaInput']")
 	WebElement addressInput;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
+	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
 	//@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
@@ -35,6 +36,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
+
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//following::button")
+	WebElement continueReviewButton;
 
 	@FindBy(xpath = "//div[contains(text(),'This address is serviceable') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement serviceavailableMessage;
@@ -492,11 +496,20 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-
+		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+	}
+
+	/**
+	 * Click Continue Button after Address availability
+	 * @author dani.dominic
+	 */
+	public void clkReviewContinue() {
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().getWhenReady(continueReviewButton).click();
 	}
 
 
