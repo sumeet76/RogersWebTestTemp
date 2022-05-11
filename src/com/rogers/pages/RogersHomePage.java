@@ -106,8 +106,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
 	@FindAll({
-			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
-			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
+			@FindBy(xpath = "//a[contains(@aria-label,'See available bundles') or  contains(@aria-label,'Voir les offres groupées')]"),
+			@FindBy(xpath = "//a[contains(@aria-label,'View bundles  View Ignite TV + Internet bundles available to you')]/span")})
 	WebElement btnServiceability;
 
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
@@ -125,8 +125,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement btnAddressValidation;
 
 	@FindAll({
-	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]"),
-	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")})
+			@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]"),
+			@FindBy(xpath = "//input[contains(@ng-reflect-a11y-description,'Enter full address incl. unit')]")})
 	WebElement txaIgniteAddressLookup;		
 
 	@FindBy(xpath = "//div[@id='multipleUnitsModal'] ")
@@ -141,7 +141,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='input-search']//div[contains(@class,'ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white')]")
 	WebElement txaIgniteAddressContainer;	
 	
-	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]/..")
 	WebElement txaIgniteAddressContainerExisting;
 
 	@FindBy(xpath = "//div[@class='pca-address-lookup-component ng-star-inserted']//div[contains(@class,'ds-formField__inputContainer')]")
