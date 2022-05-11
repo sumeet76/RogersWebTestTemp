@@ -327,9 +327,10 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]"),
-			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No,')]")
+			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No,')]"),
+			@FindBy(xpath = "//div[@data-type='target']/following-sibling::div[2]")
 	})
-	WebElement btnNoThanks;
+	WebElement btnClkNoThanks;
 
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
@@ -349,7 +350,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(.,'Good News') or contains(.,'Bonne nouvelle')]")
 	WebElement txtGoodNewsAccessoryShipMsg;
 
-	@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'button-container')]//button[contains(.,'No,')]")
 	WebElement btnNoThanksVertical;
 
 	/**
@@ -497,12 +498,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * This method clicks on No Thanks button in survey modal if available
 	 * @author praveen.kumar7
 	 */
-	public void clkNoThanks() {
-		if((getReusableActionsInstance().isElementVisible(btnNoThanksVertical,8)) ||
-				(getReusableActionsInstance().isElementVisible(By.xpath("//div[contains(@class,'button-container')]//button[contains(.,'No,')]"),5))) {
-			getReusableActionsInstance().executeJavaScriptClick(btnNoThanks);
+	 public void clkNoThanks() {
+			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,8)) {
+				getReusableActionsInstance().executeJavaScriptClick(btnClkNoThanks);
+			}
 		}
-	}
 	/**
 	 * Enter the lastName on the Create Profile stepper, Last Name field
 	 * @return LastName
@@ -847,19 +847,23 @@ public class RogersCheckoutPage extends BasePageClass {
 		}*/
 	}
 
-
-	public String setDownPayment(String riskClass, String deviceCost) {
-		if(riskClass.toUpperCase().contains("HIGH")) {
-			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 40.0;
+	/**
+	 * This method calculates expected mandatory down payment amount(deviceCost-upfrontEdgeAmt) based on Risk
+	 * @param upfrontEdgeAmt upfrontEdge Offer for the device
+	 * @param deviceCost full price of the device
+	 * @param riskClass HIGH/MEDIUM risk
+	 * @author subash.nedunchezhian
+	 */
+	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt) {
+		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt));
+		if (riskClass.toUpperCase().contains("HIGH")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100) * 40.0;
 			return String.valueOf(expectedDownPayment);
-		}
-		else if(riskClass.toUpperCase().contains("MEDIUM")) {
-			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
+		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
 			return String.valueOf(expectedDownPayment);
-		}
-		else return "0";
+		} else return "0";
 	}
-
 
 	/**
 	 * This method verifies if CLA text is displayed properly

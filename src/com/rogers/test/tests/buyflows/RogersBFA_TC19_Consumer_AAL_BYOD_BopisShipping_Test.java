@@ -27,7 +27,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
     public void rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
+        //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc19AALBYODBopisShipping.getUsername());
@@ -37,19 +37,20 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
+        getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device??flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
+        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
         String aalSharingType = TestDataHandler.tc19AALBYODBopisShipping.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
+        //reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        //reporter.reportLogWithScreenshot("Device Catalog Page");
+        //getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
@@ -59,8 +60,14 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc19AALBYODBopisShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
+        getRogersPlanConfigPage().selectBYODdpAddon();
+        reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
+        getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc19AALBYODBopisShipping.getDpIMEI());
+        reporter.reportLogPassWithScreenshot("DP Addon IMEI Entered");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyNotEligibleMsg(),"Entered IMEI is not eligible for Device Protection Addon","Entered IMEI is eligible");
+        getRogersPlanConfigPage().selectNoDeviceProtection();
+        reporter.reportLogPassWithScreenshot("No Device Protection option selected after checking the eligibility(failure)");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

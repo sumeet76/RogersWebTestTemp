@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RogersSolarisTVDashboardPage extends BasePageClass {
 
@@ -17,7 +19,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 		
 	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV')]"),
+        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or  contains(text(),'Télé')]"),
         @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
 	WebElement btnSolaristvBadge;
 	
@@ -36,6 +38,33 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
+	@FindBy(xpath = "//span[text()='FR']")
+	WebElement lnkFR;
+
+	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='false']/span")
+	WebElement lnkMoreDetails;
+
+	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='true']/span")
+	WebElement lnkMoreDetailsExpanded;
+
+	@FindBy(xpath = "//a[@class='contact-line__cta' and @href='tel:1 855 759-5856']/span")
+	WebElement lnkCallUs;
+
+	@FindBy(xpath = "//span[contains(@class,'ds-color-success')]")
+	WebElement iconSuccessLTQModal;
+
+	@FindBy(xpath = "//h1[@class='modal-header-copy']")
+	WebElement headerLTQModal;
+
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.tvMDUPackageDisplayNumber']/ancestor::a[@href='tel:1 8557595856']")
+	WebElement lnkCallUsLTQModal;
+
+	@FindBy(xpath = "//h1[@class='modal-header-copy']/parent::div/following-sibling::div")
+	WebElement txtLTQModalContent;
+
+	@FindBy(xpath = " //span[contains(@class,'rds-icon-close')]")
+	WebElement imgCloseLTQModal;
+
 	@FindBy(xpath = "//div[@class='channels-container']")
 	WebElement lstChannelList;
 	//div[@class='channel-list-block']
@@ -53,13 +82,43 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	WebElement btnChangeTVPackage;
 	//ins[@translate='global.cta.changeTVPackage']
 
-	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']/ancestor::span[@role='text']")
 	WebElement btnManageChannelsAndThemePacks;
 	//ins[@translate='global.cta.addChannelsOrThemePacksTv']
 
 	@FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::a/span")
 	WebElement popupChangeTVPackage;
 	//ins[@translate='global.cta.bysContinue']
+
+	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
+	WebElement headerChangepkg;
+
+	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait de télévision']")
+	WebElement headerChangeTVpkg;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	WebElement txtContactUsPopupModal;
+
+	@FindBy(xpath = "//h2[contains(@class,'popup-modal-body__heading')]")
+	WebElement headerChangeTVPkgContent;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']/descendant::li")
+	WebElement txtChangeTVPkgPopupModal;
+
+	@FindBy(xpath = "//button[@aria-label='Cancel' or @aria-label='Annuler']")
+	WebElement btnCancel;
+
+	@FindBy(xpath = "//ds-icon[@name='call']/span[@role='img']")
+	WebElement imgBookACallBack;
+
+	@FindBy(xpath = "//span[text()='Book a call back' or text()='Fixer une heure de rappel']")
+	WebElement lnkBookACallBack;
+
+	@FindBy(xpath = "//ds-icon[@name='text']/span[@role='img']")
+	WebElement imgLiveChat;
+
+	@FindBy(xpath = "//span[contains(@bcKey, 'loggedIn')]/descendant::span[text()='Live Chat']")
+	WebElement lnkLiveChat;
 
 	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
 	WebElement popupContatUS;
@@ -79,6 +138,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@class='ute-btn-primary']")
 	WebElement btnConfirmExchange;
+
+	@FindBy(xpath = "//a[@aria-label='Exchange now']")
+	WebElement btnExchangeNow;
 
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
@@ -103,14 +165,14 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 
 	@FindBy(xpath = "//h4[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]")
 	WebElement txtIgniteFlex10;
-	
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successMessageParentalControlAndPinReset;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successRefreshYourIgniteTVBox;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle ds-color-success']")
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
 	WebElement successResetPurchasePIN;
 
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
@@ -164,6 +226,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderTVDashboard;
+
+	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
+	WebElement popupChangeTVPkg;
 
 	
 	/**
@@ -227,7 +292,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90).click();
+		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
 	}
 
 	/**
@@ -250,11 +315,20 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Verify Exchange Now Button is present or not
+	 * @return true if the Exchange Now button is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyExchangeNow() {
+		return getReusableActionsInstance().isElementVisible(btnExchangeNow);
+	}
+	/**
 	 * Click the view my channel lineup link on Solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		getReusableActionsInstance().waitForElementVisibility(lnkViewMyChannelLineup,60);
+		wait = new WebDriverWait(getDriver(), 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='View my channel lineup']")));
 		getReusableActionsInstance().getWhenReady(lnkViewMyChannelLineup, 30).click();
 	}
 
@@ -417,7 +491,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select')]");
+		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
@@ -443,6 +517,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	}
 
 	/**
+	 * Verify the ChangeTV Package button on solaris TV dashboard page
+	 * @return true if Continue btn is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPopupChangeTVPackageContinueBtn() {
+		return getReusableActionsInstance().isElementVisible(popupChangeTVPackage, 30);
+	}
+
+	/**
 	 * Click the ChangeTV Package button on solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
@@ -456,7 +539,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifycontatUSPopUp() {		
-		return getReusableActionsInstance().isElementVisible(popupContatUS, 90);
+		return getReusableActionsInstance().isElementVisible(popupContatUS, 50);
 	}
 
 	/**
@@ -640,6 +723,238 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyBoxSettingslsDisplayed() {		
 		return getReusableActionsInstance().isElementVisible(lblBoxSettings);
+	}
+
+	/**
+	 * Verifies if Change Package Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangePackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
+	}
+
+
+	/**
+	 * Gets the Change Tv Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContent() {
+		String contactUsContentDesired = "Great! Contact us or book a call back – we’ll help you with all the details.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+	return false;
+	}
+
+	/**
+	 * Verifies if Book a call back link is present
+	 * @return true if Book a call back link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyBookACallBack() {
+		getReusableActionsInstance().waitForElementVisibility(imgBookACallBack, 10);
+		return getReusableActionsInstance().isElementVisible(lnkBookACallBack, 20);
+
+	}
+
+	/**
+	 * Verifies if Live Chat link is present
+	 * @return true if Live Chat link is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyLiveChat() {
+		getReusableActionsInstance().waitForElementVisibility(imgLiveChat, 10);
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat, 20);
+	}
+
+
+	/**
+	 * Gets the Change Package - Contact Us Modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyContactUsModalContentFR() {
+		String contactUsContentDesired = "Super! Communiquez avec nous ou choisissez une heure de rappel et nous réglerons les détails avec vous.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Select FR as language preference
+	 * @author manpreet.kaur3
+	 */
+	public void clkFR() {
+		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+	}
+
+	/**
+	 * Click More Details link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkMoreDetails() {
+		getReusableActionsInstance().getWhenReady(lnkMoreDetails, 20).click();
+	}
+
+	/**
+	 * Verify More Details link is expanded
+	 * @retun true if More Details link is expanded , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyMoreDetailsExpanded() {
+		return getReusableActionsInstance().isElementVisible(lnkMoreDetailsExpanded, 20);
+	}
+
+	/**
+	 * Verify the number is text or link for Bulk Tenant on TV Dashboard page
+	 * @retun true if the number is clickable , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallUs() {
+		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+	}
+
+	/**
+	 * Verify the LTQ modal
+	 * @retun true if the success icon is visible , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModal() {
+		getReusableActionsInstance().waitForElementVisibility(iconSuccessLTQModal, 20);
+		return getReusableActionsInstance().isElementVisible(iconSuccessLTQModal);
+	}
+
+	/**
+	 * Verify the LTQ modal Header
+	 * @retun true if the LTQ modal Header is as per requirement , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalHeader() {
+		String expectedLTQHeader = "Add Channels & Theme Packs to your bundle.";
+		String actualLTQHeader = getReusableActionsInstance().getWhenReady(headerLTQModal).getText();
+		return actualLTQHeader.equals(expectedLTQHeader);
+	}
+
+	/**
+	 * Verify the LTQ modal content
+	 * @retun true if the LTQ modal copy is as per requirement , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalContent() {
+		String expectedLTQModalCopy = "Call us at 1 855 759-5856 and we'll help you with all the details";
+		String actualLTQModalCopy = getReusableActionsInstance().getWhenReady(txtLTQModalContent).getText();
+	    return actualLTQModalCopy.equals(expectedLTQModalCopy);
+	}
+
+	/**
+	 * Verify LTQ modal Call Us Link
+	 * @retun true if the LTQ modal Call Us is a Link , else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLTQModalCallUsLink() {
+		return getReusableActionsInstance().isElementVisible(lnkCallUsLTQModal);
+	}
+
+	/**
+	 * Clicks on close icon on LTQ modal
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseLTQMOdal() {
+		getReusableActionsInstance().getWhenReady(imgCloseLTQModal, 10).click();
+	}
+
+	/**
+	 * Verify the contact us popup on solaris TV dashboard page
+	 * @return true if the solaris TV dashboard page display the contat us popup , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyChangeTVPackagePopUp() {
+		return getReusableActionsInstance().isElementVisible(popupChangeTVPkg, 50);
+	}
+	/**
+	 * Verifies if Change TV Package (PTM modal) Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+
+	public boolean verifyChangeTVPackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangeTVpkg, 20);
+	}
+
+	/**
+	 * Gets the Change TV Package Modal content header
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentHeader() {
+		String changeTVPkgContentHeaderDesired = "When you select a new TV package:";
+		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
+		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the Change TV Package content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContent() {
+		String changeTVPkgContentDesired = "Added Standalone Channels or Theme Packs will be removed";
+		String changeTVPkgContentActual = getReusableActionsInstance().getWhenReady(txtChangeTVPkgPopupModal, 20).getText();
+		if(changeTVPkgContentActual.equals(changeTVPkgContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Verify Cancel btn on Change TV Package Popup
+	 * @return true if cancel btn is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageCancelBtn() {
+		return getReusableActionsInstance().isElementVisible(btnCancel, 20);
+	}
+
+	/**
+	 * Gets the Change TV Package Modal content header
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentHeaderFR() {
+		String changeTVPkgContentHeaderDesired = "Quand vous choisissez un nouveau forfait de télévision :";
+		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
+		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the Change TV Package content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentFR() {
+		String changeTVPkgContentDesired = "Les chaînes à la carte et les forfaits à thème auxquels vous êtes abonné sont retirés de votre compte.";
+		String changeTVPkgContentActual = getReusableActionsInstance().getWhenReady(txtChangeTVPkgPopupModal, 20).getText();
+		if(changeTVPkgContentActual.equals(changeTVPkgContentDesired)){
+			return true;
+		}
+
+		return false;
 	}
 
 }

@@ -34,9 +34,9 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
 
-	@FindBy(xpath = "//button[contains(text(),'Skip') or contains(text(),'Continuer') or @title=\"Skip\"]")
+	@FindBy(xpath = "//button[@title='Sauter cette étape' or @title= 'Skip']")
 	WebElement btnSkip;
-	
+
 	@FindBy(xpath = "//h5[@class='registerButton']//*[text()='Register' or text()=\"S'inscrire\"]")
 	WebElement lnkRegister;
 	

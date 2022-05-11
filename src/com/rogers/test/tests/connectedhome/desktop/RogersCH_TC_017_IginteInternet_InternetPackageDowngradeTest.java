@@ -30,20 +30,18 @@ public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends
 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetPackageDowngrade() {
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
-    	reporter.reportLogWithScreenshot("Launched the Account Page");
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+            reporter.reportLogWithScreenshot("Select an account.");
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        }
+        reporter.reportLogWithScreenshot("Account Selected");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkInternetPopup();
@@ -53,6 +51,10 @@ public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends
         //getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customercare popup");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
     	}
 	
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

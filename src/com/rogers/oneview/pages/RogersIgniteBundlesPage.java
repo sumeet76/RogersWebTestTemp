@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
-import org.testng.TestNGException;
 
 import java.util.List;
 
@@ -16,19 +15,22 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		super(driver);
 		
 	}
-	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+//	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+	@FindBy(xpath="//input[@id='algoliaInput']")
 	WebElement addressInput;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
-	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+//	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
-	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+//	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement inputContainer;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
@@ -132,7 +134,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='No' or text()='Non']/ancestor::button")
 	WebElement noPortInServices;
 
-	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+//	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement fourKContinue;
 
 
@@ -179,7 +182,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[@translate='global.label.personalizeYourChannels']")
 	WebElement personalizeYourChannels;
 
-	@FindBy(xpath = "//h1[@translate='global.label.cartSummary']")
+	@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 
 	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
@@ -292,16 +295,63 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
 	WebElement fourKContentContinue;
 
-	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']//ancestor::button")
+	@FindBy(xpath = "//rch-monthly-section//span[text()=' Show price breakdown ' or text()=' Afficher la répartition du prix ']//ancestor::button")
 	WebElement monthlyChargesExpandButton;
+
+	@FindBy(xpath = "//rch-one-time-section//span[text()='Show price breakdown' or text()='Afficher la répartition du prix']//ancestor::button")
+	WebElement oneTimeChargesExpandButton;
 
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.header']")
 	WebElement internetAddOnsCharges;
 
-	@FindBy(xpath = "//h2[@translate='global.label.monthlyBill']")
+	@FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
 
+	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
+	WebElement oneTimeCharges;
 
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	WebElement smartHomeAddOnsPageH1;
+
+	@FindBy(xpath = "(//span[text()='Smoke & Fire Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	WebElement smartHomeMonitoringAddOn;
+
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+	WebElement smartHomeMonitoringMonthlyCharges;
+
+	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+	WebElement smartHomeMonitoringOneTimeCharges;
+
+
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']/ancestor::div[@class='col-10 py-16']/following-sibling::div/child::div/child::button")
+	WebElement reviewTermsAndConditionsContinueButton;
+
+	@FindBy(xpath = "//div[@class='header']")
+	WebElement internetAddOnsHeader;
+
+	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
+	WebElement exchangeNow;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	WebElement internetCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
+	WebElement homePhoneCollapse;
+
+	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
+	WebElement batteryBackUpCollapse;
+
+	@FindBy(xpath = "(//span[text()='View details'])[1]")
+	WebElement viewDetails;
+
+	@FindBy(xpath="//span[@translate='sai.modals.pricingModal.packageDetail']")
+	WebElement expandPackageDetails;
+
+	@FindBy(xpath="//button[@title='close']")
+	WebElement closeBtn;
+
+	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
+	WebElement fibreActivationMsg;
 
 	/**
 	 * Click Load Offers button
@@ -393,7 +443,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickIfAvailable(continueButton);
+//		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 	/**
@@ -434,7 +484,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyServiceAvailabilityMessage() {	
-		return getReusableActionsInstance().isElementVisible(serviceavailableMessage,120);
+		return getReusableActionsInstance().isElementVisible(serviceavailableMessage,60);
 	}
 	/**
 	 * Click Continue Button after Address availability
@@ -443,9 +493,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkContinue() {
 
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
-//		getReusableActionsInstance().clickWhenReady(continueButton,120);
-
 	}
 
 
@@ -537,8 +587,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(checkOutFromCartSummary, 45);
-		getReusableActionsInstance().getWhenReady(checkOutFromCartSummary,30).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(checkOut, 45);
+		getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
 
 	}
 
@@ -558,8 +608,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().scrollToElement(checkOut);
-		getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
+	//	getReusableActionsInstance().scrollToElement(checkOut);
+	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
@@ -609,7 +659,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 
 	}
@@ -636,7 +686,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkHomePhoneCheckbox() {
-		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 120);
+		getReusableActionsInstance().waitForElementVisibility(homePhoneCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
 	}	
 	/**
@@ -1023,7 +1073,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Sameer.ahuja
 	 */
 	public void addAdditionalPods(int podsPrice){
-		By addPodsLocator = By.xpath("//div[text()=' "+podsPrice+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div/child::div//ds-icon[@name='plus']/ancestor::button");
+		By addPodsLocator = By.xpath("//div[text()=' "+podsPrice+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div/descendant::span[text()=' + ']/ancestor::button");
 		getReusableActionsInstance().getWhenReady(addPodsLocator, 30);
 		WebElement addPodsButton = getDriver().findElement(addPodsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
@@ -1088,12 +1138,13 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	/**
-	 * Expands the Monthly charges on cart Summary page and validates Internet add ons are present
+	 * Expands the Monthly charges on cart Summary page and validates Internet add ons charges are present
 	 * @return True if Internet Add on charges are present in monthly charges.
 	 * @author Sameer.Ahuja
 	 */
 	public boolean validateInternetAddOnsInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
@@ -1101,6 +1152,93 @@ public void activateHomePhoneltrPopUp() {
 
 	public boolean validateInternetAddOnsHeader(){
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+	}
+
+	public boolean validateSmartHomeAddOnsHeader() {
+		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
+	}
+
+	public void addSHMAddOn(){
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
+	}
+	/**
+	 * Expands the Monthly charges on cart Summary page and validates SHM add ons charges are present
+	 * @return True if SHM Add on charges are present in monthly charges.
+	 * @author Sameer.Ahuja
+	 */
+	public boolean validateSHMMonthlyChargesInCartSummary(){
+		getReusableActionsInstance().getWhenReady(monthlyCharges, 20);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
+		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
+		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
+	}
+	/**
+	 * Expands the One Time charges on cart Summary page and validates SHM add ons charges are present
+	 * @return True if SHM Add on charges are present in one time charges.
+	 * @author Sameer.Ahuja
+	 */
+	public boolean validateSHMOnetimeChargesInCartSummary(){
+		getReusableActionsInstance().getWhenReady(oneTimeCharges, 20);
+		getReusableActionsInstance().executeJavaScriptClick(oneTimeChargesExpandButton);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
+		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
+	}
+
+	public void clickReviewTearmAndConditionsContinueButton()
+	{
+		getReusableActionsInstance().getWhenReady(reviewTermsAndConditionsContinueButton, 10);
+		getReusableActionsInstance().clickWhenReady(reviewTermsAndConditionsContinueButton);
+	}
+
+	public boolean verifyInternetAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible((internetAddOnsHeader));
+	}
+
+	public void clickExchangeNow()
+	{
+		getReusableActionsInstance().getWhenReady(exchangeNow, 10);
+		getReusableActionsInstance().clickWhenReady(exchangeNow);
+	}
+
+	public void clickInternetCollapse()
+	{
+		getReusableActionsInstance().getWhenReady(internetCollapse, 10);
+		getReusableActionsInstance().clickWhenReady(internetCollapse);
+	}
+
+	public void clickHomePhoneCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(homePhoneCollapse);
+		getReusableActionsInstance().clickWhenReady(homePhoneCollapse);
+	}
+
+	public void clickBatteryBackUpCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(batteryBackUpCollapse);
+		getReusableActionsInstance().clickWhenReady(batteryBackUpCollapse);
+	}
+
+	public void clickViewDetails()
+	{
+		getReusableActionsInstance().waitForElementTobeClickable(viewDetails, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewDetails);
+	}
+
+	public void clkExpandPackageDetails(){
+		getReusableActionsInstance().getWhenReady(expandPackageDetails);
+		getReusableActionsInstance().clickWhenReady(expandPackageDetails);
+	}
+
+	public void clkCloseBtn(){
+		getReusableActionsInstance().getWhenReady(closeBtn);
+		getReusableActionsInstance().clickWhenReady(closeBtn);
+	}
+
+	public boolean verifyFibreActivationMSg(){
+		getReusableActionsInstance().waitForElementVisibility(fibreActivationMsg,20);
+		return getReusableActionsInstance().isElementVisible(fibreActivationMsg);
 	}
 
 }

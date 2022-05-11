@@ -16,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC30_RPP_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseTestClass {
+public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -25,37 +25,48 @@ public class RogersBFA_TC30_RPP_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseT
     }
 
     @Test(groups = {"RegressionBFA","RPPTEST"})
-    public void tc30_RPP_AALTerm_VDP_UpfronEdge_BopisTest() {
-        reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+    public void tc30_ConToRPP_AALTerm_VDP_UpfronEdge_BopisTest() {
+        //reporter.reportLog("URL:" + System.getProperty("QaUrl"));
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
+        // **************************Device catalog page*****************************************
+        getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
+        getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getPasscode());
+        reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
+        getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
+        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
-        reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl"));
+//        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
+//        reporter.reportLogWithScreenshot("Account Overview Page");
+//        getDriver().get(System.getProperty("AWSUrl"));
         //------------------------------------Device Catalog page--------------------------------------------
-        String deviceName = TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getNewDevice();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
-                "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
-        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(),
-                "Existing Customer Modal element is present on the screen", "Existing Customer Modal element is not present on the screen");
-        reporter.reportLogWithScreenshot("Existing Customer Modal window Popup");
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineButtonOnModal(), "Add a line button displayed", "Add a line button not displayed");
-        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
+        reporter.reportLogPassWithScreenshot("RPP Migration Fee Modal");
+        getRogersDeviceCataloguePage().clkContinueBtnMigrationFeeRpp();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
         String aalSharingType = TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
+        String deviceName = TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getNewDevice();
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
+                "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        reporter.reportLogWithScreenshot("Device Catalog Page");
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
+//        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(),
+//                "Existing Customer Modal element is present on the screen", "Existing Customer Modal element is not present on the screen");
+//        reporter.reportLogWithScreenshot("Existing Customer Modal window Popup");
+//        reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineButtonOnModal(), "Add a line button displayed", "Add a line button not displayed");
+//        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
+
         //------------------------------------Device Config page--------------------------------------------
         getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
@@ -65,6 +76,7 @@ public class RogersBFA_TC30_RPP_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseT
         //-------------------------------------Plan config page---------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is displayed", "Plan config page is not displayed");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+        reporter.hardAssert(getRogersPlanConfigPage().isMigratedToRppFin(),"Consumer User Migrated to RPP Financing successfully","Not Migrated to RPP Financing");
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();

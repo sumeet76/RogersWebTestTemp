@@ -107,7 +107,6 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//a[contains(@title,'See available bundles') or  contains(@title,'Voir les offres groupées')]"),
-			//@FindBy(xpath = "//a[contains(@title,'See bundles with Ignite TV and Internet') or  contains(@title,'Voir les offres groupées avec la Télé Élan et Élan Internet')]"),
 			@FindBy(xpath = "//a[contains(@title,'View Ignite TV + Internet bundles available to you') or  contains(@title,'Voir les offres groupées Télé Élan + Internet qui vous sont proposées')]")})
 	WebElement btnServiceability;
 
@@ -162,6 +161,9 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnUseAddress;
+
+	@FindBy(xpath="//p[contains(text(),'Good news!')]")
+	WebElement msgIgniteAddressFound;
 
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
 	WebElement btnIgniteAddressLookupSubmit;
@@ -242,8 +244,8 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
-	//@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
+	//@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
+	@FindBy(xpath = "//a[@aria-label='Check availability Check if Ignite Internet is available at your address']")
 	})
 	WebElement lnkInternetAvailability;
 
@@ -251,11 +253,10 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
-			@FindBy(xpath = "//span[@class='mb-0 flex-grow-1 text-title-4']"),@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']"),
-			@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")})
+			@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
+			//@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")
+			})
 	WebElement txtInternetBuyPage;
-  //@FindBy(xpath = "//h1[contains(text(),'Internet')]")
 
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
@@ -844,6 +845,11 @@ public class RogersHomePage extends BasePageClass {
 	public boolean verifyIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60);
 		return getReusableActionsInstance().isElementVisible(btnIgniteAddressLookupSubmit, 60);
+	}
+
+	public boolean verifyIgniteAddressFoundModal(){
+		getReusableActionsInstance().getWhenReady(msgIgniteAddressFound,60);
+		return getReusableActionsInstance().isElementVisible(msgIgniteAddressFound,60);
 	}
 
 	/**

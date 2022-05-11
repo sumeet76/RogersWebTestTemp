@@ -17,9 +17,9 @@ class RogersBFA_TC14_Consumer_HUPShareTermBopisML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void rogersHUPShareTermBopisMLTest() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14HUPShareTermBopisML.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14HUPShareTermBopisML.getPassword());

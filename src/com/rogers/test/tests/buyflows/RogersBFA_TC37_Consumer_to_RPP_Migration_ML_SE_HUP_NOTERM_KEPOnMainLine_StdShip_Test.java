@@ -14,43 +14,51 @@ import java.lang.reflect.Method;
  * TC37 - Regression - RPP HUP-E2E-Multi Line Shared Account - Validate the HUP flow by selecting the Noterm cost option on Main Line_Std Shipping_Chrome_EN_ON
  * @author praveen.kumar7
  */
-public class RogersBFA_TC37_RPP_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test extends BaseTestClass{
+public class RogersBFA_TC37_Consumer_to_RPP_Migration_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","RPPHUPBFA"})
-        public void rppHUP_tc37_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
-            reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            getRogersHomePage().clkSignIn();
+        public void ConToRppHUP_tc37_ML_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
+            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+            //reporter.reportLogWithScreenshot("Home Page");
+            //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
+            getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
+            reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
+            getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getPasscode());
+            reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
+            getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+            reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
+            getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
-            reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+            //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
             //getRogersLoginPage().clkSkipIFrame();
             getRogersLoginPage().switchOutOfSignInIFrame();
-            reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
-            reporter.reportLogWithScreenshot("Account Overview page");
-            getDriver().get(System.getProperty("AWSUrl"));
-
-            String deviceName = TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getDeviceName();
-            reporter.reportLogWithScreenshot("Moving to device catalogue page");
-            reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-            getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
-            reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
-                    "Modal element is not present on the screen");
-            getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
-            reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
+//            reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
+//            reporter.reportLogWithScreenshot("Account Overview page");
+//            getDriver().get(System.getProperty("AWSUrl"));
             reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
             reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
             getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getCtn());
             getRogersDeviceCataloguePage().clkContinueBtnHupCtnSelectionModal();
-
+            reporter.reportLogPassWithScreenshot("RPP Migration Fee Modal");
+            getRogersDeviceCataloguePage().clkContinueBtnMigrationFeeRpp();
+            String deviceName = TestDataHandler.tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip.getDeviceName();
+            reporter.reportLogWithScreenshot("Moving to device catalogue page");
+            reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+            getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
+//            reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
+//                    "Modal element is not present on the screen");
+            //reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
             reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                     "Continue button on the device config page is present",
                     "Continue button on the device config page is not present");
             getRogersDeviceConfigPage().clickContinueButton();
-
+            //*********************Plan Builder Page***************************************
+            reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
+            reporter.hardAssert(getRogersPlanConfigPage().isMigratedToRppFin(),"Consumer User Migrated to RPP Financing successfully","Not Migrated to RPP Financing");
             getRogersPlanConfigPage().clkRadioButtonNoTerm();
             reporter.reportLogPassWithScreenshot("No term selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();

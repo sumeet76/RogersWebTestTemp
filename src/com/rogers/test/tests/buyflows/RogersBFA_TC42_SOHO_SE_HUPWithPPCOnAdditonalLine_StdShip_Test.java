@@ -21,9 +21,9 @@ public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test exten
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void sohoHUP_tc42_ML_SE_HUPWithPPCOnAdditionalLine_StdShip_Test() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getPassword());

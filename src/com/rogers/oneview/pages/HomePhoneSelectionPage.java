@@ -11,12 +11,21 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-
-	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	//@FindBy(xpath = "(//span[@translate='global.cta.continue' and contains(text(),'Continue') or contains(text(),'Continuer')])[1]")
+	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
-	@FindBy(xpath = "//button[@type='submit']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[1]")
+	WebElement continueOnCallDisplayName;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	WebElement continueOnDirectoryListing;
+
+	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
 	WebElement generatePhoneNumber;
+
+	@FindBy(xpath = "//div[@class='button-set']/descendant::span[@translate='global.cta.continue']")
+	WebElement finalcontinueOnGeneratePhone;
 
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement continueButton;
@@ -54,14 +63,34 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Update Directory Listing']/ancestor::button")
 	WebElement updateDirectoryListingbtn;
 
-	@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	//@FindBy(xpath = "//ul[@class='number-select-list']/li[1]")
+	@FindBy(xpath = "//input[@id='ds-radio-input-id-29']")
 	WebElement selectedPhoneNo;
+
+	@FindBy(xpath = "//li[contains(text(),'You may use ampersands, hyphens and spaces but not at the beginning or end of a name')] or //li[contains(text(),'Vous pouvez utiliser des perluètes, des traits d’union et des espaces, mais pas au début ni à la fin d’un nom')]")
+	WebElement thingsToKnowFirstName;
+
+	@FindBy(xpath = "//li[contains(text(),'You may use hyphens, apostrophes and spaces but not at the beginning or end of a name')]  or //li[contains(text(),'Vous pouvez utiliser des traits d’union, des apostrophes et des espaces, mais pas au début ni à la fin d’un nom')]")
+	WebElement thingsToKnowLastName;
+
+	@FindBy(xpath = "//div/h1[@class='mb-0 ng-star-inserted' and contains(text(),' Review Call Display Name and Directory Listing ')]")
+	WebElement callDisplayNameAndDiretoryListingHeader;
+
+	@FindBy(xpath = "//span[text()='Home Phone Personalization' or text()='Personnalisation du téléphone résidentiel']")
+	WebElement homePhonePersonalizationHeader;
+
+
 	/**
 	 * Click Generate Phone Number Button  
 	 * @author chinnarao.vattam
 	 */	
 	public void clkGeneratePhoneNo() {
-		getReusableActionsInstance().getWhenReady(generatePhoneNumber,60).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementVisibility(homePhonePersonalizationHeader, 120);
+		//getReusableActionsInstance().staticWait(5000);
+		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+
+		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -76,7 +105,9 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		getReusableActionsInstance().getWhenReady(continueButton).sendKeys(Keys.ENTER);;
+		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(finalcontinueOnGeneratePhone,120);
 	}
 	
 	
@@ -105,8 +136,40 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnGeneratePhone);
+		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone,10);
 
 	}
+
+	public void clickOnContinueCallDisplay(){
+		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnCallDisplayName);
+		getReusableActionsInstance().clickWhenReady(continueOnCallDisplayName,10);
+	}
+	public void clickContinueDirectoryListing(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(continueOnDirectoryListing);
+
+	}
+
+	public boolean verifythingsToKnowFirstname(){
+		getReusableActionsInstance().staticWait(5000);
+		 return getReusableActionsInstance().isElementVisible(thingsToKnowFirstName,60);
+	}
+
+	public boolean verifyThingsToKnowLastName(){
+		return getReusableActionsInstance().isElementVisible(thingsToKnowLastName);
+	}
+
+	public boolean verifyConfigureCallDisplayAndDirectoryListingHeader() {
+		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader, 45);
+	}
+
+		public boolean verifyHomePhonePersonalizationHeader () {
+			return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
+
+		}
+
+
 
 }

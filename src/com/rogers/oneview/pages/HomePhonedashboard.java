@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +16,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	WebElement btnContnue;
 
 	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle']")
-	@FindBy(xpath = "//p[text()='Success!']")
+	@FindBy(xpath = "//p[text()='Success']")
 	WebElement imgSuccess;
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
@@ -92,6 +93,24 @@ public class HomePhonedashboard  extends BasePageClass {
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManager;
+
+	@FindBy(xpath = "(//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer'])[2]")
+	WebElement removeUnlistedNumberAddon;
+
+	@FindBy(xpath = "(//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer'])[1]")
+	WebElement removeCallDisplayAddon;
+
+	@FindBy(xpath = "//div[@class='ng-star-inserted']//h3[contains(text(),'Removed Items')]")
+	WebElement removedItemsHeader;
+
+	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue') or contains(text(),'Continuer')]")
+	WebElement continueYourChange;
+
+	@FindBy(xpath = "//h3[@class='fc-header' and contains(text(),'Call Display Blocking')]")
+	WebElement callDisplayAddon;
+
+	@FindBy(xpath = "//h3[@class='fc-header' and contains(text(),'Unlisted Number')]")
+	WebElement unlistedNumberAddon;
 
 
 	/**
@@ -323,10 +342,37 @@ public class HomePhonedashboard  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(ChangeCallDisplayName, 20);
 	}
 
-	public boolean verifyManageAddOns()
-	{
+	public void removeUnlistedNumberAddOn(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(removeUnlistedNumberAddon);
+	}
+
+	public void removeCallDisplayBlockAddon(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	    getReusableActionsInstance().executeJavaScriptClick(removeCallDisplayAddon);
+	}
+
+	public boolean verifyManageAddOns() {
 		return getReusableActionsInstance().isElementVisible(manageAddOns, 20);
 	}
+
+	public void yourChangeContinue(){
+		if (getReusableActionsInstance().isElementVisible(removedItemsHeader,60)){
+			getReusableActionsInstance().clickWhenReady(continueYourChange);
+		}
+	}
+
+	public boolean verifyCallDisplayAddon() {
+		return getReusableActionsInstance().isElementVisible(callDisplayAddon, 45);
+	}
+
+	public boolean verifyUnlistedNumberAddon(){
+		return getReusableActionsInstance().isElementVisible(unlistedNumberAddon,45);
+
+	}
+
 	}
 	
 

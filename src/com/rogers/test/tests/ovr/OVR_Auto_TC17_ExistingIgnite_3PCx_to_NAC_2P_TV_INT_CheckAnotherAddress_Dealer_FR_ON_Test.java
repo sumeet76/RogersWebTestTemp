@@ -97,7 +97,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
         getBundleBuilderPage().clkContinueInstallation();
 
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.hardAssert(getOVROrderReviewPage().verifyOrderoverviewHeader(),"Order review page loaded","Order review page not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");

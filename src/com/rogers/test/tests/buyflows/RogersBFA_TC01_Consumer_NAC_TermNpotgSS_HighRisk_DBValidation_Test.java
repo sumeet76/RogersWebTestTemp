@@ -105,7 +105,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
         getRogersCheckoutPage().clkCreditAuthorizationChkBox();
         getRogersCheckoutPage().clkCreditEvalContinue();
-        reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+        //reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
         /*reporter.hardAssert(getRogersCheckoutPage().verifyClaDownPaymentModalPresent(),
@@ -113,12 +113,12 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
         reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
                 "Down payment info dislayed in modal", "Down payment info not dislayed in modal");
         reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-        String expectedDownPayment = getRogersCheckoutPage().setDownPayment(TestDataHandler.tc01NACTermNpotgSS.getRiskClass(),deviceCost);
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermNpotgSS.getRiskClass(),deviceCost,"0");
         reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
-               "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
-        //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
+               "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
+        reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();
-        reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
+        //reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not displayed");
        // ***************Choose a Number Stepper*************//      
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");

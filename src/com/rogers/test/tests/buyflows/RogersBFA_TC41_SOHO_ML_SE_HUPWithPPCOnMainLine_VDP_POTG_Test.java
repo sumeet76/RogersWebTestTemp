@@ -19,9 +19,9 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test extend
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void sohoHUP_tc41_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test() {
-        reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        getRogersHomePage().clkSignIn();
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.reportLogWithScreenshot("Home Page");
+        //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc41_SOHO_HUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc41_SOHO_HUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG.getPassword());

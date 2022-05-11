@@ -93,6 +93,7 @@ public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestCl
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthYear());
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
