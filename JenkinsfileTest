@@ -59,8 +59,9 @@ pipeline {
                                 # leave spaces where you want them around the parameters. They' ll be trimmed.
              # we let the build run with the default name
             //  05 5,6 * * 1-5 %Browser=saucechrome;Language=en;Groups=AprilSanity;ThreadCount=2;TestProfile=ConnectedHome
-            '' ':' ')
-                }
+            ''':'')
+
+        }
 
     environment {
         SAUCE_USERNAME = credentials('SAUCE_USERNAME')
@@ -177,13 +178,13 @@ pipeline {
 
             }
         }
-    }
+
 
     post {
 
                     always{
                        script{
-                        def testExecInfo = ' '' {
+                        def testExecInfo = ''' {
                 "fields": {
                     "project": {
                         "key": ${params.TestProject}
@@ -193,14 +194,14 @@ pipeline {
                     "customfield_21635": [${params.TestPlanKey}]
                 }
             }
-            '' '
+            '''
             /* Json testInfoImport details
                 Key - Project ket - RTM / CH etc.
                 customfield_26619 - Test Class in Jira - Regression - 52538 (specific to RTM project)
                 customfield_21608 - Test Type in Jira - Auto - 53215
                 Priority - 3 - 10011
             */
-            def testInfoImport = ' '' {
+            def testInfoImport = ''' {
                 "fields": {
                     "project": {
                         "key": ${params.TestProject}
@@ -220,24 +221,13 @@ pipeline {
                     }
                 }
             }
-            '' '
-
-                       if (params.XrayImportFlag == ' true ' && params.TestPlanKey != null && params.TestExecutionKey != null) {
-                            stage(' JIRA - XRay Results upload '){
-                           sh("curl -H ' Accept - Charset:
-            utf - 8 ' -H ' Content - Type : multipart / form - data ' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F ' file =  @ build / testngOutput / testng - results.xml ' -F info=' $ {
-                testExecInfo
-            }
-            ' -F testInfo=' $ {
-            testInfoImport
-        }
-            ' ' https : //reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
+            '''
+                       if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
+                            stage('JIRA - XRay Results upload'){
+                           sh("curl -H 'Accept-Charset:utf-8' -H 'Content-Type:multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' -F info='${testExecInfo}' -F testInfo='${testInfoImport}' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
             echo "Upload execution results to JIRA"
-            sh(script: "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
+            sh(script: "curl -H 'Accept-Charset:utf-8' -H 'Content-Type:multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=RTM&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
         }
-    }
-    }
-    }
 
     success {
         echo "${env.BUILD_URL} has result success"
@@ -259,9 +249,6 @@ pipeline {
     }
     }
 
-}
-}
-}
 }
 
 String generateTestString(String tests) {
