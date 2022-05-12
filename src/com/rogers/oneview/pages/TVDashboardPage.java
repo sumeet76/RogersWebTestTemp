@@ -559,7 +559,7 @@ public class TVDashboardPage  extends BasePageClass {
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
 		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}

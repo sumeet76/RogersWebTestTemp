@@ -31,8 +31,6 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_PaymentMeth
 			getRogersIgniteBundlesPage().clickFirstAddToCart();
 			reporter.reportLogWithScreenshot("Added to Cart");
 			getRogersIgniteBundlesPage().noPortInPopup();
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 			reporter.reportLogWithScreenshot("Product in cart");
 			getRogersIgniteBundlesPage().clkCollapse();
@@ -44,8 +42,8 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_PaymentMeth
 			getTVDashboardPage().clickAddChannel();
 			reporter.reportLogWithScreenshot("add channel");
 			getTVDashboardPage().clickThemepacksTab();
-			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
+/*			getRogersIgniteBundlesPage().fourKTVPopup();
+			getRogersIgniteBundlesPage().fourKContinue();*/
 			getTVDashboardPage().addThemepack();
 			reporter.reportLogWithScreenshot("add themepack");
 			getCustomerProfilePage().clkContinue();
@@ -82,12 +80,13 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_PaymentMeth
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 			reporter.reportLogWithScreenshot("Phone display name");
-			getHomePhoneSelectionPage().clkContinue();
+			//getHomePhoneSelectionPage().clkContinue();
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
 			getCreditCheckPage().verifyInstallationOption();
 			getCreditCheckPage().goToPageBottom();
 			reporter.reportLogWithScreenshot("in-person delivery");
+			getCreditCheckPage().clkCourierDelivery();
 			getCreditCheckPage().clickInPersonDelivery();
 			getPaymentOptionsPage().clkContinue();
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -98,12 +97,12 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_PaymentMeth
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-			getPaymentOptionsPage().clkContinue();
+/*			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
 			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
-		
+		*/
     }
 
 	@BeforeMethod (alwaysRun=true)
