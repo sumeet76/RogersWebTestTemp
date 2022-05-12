@@ -33,8 +33,8 @@ public class OneViewCH_Auto_OVS3_SUS_15702_TC01_Validation_Of_CallerIDChangedSuc
         getHomePhonedashboard().clickChangeCallDisplayName();
 
         /*Added static wait in backToDashboard method. To wait for order closing*/
-        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
-        reporter.reportLogWithScreenshot("The New caller name is "+ getHomePhonedashboard().currentCallerName());
+     //   reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
+     //  reporter.reportLogWithScreenshot("The New caller name is "+ getHomePhonedashboard().currentCallerName());
 
         /*To verify the pending order pop up*/
         reporter.hardAssert(getHomePhonedashboard().verifyPendingOrder(),"Call display anme changed successfully","Call display name not changed successfully");

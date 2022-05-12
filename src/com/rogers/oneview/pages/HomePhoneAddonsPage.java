@@ -21,10 +21,10 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
 	WebElement customerAddonReveiwLink;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
 
-	@FindBy(xpath = "(//span[@ng-reflect-translate='global.cta.continue' and text()='Continue']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue' and text()='Continue'])[2]/ancestor:: button")
 	WebElement ContinueBtn;
 
 	@FindBy(xpath = "//span[text()='Continue']/ancestor::button")
@@ -161,6 +161,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public void clkContinue() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().isElementVisible(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
@@ -169,8 +170,8 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 
 	public void incompatibleAddonRadioBtn(){
 		getReusableActionsInstance().clickWhenReady(IncompatibleRadioBTn2);
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().isElementVisible(ContinueBtn,30);
+		getReusableActionsInstance().staticWait(3000);
+	//	getReusableActionsInstance().isElementVisible(ContinueBtn,30);
 		getReusableActionsInstance().clickWhenReady(ContinueBtn);
 	}
 

@@ -71,7 +71,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]"),
-        @FindBy(xpath = "//span[contains(@class,'rui-icon-home-phone icon')]/ancestor::div[@role='button']")})
+        @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']")})
 	WebElement btnRHPBadge;
 
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")

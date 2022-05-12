@@ -20,24 +20,33 @@ import com.rogers.test.helpers.RogersEnums.SauceCapabilities;
 import com.rogers.testdatamanagement.TestDataHandler;
 import extentreport.ExtentTestManager;
 import extentreport.ExtentListener;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
 import utils.Reporter;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -745,6 +754,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 //captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 getDriver().get(strUrl + "?setLanguage=" + language);
+                getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_shm":

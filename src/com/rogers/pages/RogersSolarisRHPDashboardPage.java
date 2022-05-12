@@ -1,11 +1,14 @@
 package com.rogers.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RogersSolarisRHPDashboardPage extends BasePageClass {
 
@@ -92,8 +95,10 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyConfigureYourCurrentFeatures() {
-		getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 120);
-		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures);
+		wait = new WebDriverWait(getDriver(), 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")));
+		//getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 60);
+		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures, 30);
 	}
 	/**
 	 * Verify the access your voice mail settings link onSolaris RHP dashboard
@@ -101,7 +106,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyAccessYourVoicemailSettings() {
-		return getReusableActionsInstance().isElementVisible(lnkAccessYourVoicemailSettings);
+		return getReusableActionsInstance().isElementVisible(lnkAccessYourVoicemailSettings, 60);
 	}
 	/**
 	 * Verify the reset your voice mail password link on Solaris RHP dashboard
@@ -109,7 +114,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyResetYourVoicemailPassword() {
-		return getReusableActionsInstance().isElementVisible(lnkResetYourVoicemailPassword);
+		return getReusableActionsInstance().isElementVisible(lnkResetYourVoicemailPassword, 30);
 	}
 	/**
 	 * Verify the live chat on RHP dashboard link on Solaris RHP dashboard

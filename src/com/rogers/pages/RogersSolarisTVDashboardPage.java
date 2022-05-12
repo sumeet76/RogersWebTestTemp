@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RogersSolarisTVDashboardPage extends BasePageClass {
 
@@ -91,8 +93,20 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
 	WebElement headerChangepkg;
 
+	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait de télévision']")
+	WebElement headerChangeTVpkg;
+
 	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
 	WebElement txtContactUsPopupModal;
+
+	@FindBy(xpath = "//h2[contains(@class,'popup-modal-body__heading')]")
+	WebElement headerChangeTVPkgContent;
+
+	@FindBy(xpath = "//div[@class='popup-modal-body__content']/descendant::li")
+	WebElement txtChangeTVPkgPopupModal;
+
+	@FindBy(xpath = "//button[@aria-label='Cancel' or @aria-label='Annuler']")
+	WebElement btnCancel;
 
 	@FindBy(xpath = "//ds-icon[@name='call']/span[@role='img']")
 	WebElement imgBookACallBack;
@@ -213,6 +227,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderTVDashboard;
 
+	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
+	WebElement popupChangeTVPkg;
+
 	
 	/**
 	 * Click on Reset Parental controls And Pin link
@@ -310,7 +327,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		getReusableActionsInstance().waitForElementVisibility(lnkViewMyChannelLineup,60);
+		wait = new WebDriverWait(getDriver(), 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='View my channel lineup']")));
 		getReusableActionsInstance().getWhenReady(lnkViewMyChannelLineup, 30).click();
 	}
 
@@ -496,6 +514,15 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkPopupChangeTVPackage() {
 		getReusableActionsInstance().getWhenReady(popupChangeTVPackage, 90).click();
+	}
+
+	/**
+	 * Verify the ChangeTV Package button on solaris TV dashboard page
+	 * @return true if Continue btn is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPopupChangeTVPackageContinueBtn() {
+		return getReusableActionsInstance().isElementVisible(popupChangeTVPackage, 30);
 	}
 
 	/**
@@ -707,8 +734,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
 	}
 
+
 	/**
-	 * Gets the Change Package - Contact Us Modal content
+	 * Gets the Change Tv Package - Contact Us Modal content
 	 * @return true if Actual copy is matching the desired copy, else false
 	 * @author manpreet.kaur3
 	 */
@@ -841,4 +869,92 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	public void clkCloseLTQMOdal() {
 		getReusableActionsInstance().getWhenReady(imgCloseLTQModal, 10).click();
 	}
+
+	/**
+	 * Verify the contact us popup on solaris TV dashboard page
+	 * @return true if the solaris TV dashboard page display the contat us popup , else false
+	 * @author chinnarao.vattam
+	 */
+	public boolean verifyChangeTVPackagePopUp() {
+		return getReusableActionsInstance().isElementVisible(popupChangeTVPkg, 50);
+	}
+	/**
+	 * Verifies if Change TV Package (PTM modal) Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+
+	public boolean verifyChangeTVPackagePopupHeader() {
+		return getReusableActionsInstance().isElementVisible(headerChangeTVpkg, 20);
+	}
+
+	/**
+	 * Gets the Change TV Package Modal content header
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentHeader() {
+		String changeTVPkgContentHeaderDesired = "When you select a new TV package:";
+		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
+		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the Change TV Package content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContent() {
+		String changeTVPkgContentDesired = "Added Standalone Channels or Theme Packs will be removed";
+		String changeTVPkgContentActual = getReusableActionsInstance().getWhenReady(txtChangeTVPkgPopupModal, 20).getText();
+		if(changeTVPkgContentActual.equals(changeTVPkgContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Verify Cancel btn on Change TV Package Popup
+	 * @return true if cancel btn is present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageCancelBtn() {
+		return getReusableActionsInstance().isElementVisible(btnCancel, 20);
+	}
+
+	/**
+	 * Gets the Change TV Package Modal content header
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentHeaderFR() {
+		String changeTVPkgContentHeaderDesired = "Quand vous choisissez un nouveau forfait de télévision :";
+		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
+		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the Change TV Package content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyChangeTVPackageModalContentFR() {
+		String changeTVPkgContentDesired = "Les chaînes à la carte et les forfaits à thème auxquels vous êtes abonné sont retirés de votre compte.";
+		String changeTVPkgContentActual = getReusableActionsInstance().getWhenReady(txtChangeTVPkgPopupModal, 20).getText();
+		if(changeTVPkgContentActual.equals(changeTVPkgContentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
 }

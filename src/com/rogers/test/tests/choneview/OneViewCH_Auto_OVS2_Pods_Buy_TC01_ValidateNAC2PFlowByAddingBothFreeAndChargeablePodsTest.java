@@ -51,7 +51,7 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Cart Summary");
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue from cart summary");
         getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -86,7 +86,7 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
         reporter.reportLogWithScreenshot("submit order");
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

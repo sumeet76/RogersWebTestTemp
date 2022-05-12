@@ -46,7 +46,7 @@ public class OneViewCH_Auto_1426_TC01_E2E_NAC_ISS_PortIn_PaymentMethod_CreditCar
 		reporter.reportLogWithScreenshot("CART SUMMARY");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
@@ -78,7 +78,7 @@ public class OneViewCH_Auto_1426_TC01_E2E_NAC_ISS_PortIn_PaymentMethod_CreditCar
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("order placed confirmation");
 
 	}

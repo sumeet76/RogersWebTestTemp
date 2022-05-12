@@ -336,7 +336,11 @@ public class TestDataHandler {
 	public static AccountData Tv_Dashboard_Validation;
 	public static AccountData Internet_Dashboard_Validation;
 	public static AccountData RHP_Dashboard_Validation;
+	public static AccountData SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan;
+	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
+	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
+	public static ContactData GponData;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -682,8 +686,8 @@ public class TestDataHandler {
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
-		SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
-		SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
+		//SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
+		//SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
 		InternetDashboardSupportLinks=YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
 		targetedMigration1PInternetToSAI=YamlHandler.getMigrationData("1545_TargetedMigrationFlow_1P_Internet_to_SAITest");
@@ -707,7 +711,6 @@ public class TestDataHandler {
 		ChangeTvViaServiceability=YamlHandler.getOVAccountData("ChangeTvViaServiceability");
 		Make_a_Payment_EN= YamlHandler.getOVAccountData("Make_a_Payment_EN");
 		Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model= YamlHandler.getOVAccountData("Oasys_Gap_Closure_Change_Internet_via_Serviceability_Model");
-
 		ViewBill= YamlHandler.getOVAccountData("ViewBill");
 		IPTVDasboad_MulitplsSTB= YamlHandler.getOVAccountData("IPTVDasboad_MulitplsSTB");
 		IgniteOffers_SAI_Adding_ISS= YamlHandler.getOVAccountData("IgniteOffers_SAI_Adding_ISS");
@@ -726,7 +729,10 @@ public class TestDataHandler {
 		Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation=YamlHandler.getMigrationData("Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation");
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 		TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges=YamlHandler.getMigrationData("TargetedMigration_3P_to_3P_Delivery_by_Appointment_MonthlyCharges");
-
+		SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan = YamlHandler.getOVAccountData("SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan");
+		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
+		GponData=YamlHandler.getContactData("GponData");
+		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
@@ -744,5 +750,12 @@ public class TestDataHandler {
 		ovrMigrationData1Pto2PAddPods = YamlHandler.getOvrReusableData("Migration_Data_1P_to_2P_Add_Pods");
 		existingIgnite3PtoNac2pON = YamlHandler.getOvrReusableData("ExistingIgnite_3PCx_to_Nac_3P_ON");
 		ovrMigrationData1pINTto2pTVINTAddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
+		tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
+		tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods = YamlHandler.getOvrReusableData("TC26_Mig_Data_1P_INT_to_1P_INT_AddPods");
+		tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM = YamlHandler.getOvrReusableData("TC29_Mig_Data_1P_INT_to_2P_TV_INT_with_SHM");
+		tc_22_Ovr_Mig_Data_3p_to_3p_AddPods = YamlHandler.getOvrReusableData("TC22_Mig_Data_3P_to_3P_AddPods");
+		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
+		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
+		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
 	}
 }

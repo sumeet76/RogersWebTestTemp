@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1544_TC03_Remove_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void OneViewCH_1544_TC01_AddThemepackImmediate(){
+    public void OneViewCH_1544_TC03_RemoveThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.RemoveThemepack1544Tc03.getAccountDetails().getBan(), TestDataHandler.RemoveThemepack1544Tc03.getContactID());
 		reporter.reportLogWithScreenshot("Account Overview page has Launched");
 		reporter.reportLogWithScreenshot("TV Ignite Badge");
@@ -38,8 +38,9 @@ public class OneViewCH_Auto_1544_TC03_Remove_Themepack_Immediate_Test extends Ba
 		getTVDashboardPage().continueFromChangeDate();
 
 		reporter.reportLogWithScreenshot("Navigated to review order page");
-		//getRogersOVReviewOrderPage().clkSubmitOrderBtn();
-		reporter.reportLogWithScreenshot("Order Confirmation page");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 	@BeforeMethod (alwaysRun=true)

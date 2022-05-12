@@ -9,7 +9,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Test extends BaseTestClass {
+public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,7 +22,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Te
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Test() throws InterruptedException {
+    public void ovr_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Test() throws InterruptedException {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -30,11 +30,10 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Te
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacATL.getBanNumber(), TestDataHandler.ovrWirelessNacATL.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacON.getBanNumber(), TestDataHandler.ovrWirelessNacON.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
-        //getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("247 Airport Heights Dr St. john's, NL A1A4X3","chrome");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Address Service Availability");
         getCheckAvailabilityPage().addressIsServiceable();
@@ -117,7 +116,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ATL_Te
         reporter.reportLogWithScreenshot("Billing and Payment Page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.hardAssert(getOVROrderReviewPage().verifyOrderoverviewHeader(),"Order review page loaded","Order review page not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order Review Page");

@@ -5,7 +5,6 @@ import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -90,12 +89,18 @@ public class OVR_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_De
         getCreditCheckPage().clkAuthorize();
         getBundleBuilderPage().scrollAndClickContinue();
 
-        reporter.reportLogWithScreenshot("Continue to Home Phone Selection Page");
+        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.hardAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-        reporter.reportLogWithScreenshot("Phone Number Selected");
-        reporter.hardAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("continue from generate phone number");
+        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        reporter.reportLogWithScreenshot("continue from call display");
+        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+        reporter.reportLogWithScreenshot("continue from directory listing");
         getHomePhoneSelectionPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
@@ -113,7 +118,7 @@ public class OVR_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_De
 //        getBundleBuilderPage().clkContinueBillingAndPayment();
 
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
-        reporter.hardAssert(getOVROrderReviewPage().verifyOrderoverviewHeader(),"Order review page loaded","Order review page not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");

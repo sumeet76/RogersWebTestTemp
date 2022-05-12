@@ -31,11 +31,11 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseT
 	public void rogersNacByodSSTest() throws InterruptedException {
 		//############################Plan config page###############################
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		//getRogersPlanConfigPage().clkBasicTab();
-		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
-		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		getRogersPlanConfigPage().clkBasicTab();
+		getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
+		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().selectBYODdpAddon();
@@ -100,11 +100,12 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseT
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 		// ***************Billing & Payment Stepper*************//
-		getRogersCheckoutPage().clkNoThanks();
+		//getRogersCheckoutPage().clkNoThanks();
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());

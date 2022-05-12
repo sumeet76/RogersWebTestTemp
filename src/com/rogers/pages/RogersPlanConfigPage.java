@@ -313,6 +313,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
+
     /**
      * Select Device Protection Header on Plan config page
      */
@@ -1485,20 +1486,29 @@ public class RogersPlanConfigPage extends BasePageClass {
     public boolean verifyEligibilityMsg() {
         return getReusableActionsInstance().isElementVisible(imeiSuccessEligibleMsg);
     }
+
     /**
-     * This method validates the Device Protection Not Eligibile(Failure) message of the IMEI
+     * This method validates the Device Protection Not Eligible(Failure) message of the IMEI
      * @return true if the 'Your device is Not eligible' message displayed; else false
      * @author Subash.Nedunchezhian
      */
-    public boolean verifyNotEligibleMsg(){
+    public boolean verifyNotEligibleMsg() {
         return getReusableActionsInstance().isElementVisible(imeiNotEligibleMsg);
     }
+
     /**
      * This method click on No Device Protection option in Add-on stepper
      * @author Subash.Nedunchezhian
      */
-    public void selectNoDeviceProtection(){
-        getReusableActionsInstance().clickWhenReady(byodNoDeviceProtection);
+    public void selectNoDeviceProtection() {
+        getReusableActionsInstance().executeJavaScriptClick(byodNoDeviceProtection);
     }
 
+    public boolean isMigratedToRppFin(){
+        if (getDriver().getCurrentUrl().contains("RPP_FIN")) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

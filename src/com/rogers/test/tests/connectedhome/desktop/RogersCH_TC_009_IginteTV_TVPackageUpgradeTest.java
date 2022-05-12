@@ -37,26 +37,26 @@ public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void checkSolarisTVPackageUpgrade() 
     {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
-    	reporter.reportLogWithScreenshot("Launched the Account Page");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopUp(),"Displayed the Change TV Package popup","Download package has failed");
+        reporter.reportLogWithScreenshot("Launched the ChangeTV Package popup");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContent(),"Verified the Change Package modal content", "Change Package Modal content is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
@@ -66,7 +66,7 @@ public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass
         getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitUpdateTV();

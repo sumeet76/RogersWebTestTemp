@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseTestClass {
-    @Test(groups = {"RChangeTv","Baseline","ChangePackage","AprilSanity"})
-    public void checkTVPackageDowngrade() {
+    @Test(groups = {"RChangeTv","Baseline","ChangePackage","RunOV1"})
+    public void checkTVPackageUpgrade() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -33,17 +33,18 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Exchange later is selected");
 
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
+        reporter.reportLogWithScreenshot("click continue at channels and themepack");
         getTVDashboardPage().clickContinueOn4kTv();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
         getTVDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
-       // getTVDashboardPage().clickContinueOnSelectDateChange();
-       // reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-       // getRogersOVOrderReviewPage().clkSubmit();
+        getTVDashboardPage().clickContinueOnSelectDateChange();
+        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+//        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

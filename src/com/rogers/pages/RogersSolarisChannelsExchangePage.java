@@ -108,7 +108,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 */
 	public boolean verifyExchangeSuccess() {
 		getReusableActionsInstance().waitForElementVisibility(icnSuccess, 90);
-		return getReusableActionsInstance().isElementVisible(icnSuccess, 20);
+		return getReusableActionsInstance().isElementVisible(icnSuccess, 30);
 	}
 
 	/**
@@ -193,9 +193,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelIn(String strInChannel) {
-		By imgChannel = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		By imgChannel = By.xpath("//span[contains(text(),'"+ strInChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-aqua']");
 		getReusableActionsInstance().getWhenReady(imgChannel, 30).click();
-		getReusableActionsInstance().clickIfAvailable(imgChannel, 30);
 	}
 
 	/**
@@ -217,7 +216,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void swapChannelOut(String strOutChannel) {
-		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon rds-icon-info-circle ds-color-aqua']");
+		By imgChannelOut = By.xpath("//span[contains(text(),'"+ strOutChannel+"')]/ancestor::div[@class='channel-chip']//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-aqua']");
 		getReusableActionsInstance().getWhenReady(imgChannelOut, 30).click();
 	}
 

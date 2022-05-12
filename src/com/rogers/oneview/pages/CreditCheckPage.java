@@ -90,8 +90,14 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
-	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
+	@FindAll({
+			@FindBy(xpath = "//h2[text()='Self-installation option(s)']"),
+			@FindBy(xpath = "//h2[text()='Professional installation option(s)']")
+	})
 	WebElement installationOption;
+
+	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery']")
+	WebElement courierDelivery;
 
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
@@ -116,6 +122,9 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
 	WebElement creditEvaluationHeader;
+
+	@FindBy(xpath = "//div[contains(text(),'Please do not proceed with order') or contains(text(),'Les renseignements du client doivent être validés auprès de')]/ancestor::div[@class='nfdb']")
+	WebElement fraudErrorMessage;
 
 	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
 	WebElement internationalIdRadioBtn;
@@ -200,6 +209,11 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Customer agree for in person delivery
 	 * @author aditi.jain
 	 */
+
+	public void clkCourierDelivery(){
+		getReusableActionsInstance().waitForElementVisibility(courierDelivery,240);
+		getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
+	}
 	public void clickInPersonDelivery() {
 		getReusableActionsInstance().waitForElementVisibility(customerAgreement, 240);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
@@ -349,6 +363,15 @@ public class CreditCheckPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(creditEvaluationHeader,45);
 	}
 
+	/**
+	 * Verify Credit Evaluation Header
+	 * @return true if available, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyFraudErrorMessage() {
+		getReusableActionsInstance().waitForElementVisibility(fraudErrorMessage, 45);
+		return getReusableActionsInstance().isElementVisible(fraudErrorMessage,45);
+	}
 
 	/**
 	 * Select Payment Option
