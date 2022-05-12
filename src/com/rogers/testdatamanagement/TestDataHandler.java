@@ -342,6 +342,14 @@ public class TestDataHandler {
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
 
+	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
+	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
+	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
+	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
+	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
+	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
+	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
+
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
 
