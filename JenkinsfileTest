@@ -177,8 +177,12 @@ pipeline {
 
 
             }
-        }
 
+        }
+       }
+}
+}
+}
 
     post {
 
@@ -250,7 +254,9 @@ pipeline {
     }
 
 }
-
+}
+}
+}
 String generateTestString(String tests) {
     //  String tests="OneViewCH_TC_003_IgniteNACDualPlayWithout4KTVExpressCheckout OneViewCH_TC_004_MigrationTriplePlayON OneViewCH_TC_017_TV_ResetParentalControlsAndRestartBoxTest OneViewCH_TC_018a_TV_HeaderFooterUserForgotPurchasePinTest OneViewCH_TC_018b_Internet_HeaderFooterUsageTest OneViewCH_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest OneViewCH_TC_018d_Internet_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018e_TV_DashboardSupportLinksAvailabilityTest OneViewCH_TC_018f_TV_ChannelLineupViewPDFTest";
     tests =tests.trim();
