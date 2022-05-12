@@ -48,7 +48,7 @@ pipeline {
         string(name: 'AWSPRODUrl', defaultValue: "", description: "BFA AWS PROD URL")
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
         string(name: 'OneViewEnv', defaultValue: "OVO-QA04", description: "One View Env")
-        string(name: 'TestProject' defaultValue: "RTM", description : "JIRA project name")
+        string(name: 'TestProject', defaultValue: "RTM", description : "JIRA project name")
         string(name: 'TestPlanKey', defaultValue: "", description: "Test plan to update the test results in JIRA")
         string(name: 'TestExecutionKey', defaultValue: "", description: "Test Execution to update the test results in JIRA")
         string(name: 'XrayImportFlag', defaultValue: "false", description: "Flag to check whether results need to be imported in Xray")
