@@ -91,6 +91,7 @@ task "localTest"(type: Test) {
 	systemProperty 'XrayImportFlag', xray_import_flag
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
+	systemProperty 'TestProject',test_project
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
