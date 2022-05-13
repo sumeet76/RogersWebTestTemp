@@ -169,17 +169,17 @@ pipeline {
                 def testExecInfo = ''' {
                     "fields": {
                         "project": {
-                        "key": \"${params.TestProject}\"
+                        "key": ${params.TestProject}
                         },
                     "summary": "''' + env.BUILD_TAG + '''",
                     "description": "''' + REPORT_URL + '''",
-                    "customfield_21635": ["${params.TestPlanKey}"]
+                    "customfield_21635": [\\"${params.TestPlanKey}\\"]
                     }
                 }'''
                 def testInfoImport = ''' {
                       "fields": {
                             "project": {
-                                "key": \"${params.TestProject}\"
+                                "key": \"'${params.TestProject}'\"
                             },
                             "description": "''' + REPORT_URL + '''",
                             "customfield_26619": {
