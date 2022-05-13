@@ -78,7 +78,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
 
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        reporter.reportLogWithScreenshot("Order Placed");
 
 
     }

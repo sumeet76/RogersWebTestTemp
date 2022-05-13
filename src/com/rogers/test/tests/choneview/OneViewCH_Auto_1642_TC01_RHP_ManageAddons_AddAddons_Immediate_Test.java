@@ -46,7 +46,6 @@ public class OneViewCH_Auto_1642_TC01_RHP_ManageAddons_AddAddons_Immediate_Test 
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-
         closeSession();
     }
 

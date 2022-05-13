@@ -294,7 +294,8 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Click Continue Button after Credit Information Entered 
 	 * @author chinnarao.vattam
 	 */	
-	public void clkContinue() {	
+	public void clkContinue() {
+		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 
@@ -450,6 +451,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void selectDeliveryByAppointment() {
 		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().scrollToElement(deliveryByAppointment);
 		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
 	}
 
