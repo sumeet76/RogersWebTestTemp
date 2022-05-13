@@ -56,14 +56,7 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex5PackageCost(),"Flex5 Package Cost having the mo*","Flex5 Package Cost is not having the mo*");
@@ -71,6 +64,18 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex20PackageCost(),"Flex20+ Package Cost having the mo*","Flex20+ Package Cost is not having the mo*");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackageCost(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyStarterPackageCost(),"Starter Package Cost having the mo*","Starter Package Cost is not having the mo*");
+        getRogersIgniteTVBuyPage().selectSolarisPremier();
+
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackage(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
+        getRogersIgniteTVBuyPage().selectMonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected the month-to-month type of contract");
         getRogersIgniteTVBuyPage().selectSolarisPremier();
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
@@ -161,7 +166,7 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
          * DB Validations in the subscriber table
          */
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+       Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");

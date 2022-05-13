@@ -33,7 +33,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
 
-    	reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+    	reporter.reportLogWithScreenshot("clicked on Easy Internet");
     	getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
