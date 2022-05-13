@@ -169,7 +169,7 @@ pipeline {
                 def testExecInfo = ''' {
                     "fields": {
                         "project": {
-                        "key": "${params.TestProject}"
+                        "key": \"${params.TestProject}\"
                         },
                     "summary": "''' + env.BUILD_TAG + '''",
                     "description": "''' + REPORT_URL + '''",
@@ -179,17 +179,14 @@ pipeline {
                 def testInfoImport = ''' {
                       "fields": {
                             "project": {
-                                "key": "${params.TestProject}"
+                                "key": \"${params.TestProject}\"
                             },
                             "description": "''' + REPORT_URL + '''",
                             "customfield_26619": {
                                 "id": "52538"
                             },
                             "customfield_21608": {
-                                "self": "https://reqcentral.com/rest/api/2/customFieldOption/53215",
-                                "value": "Auto",
-                                "id": "53215",
-                                "disabled": false
+                                "value": "Auto"
                             },
                             "priority": {
                                 "id": "10011"
