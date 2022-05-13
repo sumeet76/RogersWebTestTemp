@@ -126,7 +126,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
 	WebElement addRestrictedPodToCart;
 
-	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	//@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
+	@FindBy(xpath = "//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span")
 	WebElement plusButtonToAddPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
@@ -157,6 +158,15 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	WebElement btnViewDetails;
+
+	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
+	WebElement collapsePricingDetails;
+
+	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']/ancestor::div[3]")
+    WebElement expandPackageDetails;
+
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
 	WebElement RemovePods;
 
@@ -170,6 +180,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
+
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
+	WebElement DownloadSpeedReview;
+
+    @FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+    WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
 	WebElement changePackageBtnEN;
@@ -559,6 +575,26 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	/*
 	 * clicks  Select button
+	 * @author Jarmanjeet.Batth
+	 * */
+	public void clickViewDetails() {
+		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewDetails, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
+		getReusableActionsInstance().getWhenReady(btnViewDetails,60).click(); }
+
+	public void clickPackageDetails(){
+		getReusableActionsInstance().waitForElementVisibility(expandPackageDetails, 60);
+		getReusableActionsInstance().getWhenReady(expandPackageDetails, 30).click();
+//		getReusableActionsInstance().executeJavaScriptClick(expandPackageDetails);
+	}
+
+	public void clickPricingDetails(){
+		getReusableActionsInstance().waitForElementVisibility(collapsePricingDetails, 60);
+		getReusableActionsInstance().getWhenReady(collapsePricingDetails, 30).click();
+	}
+
+	/*
+	 * clicks  Select button
 	 * @author aditi.jain
 	 * */
 	public void clickSelectbutton() {
@@ -749,6 +785,39 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 		getReusableActionsInstance().waitForElementVisibility( changePackageBtnFR, 30);
 		return getReusableActionsInstance().isElementVisible( changePackageBtnFR);
+	}
+
+	/*
+	 * verify  Order Review
+	 * @author Jarmanjeet.Batth
+	 * */
+
+    public boolean verifyUploadSpeed() {
+//        getReusableActionsInstance().waitForElementVisibility( UploadSpeedReview, 30);
+		if(getReusableActionsInstance().isElementVisible(UploadSpeedReview, 30)){
+			return true;
+		}else {
+			return false;
+		}
+    }
+
+	public boolean verifyDownloadAndUploadSpeed() {
+//		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
+//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
 	}
 
 }

@@ -14,6 +14,8 @@ public class MigrationData {
 	public String contactIDMigrationNotSupported;
 	public String swapAccountNo;
 	public String swapContactID;
+	public String accountNoLegacyToSHMInternet;
+	public String contactIDLegacyToSHMInternet;
 
 	/**
 	 * @return the AccountNo
@@ -199,6 +201,37 @@ public class MigrationData {
 	 */
 	public void swapContactID(String swapContactID) {
 		this.swapContactID = swapContactID;
+	}
+
+	/**
+	 * @return the getAccountNoLegacyToSHMInternet
+	 */
+	public String getAccountNoLegacyToSHMInternet() {
+		return accountNoLegacyToSHMInternet;
+	}
+
+	/**
+	 * @param accountNoLegacyToSHMInternet to set
+	 */
+	public void setAccountNoLegacyToSHMInternet(String accountNoLegacyToSHMInternet) {
+		this.accountNoLegacyToSHMInternet = accountNoLegacyToSHMInternet;
+	}
+
+	/**
+	 *
+	 * @return the ContactIDLegacyToSHMInternet
+	 */
+
+	public String getContactIDLegacyToSHMInternet() {
+		return contactIDLegacyToSHMInternet;
+	}
+
+	/**
+	 *
+	 * @param contactIDLegacyToSHMInternet to set
+	 */
+	public void setContactIDLegacyToSHMInternet(String contactIDLegacyToSHMInternet) {
+		this.contactIDLegacyToSHMInternet = contactIDLegacyToSHMInternet;
 	}
 
 }

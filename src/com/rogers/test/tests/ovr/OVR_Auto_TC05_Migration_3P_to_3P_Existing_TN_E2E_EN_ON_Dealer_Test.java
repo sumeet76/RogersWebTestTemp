@@ -71,8 +71,13 @@ public class OVR_Auto_TC05_Migration_3P_to_3P_Existing_TN_E2E_EN_ON_Dealer_Test 
         reporter.reportLogWithScreenshot("4k Content Popup");
         getRogersIgniteBundlesPage().contiue4KContent();
 
+        //Internet Add-Ons page.
+        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
+
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlanFr());
-        reporter.reportLogWithScreenshot("Addons selected for addition");
+        reporter.reportLogWithScreenshot("Addons selected for home phone add ons");
         getHomePhoneAddonsPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary Page");
         reporter.reportLogWithScreenshot("Cart Summary");

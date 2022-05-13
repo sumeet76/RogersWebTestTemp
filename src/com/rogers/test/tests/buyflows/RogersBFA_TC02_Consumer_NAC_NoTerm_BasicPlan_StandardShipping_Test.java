@@ -148,7 +148,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_StandardShipping_Test 
 		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
 		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
-		//String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
+		String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage);
 		String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
 		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
@@ -187,8 +187,8 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_StandardShipping_Test 
 				"Total One time fee after tax matches with checkout page",
 				"Total One time fee after tax not matches with checkout page");
 		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
-		//reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
-			//	"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
+		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
+				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
 	}
 

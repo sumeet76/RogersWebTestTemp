@@ -69,6 +69,7 @@ public class ContactDetails {
 	private String contactID2PFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
+	private String contactIDGponNFDBNAC2p;
 
 	;
 	public ContactDetails() {
@@ -717,5 +718,22 @@ public class ContactDetails {
 	public String getContactIDSAIFlowByAddingBothFreeAndChargeablePods() {
 		return contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public String getContactIDGponNFDBNAC2p() {
+		return contactIDGponNFDBNAC2p;
+	}
+
+	/**
+	 *
+	 * @param contactIDGponNFDBNAC2p
+	 */
+	public void setContactIDGponNFDBNAC2p(String contactIDGponNFDBNAC2p) {
+		this.contactIDGponNFDBNAC2p = contactIDGponNFDBNAC2p;
+	}
+
 
 }
