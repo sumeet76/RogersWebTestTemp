@@ -496,7 +496,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
@@ -1040,7 +1040,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clkContinueServiceable()
 	{
-		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(continueButtonServiceable,30).click();
 	}
 	public void clkContinuePTM()

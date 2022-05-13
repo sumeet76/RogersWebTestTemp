@@ -18,11 +18,11 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-        getRogersIgniteBundlesPage().clkContinueServiceable();
-       // getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().verifyRecommendedOffers();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyRecommendedOffers(),"Verified targeted offer","Targeted offer not available");
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkSmartStream();
@@ -59,6 +59,7 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
 
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -68,10 +69,10 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		getPaymentOptionsPage().clkContinue();
+/*		getPaymentOptionsPage().clkContinue();
     	getRogersOVCheckoutPage().clkSubmit();
     	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Order Placed");*/
 
     }
 

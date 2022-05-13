@@ -78,10 +78,10 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC04_ValidateNACSAIFlowByAddingBothFre
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("entered billing details");
 		getPaymentOptionsPage().clkContinue();
-/*		reporter.reportLogWithScreenshot("submit order");
+		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");*/
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
