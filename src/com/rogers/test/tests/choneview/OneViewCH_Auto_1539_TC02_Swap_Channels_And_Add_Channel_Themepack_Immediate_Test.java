@@ -54,6 +54,7 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack options");
 		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("add themepack ");
 
 		reporter.reportLogWithScreenshot("Continue");
 		getCustomerProfilePage().clkContinue();
@@ -90,5 +91,4 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 	}
 
 }
-
 

@@ -23,6 +23,9 @@ public class RogersOVInstallationPage extends BasePageClass {
     @FindBy(xpath="//span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
     WebElement btnContinue;
 
+    @FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or text()='Configuration express Élan – Livraison par messager']")
+    WebElement courierDelivery;
+
     /*Clicks on Activation check box
     * @author suganya p
     * */
@@ -39,6 +42,13 @@ public class RogersOVInstallationPage extends BasePageClass {
     public void clickContinue() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().getWhenReady(btnContinue,60).click();
+    }
 
+    /*Clicks on continue
+     * @author Jarmanjeet.Batth
+     * */
+    public void clkCourierDelivery(){
+        getReusableActionsInstance().waitForElementVisibility(courierDelivery,240);
+        getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
     }
 }

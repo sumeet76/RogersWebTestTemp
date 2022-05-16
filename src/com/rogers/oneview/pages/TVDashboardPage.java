@@ -221,10 +221,10 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "//div[@class='themepack-detail channels-container']/descendant::span[@translate='global.cta.add']")
+	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -384,7 +384,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
-		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
+		getReusableActionsInstance().waitForElementVisibility(addThemepack, 60);
+		getReusableActionsInstance().scrollToElement(addThemepack);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
 			getReusableActionsInstance().clickWhenReady(yesToContinue);
@@ -559,7 +560,7 @@ public class TVDashboardPage  extends BasePageClass {
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
 		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}

@@ -47,8 +47,8 @@ public class CustomerProfilePage  extends BasePageClass {
 		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
 //		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(continueButton,60);
-//		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+//		getReusableActionsInstance().clickWhenReady(continueButton,90);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
 	/**
