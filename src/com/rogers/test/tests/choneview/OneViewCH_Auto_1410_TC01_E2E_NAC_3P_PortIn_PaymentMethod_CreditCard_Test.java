@@ -94,11 +94,11 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortIn_PaymentMethod_CreditCard
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("entered payment info");
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("submit payment");
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");*/
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

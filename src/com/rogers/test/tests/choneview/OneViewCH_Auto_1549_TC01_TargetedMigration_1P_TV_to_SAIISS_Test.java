@@ -70,13 +70,13 @@ public class OneViewCH_Auto_1549_TC01_TargetedMigration_1P_TV_to_SAIISS_Test ext
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 
         getCreditCheckPage().verifyBillingAndPaymentOption();
-/*        getCreditCheckPage().clickDigitalFrontline();
+        getCreditCheckPage().clickDigitalFrontline();
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());*/
-//		getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		getPaymentOptionsPage().clkContinue();
+	    getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }

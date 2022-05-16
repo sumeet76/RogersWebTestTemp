@@ -79,11 +79,11 @@ public class OneViewCH_Auto_1415_TC01_E2E_NAC_SAI_TMP_PaymentMethod_CreditCard_T
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("card detail entered");
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");*/
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

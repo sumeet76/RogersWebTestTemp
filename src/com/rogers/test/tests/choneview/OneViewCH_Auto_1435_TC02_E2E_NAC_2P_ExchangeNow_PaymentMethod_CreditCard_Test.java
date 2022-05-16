@@ -91,12 +91,10 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("Payment screen");
-/*
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Placed");
-*/
 
 
 	}

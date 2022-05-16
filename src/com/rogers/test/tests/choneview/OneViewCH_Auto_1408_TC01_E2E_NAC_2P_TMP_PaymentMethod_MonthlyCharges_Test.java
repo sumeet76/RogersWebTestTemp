@@ -94,10 +94,10 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
 		getRogersOVCheckoutPage().clkSubmit();
-		reporter.reportLogWithScreenshot("Order Placed");*/
+		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 

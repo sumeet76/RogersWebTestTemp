@@ -76,11 +76,11 @@ public class OneViewCH_Auto_1426_TC01_E2E_NAC_ISS_PortIn_PaymentMethod_CreditCar
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("order placed confirmation");*/
+		reporter.reportLogWithScreenshot("order placed confirmation");
 
 	}
 
