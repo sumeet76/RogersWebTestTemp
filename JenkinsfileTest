@@ -220,7 +220,6 @@ pipeline {
         }
     }
 
-
 }
 
 String generateTestString(String tests) {
