@@ -33,9 +33,17 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
+		getRogersIgniteBundlesPage().clkContinue();
+		/*To Add the chargeable Pods*/
+		getRogersIgniteBundlesPage().addPods(5);
+		reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
+		/*To Add the free pods in the internt addons page*/
+		getRogersIgniteBundlesPage().addPods(0);
+		reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		//getRogersIgniteBundlesPage().clkCheckOut();
-		getRogersIgniteBundlesPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
@@ -83,11 +91,11 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_P
 		reporter.reportLogWithScreenshot("Account Number");*/
 
 
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");*/
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

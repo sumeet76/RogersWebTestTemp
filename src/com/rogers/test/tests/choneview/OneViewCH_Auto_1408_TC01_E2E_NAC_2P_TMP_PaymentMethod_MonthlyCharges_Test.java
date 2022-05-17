@@ -59,9 +59,9 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close Coupon Alert");
-		getRogersIgniteBundlesPage().fourKTVPopup();
+/*		getRogersIgniteBundlesPage().fourKTVPopup();
 		reporter.reportLogWithScreenshot("four KTV Popup");
-		getRogersIgniteBundlesPage().fourKContentPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();*/
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
