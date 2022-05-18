@@ -69,10 +69,10 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-/*		getPaymentOptionsPage().clkContinue();
+		getPaymentOptionsPage().clkContinue();
     	getRogersOVCheckoutPage().clkSubmit();
     	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");*/
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

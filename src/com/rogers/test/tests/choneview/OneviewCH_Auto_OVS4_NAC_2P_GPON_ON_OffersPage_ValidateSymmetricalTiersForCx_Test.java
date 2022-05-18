@@ -70,7 +70,7 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         reporter.reportLogWithScreenshot("Installation options");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
         reporter.reportLogWithScreenshot("professional Installation");
-        getCreditCheckPage().selectProfessionalInstallation();
+        //getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
 //		getCreditCheckPage().clickDateTimeRadioButton();
@@ -82,7 +82,7 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         getCreditCheckPage().enterSpecialInstructions();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("select oline billing option");
+        reporter.reportLogWithScreenshot("select online billing option");
         getCreditCheckPage().selectOnlineBilling();
         reporter.reportLogWithScreenshot("select monthly payment options from dropdown");
         getCreditCheckPage().selectPaymentOption(1);

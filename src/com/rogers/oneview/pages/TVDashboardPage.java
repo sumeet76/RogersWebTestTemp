@@ -344,6 +344,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
 	WebElement uploadSpeed;
 
+	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink']")
+	WebElement reviewTerms;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -1285,6 +1288,12 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().isElementVisible(cancel);
 		getReusableActionsInstance().isElementVisible(btnContnueReset);
 		return true;
+	}
+
+	public void reviewTerms() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().isElementVisible(reviewTerms);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTerms);
 	}
 }
 

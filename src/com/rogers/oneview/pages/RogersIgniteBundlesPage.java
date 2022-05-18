@@ -171,6 +171,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;
 
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Internet')]")
+	WebElement reviewInternet;
+
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Home Phone')]")
+	WebElement reviewHomePhone;
+
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Battery Back-Up,')]")
+	WebElement reviewBattery;
+
 	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
@@ -385,6 +394,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
+
+	public void reviewAllTerms(){
+		    getReusableActionsInstance().waitForElementVisibility(reviewInternet,10);
+			getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
+			getReusableActionsInstance().waitForElementVisibility(reviewBattery,5);
+			getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
+			getReusableActionsInstance().waitForElementVisibility(reviewBattery,5);
+			getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
+
+		}
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
