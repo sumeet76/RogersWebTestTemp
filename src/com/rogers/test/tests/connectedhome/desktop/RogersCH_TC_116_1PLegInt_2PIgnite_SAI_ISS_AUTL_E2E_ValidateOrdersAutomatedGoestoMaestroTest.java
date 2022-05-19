@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class RogersCH_TC_116_1PLegInt_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
+    @Test
 	public void checkTVPackageUpgradeTest() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getUsername());
