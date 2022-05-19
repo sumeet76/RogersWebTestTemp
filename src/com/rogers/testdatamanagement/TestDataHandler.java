@@ -97,6 +97,7 @@ public class TestDataHandler {
 	public static AccountData tc75_IgniteTVBaseLineHomeAddress;
 	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
 	public static AccountData tc82_Legacy1PtoIgnite2P;
+	public static AccountData tc116_Legacy1PInternetToIgnite2P;
 	public static AccountData tc83_Legacy2PtoIgnite2P;
 	public static AccountData tc112_Legacy2PtoIgnite2PMigration;
 	public static AccountData tc87_NativeTNcourierFulfilmentHot;
@@ -433,6 +434,7 @@ public class TestDataHandler {
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc116_Legacy1PInternetToIgnite2P= YamlHandler.getCableAccountData("TC116_Legacy1PInternetToIgnite2P");
 		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
