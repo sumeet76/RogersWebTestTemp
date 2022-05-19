@@ -231,6 +231,21 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-icon[@data-test='choose-number-complete']/../div/p[1]")
 	WebElement lblChooseaNumber;
 
+	@FindBy(xpath = "//p[contains(text(),'Use an existing number') or contains(text(),'Utilisez un numéro actuel')]")
+	WebElement existingNumberTab;
+
+	@FindBy(xpath = "//ds-form-field[@data-test='choose-number-existing-number']")
+	WebElement existingNumberField;
+
+	@FindBy(xpath = "//input[@formcontrolname='existingNumber']")
+	WebElement inputPortInNumber;
+
+	@FindBy(xpath = "//span[contains(text(),'Vérifiez la disponibilité') or contains(text(),'Check availability')]")
+	WebElement btnCheckEligibility;
+
+	@FindBy(xpath = "//span[@data-test='port-in-success' or @data-test='Bonne nouvelle']")
+	WebElement successPortInMessage;
+
 	//***Billing & Payment Options stepper
 
 	@FindBy(xpath = "//h2[contains(@data-test,'payment-method-title')]")
@@ -917,7 +932,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author karthic.hasan
 	 */
 
-	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle,60); }
+	public boolean isChooseaNumberTitleDisplayed() { return getReusableActionsInstance().isElementVisible(chooseNumberTitle,30); }
 
 	/**
 	 * To verify Select A Number Tab UseAnExistingNumber Tab is present in the Choose a Number stepper and return boolean value.
@@ -926,7 +941,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public boolean isChooseNumberTabsDisplayed() {
-		clkNoThanks();
+		//clkNoThanks();
 		return (getReusableActionsInstance().isElementVisible(selectaNewNumberTab) && getReusableActionsInstance().isElementVisible(useAnExistingNumberTab));
 	}
 
@@ -980,6 +995,48 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean isChooseaNumberLabelDisplayed() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lblChooseaNumber);
 		return getReusableActionsInstance().isElementVisible(lblChooseaNumber);
+	}
+
+	/**
+	 * This method clicks on Use an Existing Number Tab in Choose Number Stepper
+	 * @author subash.nedunchezhian
+	 */
+	public void clkExistingNumberTab(){
+		getReusableActionsInstance().executeJavaScriptClick(existingNumberTab);
+	}
+
+	/**
+	 * This method enters PortInNumber from yaml file in Existing Number input field
+	 * @author subash.nedunchezhian
+	 */
+	public void setExistingPortInNumber(String eligiblePortInNumber){
+	getReusableActionsInstance().clickWhenReady(existingNumberField);
+	getReusableActionsInstance().getWhenReady(inputPortInNumber).sendKeys(eligiblePortInNumber);
+	}
+
+	/**
+	 * This method clicks on Check Eligibility button in Choose Number stepper
+	 * @author subash.nedunchezhian
+	 */
+	public void clkCheckEligibilityBtn(){
+		getReusableActionsInstance().clickWhenVisible(btnCheckEligibility);
+	}
+
+	/**
+	 * This method check PortIn Eligible success message after checking the port-in eligibility
+	 * @return True if entered number is eligible for port-in or False if not eligible.
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyPortInSuccess(){
+		return getReusableActionsInstance().isElementVisible(successPortInMessage);
+	}
+
+	/**
+	 * This method clicks on Continue button in Choose Number stepper
+	 * @author subash.nedunchezhian
+	 */
+	public void clkContinueChooseNumber(){
+		getReusableActionsInstance().clickWhenReady(btnChooseNumberContinue);
 	}
 
 	/**

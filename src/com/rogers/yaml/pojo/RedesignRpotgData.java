@@ -32,6 +32,7 @@ public class RedesignRpotgData {
 	private String dpIMEI;
 	private String dpDeviceStorage;
 	private String dpDeviceColor;
+	private String portInNumber;
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -289,5 +290,17 @@ public class RedesignRpotgData {
 	 */
 	public void setDpDeviceColor(String dpDeviceColor) {
 		this.dpDeviceColor = dpDeviceColor;
+	}
+	/**
+	 * @return the PortIn Number from yaml
+	 */
+	public String getPortInNumber() {
+		return portInNumber;
+	}
+	/**
+	 * @param portInNumber PortIn Number to set
+	 */
+	public void setPortInNumber(String portInNumber) {
+		this.portInNumber = portInNumber;
 	}
 }

@@ -81,7 +81,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
-		reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
+		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		//reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
 		// ***************Choose a Number Stepper*************//      

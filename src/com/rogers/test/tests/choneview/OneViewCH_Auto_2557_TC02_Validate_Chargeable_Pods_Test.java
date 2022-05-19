@@ -43,15 +43,15 @@ public class OneViewCH_Auto_2557_TC02_Validate_Chargeable_Pods_Test extends Base
 
     }
 
-        @BeforeMethod(alwaysRun=true)
-        @Parameters({"strBrowser","strLanguage"})
-        public void beforeTest(@Optional("chrome")String strBrowser, @Optional("en")String strLanguage, ITestContext
-        testContext, Method method)throws ClientProtocolException, IOException {
-            startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
-        }
+    @BeforeMethod(alwaysRun=true)
+    @Parameters({"strBrowser","strLanguage"})
+    public void beforeTest(@Optional("chrome")String strBrowser, @Optional("en")String strLanguage, ITestContext
+            testContext, Method method)throws ClientProtocolException, IOException {
+        startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
+    }
 
-        @AfterMethod(alwaysRun=true)
-        public void afterTest(){
-            closeSession();
+    @AfterMethod(alwaysRun=true)
+    public void afterTest(){
+        closeSession();
     }
 }
