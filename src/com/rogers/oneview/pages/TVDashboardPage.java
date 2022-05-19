@@ -196,6 +196,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
+	@FindBy(xpath = "//button[@name='tab-channel']")
+	WebElement standaloneChannelTab;
+
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
@@ -459,6 +462,11 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
 	}
 
+	public void selectStandaloneChannelsTab(){
+		getReusableActionsInstance().waitForElementVisibility(standaloneChannelTab, 60);
+		getReusableActionsInstance().scrollToElement(standaloneChannelTab);
+		getReusableActionsInstance().executeJavaScriptClick(standaloneChannelTab);
+	}
 	/**
 	 * To click add channel
 	 *

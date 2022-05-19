@@ -34,7 +34,7 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-//		getRogersIgniteBundlesPage().expandInternetdiv();
+		getRogersIgniteBundlesPage().expandInternetdiv();
 		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -56,9 +56,15 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
+
+//		In the case of credit evaluation not required
+
 		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
 		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
+
+//		In the case if credit evaluation required
+
 //		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 //		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 //		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());

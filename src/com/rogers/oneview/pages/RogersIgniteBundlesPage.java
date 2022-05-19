@@ -103,7 +103,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Home Phone' or text()='Téléphonie résidentielle']")
 	WebElement pointsToMentionHomePhone;
 
-	@FindBy(xpath = "//div[text()='Battery Back-Up' or text()='Batterie de secours']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours']")
 	WebElement pointsToMentionBatteryBackup;
 
 	@FindBy(xpath = "//label[text()='I have reviewed all the Points to Mention with the customer.' or text()='J’ai passé en revue tous les points à mentionner avec le client.']")
@@ -219,6 +219,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
+	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
+	WebElement clickRecommendedOffer;
 
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
@@ -922,7 +924,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(selectBestOffer);
 	}
 
-
+	public void selectRecommendedOffer(){
+		getReusableActionsInstance().waitForElementTobeClickable(clickRecommendedOffer, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
+		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
+	}
 
 	/*To click review addon link in channels and theme packs page
 	* @author suganya p

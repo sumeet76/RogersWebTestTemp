@@ -24,31 +24,50 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
 
 //       Rogers Ignite page.
 
-        getRogersIgniteBundlesPage().clkUsethisAddress();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
-        reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Targeted offers for the customer are  displayed under the offers section");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+        reporter.reportLogWithScreenshot("Service Availability-Success window");
+        getRogersIgniteBundlesPage().clkContinueServiceable();
+
+        getRogersIgniteBundlesPage().verifyRecommendedOffers();
+        reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+
+//        getRogersIgniteBundlesPage().clkTVCheckbox();
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         reporter.reportLogWithScreenshot("Triple Play - Internet, TV and HomePhone is Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Best targeted offer for the customer is displayed");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
+        reporter.reportLogWithScreenshot("Best targeted offer for the customer is displayed");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
         getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().goToPageBottom();
+        reporter.reportLogWithScreenshot("review terms and condition");
+        getRogersIgniteBundlesPage().expandInternetdiv();
+        getRogersIgniteBundlesPage().expandHomePhonediv();
+        getRogersIgniteBundlesPage().goToPageBottom();
+        getRogersIgniteBundlesPage().expandBatteryBackUpdiv();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Clicked Exchange later");
         getRogersIgniteBundlesPage().clickReviewAddons();
+        reporter.reportLogWithScreenshot("Clicked Review Addons");
+        getTVDashboardPage().selectStandaloneChannelsTab();
+        getTVDashboardPage().clickAddChannel();
+        reporter.reportLogWithScreenshot("Channel added");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
         getRogersIgniteBundlesPage().fourKContentPopup();
+        reporter.reportLogWithScreenshot("bottom to continue");
+        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Home Phone Add on page displayed");
         getHomePhoneAddonsPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -68,7 +87,13 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         getHomePhoneSelectionPage().verifySelectedNumber();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+
+        getCreditCheckPage().verifyInstallationOption();
+        reporter.reportLogWithScreenshot("Installation options");
+        getCreditCheckPage().clkCourierDelivery();
+        getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("In Person Delivery is Selected");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
@@ -76,10 +101,9 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
 
 //        Checkout Page
 
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
-
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
     @BeforeMethod(alwaysRun=true)
