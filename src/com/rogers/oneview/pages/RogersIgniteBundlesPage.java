@@ -398,10 +398,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void reviewAllTerms(){
 		    getReusableActionsInstance().waitForElementVisibility(reviewInternet,10);
 			getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
-			getReusableActionsInstance().waitForElementVisibility(reviewBattery,5);
-			getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
-			getReusableActionsInstance().waitForElementVisibility(reviewBattery,5);
-			getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
+			if(getReusableActionsInstance().isElementVisible(reviewHomePhone)){
+				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
+				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
+			}
+			if(getReusableActionsInstance().isElementVisible(reviewBattery)) {
+				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
+				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
+			}
 
 		}
 	/**
@@ -409,7 +413,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(loadOffers);
 		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
@@ -676,6 +680,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void customerWishtoContinue() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(continueforCheckout,90);
 	}
 	/**
