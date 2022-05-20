@@ -569,13 +569,13 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickBillinglink() {
-        /*if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
+        if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
         if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
-        }*/
+        }
         WebElement btn = getReusableActionsInstance().getWhenReady(Billinglink, 90);
         getReusableActionsInstance().clickWhenReady(btn, 45);
     }
