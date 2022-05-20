@@ -4,6 +4,19 @@ boolean success(String message) {
     return false;
 }
 
+boolean shouldRun() {
+    echo sh(label: 'Add safe.directory for Git', script: 'git config --global --add safe.directory "$(pwd)"', returnStdout:true).trim()
+    String message = sh(label: 'Get Commit Message', script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+
+    if (message.matches('.*\\[skip ci].*')) {
+        return success('[skip] commit message contains [skip ci]')
+    } else if (env.BRANCH_NAME != 'master' && message.matches("^\\[release] 'v.*")) {
+        return success('[skip] only build releases on the master branch')
+    } else {
+        return true
+    }
+}
+
 void toolSh(String command) {
     container('java-buildtools') {
         sh command
