@@ -1,4 +1,5 @@
 package com.rogers.oneview.pages;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -467,6 +468,10 @@ public class CreditCheckPage  extends BasePageClass {
 	{
 		getReusableActionsInstance().isElementVisible(onlineBillingOption);
 		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
+	}
+
+	public void refreshContinue() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//span[text()='Continuer' or text()='Continue']/ancestor::button"),120);
 	}
 }
 

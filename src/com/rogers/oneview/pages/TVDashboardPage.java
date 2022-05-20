@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 import com.rogers.pages.base.BasePageClass;
+import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -344,6 +345,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
 	WebElement uploadSpeed;
+
+	@FindBy(xpath = "//span[text()='$15 off Ignite']")
+	WebElement campaign;
 
 
 	/**
@@ -1292,6 +1296,13 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().isElementVisible(cancel);
 		getReusableActionsInstance().isElementVisible(btnContnueReset);
 		return true;
+	}
+
+	public void selectCampaign(){
+		getReusableActionsInstance().isElementVisible(campaign);
+		getReusableActionsInstance().clickWhenReady(campaign);
+
+
 	}
 }
 

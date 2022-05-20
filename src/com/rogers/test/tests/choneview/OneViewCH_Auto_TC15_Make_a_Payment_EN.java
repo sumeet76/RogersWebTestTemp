@@ -35,13 +35,13 @@ public class OneViewCH_Auto_TC15_Make_a_Payment_EN extends BaseTestClass {
         reporter.reportLogWithScreenshot("Credit Card Security Code Entered");
         getDashboardBillingPage().selectSignUp();
         reporter.reportLogWithScreenshot("Sign Up Checkbox Selected");
-       // getDashboardBillingPage().continuePayment();
-       //reporter.reportLogWithScreenshot("Continue Button clicked");
-       //getDashboardBillingPage().clickPayNow();
-        //reporter.reportLogWithScreenshot("Pay Now button clicked");
-        //getDashboardBillingPage().clickDone();  /*optional step*/
-        //reporter.reportLogWithScreenshot("Done Button Clicked");  /*optional step*/
-       //reporter.reportLogWithScreenshot("Payment made");
+        getDashboardBillingPage().continuePayment();
+       reporter.reportLogWithScreenshot("Continue Button clicked");
+       getDashboardBillingPage().clickPayNow();
+        reporter.reportLogWithScreenshot("Pay Now button clicked");
+        getDashboardBillingPage().clickDone();  /*optional step*/
+        reporter.reportLogWithScreenshot("Done Button Clicked");  /*optional step*/
+       reporter.reportLogWithScreenshot("Payment made");
 
 
 
