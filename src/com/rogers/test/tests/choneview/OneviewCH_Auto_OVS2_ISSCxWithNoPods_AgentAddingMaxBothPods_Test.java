@@ -51,6 +51,6 @@ public class OneviewCH_Auto_OVS2_ISSCxWithNoPods_AgentAddingMaxBothPods_Test ext
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            //loseSession();
+            closeSession();
     }
 }

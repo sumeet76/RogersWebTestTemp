@@ -338,15 +338,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement exchangeNow;
 
 	//@FindBy(xpath = "//div[@class='ng-tns-c166-6 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
-	@FindBy(xpath = "//div[text()='Internet']")
+	@FindBy(xpath = "//div[text()='Internet' or text()='l'Internet']")
 	WebElement internetCollapse;
 
 	//@FindBy(xpath = "//div[@class='ng-tns-c166-7 ng-star-inserted']")
-	@FindBy(xpath = "//div[text()='Home Phone']")
+	@FindBy(xpath = "//div[text()='Home Phone' or text()='téléphone fixe']")
 	WebElement homePhoneCollapse;
 
 	//@FindBy(xpath = "//div[@class='ng-tns-c166-8 ng-star-inserted']")
-	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours, alerte médicale et systèmes de sécurité']")
 	WebElement batteryBackUpCollapse;
 
 	@FindBy(xpath = "(//span[text()='View details'])[1]")
