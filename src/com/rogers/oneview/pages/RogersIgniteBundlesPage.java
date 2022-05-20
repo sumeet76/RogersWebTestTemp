@@ -46,7 +46,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
+		@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
@@ -55,7 +55,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart'])[2]")
+	//@FindBy(xpath = "(//(span[@translate='global.cta.addToCart'])[2]")
+	@FindBy(xpath = "//span[contains(text(),'Ignite 50 Ultd + SmartStream')or contains(text(),'Élan Internet 150 illimité + Diffusion futée')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement firstAddToCart;
 
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
@@ -333,13 +334,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
 	WebElement exchangeNow;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-6 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Internet']")
 	WebElement internetCollapse;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-7 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Home Phone']")
 	WebElement homePhoneCollapse;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-8 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']")
 	WebElement batteryBackUpCollapse;
 
 	@FindBy(xpath = "(//span[text()='View details'])[1]")
@@ -353,6 +357,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationMsg;
+	@FindBy(xpath = "ng-tns-c166-16 ng-star-inserted")
+	WebElement tvCollapse;
 
 	/**
 	 * Click Load Offers button
@@ -428,6 +434,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void clickFirstAddToCart() {
 		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
+		getReusableActionsInstance().scrollToElement(firstAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}
 
@@ -898,7 +905,7 @@ public void activateHomePhoneltrPopUp() {
 	* @author suganya p
 	*/
 	public void clkAddToCartForBestOffer() {
-		getReusableActionsInstance().waitForElementVisibility(clickBstOffer, 30);
+		getReusableActionsInstance().waitForElementVisibility(clickBstOffer, 60);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(clickBstOffer);
 		getReusableActionsInstance().executeJavaScriptClick(clickBstOffer);
 	}
@@ -1242,6 +1249,11 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(fibreActivationMsg);
 	}
 
+	public void clickTvCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(tvCollapse);
+		getReusableActionsInstance().clickWhenReady(tvCollapse);
+	}
 }
 
 
