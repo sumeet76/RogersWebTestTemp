@@ -37,11 +37,11 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device??flowType=aal");
+        getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=aal");
         //------------------------------------Device Catalog page--------------------------------------------
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(), "Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
         //reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed", "Credit Evaluation Text not disaplayed on Modal");
-        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
+        //getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
         String aalSharingType = TestDataHandler.tc19AALBYODBopisShipping.getSharingType();

@@ -20,7 +20,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//input[@id='algoliaInput']")
 	WebElement addressInput;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
@@ -105,7 +105,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Home Phone' or text()='Téléphonie résidentielle']")
 	WebElement pointsToMentionHomePhone;
 
-	@FindBy(xpath = "//div[text()='Battery Back-Up' or text()='Batterie de secours']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours']")
 	WebElement pointsToMentionBatteryBackup;
 
 	@FindBy(xpath = "//label[text()='I have reviewed all the Points to Mention with the customer.' or text()='J’ai passé en revue tous les points à mentionner avec le client.']")
@@ -168,7 +168,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;
 
-	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+//	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+	String collapsible = "(//rch-collapsible[@_nghost-ecx-c166])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
@@ -220,6 +221,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
+	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
+	WebElement clickRecommendedOffer;
 
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
@@ -373,7 +376,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * Review Terms & Condition
 	 * @author aditi.jain
 	 */
-	public void reviewTermsAndCondition() {
+	public void 	reviewTermsAndCondition() {
 
 		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
 		for (int i=1; i<=allCollapsible.size(); i++) {
@@ -383,6 +386,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 		}
 
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
+		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+	}
+
+	public void clickTermsAndConditionsCheckbox(){
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
@@ -499,7 +508,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
@@ -677,9 +685,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkInternetCheckbox() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().scrollToElement(internetCheckbox);
+//		getReusableActionsInstance().scrollToElement(internetCheckbox);
 		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
+	}
+
+	public void goToPageBottom() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	/**
 	 * Click SmartStream
@@ -920,7 +932,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(selectBestOffer);
 	}
 
-
+	public void selectRecommendedOffer(){
+		getReusableActionsInstance().waitForElementTobeClickable(clickRecommendedOffer, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
+		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
+	}
 
 	/*To click review addon link in channels and theme packs page
 	* @author suganya p
@@ -1025,7 +1041,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clkContinueServiceable()
 	{
-		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().getWhenReady(continueButtonServiceable,30).click();
 	}
 	public void clkContinuePTM()

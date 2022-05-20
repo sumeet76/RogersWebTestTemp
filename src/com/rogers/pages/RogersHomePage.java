@@ -244,7 +244,7 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkViewNavigationMobile;
 
 	@FindAll({
-	//@FindBy(xpath = "//a[@title='Check availability of Ignite Internet ']//span[contains(text(),'Check availability')]"),
+	@FindBy(xpath = "//a[@aria-label='Check availability Check availability of Ignite Internet ']"),
 	@FindBy(xpath = "//a[@aria-label='Check availability Check if Ignite Internet is available at your address']")
 	})
 	WebElement lnkInternetAvailability;
@@ -253,8 +253,9 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkInternetwithSSAvailability;
 
 	@FindAll({
-			@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
-			//@FindBy(xpath = "//div[@class='dsa-hero-billboard__ctas d-flex flex-wrap justify-content-center justify-content-md-start mt-8 ng-star-inserted']")
+			@FindBy(xpath = "//nav[@aria-label='Internet']"),
+			@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']"),
+			@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']")
 			})
 	WebElement txtInternetBuyPage;
 

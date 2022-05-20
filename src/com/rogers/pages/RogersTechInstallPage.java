@@ -169,7 +169,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement chkPersonalizedInstall;
 
 	@FindAll({
-			@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']"),
+			@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.withProInstallCourier']"),
 			@FindBy(xpath ="//h1[text()='Setup options']")})
 	WebElement txtTechInstalpage;
 

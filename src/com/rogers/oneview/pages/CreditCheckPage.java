@@ -296,7 +296,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 
@@ -452,6 +452,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void selectDeliveryByAppointment() {
 		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().scrollToElement(deliveryByAppointment);
 		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
 	}
 
