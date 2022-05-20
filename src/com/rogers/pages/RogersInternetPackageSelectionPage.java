@@ -53,6 +53,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
 	WebElement VerifyRecommendedBannertitle;
 
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwn150pkgTypeOfContract;
+
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnTypeOfContract;
 
@@ -284,6 +287,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void selectMonthToMonthTypeOfContact() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select type of contract to month-to-month for Ignite Internet 150 Mbps
+	 * @author Manpreet.Kaur3
+	 */
+	public void select150MonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
