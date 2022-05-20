@@ -35,10 +35,9 @@ public class OneviewCH_Auto_OVS2_ISSCxWithNoPods_AgentAddingMaxBothPods_Test ext
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-        reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
-
-//        getRogersOVOrderReviewPage().clickSubmitOrder();
-//        reporter.reportLogWithScreenshot("click Submit Order");
+        getRogersOVOrderReviewPage().clickSubmitOrder();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
 
     }
@@ -52,6 +51,6 @@ public class OneviewCH_Auto_OVS2_ISSCxWithNoPods_AgentAddingMaxBothPods_Test ext
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+            //loseSession();
     }
 }

@@ -69,6 +69,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			getCreditCheckPage().verifyInstallationOption();
 			getCreditCheckPage().goToPageBottom();
 			reporter.reportLogWithScreenshot("in-person delivery");
+			getCreditCheckPage().clkCourierDelivery();
 			getCreditCheckPage().clickInPersonDelivery();
 			getPaymentOptionsPage().clkContinue();
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -82,11 +83,11 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.reportLogWithScreenshot("Institution Number");
 			getRogersOVCheckoutPage().enterAccountNumber("1234003");
 			reporter.reportLogWithScreenshot("Account Number");
-//			getPaymentOptionsPage().clkContinue();
-//			reporter.reportLogWithScreenshot("submit order");
-//			getRogersOVCheckoutPage().clkSubmit();
-//			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//			reporter.reportLogWithScreenshot("Order Placed");
+			getPaymentOptionsPage().clkContinue();
+			reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			reporter.reportLogWithScreenshot("Order Placed");
 		
     }
 
@@ -98,7 +99,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

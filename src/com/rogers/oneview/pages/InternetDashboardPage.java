@@ -176,7 +176,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.banner']")
 	WebElement  Restricted;
-	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
@@ -649,6 +649,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickPlusToAddPod() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
 
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){

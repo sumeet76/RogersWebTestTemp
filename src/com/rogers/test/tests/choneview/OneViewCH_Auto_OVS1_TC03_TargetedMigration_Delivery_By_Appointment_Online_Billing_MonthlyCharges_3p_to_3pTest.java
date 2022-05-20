@@ -105,16 +105,16 @@ public class OneViewCH_Auto_OVS1_TC03_TargetedMigration_Delivery_By_Appointment_
         reporter.reportLogWithScreenshot("Verifying billing and Payment options available");
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("select oline billing option");
-       // getCreditCheckPage().selectOnlineBilling();
+       getCreditCheckPage().selectOnlineBilling();
         reporter.reportLogWithScreenshot("select monthly payment options from dropdown");
-        //getCreditCheckPage().selectPaymentOption(1);
+        getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Continue button clicked");
         getPaymentOptionsPage().clkContinue();
-        reporter.reportLogWithScreenshot("One Time fee available at order review page");
+        //reporter.reportLogWithScreenshot("One Time fee available at order review page");
         //reporter.hardAssert(getRogersOVOrderReviewPage().,"One time fees and credit amount is correct"," One time fees and credit amount is not correct");
-       // getOVROrderReviewPage().checkOneTimeFee();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+       //getOVROrderReviewPage().checkOneTimeFee();
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }
