@@ -51,7 +51,7 @@ public class OneViewCH_Auto_TC_018b_Internet_HeaderFooterUsageTest extends BaseT
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest(ITestResult res) {
-		//closeSession();
+		closeSession();
 	}
 
 }

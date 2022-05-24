@@ -47,8 +47,6 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
 //        getTVDashboardPage().clickContinueChannelsAndThemePacks();
   //      getTVDashboardPage().clickSuccessOk();
 
-
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser","strLanguage"})

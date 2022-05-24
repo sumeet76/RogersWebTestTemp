@@ -5,6 +5,7 @@ boolean success(String message) {
 }
 
 boolean shouldRun() {
+    echo sh(label: 'Add safe.directory for Git', script: 'git config --global --add safe.directory "$(pwd)"', returnStdout:true).trim()
     String message = sh(label: 'Get Commit Message', script: 'git log -1 --pretty=%B', returnStdout: true).trim()
 
     if (message.matches('.*\\[skip ci].*')) {
@@ -48,13 +49,21 @@ pipeline {
         string(name: 'AWSPRODUrl', defaultValue: "", description: "BFA AWS PROD URL")
         string(name: 'AWSUrl', defaultValue: "", description: "BFA AWS URL")
         string(name: 'OneViewEnv', defaultValue: "", description: "One View Env")
+        string(name: 'TestProject', defaultValue: "RTM", description: "Test plan to update the test results in JIRA")
+        string(name: 'TestPlanKey', defaultValue: "", description: "Test plan to update the test results in JIRA")
+        string(name: 'TestExecutionKey', defaultValue: "", description: "Test Execution to update the test results in JIRA")
+        string(name: 'XrayImportFlag', defaultValue: "false", description: "Flag to check whether results need to be imported in Xray")
+
     }
 
     triggers {
-        parameterizedCron(env.BRANCH_NAME == 'OVC_May_Sanity' ?'''
+        parameterizedCron(env.BRANCH_NAME == 'master' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-                     05 5,6 * * 1-5 %Browser=saucechrome;Language=en;Groups=MaySanity;ThreadCount=2;TestProfile=ConnectedHome
+                    00 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityCH;ThreadCount=2;TestProfile=ConnectedHome
+                    30 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanitySS;ThreadCount=3;TestProfile=SelfServe
+                    45 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityBFA;ThreadCount=2;TestProfile=BuyFlows
+                    30 07 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityCHOV;ThreadCount=2;TestProfile=OneView
                 ''':'')
     }
 
@@ -66,6 +75,8 @@ pipeline {
         NETSTORAGE_ACCESS_KEY = credentials('NETSTORAGE_ACCESS_KEY')
         ENS_USERNAME= credentials('ENS_USERNAME')
         ENS_PASSWORD= credentials('ENS_PASSWORD')
+        XRAY_PROD_CRED_USR = credentials('XRAY_PROD_CRED_USR')
+        XRAY_PROD_CRED_PSW = credentials('XRAY_PROD_CRED_PSW')
         MaestroLoginID= credentials('MaestroLoginID')
         MaestroUsrID= credentials('MaestroUsrID')
     }
@@ -73,8 +84,6 @@ pipeline {
         stage('Run CI?') {
             when { expression { shouldRun() } }
             stages {
-
-
                 stage('Environment Variables') {
                     steps { sh 'env | sort' }
                 }
@@ -91,7 +100,6 @@ pipeline {
                         toolSh 'sonarqube-credentials.sh'
                     }
                 }
-
 
                 stage('Regression Tests') {
                     steps {
@@ -153,13 +161,53 @@ pipeline {
                         }
                     }
                 }
-
-
             }
         }
     }
 
     post {
+
+        always{
+            script{
+                def testExecInfo = ''' {
+                    "fields": {
+                        "project": {
+                        "key":"RTM"
+                        },
+                    "summary": "''' + env.BUILD_TAG + '''",
+                    "description": "''' + REPORT_URL + '''",
+                    "customfield_21635": ["RTM-112530"]
+                    }
+                }'''
+                def testInfoImport = ''' {
+                      "fields": {
+                            "project": {
+                                "key": "RTM"
+                            },
+                            "description": "''' + REPORT_URL + '''",
+                            "customfield_26619": {
+                                "id": "52538"
+                            },
+                            "customfield_21608": {
+                                "value": "Auto"
+                            },
+                            "priority": {
+                                "id": "10011"
+                            }
+                      }
+                }'''
+                if (params.XrayImportFlag == 'true' && params.TestPlanKey != null && params.TestExecutionKey != null) {
+                    stage('Xray - Upload'){
+                        if(params.TestProject == 'RTM') {
+                        sh("curl -H 'Accept-Charset:utf-8' -H 'Content-Type:multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' -F info='${testExecInfo}' -F testInfo='${testInfoImport}' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng/multipart'")
+                        }
+                        echo "Upload execution results to JIRA"
+                        sh(script: "curl -H 'Accept-Charset: utf-8' -H 'Content-Type: multipart/form-data' -u $XRAY_PROD_CRED_USR:$XRAY_PROD_CRED_PSW -F 'file=@build/testngOutput/testng-results.xml' 'https://reqcentral.com/rest/raven/1.0/import/execution/testng?projectKey=${params.TestProject}&testPlanKey=${params.TestPlanKey}&testExecKey=${params.TestExecutionKey}'", returnStdout: true).trim().tokenize("\n")
+                    }
+                }
+
+            }
+        }
 
         success {
             echo "${env.BUILD_URL} has result success"
@@ -174,7 +222,6 @@ pipeline {
             office365ConnectorSend message: "Finished ${env.JOB_NAME} build #${env.BUILD_NUMBER} (<${REPORT_URL}>)", webhookUrl: 'https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/JenkinsCI/f1ee4c4159dd45efa4fc9f1317fe9510/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd', status: "UNSTABLE"
         }
     }
-
 
 }
 

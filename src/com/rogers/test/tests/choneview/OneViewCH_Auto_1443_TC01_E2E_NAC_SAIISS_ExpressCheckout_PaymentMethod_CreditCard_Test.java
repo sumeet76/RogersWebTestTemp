@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_AddOn_ExpressCheckout_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMethod_CreditCard_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_AddOn_ExpressCheckout_PaymentMethod_CreditCard_Test(){
+	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -63,6 +63,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_AddOn_ExpressCheckout_Payme
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -73,11 +74,11 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_AddOn_ExpressCheckout_Payme
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("payment details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("payment details entered");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
 	}
 

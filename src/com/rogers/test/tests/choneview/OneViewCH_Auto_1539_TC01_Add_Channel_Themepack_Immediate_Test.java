@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
-	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV","MaySanity"})
+	@Test (groups = {"AprilSanity","RegressionCHOV"})
 	public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -35,7 +35,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 //		reporter.reportLogWithScreenshot("manage channel and themepack tab");
 //		getTVDashboardPage().clickContinueToCancelOrder();
 //		reporter.reportLogWithScreenshot("Cancel the changed ");
-//		getTVDashboardPage().clickThemepacksTab();
+		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("themepack tab");
 		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack added");
@@ -68,8 +68,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
+	public void afterTest() {closeSession();
 	}
 
 }

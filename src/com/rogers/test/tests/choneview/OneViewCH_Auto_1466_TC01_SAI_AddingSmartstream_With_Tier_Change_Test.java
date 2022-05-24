@@ -27,13 +27,15 @@ public class OneViewCH_Auto_1466_TC01_SAI_AddingSmartstream_With_Tier_Change_Tes
         reporter.reportLogWithScreenshot(" Smart Stream Selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
-        getCreditCheckPage().clkCourierDelivery();
-        getCreditCheckPage().clickInPersonDelivery();
+        getRogersOVInstallationPage().clkCourierDelivery();
+        reporter.reportLogWithScreenshot("Select the courier delivery");
+        getRogersOVInstallationPage().clickInstallationCheckBox();
+        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
 
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

@@ -16,6 +16,7 @@ public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.ViewBill.getAccountNo(),TestDataHandler.ViewBill.getContactID());
         getAccountOverViewPage().clickBillinglink();
+
 //        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("Billing link is opened");
         getAccountOverViewPage().scrollToViewBill();

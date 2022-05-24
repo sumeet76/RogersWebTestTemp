@@ -11,9 +11,8 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV","MaySanity"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

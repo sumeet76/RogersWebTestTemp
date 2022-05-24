@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 import com.rogers.pages.base.BasePageClass;
+import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -196,6 +197,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
+	@FindBy(xpath = "//button[@name='tab-channel']")
+	WebElement standaloneChannelTab;
+
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
@@ -221,7 +225,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
@@ -343,6 +347,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
 	WebElement uploadSpeed;
+
+	@FindBy(xpath = "//span[text()='$15 off Ignite']")
+	WebElement campaign;
 
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink']")
 	WebElement reviewTerms;
@@ -1288,6 +1295,13 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().isElementVisible(cancel);
 		getReusableActionsInstance().isElementVisible(btnContnueReset);
 		return true;
+	}
+
+	public void selectCampaign(){
+		getReusableActionsInstance().isElementVisible(campaign);
+		getReusableActionsInstance().clickWhenReady(campaign);
+
+
 	}
 
 	public void reviewTerms() {

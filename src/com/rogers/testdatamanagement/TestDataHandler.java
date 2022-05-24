@@ -97,6 +97,7 @@ public class TestDataHandler {
 	public static AccountData tc75_IgniteTVBaseLineHomeAddress;
 	public static AccountData tc76_Legact2Pto3PIgniteBasementHousePortinHot;
 	public static AccountData tc82_Legacy1PtoIgnite2P;
+	public static AccountData tc116_Legacy1PInternetToIgnite2P;
 	public static AccountData tc83_Legacy2PtoIgnite2P;
 	public static AccountData tc112_Legacy2PtoIgnite2PMigration;
 	public static AccountData tc87_NativeTNcourierFulfilmentHot;
@@ -310,13 +311,6 @@ public class TestDataHandler {
 	public static OvrReusableData ovrWirelessNacATL;
 	public static  OvrReusableData ovrWirelessNacON;
 	public static OvrReusableData ovrMigrationData1pINTtoISSATL;
-	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
-	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
-	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
-	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
-	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
-	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
-	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
 	public static OvrConfigData ovrConfigData;
 	public static OvrReusableData legacy1PtoNac3pNewAddress;
 	public static OvrReusableData existingIgniteCxToNac3pON;
@@ -348,6 +342,14 @@ public class TestDataHandler {
 	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
+
+	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
+	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
+	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
+	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
+	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
+	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
+	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -432,6 +434,7 @@ public class TestDataHandler {
 		tc58_saiAccountForIgniteBundleBuy = YamlHandler.getCableAccountData("TC58_SaiAccountForIgniteBundleBuy");
 		tc59_saiforIgniteBundle = YamlHandler.getCableAccountData("TC59_SAIforIgniteBundle");
 		tc82_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC82_Legacy1PtoIgnite2P");
+		tc116_Legacy1PInternetToIgnite2P= YamlHandler.getCableAccountData("TC116_Legacy1PInternetToIgnite2P");
 		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");

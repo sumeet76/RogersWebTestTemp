@@ -26,14 +26,13 @@ public class OneViewCH_Auto_1546_TC01_TargetedMigration_1P_Internet_to_SAIISS_Te
         getRogersIgniteBundlesPage().refreshContinue();
         reporter.reportLogWithScreenshot("refresh Continue");
         getRogersIgniteBundlesPage().clkContinue();
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyRecommendedOffers(), "verify recommended offer appear", "verify recommeneded offer didnt appear");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyRecommendedOffers(), "verify recommended offer appear", "verify recommeneded offer didnt appear");
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         reporter.reportLogWithScreenshot("refresh Continue");
         getRogersIgniteBundlesPage().clkSmartStream();
         reporter.reportLogWithScreenshot("Single Play - SAI Selected");
-
-//        getRogersIgniteBundlesPage().selectBestOffer();
+        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
@@ -61,29 +60,28 @@ public class OneViewCH_Auto_1546_TC01_TargetedMigration_1P_Internet_to_SAIISS_Te
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("Product Added");
 
-        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("scroll To Continue");
-        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        reporter.reportLogWithScreenshot("scroll To Continue");
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        reporter.reportLogWithScreenshot("scroll To Continue");
-        getCreditCheckPage().clkAuthorize();
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-        reporter.reportLogWithScreenshot("Credit Check Information");
+        //getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        //reporter.reportLogWithScreenshot("scroll To Continue");
+        //getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+       //reporter.reportLogWithScreenshot("scroll To Continue");
+        //getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+       // reporter.reportLogWithScreenshot("scroll To Continue");
+       // getCreditCheckPage().clkAuthorize();
+        //reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        //reporter.reportLogWithScreenshot("Credit Check Information");
+        getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().refreshContinue();
         getCreditCheckPage().clkContinue();
 //        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
-
         getCreditCheckPage().verifyInstallationOption();
-
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("go To Page Bottom");
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("click In Person Delivery");
-
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("click Continue");
-
         getCreditCheckPage().verifyBillingAndPaymentOption();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().clickDigitalFrontline();
@@ -111,7 +109,7 @@ public class OneViewCH_Auto_1546_TC01_TargetedMigration_1P_Internet_to_SAIISS_Te
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

@@ -15,22 +15,22 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		super(driver);
 		
 	}
-	//@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+
+//	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
 	@FindBy(xpath="//input[@id='algoliaInput']")
 	WebElement addressInput;
 
-	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
-	//@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+//	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
 	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
-	//@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
+//	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
 	@FindBy(xpath="//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement inputContainer;
 
@@ -49,7 +49,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
+		@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
@@ -58,7 +58,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart'])[2]")
+	//@FindBy(xpath = "(//(span[@translate='global.cta.addToCart'])[2]")
+	@FindBy(xpath = "//span[contains(text(),'Ignite 50 Ultd + SmartStream')or contains(text(),'Élan Internet 150 illimité + Diffusion futée')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement firstAddToCart;
 
 	@FindBy(xpath = "//span[text()='No, continue' or text()='Non, continuer']/ancestor::button")
@@ -107,7 +108,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Home Phone' or text()='Téléphonie résidentielle']")
 	WebElement pointsToMentionHomePhone;
 
-	@FindBy(xpath = "//div[text()='Battery Back-Up' or text()='Batterie de secours']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours']")
 	WebElement pointsToMentionBatteryBackup;
 
 	@FindBy(xpath = "//label[text()='I have reviewed all the Points to Mention with the customer.' or text()='J’ai passé en revue tous les points à mentionner avec le client.']")
@@ -181,6 +182,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement reviewBattery;
 
 	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+//	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
@@ -232,6 +234,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
+	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
+	WebElement clickRecommendedOffer;
 
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
@@ -346,13 +350,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Exchange now' or text()='Échanger maintenant']/ancestor::button")
 	WebElement exchangeNow;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-18 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-6 ng-star-inserted'] | //div[@class='ng-tns-c166-10 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Internet' or text()='l'Internet']")
 	WebElement internetCollapse;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-19 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-7 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Home Phone' or text()='téléphone fixe']")
 	WebElement homePhoneCollapse;
 
-	@FindBy(xpath = "//div[@class='ng-tns-c166-20 ng-star-inserted']")
+	//@FindBy(xpath = "//div[@class='ng-tns-c166-8 ng-star-inserted']")
+	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours, alerte médicale et systèmes de sécurité']")
 	WebElement batteryBackUpCollapse;
 
 	@FindBy(xpath = "(//span[text()='View details'])[1]")
@@ -366,6 +373,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationMsg;
+	@FindBy(xpath = "ng-tns-c166-16 ng-star-inserted")
+	WebElement tvCollapse;
 
 	/**
 	 * Click Load Offers button
@@ -395,6 +404,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
 
+	public void clickTermsAndConditionsCheckbox(){
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
+		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+	}
+
 	public void reviewAllTerms(){
 		    getReusableActionsInstance().waitForElementVisibility(reviewInternet,10);
 			getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
@@ -413,7 +428,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().scrollToElement(loadOffers);
 		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
@@ -455,6 +470,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void clickFirstAddToCart() {
 		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
+		getReusableActionsInstance().scrollToElement(firstAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 	}
 
@@ -471,7 +487,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
-		//getReusableActionsInstance().clickIfAvailable(continueButton);
+//		getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 	/**
@@ -519,7 +535,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
@@ -715,9 +730,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkInternetCheckbox() {
 		getReusableActionsInstance().staticWait(3000);
-		//getReusableActionsInstance().scrollToElement(internetCheckbox);
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 90);
+//		getReusableActionsInstance().scrollToElement(internetCheckbox);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
+	}
+
+	public void goToPageBottom() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	/**
 	 * Click SmartStream
@@ -944,7 +963,7 @@ public void activateHomePhoneltrPopUp() {
 	* @author suganya p
 	*/
 	public void clkAddToCartForBestOffer() {
-		getReusableActionsInstance().waitForElementVisibility(clickBstOffer, 30);
+		getReusableActionsInstance().waitForElementVisibility(clickBstOffer, 60);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(clickBstOffer);
 		getReusableActionsInstance().executeJavaScriptClick(clickBstOffer);
 	}
@@ -959,7 +978,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(selectBestOffer);
 	}
 
-
+	public void selectRecommendedOffer(){
+		getReusableActionsInstance().waitForElementTobeClickable(clickRecommendedOffer, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
+		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
+	}
 
 	/*To click review addon link in channels and theme packs page
 	* @author suganya p
@@ -1110,7 +1133,7 @@ public void activateHomePhoneltrPopUp() {
 	public void addPods(int amount)
 	{
 		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
-		getReusableActionsInstance().getWhenReady(podsLocator, 60);
+		getReusableActionsInstance().getWhenReady(podsLocator, 20);
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
@@ -1288,6 +1311,11 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(fibreActivationMsg);
 	}
 
+	public void clickTvCollapse()
+	{
+		getReusableActionsInstance().scrollToElement(tvCollapse);
+		getReusableActionsInstance().clickWhenReady(tvCollapse);
+	}
 }
 
 
