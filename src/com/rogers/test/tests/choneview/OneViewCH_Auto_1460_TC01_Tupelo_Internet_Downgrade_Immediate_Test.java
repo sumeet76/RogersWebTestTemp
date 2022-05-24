@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test extends BaseTestClass {
-    @Test(groups = {"AprilSanity","RegressionCHOV"})
+    @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity"})
     public void oneViewCH_1460_Tupelo_Internet_Downgrade_ImmediateTest() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
@@ -26,6 +26,8 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
         //reporter.reportLogWithScreenshot("Load offers button clicked");
         getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        getInternetDashboardPage().clickContinue();
+        reporter.reportLogWithScreenshot("Clicked Continue");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
         //getRogersOVInstallationPage().clickInstallationCheckBox();

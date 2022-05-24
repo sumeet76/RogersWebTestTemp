@@ -77,6 +77,8 @@ pipeline {
         ENS_PASSWORD= credentials('ENS_PASSWORD')
         XRAY_PROD_CRED_USR = credentials('XRAY_PROD_CRED_USR')
         XRAY_PROD_CRED_PSW = credentials('XRAY_PROD_CRED_PSW')
+        MaestroLoginID= credentials('MaestroLoginID')
+        MaestroUsrID= credentials('MaestroUsrID')
     }
     stages {
         stage('Run CI?') {

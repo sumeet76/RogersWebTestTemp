@@ -59,6 +59,7 @@ public class OneViewCH_Auto_1411_TC01_E2E_NAC_SmartStream_STBs_PaymentMethod_Cre
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Installation bottom");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();

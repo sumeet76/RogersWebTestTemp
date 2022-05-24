@@ -1,5 +1,7 @@
 package com.rogers.oneview.pages;
 
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -349,6 +351,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='$15 off Ignite']")
 	WebElement campaign;
 
+	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink']")
+	WebElement reviewTerms;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -389,8 +394,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
-		getReusableActionsInstance().waitForElementVisibility(addThemepack, 60);
-		getReusableActionsInstance().scrollToElement(addThemepack);
+		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
 			getReusableActionsInstance().clickWhenReady(yesToContinue);
@@ -464,11 +468,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
 	}
 
-	public void selectStandaloneChannelsTab(){
-		getReusableActionsInstance().waitForElementVisibility(standaloneChannelTab, 60);
-		getReusableActionsInstance().scrollToElement(standaloneChannelTab);
-		getReusableActionsInstance().executeJavaScriptClick(standaloneChannelTab);
-	}
 	/**
 	 * To click add channel
 	 *
@@ -1303,6 +1302,12 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(campaign);
 
 
+	}
+
+	public void reviewTerms() {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().isElementVisible(reviewTerms);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTerms);
 	}
 }
 
