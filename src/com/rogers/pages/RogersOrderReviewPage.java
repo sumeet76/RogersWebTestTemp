@@ -27,7 +27,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'18')]//ancestor::div[contains(@class,'ds-checkbox')]")
 	WebElement chkageVerify;
 	
-	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+	@FindBy(xpath = "//h1[@class='bundle-checkout-review__header']")
 	WebElement txtAgreementPageBuy;
 	//h3[@translate='global.label.OrderReview']
 
