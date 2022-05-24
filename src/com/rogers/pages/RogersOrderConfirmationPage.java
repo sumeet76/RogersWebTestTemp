@@ -21,7 +21,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement btnContinueShopping;
 
 	// Thanks! We received your order.
-	@FindBy(xpath = "//div[@class='confirmation-bubble']")
+	@FindBy(xpath = "//div[@class='confirmation-bubble-component']")
 	WebElement infoChangeOrderConfirmationnew;
 
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")
@@ -43,10 +43,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	})
 	WebElement lblThankYou;
 
-	@FindAll({
-			@FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Confirmation')]"),
-			@FindBy(xpath = "//span[@checkout-res='checkout_order_confirmation']")
-	})
+	@FindBy(xpath = "//h1[@translate='global.label.orderConfirmation']")
 	WebElement lblOrderConfirmation;
 
 	@FindBy(xpath = "//div[@class='orderSummary']")
@@ -140,7 +137,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOrderConfirmationNew() {
-		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmationnew, 120);
+		return getReusableActionsInstance().isElementVisible(infoChangeOrderConfirmationnew, 60);
 	}
 	/**
 	 * Verify the the yellow banner with order success information
@@ -169,7 +166,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 */
 	public boolean verifyOrderConfirmationPageLoad() {
 		getReusableActionsInstance().staticWait(10000);
-		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 60);
+		return getReusableActionsInstance().isElementVisible(lblOrderConfirmation, 120);
 	}
 
 	/**

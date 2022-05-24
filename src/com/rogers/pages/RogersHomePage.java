@@ -105,13 +105,16 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rch-modal']//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement continueBtnIgniteMultipleAddressLookupSubmit;
 
-	@FindAll({
-			@FindBy(xpath = "//a[contains(@aria-label,'See available bundles') or  contains(@aria-label,'Voir les offres groupées')]"),
-			@FindBy(xpath = "//a[contains(@aria-label,'View bundles  View Ignite TV + Internet bundles available to you')]/span")})
-	WebElement btnServiceability;
+	/*@FindAll({
+			@FindBy(xpath = "//a[contains(@aria-label,'View bundles  View Ignite TV + Internet bundles available to you')]/span"),
+			@FindBy(xpath = "//a[contains(@aria-label,'See available bundles') or  contains(@aria-label,'Voir les offres groupées')]")})
+	WebElement btnServiceability;*/
 
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay']")
 	WebElement overlayHomePage;
+
+	@FindBy(xpath ="//a[contains(@aria-label,'View bundles  View Ignite TV + Internet bundles available to you')]/span")
+	WebElement btnServiceability;
 		
 	@FindBy(xpath = "//a[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;
@@ -698,7 +701,7 @@ public class RogersHomePage extends BasePageClass {
 		{
 		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
 		}
-	getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
+	getReusableActionsInstance().getWhenReady(btnServiceability, 60).click();
 	}
 
 	/**
