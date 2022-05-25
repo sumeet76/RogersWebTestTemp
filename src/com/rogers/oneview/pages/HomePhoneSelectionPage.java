@@ -105,7 +105,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(finalcontinueOnGeneratePhone,120);
 	}
@@ -135,7 +135,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinueOnGeneratePhone() {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnGeneratePhone);
 		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone,10);
 

@@ -45,7 +45,7 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR1");
+		getRogersIgniteCampaignPage().enterCoupon("KDT");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
@@ -74,12 +74,14 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Phone Number Generated");
-		getHomePhoneSelectionPage().clkContinue();
+		//getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in-person delivery");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");

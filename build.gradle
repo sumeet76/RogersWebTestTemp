@@ -49,7 +49,6 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
 
-
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
 		useDefaultListeners = true

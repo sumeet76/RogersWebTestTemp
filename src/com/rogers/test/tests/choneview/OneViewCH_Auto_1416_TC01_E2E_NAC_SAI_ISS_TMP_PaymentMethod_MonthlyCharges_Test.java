@@ -48,7 +48,7 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyC
 
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("Campaign tab");
-		getRogersIgniteCampaignPage().enterCoupon("K5U");
+		getRogersIgniteCampaignPage().enterCoupon("K5X");
 		reporter.reportLogWithScreenshot("Coupon entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("apply coupon");
@@ -78,6 +78,7 @@ public class OneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyC
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();

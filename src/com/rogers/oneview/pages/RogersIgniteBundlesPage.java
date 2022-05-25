@@ -37,6 +37,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
 
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//following::button")
+	WebElement continueReviewButton;
+
 	@FindBy(xpath = "//div[contains(text(),'This address is serviceable') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement serviceavailableMessage;
 
@@ -76,7 +79,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//p[text()='The following 4K content is available to the customer:']/parent::div//span[text()='Continuer' or text()='Continue']/ancestor::button  | //rch-tv4k-modal/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFor4K;
 
-	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']")
 	WebElement checkOut;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]" )
@@ -137,7 +140,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement noPortInServices;
 
 //	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
-	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement fourKContinue;
 
 
@@ -168,8 +172,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;
 
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Internet')]")
+	WebElement reviewInternet;
+
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Home Phone')]")
+	WebElement reviewHomePhone;
+
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Battery Back-Up,')]")
+	WebElement reviewBattery;
+
+	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
-	String collapsible = "(//rch-collapsible[@_nghost-ecx-c166])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
@@ -376,7 +389,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * Review Terms & Condition
 	 * @author aditi.jain
 	 */
-	public void 	reviewTermsAndCondition() {
+	public void reviewTermsAndCondition() {
 
 		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
 		for (int i=1; i<=allCollapsible.size(); i++) {
@@ -396,6 +409,20 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
+
+	public void reviewAllTerms(){
+		    getReusableActionsInstance().waitForElementVisibility(reviewInternet,10);
+			getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
+			if(getReusableActionsInstance().isElementVisible(reviewHomePhone)){
+				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
+				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
+			}
+			if(getReusableActionsInstance().isElementVisible(reviewBattery)) {
+				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
+				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
+			}
+
+		}
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -514,6 +541,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
+	/**
+	 * Click Continue Button after Address availability
+	 * @author dani.dominic
+	 */
+	public void clkReviewContinue() {
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().getWhenReady(continueReviewButton).click();
+	}
+
 
 	/**
 	 * refresh continue button
@@ -586,7 +622,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void fourKTVPopup() {
 		if(getReusableActionsInstance().isElementVisible(yesFor4K))
+			getReusableActionsInstance().waitForElementTobeClickable(yesFor4K,20);
 			getReusableActionsInstance().clickWhenReady(yesFor4K,120);
+			getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**
@@ -604,7 +642,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(checkOut, 45);
-		getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().getWhenReady(checkOut,30).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().waitForElementTobeClickable(checkOut,30);
+		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 
 	}
 
@@ -624,9 +664,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(checkOut,60);
 	//	getReusableActionsInstance().scrollToElement(checkOut);
 	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(checkOut,90);
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
 
@@ -635,8 +676,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		if(getReusableActionsInstance().isElementVisible(fourKContinue, 45))
-			getReusableActionsInstance().clickWhenReady(fourKContinue, 30);
+		getReusableActionsInstance().staticWait(10000);
+		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
+			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
+			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
 	}
 
 	/**
@@ -652,6 +695,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void customerWishtoContinue() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(continueforCheckout,90);
 	}
 	/**
@@ -675,6 +719,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkTVCheckbox() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(tvCheckbox, 30);
 		getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
 
@@ -901,6 +946,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clkContinueFor3PPortIn() {
+		getReusableActionsInstance().waitForElementVisibility(clickContinue3PPortIn);
 		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
 		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
 	}
@@ -1034,14 +1080,14 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkExpressCheckOut() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(expressCheckout, 45);
+		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
 		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
 //    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
 	public void clkContinueServiceable()
 	{
-		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(continueButtonServiceable,30).click();
 	}
 	public void clkContinuePTM()
