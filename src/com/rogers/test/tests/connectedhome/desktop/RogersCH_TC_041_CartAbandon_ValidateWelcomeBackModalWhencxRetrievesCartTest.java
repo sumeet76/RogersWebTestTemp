@@ -55,17 +55,24 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Checked the Home Phone");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+        reporter.reportLogWithScreenshot("Selected Starter package Order Online");
+
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
+        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
@@ -111,10 +118,10 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
-	@AfterMethod(alwaysRun = true)
+/*	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}
+	} */
 
 
 
