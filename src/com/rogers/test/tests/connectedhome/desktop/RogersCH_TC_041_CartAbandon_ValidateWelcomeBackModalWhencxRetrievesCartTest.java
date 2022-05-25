@@ -118,10 +118,10 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
-/*	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	} */
+	} 
 
 
 
