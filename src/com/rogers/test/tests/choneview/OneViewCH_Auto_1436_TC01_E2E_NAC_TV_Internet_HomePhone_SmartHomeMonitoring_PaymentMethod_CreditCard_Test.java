@@ -67,9 +67,10 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_TV_Internet_HomePhone_SmartHomeMon
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Phone number generated");
-		getHomePhoneSelectionPage().clkContinue();
+		//getHomePhoneSelectionPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
-		getCreditCheckPage().verifyInstallationOption();
+		reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options displayed","Installation Options not displayed");
+		getCreditCheckPage().selectProfessionalInstallation();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");

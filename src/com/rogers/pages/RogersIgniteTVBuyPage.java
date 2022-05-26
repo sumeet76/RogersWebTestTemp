@@ -29,8 +29,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnSolarisPopularPackage;
 
 	@FindAll({
-	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[text()='Add to cart']")})
+		@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
+		@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[text()='Add to cart']"),
+			@FindBy(xpath = "//a[@aria-label='Order Rogers Ignite Starter online now']//span[text()='Order online']")
+		})
 	WebElement btnSolarisStarterPackage;
 
 	@FindAll({
@@ -79,7 +81,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::a")
 	WebElement btnFlex10Package;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 20+']/ancestor::a")
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
 	WebElement btnFlex20Package;
 
 	@FindBy(id = "addressLookup-modal")
@@ -94,7 +96,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 
-	@FindBy(xpath = "//span[contains(text(),'Home Phone')]/parent::div")
+	@FindBy(xpath = "//span[contains(text(),'Home Phone')]/parent::div/..")
 	WebElement checkboxHomephone;
 
 	@FindBy(xpath = "//h2[@id='channels-tab']")
@@ -163,7 +165,25 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'available')]//span[@class='ds-icon rds-icon-info']")
 	WebElement hvrAvailableChannels;
 
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']/..")
+	WebElement txtFirstNameContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='firstName']")
+	WebElement txtFirstName;
+
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/..")
+	WebElement txtLastNameContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='lastName']")
+	WebElement txtLastName;
+
+	@FindBy(xpath = "//input[@formcontrolname='mobile']/..")
+	WebElement btnPhoneContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='mobile']")
+	WebElement btnPhone;
+
+	@FindBy(xpath = "//input[@type='email']/..")
 	WebElement txtEmailContainer;
 
 	@FindBy(xpath = "//input[@type='email']")
@@ -178,22 +198,28 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnTypeOfContract;
 
-	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.successModal.primaryButtonLabel']")
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnStarterPackageTypeOfContract;
+
+	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnFlex20PackageTypeOfContract;
+
+	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
 	WebElement btnOkay;
 
-	@FindBy(xpath = "//button[@type='submit']//span[@translate='global.modals.cartAbandonment.triggerEmailModal.primaryButtonLabel']")
+	@FindBy(xpath = "//button[@aria-label='Submit this form']/span")
 	WebElement btnSubmit;
 
 	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.triggerEmailModal.startOverButtonLabel']/ancestor::button")
 	WebElement btnStartOver;
 
-	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
+	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
 	WebElement clkEmailCheckbox;
 
-	@FindBy(xpath = "//span[@class='sr-only']/ancestor::a")
+	@FindBy(xpath = "//a[@aria-label='Continue to my cart']/span")
 	WebElement clkContinue;
 
-	@FindBy(xpath = "//h1[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
+	@FindBy(xpath = "//div[@class='cdk-overlay-pane ds-modalWindow']")
 	WebElement popupEmailModal;
 
 	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
@@ -440,6 +466,26 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void selectMonthToMonthTypeOfContact() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select type of contract to month-to-month
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectStarterPackageMonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select type of contract to month-to-month
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectFlex20PackageMonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
@@ -783,6 +829,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Click Flex20+ package button for anonymous customer
+	 * @author manpreet.kaur3
+	 */
+	public void selectFlex20Package() {
+		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 120);
+		getReusableActionsInstance().getWhenReady(btnFlex20Package, 60).click();
+	}
+
+	/**
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
@@ -903,6 +958,33 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Set dynamic first name on email modal popup at cart summary page
+	 * @author Manpreet.Kaur3
+	 */
+	public void setFirstname() {
+		String strName = FormFiller.generateRandomName();
+		//getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().waitForElementVisibility(txtFirstNameContainer,60);
+		getReusableActionsInstance().getWhenReady(txtFirstNameContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(txtFirstName);
+		txtFirstName.clear();
+		txtFirstName.sendKeys(strName);
+	}
+
+	/**
+	 * Set dynamic last name on email modal popup at cart summary page
+	 * 	 * @author Manpreet.Kaur3
+	 */
+	public void setLastName() {
+		String strName = FormFiller.generateRandomName();
+		//getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().waitForElementVisibility(txtLastNameContainer,60);
+		getReusableActionsInstance().getWhenReady(txtLastNameContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(txtLastName);
+		txtLastName.clear();
+		txtLastName.sendKeys(strName);
+	}
+	/**
 	 * To set the Lookup address on the service availability  Lookup popup
 	 * @author chinnarao.vattam
 	 */
@@ -941,6 +1023,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnStartOver, 20);
 	}
 
+	/**
+	 * Set dynamic phone number on Email Modal at cart summary Page
+	 * @author Manpreet.Kaur3
+	 */
+	public void setPhone() {
+		//getReusableActionsInstance().executeJavaScriptClick(btnPhone);
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		getReusableActionsInstance().waitForElementVisibility(btnPhoneContainer,60);
+		getReusableActionsInstance().getWhenReady(btnPhoneContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(btnPhone);
+		btnPhone.clear();
+		btnPhone.sendKeys(strPhoneNumber);
+	}
 
 	/**
 	 * Click the Email Checkbox

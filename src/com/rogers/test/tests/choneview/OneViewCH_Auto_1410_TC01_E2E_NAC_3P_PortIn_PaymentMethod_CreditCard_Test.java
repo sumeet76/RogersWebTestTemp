@@ -76,12 +76,13 @@ public class OneViewCH_Auto_1410_TC01_E2E_NAC_3P_PortIn_PaymentMethod_CreditCard
 		//reporter.reportLogWithScreenshot("continue");
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Phone number generated");
-		getHomePhoneSelectionPage().clkContinue();
+		//getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");

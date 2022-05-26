@@ -1,4 +1,5 @@
 package com.rogers.oneview.pages;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -193,7 +194,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,45);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
 	}
 
 	/**
@@ -294,7 +295,8 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Click Continue Button after Credit Information Entered 
 	 * @author chinnarao.vattam
 	 */	
-	public void clkContinue() {	
+	public void clkContinue() {
+		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 
@@ -351,7 +353,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,60);
+		return getReusableActionsInstance().isElementVisible(installationHeader,100);
 	}
 
 	/**
@@ -450,6 +452,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void selectDeliveryByAppointment() {
 		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().scrollToElement(deliveryByAppointment);
 		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
 	}
 
@@ -465,6 +468,10 @@ public class CreditCheckPage  extends BasePageClass {
 	{
 		getReusableActionsInstance().isElementVisible(onlineBillingOption);
 		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
+	}
+
+	public void refreshContinue() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//span[text()='Continuer' or text()='Continue']/ancestor::button"),120);
 	}
 }
 

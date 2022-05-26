@@ -19,26 +19,37 @@ public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
-        reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
-        getRogersIgniteBundlesPage().clkUsethisAddress();
+        reporter.reportLogWithScreenshot("Service Availability");
+        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-
+        getRogersIgniteBundlesPage().clkContinueServiceable();
  //       Rogers IgniteBundles page and Offers page
 
-        getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkSmartStream();
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet & Smart Stream is Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+
+//        getRogersIgniteBundlesPage().clkSmartStream();
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        reporter.reportLogWithScreenshot("Internet & Smart Stream is Selected");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
         getRogersIgniteBundlesPage().clkCollapse();
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-        getRogersIgniteBundlesPage().clkCheckOut();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("review terms and condition");
+        getRogersIgniteBundlesPage().expandInternetdiv();
+        getRogersIgniteBundlesPage().goToPageBottom();
+        getRogersIgniteBundlesPage().expandHomePhonediv();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        reporter.reportLogWithScreenshot("check term and conditions");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        getRogersIgniteBundlesPage().goToPageBottom();
+        reporter.reportLogWithScreenshot("bottom to continue");
+        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -56,16 +67,23 @@ public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue button is clicked");
+        getCreditCheckPage().verifyInstallationOption();
+        reporter.reportLogWithScreenshot("Installation options");
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("In Person Delivery is Selected");
+
         getPaymentOptionsPage().clkContinue();
+        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(), "Billing And Payment Options displayed", "Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
         getPaymentOptionsPage().clkContinue();
 
         //Checkout Page
 
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
     @BeforeMethod(alwaysRun=true)
@@ -74,10 +92,10 @@ public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        closeSession();
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterTest() {
+//        closeSession();
+//    }
 
 
 }

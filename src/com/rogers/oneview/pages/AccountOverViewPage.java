@@ -137,6 +137,9 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='IPTV active-ind service-badge tv'] | //div[@class='service-badge tv active-ind DigitalTV']")
     WebElement btnGetIgniteTVBadge;
 
+    @FindBy(xpath="//t[contains(text(),'Ignite')]")
+    WebElement btnGetIgniteBadge;
+
     @FindBy(xpath = "//*[@translate='ute.rogers.account.balance.total_balance' or text()='Total balance' or text()='Total du solde'  or text()='Total Balance']")
     WebElement infoBalanceLable;
 
@@ -302,8 +305,8 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /* To Select the second address in the serviceability modal if available
-    *  @suganya p
-    */
+     *  @suganya p
+     */
     public void clickSecondAddressIfPresent()
     {
 
@@ -419,10 +422,10 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
-        if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
+        if (getReusableActionsInstance().isElementVisible(skipNotification, 10)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
-        WebElement btn = getReusableActionsInstance().getWhenReady(btnTVBadge, 90);
+        WebElement btn = getReusableActionsInstance().getWhenReady(btnTVBadge, 120);
         getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
         getReusableActionsInstance().clickWhenReady(btnTVBadge, 45);
     }
@@ -438,7 +441,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().getWhenReady(btnGetIgniteTVBadge, 50).sendKeys(Keys.ENTER);
+        getReusableActionsInstance().getWhenReady(btnGetIgniteBadge, 50).click();
     }
 
     /**
@@ -494,12 +497,12 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /*
-    * To verify the bundle change section in the serviceability modal
-    * @author suganya p
-    */
+     * To verify the bundle change section in the serviceability modal
+     * @author suganya p
+     */
     public boolean verifyBundleChangeSection()
     {
-    return getReusableActionsInstance().isElementVisible(bundleSection,20);
+        return getReusableActionsInstance().isElementVisible(bundleSection,20);
     }
     /**
      * Selects the Add a Wireless Line Button on the account dashbaord
@@ -538,17 +541,17 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /*
-    * To select the tv check box in serviceability modal
-    * @author suganya p
-    */
+     * To select the tv check box in serviceability modal
+     * @author suganya p
+     */
     public void clickTVCheckbox()
     {
         getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
     }
 
     /*To click continue in the serviceabilty modal
-    * @author aditi.jain
-    */
+     * @author aditi.jain
+     */
     public void clickContinue()
     {
         getReusableActionsInstance().waitForElementVisibility(continueButton);
@@ -569,13 +572,13 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickBillinglink() {
-        /*if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
+        if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
         if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
-        }*/
+        }
         WebElement btn = getReusableActionsInstance().getWhenReady(Billinglink, 90);
         getReusableActionsInstance().clickWhenReady(btn, 45);
     }
@@ -673,19 +676,19 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Amit.Goswami1
      */
     public void clickOnlineBilling() {
-    if(getReusableActionsInstance().isElementVisible(ChangetoPaperBilling)){
-        getReusableActionsInstance().clickWhenReady(ChangetoPaperBilling,30);
-}     else{
-     getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling,30);
-}
-}
+        if(getReusableActionsInstance().isElementVisible(ChangetoPaperBilling)){
+            getReusableActionsInstance().clickWhenReady(ChangetoPaperBilling,30);
+        }     else{
+            getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling,30);
+        }
+    }
     /**
      * This method verifies the Profile Page is displayed
      *
      * @author Amit.Goswami1
      */
     public boolean verifyProfilePage() {
-       return getReusableActionsInstance().isElementVisible(ProfilePageHeader);
+        return getReusableActionsInstance().isElementVisible(ProfilePageHeader);
     }
 
     /**
@@ -698,8 +701,8 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     public void clickWallWifiLink(){
-       // getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-       // getReusableActionsInstance().staticWait(3000);
+        // getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+        // getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().clickWhenReady(LearnMoreAboutWallWiFiLink,45);
     }
     /**
@@ -827,16 +830,16 @@ public class AccountOverViewPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(ReviewYourOrder, 60);
     }
 
-        /**
-         * verify Previous Package
-         * @return true if available, else false
-         * @author Aditi.jain
-         */
-        public boolean verifyPreviousPackage() {
-            return getReusableActionsInstance().isElementVisible(previousPackage,30);
+    /**
+     * verify Previous Package
+     * @return true if available, else false
+     * @author Aditi.jain
+     */
+    public boolean verifyPreviousPackage() {
+        return getReusableActionsInstance().isElementVisible(previousPackage,30);
 
 
-        }
+    }
 
     /**
      * verify Tv Details

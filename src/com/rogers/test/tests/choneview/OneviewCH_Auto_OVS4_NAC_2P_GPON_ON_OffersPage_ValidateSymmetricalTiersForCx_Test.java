@@ -19,7 +19,7 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.GponData.getcontactDetails().getAddress());
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.GponData.contactDetails.getAddress()+" is serviceable",TestDataHandler.GponData.contactDetails.getAddress()+" not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -68,23 +68,29 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in-person deliver");
-        getCreditCheckPage().clickInPersonDelivery();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
+        reporter.reportLogWithScreenshot("professional Installation");
+        //getCreditCheckPage().selectProfessionalInstallation();
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+//		getCreditCheckPage().clickDateTimeRadioButton();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("billing options");
-        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("select oline billing option");
+        reporter.reportLogWithScreenshot("select online billing option");
         getCreditCheckPage().selectOnlineBilling();
         reporter.reportLogWithScreenshot("select monthly payment options from dropdown");
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Continue button clicked");
         getPaymentOptionsPage().clkContinue();
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
 
     }

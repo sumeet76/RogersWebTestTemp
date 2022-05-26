@@ -65,6 +65,7 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC04_ValidateNACSAIFlowByAddingBothFre
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");

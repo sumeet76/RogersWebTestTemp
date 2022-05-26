@@ -11,14 +11,14 @@ import java.lang.reflect.Method;
 
 
 public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test extends BaseTestClass {
-	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV"})
+	@Test (groups = {"AprilSanity","RegressionCHOV"})
 	public void oneViewCH_1539_TC01_AddChannelAndThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addChannelAndThempackImmediate.getAccountNo(), TestDataHandler.addChannelAndThempackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
 		getAccountOverViewPage().goToPageBottom();
-		getAccountOverViewPage().clickIgniteTVBadge();
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("select bundle");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
