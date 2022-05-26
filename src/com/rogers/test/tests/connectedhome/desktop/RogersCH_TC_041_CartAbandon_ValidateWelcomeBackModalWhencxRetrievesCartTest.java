@@ -53,10 +53,7 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Checked the Home Phone");
@@ -67,29 +64,32 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         getRogersIgniteTVBuyPage().clkHomePhone();
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");        
         getRogersIgniteTVBuyPage().clickMyRogers();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
-        reporter.reportLogWithScreenshot("Launched the Email Modal");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is available","EmailModal is not available");
         getRogersIgniteTVBuyPage().setFirstname();
         getRogersIgniteTVBuyPage().setLastName();
         getRogersIgniteTVBuyPage().setEmail();
         getRogersIgniteTVBuyPage().setPhone();
         getRogersIgniteTVBuyPage().clickEmailCheckbox();
+        reporter.reportLogWithScreenshot("Entered the details on Email Modal");
         getRogersIgniteTVBuyPage().clickSubmit();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Email Modal is availabe","EmailModal is not availabe");
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Confirmation Modal is available","Confirmation Modal is not available");
         getRogersIgniteTVBuyPage().clickOkay();
         reporter.reportLogWithScreenshot("launched the login page");
         //getDriver().get(System.getProperty("QaUrl")+"/consumer/easyloginriverpage");
@@ -98,22 +98,23 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
         //getRogersHomePage().clkIgniteTV();
         getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the TV Bundles Page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Welcome Modal has Launched","Welcome Modal has not Launched");
         getRogersIgniteTVBuyPage().clickContinue();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"Launched the cart summary page","Cart summary page has not Launched");
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
+
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().setEmail();
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
+        reporter.reportLogWithScreenshot("Entered the details on Profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+
+        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evaluation page has Launched","Credit Evaluation page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the credit evaluation page");
     }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -126,7 +127,7 @@ public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrieves
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	} 
+	}
 
 
 
