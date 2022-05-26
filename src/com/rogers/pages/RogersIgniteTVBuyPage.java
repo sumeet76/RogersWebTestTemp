@@ -210,7 +210,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Submit this form']/span")
 	WebElement btnSubmit;
 
-	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.triggerEmailModal.startOverButtonLabel']/ancestor::button")
+	@FindBy(xpath = "//button[@aria-label='Cancel this form']/span")
 	WebElement btnStartOver;
 
 	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
