@@ -165,7 +165,25 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'available')]//span[@class='ds-icon rds-icon-info']")
 	WebElement hvrAvailableChannels;
 
-	@FindBy(xpath = "//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white']")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']/..")
+	WebElement txtFirstNameContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='firstName']")
+	WebElement txtFirstName;
+
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/..")
+	WebElement txtLastNameContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='lastName']")
+	WebElement txtLastName;
+
+	@FindBy(xpath = "//input[@formcontrolname='mobile']/..")
+	WebElement btnPhoneContainer;
+
+	@FindBy(xpath = "//input[@formcontrolname='mobile']")
+	WebElement btnPhone;
+
+	@FindBy(xpath = "//input[@type='email']/..")
 	WebElement txtEmailContainer;
 
 	@FindBy(xpath = "//input[@type='email']")
@@ -186,22 +204,22 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex20PackageTypeOfContract;
 
-	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.successModal.primaryButtonLabel']")
+	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
 	WebElement btnOkay;
 
-	@FindBy(xpath = "//button[@type='submit']//span[@translate='global.modals.cartAbandonment.triggerEmailModal.primaryButtonLabel']")
+	@FindBy(xpath = "//button[@aria-label='Submit this form']/span")
 	WebElement btnSubmit;
 
 	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.triggerEmailModal.startOverButtonLabel']/ancestor::button")
 	WebElement btnStartOver;
 
-	@FindBy(xpath = "//div[@class='ds-checkbox__box my-12']")
+	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
 	WebElement clkEmailCheckbox;
 
-	@FindBy(xpath = "//span[@class='sr-only']/ancestor::a")
+	@FindBy(xpath = "//a[@aria-label='Continue to my cart']/span")
 	WebElement clkContinue;
 
-	@FindBy(xpath = "//h1[@translate='global.modals.cartAbandonment.triggerEmailModal.title']")
+	@FindBy(xpath = "//div[@class='cdk-overlay-pane ds-modalWindow']")
 	WebElement popupEmailModal;
 
 	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
@@ -940,6 +958,33 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Set dynamic first name on email modal popup at cart summary page
+	 * @author Manpreet.Kaur3
+	 */
+	public void setFirstname() {
+		String strName = FormFiller.generateRandomName();
+		//getReusableActionsInstance().executeJavaScriptClick(txtFirstName);
+		getReusableActionsInstance().waitForElementVisibility(txtFirstNameContainer,60);
+		getReusableActionsInstance().getWhenReady(txtFirstNameContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(txtFirstName);
+		txtFirstName.clear();
+		txtFirstName.sendKeys(strName);
+	}
+
+	/**
+	 * Set dynamic last name on email modal popup at cart summary page
+	 * 	 * @author Manpreet.Kaur3
+	 */
+	public void setLastName() {
+		String strName = FormFiller.generateRandomName();
+		//getReusableActionsInstance().executeJavaScriptClick(txtLastName);
+		getReusableActionsInstance().waitForElementVisibility(txtLastNameContainer,60);
+		getReusableActionsInstance().getWhenReady(txtLastNameContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(txtLastName);
+		txtLastName.clear();
+		txtLastName.sendKeys(strName);
+	}
+	/**
 	 * To set the Lookup address on the service availability  Lookup popup
 	 * @author chinnarao.vattam
 	 */
@@ -978,6 +1023,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(btnStartOver, 20);
 	}
 
+	/**
+	 * Set dynamic phone number on Email Modal at cart summary Page
+	 * @author Manpreet.Kaur3
+	 */
+	public void setPhone() {
+		//getReusableActionsInstance().executeJavaScriptClick(btnPhone);
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
+		getReusableActionsInstance().waitForElementVisibility(btnPhoneContainer,60);
+		getReusableActionsInstance().getWhenReady(btnPhoneContainer,30).click();
+		getReusableActionsInstance().clickWhenReady(btnPhone);
+		btnPhone.clear();
+		btnPhone.sendKeys(strPhoneNumber);
+	}
 
 	/**
 	 * Click the Email Checkbox
