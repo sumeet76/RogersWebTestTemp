@@ -422,7 +422,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
-        if (getReusableActionsInstance().isElementVisible(skipNotification, 10)) {
+        if (getReusableActionsInstance().isElementVisible(viewAllAlerts, 10)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
         WebElement btn = getReusableActionsInstance().getWhenReady(btnTVBadge, 120);

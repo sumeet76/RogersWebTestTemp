@@ -17,7 +17,7 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
-		getAccountOverViewPage().clickIgniteTVBadge();
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("select bundle");
 		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(), "TV or Channel header displayed", "TV or Channel header did not Displayed");
@@ -62,14 +62,14 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 
 		reporter.reportLogWithScreenshot("4k popup");
 		getRogersIgniteBundlesPage().fourKTVPopup();
-		reporter.reportLogWithScreenshot("4k continue");
-		getRogersIgniteBundlesPage().fourKContinue();
+//		reporter.reportLogWithScreenshot("4k continue");
+//		getRogersIgniteBundlesPage().fourKContinue();
 		reporter.reportLogWithScreenshot("4k content continue");
-//		getRogersIgniteBundlesPage().fourKContentContinue();
+		getRogersIgniteBundlesPage().contiue4KContent();
 
-//		reporter.reportLogWithScreenshot("continue");
+		reporter.reportLogWithScreenshot("continue");
 		getTVDashboardPage().immediateDateChangeOption();
-		reporter.reportLogWithScreenshot("manage channel and themepack tab");
+		reporter.reportLogWithScreenshot("selected immediate date change option");
 		getTVDashboardPage().clickContinueOnSelectDateChange();
 		reporter.reportLogWithScreenshot("ready to submit");
 		getRogersOVOrderReviewPage().clickSubmitOrder();
