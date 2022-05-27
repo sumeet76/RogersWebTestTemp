@@ -82,10 +82,10 @@ public class OneViewCH_Auto_1539_TC02_Swap_Channels_And_Add_Channel_Themepack_Im
 		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void afterTest() {
-//		closeSession();
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 
 }
 
