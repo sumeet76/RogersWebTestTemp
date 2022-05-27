@@ -468,6 +468,12 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
 	}
 
+	public void selectStandaloneChannelsTab(){
+		getReusableActionsInstance().waitForElementVisibility(standaloneChannelTab, 60);
+		getReusableActionsInstance().scrollToElement(standaloneChannelTab);
+		getReusableActionsInstance().executeJavaScriptClick(standaloneChannelTab);
+	}
+
 	/**
 	 * To click add channel
 	 *
