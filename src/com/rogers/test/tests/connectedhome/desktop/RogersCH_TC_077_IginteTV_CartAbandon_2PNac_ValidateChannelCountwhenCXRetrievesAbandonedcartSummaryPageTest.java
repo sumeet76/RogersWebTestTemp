@@ -73,7 +73,7 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
 
-        getRogersIgniteTVBuyPage().selectMonthToMonthTypeOfContact();
+        getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyChannelAtRateCard(),"Total channels are verified","Total channel verification Failed");
         reporter.reportLogWithScreenshot("Rate card page");
