@@ -144,10 +144,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]/ancestor::li//div//button")
 	WebElement btnViewTotalChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon rds-icon-info']")
+	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement hvr4kChannels;
 
-	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon rds-icon-close']")
+	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement hvrClose;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span[@class='ds-icon rds-icon-info']")
@@ -210,7 +210,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Submit this form']/span")
 	WebElement btnSubmit;
 
-	@FindBy(xpath = "//span[@translate='global.modals.cartAbandonment.triggerEmailModal.startOverButtonLabel']/ancestor::button")
+	@FindBy(xpath = "//button[@aria-label='Cancel this form']/span")
 	WebElement btnStartOver;
 
 	@FindBy(xpath = "//div[contains(@class,'ds-checkbox__box my-12')]")
@@ -241,8 +241,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement txtFlexChannelsRateCardHead;
 
 	@FindAll({
-			@FindBy(xpath = "//button[@aria-label='View more details about the Rogers Ignite Premier Bundle']"),
-			@FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier Bundle']")})
+			@FindBy(xpath = "//button[@aria-label='View more details about the Rogers Ignite Premier']"),
+			@FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier']")})
 	WebElement txtFlexChannelsRateCardExpansion;
 
 	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card ds-shadow ds-corners ds-no-overflow']//span[@translate='global.label.totalChannels']")
