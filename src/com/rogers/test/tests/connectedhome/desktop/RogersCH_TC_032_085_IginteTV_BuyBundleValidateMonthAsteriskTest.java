@@ -74,7 +74,7 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackage(),"Premier Package Cost having the mo*","Premier Package Cost is not having the mo*");
-        getRogersIgniteTVBuyPage().selectMonthToMonthTypeOfContact();
+        getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected the month-to-month type of contract");
         getRogersIgniteTVBuyPage().selectSolarisPremier();
 

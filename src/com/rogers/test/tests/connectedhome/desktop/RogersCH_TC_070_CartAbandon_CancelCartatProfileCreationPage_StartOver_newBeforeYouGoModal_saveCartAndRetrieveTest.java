@@ -53,7 +53,7 @@ public class RogersCH_TC_070_CartAbandon_CancelCartatProfileCreationPage_StartOv
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
-        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
+        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
