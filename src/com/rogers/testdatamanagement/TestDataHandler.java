@@ -45,6 +45,7 @@ public class TestDataHandler {
 	public static AccountData tc80;
 	public static AccountData tc110_StandaloneInternetAccount;
 	public static AccountData tc118_GPON_DualTopology;
+	public static AccountData tc119_2PMigrationGPON;
 	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
@@ -440,6 +441,7 @@ public class TestDataHandler {
 		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
 		tc118_GPON_DualTopology = YamlHandler.getCableAccountData("TC118_HTO_GPON_DualTopology");
+		tc119_2PMigrationGPON = YamlHandler.getCableAccountData("TC119_2PMigrationGPON");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		tc112_Legacy2PtoIgnite2PMigration= YamlHandler.getCableAccountData("TC112_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
