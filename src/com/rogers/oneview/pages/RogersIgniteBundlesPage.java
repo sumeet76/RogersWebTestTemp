@@ -489,7 +489,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkContinue() {
 
-		getReusableActionsInstance().waitForElementVisibility(continueButton);
+		getReusableActionsInstance().waitForElementVisibility(continueButton,120);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);

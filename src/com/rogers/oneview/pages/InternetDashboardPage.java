@@ -193,6 +193,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Changer de forfait']")
 	WebElement changePackageBtnFR;
 
+	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
+	WebElement internetSpeeds;
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
@@ -818,6 +821,13 @@ public class InternetDashboardPage  extends BasePageClass {
 			System.out.println("Download and Upload speed is not Symmetrical");
 			return false;
 		}
+	}
+	/*
+	Verifies whether download/upload speed section is displayed
+	@author Sameer Ahuja
+	 */
+	public boolean verifyInternetSpeedDisplayed(){
+		return  getReusableActionsInstance().isElementVisible(internetSpeeds, 30);
 	}
 
 }

@@ -29,13 +29,14 @@ public class CheckAvailabilityPage extends BasePageClass {
     WebElement checkAvailabilityBtn;
 
     //@FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
-    @FindBy(xpath = "//rch-pca-address-lookup//child::input[contains(@id,'canada-post-address-complete')]//parent::div")
+    @FindBy(xpath = "//input[contains(@id,'algoliaInput') or contains(@id,'canada-post-address-complete')]//parent::div")
     WebElement inputContainer;
 
-    @FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
+    @FindBy(xpath = "//input[contains(@id,'algoliaInput') or contains(@id,'canada-post-address-complete')]")
     WebElement addressInput;
 
-    @FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+    //@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
+    @FindBy(xpath = "//div[contains(@class,'ds-formField__autoComplete')]")
     WebElement searchResult;
 
     @FindBy(xpath = "//p[contains(text(),'Multiple addresses found') or contains(text(),'Plusieurs adresses trouvées')]//parent::div//following::div//descendant::li[2]")
@@ -83,11 +84,11 @@ public class CheckAvailabilityPage extends BasePageClass {
         if(getReusableActionsInstance().isElementVisible(lblMultipleAddressesFound, 5)){
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }
-        getReusableActionsInstance().clickIfAvailable(btnContinue);
+        //getReusableActionsInstance().clickIfAvailable(btnContinue);
     }
 
     public void checkAvailabilityAtOtherAddress(String address, String browser){
-        getReusableActionsInstance().getWhenReady(otherAddressRadioButton, 15);
+        getReusableActionsInstance().getWhenReady(otherAddressRadioButton, 60);
         getReusableActionsInstance().clickWhenReady(otherAddressRadioButton);
         checkAvailability(address, browser);
     }
