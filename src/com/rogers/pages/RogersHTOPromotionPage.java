@@ -12,13 +12,13 @@ import java.util.List;
 
 public class RogersHTOPromotionPage extends BasePageClass {
 
+
 	public RogersHTOPromotionPage(WebDriver driver) {
 		super(driver);
 	}
 
 	@FindBy(xpath = "//p[contains(@class,'dsa-billboard__overline')]")
 	WebElement txtSpecialOffer;
-
 
 	@FindBy(xpath = "//div[@class='current-bundle-details']")
 	WebElement divCurrentBundleContainer;
@@ -52,6 +52,24 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@aria-label='Close this pop-up']/span")
 	WebElement btnCloseThisPopup;
+
+	@FindBy(xpath = "//button[contains(@class,'custom-button-channel')]/span")
+	WebElement lnkAvailableChannels;
+
+	@FindBy(xpath = "//button[contains(@class,'custom-button-channel') and contains(@aria-label,'Flex Channels')]/span")
+	WebElement lnkFlexChannels;
+
+	@FindBy(xpath = "//button[@title='Press to close']/span")
+	WebElement btnCloseAvailableChannelsPopup;
+
+	@FindBy(xpath = "//button[@title='Press to close']/span")
+	WebElement btnCloseFlexChannelsPopup;
+
+	@FindBy(xpath = "//div[@class='view-channels-modal-component popup-modal-component']")
+	WebElement divAvailableChannelsPopupModal;
+
+	@FindBy(xpath = "//div[@class='view-channels-modal-component popup-modal-component']")
+	WebElement divFlexChannelsPopupModal;
 
 	/**
 	 * To verify the Home page
@@ -144,6 +162,56 @@ public class RogersHTOPromotionPage extends BasePageClass {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * To Click on Available Channels Link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkAvailableChannelsLink() {
+		getReusableActionsInstance().clickWhenReady(lnkAvailableChannels, 30);
+	}
+
+	/**
+	 * To verify Available Channels Popup Modal on the offers page
+	 * @return true if it matches the Popup Model is present on the offers Page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyAvailableChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(divAvailableChannelsPopupModal,30);
+	}
+
+	/**
+	 * To Click on Close This Popup Button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseAvailableChannelsPopupModal() {
+		getReusableActionsInstance().clickWhenReady(btnCloseAvailableChannelsPopup, 30);
+	}
+
+	/**
+	 * To Click on Flex Channels
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFlexChannelsLink() {
+		getReusableActionsInstance().clickWhenReady(lnkFlexChannels, 30);
+	}
+
+	/**
+	 * To Click on Close This Popup Button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseFlexChannelsPopupModal() {
+		getReusableActionsInstance().clickWhenReady(btnCloseFlexChannelsPopup, 30);
+	}
+
+	/**
+	 * To verify Flex Channels Popup Modal on the offers page
+	 * @return true if it matches the Popup Model is present on the offers Page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyFlexChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(divFlexChannelsPopupModal,30);
 	}
 }
 
