@@ -81,7 +81,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::a")
 	WebElement btnFlex10Package;
 
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
+	@FindAll({
+		@FindBy(xpath="//a[@aria-label='Order Rogers Ignite Flex 20 + Sports online now']//span[text()='Order online']"),
+		@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
+	})
 	WebElement btnFlex20Package;
 
 	@FindBy(id = "addressLookup-modal")
