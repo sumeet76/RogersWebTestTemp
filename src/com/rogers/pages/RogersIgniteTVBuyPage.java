@@ -81,7 +81,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::a")
 	WebElement btnFlex10Package;
 
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
+	@FindAll({
+		@FindBy(xpath="//a[@aria-label='Order Rogers Ignite Flex 20 + Sports online now']//span[text()='Order online']"),
+		@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
+	})
 	WebElement btnFlex20Package;
 
 	@FindBy(id = "addressLookup-modal")
@@ -196,7 +199,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement txtOffersPage;
 
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
-	WebElement drpdwnTypeOfContract;
+	WebElement drpdwnPremierTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnStarterPackageTypeOfContract;
@@ -463,8 +466,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * To select type of contract to month-to-month
 	 * @author Manpreet.Kaur3
 	 */
-	public void selectMonthToMonthTypeOfContact() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract, 120);
+	public void selectPremierMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -473,7 +476,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * To select type of contract to month-to-month
 	 * @author Manpreet.Kaur3
 	 */
-	public void selectStarterPackageMonthToMonthTypeOfContact() {
+	public void selectStarterPackageMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
@@ -483,7 +486,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * To select type of contract to month-to-month
 	 * @author Manpreet.Kaur3
 	 */
-	public void selectFlex20PackageMonthToMonthTypeOfContact() {
+	public void selectFlex20PackageMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
