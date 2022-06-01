@@ -187,7 +187,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
 
-
+   	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
+   	WebElement showPriceBreakdown;
 
 	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
 	WebElement selectServiceCustomerWant;
@@ -362,8 +363,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours, alerte médicale et systèmes de sécurité']")
 	WebElement batteryBackUpCollapse;
 
-	@FindBy(xpath = "(//span[text()='View details'])[1]")
+	@FindBy(xpath = "(//span[text()='View details'])[2]")
 	WebElement viewDetails;
+
+	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/descendant::span[text()='View pricing and package details']")
+	WebElement viewPricingDetails;
 
 	@FindBy(xpath="//span[@translate='sai.modals.pricingModal.packageDetail']")
 	WebElement expandPackageDetails;
@@ -373,8 +377,15 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationMsg;
+
 	@FindBy(xpath = "ng-tns-c166-16 ng-star-inserted")
 	WebElement tvCollapse;
+
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
+	WebElement DownloadSpeedReview;
+
+	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+	WebElement UploadSpeedReview;
 
 	/**
 	 * Click Load Offers button
@@ -1300,7 +1311,24 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().getWhenReady(expandPackageDetails);
 		getReusableActionsInstance().clickWhenReady(expandPackageDetails);
 	}
-
+	public boolean verifyDownloadAndUploadSpeed() {
+//		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
+//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
 	public void clkCloseBtn(){
 		getReusableActionsInstance().getWhenReady(closeBtn);
 		getReusableActionsInstance().clickWhenReady(closeBtn);
@@ -1315,6 +1343,18 @@ public void activateHomePhoneltrPopUp() {
 	{
 		getReusableActionsInstance().scrollToElement(tvCollapse);
 		getReusableActionsInstance().clickWhenReady(tvCollapse);
+	}
+
+	public void clickShowPriceBreakdown(){
+		getReusableActionsInstance().waitForElementVisibility(showPriceBreakdown, 30);
+		getReusableActionsInstance().scrollToElement(showPriceBreakdown);
+		getReusableActionsInstance().executeJavaScriptClick(showPriceBreakdown);
+	}
+
+	public void clickViewPricingDetails(){
+		getReusableActionsInstance().waitForElementVisibility(viewPricingDetails, 30);
+		getReusableActionsInstance().scrollToElement(viewPricingDetails);
+		getReusableActionsInstance().executeJavaScriptClick(viewPricingDetails);
 	}
 }
 
