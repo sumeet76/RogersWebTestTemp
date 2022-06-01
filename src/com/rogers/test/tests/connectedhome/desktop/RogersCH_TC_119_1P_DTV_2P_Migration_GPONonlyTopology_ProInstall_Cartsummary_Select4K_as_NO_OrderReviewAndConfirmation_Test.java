@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to verify the upgarde flow for Legacy TV to IgniteTV for Rogers.com  
@@ -49,7 +48,7 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_119_2P_Migration_GPONonlyTopology_ProInstall_Cartsummary_Select4K_as_NO_OrderReviewAndConfirmation_Test extends BaseTestClass {
+public class RogersCH_TC_119_1P_DTV_2P_Migration_GPONonlyTopology_ProInstall_Cartsummary_Select4K_as_NO_OrderReviewAndConfirmation_Test extends BaseTestClass {
 
     @Test
 	public void checkProInstallTest() {
