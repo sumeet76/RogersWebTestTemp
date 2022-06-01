@@ -59,8 +59,7 @@ public class RogersCH_TC_119_2P_Migration_GPONonlyTopology_ProInstall_Cartsummar
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    //reporter.reportLogWithScreenshot("Skip popup");
-	    //getRogersLoginPage().clkSkipIFrame();
+
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Launched the Account Page");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc119_2PMigrationGPON.accountDetails.getBan());
@@ -69,16 +68,16 @@ public class RogersCH_TC_119_2P_Migration_GPONonlyTopology_ProInstall_Cartsummar
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
 		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	//getRogersHomePage().clkNoThnx();
-    	getRogersHomePage().clkServiceability();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		getRogersHomePage().clkServiceability();
+		getRogersIgniteTVBuyPage().selectFlex20Package();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		getRogersHomePage().clkUseAddress();
 		reporter.reportLogWithScreenshot("Selected the address on file");
 
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		reporter.reportLogWithScreenshot("Flex20+ selected");
 		getRogersIgniteTVBuyPage().selectFlex20Package();
 		reporter.reportLogWithScreenshot("Launched the information popup");
