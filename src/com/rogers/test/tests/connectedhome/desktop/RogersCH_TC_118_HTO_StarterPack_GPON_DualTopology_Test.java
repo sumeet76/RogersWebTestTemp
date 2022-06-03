@@ -43,8 +43,8 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+       // reporter.reportLogWithScreenshot("Skip popup");
+       // getRogersLoginPage().clkSkipIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
@@ -84,11 +84,15 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyFlexChannelsPopupModal(),"Flex Channels Popup Modal verified","Flex Channels Popup Modal not verified");
         getRogersHTOPRomotionPage().clkCloseFlexChannelsPopupModal();
         reporter.reportLogWithScreenshot("Closed the Flex Channels Popup Modal");
-        getRogersHTOPRomotionPage().clickIWantThisUpgrade();
-        reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
-        getRogersHTOPRomotionPage().clickReviewYourUpgrade();
-        reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
-        //reporter.hardAssert(getRogersOrderReviewPage().verifyDowngradeLTQModal(),"Verified the Downgrade LTQ Modal","Downgrade LTQ Modal not verified");
+        getRogersHTOPRomotionPage().clickUpgradeNow();
+        reporter.reportLogWithScreenshot("Clicked on Upgrade Now button");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyDowngradeLTQModal(),"Verified the Downgrade LTQ Modal","Downgrade LTQ Modal not verified");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyWarningIconSorryModal(), "verified the warning icon", "Warning icon not verified");
+        reporter.softAssert(getRogersHTOPRomotionPage().verifyPopUpHeader(), "Header Verified", "Header not verified");
+        reporter.softAssert(getRogersHTOPRomotionPage().verifySorryHeader(), "Sorry Header Verified", "Sorry Header not verified");
+        reporter.softAssert(getRogersHTOPRomotionPage().verifyCallLink(), " Call link Verified", "Call link not verified");
+       // reporter.softAssert(getRogersHTOPRomotionPage().verifyLiveChatLink(), " Live Chat Link Verified", "Live Chat Link not verified");
+        reporter.softAssert(getRogersHTOPRomotionPage().verifyContactUsLink(), " Contact Us Link Verified", "Contact Us Link not verified");
     }
 
 
@@ -99,10 +103,10 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
         startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
     }
 
-    @AfterMethod(alwaysRun = true)
+   /* @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }
+    } */
 
 
 
