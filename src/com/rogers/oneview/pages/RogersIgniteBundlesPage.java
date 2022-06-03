@@ -258,7 +258,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement moveMigration;
 
 
-	@FindBy(xpath = "//input[contains(@id, 'canada-post-address-complete')]")
+	@FindBy(xpath = "//input[contains(@id, 'algoliaInput')]")
 	WebElement enterNewAddress;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkAvailability']/ancestor::button")
@@ -376,6 +376,27 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "ng-tns-c166-16 ng-star-inserted")
 	WebElement tvCollapse;
 
+	@FindBy(xpath = "//div[contains(text(),'This address is not serviceable right now') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressNotServiceable;
+
+	@FindBy(xpath = "//a[@id='language-changed']")
+	WebElement linkFrench;
+
+	@FindBy(xpath = "//span[text()='Check another address' or text()='Vérifier une autre adresse'] | //span[@translate='global.cta.checkAnotherAddress']")
+	WebElement checkAnotherAddress;
+
+	@FindBy(xpath = "//*[contains(text(),'There seems to be a fraud issue') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressFlaggedFraud;
+
+	@FindBy(xpath = "//span[text()='OK']")
+	WebElement clickOk;
+
+	@FindBy(xpath = "//*[contains(text(),'Please advise the Bulk Tenant to contact a Solution Specialist at ') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressMDU;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement clickCancel;
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -479,7 +500,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @param address is the Address to check for availability
 	 * @author Aditi.jain
 	 */
-	public void checkAvailability(String address) {
+	public void  checkAvailability(String address) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
 		getReusableActionsInstance().staticWait(3000);
@@ -1316,6 +1337,44 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().scrollToElement(tvCollapse);
 		getReusableActionsInstance().clickWhenReady(tvCollapse);
 	}
+
+	public boolean verifyNoServiceAvailabilityMessage() {
+		return getReusableActionsInstance().isElementVisible(addressNotServiceable,60);
+	}
+
+	public void setLanguageFrench() {
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().clickWhenReady(linkFrench);
+	}
+	public void clickCheckAnotherAddress() {
+		getReusableActionsInstance().waitForElementTobeClickable(checkAnotherAddress,30);
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().clickWhenReady(checkAnotherAddress);
+	}
+
+	public void refreshCheckAvailability() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']"),120);
+	}
+
+	public boolean verifyFraudAddressMessage() {
+		return getReusableActionsInstance().isElementVisible(addressFlaggedFraud,60);
+	}
+
+	public void clickOkButton() {
+		getReusableActionsInstance().waitForElementTobeClickable(clickOk,30);
+		getReusableActionsInstance().clickWhenReady(clickOk);
+	}
+
+	public boolean verifyBulkAddress() {
+		return getReusableActionsInstance().isElementVisible(addressMDU,60);
+	}
+
+	public void clickCancelButton() {
+		getReusableActionsInstance().waitForElementTobeClickable(clickCancel,30);
+		getReusableActionsInstance().clickWhenReady(clickCancel);
+	}
+
+
 }
 
 
