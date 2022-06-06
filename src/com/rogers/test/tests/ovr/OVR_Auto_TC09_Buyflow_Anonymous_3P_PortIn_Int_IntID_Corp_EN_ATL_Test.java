@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,7 +22,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test
         //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Test() throws InterruptedException {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -33,7 +33,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ON_Test
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR ST. JOHN'S NL A1A4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

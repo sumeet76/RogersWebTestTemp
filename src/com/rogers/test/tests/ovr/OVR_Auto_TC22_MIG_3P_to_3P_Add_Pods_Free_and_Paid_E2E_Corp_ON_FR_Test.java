@@ -35,7 +35,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_22_Ovr_Mig_Data_3p_to_3p_AddPods.getBanNumber(), TestDataHandler.tc_22_Ovr_Mig_Data_3p_to_3p_AddPods.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
 
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        getOvrDashboardPage().changeLangToFR();
+//        getOvrDashboardPage().changeLangToFR();
         reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
@@ -63,7 +63,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        //getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
