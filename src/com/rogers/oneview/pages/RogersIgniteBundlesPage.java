@@ -1060,8 +1060,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void enterNewAddress(String address) {
-
-		getReusableActionsInstance().clickWhenReady(adddressInputContainer,45);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(addressInput,60);
 		getReusableActionsInstance().enterText(enterNewAddress,(address+Keys.BACK_SPACE),60);
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
@@ -1092,6 +1092,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickAvailability() {
+		//getReusableActionsInstance().scrollToElement(availabilityButton);
 		getReusableActionsInstance().clickWhenReady(availabilityButton,30);
 	}
 
@@ -1350,6 +1351,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementTobeClickable(checkAnotherAddress,30);
 		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
 		getReusableActionsInstance().clickWhenReady(checkAnotherAddress);
+		getReusableActionsInstance().staticWait(5000);
 	}
 
 	public void refreshCheckAvailability() {
@@ -1372,6 +1374,10 @@ public void activateHomePhoneltrPopUp() {
 	public void clickCancelButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(clickCancel,30);
 		getReusableActionsInstance().clickWhenReady(clickCancel);
+	}
+
+	public void refreshEnterAddress() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//input[@id='algoliaInput']"),120);
 	}
 
 

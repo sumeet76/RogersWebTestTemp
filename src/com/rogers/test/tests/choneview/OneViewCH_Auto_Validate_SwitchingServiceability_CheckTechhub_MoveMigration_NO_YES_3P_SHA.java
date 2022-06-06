@@ -23,17 +23,14 @@ public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MoveMi
             reporter.reportLogWithScreenshot("check availaiblity");
             getRogersIgniteBundlesPage().clickOtherAddress();
             reporter.reportLogWithScreenshot("OtherAddress");
-            getRogersIgniteBundlesPage().enterNewAddress(TestDataHandler.migrationData.getAddress());
+            getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.migrationData.getAddress());
             reporter.reportLogWithScreenshot("NewAddress");
-            getRogersIgniteBundlesPage().clickAvailability();
             reporter.reportLogWithScreenshot("Availability");
-            getRogersIgniteBundlesPage().clkContinue();
-            reporter.reportLogWithScreenshot("Continue");
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
             getRogersIgniteBundlesPage().clickNo();
             reporter.reportLogWithScreenshot("click no");
             getRogersIgniteBundlesPage().clickCheckAnotherAddress();
-            getRogersIgniteBundlesPage().enterNewAddress(TestDataHandler.migrationData.getAddress());
+            getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.migrationData.getAddress());
             reporter.reportLogWithScreenshot("NewAddress");
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
             getRogersIgniteBundlesPage().clickYes();
@@ -58,6 +55,6 @@ public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MoveMi
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
