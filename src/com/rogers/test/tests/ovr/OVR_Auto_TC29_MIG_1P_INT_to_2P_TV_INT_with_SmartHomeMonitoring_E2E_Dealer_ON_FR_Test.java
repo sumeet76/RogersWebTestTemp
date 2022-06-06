@@ -33,7 +33,6 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
         reporter.reportLogWithScreenshot("Select SSP environment");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM.getBanNumber(), TestDataHandler.tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        getOvrDashboardPage().changeLangToFR();
         reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
@@ -64,8 +63,8 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clickReviewAddons();
-        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
+//        getRogersIgniteBundlesPage().clickReviewAddons();
+//        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();

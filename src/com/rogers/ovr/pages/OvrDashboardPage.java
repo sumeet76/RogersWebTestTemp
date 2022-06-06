@@ -25,6 +25,6 @@ public class OvrDashboardPage extends BasePageClass {
     }
 
     public void changeLangToFR(){
-        getReusableActionsInstance().clickWhenReady(changeLangToFR);
+        getReusableActionsInstance().clickWhenReady(changeLangToFR,60);
     }
 }
