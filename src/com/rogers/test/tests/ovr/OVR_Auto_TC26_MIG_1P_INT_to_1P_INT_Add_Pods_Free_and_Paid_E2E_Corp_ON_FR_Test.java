@@ -19,7 +19,7 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -34,7 +34,7 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.reportLogWithScreenshot("Select SSP environment");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods.getBanNumber(), TestDataHandler.tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        getOvrDashboardPage().changeLangToFR();
+        //getOvrDashboardPage().changeLangToFR();
         reporter.reportLogWithScreenshot("Ignite language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
@@ -70,14 +70,14 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
         getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
-//        getRogersIgniteBundlesPage().addPods(0);
-//        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+        //getRogersIgniteBundlesPage().addPods(0);
+        //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
         //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         //validation for pods
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        //reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
         reporter.reportLogWithScreenshot("wish to continue");
@@ -99,7 +99,8 @@ public class OVR_Auto_TC26_MIG_1P_INT_to_1P_INT_Add_Pods_Free_and_Paid_E2E_Corp_
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Install page");
 
-        reporter.reportLogWithScreenshot("Launched the install page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro Install");
         getBundleBuilderPage().clkTechInstallSlot();

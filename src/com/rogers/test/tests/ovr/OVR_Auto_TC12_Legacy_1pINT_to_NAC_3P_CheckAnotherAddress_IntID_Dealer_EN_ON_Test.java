@@ -23,7 +23,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC12_MIG_1pINT_to_3P_IntID_Dealer_EN_ON() throws InterruptedException {
+    public void ovr_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Dealer_EN_ON_Test() throws InterruptedException {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -37,13 +37,12 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
-//        getCheckAvailabilityPage().useThisAddress();
-//        reporter.reportLogWithScreenshot("Service Availability");
-        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
+        //Check Availability at other address
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("0302-642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
-       getRogersIgniteBundlesPage().clickNo();
-       reporter.reportLogWithScreenshot("Click No on move migration popup");
-        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
+        getRogersIgniteBundlesPage().clickNo();
+        reporter.reportLogWithScreenshot("Click No on move migration popup");
+        //reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
@@ -65,11 +64,6 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-
-        reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        reporter.reportLogWithScreenshot("Review Points to mention");
-        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
         reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
@@ -133,6 +127,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
+        reporter.reportLogWithScreenshot("Billing and Payment page");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
 
