@@ -35,13 +35,13 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.existingIgnite3PtoNac2pON.getBanNumber(), TestDataHandler.existingIgnite3PtoNac2pON.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        getOvrDashboardPage().changeLangToFR();
+
         reporter.reportLogWithScreenshot("Ignite language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 Abana Rd, MISSISSAUGA ON L5A 1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("01339-642 Abana Rd, MISSISSAUGA ON L5A 1H4", "chrome");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
 

@@ -320,6 +320,8 @@ public class TestDataHandler {
 	public static OvrReusableData existingIgnite3PtoNac2pON;
 	public static OvrReusableData ovrMigrationData1Pto2PAddPods;
 	public static OvrReusableData ovrMigrationData1pINTto2pTVINTAddPods;
+	public static OvrReusableData tc_35_DashboardValidation_Ignite_3P;
+	public static OvrReusableData tc_36_DashboardValidation_Ignite_ISS;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
@@ -773,5 +775,7 @@ public class TestDataHandler {
 		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
 		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
 		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
+		tc_35_DashboardValidation_Ignite_3P = YamlHandler.getOvrReusableData("TC35_DashboardValidation_Ignite3P");
+		tc_36_DashboardValidation_Ignite_ISS = YamlHandler.getOvrReusableData("TC36_DashboardValidation_IgniteISS");
 	}
 }
