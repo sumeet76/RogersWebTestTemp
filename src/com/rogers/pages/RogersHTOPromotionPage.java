@@ -38,7 +38,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
 	WebElement btnReviewYourUpgrade;
 
-	@FindBy(xpath = "//a[@aria-label='Upgrade to the Rogers Ignite Premier Bundle now ']")
+	@FindBy(xpath = "//a[contains(@aria-label,'Upgrade to')]")
 	WebElement btnUpgradeNow;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
