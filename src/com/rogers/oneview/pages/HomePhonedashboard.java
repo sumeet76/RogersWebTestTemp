@@ -1,5 +1,6 @@
 package com.rogers.oneview.pages;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -93,14 +94,23 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManager;
 
-	@FindBy(xpath = "//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer']")
+	@FindBy(xpath = "(//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer'])[2]")
 	WebElement removeUnlistedNumberAddon;
+
+	@FindBy(xpath = "(//span [@class='btn-font' and contains(text(),'Remove') or text()='Retirer'])[1]")
+	WebElement removeCallDisplayAddon;
 
 	@FindBy(xpath = "//div[@class='ng-star-inserted']//h3[contains(text(),'Removed Items')]")
 	WebElement removedItemsHeader;
 
 	@FindBy(xpath = "//span[contains(@translate,'global.cta.continue') or contains(text(),'Continuer')]")
 	WebElement continueYourChange;
+
+	@FindBy(xpath = "//h3[@class='fc-header' and contains(text(),'Call Display Blocking')]")
+	WebElement callDisplayAddon;
+
+	@FindBy(xpath = "//h3[@class='fc-header' and contains(text(),'Unlisted Number')]")
+	WebElement unlistedNumberAddon;
 
 
 	/**
@@ -338,6 +348,12 @@ public class HomePhonedashboard  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(removeUnlistedNumberAddon);
 	}
 
+	public void removeCallDisplayBlockAddon(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	    getReusableActionsInstance().executeJavaScriptClick(removeCallDisplayAddon);
+	}
+
 	public boolean verifyManageAddOns() {
 		return getReusableActionsInstance().isElementVisible(manageAddOns, 20);
 	}
@@ -346,6 +362,15 @@ public class HomePhonedashboard  extends BasePageClass {
 		if (getReusableActionsInstance().isElementVisible(removedItemsHeader,60)){
 			getReusableActionsInstance().clickWhenReady(continueYourChange);
 		}
+	}
+
+	public boolean verifyCallDisplayAddon() {
+		return getReusableActionsInstance().isElementVisible(callDisplayAddon, 45);
+	}
+
+	public boolean verifyUnlistedNumberAddon(){
+		return getReusableActionsInstance().isElementVisible(unlistedNumberAddon,45);
+
 	}
 
 	}

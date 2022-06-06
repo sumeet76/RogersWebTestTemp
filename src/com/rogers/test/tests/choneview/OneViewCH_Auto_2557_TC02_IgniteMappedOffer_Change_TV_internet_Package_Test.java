@@ -36,6 +36,7 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
         getAccountOverViewPage().clickSelectChangeContinue();
         reporter.reportLogWithScreenshot("click Continue");
         reporter.hardAssert(getAccountOverViewPage().verifyReviewYourOrder(), "Review Your Order displayed", "Review Your Order did not displayed");
+
         reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Previous Package displayed ", "Previous Package did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
@@ -44,11 +45,6 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
 //        getAccountOverViewPage().clickSubmit();
 //        reporter.reportLogWithScreenshot("click Submit");
 		reporter.reportLogWithScreenshot("Order Confirmation page");
-
-
-
-
-
 
     }
 

@@ -25,7 +25,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_DeliveryByAppointment_PaymentMe
 		reporter.reportLogWithScreenshot("click Continue");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("click Internet Checkbox");
-		getRogersIgniteBundlesPage().clkSmartStream();
+		getRogersIgniteBundlesPage().clkTVCheckbox();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
@@ -38,6 +38,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_DeliveryByAppointment_PaymentMe
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		getRogersIgniteBundlesPage().noTo4KTVPopup();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().clkCheckOut();
@@ -79,11 +81,12 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_DeliveryByAppointment_PaymentMe
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("payment details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("payment details entered");
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
 	}
 
@@ -95,7 +98,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_DeliveryByAppointment_PaymentMe
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

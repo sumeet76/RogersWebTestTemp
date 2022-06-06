@@ -37,9 +37,9 @@ public class PaymentOptionsPage  extends BasePageClass {
 	 * Click Continue Button  
 	 * @author chinnarao.vattam
 	 */	
-	public void clkContinue() {	
-		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-		System.out.println("213123");
+	public void clkContinue() {
+		getReusableActionsInstance().scrollToElement(continueButton);
+		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 /**
  * Click Continue Button 

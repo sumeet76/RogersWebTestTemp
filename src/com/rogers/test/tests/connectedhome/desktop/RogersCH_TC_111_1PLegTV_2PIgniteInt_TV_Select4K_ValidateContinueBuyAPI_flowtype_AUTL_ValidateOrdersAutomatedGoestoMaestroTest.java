@@ -52,7 +52,7 @@ import java.util.Map;
 public class RogersCH_TC_111_1PLegTV_2PIgniteInt_TV_Select4K_ValidateContinueBuyAPI_flowtype_AUTL_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-	public void checkTVPackageUpgradeTest() {
+	public void check1PLegacyTo2PIgniteMigrationTest() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc111_Legacy1PtoIgnite2P.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc111_Legacy1PtoIgnite2P.getPassword());

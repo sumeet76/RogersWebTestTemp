@@ -21,7 +21,8 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		getAccountOverViewPage().clickIgnite();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkContinueServiceable();
+		getRogersIgniteBundlesPage().goToPageBottom();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Internet Selected");
@@ -33,7 +34,8 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().expandInternetdiv();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		reporter.reportLogWithScreenshot("contine from terms");
@@ -43,7 +45,7 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("KW6");
+		getRogersIgniteCampaignPage().enterCoupon("RK4J");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("apply coupon");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
@@ -54,33 +56,54 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
-		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		reporter.reportLogWithScreenshot("evaluation form filled");
-		getCreditCheckPage().clkAuthorize();
-		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		reporter.reportLogWithScreenshot("Credit Check Information");
+
+//		In the case of credit evaluation not required
+
+		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
+
+//		In the case if credit evaluation required
+
+//		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+//		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+//		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+//		reporter.reportLogWithScreenshot("evaluation form filled");
+//		getCreditCheckPage().clkAuthorize();
+//		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+//		reporter.reportLogWithScreenshot("Credit Check Information");
+//		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clickInPersonDelivery();
-		reporter.reportLogWithScreenshot("in person deliver");
+//		getCreditCheckPage().goToPageBottom();
+//		getCreditCheckPage().clickInPersonDelivery();
+		reporter.reportLogWithScreenshot("Delivery by Appointment");
+		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("card detail entered");
+		reporter.reportLogWithScreenshot("Billing and payment verified");
+		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkContinue();
+//		getCreditCheckPage().clickDigitalFrontline();
+//		reporter.reportLogWithScreenshot("front line");
+//		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//		reporter.reportLogWithScreenshot("card detail entered");
 //		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Order Review Page");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Review Page");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

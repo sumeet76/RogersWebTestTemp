@@ -38,7 +38,7 @@ public class OneViewCH_Auto_1544_TC03_Remove_Themepack_Immediate_Test extends Ba
 		getTVDashboardPage().continueFromChangeDate();
 
 		reporter.reportLogWithScreenshot("Navigated to review order page");
-		getRogersOVCheckoutPage().clkSubmit();
+		getRogersOVOrderReviewPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 	}

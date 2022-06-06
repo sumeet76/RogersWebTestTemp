@@ -30,6 +30,7 @@ public class OneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test exte
         //reporter.reportLogWithScreenshot("click of view details of recommended offer");
         //getTVDashboardPage().clickCloseButton();
         //reporter.reportLogWithScreenshot("close view details window");
+        //getTVDashboardPage().selectCampaign();
         getTVDashboardPage().selectTVPackage(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferEn(),TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getTargetedOfferFr());
         reporter.reportLogWithScreenshot("recommended offer TV Package selected");
         getTVDashboardPage().clickContinueChangeTVPackage();
@@ -46,8 +47,8 @@ public class OneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test exte
         reporter.reportLogWithScreenshot("Channel Add selected");
         getTVDashboardPage().clickContinueBottomOfPage();
         reporter.reportLogWithScreenshot("click continue");
-        //getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
-        //reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
+        getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
+        reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
         getTVDashboardPage().clickThemepacksTab();
         reporter.reportLogWithScreenshot("click Theme pack Tab");
         getTVDashboardPage().clickContinueChangeTVPackage();

@@ -169,7 +169,8 @@ public class RogersTechInstallPage extends BasePageClass {
 	WebElement chkPersonalizedInstall;
 
 	@FindAll({
-			@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.title']"),
+			@FindBy(xpath ="//h2[@translate='global.checkout.fulfillment.withProInstallCourier']"),
+			@FindBy(xpath = "//h3[@translate='global.checkout.fulfillment.techChooseTitle']"),
 			@FindBy(xpath ="//h1[text()='Setup options']")})
 	WebElement txtTechInstalpage;
 
@@ -256,7 +257,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 */
 	public void selectBackupTimeSlot() {
 		getReusableActionsInstance().waitForElementVisibility(selBackupTimeSlot,30);
-		getReusableActionsInstance().getWhenReady(selPreferredTimeSlot,20).click();
+		getReusableActionsInstance().getWhenReady(selBackupTimeSlot,20).click();
 		getReusableActionsInstance().selectWhenReady(selBackupTimeSlot,1,20);
 
 	}
@@ -808,7 +809,7 @@ public class RogersTechInstallPage extends BasePageClass {
 
     public void selectPrefferedDate() {
 		getReusableActionsInstance().waitForElementVisibility(btnOpenCalendar, 120);
-		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
+		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
 
     }
 }

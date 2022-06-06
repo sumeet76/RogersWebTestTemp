@@ -63,6 +63,7 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonit
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getCreditCheckPage().selectProfessionalInstallation();
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();

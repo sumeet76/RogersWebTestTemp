@@ -28,9 +28,11 @@ public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest ext
         reporter.reportLogWithScreenshot(" Smart Stream Selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
+        getRogersOVInstallationPage().clkCourierDelivery();
+        reporter.reportLogWithScreenshot("Select the courier delivery");
         getRogersOVInstallationPage().clickInstallationCheckBox();
-        reporter.reportLogWithScreenshot("Activation Check box selecetd successfully");
-       getRogersOVInstallationPage().clickContinue();
+        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
+        getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

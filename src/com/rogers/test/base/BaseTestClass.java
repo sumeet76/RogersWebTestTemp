@@ -752,7 +752,7 @@ public class BaseTestClass {
             case "connectedhome_igniteanonymous":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
-                //captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
+                captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 getDriver().get(strUrl + "?setLanguage=" + language);
                 getDriver().manage().deleteAllCookies();
                 break;
@@ -1256,6 +1256,10 @@ public class BaseTestClass {
                 HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
                 HomePhoneSelectionPageThreadLocal.set(new HomePhoneSelectionPage(getDriver()));
                 CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
+                AccountOverViewPageThreadLocal.set(new AccountOverViewPage(getDriver()));
+                InternetDashboardPageThreadLocal.set(new InternetDashboardPage(getDriver()));
+                TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
+                HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
                 break;
 
 

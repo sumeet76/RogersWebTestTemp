@@ -182,9 +182,9 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void setPhone() {
-		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		getReusableActionsInstance().executeJavaScriptClick(btnPhone);
 		btnPhone.clear();
+		String strPhoneNumber = FormFiller.generatePhoneNumber();
 		btnPhone.sendKeys(strPhoneNumber);
 	}
 

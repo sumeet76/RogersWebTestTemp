@@ -5,6 +5,7 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
+import org.openqa.selenium.Alert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
@@ -16,7 +17,6 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
 	public void oneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test(){
-
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -52,16 +52,16 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 //		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("Campaign code");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR1");
+		getRogersIgniteCampaignPage().enterCoupon("KHB");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close Coupon Alert");
-		getRogersIgniteBundlesPage().fourKTVPopup();
+/*		getRogersIgniteBundlesPage().fourKTVPopup();
 		reporter.reportLogWithScreenshot("four KTV Popup");
-		getRogersIgniteBundlesPage().fourKContentPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();*/
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -86,6 +86,7 @@ public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharge
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in-person deliver");
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");

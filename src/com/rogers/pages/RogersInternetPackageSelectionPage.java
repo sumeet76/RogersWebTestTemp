@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.ui.Select;
 
 public class RogersInternetPackageSelectionPage extends BasePageClass {
 
@@ -28,7 +29,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@class='cart-summary__header']")
 	WebElement txtCartSummaryHeader;
-
 	
 	@FindBy(id = "modemUpgradeContinue")
 	WebElement btnUpgradeContinue;
@@ -53,6 +53,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
 	WebElement VerifyRecommendedBannertitle;
 
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwn150pkgTypeOfContract;
+
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnTypeOfContract;
+
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__main']/descendant::div[@class='internet-bundle-tile__content__checkbox']/descendant::label")
+	WebElement chkbox1GbpsSmartStream;
+
+
 	@FindBy(xpath = "//a[@title='View internet bundles available to you']/span")
 	WebElement btnSmartStream;
 	//div//a[@title='View internet bundles available to you']
@@ -69,6 +79,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
+
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	WebElement btnInternet1GbpsPackage;
 
 	@FindBy(xpath = "//span[contains(text(),'Yes')]")
 	WebElement btnUnderstand;
@@ -211,6 +224,24 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
 	}
 
+	/**
+	 * To select Ignite Internet Gigabit Package
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkInternet1GbpsPackage() {
+
+		getReusableActionsInstance().getWhenReady(btnInternet1GbpsPackage, 90).click();
+	}
+
+	/**
+	 * Click the I understand button on the important information popup
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkIUnderstand() {
+		getReusableActionsInstance().getWhenReady(btnUnderstand, 120).click();
+	}
+
+
 	public void clkInternet500uPackage() {
 
 		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
@@ -247,6 +278,37 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	{
 		getReusableActionsInstance().waitForElementVisibility(clkAddSmartStreamAddon, 90);
 		getReusableActionsInstance().executeJavaScriptClick(clkAddSmartStreamAddon);
+	}
+
+	/**
+	 * To select type of contract to month-to-month
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectMonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select type of contract to month-to-month for Ignite Internet 150 Mbps
+	 * @author Manpreet.Kaur3
+	 */
+	public void select150MonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select the Ignite SmartSteam 1Gbps Package
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectIgniteSmartStream1GbpsCheckBox() {
+		getReusableActionsInstance().waitForElementVisibility(chkbox1GbpsSmartStream, 10);
+		if(!(chkbox1GbpsSmartStream.isSelected())) {
+			getReusableActionsInstance().clickIfAvailable(chkbox1GbpsSmartStream);
+		}
 	}
 
 	public void clkBackToPackagesPage()
@@ -346,6 +408,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetBuyContinue);
 		getReusableActionsInstance().clickIfAvailable(btnInternetBuyContinue,90);
 	}
+
+	/**
+	 * Verify the Cart Summary Page
+	 * @return true if the Cart Summary header displayed  else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyCartSummaryHeader() {
+		return getReusableActionsInstance().isElementVisible(txtCartSummaryHeader,60);
+	}
+
 
 	public void clkInternetBuyContinue() {
 		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {

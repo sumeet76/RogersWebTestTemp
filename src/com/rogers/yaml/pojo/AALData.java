@@ -24,6 +24,7 @@ public class AALData {
 	private String dpIMEI;
 	private String dpDeviceStorage;
 	private String dpDeviceColor;
+	private String passcode;
 	/**
 	 * @return the postalCode
 	 */
@@ -282,5 +283,17 @@ public class AALData {
 	 */
 	public void setDpDeviceColor(String dpDeviceColor) {
 		this.dpDeviceColor = dpDeviceColor;
+	}
+	/**
+	 * @return the passcode from yaml
+	 */
+	public String getPasscode() {
+		return passcode;
+	}
+	/**
+	 * @param passcode to set
+	 */
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
 	}
 }

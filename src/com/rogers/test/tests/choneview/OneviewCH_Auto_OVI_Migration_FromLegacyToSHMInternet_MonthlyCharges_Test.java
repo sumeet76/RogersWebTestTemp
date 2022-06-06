@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges_Test extends BaseTestClass {
+public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges_Test extends BaseTestClass {
     @Test(groups = {"RMigration","RegressionCHOV"})
     public void oneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHMInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHMInternet());
@@ -24,6 +24,8 @@ public class OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().refreshContinue();
         getRogersIgniteBundlesPage().clkContinue();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
+        reporter.reportLogWithScreenshot("Select Services Customer Wants");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("SHM Internet Selected");
@@ -36,6 +38,7 @@ public class OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
+        //getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -80,9 +83,9 @@ public class OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
- //     getRogersOrderReviewPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//      reporter.reportLogWithScreenshot("Order Placed");
+         getRogersOrderReviewPage().clkSubmit();
+         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+         reporter.reportLogWithScreenshot("Order Placed");
 
 
     }
