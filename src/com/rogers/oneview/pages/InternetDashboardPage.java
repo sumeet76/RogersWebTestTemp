@@ -76,7 +76,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Exchange later')]/ancestor::button")
 	WebElement ExchangeLaterBtn;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
@@ -161,10 +161,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
-	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails des prix']/ancestor::div[3]")
+	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
 	WebElement collapsePricingDetails;
 
-	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']]/ancestor::div[3]")
+	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']/ancestor::div[3]")
     WebElement expandPackageDetails;
 
 	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
@@ -176,7 +176,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.banner']")
 	WebElement  Restricted;
-	@FindBy(xpath = "//h2[@translate='global.checkout.fulfillment.installationOption']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
 	WebElement  installationOption;
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
@@ -365,9 +365,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganay P
 	 * */
 	public void clickContinueChangeInternetPackage() {
-		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-//		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 30);
-//		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
+		//getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
+		getReusableActionsInstance().waitForElementTobeClickable(btnContnueReset, 30);
+		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
 	}
 	/*
 	 * Click on continue in Select billing date pop up
@@ -652,6 +652,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickPlusToAddPod() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
 
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){

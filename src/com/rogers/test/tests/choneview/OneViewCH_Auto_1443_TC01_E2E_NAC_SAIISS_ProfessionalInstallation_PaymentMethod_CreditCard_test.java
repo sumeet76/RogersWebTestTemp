@@ -85,11 +85,11 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ProfessionalInstallation_Pa
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("payment details entered");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("payment details entered");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
 	}
 

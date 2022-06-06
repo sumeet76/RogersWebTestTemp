@@ -44,8 +44,14 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
+	systemProperty 'XrayImportFlag', xray_import_flag
+	systemProperty 'TestProject',test_project
+	systemProperty 'TestPlanKey',test_plan_key
+	systemProperty 'TestExecutionKey',test_execution_key
 
 	useTestNG(){
+		outputDirectory = file("$project.buildDir//testngOutput")
+		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
@@ -54,7 +60,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 			includeGroups test_groupName
 			System.out.println("**************************************"+test_groupName)
 		}
-		
+
 	}
 
 }
@@ -83,11 +89,16 @@ task "localTest"(type: Test) {
 	systemProperty 'PageLoadStrategy', test_PageLoadStrategy
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
-
+	systemProperty 'XrayImportFlag', xray_import_flag
+	systemProperty 'TestPlanKey',test_plan_key
+	systemProperty 'TestExecutionKey',test_execution_key
+	systemProperty 'TestProject',test_project
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
 	useTestNG() {
+		outputDirectory = file("$project.buildDir//testngOutput")
+		useDefaultListeners = true
 		parallel = test_parallel
 		threadCount = test_threadCount as int
 		Set listeners = [ "extentreport.ExtentListener" , "com.rogers.test.listeners.AnnotationTransformer"]
@@ -97,7 +108,7 @@ task "localTest"(type: Test) {
 			includeGroups test_groupName
 			System.out.println("**************************************"+test_groupName)
 		}
-		
+
 	}
 
 }
@@ -116,13 +127,14 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:1.68-SNAPSHOT'
+	api 'automation-utils:common-utils:latest.release'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+
 }
 
 group = 'com.rogers'
@@ -139,7 +151,6 @@ sourceSets {
 
 }
 
-
 jar {
 	enabled = true
 	manifest {
@@ -147,8 +158,6 @@ jar {
 	}
 
 }
-
-
 
 configurations {
 	published
@@ -159,7 +168,7 @@ compileJava {
 }
 
 compileTestJava {
-   options.encoding = 'UTF-8'
+	options.encoding = 'UTF-8'
 }
 
 task sourceJar(type: Jar) {

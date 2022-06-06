@@ -31,13 +31,19 @@ public class Mobile_RogersSS_TC_001_Sanity_ValidateSignInAndAccountOverviewTest 
         reporter.reportLogWithScreenshot("Home Page");
         reporter.reportLog("Home Page Launched");
     	getRogersHomePage().clkSignInMobile();
-    	getRogersLoginPage().switchToSignInIFrame();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+			reporter.reportLogWithScreenshot("Select Continue in browser.");
+			getRogersLoginPage().clkContinueInBrowser();
+		}
+		reporter.reportLogWithScreenshot("Continue in Browser Selected");
     	getRogersLoginPage().setUsernameIFrameMobile(TestDataHandler.tc013132.getUsername());
     	getRogersLoginPage().setPasswordIFrameMobile(TestDataHandler.tc013132.getPassword());
         reporter.reportLogWithScreenshot("Login Credential is entered.");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
+		getRogersLoginPage().clkContinueInBrowser();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
         	reporter.reportLogWithScreenshot("Select an account.");
         	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc013132.getAccountDetails().getBan());

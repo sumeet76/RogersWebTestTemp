@@ -40,7 +40,7 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public boolean verifyOrder() {
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(orderConfirmation,120);
 	}
 	

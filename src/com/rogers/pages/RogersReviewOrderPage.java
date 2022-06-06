@@ -16,7 +16,7 @@ public class RogersReviewOrderPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1[@id='bfa-page-title'][contains(text(),'Review Your Order') or contains(text(),'Vérifiez votre')]")
+    @FindBy(xpath = "//h1[contains(text(),'Review Your Order') or contains(text(),'Vérifiez votre')]")
     WebElement orderReviewPageTitle;
 
     @FindBy(xpath="(//div[contains(@class,'totalRow d-flex align-items-center')])[1]")
@@ -88,6 +88,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author nimmy.george
      */
     public boolean isOrderReviewPageTitlePresent() {
+        getReusableActionsInstance().staticWait(5000);
        return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 60);
     }
 

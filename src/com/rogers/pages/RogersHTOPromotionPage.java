@@ -12,13 +12,13 @@ import java.util.List;
 
 public class RogersHTOPromotionPage extends BasePageClass {
 
+
 	public RogersHTOPromotionPage(WebDriver driver) {
 		super(driver);
 	}
 
 	@FindBy(xpath = "//p[contains(@class,'dsa-billboard__overline')]")
 	WebElement txtSpecialOffer;
-
 
 	@FindBy(xpath = "//div[@class='current-bundle-details']")
 	WebElement divCurrentBundleContainer;
@@ -38,6 +38,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
 	WebElement btnReviewYourUpgrade;
 
+	@FindBy(xpath = "//a[@aria-label='Upgrade to the Rogers Ignite Premier Bundle now ']")
+	WebElement btnUpgradeNow;
+
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
 	WebElement divOfferBundleContainer;
 
@@ -52,6 +55,46 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@aria-label='Close this pop-up']/span")
 	WebElement btnCloseThisPopup;
+
+	@FindBy(xpath = "//button[contains(@class,'custom-button-channel')]/span")
+	WebElement lnkAvailableChannels;
+
+	@FindBy(xpath = "//button[contains(@class,'custom-button-channel') and contains(@aria-label,'Flex Channels')]/span")
+	WebElement lnkFlexChannels;
+
+	@FindBy(xpath = "//button[@title='Press to close']/span")
+	WebElement btnCloseAvailableChannelsPopup;
+
+	@FindBy(xpath = "//button[@title='Press to close']/span")
+	WebElement btnCloseFlexChannelsPopup;
+
+	@FindBy(xpath = "//div[@class='view-channels-modal-component popup-modal-component']")
+	WebElement divAvailableChannelsPopupModal;
+
+	@FindBy(xpath = "//div[@class='view-channels-modal-component popup-modal-component']")
+	WebElement divFlexChannelsPopupModal;
+
+	@FindBy(xpath = "//div[@class='popup-modal-component']")
+	WebElement divSorryPopupModal;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-warning ds-color-warning']")
+	WebElement imgWarningIcon;
+
+	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
+	WebElement headerSorry;
+
+	@FindBy(xpath = "//span[@class='-ml4' and contains(text(),'Sorry')]")
+	WebElement txtSorry;
+
+	@FindBy(xpath = "//a[@aria-label='Contact Rogers now to change your package']")
+	WebElement lnkContactUS;
+
+	@FindBy(xpath = "//a[@aria-label='Live Chat with an agent to continue your order ']")
+	WebElement lnkLiveChat;
+
+	@FindBy(xpath = "//a[@aria-label='Call 1 833 32-FIBRE to continue your order']")
+	WebElement lnkCall;
+
 
 	/**
 	 * To verify the Home page
@@ -144,6 +187,128 @@ public class RogersHTOPromotionPage extends BasePageClass {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * To Click on Available Channels Link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkAvailableChannelsLink() {
+		getReusableActionsInstance().clickWhenReady(lnkAvailableChannels, 30);
+	}
+
+	/**
+	 * To verify Available Channels Popup Modal on the learn page
+	 * @return true if it matches the Popup Model is present on the offers Page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyAvailableChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(divAvailableChannelsPopupModal,30);
+	}
+
+	/**
+	 * To Click on Close This Popup Button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseAvailableChannelsPopupModal() {
+		getReusableActionsInstance().clickWhenReady(btnCloseAvailableChannelsPopup, 30);
+	}
+
+	/**
+	 * To Click on Flex Channels
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFlexChannelsLink() {
+		getReusableActionsInstance().clickWhenReady(lnkFlexChannels, 30);
+	}
+
+	/**
+	 * To Click on Close This Popup Button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkCloseFlexChannelsPopupModal() {
+		getReusableActionsInstance().clickWhenReady(btnCloseFlexChannelsPopup, 30);
+	}
+
+	/**
+	 * To verify Flex Channels Popup Modal on the offers page
+	 * @return true if it matches the Popup Model is present on the offers Page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyFlexChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(divFlexChannelsPopupModal,30);
+	}
+
+	/**
+	 * To Click on Upgrade Now button
+	 * @author Manpreet.Kaur3
+	 */
+	public void clickUpgradeNow() {
+		getReusableActionsInstance().waitForElementVisibility(btnUpgradeNow, 30);
+		getReusableActionsInstance().getWhenReady(btnUpgradeNow, 60).click();
+	}
+
+	/**
+	 * To verify the LTQ Modal after Learn Page for downgrade HTO Package
+	 * @return true if popup modal is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyDowngradeLTQModal() {
+		return getReusableActionsInstance().isElementVisible(divSorryPopupModal,40);
+	}
+
+	/**
+	 * To verify the Warning Icon for LTQ Modal
+	 * @return true if warning icon img is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyWarningIconSorryModal() {
+		return getReusableActionsInstance().isElementVisible(imgWarningIcon,10);
+	}
+
+	/**
+	 * To verify the header for LTQ Modal
+	 * @return true if header is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyPopUpHeader() {
+		return getReusableActionsInstance().isElementVisible(headerSorry,10);
+	}
+
+	/**
+	 * To verify the Sorry Header for LTQ Modal
+	 * @return true if Sorry Header is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifySorryHeader() {
+		return getReusableActionsInstance().isElementVisible(txtSorry,10);
+	}
+
+	/**
+	 * To verify the Call Us Link for LTQ Modal
+	 * @return true if Call Us Link img is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyCallLink() {
+		return getReusableActionsInstance().isElementVisible(lnkCall,10);
+	}
+
+	/**
+	 * To verify the Live Chat link for LTQ Modal
+	 * @return true if Live Chat link is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyLiveChatLink() {
+		return getReusableActionsInstance().isElementVisible(lnkLiveChat,30);
+	}
+
+	/**
+	 * To verify the Contact Us Link for LTQ Modal
+	 * @return true if contact us link is present, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyContactUsLink() {
+		return getReusableActionsInstance().isElementVisible(lnkContactUS,30);
 	}
 }
 

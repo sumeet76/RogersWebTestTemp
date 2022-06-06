@@ -1,4 +1,5 @@
 package com.rogers.oneview.pages;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -90,8 +91,16 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
-	@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
+
+	@FindAll({
+			@FindBy(xpath = "//h2[text()='Self-installation option(s)']"),
+			@FindBy(xpath = "//h2[text()='Professional installation option(s)']"),
+			@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
+	})
 	WebElement installationOption;
+
+	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery']")
+	WebElement courierDelivery;
 
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
@@ -187,7 +196,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,45);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
 	}
 
 	/**
@@ -203,6 +212,11 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Customer agree for in person delivery
 	 * @author aditi.jain
 	 */
+
+	public void clkCourierDelivery(){
+		getReusableActionsInstance().waitForElementVisibility(courierDelivery,240);
+		getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
+	}
 	public void clickInPersonDelivery() {
 		getReusableActionsInstance().waitForElementVisibility(customerAgreement, 240);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
@@ -283,7 +297,8 @@ public class CreditCheckPage  extends BasePageClass {
 	 * Click Continue Button after Credit Information Entered 
 	 * @author chinnarao.vattam
 	 */	
-	public void clkContinue() {	
+	public void clkContinue() {
+		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
 		getReusableActionsInstance().clickWhenReady(continueButton);
 	}
 
@@ -340,7 +355,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,60);
+		return getReusableActionsInstance().isElementVisible(installationHeader,100);
 	}
 
 	/**
@@ -439,6 +454,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void selectDeliveryByAppointment() {
 		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().scrollToElement(deliveryByAppointment);
 		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
 	}
 
@@ -454,6 +470,10 @@ public class CreditCheckPage  extends BasePageClass {
 	{
 		getReusableActionsInstance().isElementVisible(onlineBillingOption);
 		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
+	}
+
+	public void refreshContinue() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//span[text()='Continuer' or text()='Continue']/ancestor::button"),120);
 	}
 }
 

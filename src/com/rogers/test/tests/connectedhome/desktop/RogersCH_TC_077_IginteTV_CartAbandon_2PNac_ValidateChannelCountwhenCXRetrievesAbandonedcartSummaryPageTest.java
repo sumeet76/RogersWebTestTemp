@@ -55,21 +55,32 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
        	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyChannelAtRateCard(),"Total channels are verified","Total channel verification Failed");
         reporter.reportLogWithScreenshot("Rate card page");
         reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlexChannelAtRateCard(),"Flex channels are verified","Flex channel verification Failed");
-
+        reporter.reportLogWithScreenshot("Checked the Home Phone");
         getRogersIgniteTVBuyPage().selectSolarisPremier();
+
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+
+        getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyChannelAtRateCard(),"Total channels are verified","Total channel verification Failed");
+        reporter.reportLogWithScreenshot("Rate card page");
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlexChannelAtRateCard(),"Flex channels are verified","Flex channel verification Failed");
+        reporter.reportLogWithScreenshot("Checked the Home Phone");
+        getRogersIgniteTVBuyPage().selectSolarisPremier();
+
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
@@ -85,29 +96,29 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         getRogersIgniteTVBuyPage().clkHover4kChannels();
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
-
-/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
-        reporter.reportLogWithScreenshot("View Flex Channels");
-        getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
-        reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().clickMyRogers();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is available","EmailModal is not available");
         reporter.reportLogWithScreenshot("Launched the Email Modal");
+        getRogersIgniteTVBuyPage().setFirstname();
+        getRogersIgniteTVBuyPage().setLastName();
         getRogersIgniteTVBuyPage().setEmail();
+        getRogersIgniteTVBuyPage().setPhone();
         getRogersIgniteTVBuyPage().clickEmailCheckbox();
+        reporter.reportLogWithScreenshot("Entered the details on Email Modal");
         getRogersIgniteTVBuyPage().clickSubmit();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Email Modal is availabe","EmailModal is not availabe");
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Confirmation Modal is available","Confirmation Modal is not available");
         getRogersIgniteTVBuyPage().clickOkay();
+
         reporter.reportLogWithScreenshot("launched the login page");
-        getDriver().get(System.getProperty("QaUrl")+"/consumer/easyloginriverpage");
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkShop();
-        getRogersHomePage().clkIgniteTV();
+        getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
+        reporter.reportLogWithScreenshot("Launched the TV Bundles Page");
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Ignite page has Launched","Ignite page has not Launched");
         getRogersIgniteTVBuyPage().clickContinue();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyTotalChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getTotalChannelsCount()),"Total Channels Count verified","Total Channels Count verification failed");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyFlexChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getFlexChannelsCount()),"Flex Channels Count verified","Flex Channels Count verification failed");
         getRogersIgniteTVBuyPage().clkViewTotalChannels();
@@ -116,11 +127,6 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-/*        getRogersIgniteTVBuyPage().clkViewFlexChannels();
-        reporter.reportLogWithScreenshot("View Flex Channels");
-        getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
-        reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();*/
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -130,7 +136,9 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
+        reporter.reportLogWithScreenshot("Entered the details on Profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+
         reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
     }

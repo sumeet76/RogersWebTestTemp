@@ -26,8 +26,8 @@ public class OneViewCH_Auto_TC_028_Internet_PackageDowngrade_NextBillingCycleTes
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 
         /*Billing option to be selected*/
-        getInternetDashboardPage().selectRadioImmediate();
-        reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
+        //getInternetDashboardPage().selectRadioImmediate();
+        //reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
         getRogersOVOrderReviewPage().clkSubmit();

@@ -20,6 +20,7 @@ public class HUPData {
 	private String accessory2;
 	private String ccNumberOTP;
 	private String expiryDateOTP;
+	private String passcode;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -226,6 +227,18 @@ public class HUPData {
 	 */
 	public void setExpiryDateOTP(String expiryDateOTP) {
 		this.expiryDateOTP = expiryDateOTP;
+	}
+	/**
+	 * @return the passcode from yaml
+	 */
+	public String getPasscode() {
+		return passcode;
+	}
+	/**
+	 * @param passcode to set
+	 */
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
 	}
 
 }
