@@ -68,7 +68,7 @@ public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("installation options");
-        getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getPaymentOptionsPage().clkContinue();

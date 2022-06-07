@@ -16,7 +16,6 @@ public class OneViewCH_Auto_OVS3_Validate_IPTV_dashboard_for_the_account_having_
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IPTVDasboad_MulitplsSTB.getAccountNo(),TestDataHandler.IPTVDasboad_MulitplsSTB.getContactID());
         getAccountOverViewPage().clickIgniteTVBadge();
-//        reporter.hardAssert(getAccountOverViewPage().verifyProfilePage(),"Profile page is displaye","profile Page is not displayed");
         reporter.reportLogWithScreenshot("select TV Badage");
 //        getRogersAccountOverviewPage().scrollToBottomOfPage();
         getAccountOverViewPage().verifydisplayedMulitplsSTB();
