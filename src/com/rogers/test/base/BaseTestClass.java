@@ -1256,6 +1256,10 @@ public class BaseTestClass {
                 HomePhoneAddonsPageThreadLocal.set(new HomePhoneAddonsPage(getDriver()));
                 HomePhoneSelectionPageThreadLocal.set(new HomePhoneSelectionPage(getDriver()));
                 CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
+                AccountOverViewPageThreadLocal.set(new AccountOverViewPage(getDriver()));
+                InternetDashboardPageThreadLocal.set(new InternetDashboardPage(getDriver()));
+                TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
+                HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
                 break;
 
 

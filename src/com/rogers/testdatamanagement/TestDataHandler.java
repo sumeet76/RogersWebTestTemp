@@ -44,6 +44,9 @@ public class TestDataHandler {
 	public static AccountData tc82;
 	public static AccountData tc80;
 	public static AccountData tc110_StandaloneInternetAccount;
+	public static AccountData tc118_GPON_DualTopology;
+	public static AccountData tc119_2PMigrationGPON;
+	public static AccountData tc120_1P_HTO_GPON_DualTopology;
 	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
@@ -318,6 +321,8 @@ public class TestDataHandler {
 	public static OvrReusableData existingIgnite3PtoNac2pON;
 	public static OvrReusableData ovrMigrationData1Pto2PAddPods;
 	public static OvrReusableData ovrMigrationData1pINTto2pTVINTAddPods;
+	public static OvrReusableData tc_35_DashboardValidation_Ignite_3P;
+	public static OvrReusableData tc_36_DashboardValidation_Ignite_ISS;
 	public static  AccountData RemoveThemepack1544Tc03;
 	public static AccountData InternetDashboardSupportLinks;
 	public static AccountData ChangePaymentMethod;
@@ -439,6 +444,9 @@ public class TestDataHandler {
 		tc116_Legacy1PInternetToIgnite2P= YamlHandler.getCableAccountData("TC116_Legacy1PInternetToIgnite2P");
 		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
+		tc118_GPON_DualTopology = YamlHandler.getCableAccountData("TC118_2P_HTO_GPON_DualTopology");
+		tc119_2PMigrationGPON = YamlHandler.getCableAccountData("TC119_2PMigrationGPON");
+		tc120_1P_HTO_GPON_DualTopology = YamlHandler.getCableAccountData("TC120_1P_HTO_GPON_DualTopology");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		tc112_Legacy2PtoIgnite2PMigration= YamlHandler.getCableAccountData("TC112_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
@@ -771,5 +779,7 @@ public class TestDataHandler {
 		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
 		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
 		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
+		tc_35_DashboardValidation_Ignite_3P = YamlHandler.getOvrReusableData("TC35_DashboardValidation_Ignite3P");
+		tc_36_DashboardValidation_Ignite_ISS = YamlHandler.getOvrReusableData("TC36_DashboardValidation_IgniteISS");
 	}
 }

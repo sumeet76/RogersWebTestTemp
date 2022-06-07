@@ -91,9 +91,11 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
+
 	@FindAll({
 			@FindBy(xpath = "//h2[text()='Self-installation option(s)']"),
-			@FindBy(xpath = "//h2[text()='Professional installation option(s)']")
+			@FindBy(xpath = "//h2[text()='Professional installation option(s)']"),
+			@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
 	})
 	WebElement installationOption;
 

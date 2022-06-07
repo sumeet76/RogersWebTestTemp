@@ -119,9 +119,9 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_IntID_BackToOverview_E2E_De
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-        getOVROrderConfirmationPage().clkBackToOverview();
-        reporter.reportLogWithScreenshot("Back to Overview page");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
-        reporter.reportLogWithScreenshot("Overview Page");
+//        getOVROrderConfirmationPage().clkBackToOverview();
+//        reporter.reportLogWithScreenshot("Back to Overview page");
+//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
+//        reporter.reportLogWithScreenshot("Overview Page");
     }
 }
