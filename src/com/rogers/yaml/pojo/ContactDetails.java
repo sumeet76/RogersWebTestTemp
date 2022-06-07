@@ -70,6 +70,8 @@ public class ContactDetails {
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDGponNFDBNAC2p;
+	private String contactIDRecoEngineValidateInstalRecommendation;
+
 
 	;
 	public ContactDetails() {
@@ -733,6 +735,17 @@ public class ContactDetails {
 	 */
 	public void setContactIDGponNFDBNAC2p(String contactIDGponNFDBNAC2p) {
 		this.contactIDGponNFDBNAC2p = contactIDGponNFDBNAC2p;
+	}
+
+	/**
+	 * @param contactIDRecoEngineValidateInstalRecommendation
+	 */
+	public void setContactIDRecoEngineValidateInstalRecommendation(String contactIDRecoEngineValidateInstalRecommendation) {
+		this.contactIDRecoEngineValidateInstalRecommendation = contactIDRecoEngineValidateInstalRecommendation;
+	}
+
+	public String getContactIDRecoEngineValidateInstalRecommendation() {
+		return contactIDRecoEngineValidateInstalRecommendation;
 	}
 
 

@@ -480,9 +480,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
-		getReusableActionsInstance().scrollToElement(firstAddToCart);
-		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
+		getReusableActionsInstance().scrollToElement(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
 
 	/**

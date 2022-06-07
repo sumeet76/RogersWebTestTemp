@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionCHOV"})
-    public void OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN(){
+    public void OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx.accountDetails.getBan(),TestDataHandler.SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
