@@ -120,6 +120,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(@bcKey, 'loggedIn')]/descendant::span[text()='Live Chat']")
 	WebElement lnkLiveChat;
 
+	@FindBy(xpath = "//a[contains(@aria-label, 'Contact')]")
+	WebElement lnkContactUs;
+
 	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
@@ -405,10 +408,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkChangeTVPackage() {
 		//NL and FL  Provinces taking long loading time to pull the dashboard details
-		getReusableActionsInstance().staticWait(6000);
-		//getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,120);
-		//getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
-		getReusableActionsInstance().getWhenReady(btnChangeTVPackage, 60).click();
+		getReusableActionsInstance().staticWait(10000);
+		By btnChangeTVPkg = By.xpath("//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]");
+		getReusableActionsInstance().getWhenReady(btnChangeTVPkg, 120).click();
 	}
 
 	/**
