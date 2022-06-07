@@ -344,6 +344,7 @@ public class TestDataHandler {
 	public static AccountData Internet_Dashboard_Validation;
 	public static AccountData RHP_Dashboard_Validation;
 	public static AccountData SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan;
+	public static AccountData Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx;
 	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
 	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
@@ -750,6 +751,7 @@ public class TestDataHandler {
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 		TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges=YamlHandler.getMigrationData("TargetedMigration_3P_to_3P_Delivery_by_Appointment_MonthlyCharges");
 		SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan = YamlHandler.getOVAccountData("SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan");
+		Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx = YamlHandler.getOVAccountData("Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx");
 		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
