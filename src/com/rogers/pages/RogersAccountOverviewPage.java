@@ -137,7 +137,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//div[@ng-show='loadingImg']")
 	WebElement imgLoadingFingers;
 
-	@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']")
+	@FindAll({
+			@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']"),
+			@FindBy(xpath = "//p[contains(@translate,'EOP.NEW_OFFER_NOTIFICATION')]")
+	})
 	WebElement headerOfferNotificationModal;
 
 	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span")

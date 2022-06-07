@@ -190,7 +190,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueFromPointsToMention;
 
-
+   	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
+   	WebElement showPriceBreakdown;
 
 	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
 	WebElement selectServiceCustomerWant;
@@ -261,7 +262,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement moveMigration;
 
 
-	@FindBy(xpath = "//input[contains(@id, 'canada-post-address-complete')]")
+	@FindBy(xpath = "//input[contains(@id, 'algoliaInput')]")
 	WebElement enterNewAddress;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkAvailability']/ancestor::button")
@@ -371,8 +372,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours, alerte médicale et systèmes de sécurité']")
 	WebElement batteryBackUpCollapse;
 
-	@FindBy(xpath = "(//span[text()='View details'])[1]")
+	@FindBy(xpath = "(//span[text()='View details'])[2]")
 	WebElement viewDetails;
+
+	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/descendant::span[text()='View pricing and package details']")
+	WebElement viewPricingDetails;
 
 	@FindBy(xpath="//span[@translate='sai.modals.pricingModal.packageDetail']")
 	WebElement expandPackageDetails;
@@ -382,8 +386,37 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationMsg;
+
 	@FindBy(xpath = "ng-tns-c166-16 ng-star-inserted")
 	WebElement tvCollapse;
+
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
+	WebElement DownloadSpeedReview;
+
+	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+	WebElement UploadSpeedReview;
+
+	@FindBy(xpath = "//div[contains(text(),'This address is not serviceable right now') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressNotServiceable;
+
+	@FindBy(xpath = "//a[@id='language-changed']")
+	WebElement linkFrench;
+
+	@FindBy(xpath = "//span[text()='Check another address' or text()='Vérifier une autre adresse'] | //span[@translate='global.cta.checkAnotherAddress']")
+	WebElement checkAnotherAddress;
+
+	@FindBy(xpath = "//*[contains(text(),'There seems to be a fraud issue') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressFlaggedFraud;
+
+	@FindBy(xpath = "//span[text()='OK']")
+	WebElement clickOk;
+
+	@FindBy(xpath = "//*[contains(text(),'Please advise the Bulk Tenant to contact a Solution Specialist at ') or contains(text(),'Cette adresse peut être desservie')]")
+	WebElement addressMDU;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement clickCancel;
+
 
 	/**
 	 * Click Load Offers button
@@ -484,9 +517,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(firstAddToCart,45);
-		getReusableActionsInstance().scrollToElement(firstAddToCart);
-		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
+		getReusableActionsInstance().scrollToElement(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
 
 	/**
@@ -494,7 +527,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @param address is the Address to check for availability
 	 * @author Aditi.jain
 	 */
-	public void checkAvailability(String address) {
+	public void  checkAvailability(String address) {
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
 		getReusableActionsInstance().staticWait(3000);
@@ -1057,8 +1090,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void enterNewAddress(String address) {
-
-		getReusableActionsInstance().clickWhenReady(adddressInputContainer,45);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickWhenReady(addressInput,60);
 		getReusableActionsInstance().enterText(enterNewAddress,(address+Keys.BACK_SPACE),60);
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
@@ -1089,6 +1122,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickAvailability() {
+		//getReusableActionsInstance().scrollToElement(availabilityButton);
 		getReusableActionsInstance().clickWhenReady(availabilityButton,30);
 	}
 
@@ -1324,7 +1358,24 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().getWhenReady(expandPackageDetails);
 		getReusableActionsInstance().clickWhenReady(expandPackageDetails);
 	}
-
+	public boolean verifyDownloadAndUploadSpeed() {
+//		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
+//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
 	public void clkCloseBtn(){
 		getReusableActionsInstance().getWhenReady(closeBtn);
 		getReusableActionsInstance().clickWhenReady(closeBtn);
@@ -1340,6 +1391,62 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().scrollToElement(tvCollapse);
 		getReusableActionsInstance().clickWhenReady(tvCollapse);
 	}
+
+	public void clickShowPriceBreakdown(){
+		getReusableActionsInstance().waitForElementVisibility(showPriceBreakdown, 30);
+		getReusableActionsInstance().scrollToElement(showPriceBreakdown);
+		getReusableActionsInstance().executeJavaScriptClick(showPriceBreakdown);
+	}
+
+	public void clickViewPricingDetails(){
+		getReusableActionsInstance().waitForElementVisibility(viewPricingDetails, 30);
+		getReusableActionsInstance().scrollToElement(viewPricingDetails);
+		getReusableActionsInstance().executeJavaScriptClick(viewPricingDetails);
+	}
+
+	public boolean verifyNoServiceAvailabilityMessage() {
+		return getReusableActionsInstance().isElementVisible(addressNotServiceable,60);
+	}
+
+	public void setLanguageFrench() {
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().clickWhenReady(linkFrench);
+	}
+	public void clickCheckAnotherAddress() {
+		getReusableActionsInstance().waitForElementTobeClickable(checkAnotherAddress,30);
+		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
+		getReusableActionsInstance().clickWhenReady(checkAnotherAddress);
+		getReusableActionsInstance().staticWait(5000);
+	}
+
+	public void refreshCheckAvailability() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']"),120);
+	}
+
+	public boolean verifyFraudAddressMessage() {
+		return getReusableActionsInstance().isElementVisible(addressFlaggedFraud,60);
+	}
+
+	public void clickOkButton() {
+		getReusableActionsInstance().waitForElementTobeClickable(clickOk,30);
+		getReusableActionsInstance().clickWhenReady(clickOk);
+	}
+
+	public boolean verifyBulkAddress() {
+		return getReusableActionsInstance().isElementVisible(addressMDU,60);
+	}
+
+	public void clickCancelButton() {
+		getReusableActionsInstance().waitForElementTobeClickable(clickCancel,30);
+		getReusableActionsInstance().clickWhenReady(clickCancel);
+	}
+
+	public void refreshEnterAddress() {
+		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//input[@id='algoliaInput']"),120);
+	}
+
+
+
 }
 
 

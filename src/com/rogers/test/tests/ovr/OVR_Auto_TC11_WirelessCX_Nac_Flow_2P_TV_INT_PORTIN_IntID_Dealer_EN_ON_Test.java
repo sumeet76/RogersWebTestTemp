@@ -130,10 +130,10 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-        getOVROrderConfirmationPage().clkBackToOverview();
-        reporter.reportLogWithScreenshot("Back to Overview page");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
-        reporter.reportLogWithScreenshot("Overview Page");
+//        getOVROrderConfirmationPage().clkBackToOverview();
+//        reporter.reportLogWithScreenshot("Back to Overview page");
+//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
+//        reporter.reportLogWithScreenshot("Overview Page");
     }
 
 }

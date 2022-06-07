@@ -809,7 +809,7 @@ public class RogersTechInstallPage extends BasePageClass {
 
     public void selectPrefferedDate() {
 		getReusableActionsInstance().waitForElementVisibility(btnOpenCalendar, 120);
-		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
+		getActionsInstance().moveToElement(btnOpenCalendar).click().sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ENTER).build().perform();
 
     }
 }

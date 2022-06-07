@@ -192,7 +192,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtEmail;
 
-	@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']")
+	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtBundlesPage;
 
 	@FindBy(xpath = "//h2[@translate='global.label.ourBundles']")
