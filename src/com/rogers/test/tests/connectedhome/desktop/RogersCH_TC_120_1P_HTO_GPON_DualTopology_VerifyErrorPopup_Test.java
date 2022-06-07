@@ -33,20 +33,20 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends BaseTestClass {
+public class RogersCH_TC_120_1P_HTO_GPON_DualTopology_VerifyErrorPopup_Test extends BaseTestClass {
 
     @Test
-    public void checkTargetedOfferForSAI() {
+    public void checkErrorPopupForHTODowngradeTest() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc118_GPON_DualTopology.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc118_GPON_DualTopology.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc118_GPON_DualTopology.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
@@ -73,25 +73,10 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
         reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
         getRogersHTOPRomotionPage().clickClosePopup();
         reporter.reportLogWithScreenshot("Clicked on Close Button");
-        getRogersHTOPRomotionPage().clkAvailableChannelsLink();
-        reporter.reportLogWithScreenshot("Clicked on the Available Channels");
-        reporter.hardAssert(getRogersHTOPRomotionPage().verifyAvailableChannelsPopupModal(),"Available Channels Popup Modal verified","Available Channels Popup Modal not verified");
-        getRogersHTOPRomotionPage().clkCloseAvailableChannelsPopupModal();
-        reporter.reportLogWithScreenshot("Closed the Available Channels Popup Modal");
-        getRogersHTOPRomotionPage().clkFlexChannelsLink();
-        reporter.reportLogWithScreenshot("Clicked on the Flex Channels");
-        reporter.hardAssert(getRogersHTOPRomotionPage().verifyFlexChannelsPopupModal(),"Flex Channels Popup Modal verified","Flex Channels Popup Modal not verified");
-        getRogersHTOPRomotionPage().clkCloseFlexChannelsPopupModal();
-        reporter.reportLogWithScreenshot("Closed the Flex Channels Popup Modal"); 
         getRogersHTOPRomotionPage().clickUpgradeNow();
         reporter.reportLogWithScreenshot("Clicked on Upgrade Now button");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyDowngradeLTQModal(),"Verified the Downgrade LTQ Modal","Downgrade LTQ Modal not verified");
-        reporter.hardAssert(getRogersHTOPRomotionPage().verifyWarningIconSorryModal(), "verified the warning icon", "Warning icon not verified");
-        reporter.softAssert(getRogersHTOPRomotionPage().verifyPopUpHeader(), "Header Verified", "Header not verified");
-        reporter.softAssert(getRogersHTOPRomotionPage().verifySorryHeader(), "Sorry Header Verified", "Sorry Header not verified");
-        reporter.softAssert(getRogersHTOPRomotionPage().verifyCallLink(), " Call link Verified", "Call link not verified");
-        reporter.softAssert(getRogersHTOPRomotionPage().verifyLiveChatLink(), " Live Chat Link Verified", "Live Chat Link not verified");
-        reporter.softAssert(getRogersHTOPRomotionPage().verifyContactUsLink(), " Contact Us Link Verified", "Contact Us Link not verified");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyWarningIconSorryModal(), "verified the error popup", "Error popup not verified");
     }
 
 

@@ -129,6 +129,12 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Please do not proceed with order') or contains(text(),'Les renseignements du client doivent être validés auprès de')]/ancestor::div[@class='nfdb']")
 	WebElement fraudErrorMessage;
 
+	@FindBy(xpath = "//div[@class='container position-relative py-16 ng-tns-c119-29']")
+	WebElement recoEngineRecommendation;
+
+	@FindBy(xpath = "//span[text()='RECOMMENDED' or text()='RECOMMANDATION']")
+	WebElement recommendedBanner;
+
 	@FindBy(xpath = "//span[@translate='chc.label.internationalId']")
 	WebElement internationalIdRadioBtn;
 
@@ -375,6 +381,20 @@ public class CreditCheckPage  extends BasePageClass {
 	public boolean verifyFraudErrorMessage() {
 		getReusableActionsInstance().waitForElementVisibility(fraudErrorMessage, 45);
 		return getReusableActionsInstance().isElementVisible(fraudErrorMessage,45);
+	}
+
+	/**
+	 * Verify Credit Evaluation Header
+	 * @return true if available, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyRecoEngineRecommendation() {
+		getReusableActionsInstance().waitForElementVisibility(recoEngineRecommendation, 20);
+		return getReusableActionsInstance().isElementVisible(recoEngineRecommendation,20);
+	}
+
+	public boolean verifyRecommendationBanner() {
+		return getReusableActionsInstance().isElementVisible(recommendedBanner,20);
 	}
 
 	/**

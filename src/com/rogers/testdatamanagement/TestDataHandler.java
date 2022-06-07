@@ -46,6 +46,7 @@ public class TestDataHandler {
 	public static AccountData tc110_StandaloneInternetAccount;
 	public static AccountData tc118_GPON_DualTopology;
 	public static AccountData tc119_2PMigrationGPON;
+	public static AccountData tc120_1P_HTO_GPON_DualTopology;
 	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
@@ -343,6 +344,7 @@ public class TestDataHandler {
 	public static AccountData Internet_Dashboard_Validation;
 	public static AccountData RHP_Dashboard_Validation;
 	public static AccountData SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan;
+	public static AccountData Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx;
 	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
 	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
@@ -442,8 +444,9 @@ public class TestDataHandler {
 		tc116_Legacy1PInternetToIgnite2P= YamlHandler.getCableAccountData("TC116_Legacy1PInternetToIgnite2P");
 		tc111_Legacy1PtoIgnite2P= YamlHandler.getCableAccountData("TC111_Legacy1PtoIgnite2P");
 		tc110_StandaloneInternetAccount = YamlHandler.getCableAccountData("TC110_StandaloneInternetAccount");
-		tc118_GPON_DualTopology = YamlHandler.getCableAccountData("TC118_HTO_GPON_DualTopology");
+		tc118_GPON_DualTopology = YamlHandler.getCableAccountData("TC118_2P_HTO_GPON_DualTopology");
 		tc119_2PMigrationGPON = YamlHandler.getCableAccountData("TC119_2PMigrationGPON");
+		tc120_1P_HTO_GPON_DualTopology = YamlHandler.getCableAccountData("TC120_1P_HTO_GPON_DualTopology");
 		tc83_Legacy2PtoIgnite2P= YamlHandler.getCableAccountData("TC83_Legacy2PtoIgnite2P");
 		tc112_Legacy2PtoIgnite2PMigration= YamlHandler.getCableAccountData("TC112_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
@@ -748,6 +751,7 @@ public class TestDataHandler {
 		ValidationofNotificationAlertBackbutton=YamlHandler.getMigrationData("Validation_of_Notification_Alert_Back_Button_on_Migration_Flow");
 		TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges=YamlHandler.getMigrationData("TargetedMigration_3P_to_3P_Delivery_by_Appointment_MonthlyCharges");
 		SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan = YamlHandler.getOVAccountData("SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan");
+		Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx = YamlHandler.getOVAccountData("Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx");
 		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");

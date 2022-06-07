@@ -60,6 +60,7 @@ public class ContactDetails {
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDGponNFDBNAC2p;
+	private String contactIDRecoEngineValidateInstalRecommendation;
 	private String address_docsis_3P_SHA_NAC;
 	private String address_docsis_2P_SHA_NAC;
 	private String GPON_3P_SHA_NAC;
@@ -67,6 +68,9 @@ public class ContactDetails {
 	private String address_Flagges_Fraud;
 	private String address_not_Serviceable2;
 	private String address_MDU_NAC;
+
+
+
 
 
 
@@ -733,6 +737,17 @@ public class ContactDetails {
 		this.contactIDGponNFDBNAC2p = contactIDGponNFDBNAC2p;
 	}
 
+	/**
+	 * @param contactIDRecoEngineValidateInstalRecommendation
+	 */
+	public void setContactIDRecoEngineValidateInstalRecommendation(String contactIDRecoEngineValidateInstalRecommendation) {
+		this.contactIDRecoEngineValidateInstalRecommendation = contactIDRecoEngineValidateInstalRecommendation;
+	}
+
+	public String getContactIDRecoEngineValidateInstalRecommendation() {
+		return contactIDRecoEngineValidateInstalRecommendation;
+	}
+	
 	public String getAddress_docsis_3P_SHA_NAC() {return address_docsis_3P_SHA_NAC;
 	}
 
@@ -780,7 +795,6 @@ public class ContactDetails {
 
 	public void setAddress_MDU_NAC(String address_MDU_NAC) {this.address_MDU_NAC = address_MDU_NAC;
 	}
-
 
 
 
