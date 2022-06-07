@@ -76,7 +76,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Exchange later')]/ancestor::button")
 	WebElement ExchangeLaterBtn;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	@FindBy(xpath = "//span[text()='Continue']")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
@@ -371,7 +371,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void clickContinueOnSelectDateChange() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,30);
 		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+		getReusableActionsInstance().staticWait(15000);
 	}
 	/*Selects the Immediate Billing option
 	 * @author suganya p
