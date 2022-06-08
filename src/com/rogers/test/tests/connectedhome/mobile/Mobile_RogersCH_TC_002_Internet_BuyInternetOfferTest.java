@@ -43,12 +43,8 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContractMobile();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackageMobile();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.reportLogWithScreenshot("Selected Add to Cart");
-
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
