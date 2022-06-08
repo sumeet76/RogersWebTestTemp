@@ -401,12 +401,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnInternetPackage, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetPackage);
 	}
-
-	public void selectMonthToMonthTypeOfContractMobile(){
-		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract,120);
-		Select monthToMonthContract = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
-				monthToMonthContract.selectByVisibleText("Month-to-month");
-	}
 	public void clkInternetBuyContinueMobile() {
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
