@@ -53,19 +53,21 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
     public void checkBuyIgniteTVOfferMobile() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceabilityMobile();
+        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
+        getRogersHomePage().clkServiceabilityMobile();
+        reporter.reportLogWithScreenshot("Bundles Page has launched");
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Availability check button enabled");
         getRogersHomePage().clkIgniteAddressLookupSubmitMobile();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPageMobile(),"Bundles Page has launched","Bundles Page has not launched");
-        //getRogersIgniteTVBuyPage().clkHomephoneMobile();
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
