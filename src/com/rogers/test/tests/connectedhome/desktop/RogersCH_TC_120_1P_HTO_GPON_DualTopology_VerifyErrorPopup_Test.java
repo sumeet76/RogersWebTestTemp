@@ -33,22 +33,20 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends BaseTestClass {
+public class RogersCH_TC_120_1P_HTO_GPON_DualTopology_VerifyErrorPopup_Test extends BaseTestClass {
 
     @Test
-    public void checkTargetedOfferForSAI() {
+    public void checkErrorPopupForHTODowngradeTest() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc118_GPON_DualTopology.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc118_GPON_DualTopology.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc118_GPON_DualTopology.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
@@ -62,6 +60,7 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");
+
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyCurrentBundle(),"Old Bundle details Available","Old Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified Old bundle Details");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
@@ -74,21 +73,10 @@ public class RogersCH_TC_118_HTO_StarterPack_GPON_DualTopology_Test extends Base
         reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
         getRogersHTOPRomotionPage().clickClosePopup();
         reporter.reportLogWithScreenshot("Clicked on Close Button");
-        getRogersHTOPRomotionPage().clkAvailableChannelsLink();
-        reporter.reportLogWithScreenshot("Clicked on the Available Channels");
-        reporter.hardAssert(getRogersHTOPRomotionPage().verifyAvailableChannelsPopupModal(),"Available Channels Popup Modal verified","Available Channels Popup Modal not verified");
-        getRogersHTOPRomotionPage().clkCloseAvailableChannelsPopupModal();
-        reporter.reportLogWithScreenshot("Closed the Available Channels Popup Modal");
-        getRogersHTOPRomotionPage().clkFlexChannelsLink();
-        reporter.reportLogWithScreenshot("Clicked on the Flex Channels");
-        reporter.hardAssert(getRogersHTOPRomotionPage().verifyFlexChannelsPopupModal(),"Flex Channels Popup Modal verified","Flex Channels Popup Modal not verified");
-        getRogersHTOPRomotionPage().clkCloseFlexChannelsPopupModal();
-        reporter.reportLogWithScreenshot("Closed the Flex Channels Popup Modal");
-        getRogersHTOPRomotionPage().clickIWantThisUpgrade();
-        reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
-        getRogersHTOPRomotionPage().clickReviewYourUpgrade();
-        reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
-        //reporter.hardAssert(getRogersOrderReviewPage().verifyDowngradeLTQModal(),"Verified the Downgrade LTQ Modal","Downgrade LTQ Modal not verified");
+        getRogersHTOPRomotionPage().clickUpgradeNow();
+        reporter.reportLogWithScreenshot("Clicked on Upgrade Now button");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyDowngradeLTQModal(),"Verified the Downgrade LTQ Modal","Downgrade LTQ Modal not verified");
+        reporter.hardAssert(getRogersHTOPRomotionPage().verifyWarningIconSorryModal(), "verified the error popup", "Error popup not verified");
     }
 
 

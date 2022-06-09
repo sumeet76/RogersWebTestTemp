@@ -35,16 +35,6 @@ public class ContactDetails {
 	private String email;
 	private String confirmEmail;
 	private String paymentAmount;
-
-	public String getPaymentAmount() {return paymentAmount;}
-
-	public void setPaymentAmount(String paymentAmount) {
-		this.paymentAmount = paymentAmount;
-	}
-
-
-
-
 	private String contactID2PProfInstall;
 	private String contactID2PDeliveryByAppt;
 	private String contactID3PProfInstall;
@@ -70,8 +60,20 @@ public class ContactDetails {
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDGponNFDBNAC2p;
+	private String contactIDRecoEngineValidateInstalRecommendation;
+	private String address_docsis_3P_SHA_NAC;
+	private String address_docsis_2P_SHA_NAC;
+	private String GPON_3P_SHA_NAC;
+	private String address_not_Serviceable;
+	private String address_Flagges_Fraud;
+	private String address_not_Serviceable2;
+	private String address_MDU_NAC;
 
-	;
+
+
+
+
+
 	public ContactDetails() {
 		
 	}
@@ -734,6 +736,67 @@ public class ContactDetails {
 	public void setContactIDGponNFDBNAC2p(String contactIDGponNFDBNAC2p) {
 		this.contactIDGponNFDBNAC2p = contactIDGponNFDBNAC2p;
 	}
+
+	/**
+	 * @param contactIDRecoEngineValidateInstalRecommendation
+	 */
+	public void setContactIDRecoEngineValidateInstalRecommendation(String contactIDRecoEngineValidateInstalRecommendation) {
+		this.contactIDRecoEngineValidateInstalRecommendation = contactIDRecoEngineValidateInstalRecommendation;
+	}
+
+	public String getContactIDRecoEngineValidateInstalRecommendation() {
+		return contactIDRecoEngineValidateInstalRecommendation;
+	}
+	
+	public String getAddress_docsis_3P_SHA_NAC() {return address_docsis_3P_SHA_NAC;
+	}
+
+	public void setAddress_docsis_3P_SHA_NAC(String address_docsis_3P_SHA_NAC) {this.address_docsis_3P_SHA_NAC = address_docsis_3P_SHA_NAC;
+	}
+
+	public String getPaymentAmount() {return paymentAmount;}
+
+	public void setPaymentAmount(String paymentAmount) {
+		this.paymentAmount = paymentAmount;
+	}
+
+	public String getAddress_docsis_2P_SHA_NAC() {return address_docsis_2P_SHA_NAC;
+	}
+
+	public void setAddress_docsis_2P_SHA_NAC(String address_docsis_2P_SHA_NAC) {this.address_docsis_2P_SHA_NAC = address_docsis_2P_SHA_NAC;
+	}
+
+	public String getGPON_3P_SHA_NAC() {return GPON_3P_SHA_NAC;
+	}
+
+	public void setGPON_3P_SHA_NAC(String GPON_3P_SHA_NAC) {this.GPON_3P_SHA_NAC = GPON_3P_SHA_NAC;
+	}
+
+	public String getAddress_not_Serviceable() {return address_not_Serviceable;
+	}
+
+	public void setAddress_not_Serviceable(String address_not_Serviceable) {this.address_not_Serviceable = address_not_Serviceable;
+	}
+
+	public String getAddress_Flagges_Fraud() {return address_Flagges_Fraud;
+	}
+
+	public void setAddress_Flagges_Fraud(String address_Flagges_Fraud) {this.address_Flagges_Fraud = address_Flagges_Fraud;
+	}
+
+	public String getAddress_not_Serviceable2() { return address_not_Serviceable2;
+	}
+
+	public void setAddress_not_Serviceable2(String address_not_Serviceable2) {this.address_not_Serviceable2 = address_not_Serviceable2;
+	}
+
+	public String getAddress_MDU_NAC() {return address_MDU_NAC;
+	}
+
+	public void setAddress_MDU_NAC(String address_MDU_NAC) {this.address_MDU_NAC = address_MDU_NAC;
+	}
+
+
 
 
 }

@@ -37,7 +37,7 @@ public class OVR_Auto_TC08_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_E2E_Dealer_ON_F
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        //getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -129,10 +129,10 @@ public class OVR_Auto_TC08_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_E2E_Dealer_ON_F
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-        getOVROrderConfirmationPage().clkBackToOverview();
-        reporter.reportLogWithScreenshot("Back to Overview page");
-        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
-        reporter.reportLogWithScreenshot("Overview Page");
+//        getOVROrderConfirmationPage().clkBackToOverview();
+//        reporter.reportLogWithScreenshot("Back to Overview page");
+//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
+//        reporter.reportLogWithScreenshot("Overview Page");
 
     }
 

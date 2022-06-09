@@ -27,7 +27,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Professional Install') or contains(text(),'Installation professionnelle')]")
     WebElement igniteProfessionalInstall;
 
-    @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
+    @FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
     WebElement continueInstallation;
 
     @FindBy(xpath = "//span[text()='Continue' or text()='Continuer']/ancestor::button")
@@ -128,9 +128,7 @@ public class BundleBuilderPage extends BasePageClass {
     public void scrollAndClickContinue() {
         getReusableActionsInstance().staticWait(2000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        //getReusableActionsInstance().scrollToElement(continueBtn);
-        //getReusableActionsInstance().javascriptScrollByVisibleElement(continueBtn);
-        //getReusableActionsInstance().clickWhenReady(continueBtn, 30);
+        getReusableActionsInstance().waitForElementTobeClickable(continueBtn,60);
         getReusableActionsInstance().executeJavaScriptClick(continueBtn);
     }
 
@@ -199,7 +197,10 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void clkContinueInstallation() {
-        getReusableActionsInstance().clickWhenReady(continueInstallation,30);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        getReusableActionsInstance().staticWait(2000);
+        getReusableActionsInstance().waitForElementTobeClickable(continueInstallation,30);
+        getReusableActionsInstance().executeJavaScriptClick(continueInstallation);
     }
 
     public boolean verifyBillingAndPaymentPage(){
@@ -235,5 +236,9 @@ public class BundleBuilderPage extends BasePageClass {
 
     public boolean verifyStoredPaymentCardPresent(){
         return getReusableActionsInstance().isElementVisible(storedPaymentCardLabel, 60);
+    }
+
+    public void validateSessionTimerWait(int waitTime){
+        getReusableActionsInstance().staticWait(waitTime);
     }
 }
