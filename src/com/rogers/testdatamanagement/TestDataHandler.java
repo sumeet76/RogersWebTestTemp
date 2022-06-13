@@ -349,6 +349,7 @@ public class TestDataHandler {
 	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
+	public static AccountData OVS2_Change_TV_Internet_2P;
 
 	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
 	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
@@ -755,6 +756,7 @@ public class TestDataHandler {
 		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
+		OVS2_Change_TV_Internet_2P=YamlHandler.getOVAccountData("OVS2_Change_TV_Internet_2P");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {

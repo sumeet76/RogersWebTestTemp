@@ -69,6 +69,8 @@ public class OneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTi
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
+        //reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+       // reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         reporter.reportLogWithScreenshot("professional Installation");
         //getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");

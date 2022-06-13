@@ -16,6 +16,11 @@ public class MigrationData {
 	public String swapContactID;
 	public String accountNoLegacyToSHMInternet;
 	public String contactIDLegacyToSHMInternet;
+	public String accountNoLegacyToSHM3PInternet;
+	public String contactIDLegacyToSHM3PInternet;
+	public String accountNo2PToSAIISSTMP;
+	public String contactID2PToSAIISSTMP;
+
 
 	/**
 	 * @return the AccountNo
@@ -232,6 +237,71 @@ public class MigrationData {
 	 */
 	public void setContactIDLegacyToSHMInternet(String contactIDLegacyToSHMInternet) {
 		this.contactIDLegacyToSHMInternet = contactIDLegacyToSHMInternet;
+	}
+
+	/**
+	 * @return accountNo2PToSAIISSTMP
+	 */
+	public String getAccountNo2PToSAIISSTMP() {
+		return accountNo2PToSAIISSTMP;
+	}
+
+	/**
+	 *
+	 * @param accountNo2PToSAIISSTMP
+	 */
+
+	public void setAccountNo2PToSAIISSTMP(String accountNo2PToSAIISSTMP) {
+		this.accountNo2PToSAIISSTMP = accountNo2PToSAIISSTMP;
+	}
+
+	/**
+	 *
+	 * @return contactID2PToSAIISSTMP
+	 */
+
+	public String getContactID2PToSAIISSTMP() {
+		return contactID2PToSAIISSTMP;
+	}
+
+	/**
+	 *
+	 * @param contactID2PToSAIISSTMP
+	 */
+	public void setContactID2PToSAIISSTMP(String contactID2PToSAIISSTMP) {
+		this.contactID2PToSAIISSTMP = contactID2PToSAIISSTMP;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public String getAccountNoLegacyToSHM3PInternet() {
+		return accountNoLegacyToSHM3PInternet;
+	}
+
+	/**
+	 *
+	 * @param accountNoLegacyToSHM3PInternet
+	 */
+	public void setAccountNoLegacyToSHM3PInternet(String accountNoLegacyToSHM3PInternet) {
+		this.accountNoLegacyToSHM3PInternet = accountNoLegacyToSHM3PInternet;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public String getContactIDLegacyToSHM3PInternet() {
+		return contactIDLegacyToSHM3PInternet;
+	}
+
+	/**
+	 *
+	 * @param contactIDLegacyToSHM3PInternet
+	 */
+	public void setContactIDLegacyToSHM3PInternet(String contactIDLegacyToSHM3PInternet) {
+		this.contactIDLegacyToSHM3PInternet = contactIDLegacyToSHM3PInternet;
 	}
 
 }

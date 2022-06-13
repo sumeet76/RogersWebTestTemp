@@ -69,7 +69,9 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_TV_Internet_HomePhone_SmartHomeMon
 		reporter.reportLogWithScreenshot("Phone number generated");
 		//getHomePhoneSelectionPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options displayed","Installation Options not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().selectProfessionalInstallation();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
