@@ -30,30 +30,23 @@ public class RogersCH_TC_006_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void checkManageChannelsAndThemePack_ManageChannelsFlow() {  
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
+
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan());
-		 reporter.reportLogWithScreenshot("Launched the Account Page");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
-		
-		 //getRogersSolarisTVChannelsAndThemepacksPage().searchChannel(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getSwapInChannelOne());
-		 //getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
-		 reporter.reportLogWithScreenshot("Clicked on remove from your changes");
+		 reporter.reportLogWithScreenshot("Manage Channels and Theme Packs clicked");
 		getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
-		reporter.reportLogWithScreenshot("Channel again added");
+		reporter.reportLogWithScreenshot("Channel added");
 		getRogersSolarisTVChannelsAndThemepacksPage().clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
 	
@@ -61,6 +54,7 @@ public class RogersCH_TC_006_02_SolarisCustomer_ManageChannelsAndThemePack_Manag
 		getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		getRogersOrderReviewPage().clkSubmitUpdate();
+
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
