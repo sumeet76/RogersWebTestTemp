@@ -1,6 +1,7 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -150,8 +151,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannel() {
-		getReusableActionsInstance().waitForElementVisibility(addChannelToCart, 60);
-		getReusableActionsInstance().getWhenReady(addChannelToCart, 30).click();
+		By addChannel = By.xpath("//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/..");
+		getReusableActionsInstance().getWhenReady(addChannel, 90).click();
 	}
 	
 	/**
