@@ -441,7 +441,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,90);
+		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,60);
 		getReusableActionsInstance().getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 
