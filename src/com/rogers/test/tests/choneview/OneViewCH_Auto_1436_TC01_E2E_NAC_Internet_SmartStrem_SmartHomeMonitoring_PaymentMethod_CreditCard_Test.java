@@ -65,6 +65,9 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonit
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getCreditCheckPage().selectProfessionalInstallation();
 		getFulfillmentPage().clkFirstAvailableAppointment();
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getRogersIgniteBundlesPage().clkContinue();

@@ -457,7 +457,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 				getReusableActionsInstance().waitForElementVisibility(reviewTV,10);
 				getReusableActionsInstance().executeJavaScriptClick(reviewTV);
 			}*/
-			if(getReusableActionsInstance().isElementVisible(reviewInternet,5)) {
+			if(getReusableActionsInstance().isElementVisible(reviewInternet,10)) {
 				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 10);
 				getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
 			}
@@ -973,7 +973,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().javascriptScrollByCoordinates(point.getX()-20, point.getY()-200);
 		getReusableActionsInstance().executeJavaScriptClick(inputAccountNumberContainer);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(inputAccountNumber);
-		getReusableActionsInstance().enterText(inputAccountNumber, accountNumber, 30);
+		getReusableActionsInstance().enterText(inputAccountNumber, accountNumber, 40);
 	}
 
 
@@ -1159,6 +1159,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickAddOnAddToCart() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(addOnAddToCart,30);
 		getReusableActionsInstance().staticWait(5000);
 	}
