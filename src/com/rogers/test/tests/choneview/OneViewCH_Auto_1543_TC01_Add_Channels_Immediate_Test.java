@@ -44,7 +44,6 @@ import java.lang.reflect.Method;
 		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
 
 	}
-
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();

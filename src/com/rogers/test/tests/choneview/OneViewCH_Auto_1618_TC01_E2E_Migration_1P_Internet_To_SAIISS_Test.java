@@ -60,7 +60,7 @@ public class OneViewCH_Auto_1618_TC01_E2E_Migration_1P_Internet_To_SAIISS_Test e
 		getCreditCheckPage().clkContinue();
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("Installation Options");
-		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkCourierDelivery();
 		reporter.reportLogWithScreenshot("Inperson delivery");
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
