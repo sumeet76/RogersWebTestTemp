@@ -129,7 +129,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Please do not proceed with order') or contains(text(),'Les renseignements du client doivent être validés auprès de')]/ancestor::div[@class='nfdb']")
 	WebElement fraudErrorMessage;
 
-	@FindBy(xpath = "//div[@class='container position-relative py-16 ng-tns-c119-29']")
+	@FindBy(xpath = "//div[contains(@class,'container position-relative py-16')]")
 	WebElement recoEngineRecommendation;
 
 	@FindBy(xpath = "//span[text()='RECOMMENDED' or text()='RECOMMANDATION']")
@@ -182,6 +182,12 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Online billing' or text()='Facture en ligne']/parent::div/preceding-sibling::div")
 	WebElement onlineBillingOption;
 
+	@FindBy(xpath="//h3[text()='Payment Options']//following::div//following::rch-dropdown")
+	WebElement selectPaymentOVR;
+
+
+
+
 	/**
              * Validates that the 'Installation Option(s)' is displayed
              * @author aditi.jain
@@ -202,6 +208,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
+		getReusableActionsInstance().staticWait(6000);
 		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
 	}
 
@@ -484,12 +491,20 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(specialInstructions);
 		specialInstructions.clear();
 		specialInstructions.sendKeys("test");
+		getReusableActionsInstance().staticWait(5000);
 	}
 
 	public void selectOnlineBilling()
 	{
 		getReusableActionsInstance().isElementVisible(onlineBillingOption);
 		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
+	}
+
+	public void selectPaymentOptionOVR()
+	{
+		getReusableActionsInstance().waitForElementTobeClickable(selectPaymentOVR,5);
+		getReusableActionsInstance().clickWhenReady(selectPaymentOVR);
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	public void refreshContinue() {
