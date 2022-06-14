@@ -23,8 +23,8 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        reporter.reportLogWithScreenshot("Service Availability");
        getRogersIgniteBundlesPage().clkContinue();
        getRogersIgniteBundlesPage().clkContinueServiceable();
-       getRogersIgniteBundlesPage().clkTVCheckbox();
        getRogersIgniteBundlesPage().clkInternetCheckbox();
+       getRogersIgniteBundlesPage().clkTVCheckbox();
        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
        reporter.reportLogWithScreenshot("Triple play selected");
        getRogersIgniteBundlesPage().clkLoadOffers();
@@ -89,8 +89,8 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBo
        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
        reporter.reportLogWithScreenshot("Entered card detail");
 		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("Submit order");
-		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.reportLogWithScreenshot("Submit order");
+//		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
        reporter.reportLogWithScreenshot("Order Placed");
 
