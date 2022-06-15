@@ -82,8 +82,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnFlex10Package;
 
 	@FindAll({
-		@FindBy(xpath="//a[@aria-label='Order Rogers Ignite Flex 20 + Sports online now']//span[text()='Order online']"),
-		@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']//span[text()='Add to cart']")
+		@FindBy(xpath="//a[contains(@aria-label,'Ignite Flex 20 + Sports Order online')]//span[text()='Order online']"),
+		@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/span/span")
 	})
 	WebElement btnFlex20Package;
 
@@ -99,7 +99,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.cta.continue']")
 	WebElement btnContinue;
 
-	@FindBy(xpath = "//span[contains(text(),'Home Phone')]/parent::div/..")
+	@FindBy(xpath = "//label[@class='ds-checkboxLabel d-inline-flex align-items-start']")
 	WebElement checkboxHomephone;
 
 	@FindBy(xpath = "//h2[@id='channels-tab']")
@@ -836,8 +836,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void selectFlex20Package() {
-		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 120);
-		getReusableActionsInstance().getWhenReady(btnFlex20Package, 60).click();
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 60);
+		getReusableActionsInstance().getWhenReady(btnFlex20Package, 30).click();
+
 	}
 
 	/**

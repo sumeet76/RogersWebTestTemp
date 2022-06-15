@@ -69,9 +69,10 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
         // getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
         // reporter.reportLogWithScreenshot("Starter package selected selected");
         // getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Flex20+ selected");
+        //getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         getRogersIgniteTVBuyPage().selectFlex20Package();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Flex20+ Added to cart");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
 
@@ -121,6 +122,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        //getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
@@ -151,7 +153,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
         reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R"); 
     }
 
     @Test(groups = {"SanityCH"})
