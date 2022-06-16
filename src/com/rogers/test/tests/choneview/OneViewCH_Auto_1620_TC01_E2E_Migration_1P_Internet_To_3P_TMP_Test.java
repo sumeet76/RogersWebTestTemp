@@ -93,22 +93,22 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_TMP_Test e
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("installation options");
-		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("Front line");
+	//	getCreditCheckPage().clickDigitalFrontline();
+	//	reporter.reportLogWithScreenshot("Front line");
 
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("Entered card detail");
+	//	getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+	//	getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+	//	getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+	//	reporter.reportLogWithScreenshot("Entered card detail");
 
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Submit order");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
