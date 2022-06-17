@@ -48,6 +48,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TestProject',test_project
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
+	systemProperty 'JiraAssignee', test_jira_assignee
+	systemProperty 'JiraReporter', test_jira_reporter
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
@@ -93,6 +95,8 @@ task "localTest"(type: Test) {
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'TestProject',test_project
+	systemProperty 'JiraAssignee', test_jira_assignee
+	systemProperty 'JiraReporter', test_jira_reporter
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 

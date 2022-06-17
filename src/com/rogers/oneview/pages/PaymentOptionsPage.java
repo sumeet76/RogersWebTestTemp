@@ -38,9 +38,9 @@ public class PaymentOptionsPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-//		getReusableActionsInstance().scrollToElement(continueButton);
-//		getReusableActionsInstance().clickWhenReady(continueButton);
-		getReusableActionsInstance().waitForElementVisibility(continueButton, 20);
+		getReusableActionsInstance().staticWait(5000);
+		//getReusableActionsInstance().scrollToElement(continueButton);
+		getReusableActionsInstance().waitForElementTobeClickable(continueButton,5);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 /**

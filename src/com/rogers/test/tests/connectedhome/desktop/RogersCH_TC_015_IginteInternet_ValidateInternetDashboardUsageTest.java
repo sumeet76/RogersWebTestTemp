@@ -33,9 +33,6 @@ public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest e
 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
     public void checkInternetDashboard() {
-    	            reporter.reportLogWithScreenshot("Launched the Home Page");
-                    getRogersHomePage().clkSignIn();
-                    //getRogersLoginPage().switchToSignInIFrame();
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
                     getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
@@ -44,7 +41,6 @@ public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest e
                 	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
                     reporter.reportLogWithScreenshot("Skip popup");
                     getRogersLoginPage().clkSkipIFrame();
-                    getRogersLoginPage().switchOutOfSignInIFrame();
                     getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc15_SolarisInternetAccountWithUsage.accountDetails.getBan());
                 	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
                     reporter.reportLogWithScreenshot("Launched the Account Page");

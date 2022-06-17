@@ -34,7 +34,7 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-		getRogersIgniteBundlesPage().expandInternetdiv();
+		//getRogersIgniteBundlesPage().expandInternetdiv();
 		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -92,15 +92,15 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment verified");
-		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
-//		getCreditCheckPage().clickDigitalFrontline();
-//		reporter.reportLogWithScreenshot("front line");
-//		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("card detail entered");
-//		getPaymentOptionsPage().clkContinue();
+/*		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkContinue();*/
+		getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("front line");
+		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("card detail entered");
+		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

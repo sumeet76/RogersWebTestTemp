@@ -285,7 +285,7 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public void enterDealerCodeDialogue() {
         if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue)) {
-            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 30).sendKeys("0MAAA");
+            getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 20).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 10);
         }
 
@@ -343,7 +343,7 @@ public class AccountOverViewPage extends BasePageClass {
     public void clickIgnite() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
-       if (getReusableActionsInstance().isElementVisible(OK, 60)) {
+       if (getReusableActionsInstance().isElementVisible(OK, 30)) {
             getReusableActionsInstance().executeJavaScriptClick(OK);
         }
     }
@@ -382,14 +382,14 @@ public class AccountOverViewPage extends BasePageClass {
      * @author chinnarao.vattam
      */
     public void selectInternetBadage() {
-        if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 30)) {
+        if (getReusableActionsInstance().isElementVisible(delearCodeOneViewDialogue, 20)) {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
-        if (getReusableActionsInstance().isElementVisible(skipNotification, 50)) {
+        if (getReusableActionsInstance().isElementVisible(skipNotification, 20)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
-        WebElement btn = getReusableActionsInstance().getWhenReady(btnInternetBadge, 120);
+        WebElement btn = getReusableActionsInstance().getWhenReady(btnInternetBadge, 40);
         getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
         getReusableActionsInstance().clickWhenReady(btnInternetBadge, 45);
     }
