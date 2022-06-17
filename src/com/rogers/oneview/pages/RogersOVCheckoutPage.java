@@ -2,6 +2,7 @@ package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -451,6 +452,12 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//rch-campaign-table/descendant::h3[contains(text(), 'Total savings applied before taxes') or contains(text(), 'Économies totales applicables avant taxes') ]")
 	WebElement totalSavingAppliedExists;
+
+	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']")
+	WebElement invalidOfferCodeModal;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement popUpClose;
 
 	@FindBy(xpath = "//th[@translate='global.label.campaignTable.savings']")
 	WebElement savingsExists;
@@ -1854,6 +1861,19 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		return (getReusableActionsInstance().isElementVisible(totalSavingAppliedExists, 15) && getReusableActionsInstance().isElementVisible(appliedCouponExists, 15));
 	}
 
+	/**
+	 * To verify applied offer code pop
+	 * * @return True or False
+	 * @author Jarmanjeet.batth
+	 */
+	public boolean isErrorToApplyOfferCodeVisible(){
+		return getReusableActionsInstance().isElementVisible(invalidOfferCodeModal,30);
+	}
+
+	public void closeInvalidOfferCodePopUp(){
+		getReusableActionsInstance().waitForElementVisibility(popUpClose, 5);
+		getReusableActionsInstance().executeJavaScriptClick(popUpClose);
+	}
 	/**
 	 * This method enters the value in email address field in shipping page
 	 * @author praveen.kumar7

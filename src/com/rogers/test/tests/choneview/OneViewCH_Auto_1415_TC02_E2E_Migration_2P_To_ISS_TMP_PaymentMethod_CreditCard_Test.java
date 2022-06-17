@@ -65,14 +65,15 @@ public class OneViewCH_Auto_1415_TC02_E2E_Migration_2P_To_ISS_TMP_PaymentMethod_
 
 //		In the case if credit evaluation required
 
-/*		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		reporter.reportLogWithScreenshot("evaluation form filled");
-		getCreditCheckPage().clkAuthorize();
-		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		reporter.reportLogWithScreenshot("Credit Check Information");
-		getCreditCheckPage().clkContinue();*/
+//		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+//		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+//		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+//		reporter.reportLogWithScreenshot("evaluation form filled");
+//		getCreditCheckPage().clkAuthorize();
+//		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+//		reporter.reportLogWithScreenshot("Credit Check Information");
+//		getCreditCheckPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 //		getCreditCheckPage().goToPageBottom();

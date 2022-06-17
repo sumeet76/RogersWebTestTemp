@@ -76,6 +76,14 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
+
+//        In the case of Credit evaluation not required
+
+//        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+//        reporter.reportLogWithScreenshot("Credit check page is displayed");
+//        getCreditCheckPage().goToPageBottom();
+
+//        In the case of credit evaluation is required
         reporter.reportLogWithScreenshot("Credit check page is displayed");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -83,6 +91,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getCreditCheckPage().clkAuthorize();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
+
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         getHomePhoneSelectionPage().verifySelectedNumber();
