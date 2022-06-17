@@ -569,7 +569,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkContinue() {
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
-		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(continueButton);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
@@ -709,8 +709,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		getReusableActionsInstance().staticWait(10000);
-		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
+		getReusableActionsInstance().staticWait(20000);
+		if(getReusableActionsInstance().isElementVisible(fourKContinue, 20))
 			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
 			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
 	}
@@ -762,9 +762,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(4000);
 //		getReusableActionsInstance().scrollToElement(internetCheckbox);
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 30);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 40);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 

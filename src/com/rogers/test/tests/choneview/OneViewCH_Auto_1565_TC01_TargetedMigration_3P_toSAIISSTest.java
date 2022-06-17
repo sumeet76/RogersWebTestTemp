@@ -92,10 +92,9 @@ public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 }

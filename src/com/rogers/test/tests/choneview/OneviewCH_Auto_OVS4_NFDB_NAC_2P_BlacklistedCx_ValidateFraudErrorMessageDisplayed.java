@@ -79,8 +79,8 @@ public class OneviewCH_Auto_OVS4_NFDB_NAC_2P_BlacklistedCx_ValidateFraudErrorMes
                 System.getenv("MaestroUsrID"), method);
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }

@@ -53,9 +53,11 @@ public class OneViewCH_Auto_1555_TC01_TargetedMigration_2P_InternetAndTV_to_2P_T
         getTVDashboardPage().clickAddChannel();
         reporter.reportLogWithScreenshot("Channel added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
         reporter.reportLogWithScreenshot("Click continue with 4K TV");
-        getRogersIgniteBundlesPage().fourKContinue();
+        getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
+        getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4KChannelPack();
+//        getRogersIgniteBundlesPage().fourKContinue();
+
         reporter.reportLogWithScreenshot("bottom to continue");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
@@ -103,5 +105,4 @@ public class OneViewCH_Auto_1555_TC01_TargetedMigration_2P_InternetAndTV_to_2P_T
     public void afterTest() {
         closeSession();
     }
-
 }

@@ -129,7 +129,10 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Please do not proceed with order') or contains(text(),'Les renseignements du client doivent être validés auprès de')]/ancestor::div[@class='nfdb']")
 	WebElement fraudErrorMessage;
 
-	@FindBy(xpath = "//div[@class='container position-relative py-16 ng-tns-c119-29']")
+	@FindAll({
+			@FindBy(xpath = "//div[@class='flex-grow-1 d-flex']"),
+			@FindBy(xpath ="//div[@class='container position-relative py-16 ng-tns-c119-29']")
+	})
 	WebElement recoEngineRecommendation;
 
 	@FindBy(xpath = "//span[text()='RECOMMENDED' or text()='RECOMMANDATION']")

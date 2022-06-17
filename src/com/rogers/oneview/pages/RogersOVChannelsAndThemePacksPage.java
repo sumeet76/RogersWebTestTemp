@@ -27,7 +27,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mini-cart-ss']//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
 	WebElement minicartContinue;
 
-	@FindBy(xpath = "//div[@class='rch-modal']//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement btnContinueOn4kChannelPack;
 
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
@@ -99,6 +99,11 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	 */
 	public void clkbtnContinueOn4ktv(){
 		getReusableActionsInstance().clickWhenReady(btnContinueOn4kTv);
+	}
+
+	public void clkbtnContinueOn4KChannelPack(){
+		getReusableActionsInstance().waitForElementVisibility(btnContinueOn4kChannelPack, 30);
+		getReusableActionsInstance().clickWhenReady(btnContinueOn4kChannelPack);
 	}
 
 	public void clickNoTheyDont() {

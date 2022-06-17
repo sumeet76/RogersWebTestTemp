@@ -30,7 +30,6 @@ public class OneViewCH_Auto_TC13_Account_Registration_From_Profile_Tab extends B
         getDashboardProfilePage().clickCloseButton();
         reporter.reportLogWithScreenshot("Close button clicked");
 
-
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -39,7 +38,6 @@ public class OneViewCH_Auto_TC13_Account_Registration_From_Profile_Tab extends B
 //xmlTestParameters=newHashMap<String,String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
     }
-
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
