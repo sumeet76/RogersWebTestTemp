@@ -15,6 +15,7 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
     public void oneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer.accountDetails.getBan(), TestDataHandler.SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
+        reporter.reportLogWithScreenshot(" Select TV Option");
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched Tv Dashboard Page");
         getTVDashboardPage().clickManageChannelsAndThemepacks();
@@ -25,27 +26,30 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
       //  reporter.reportLogWithScreenshot("Search Channel is clicked");
         getTVDashboardPage().clickFirstChannelToRemove();
         reporter.reportLogWithScreenshot("first channel to be removed is clicked");
-      //  getTVDashboardPage().clickSelectChannelRemove();
+        getTVDashboardPage().clickSelectChannelRemove();
         reporter.reportLogWithScreenshot("first channel is removed");
         getTVDashboardPage().clickSecondChannelToRemove();
         reporter.reportLogWithScreenshot("Second channel to be removed is clicked");
-       // getTVDashboardPage().clickSelectChannelRemove();
+        getTVDashboardPage().clickSelectChannelRemove();
         reporter.reportLogWithScreenshot("second channel is removed");
        // getTVDashboardPage().clickSearchChannelToAdd();
       // reporter.reportLogWithScreenshot("Search channel to add bar is clicked");
         getTVDashboardPage().clickFirstChannelToAdd();
         reporter.reportLogWithScreenshot("First channel to be added is clicked ");
-        //getTVDashboardPage().clickSelectChannelAdd();
+        getTVDashboardPage().clickSelectChannelAdd();
         reporter.reportLogWithScreenshot("First channel is added");
         getTVDashboardPage().clickSecondChannelToAdd();
         reporter.reportLogWithScreenshot("Second channel to be added is clicked");
-       // getTVDashboardPage().clickSelectChannelAdd();
+        getTVDashboardPage().clickSelectChannelAdd();
         reporter.reportLogWithScreenshot("Second channel is added");
         getTVDashboardPage().ScrolltoConfirmExchangeBtn();
+        reporter.reportLogWithScreenshot("Click on confirm Exchange button");
         getTVDashboardPage().clickConfirmExchange("chrome");
- //       getTVDashboardPage().clickOK();
+        reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
+        getTVDashboardPage().clickOK();
 //        getTVDashboardPage().clickContinueChannelsAndThemePacks();
-  //      getTVDashboardPage().clickSuccessOk();
+        getTVDashboardPage().clickSuccessOk();
+        reporter.reportLogWithScreenshot("Exchange chanel completed");
 
     }
     @BeforeMethod(alwaysRun=true)
@@ -57,5 +61,4 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
     public void afterTest(){
         closeSession();
     }
-
 }

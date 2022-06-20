@@ -47,12 +47,10 @@ public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest ext
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
-
 }
 
 
