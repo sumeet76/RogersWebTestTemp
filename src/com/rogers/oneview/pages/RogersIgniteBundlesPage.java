@@ -49,7 +49,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-		@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
@@ -583,6 +583,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
+		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().scrollToElement(continueButton);
@@ -1040,6 +1041,7 @@ public void activateHomePhoneltrPopUp() {
 	*
 	*/
 	public void clickReviewAddons() {
+		getReusableActionsInstance().staticWait(10000);
 		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
 		getReusableActionsInstance().clickWhenReady(reviewAddons);
 	}
@@ -1148,19 +1150,20 @@ public void activateHomePhoneltrPopUp() {
 	}
 	public void clkContinueInternetAddon()
 	{
-		getReusableActionsInstance().staticWait(10000);
-		getReusableActionsInstance().staticWait(9000);
+
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
+		getReusableActionsInstance().staticWait(9000);
 	}
 
 	/* click Apply coupon
 	 * @author aditi.jain
 	 */
 	public void clickAddOnAddToCart() {
+		getReusableActionsInstance().waitForElementVisibility(addOnAddToCart, 10);
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(addOnAddToCart,30);
+		getReusableActionsInstance().executeJavaScriptClick(addOnAddToCart);
 		getReusableActionsInstance().staticWait(5000);
 	}
 	/**
@@ -1187,7 +1190,7 @@ public void activateHomePhoneltrPopUp() {
 	public void addPods(int amount)
 	{
 		By podsLocator = By.xpath("//div[text()=' "+amount+" ']/ancestor::div[@class='internet-tile__pricing']/following-sibling::div//span[@translate='global.cta.addToCart']");
-		getReusableActionsInstance().getWhenReady(podsLocator, 20);
+		getReusableActionsInstance().getWhenReady(podsLocator, 30);
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 		getReusableActionsInstance().staticWait(6000);
@@ -1284,6 +1287,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void addSHMAddOn(){
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);

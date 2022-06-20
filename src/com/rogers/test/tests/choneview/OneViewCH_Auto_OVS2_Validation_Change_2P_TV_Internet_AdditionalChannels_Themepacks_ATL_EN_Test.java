@@ -37,15 +37,13 @@ public class OneViewCH_Auto_OVS2_Validation_Change_2P_TV_Internet_AdditionalChan
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().contiue4KContent();
 
-
-
         reporter.reportLogWithScreenshot("Pop for selecting billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
         reporter.reportLogWithScreenshot("Order Review Page");
-       /* getRogersOVCheckoutPage().clkSubmit();
+        getRogersOVCheckoutPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");*/
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
     @BeforeMethod(alwaysRun=true)
@@ -55,6 +53,6 @@ public class OneViewCH_Auto_OVS2_Validation_Change_2P_TV_Internet_AdditionalChan
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        getDriver().quit();
+        //getDriver().quit();
     }
 }

@@ -85,7 +85,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        getHomePhoneSelectionPage().verifySelectedNumber();
+        //getHomePhoneSelectionPage().verifySelectedNumber();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 
         getCreditCheckPage().verifyInstallationOption();
@@ -114,7 +114,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     }
