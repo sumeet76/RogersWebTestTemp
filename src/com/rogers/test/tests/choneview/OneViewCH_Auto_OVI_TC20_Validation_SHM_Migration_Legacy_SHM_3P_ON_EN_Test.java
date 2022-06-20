@@ -61,8 +61,8 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
-        reporter.reportLogWithScreenshot("click Homephone Add On Add To Cart");
         getRogersIgniteBundlesPage().clickAddOnAddToCart();
+        reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
         getCustomerProfilePage().clkContinue();
 
         getRogersIgniteBundlesPage().addSHMAddOn();
@@ -76,7 +76,7 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
-        /*reporter.reportLogWithScreenshot("evaluation form");
+        reporter.reportLogWithScreenshot("evaluation form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
@@ -85,6 +85,12 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+        reporter.reportLogWithScreenshot("Phone Number Generate");
+        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.reportLogWithScreenshot("Phone Number Selected");
+        getCreditCheckPage().goToPageBottom();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("Phone number generated");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
@@ -94,6 +100,7 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
         getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
         getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
@@ -104,9 +111,9 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
-        getRogersOrderReviewPage().clkSubmit();
+        getRogersOVCheckoutPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");*/
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
 
@@ -117,7 +124,7 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        getDriver().quit();
+        //getDriver().quit();
     }
 
 }

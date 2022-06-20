@@ -44,6 +44,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
 
         getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Reviewed terms anc conditions");
         getRogersIgniteBundlesPage().clkReviewContinue();
 
         getRogersIgniteBundlesPage().addPods(5);
@@ -69,7 +70,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Evaluation Displayed", "Credit Evaluation did not Displayed");
-/*        reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
+        reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), TestDataHandler.anonymousData.contactDetails.getPassportNo());
@@ -81,6 +82,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getPaymentOptionsPage().clkContinue();
@@ -95,8 +97,8 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("Order Review Page");
         getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");*/
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
     @BeforeMethod(alwaysRun=true)
@@ -106,7 +108,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        getDriver().quit();
+        //getDriver().quit();
     }
 }
 
