@@ -22,7 +22,7 @@ public class OVR_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON_EN_Test() throws InterruptedException {
+    public void ovr_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON_EN_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.

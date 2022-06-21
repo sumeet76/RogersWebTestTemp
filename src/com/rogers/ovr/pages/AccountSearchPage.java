@@ -41,7 +41,7 @@ public class AccountSearchPage extends BasePageClass {
     }
 
     public void searchForAccountAndSelectEnv(String banNumber,String postalCode,String env) {
-        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 10)){
+        if(getReusableActionsInstance().isElementVisible(acceptNoticeBtn, 30)){
             getReusableActionsInstance().clickWhenReady(acceptNoticeBtn);
         }
         searchForAccount(banNumber,postalCode);

@@ -86,7 +86,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */	
 	public void clkGeneratePhoneNo() {
 		getReusableActionsInstance().waitForElementVisibility(homePhonePersonalizationHeader, 120);
-		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(5000);
 		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 
@@ -142,8 +142,9 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	}
 
 	public void clickOnContinueCallDisplay(){
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnCallDisplayName);
-		getReusableActionsInstance().clickWhenReady(continueOnCallDisplayName,10);
+		getReusableActionsInstance().executeJavaScriptClick(continueOnCallDisplayName);
 	}
 	public void clickContinueDirectoryListing(){
 		getReusableActionsInstance().staticWait(5000);

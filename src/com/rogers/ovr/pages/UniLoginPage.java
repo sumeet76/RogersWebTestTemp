@@ -40,7 +40,7 @@ public class UniLoginPage extends BasePageClass {
      * @author Vikas.gorla
      */
     public void searchWithDealerCode(String dealerCode) {
-        if(getReusableActionsInstance().isElementVisible(btnaccept,60))
+        if(getReusableActionsInstance().isElementVisible(btnaccept,15))
         {getReusableActionsInstance().clickWhenVisible(btnaccept);}
         getReusableActionsInstance().getWhenVisible(eledealercode).click();
         getReusableActionsInstance().getWhenVisible(txtdealercode, 30).sendKeys(dealerCode);
@@ -57,6 +57,7 @@ public class UniLoginPage extends BasePageClass {
 
     public void selectSSPEnvAndSwitchWindow(String env){
         sspbtn_xpath = sspbtn_xpath.replace("SSP_ENV", env);
+        getReusableActionsInstance().waitForPageLoad();
         getReusableActionsInstance().getWhenVisible(By.xpath(sspbtn_xpath)).click();
         getReusableActionsInstance().switchToNewWindow();
 
@@ -65,12 +66,13 @@ public class UniLoginPage extends BasePageClass {
 
     public void selectCorpSSPEnvAndSwitchWindow(String env){
         sspbtn_xpath = sspbtn_xpath.replace("SSP_ENV", env);
+        getReusableActionsInstance().waitForPageLoad();
         getReusableActionsInstance().getWhenVisible(By.xpath(sspbtn_xpath)).click();
         getReusableActionsInstance().switchToNewWindow();
 
         if(getReusableActionsInstance().isElementVisible(corpLoginNextBtn)){
             getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
-            getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+            //getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
             if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
                 getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
             }
