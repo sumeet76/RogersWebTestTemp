@@ -21,7 +21,7 @@ public class OVR_Auto_TC02_Migration_2P_to_2P_E2E_Corp_ON_EN_Test extends BaseTe
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC02_Migration_2P_to_2P_Port_IN_Internet_E2E_Corp_ON_EN_Test() {
+    public void ovr_Auto_TC02_Migration_2P_to_2P_E2E_Corp_ON_EN_Test() {
         //getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");

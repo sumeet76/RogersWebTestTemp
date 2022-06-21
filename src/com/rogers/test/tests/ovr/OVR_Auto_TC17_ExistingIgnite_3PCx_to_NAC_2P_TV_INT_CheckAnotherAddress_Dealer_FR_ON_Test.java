@@ -41,7 +41,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("01339-642 Abana Rd, MISSISSAUGA ON L5A 1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 Abana Rd, MISSISSAUGA ON L5A 1H4", "chrome");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
 

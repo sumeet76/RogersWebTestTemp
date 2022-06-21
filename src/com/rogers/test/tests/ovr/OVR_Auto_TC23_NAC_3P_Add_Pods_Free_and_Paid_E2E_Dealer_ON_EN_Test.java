@@ -35,9 +35,9 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
         //getCheckAvailabilityPage().checkAvailability("7 Australia Drive, L6R3E4", "chrome");
-        //getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
         //getCheckAvailabilityPage().checkAvailability("1191 Addison Dr, LONDON ON N5V 2N8", "chrome");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
 
@@ -79,7 +79,7 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
-        //getRogersIgniteBundlesPage().addAdditionalPods(5);
+        getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
         //getRogersIgniteBundlesPage().addPods(0);
         //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
@@ -138,15 +138,15 @@ public class OVR_Auto_TC23_NAC_3P_Add_Pods_Free_and_Paid_E2E_Dealer_ON_EN_Test e
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Options loaded","Installation options not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
-//        getBundleBuilderPage().selectExpressProInstall();
-//        reporter.reportLogWithScreenshot("Install Options");
-//        getBundleBuilderPage().clkTechInstallSlot();
-//        reporter.reportLogWithScreenshot("Time Slot selected");
-//        getBundleBuilderPage().setMobileNumber();
+        getBundleBuilderPage().selectExpressProInstall();
+        reporter.reportLogWithScreenshot("Install Options");
+        getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Time Slot selected");
+        getBundleBuilderPage().setMobileNumber();
 
         //Courier Delivery Install Method
-        getBundleBuilderPage().selectDeliveryByCourier();
-        reporter.reportLogWithScreenshot("Selected Delivery by Courier");
+//        getBundleBuilderPage().selectDeliveryByCourier();
+//        reporter.reportLogWithScreenshot("Selected Delivery by Courier");
 
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();

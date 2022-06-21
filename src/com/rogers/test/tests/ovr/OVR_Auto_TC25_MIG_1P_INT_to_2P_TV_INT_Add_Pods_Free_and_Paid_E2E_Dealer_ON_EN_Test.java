@@ -73,7 +73,7 @@ public class OVR_Auto_TC25_MIG_1P_INT_to_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_De
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
-        //getRogersIgniteBundlesPage().addAdditionalPods(5);
+        getRogersIgniteBundlesPage().addAdditionalPods(5);
         /*To Add the free pods in the internet addons page*/
         //getRogersIgniteBundlesPage().addPods(0);
         //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
@@ -104,11 +104,11 @@ public class OVR_Auto_TC25_MIG_1P_INT_to_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_De
         reporter.reportLogWithScreenshot("Continue to install options  page");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation Page");
-        //getBundleBuilderPage().selectExpressProInstall();
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");
-        //getBundleBuilderPage().clkTechInstallSlot();
+        getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Select a time slot");
-        //getBundleBuilderPage().setMobileNumber();
+        getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
