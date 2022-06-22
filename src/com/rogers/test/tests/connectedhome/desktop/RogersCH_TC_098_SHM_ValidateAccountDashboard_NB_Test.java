@@ -28,9 +28,6 @@ public class RogersCH_TC_098_SHM_ValidateAccountDashboard_NB_Test extends BaseTe
 
 	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
         public void checkSHMaccountDashboard() {
-            reporter.reportLogWithScreenshot("Launched the Home Page");
-            getRogersHomePage().clkSignIn();
-            //getRogersLoginPage().switchToSignInIFrame();
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc98_RogersSHM_NB.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc98_RogersSHM_NB.getPassword());
@@ -38,8 +35,7 @@ public class RogersCH_TC_098_SHM_ValidateAccountDashboard_NB_Test extends BaseTe
             getRogersLoginPage().clkSignInIFrame();
             reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");
             reporter.reportLogWithScreenshot("Skip popup");
-            getRogersLoginPage().clkSkipIFrame(); 
-            getRogersLoginPage().switchOutOfSignInIFrame();
+            getRogersLoginPage().clkSkipIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
             getRogersSolarisTVDashboardPage().clkSHMBadge();
             reporter.reportLogWithScreenshot("SHM dashboard page");

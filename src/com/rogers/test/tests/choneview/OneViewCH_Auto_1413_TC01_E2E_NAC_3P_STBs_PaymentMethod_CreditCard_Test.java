@@ -69,8 +69,10 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			reporter.reportLogWithScreenshot("phone number generated.");
 			//getHomePhoneSelectionPage().clkContinue();
 			reporter.reportLogWithScreenshot("Installation options");
+			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+			reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 			getCreditCheckPage().verifyInstallationOption();
-			reporter.reportLogWithScreenshot("installation options");
 			getCreditCheckPage().goToPageBottom();
 			getCreditCheckPage().clkCourierDelivery();
 			getCreditCheckPage().clickInPersonDelivery();

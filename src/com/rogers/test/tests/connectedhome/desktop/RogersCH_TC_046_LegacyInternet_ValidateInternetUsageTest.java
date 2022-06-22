@@ -28,9 +28,7 @@ public class RogersCH_TC_046_LegacyInternet_ValidateInternetUsageTest extends Ba
 	
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkLegacyInternetUsage() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-	 	 //getRogersLoginPage().switchToSignInIFrame();
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
@@ -39,7 +37,7 @@ public class RogersCH_TC_046_LegacyInternet_ValidateInternetUsageTest extends Ba
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
+
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_legacyInternetAccount.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");

@@ -35,9 +35,6 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
 
 	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
     public void checkIgniteSmartStreamDasboard() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_igniteSmartStream.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_igniteSmartStream.getPassword());
@@ -46,7 +43,6 @@ public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extend
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
  	    reporter.reportLogWithScreenshot("Skip popup");
  	    getRogersLoginPage().clkSkipIFrame();
- 	    getRogersLoginPage().switchOutOfSignInIFrame();
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkSmartStream();

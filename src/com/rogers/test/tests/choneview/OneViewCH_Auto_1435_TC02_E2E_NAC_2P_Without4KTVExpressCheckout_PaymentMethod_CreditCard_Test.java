@@ -62,6 +62,9 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 		 reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		 reporter.reportLogWithScreenshot("Credit Check Information");
 		 getCreditCheckPage().clkContinue();
+		 reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		 reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		 reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		 reporter.reportLogWithScreenshot("Installation options");
 		 getCreditCheckPage().verifyInstallationOption();
 		 getCreditCheckPage().goToPageBottom();
@@ -95,7 +98,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 
 		@AfterMethod(alwaysRun = true)
 		public void afterTest() {
-			closeSession();
+			//closeSession();
 		}
 
 	}
