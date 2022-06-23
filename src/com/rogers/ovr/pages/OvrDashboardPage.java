@@ -19,7 +19,7 @@ public class OvrDashboardPage extends BasePageClass {
     WebElement changeLangToFR;
 
     public void clickIgniteLink() {
-        getReusableActionsInstance().waitForElementVisibility(lnkIgnite,30);
+        getReusableActionsInstance().waitForElementVisibility(lnkIgnite,60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(lnkIgnite);
         getReusableActionsInstance().getWhenVisible(lnkIgnite).click();
     }
