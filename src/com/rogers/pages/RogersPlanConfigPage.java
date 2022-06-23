@@ -278,7 +278,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@class,'ds-tablet')]//p[contains(text(),'Device Protection') or contains(text(),'Protection de l’appareil')]")
     WebElement deviceProtectionAddonTab;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'Protect supér appareil ')]")
     WebElement deviceProtectionAddon;
 
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
@@ -1225,7 +1225,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkSecondLineCheckBox(String ctn2) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') and contains(@id,'ds-checkbox')]/.."));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') or contains(@id,'ds-checkbox')]/.."));
         getReusableActionsInstance().clickWhenReady(btnAddInModal, 10);
     }
 
@@ -1408,7 +1408,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void selectDeviceProtectionAddon() {
         getReusableActionsInstance().executeJavaScriptClick(deviceProtectionAddonTab);
-        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon, 10);
+        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon);
     }
 
     /**

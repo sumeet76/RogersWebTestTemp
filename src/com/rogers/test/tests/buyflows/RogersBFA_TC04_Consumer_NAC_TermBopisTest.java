@@ -24,7 +24,7 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
-	public void rogersNACTermBopisTest() throws InterruptedException {
+	public void tc04rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 		//getRogersDeviceCataloguePage().setProvince("Ontario");
@@ -38,7 +38,6 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		reporter.reportLogWithScreenshot("Modal window Popup");
 		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(), "Clicked Get Started Button",
 				"Get Started button not able to click");
-
 		// ***************************Device config page************************************
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config page***************************************
@@ -112,8 +111,8 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
-				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+		//reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
+				//"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		getRogersCheckoutPage().clkNoThanks();
 		// ***************Billing & Payment Stepper*************//

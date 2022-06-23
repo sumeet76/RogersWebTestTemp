@@ -51,7 +51,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(),
 				"Get started button on the modal is present", "Get started button on the modal is not present");
 		reporter.reportLogWithScreenshot("Modal window Popup");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(), "Clicked Get Started Button",
+		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalSOHO(), "Clicked Get Started Button",
 				"Get Started button not able to click");
 
 		// ***************************Device config page************************************

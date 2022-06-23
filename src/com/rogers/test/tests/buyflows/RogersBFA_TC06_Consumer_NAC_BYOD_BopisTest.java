@@ -24,8 +24,9 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void rogersNACBYODBopisTest() throws InterruptedException {
+	public void tc06rogersNACBYODBopisTest() throws InterruptedException {
 //############################Plan config page###############################
+		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		getRogersPlanConfigPage().clickShowMoreDetails();
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());

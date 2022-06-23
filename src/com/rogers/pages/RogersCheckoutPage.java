@@ -246,6 +246,21 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test='port-in-success' or @data-test='Bonne nouvelle']")
 	WebElement successPortInMessage;
 
+	@FindBy(xpath = "//ds-modal-container[contains(@id,'ds-modal-container-3')]//p[contains(.,'Promo code cannot be used')]")
+	WebElement pomErrorModal;
+
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__wrapper')]//li[contains(.,'Age')]")
+	WebElement pomAgeDisQualifier;
+
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__wrapper')]//li[contains(.,'location or area')]")
+	WebElement pomLocationDisQualifier;
+
+	@FindBy(xpath = "//span[contains(text(),'Promo code:') or contains(text(),'Code promotionnel :')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+	WebElement promoCartLineItem;
+
+	@FindBy(xpath = "//span[contains(@class,'ds-button__copy') and contains(.,' Continue without promo code')]")
+	WebElement continueWithoutPromoBtn;
+
 	//***Billing & Payment Options stepper
 
 	@FindBy(xpath = "//h2[contains(@data-test,'payment-method-title')]")
@@ -1037,6 +1052,67 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public void clkContinueChooseNumber(){
 		getReusableActionsInstance().clickWhenReady(btnChooseNumberContinue);
+	}
+
+	/**
+	 * This method verifies the POM Error Modal due to Disqualification
+	 * @return True if POM Error Modal is displayed else False if not displayed.
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyPomErrorModal() {
+		return getReusableActionsInstance().isElementVisible(pomErrorModal);
+	}
+	/**
+	 * This method verifies Age Disqualification Message in POM Error Modal
+	 * @return True if Age Disqualified message is displayed else False if not displayed.
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyAgeDisQualifierMsg() {
+		getReusableActionsInstance().waitForElementVisibility(pomAgeDisQualifier);
+		String ageQualifierMsg = getReusableActionsInstance().getWhenReady(pomAgeDisQualifier).getText();
+		if (ageQualifierMsg.contains("Age")) {
+			return true;
+		} else return false;
+	}
+	/**
+	 * This method verifies Location Disqualification Message in POM Error Modal
+	 * @return True if Location/Area/Province Disqualified message is displayed else False if not displayed.
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyLocationDisQualifierMsg() {
+		getReusableActionsInstance().waitForElementVisibility(pomLocationDisQualifier);
+		String locationQualifierMsg = getReusableActionsInstance().getWhenReady(pomLocationDisQualifier).getText();
+		if (locationQualifierMsg.contains("location")) {
+			return true;
+		} else return false;
+	}
+
+	/**
+	 * Validates the Line Item of the Promotion in cart summary
+	 * @return true if the Promo code and discount amount line item displayed; else false
+	 * @author Subash.Nedunchezhian
+	 */
+	public boolean verifyCartLineItem() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(promoCartLineItem);
+		return getReusableActionsInstance().isElementVisible(promoCartLineItem);
+	}
+	/**
+	 * Validates the Line Item of the Promotion is removed from the cart summary
+	 * @return true if the Promo code and discount amount line item is not displayed; else false if displayed
+	 * @author Subash.Nedunchezhian
+	 */
+	public boolean verifyPromoRemovedFrmCart(){
+			if(getReusableActionsInstance().isElementVisible(promoCartLineItem)){
+				return false;
+			}else return true;
+	}
+
+	/**
+	 * This method clicks on Continue Without Promo code button in POM Disqualification Modal
+	 * @author subash.nedunchezhian
+	 */
+	public void clkContinueWithoutPromo(){
+		getReusableActionsInstance().clickWhenVisible(continueWithoutPromoBtn);
 	}
 
 	/**

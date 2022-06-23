@@ -78,7 +78,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     })
     WebElement modalContainerDeviceUpgradebutton;
 
-    @FindBy(xpath = "//button[@id='trident-cta-nac']")
+    @FindBy(xpath = "//button[@id='trident-cta-nac']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerGetStartedbutton;
 
     @FindAll({
@@ -644,11 +644,48 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * Question about getting methods of one page to other
      * @author saurav.goyal
      */
-    public Boolean clickGetStartedButtonOnModal() {
+    public boolean clickGetStartedButtonOnModal() {
+        //getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
+        //return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+        do {
+            getReusableActionsInstance().clickWhenVisible(modalContainerGetStartedbutton);
+            getReusableActionsInstance().staticWait(3000);
+            if (getDriver().getCurrentUrl().toUpperCase().contains("STORAGE")) {
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+            }
+            do {
+                getDriver().get(System.getProperty("AWSUrl")+"/?type=soho");
+                getReusableActionsInstance().staticWait(2000);
+                clickDeviceTileCTAButton("iPhone 13 Pro");
+                getReusableActionsInstance().staticWait(2000);
+            } while (!verifyGetStartedButtonOnModal());
+
+        } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
+        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+    }
+    public boolean clickGetStartedButtonOnModalSOHO() {
+        //getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
+        //return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+        do {
+            getReusableActionsInstance().clickWhenVisible(modalContainerGetStartedbutton);
+            getReusableActionsInstance().staticWait(3000);
+            if (getDriver().getCurrentUrl().toUpperCase().contains("STORAGE")) {
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+            }
+            do {
+                getDriver().get(System.getProperty("AWSUrl")+"/?type=soho");
+                getReusableActionsInstance().staticWait(2000);
+                clickDeviceTileCTAButton("iPhone 13 Pro");
+                getReusableActionsInstance().staticWait(2000);
+            } while (!verifyGetStartedButtonOnModal());
+
+        } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
+        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+    }
+    public boolean clickGetStartedButtonOnModalRPP(){
         getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
         return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
-
     /**
      * This method will click on Reset all filters
      * @author saurav.goyal
