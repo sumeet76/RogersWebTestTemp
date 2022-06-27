@@ -43,6 +43,7 @@ public class RogersCH_TC_115_IginteTV_TVPackageUpgrade_ValidatePTM_ModalContent_
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersSolarisTVDashboardPage().clkFR();
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
