@@ -18,7 +18,7 @@ def sauce = [
 ]
 
 
-task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
+task "sauceTest"(type: Test) {
 	if(!test_browser){
 		test_browser='saucechrome'
 	}
@@ -50,6 +50,8 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
+	systemProperty 'TunnelName', "DigitalQETunnel"
+	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
