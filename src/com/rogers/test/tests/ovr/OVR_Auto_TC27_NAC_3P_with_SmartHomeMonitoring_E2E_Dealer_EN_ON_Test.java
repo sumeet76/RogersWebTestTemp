@@ -19,7 +19,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_E2E_Dealer_EN_ON_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -129,10 +129,10 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_E2E_Dealer_EN_ON_Test
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        reporter.reportLogWithScreenshot("continue from call display");
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        reporter.reportLogWithScreenshot("continue from directory listing");
+//        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+//        reporter.reportLogWithScreenshot("continue from call display");
+//        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+//        reporter.reportLogWithScreenshot("continue from directory listing");
         getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 

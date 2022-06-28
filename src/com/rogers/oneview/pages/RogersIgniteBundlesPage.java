@@ -1286,13 +1286,18 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void addSHMAddOn(){
-		getReusableActionsInstance().staticWait(8000);
+		//getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
-		getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
-		getReusableActionsInstance().clickWhenReady(shmAddonContinue);
-		getReusableActionsInstance().staticWait(6000);
+		//getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons, 20);
+
+		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
+			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
+			getReusableActionsInstance().waitForElementTobeClickable(shmAddonContinue,10);
+			getReusableActionsInstance().executeJavaScriptClick(shmAddonContinue);
+		}
+
+//		getReusableActionsInstance().staticWait(6000);
 	}
 	/**
 	 * Expands the Monthly charges on cart Summary page and validates SHM add ons charges are present
