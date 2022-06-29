@@ -833,5 +833,14 @@ public class InternetDashboardPage  extends BasePageClass {
 		return  getReusableActionsInstance().isElementVisible(internetSpeeds, 30);
 	}
 
+	public void clickSelectButtonAsPerPackageName(String internetPkg)
+	{
+		/*To click on Select button*/
+		By selectLocator = By.xpath("//span[contains(text(),'"+internetPkg+"')]/ancestor::div[contains(@class,'-w84 internet-tile__table')]/following-sibling::div//span[@translate='global.cta.select']");
+		getReusableActionsInstance().getWhenReady(selectLocator, 20);
+		WebElement button = getDriver().findElement(selectLocator);
+		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
 }
 
