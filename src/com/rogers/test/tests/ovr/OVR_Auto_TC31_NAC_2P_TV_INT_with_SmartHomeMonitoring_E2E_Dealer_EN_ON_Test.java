@@ -36,6 +36,7 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
+        reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");

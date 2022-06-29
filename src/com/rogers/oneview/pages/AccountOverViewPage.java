@@ -206,7 +206,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath="//ds-radio-button[@ng-reflect-value='tv']//div")
     WebElement tvCheckbox;
 
-    @FindBy(xpath="//span[@translate='global.cta.continue']")
+    @FindBy(xpath="//span[text()='Continue']")
     WebElement continueButton;
 
     @FindBy(xpath="//ds-modal[@identifier='planChangeDateModal']/descendant::span[@translate='global.cta.continue']")
@@ -441,6 +441,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
+        getReusableActionsInstance().staticWait(5000);
         getReusableActionsInstance().getWhenReady(btnGetIgniteBadge, 50).click();
     }
 

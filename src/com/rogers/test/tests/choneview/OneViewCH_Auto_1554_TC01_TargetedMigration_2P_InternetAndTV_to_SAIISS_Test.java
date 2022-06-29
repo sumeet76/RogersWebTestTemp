@@ -51,9 +51,9 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         /*getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        getCreditCheckPage().clkAuthorize();
+        getCreditCheckPage().clkAuthorize();*/
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-        reporter.reportLogWithScreenshot("Credit Check Information");*/
+        reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
@@ -66,10 +66,10 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 
         getCreditCheckPage().verifyBillingAndPaymentOption();
-      /*  getCreditCheckPage().clickDigitalFrontline();
+        getCreditCheckPage().clickDigitalFrontline();
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());*/
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
     	getRogersOVCheckoutPage().clkSubmit();
     	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -86,7 +86,7 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

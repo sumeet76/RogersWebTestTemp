@@ -28,6 +28,9 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//span[@translate='global.cta.checkAvailability']//ancestor::button")
     WebElement checkAvailabilityBtn;
 
+    @FindBy(xpath = "//p[text()='Check availability' or text()='Vérifier la disponibilité']")
+    WebElement checkAvailabilityHeader;
+
     //@FindBy(xpath = "//*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
     @FindBy(xpath = "//input[contains(@id,'algoliaInput') or contains(@id,'canada-post-address-complete')]//parent::div")
     WebElement inputContainer;
@@ -36,7 +39,8 @@ public class CheckAvailabilityPage extends BasePageClass {
     WebElement addressInput;
 
     //@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-    @FindBy(xpath = "//div[contains(@class,'ds-formField__autoComplete')]")
+    //@FindBy(xpath = "//div[contains(@class,'ds-formField__autoComplete')]")
+    @FindBy(xpath = "(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
     WebElement searchResult;
 
     @FindBy(xpath = "//p[contains(text(),'Multiple addresses found') or contains(text(),'Plusieurs adresses trouvées')]//parent::div//following::div//descendant::li[2]")
@@ -91,6 +95,11 @@ public class CheckAvailabilityPage extends BasePageClass {
         getReusableActionsInstance().getWhenReady(otherAddressRadioButton, 60);
         getReusableActionsInstance().clickWhenReady(otherAddressRadioButton);
         checkAvailability(address, browser);
+    }
+
+    public boolean verifyCheckAvailabilityPopup(){
+        return getReusableActionsInstance().isElementVisible(checkAvailabilityHeader, 60) &&
+                getReusableActionsInstance().isElementVisible(checkAvailabilityBtn, 60);
     }
 
 }

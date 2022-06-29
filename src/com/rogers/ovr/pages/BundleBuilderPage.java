@@ -102,6 +102,12 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']/parent::div/following-sibling::div/descendant::span[2]")
     WebElement storedPaymentCardLabel;
 
+    @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Courier Delivery')]")
+    WebElement courierDeliveryInstall;
+
+    @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
+    WebElement courierDeliveryCheckbox;
+
 
 
     public void openFooter() throws InterruptedException {
@@ -163,6 +169,16 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().waitForElementVisibility(deliveryByAppointmentInstall, 60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(deliveryByAppointmentInstall);
         getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointmentInstall);
+    }
+
+    public void selectDeliveryByCourier(){
+        getReusableActionsInstance().waitForElementVisibility(courierDeliveryInstall, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(courierDeliveryInstall);
+        getReusableActionsInstance().executeJavaScriptClick(courierDeliveryInstall);
+        //Scroll to checkbox and click it
+        getReusableActionsInstance().waitForElementVisibility(courierDeliveryCheckbox, 15);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(courierDeliveryCheckbox);
+        getReusableActionsInstance().executeJavaScriptClick(courierDeliveryCheckbox);
     }
     /**
      * Set dynamic mobile number on the Order Summary Page
