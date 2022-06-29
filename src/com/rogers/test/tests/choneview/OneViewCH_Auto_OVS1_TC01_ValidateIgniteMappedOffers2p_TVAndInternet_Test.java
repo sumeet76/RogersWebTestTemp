@@ -12,9 +12,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test extends BaseTestClass {
+public class OneViewCH_Auto_OVS1_TC01_ValidateIgniteMappedOffers2p_TVAndInternet_Test extends BaseTestClass {
     @Test()
-    public void oneViewCH_Auto_17997_TC01_ValidateIgniteMappedOffers2p_TV_Test(){
+    public void OneViewCH_Auto_OVS1_TC01_ValidateIgniteMappedOffers2p_TVAndInternet_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getBan(),TestDataHandler.Ignite_Mapped_Offers_2p.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
         getAccountOverViewPage().selectTVBadage();

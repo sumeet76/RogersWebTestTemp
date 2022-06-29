@@ -196,6 +196,15 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
 	WebElement internetSpeeds;
 
+	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	WebElement viewOffer;
+
+	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
+	WebElement exclusiveOfferAvailable;
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
@@ -840,6 +849,26 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(selectLocator, 20);
 		WebElement button = getDriver().findElement(selectLocator);
 		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
+	public void clickViewOffers() {
+		getReusableActionsInstance().staticWait(20);
+		//getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
+	}
+
+	public boolean verifyRecommendedOffer() {
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+	}
+
+	public void selectRecommendedOffer() {
+		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(recommendedOffer);
+	}
+
+	public void selectExclusiveOfferAvailable() {
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferAvailable, 30);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferAvailable);
 	}
 
 }

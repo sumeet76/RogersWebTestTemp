@@ -352,6 +352,7 @@ public class TestDataHandler {
 	public static AccountData OVS2_Change_TV_Internet_2P;
 	public static AccountData Serve_FWACx_UpgradeInternetPlan;
 	public static AccountData Serve_FWACx_DowngradeInternetPlan;
+	public static AccountData IgniteMappedOffersSAItoSAI;
 
 	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
 	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
@@ -761,6 +762,7 @@ public class TestDataHandler {
 		OVS2_Change_TV_Internet_2P=YamlHandler.getOVAccountData("OVS2_Change_TV_Internet_2P");
 		Serve_FWACx_UpgradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_UpgradeInternetPlan");
 		Serve_FWACx_DowngradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_DowngradeInternetPlan");
+		IgniteMappedOffersSAItoSAI = YamlHandler.getOVAccountData("IgniteMappedOffersSAItoSAI");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
