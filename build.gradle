@@ -51,7 +51,6 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
 
-
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
 		useDefaultListeners = true
