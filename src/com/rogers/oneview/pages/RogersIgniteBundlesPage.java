@@ -583,10 +583,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().staticWait(2000);
-		getReusableActionsInstance().waitForElementVisibility(continueButton);
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().scrollToElement(continueButton);
+		getReusableActionsInstance().waitForElementVisibility(continueButton,80);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
@@ -1286,9 +1285,11 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void addSHMAddOn(){
-		//getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
+		//getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
 		//getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons, 20);
 
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
@@ -1297,7 +1298,7 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().executeJavaScriptClick(shmAddonContinue);
 		}
 
-//		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().staticWait(6000);
 	}
 	/**
 	 * Expands the Monthly charges on cart Summary page and validates SHM add ons charges are present
