@@ -96,7 +96,7 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
 //        reporter.hardAssert(getBundleBuilderPage().verifyStoredPaymentCardPresent(), "Stored Payment Card present", "Stored Payment card not present");
-//        reporter.reportLogWithScreenshot("Continue billing with stored payment method");
+        //reporter.reportLogWithScreenshot("Continue billing with stored payment method");
 //        getBundleBuilderPage().clkContinueBillingAndPayment();
 //        reporter.reportLogWithScreenshot("Order Review Page");
 //        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");

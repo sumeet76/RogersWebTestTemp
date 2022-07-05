@@ -106,7 +106,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_E2E_Dealer_EN_ON_Test
         getRogersOVCheckoutPage().setFirstNameCreateProfile();
         getRogersOVCheckoutPage().setLastNameCreateProfile();
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
-        getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
+        getRogersOVCheckoutPage().setContactNumberCreateProfile("6472188923");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
@@ -114,8 +114,10 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_E2E_Dealer_EN_ON_Test
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Evaluation Page");
-        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
-                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        //getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                //FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check Authorized");

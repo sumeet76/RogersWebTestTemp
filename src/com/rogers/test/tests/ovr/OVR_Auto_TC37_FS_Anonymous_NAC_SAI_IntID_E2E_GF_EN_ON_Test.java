@@ -23,7 +23,7 @@ public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends 
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp("Trci27.Test@trci.trogers.ca", "Ramp@720");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
