@@ -118,21 +118,16 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
 
-        getBundleBuilderPage().validateSessionTimerWait(2000);
-//        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.reportLogWithScreenshot("Generate Phone Number");
 
-        getBundleBuilderPage().validateSessionTimerWait(2000);
-//        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-//        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        getBundleBuilderPage().validateSessionTimerWait(2000);
-       reporter.reportLogWithScreenshot("continue from call display");
-//        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        getBundleBuilderPage().validateSessionTimerWait(2000);
+        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+        reporter.reportLogWithScreenshot("continue from call display");
+        getHomePhoneSelectionPage().clickContinueDirectoryListing();
         reporter.reportLogWithScreenshot("continue from directory listing");
-//        getHomePhoneSelectionPage().clkContinue();
-        getBundleBuilderPage().validateSessionTimerWait(2000);
+        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

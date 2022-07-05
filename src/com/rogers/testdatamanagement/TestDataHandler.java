@@ -350,6 +350,9 @@ public class TestDataHandler {
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
 	public static AccountData OVS2_Change_TV_Internet_2P;
+	public static AccountData Serve_FWACx_UpgradeInternetPlan;
+	public static AccountData Serve_FWACx_DowngradeInternetPlan;
+	public static AccountData IgniteMappedOffersSAItoSAI;
 
 	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
 	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
@@ -757,6 +760,9 @@ public class TestDataHandler {
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
 		OVS2_Change_TV_Internet_2P=YamlHandler.getOVAccountData("OVS2_Change_TV_Internet_2P");
+		Serve_FWACx_UpgradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_UpgradeInternetPlan");
+		Serve_FWACx_DowngradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_DowngradeInternetPlan");
+		IgniteMappedOffersSAItoSAI = YamlHandler.getOVAccountData("IgniteMappedOffersSAItoSAI");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {
@@ -765,7 +771,7 @@ public class TestDataHandler {
 		ovrMigrationData2PInternetAndTvTo2P=YamlHandler.getOvrReusableData("Migration_Data_2P_to_2P_PortIn_Internet");
 		ovrWirelessNacATL = YamlHandler.getOvrReusableData("WirelessCX_NAC_ATL");
 		ovrWirelessNacON = YamlHandler.getOvrReusableData("WirelessCX_NAC_ON");
-		anonymousData = YamlHandler.getContactData("AnonymousData");
+		//anonymousData = YamlHandler.getContactData("AnonymousData");
 		ovrMigrationData1pINTtoISSATL = YamlHandler.getOvrReusableData("Migration_Data_1pINT_to_ISS");
 		ovrMigrationData3PTo3PATL = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ATL");
 		ovrMigrationData3PTo3PON = YamlHandler.getOvrReusableData("Migration_Data_3P_to_3P_ON");

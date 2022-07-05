@@ -38,7 +38,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
 
         reporter.reportLogWithScreenshot("Address Availability popup");
         //Check Availability at other address
-        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("0302-642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA RD. MISSISSAUGA, ON L5A 1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
         getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Click No on move migration popup");

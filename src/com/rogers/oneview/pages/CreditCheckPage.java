@@ -247,6 +247,7 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().selectWhenReadyByVisibleText(year, yearofBirth);
 		getReusableActionsInstance().selectWhenReady(month,Integer.parseInt(monthofBirth));
 		getReusableActionsInstance().selectWhenReadyByVisibleText(date, dayofBirth);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	/**
 	 * Select ID's Type and Details

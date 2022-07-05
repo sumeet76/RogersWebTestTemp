@@ -60,11 +60,19 @@ public class ChampLoginPage extends BasePageClass {
         getReusableActionsInstance().waitForElementStaleness(txtPassword, 15);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
         getReusableActionsInstance().getWhenVisible(corpSignInBtn).click();
-//        getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
-//        getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+        //Skip the 2fa popup if presented
+        if(getReusableActionsInstance().isElementVisible(corpLoginNextBtn)){
+            getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();
+            //getReusableActionsInstance().getWhenVisible(corpLoginSkip2faSetup).click();
+            if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
+                getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
+            }
+        }
+        //Skip the stay signed in prompt
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
             getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
         }
+
     }
 
     public void changeChampToFR(){
