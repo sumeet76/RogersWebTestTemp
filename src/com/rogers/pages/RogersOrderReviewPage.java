@@ -158,7 +158,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFingersInternet;	
 	
-	@FindBy(xpath = "//Span[@checkout-res='checkout_review_order']")
+	@FindBy(xpath = "//h1[@translate='global.label.reviewYourOrder']")
 	WebElement lblReviewYourorder;
 
 	@FindBy(xpath = "//h1[@translate='global.targetedOffer.label.orderReview']")

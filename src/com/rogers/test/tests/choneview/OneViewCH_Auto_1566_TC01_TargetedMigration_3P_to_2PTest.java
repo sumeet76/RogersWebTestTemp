@@ -55,8 +55,10 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
         reporter.reportLogWithScreenshot("review add on");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
-        getRogersIgniteBundlesPage().fourKContinue();
+        getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4KChannelPack();
         reporter.reportLogWithScreenshot("bottom to continue");
+        getRogersIgniteBundlesPage().scrollToContinue();
+        reporter.reportLogWithScreenshot("click continue");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(), "Cart Summary Header displayed", "Cart Summary Header did not Displayed");
@@ -77,6 +79,7 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
 //        getCreditCheckPage().clkAuthorize();
 //        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(), "Credit Check Information Entered", "Credit Check Information Failed");
 //        reporter.reportLogWithScreenshot("Credit Check Information");
+
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue button is clicked");
         getCreditCheckPage().verifyInstallationOption();
@@ -91,7 +94,10 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
         getPaymentOptionsPage().clkContinue();
 
 //               Checkout Page
-
+        if(getRogersOVCheckoutPage().isErrorToApplyOfferCodeVisible()){
+        reporter.reportLogWithScreenshot("Invalid Offer code pop displayed");
+        getRogersOVCheckoutPage().closeInvalidOfferCodePopUp();
+        }
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
@@ -106,6 +112,5 @@ public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends Bas
     public void afterTest() {
         closeSession();
     }
-
     }
 

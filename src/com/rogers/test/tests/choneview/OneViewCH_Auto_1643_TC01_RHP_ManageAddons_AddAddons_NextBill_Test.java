@@ -28,7 +28,7 @@ public class OneViewCH_Auto_1643_TC01_RHP_ManageAddons_AddAddons_NextBill_Test e
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup for next billing cycle");
         getRogersOVOrderReviewPage().clkSubmit();
-       reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 
@@ -39,10 +39,8 @@ public class OneViewCH_Auto_1643_TC01_RHP_ManageAddons_AddAddons_NextBill_Test e
         startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
     }
 
-
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-
         closeSession();
     }
 

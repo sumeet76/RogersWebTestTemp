@@ -36,7 +36,7 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkIssNacLearnPageToggleONTest() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
@@ -91,6 +91,7 @@ public class RogersCH_TC_064_SAI_ISS_NAC_LearnPage_ISS_ToggleTest extends BaseTe
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        // getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());

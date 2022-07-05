@@ -93,7 +93,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
 	WebElement headerChangepkg;
 
-	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait de télévision']")
+	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait Télé.']")
 	WebElement headerChangeTVpkg;
 
 	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
@@ -896,7 +896,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyChangeTVPackageModalContentHeader() {
-		String changeTVPkgContentHeaderDesired = "When you select a new TV package:";
+		String changeTVPkgContentHeaderDesired = "We want to make your new service as similar to your current one as possible to give you the best experience! But please note that by making this change:";
 		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
 		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
 			return true;
@@ -935,8 +935,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyChangeTVPackageModalContentHeaderFR() {
-		String changeTVPkgContentHeaderDesired = "Quand vous choisissez un nouveau forfait de télévision :";
-		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 20).getText();
+		String changeTVPkgContentHeaderDesired = "Nous voulons que vous puissiez profiter de la meilleure expérience qui soit avec votre nouveau service et que celui-ci soit comparable à que vous aviez précédemment! Toutefois, veuillez prendre note qu’en effectuant ce changement:";
+		String changeTVPkgContentHeaderActual = getReusableActionsInstance().getWhenReady(headerChangeTVPkgContent, 40).getText();
 		if(changeTVPkgContentHeaderActual.equals(changeTVPkgContentHeaderDesired)){
 			return true;
 		}

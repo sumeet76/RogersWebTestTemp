@@ -43,7 +43,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	})
 	WebElement lblThankYou;
 
-	@FindBy(xpath = "//h1[@translate='global.label.orderConfirmation']")
+	@FindAll({
+			@FindBy(xpath = "//h1[@translate='global.label.orderConfirmation']"),
+			@FindBy(xpath = "//h1[contains(text(),'Order Confirmation') or contains(text(),'Confirmation de commande')]")
+	})
 	WebElement lblOrderConfirmation;
 
 	@FindBy(xpath = "//div[@class='orderSummary']")

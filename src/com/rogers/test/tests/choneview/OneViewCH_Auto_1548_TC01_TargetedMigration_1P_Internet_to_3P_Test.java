@@ -36,9 +36,7 @@ public class OneViewCH_Auto_1548_TC01_TargetedMigration_1P_Internet_to_3P_Test e
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clickInternetCollapse();
-        getRogersIgniteBundlesPage().clickHomePhoneCollapse();
-        getRogersIgniteBundlesPage().clickBatteryBackUpCollapse();
+        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeNow();

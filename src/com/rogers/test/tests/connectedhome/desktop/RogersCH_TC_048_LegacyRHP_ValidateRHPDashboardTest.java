@@ -28,9 +28,7 @@ public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void checkLegacyRHPDashboard () {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());
@@ -39,7 +37,7 @@ public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTest
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
+
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_legacyRHP.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");

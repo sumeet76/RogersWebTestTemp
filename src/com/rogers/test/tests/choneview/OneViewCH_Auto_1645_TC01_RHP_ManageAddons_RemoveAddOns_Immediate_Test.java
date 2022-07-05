@@ -41,10 +41,8 @@ public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Te
         startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
     }
 
-
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-
         closeSession();
     }
 }

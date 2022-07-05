@@ -203,7 +203,7 @@ public class CaptchaBypassHandlers {
 	}
 
 	public static String ChOVNACUrl(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
-		String queryParam = "LoginId="+strLoginID+"64&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2022-04-22T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
+		String queryParam = "LoginId="+strLoginID+"64&UserRole=CSR,Oneview Pilot-1,Oneview BRT-1,R76,BT User,R33,R45,R21,R75,R77,R180,R182,R252,R47,R52,R54,R55,R65,R68,R75,R77,R246,Telesales,R188,R252,R261,R167,R306,R307,R304,R311,BRT Authorized CSR-3,BRT Authorized CSR-4,Ignite Learning Lab Additive Role&IntID=&Target=UTE&TimeStamp=2022-06-02T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
 		String oneViewUrl = strUrl + queryParam;
 		return oneViewUrl;
 	}

@@ -76,7 +76,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Exchange later')]/ancestor::button")
 	WebElement ExchangeLaterBtn;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	@FindBy(xpath = "//span[text()='Continue']")
 	WebElement btnContnueReset;
 
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
@@ -195,6 +195,15 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
 	WebElement internetSpeeds;
+
+	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	WebElement viewOffer;
+
+	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	WebElement recommendedOffer;
+
+	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
+	WebElement exclusiveOfferAvailable;
 
 	/**
 	 * Verify the result
@@ -374,7 +383,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void clickContinueOnSelectDateChange() {
+		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate,30);
 		getReusableActionsInstance().getWhenReady(btnContinueChangeDate,60).click();
+		getReusableActionsInstance().staticWait(15000);
 	}
 	/*Selects the Immediate Billing option
 	 * @author suganya p
@@ -829,6 +840,35 @@ public class InternetDashboardPage  extends BasePageClass {
 	 */
 	public boolean verifyInternetSpeedDisplayed(){
 		return  getReusableActionsInstance().isElementVisible(internetSpeeds, 30);
+	}
+
+	public void clickSelectButtonAsPerPackageName(String internetPkg)
+	{
+		/*To click on Select button*/
+		By selectLocator = By.xpath("//span[contains(text(),'"+internetPkg+"')]/ancestor::div[contains(@class,'-w84 internet-tile__table')]/following-sibling::div//span[@translate='global.cta.select']");
+		getReusableActionsInstance().getWhenReady(selectLocator, 20);
+		WebElement button = getDriver().findElement(selectLocator);
+		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
+	public void clickViewOffers() {
+		getReusableActionsInstance().staticWait(20);
+		//getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
+	}
+
+	public boolean verifyRecommendedOffer() {
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+	}
+
+	public void selectRecommendedOffer() {
+		getReusableActionsInstance().waitForElementVisibility(recommendedOffer, 30);
+		getReusableActionsInstance().executeJavaScriptClick(recommendedOffer);
+	}
+
+	public void selectExclusiveOfferAvailable() {
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferAvailable, 30);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferAvailable);
 	}
 
 }

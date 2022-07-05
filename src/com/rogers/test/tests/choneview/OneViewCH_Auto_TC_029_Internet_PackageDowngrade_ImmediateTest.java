@@ -22,7 +22,7 @@ public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest exten
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
-        getInternetDashboardPage().clickContinueChangeInternetPackage();
+        getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 
         /*Billing option to be selected*/

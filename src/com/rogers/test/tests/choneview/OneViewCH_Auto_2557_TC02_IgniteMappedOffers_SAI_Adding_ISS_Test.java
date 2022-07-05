@@ -26,14 +26,17 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffers_SAI_Adding_ISS_Test ext
 
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("click Continue");
-        getAccountOverViewPage().clkAuthorize();
+        getRogersOVInstallationPage().clkCourierDelivery();
+        getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("click Authorize");
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("click Continue");
 //        getAccountOverViewPage().IsOrderReviewPageTitlePresent();
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
-//        getAccountOverViewPage().clickSubmit();
-//        reporter.reportLogWithScreenshot("click Submit");
+        reporter.reportLogWithScreenshot("click Submit");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
         @BeforeMethod(alwaysRun=true)
@@ -45,6 +48,6 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffers_SAI_Adding_ISS_Test ext
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+            //closeSession();
     }
 }
