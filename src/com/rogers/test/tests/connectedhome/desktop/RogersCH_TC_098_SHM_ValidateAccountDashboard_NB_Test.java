@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_098_SHM_ValidateAccountDashboard_NB_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RhpAndRhmCH"})
+	@Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
         public void checkSHMaccountDashboard() {
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc98_RogersSHM_NB.getUsername());
