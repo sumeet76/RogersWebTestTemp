@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_114_IgniteInternet_InternetPackageDowngrade_FR_Test extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH"})
+    @Test
     public void checkInternetPackageDowngradeFR()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");

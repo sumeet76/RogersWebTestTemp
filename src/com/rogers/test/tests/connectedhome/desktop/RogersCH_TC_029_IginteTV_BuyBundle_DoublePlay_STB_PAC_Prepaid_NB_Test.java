@@ -161,13 +161,11 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
     public void checkDoublePalyTVOfferSanity() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
-
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkTVBundlesForNB();
-        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
@@ -175,14 +173,20 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+
+        // getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
+        // reporter.reportLogWithScreenshot("Starter package selected selected");
+        // getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+        //getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Flex20+ Order online");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Flex20+ Added to cart");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        //getRogersIgniteTVBuyPage().set4KTV();
+
         getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected");
-        //getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        //getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
 
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
@@ -191,6 +195,7 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
+        reporter.reportLogWithScreenshot("Entered the profile details");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
@@ -223,12 +228,10 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        //getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
