@@ -358,7 +358,6 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindAll({
 			@FindBy(xpath = "(//div[contains(@class,'button-container')]//button)[2]"),
 			@FindBy(xpath = "//div[contains(@class,'button-container')]//button[contains(.,'No,')]"),
-			@FindBy(xpath = "//div[@data-type='target']/following-sibling::div[2]")
 	})
 	WebElement btnClkNoThanks;
 
@@ -382,6 +381,31 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "(//div[contains(@class,'button-container')]//button[contains(.,'No,')]")
 	WebElement btnNoThanksVertical;
+
+	@FindBy(xpath = "//auto-pay-promo-banner")
+	WebElement autoPayBanner;
+
+	@FindBy(xpath = "//*[@data-test='transit-number']")
+	WebElement formTransitNumber;
+
+	@FindBy(xpath = "//*[@data-test='institution-number']")
+	WebElement formInstitutionNumber;
+
+	@FindBy(xpath = "//*[@data-test='account-number']")
+	WebElement formAccountNumber;
+
+	@FindBy(xpath = "//*[@data-test='transit-number']//input")
+	WebElement inputTransitNumber;
+
+	@FindBy(xpath = "//*[@data-test='institution-number']//input")
+	WebElement inputInstitutionNumber;
+
+	@FindBy(xpath = "//*[@data-test='account-number']//input")
+	WebElement inputAccountNumber;
+
+	@FindBy(xpath = "//ds-checkbox[contains(@id,'dsa-terms-conditions')]")
+	WebElement chAutoPayConsent;
+
 
 	/**
 	 * To get the Title of post checkout page
@@ -529,7 +553,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	 public void clkNoThanks() {
-			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,8)) {
+			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,5)) {
 				getReusableActionsInstance().executeJavaScriptClick(btnClkNoThanks);
 			}
 		}
@@ -967,7 +991,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectCityDropdownOption(String selectYourOption) {
-		getReusableActionsInstance().waitForElementVisibility(cityDropdown, 20);
+		getReusableActionsInstance().waitForElementVisibility(cityDropdown, 60);
 		getReusableActionsInstance().clickWhenReady(cityDropdown);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(cityDropdown, selectYourOption);
 	}
@@ -1386,7 +1410,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
     public void clksubmitBtnCheckoutPage(){
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,30);
+		getReusableActionsInstance().waitForElementTobeClickable(submitBtnCheckoutPage,40);
 		getReusableActionsInstance().scrollToElement(submitBtnCheckoutPage);
 		getReusableActionsInstance().getWhenReady(submitBtnCheckoutPage,30);
 		getReusableActionsInstance().executeJavaScriptClick(submitBtnCheckoutPage);
@@ -1440,6 +1464,36 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public void clkBtnNoThanks() {
 		getReusableActionsInstance().clickIfAvailable(btnNoThanksVertical, 5);
+	}
+
+	/**
+	 * This method verifies the presence of autopay page
+	 * @return true if autopay page is displayed, else false
+	 * @author praveen.kumar7
+	 */
+	public boolean verifyAutoPaymentPage() {
+		return getReusableActionsInstance().isElementVisible(autoPayBanner,60);
+	}
+
+	/**
+	 * This method fills the necessary form fields in Automatic payment page
+	 * @author praveen.kumar7
+	 */
+	public void enterBankDetails() {
+		getReusableActionsInstance().getWhenReady(formTransitNumber).click();
+		inputTransitNumber.sendKeys("00011");
+		getReusableActionsInstance().getWhenReady(formInstitutionNumber).click();
+		inputInstitutionNumber.sendKeys("001");
+		getReusableActionsInstance().getWhenReady(formAccountNumber).click();
+		inputAccountNumber.sendKeys(FormFiller.generateRandomNumber(10));
+	}
+
+	/**
+	 * Clicks on automatic payment consent checkbox
+	 * @author praveen.kumar7
+	 */
+	public void clkAutoPayConsentCheckBox() {
+		getReusableActionsInstance().clickWhenReady(chAutoPayConsent);
 	}
 }
 

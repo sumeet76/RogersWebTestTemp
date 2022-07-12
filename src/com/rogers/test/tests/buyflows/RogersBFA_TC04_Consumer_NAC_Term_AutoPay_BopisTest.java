@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC04 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Express Pickup Shipping(Finance Plan) - BOPIS_E2E
  */
 
-public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
+public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -41,20 +41,18 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		// ***************************Device config page************************************
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config page***************************************
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersPlanConfigPage().clickShowMoreDetails();
-		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc04NACTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+		reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayPlanSelection(getRogersPlanConfigPage().getAutoPayPlanIndex("MSF"),this.getClass().getSimpleName()),
+				"Autopay plan is selected successfully","Autopay plan is not selected");
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
-		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-		String monthlyFeesAmount = getRogersPlanConfigPage().getMonthlyFeesAmount();
-		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
-		reporter.reportLogPassWithScreenshot(
-				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
+		reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayDiscountInCartSummary(),"AutoPay discount is added in cart summary","AutoPay is not added in cart summary");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 
 		// ***************Create Profile Stepper*************//
@@ -83,7 +81,7 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthYear());
-		//getRogersCheckoutPage().clkNoThanks();
+		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -97,28 +95,18 @@ public class RogersBFA_TC04_Consumer_NAC_TermBopisTest extends BaseTestClass {
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
-		//reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(), "Credit Evaluation Successful",
-		//		"Credit Evaluation Identification Label not disaplayed");
-
 		// ***************Choose a Number Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed",
-				"Choose a Number Title not displayed");
-		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),
-				"Select a New Number/Use Existing Number Tab Displayed",
-				"Select a New Number/Use Existing Number Tab not disaplayed");
 		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc04NACTermBopis.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		//reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
-				//"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		getRogersCheckoutPage().clkNoThanks();
 		// ***************Billing & Payment Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed",
-				"Billing Options Title Not Present");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc04NACTermBopis.getPaymentMethod());
+		reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
+		getRogersCheckoutPage().enterBankDetails();
+		getRogersCheckoutPage().clkAutoPayConsentCheckBox();
 		getRogersCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
 		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
