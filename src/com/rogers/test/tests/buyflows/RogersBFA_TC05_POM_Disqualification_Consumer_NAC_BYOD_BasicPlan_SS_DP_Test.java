@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
  */
 
-public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
+public class RogersBFA_TC05_POM_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -28,12 +28,23 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseT
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","DPBYOD"})
-	public void rogersNacByodSSTest() throws InterruptedException {
-		//############################Plan config page###############################
+	public void tc05rogersNacByodSSTest() throws InterruptedException {
+		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clkBasicTab();
-		getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
+		// ***************************Promo Section************************************
+		getRogersPlanConfigPage().clkPromoSection();
+		reporter.reportLogWithScreenshot("Promo Section Displayed");
+		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc05NACByodSS.getPromoCode());
+		reporter.reportLogWithScreenshot("Promo Code Entered");
+		getRogersPlanConfigPage().clkCheckPromoBtn();
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		//############################Plan config page###############################
+		//getRogersPlanConfigPage().clkBasicTab();
+		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+		getRogersPlanConfigPage().clickShowMoreDetails();
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -53,6 +64,7 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseT
 		reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
 		String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
+		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
@@ -99,14 +111,19 @@ public class RogersBFA_TC05_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseT
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
-		getRogersCheckoutPage().clkNoThanks();
+		//reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
+		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChooseNumberbutton();
-		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+		//reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+		reporter.reportLogPassWithScreenshot("POM DisQualification Modal Displayed");
+		reporter.hardAssert(getRogersCheckoutPage().verifyAgeDisQualifierMsg(),"Age DisQualifier Messages is displayed","Age DisQualifier Messages is not displayed");
+		reporter.hardAssert(getRogersCheckoutPage().verifyLocationDisQualifierMsg(),"Location DisQualifier Messages is displayed","Location DisQualifier Messages is not displayed");
+		getRogersCheckoutPage().clkContinueWithoutPromo();
 		// ***************Billing & Payment Stepper*************//
 		//getRogersCheckoutPage().clkNoThanks();
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
+		reporter.softAssert(getRogersCheckoutPage().verifyPromoRemovedFrmCart(),"PromoCode removed from Cart","PromoCode not removed from Cart");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
 		getRogersCheckoutPage().clkNoThanks();

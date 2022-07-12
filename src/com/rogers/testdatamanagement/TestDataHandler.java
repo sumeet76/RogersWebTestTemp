@@ -148,6 +148,9 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static RedesignRpotgData tc28_RPP_NACTermPotgShipping;
 	public static RedesignRpotgData tc29_RPP_NACByod_StdShipping_QCProvince;
+	public static RedesignRpotgData tc47_1P_Ignite_NACTermTermBopis;
+	public static RedesignRpotgData tc48_Legacy_NACByod;
+	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -645,6 +648,9 @@ public class TestDataHandler {
 		BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping = YamlHandler.getAALdata("BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping");
 		BFA_ProdTest_tc05_HUPWithPPC_StdShipping = YamlHandler.getHUPdata("BFA_ProdTest_tc05_HUPWithPPC_StdShipping");
 		BFA_ProdTest_tc06_PPC_FinancingPlan = YamlHandler.getPPCdata("BFA_ProdTest_tc06_PPC_FinancingPlan");
+		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
+		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
+		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
