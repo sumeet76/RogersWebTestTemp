@@ -170,19 +170,21 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Clicked Home Phone");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + ", " + strAddressLine2);
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisPremier();
-        ;
-
+        reporter.reportLogWithScreenshot("Entered Serviceability address");
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Added to cart");
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
@@ -191,7 +193,6 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        //getRogersIgniteTVBuyPage().set4KTV();
         getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -202,6 +203,7 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         getRogersIgniteTVProfileCreationPage().setFirstname();
         getRogersIgniteTVProfileCreationPage().setLastName();
         getRogersIgniteTVProfileCreationPage().setPhone();
+        reporter.reportLogWithScreenshot("Entered the profile information");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evaluation page has Launched", "Credit Evaluation page has not Launched");
@@ -233,18 +235,15 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        //getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
@@ -257,12 +256,12 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Launched the Confirmation page", "Confirmation page has not Launched");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
