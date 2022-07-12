@@ -37,14 +37,25 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContinue();
-//			reporter.reportLogWithScreenshot("continue to exchange later");
-//			getRogersIgniteBundlesPage().clkExpressCheckOut();
-//			reporter.reportLogWithScreenshot("Cart Summary");
-//			getRogersIgniteBundlesPage().fourKTVPopup();
-//			getRogersIgniteBundlesPage().fourKContinue();
+		reporter.reportLogWithScreenshot("click continue");
+		getRogersIgniteBundlesPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("click exchange");
+		getRogersOVChannelsAndThemePacksPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("click add channel");
+		getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
+		reporter.reportLogWithScreenshot("click themepack tab");
+		getRogersOVChannelsAndThemePacksPage().addThemepack();
+		reporter.reportLogWithScreenshot("add theme pack");
+		getRogersOVChannelsAndThemePacksPage().clkContinue();
+		reporter.reportLogWithScreenshot("click continue");
+		getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
+		reporter.reportLogWithScreenshot("click no they don't");
+		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("click continue");
+		reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Homephone add ons page available","Home phone add ons page not available");
+		getTVDashboardPage().addToCartCallingPackage();
+		reporter.reportLogWithScreenshot("add calling card");
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("checkout to cart summary");
@@ -77,17 +88,14 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("digital frontline");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("Payment screen");
-            getPaymentOptionsPage().clkContinue();
-	        reporter.reportLogWithScreenshot("submit order");
-			getRogersOVCheckoutPage().clkSubmit();
-			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Billing and payment");
+		getCreditCheckPage().selectPaymentOption(1);
+		reporter.reportLogWithScreenshot("Monthly charges");
+		getPaymentOptionsPage().clkContinue();
+	        //reporter.reportLogWithScreenshot("submit order");
+			//getRogersOVCheckoutPage().clkSubmit();
+			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			//reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -99,7 +107,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

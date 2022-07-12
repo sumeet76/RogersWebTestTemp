@@ -20,18 +20,20 @@ public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Te
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launched the Home Phone dashboard page");
         getHomePhonedashboard().clickManageAddOns();
-        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
+        getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
+        reporter.reportLogWithScreenshot("Addons selected for addition");
+        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameFr());
         reporter.reportLogWithScreenshot("Remove addon button is selected");
-        getHomePhoneAddonsPage().clickContinueButton();
-        reporter.reportLogWithScreenshot("Billing selection pop up appears");
+        getTVDashboardPage().clickYourChanges();
+        getHomePhoneAddonsPage().clickConfirmButton();
+        reporter.reportLogWithScreenshot("Select the billing cycle");
         getHomePhoneAddonsPage().clickImmediateBill();
-        reporter.reportLogWithScreenshot("Immediate bill check box is selected");
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup");
 
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -43,6 +45,6 @@ public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Te
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+        //closeSession();
     }
 }

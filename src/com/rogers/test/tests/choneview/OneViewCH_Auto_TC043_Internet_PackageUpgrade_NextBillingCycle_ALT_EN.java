@@ -9,30 +9,34 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+/*
+"1. Language - EN
+2. Province - ATL
+3. Change Type - Change Internet.(Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Next Bill Cycle"
+ */
 public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
     public void checkInternetPackageDowngrade() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
+        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 
-        /*Billing option to be selected*/
-        getInternetDashboardPage().selectRadioImmediate();
-        reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
+        /*Billing option to be selected*/;
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //getRogersOVOrderReviewPage().clkSubmit();
+       // reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

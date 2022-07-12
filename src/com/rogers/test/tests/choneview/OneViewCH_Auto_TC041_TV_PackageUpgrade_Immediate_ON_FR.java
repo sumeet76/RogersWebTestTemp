@@ -19,6 +19,7 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         /*getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         getAccountOverViewPage().setSkipNotification();*/
+        getAccountOverViewPage().setLanguageFrench();
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
@@ -38,13 +39,13 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
-        getTVDashboardPage().clickImmediateBill();
+        getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
-        getTVDashboardPage().clickContinueOnSelectDateChange();
+        getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -57,7 +58,7 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }
