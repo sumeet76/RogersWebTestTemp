@@ -53,8 +53,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
 	WebElement VerifyRecommendedBannertitle;
 
-	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwn150pkgTypeOfContract;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnSSpkgTypeOfContract;
+
+	@FindBy(xpath="//h1[contains(@class,'dsa-hero-billboard__heading')]")
+	WebElement headerInternet;
+
 
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnTypeOfContract;
@@ -91,7 +98,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternet500uPackage;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnSmartStreamPackage;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
@@ -114,6 +121,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
+
+	@FindBy(xpath = "//img[@alt='Image of Disney+']")
+	WebElement imgDisneyBanner;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
+	WebElement chkbox150IgniteStreaming;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
 	WebElement lnkProvinceNL;
@@ -296,9 +309,21 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 */
 	public void select150MonthToMonthTypeOfContact() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 120);
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
+
+
+	/**
+	 * To select type of contract to month-to-month for SS Internet 150 Mbps
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectSmartStreamPkgMonthToMonthTypeOfContact() {
+		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
 
 	/**
 	 * To select the Ignite SmartSteam 1Gbps Package
@@ -486,5 +511,18 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,60);
 	}
 
+
+	public Boolean verifyDisneyImage() {
+		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 60);
+	}
+
+	/**
+	 * To verify the Ignite SmartSteam 150 Package checkbox is selected
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgniteStreamingIsChecked() {
+		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 5);
+		return chkbox150IgniteStreaming.isSelected();
+	}
 
 }

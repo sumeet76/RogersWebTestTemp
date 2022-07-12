@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH"})
     public void checkBuyIgniteTVOffer() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
@@ -60,12 +60,6 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Clicked Home Phone");
-       /* reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex5PackageCost(), "Flex5 Package Cost having the mo*", "Flex5 Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex10PackageCost(), "Flex10 Package Cost having the mo*", "Flex10 Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlex20PackageCost(), "Flex20+ Package Cost having the mo*", "Flex20+ Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackageCost(), "Premier Package Cost having the mo*", "Premier Package Cost is not having the mo*");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyStarterPackageCost(), "Starter Package Cost having the mo*", "Starter Package Cost is not having the mo*"); */
-        //getRogersIgniteTVBuyPage().selectSolarisPremier();
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
@@ -73,11 +67,8 @@ public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest ext
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Entered Serviceability address");
-       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
-       // reporter.softAssert(getRogersIgniteTVBuyPage().verifyPremierPackage(), "Premier Package Cost having the mo*", "Premier Package Cost is not having the mo*");
-       // getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
-       // reporter.reportLogWithScreenshot("Selected the month-to-month type of contract");
-       // getRogersIgniteTVBuyPage().selectSolarisPremier();
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");

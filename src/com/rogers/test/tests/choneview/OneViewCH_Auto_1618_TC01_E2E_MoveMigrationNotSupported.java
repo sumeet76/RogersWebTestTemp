@@ -28,11 +28,11 @@ public class OneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported extends Base
 		reporter.reportLogWithScreenshot("NewAddress");
 		getRogersIgniteBundlesPage().clickAvailability();
 		reporter.reportLogWithScreenshot("Availability");
-		getRogersIgniteBundlesPage().clkContinue();
+	//	getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Continue");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
 		getRogersIgniteBundlesPage().clickYes();
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigrationNotSupported(),"warning Move Migration Not Supported","warning Move Migration Not Supported  display");
+	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigrationNotSupported(),"warning Move Migration Not Supported","warning Move Migration Not Supported  display");
     }
 
 	@BeforeMethod (alwaysRun=true)
