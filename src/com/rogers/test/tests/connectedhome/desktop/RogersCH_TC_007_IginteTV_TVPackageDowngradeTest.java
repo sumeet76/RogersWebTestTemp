@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_007_IginteTV_TVPackageDowngradeTest extends BaseTestClass {
 
-	 @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH"})
+	 @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH"})
     public void checkSolarisTVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
@@ -46,11 +46,14 @@ public class RogersCH_TC_007_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
-
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
+      /*  reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyPopupChangeTVPackageContinueBtn(), "Verified the Continue button", "Continue button not verified");*/
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

@@ -24,7 +24,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA"})
-    public void rogersAalByodBopisTest() {
+    public void tc19rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -75,13 +75,13 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
-        reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
+        //reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc19AALBYODBopisShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-        reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+       //reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");

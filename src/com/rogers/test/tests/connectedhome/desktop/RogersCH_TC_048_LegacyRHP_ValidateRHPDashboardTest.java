@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
 
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
 	public void checkLegacyRHPDashboard () {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");

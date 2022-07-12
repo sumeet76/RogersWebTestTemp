@@ -1,19 +1,33 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import com.rogers.test.base.BaseTestClass;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.FormFiller;
+import utils.LoginSessionAuth;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RogersPlanConfigPage extends BasePageClass {
     public String xpathDeviceName;
+    List<WebElement> autoPayText = null;
 
     public RogersPlanConfigPage(WebDriver driver) {
         super(driver);
@@ -35,7 +49,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     List<WebElement> noOfDeviceTiers;
 
     @FindAll({
-            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label[1]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-')]//label"),
             @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-individual-')]//label[1]"),
             @FindBy(xpath = "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-talkAndText-')]")
     })
@@ -185,7 +199,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']")
     WebElement vdpCheckBox;
 
-    @FindBy(xpath = "//div[contains(@class,'dsa-infoWidget__ctnInfo')]//span[contains(@class,'dsa-infoWidget__ctnCopy')]")
+    @FindAll({
+        @FindBy(xpath = "//div[contains(@class,'dsa-infoWidget__ctnInfo')]//span[contains(@class,'dsa-infoWidget__ctnCopy')]"),
+        @FindBy(xpath = "//button[contains(@class,'dsa-cartSummary__header')]")
+    })
     WebElement infoWidgetCtnCopy;
 
     @FindBy(xpath = "//button[@data-test='stepper-0-edit-step-continue-button']")
@@ -278,7 +295,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@class,'ds-tablet')]//p[contains(text(),'Device Protection') or contains(text(),'Protection de l’appareil')]")
     WebElement deviceProtectionAddonTab;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'Protect supér appareil ')]")
     WebElement deviceProtectionAddon;
 
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
@@ -313,6 +330,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -363,7 +381,9 @@ public class RogersPlanConfigPage extends BasePageClass {
             if (getReusableActionsInstance().getWhenReady(showMoreDetails).getAttribute("title").contains("View fewer plan options")) {
                 System.out.println("Show more details accordion already in expanded state");
             } else {
-                getReusableActionsInstance().clickWhenVisible(showMoreDetails, 20);
+                getReusableActionsInstance().waitForElementTobeClickable(showMoreDetails,60);
+                getReusableActionsInstance().javascriptScrollToTopOfPage();
+                getReusableActionsInstance().clickWhenVisible(showMoreDetails);
             }
         }
     }
@@ -406,7 +426,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      *
      * @param deviceCostIndex String value of deviceCostIndex
      * @return returs the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getUpdatedDeviceCostIndex(String deviceCostIndex) {
         if ((deviceCostIndex == null) || (deviceCostIndex.isEmpty()) || (Integer.parseInt(deviceCostIndex) > noOfDeviceTiers.size() - 1)) {
@@ -421,12 +441,42 @@ public class RogersPlanConfigPage extends BasePageClass {
      *
      * @param dataOptionIndex String value of dataOptionIndex
      * @return returns the String value of index
-     * @author praveen.kumar
+     * @author praveen.kumar7
      */
     public String getupdatedDataOptionIndex(String dataOptionIndex) {
         if ((dataOptionIndex == null) || (dataOptionIndex.isEmpty()) || (Integer.parseInt(dataOptionIndex) > noofDataOptions.size() - 1)) {
             dataOptionIndex = "0";
             return dataOptionIndex;
+        }
+        return dataOptionIndex;
+    }
+
+    /**
+     * This method gets the inxed value of the autopay discount plan
+     * @param autoPayDiscountType - Automatic payment discount type
+     * @return String value of autopay plan index
+     * @author praveen.kumar7
+     */
+    public String getAutoPayPlanIndex(String autoPayDiscountType) {
+        String dataOptionIndex = "";
+        try {
+            if (autoPayDiscountType.equalsIgnoreCase("MSF")) {
+                if (getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0) {
+                    dataOptionIndex = getDriver().findElement(By.xpath("(//label[contains(.,'Includes $')])[1]/..")).getAttribute("data-test").split("infinite-")[1];
+                } else {
+                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0, "No plan is displayed with Autopay MSF discount");
+                }
+            }
+            if (autoPayDiscountType.equalsIgnoreCase("PERCENT")) {
+                if (getDriver().findElements(By.xpath("//label[contains(.,'%') and contains(.,'Automatic')]")).size() > 0) {
+                    dataOptionIndex = getDriver().findElement(By.xpath("(//label[contains(.,'%') and contains(.,'Automatic')])[1]/..")).getAttribute("data-test").split("infinite-")[1];
+                } else {
+                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'%') and contains(.,'Automatic')]")).size() > 0, "No plan is displayed with Autopay Percent discount");
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
         return dataOptionIndex;
     }
@@ -498,8 +548,10 @@ public class RogersPlanConfigPage extends BasePageClass {
             int stepper = 2;
             String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, stepper);
             if (Integer.parseInt(dataOptionIndex) == 0) {
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
                 getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
             } else {
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
                 getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo), 20));
                 if (className.toUpperCase().contains("_PPC_") && className.toUpperCase().contains("DOWNGRADE")) {
                     getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 40);
@@ -594,7 +646,6 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyTalkOptionSelectionAndAddonsContinueButton(String talkOptionIndex) {
-        clickGetBPOOffer();
         int stepper = 3;
         String xpathDcDoTo = createXpathWithInputData(talkOptionIndex, stepper);
         if (Integer.parseInt(talkOptionIndex) == 0) {
@@ -1225,7 +1276,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkSecondLineCheckBox(String ctn2) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') and contains(@id,'ds-checkbox')]/.."));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') or contains(@id,'ds-checkbox')]/.."));
         getReusableActionsInstance().clickWhenReady(btnAddInModal, 10);
     }
 
@@ -1280,10 +1331,10 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().clickWhenVisible(preCartDeviceCostContinueButton);
         if (!planType.equalsIgnoreCase("TALKTEXTFIN")) {
             if (className.toUpperCase().contains("DOWNGRADE")) {
-                getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 40);
+                getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 60);
             } else {
                 getReusableActionsInstance().waitForElementVisibility(txtSelectDataOption, 40);
-                getReusableActionsInstance().waitForElementTobeClickable(preCartDataOtionContinueButton, 40);
+                //getReusableActionsInstance().waitForElementTobeClickable(preCartDataOtionContinueButton, 40);
                 getReusableActionsInstance().staticWait(4000);
             }
         } else if (planType.equalsIgnoreCase("TALKTEXTFIN") && getReusableActionsInstance().isElementVisible(completedDataOptionStepper)) {
@@ -1325,7 +1376,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyPlanConfigPage() {
-        return getReusableActionsInstance().isElementVisible(btnCartSummaryDropDown, 30);
+        return getReusableActionsInstance().isElementVisible(btnCartSummaryDropDown, 60);
     }
 
     /**
@@ -1408,7 +1459,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void selectDeviceProtectionAddon() {
         getReusableActionsInstance().executeJavaScriptClick(deviceProtectionAddonTab);
-        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon, 10);
+        getReusableActionsInstance().clickWhenReady(deviceProtectionAddon);
     }
 
     /**
@@ -1511,4 +1562,26 @@ public class RogersPlanConfigPage extends BasePageClass {
             return false;
         }
     }
+
+    /**
+     * Verifies the selection of Autopay plan
+     * @param dataOptionIndex - Index of the plan
+     * @param className - Class name of the test
+     * @return true if Autopay plan is selected, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyAutoPayPlanSelection(String dataOptionIndex, String className) {
+        selectDataOptionAndClickonContinueButton(dataOptionIndex,className);
+        return autoPayText.size()==1;
+    }
+
+    /**
+     * Verifies the autopay discount in the cart summary
+     * @return true if Autopay is applied in cart summary, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyAutoPayDiscountInCartSummary() {
+        return getReusableActionsInstance().isElementVisible(By.xpath("(//span[contains(@class,'dsa-orderTable__strikeCopy')])[1]"));
+    }
+
 }

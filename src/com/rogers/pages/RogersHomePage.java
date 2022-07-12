@@ -693,6 +693,17 @@ public class RogersHomePage extends BasePageClass {
 	}
 
 	/**
+	 * Click the NB Province link from the top tile bar
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkNBProvinceLnk() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNB, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
+	}
+
+	/**
 	 * Clicks on the 'Service ability' button
 	 * @author chinnarao.vattam
 	 */
@@ -838,7 +849,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
-		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 20).click();
 	}
 
 	/**

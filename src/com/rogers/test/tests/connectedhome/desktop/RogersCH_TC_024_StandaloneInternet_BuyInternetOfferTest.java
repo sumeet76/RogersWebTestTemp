@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "saiCH"})
+    @Test(groups = {"RegressionCH", "saiCH", "DryRunCH"})
     public void checkBuyStandAloneInternetOffer() throws InterruptedException {
 
         reporter.reportLogWithScreenshot("clicked on Easy Internet");
@@ -46,8 +46,8 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-       // getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
-       // reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
