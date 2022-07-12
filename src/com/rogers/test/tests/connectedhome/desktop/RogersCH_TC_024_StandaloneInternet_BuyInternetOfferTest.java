@@ -132,8 +132,9 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
     @Test(groups = {"SanityCH"})
     public void checkBuyStandAloneInternetOfferSanity() throws InterruptedException {
 
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        reporter.reportLogWithScreenshot("clicked on Easy Internet");
         getRogersHomePage().clkEasyInternet();
+
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
@@ -143,10 +144,13 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(), "Profile page has Launched", "Profile page has not Launched");
@@ -189,6 +193,9 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        // getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
+        // For reference  - for monthly bill uncomment above line & comment from payment mode pre-authorized till the expiry year line 100 to 106
+
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
@@ -196,6 +203,7 @@ public class RogersCH_TC_024_StandaloneInternet_BuyInternetOfferTest extends Bas
         getRogersPaymentOptionsPage().setCVV();
         getRogersPaymentOptionsPage().selectExpiryMonth();
         getRogersPaymentOptionsPage().selectExpiryYear();
+
         reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
 

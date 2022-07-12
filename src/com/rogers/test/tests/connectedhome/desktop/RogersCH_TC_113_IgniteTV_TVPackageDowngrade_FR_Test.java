@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_113_IgniteTV_TVPackageDowngrade_FR_Test extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH"})
+    @Test
     public void checkSolarisTVPackageDowngrade()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
