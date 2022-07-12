@@ -24,7 +24,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_PotgShipping_Test extends BaseTe
     }
 
     @Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
-    public void rogersAalFinPlanPotgTest() {
+    public void tc16rogersAalFinPlanPotgTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");

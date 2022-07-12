@@ -13,10 +13,10 @@ import java.lang.reflect.Method;
 /**
  * TC14 - Regression - Rogers HUP BOPIS
  */
-class RogersBFA_TC14_Consumer_HUPShareTermBopisML_Test extends BaseTestClass {
+class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void rogersHUPShareTermBopisMLTest() {
+    public void tc14rogersHUPShareTermBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -54,19 +54,23 @@ class RogersBFA_TC14_Consumer_HUPShareTermBopisML_Test extends BaseTestClass {
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc14HUPShareTermBopisML.getDataOptionIndex()),this.getClass().getSimpleName());
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayPlanSelection(getRogersPlanConfigPage().getAutoPayPlanIndex("MSF"),this.getClass().getSimpleName()),
+                "Autopay plan is selected successfully","Autopay plan is not selected");
         reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-        getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayDiscountInCartSummary(),"AutoPay discount is added in cart summary","AutoPay is not added in cart summary");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
-        reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-                "Billing Address is not selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
+        getRogersCheckoutPage().enterBankDetails();
+        getRogersCheckoutPage().clkAutoPayConsentCheckBox();
+        getRogersCheckoutPage().clkBillingContinueButton();
+
         reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
