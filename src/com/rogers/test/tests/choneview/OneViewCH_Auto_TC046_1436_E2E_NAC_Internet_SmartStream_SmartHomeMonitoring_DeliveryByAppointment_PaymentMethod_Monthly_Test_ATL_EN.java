@@ -66,27 +66,20 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 		reporter.reportLogWithScreenshot("Select delivery by appointment");
 
 		// Install Type - Delivery By Appointment
-
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
-//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-//		reporter.reportLogWithScreenshot(".enter Email Mail Address");
-//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
-//		getCreditCheckPage().clickDigitalFrontline();
-//		reporter.reportLogWithScreenshot("front line");
-//		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//		reporter.reportLogWithScreenshot("entered billing details");
-		// Payment Method - Monthly
 
+		// Payment Method - Monthly
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
@@ -94,7 +87,6 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -103,11 +95,8 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDInternetSmartStremSmartHomeMonitoring(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void afterTest() {
-//		closeSession();
-//	}
-
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 }
-
-

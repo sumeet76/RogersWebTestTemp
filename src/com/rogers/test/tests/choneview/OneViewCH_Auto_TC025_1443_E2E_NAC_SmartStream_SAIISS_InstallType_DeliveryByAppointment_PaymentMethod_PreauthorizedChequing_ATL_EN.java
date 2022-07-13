@@ -66,23 +66,23 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_InstallType_De
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+
+		// Install Type - Delivery By appointment
+		reporter.reportLogWithScreenshot("Select Delivery By Appointment");
+		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing and payment");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("digital front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("payment details entered");
-	/*	getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("digital front line");
 
-
+		// Payment Method - Pre-Authorized Cheque
 		getCreditCheckPage().selectPaymentOption(2);
 		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
 		getRogersOVCheckoutPage().enterTransitNumber("00333");
@@ -90,15 +90,13 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_InstallType_De
 		getRogersOVCheckoutPage().enterInstitutionNumber("003");
 		reporter.reportLogWithScreenshot("Institution Number");
 		getRogersOVCheckoutPage().enterAccountNumber("1234003");
-		reporter.reportLogWithScreenshot("Account Number");*/
-
+		reporter.reportLogWithScreenshot("Account Number");
 
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
