@@ -125,6 +125,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//img[@alt='Image of Disney+']")
 	WebElement imgDisneyBanner;
 
+	@FindBy(xpath="//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']")
+	WebElement txtGWP;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
 	WebElement chkbox150IgniteStreaming;
 
@@ -511,7 +514,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,60);
 	}
 
-
+	/**
+	 * To verify the PSEF promotion
+	 * @return true if PSEF promotion available else false
+	 * @author Manpreet.Kaur3
+	 */
 	public Boolean verifyDisneyImage() {
 		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 60);
 	}
@@ -525,4 +532,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return chkbox150IgniteStreaming.isSelected();
 	}
 
+	/**
+	 * To verify the GWP tag
+	 * @return true if GWP tag available else false
+	 * @author Manpreet.Kaur3
+	 */
+    public boolean verifyGWPTag() {
+		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
+    }
 }
