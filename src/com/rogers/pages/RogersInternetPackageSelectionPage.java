@@ -107,13 +107,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
 
-	@FindBy(xpath = "//span[text()='Have a promo code?']")
+	@FindBy(xpath = "//p[text()='Have a promo code?']")
 	WebElement btnPromoCode;
 
-	@FindBy(xpath = "//div[@class='expanded']//input[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//input[@id='promoCodeInput']")
 	WebElement txtPromoCodeFormInput;
 
-	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@id='promoCodeInput']/..")
 	WebElement txaPromoCodeContainer;
 
 	@FindBy(xpath = "//span[contains(text(),'Check') or contains(text(),'Chèque')]/ancestor::button")
@@ -474,7 +474,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPromoCodeButton() {
-		return getReusableActionsInstance().isElementVisible(btnPromoCode,60);
+		getReusableActionsInstance().waitForElementVisibility(btnPromoCode, 90);
+		return getReusableActionsInstance().isElementVisible(btnPromoCode,20);
 	}
 
 	/**

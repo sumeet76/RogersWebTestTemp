@@ -30,7 +30,7 @@ public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErro
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkOrganicFlowViaSAI_ValidateErrorMessageTest() throws InterruptedException {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        reporter.reportLogWithScreenshot("clicked Rogers Easy Internet");
         getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
