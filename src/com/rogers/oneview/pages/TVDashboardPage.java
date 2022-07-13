@@ -60,6 +60,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnHeader;
 
+	@FindBy(xpath = "//h1[@translate='global.label.tv']")
+	WebElement TvLabel;
+
 	@FindBy(xpath = "//div[@class='header']")
 	WebElement icnFooter;
 
@@ -700,7 +703,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnChangePackage, 120).click();
 	}
 
-
 	/**
 	 * Clicks select button on the channel to Add section
 	 *
@@ -866,6 +868,22 @@ public class TVDashboardPage  extends BasePageClass {
 	public boolean verifyHeader() {
 		getReusableActionsInstance().waitForElementVisibility(icnHeader, 120);
 		return getReusableActionsInstance().isElementVisible(icnHeader);
+	}
+	/**
+	 * Verify the TV Label
+	 *
+	 * @return true if TV Label is available on TV DashboardPage, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyManageChannelsAndThemepacks() {
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 120);
+		return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks);
+	}
+
+	public boolean verifyChangePackage(){
+		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
+		return getReusableActionsInstance().isElementVisible(btnChangePackage);
 	}
 
 	/**
