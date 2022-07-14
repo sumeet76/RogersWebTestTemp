@@ -36,11 +36,12 @@ public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErro
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetOffersPage(),"Launched the Internet-bundles page","Internet-bundles page has not displayed");
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyPromoCodeButton(),"Promo Code Button has displayed","Promo Code Button has not displayed");
         getRogersInternetPackageSelectionPage().clkPromoCode();
@@ -59,7 +60,7 @@ public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErro
 	}
 
 
-	@AfterMethod(alwaysRun = true)
+	 @AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
 	}

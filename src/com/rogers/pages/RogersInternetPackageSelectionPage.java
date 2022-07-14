@@ -122,6 +122,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
+	@FindBy(xpath = "//button[@aria-label='Take the quiz']")
+	WebElement btnTakeAquiz;
+
 	@FindBy(xpath = "//img[@alt='Image of Disney+']")
 	WebElement imgDisneyBanner;
 
@@ -474,10 +477,19 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPromoCodeButton() {
-		getReusableActionsInstance().waitForElementVisibility(btnPromoCode, 90);
-		return getReusableActionsInstance().isElementVisible(btnPromoCode,20);
+		return getReusableActionsInstance().isElementVisible(btnPromoCode,40);
 	}
 
+	/**
+	 * Verify the Internet header
+	 * @return true if the internet header is displayed  else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyInternetOffersPage() {
+		//getReusableActionsInstance().staticWait(5000);
+		return getReusableActionsInstance().isElementVisible(headerInternet, 90);
+
+	}
 	/**
 	 * Click on the Promo Code Button
 	 * @author chinnarao.vattam
@@ -512,7 +524,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPromoCodeError() {
-		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,60);
+		getReusableActionsInstance().waitForElementVisibility(imgInvalidPromoCodeError, 60);
+		Boolean isPromoCodeInvalid = getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,10);
+		getReusableActionsInstance().scrollToElement(btnTakeAquiz);
+		return isPromoCodeInvalid;
 	}
 
 	/**
