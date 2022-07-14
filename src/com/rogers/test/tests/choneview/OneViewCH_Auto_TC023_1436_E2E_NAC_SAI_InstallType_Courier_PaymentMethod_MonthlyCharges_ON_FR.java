@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC023_1436_E2E_NAC_SAI_InstallType_Courier_PaymentMethod_MonthlyCharges_ON_FR extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1436_TC01_E2E_NAC_SAI_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -22,6 +22,7 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_PaymentMethod_CreditCard_Test 
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		getAccountOverViewPage().setLanguageFrench();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -56,28 +57,29 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_SAI_PaymentMethod_CreditCard_Test 
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in person delivery");
+
+		// Install Type - Courier Delivery
+		reporter.reportLogWithScreenshot(" Select Courier delivery");
 		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("entered billing details");
+
+		// Payment Method - Monthly Charges
+		getCreditCheckPage().selectPaymentOption(1);
+		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
