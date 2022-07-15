@@ -30,17 +30,18 @@ public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErro
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void checkOrganicFlowViaSAI_ValidateErrorMessageTest() throws InterruptedException {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        reporter.reportLogWithScreenshot("clicked Rogers Easy Internet");
         getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetOffersPage(),"Launched the Internet-bundles page","Internet-bundles page has not displayed");
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyPromoCodeButton(),"Promo Code Button has displayed","Promo Code Button has not displayed");
         getRogersInternetPackageSelectionPage().clkPromoCode();
@@ -59,7 +60,7 @@ public class RogersCH_TC_091_SAI_InvalidPromocode_OrganicFlowViaSAI_ValidateErro
 	}
 
 
-	@AfterMethod(alwaysRun = true)
+	 @AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
 	}

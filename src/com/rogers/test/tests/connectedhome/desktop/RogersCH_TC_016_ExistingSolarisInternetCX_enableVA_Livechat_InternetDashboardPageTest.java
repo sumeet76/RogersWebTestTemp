@@ -36,9 +36,6 @@ public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_Interne
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void checkVAicononInternetDashboard() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
@@ -47,9 +44,6 @@ public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_Interne
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");

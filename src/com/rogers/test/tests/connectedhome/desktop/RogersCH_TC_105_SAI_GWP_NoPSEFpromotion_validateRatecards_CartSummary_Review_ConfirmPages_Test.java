@@ -32,10 +32,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_validateRatecards_CartSummary_Review_ConfirmPages_Test extends BaseTestClass {
+public class RogersCH_TC_105_SAI_GWP_NoPSEFpromotion_validateRatecards_CartSummary_Review_ConfirmPages_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionCH"})
-    public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
+    public void checkGWPcartSummarySAI() {
         reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
         getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
@@ -50,16 +50,12 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
-        reporter.reportLogWithScreenshot("Click SS Availability");
-        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyIgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
-        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+        getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "Disney Banner verified", "Disney banner not verified");
+        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -112,7 +108,8 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
         getRogersPaymentOptionsPage().clkPaymentConfirm();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "Disney Banner verified", "Disney banner not verified");
+        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -141,10 +138,10 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
     }
 
 
-   /* @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    } */
+    }
 
 
 

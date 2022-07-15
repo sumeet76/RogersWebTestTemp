@@ -107,13 +107,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
 
-	@FindBy(xpath = "//span[text()='Have a promo code?']")
+	@FindBy(xpath = "//p[text()='Have a promo code?']")
 	WebElement btnPromoCode;
 
-	@FindBy(xpath = "//div[@class='expanded']//input[contains(@id,'ds-form-input-id-')]")
+	@FindBy(xpath = "//input[@id='promoCodeInput']")
 	WebElement txtPromoCodeFormInput;
 
-	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@id='promoCodeInput']/..")
 	WebElement txaPromoCodeContainer;
 
 	@FindBy(xpath = "//span[contains(text(),'Check') or contains(text(),'Chèque')]/ancestor::button")
@@ -122,8 +122,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
+	@FindBy(xpath = "//button[@aria-label='Take the quiz']")
+	WebElement btnTakeAquiz;
+
 	@FindBy(xpath = "//img[@alt='Image of Disney+']")
 	WebElement imgDisneyBanner;
+
+	@FindBy(xpath="//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']")
+	WebElement txtGWP;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
 	WebElement chkbox150IgniteStreaming;
@@ -471,9 +477,19 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPromoCodeButton() {
-		return getReusableActionsInstance().isElementVisible(btnPromoCode,60);
+		return getReusableActionsInstance().isElementVisible(btnPromoCode,40);
 	}
 
+	/**
+	 * Verify the Internet header
+	 * @return true if the internet header is displayed  else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyInternetOffersPage() {
+		//getReusableActionsInstance().staticWait(5000);
+		return getReusableActionsInstance().isElementVisible(headerInternet, 90);
+
+	}
 	/**
 	 * Click on the Promo Code Button
 	 * @author chinnarao.vattam
@@ -508,10 +524,17 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPromoCodeError() {
-		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,60);
+		getReusableActionsInstance().waitForElementVisibility(imgInvalidPromoCodeError, 60);
+		Boolean isPromoCodeInvalid = getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,10);
+		getReusableActionsInstance().scrollToElement(btnTakeAquiz);
+		return isPromoCodeInvalid;
 	}
 
-
+	/**
+	 * To verify the PSEF promotion
+	 * @return true if PSEF promotion available else false
+	 * @author Manpreet.Kaur3
+	 */
 	public Boolean verifyDisneyImage() {
 		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 60);
 	}
@@ -525,4 +548,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return chkbox150IgniteStreaming.isSelected();
 	}
 
+	/**
+	 * To verify the GWP tag
+	 * @return true if GWP tag available else false
+	 * @author Manpreet.Kaur3
+	 */
+    public boolean verifyGWPTag() {
+		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
+    }
 }
