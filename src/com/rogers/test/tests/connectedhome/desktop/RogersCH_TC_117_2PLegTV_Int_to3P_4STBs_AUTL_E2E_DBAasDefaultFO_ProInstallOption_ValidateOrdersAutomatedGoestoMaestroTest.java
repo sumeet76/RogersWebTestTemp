@@ -51,45 +51,46 @@ import java.util.Map;
 
 public class RogersCH_TC_117_2PLegTV_Int_to3P_4STBs_AUTL_E2E_DBAasDefaultFO_ProInstallOption_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
 
-    @Test//(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-    public void checkTVPackageUpgradeTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+    @Test
+    public void check2PLegacyTo3PIgniteMigrationTest() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc117_Legacy2PTVToIgnite3P.accountDetails.getBan());
+        reporter.reportLogWithScreenshot("Skip popup");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+            reporter.reportLogWithScreenshot("Select an account.");
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
+        }
+        reporter.reportLogWithScreenshot("Account Selected");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkIgniteTVExistingCustomer();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
+        //getRogersHomePage().clkIgniteTVExistingCustomer();
+        //reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getDriver().get(System.getProperty("QaUrl") + "/web/consumer/ignite-bundles/tv-internet");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        //getRogersHomePage().clkNoThnx();
         getRogersHomePage().clkServiceability();
         getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        //getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("Selected Address on file");
         getRogersHomePage().clkUseAddress();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
+       /* getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        getRogersIgniteTVBuyPage().selectSolarisPremier();
+        getRogersIgniteTVBuyPage().selectSolarisPremier(); */
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
-        reporter.reportLogWithScreenshot("Launched the information popup");
         getRogersIgniteTVBuyPage().clkIUnderstand();
-
+        reporter.reportLogWithScreenshot("Clicked yes on the information popup");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         getRogersIgniteTVBuyPage().clkHomePhone();
@@ -164,15 +165,10 @@ public class RogersCH_TC_117_2PLegTV_Int_to3P_4STBs_AUTL_E2E_DBAasDefaultFO_ProI
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
-        /**
-         * DB Validations in the subscriber table
-         */
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
-        reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
+
+
     }
 
     @BeforeMethod(alwaysRun = true)
