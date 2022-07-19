@@ -57,9 +57,11 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 */
 	public void chooseAddon(String AddOnEn, String AddOnFr)
 	{
-		By addonlocator= By.xpath("//span[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div/parent::div/following-sibling::div/child::div[1]/child::div/child::button");
+		//By addonlocator= By.xpath("//h3[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div[@class='card-content']//div[@class='add-on-button-set']//button");
+		By addonlocator= By.xpath("//span[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/ancestor::div[@class='flip-card']//child::button");
 		getReusableActionsInstance().getWhenReady(addonlocator,60);
 		WebElement addon= getDriver().findElement(addonlocator);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(addon);
 		getReusableActionsInstance().executeJavaScriptClick(addon);
 	}
 

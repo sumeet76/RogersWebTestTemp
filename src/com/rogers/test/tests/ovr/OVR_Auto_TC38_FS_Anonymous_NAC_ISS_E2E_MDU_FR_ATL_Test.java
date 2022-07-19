@@ -23,7 +23,7 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp("Trci21.Test@trci.trogers.ca", "Ramp@720");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_MDU_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");

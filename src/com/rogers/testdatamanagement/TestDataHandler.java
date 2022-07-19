@@ -366,6 +366,10 @@ public class TestDataHandler {
 	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
 	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
 	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
+	public static OvrReusableData tc_41_Ovr_Mig_Data_1p_to_SAI;
+	public static OvrReusableData tc_42_Ovr_Mig_Data_1p_to_ISS;
+	public static OvrReusableData tc_43_Ovr_Mig_Data_1p_to_2p_TV_INT;
+	public static OvrReusableData tc_44_Ovr_Mig_Data_1p_to_3p;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -801,5 +805,9 @@ public class TestDataHandler {
 		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
 		tc_35_DashboardValidation_Ignite_3P = YamlHandler.getOvrReusableData("TC35_DashboardValidation_Ignite3P");
 		tc_36_DashboardValidation_Ignite_ISS = YamlHandler.getOvrReusableData("TC36_DashboardValidation_IgniteISS");
+		tc_41_Ovr_Mig_Data_1p_to_SAI = YamlHandler.getOvrReusableData("TC41_Mig_Data_1P_to_SAI");
+		tc_42_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC42_Mig_Data_1p_to_ISS");
+		tc_43_Ovr_Mig_Data_1p_to_2p_TV_INT = YamlHandler.getOvrReusableData("TC43_Mig_Data_1p_to_2p_TV_INT");
+		tc_44_Ovr_Mig_Data_1p_to_3p = YamlHandler.getOvrReusableData("TC44_Mig_Data_1p_to_3p");
 	}
 }
