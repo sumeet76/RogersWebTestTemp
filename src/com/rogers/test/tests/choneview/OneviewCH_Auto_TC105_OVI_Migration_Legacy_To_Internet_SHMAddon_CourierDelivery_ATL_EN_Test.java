@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges_Test extends BaseTestClass {
+public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test extends BaseTestClass {
     @Test(groups = {"RMigration","RegressionCHOV"})
-    public void oneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyCharges_Test(){
+    public void oneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHMInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHMInternet());
         reporter.reportLogWithScreenshot("OneviewLaunched");
 
@@ -24,6 +24,7 @@ public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyChar
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().refreshContinue();
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -37,6 +38,7 @@ public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyChar
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.reportLogWithScreenshot("review terms and condition");
         //getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
@@ -46,7 +48,11 @@ public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyChar
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
+
+        getRogersIgniteBundlesPage().addSHMAddOn();
+        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -55,6 +61,7 @@ public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyChar
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
+
         reporter.reportLogWithScreenshot("evaluation form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -64,20 +71,16 @@ public class    OneviewCH_Auto_OVI_Migration_FromLegacyToSHMInternet_MonthlyChar
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("Delivery By Appointment");
-        getCreditCheckPage().selectDeliveryByAppointment();
-        reporter.reportLogWithScreenshot("click Date Time Radio Button");
-        getFulfillmentPage().clkFirstAvailableAppointment();
-        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-        reporter.reportLogWithScreenshot(".enter Special Instructions");
-        getCreditCheckPage().enterSpecialInstructions();
-        getCreditCheckPage().clkContinueInstallationOption();
+        getCreditCheckPage().clkCourierDelivery();
+        getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("in person delivery");
+        getPaymentOptionsPage().clkContinue();
+
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().selectPaymentOption(1);
