@@ -69,11 +69,6 @@ public class OneViewCH_Auto_1639_TC01_E2E_Migration3P_To_3P_KeepSameNumber_Test 
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 
-
-		/*Caller Information*/
-		reporter.softAssert(getCallerInformationPage().callerInfoPageLoad(),"Caller Information Review page loaded successfully","Caller Information page not loaded");
-		getCallerInformationPage().goToPageBottom();
-		getCallerInformationPage().clickContinue();
 /*
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
@@ -82,7 +77,7 @@ public class OneViewCH_Auto_1639_TC01_E2E_Migration3P_To_3P_KeepSameNumber_Test 
 		getPaymentOptionsPage().clkContinue();*/
 
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();

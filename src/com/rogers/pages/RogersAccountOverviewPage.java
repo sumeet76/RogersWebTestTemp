@@ -704,7 +704,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public Boolean isAccountSelectionPopupDisplayed() {
-		return getReusableActionsInstance().isElementVisible(headerAccountSelect);
+		return getReusableActionsInstance().isElementVisible(headerAccountSelect, 30);
 	}
 
 	/**

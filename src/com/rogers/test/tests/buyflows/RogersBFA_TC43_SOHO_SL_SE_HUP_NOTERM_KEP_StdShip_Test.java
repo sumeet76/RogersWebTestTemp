@@ -47,6 +47,7 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
                     "Continue button on the device config page is not present");
             getRogersDeviceConfigPage().clickContinueButton();
 
+            reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
             getRogersPlanConfigPage().clkRadioButtonNoTerm();
             reporter.reportLogPassWithScreenshot("No term selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();

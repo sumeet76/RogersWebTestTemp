@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinancingInTerm_CreatingSharedGroup_DTTPlans_Test extends BaseTestClass {
+public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinInTerm_CreatingSharedGroup_AutoPayPercent_DTTPlans_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -59,18 +59,24 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinancingInTerm_CreatingShared
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayPlanSelection(getRogersPlanConfigPage().getAutoPayPlanIndex("PERCENT"),this.getClass().getSimpleName()),
+                "Autopay plan is selected successfully","Autopay plan is not selected");
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayDiscountInCartSummary(),"AutoPay discount is added in cart summary","AutoPay is not added in cart summary");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
                 "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
         reporter.reportLogWithScreenshot("Additional line data and talk selected");
         getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getNewPlanType());
+        reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
+        getRogersCheckoutPage().enterBankDetails();
+        getRogersCheckoutPage().clkAutoPayConsentCheckBox();
+        getRogersCheckoutPage().clkBillingContinueButton();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");

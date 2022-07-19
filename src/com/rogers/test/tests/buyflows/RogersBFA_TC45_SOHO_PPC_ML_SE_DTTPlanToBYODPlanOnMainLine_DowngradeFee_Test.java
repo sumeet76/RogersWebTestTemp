@@ -57,6 +57,8 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        reporter.reportLogWithScreenshot("Additional options page is displayed");
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");

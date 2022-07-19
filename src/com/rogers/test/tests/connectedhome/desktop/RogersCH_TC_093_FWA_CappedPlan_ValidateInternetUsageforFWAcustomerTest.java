@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_093_FWA_CappedPlan_ValidateInternetUsageforFWAcustomerTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH"})
+	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH"})
     public void checkCappedPlan_ValidateInternetUsageforFWAcustomer() {
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc93_FWACappedPlan.getUsername());

@@ -25,7 +25,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermNpotgSS_HighRisk_DBValidation_Test 
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})
-    public void rogersNACTermNpotgSSTest() throws InterruptedException {
+    public void tc01rogersNACTermNpotgSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         String deviceName=TestDataHandler.tc01NACTermNpotgSS.getDeviceName();

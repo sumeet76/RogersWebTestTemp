@@ -35,7 +35,7 @@ public class OneViewCH_Auto_OVS2_NAC_SAI_AddBothFreeAndChargeablePods_Test exten
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-        reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
+    //    reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
 
 //        getRogersOVOrderReviewPage().clickSubmitOrder();
 //        reporter.reportLogWithScreenshot("click Submit Order");

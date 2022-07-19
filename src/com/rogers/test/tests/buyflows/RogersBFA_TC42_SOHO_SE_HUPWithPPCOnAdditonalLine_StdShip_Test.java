@@ -52,6 +52,7 @@ public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test exten
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
 
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
