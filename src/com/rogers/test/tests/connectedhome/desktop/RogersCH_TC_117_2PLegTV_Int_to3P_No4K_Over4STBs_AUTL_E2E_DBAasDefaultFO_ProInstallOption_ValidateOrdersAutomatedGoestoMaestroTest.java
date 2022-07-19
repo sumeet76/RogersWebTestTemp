@@ -73,7 +73,9 @@ public class RogersCH_TC_117_2PLegTV_Int_to3P_No4K_Over4STBs_AUTL_E2E_DBAasDefau
         getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Clicked on View Bundles");
         getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Home phone selected");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         //getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -152,6 +154,7 @@ public class RogersCH_TC_117_2PLegTV_Int_to3P_No4K_Over4STBs_AUTL_E2E_DBAasDefau
         getRogersTechInstallPage().selectPreferredTimeSlot();
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("Scheduled Appointment");
         getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -172,9 +175,6 @@ public class RogersCH_TC_117_2PLegTV_Int_to3P_No4K_Over4STBs_AUTL_E2E_DBAasDefau
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
-
-
-
 
     }
 

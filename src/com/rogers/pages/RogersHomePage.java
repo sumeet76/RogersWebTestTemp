@@ -708,10 +708,12 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
+		getReusableActionsInstance().staticWait(10000);
 	if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
 		{
 		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
 		}
+
 	getReusableActionsInstance().getWhenReady(btnServiceability, 60).click();
 	}
 
