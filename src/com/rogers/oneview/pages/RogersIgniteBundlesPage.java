@@ -175,13 +175,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Internet')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Home Phone')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Home Phone')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Battery Back-Up,')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Battery Back-Up,')]")
 	WebElement reviewBattery;
 
 	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";

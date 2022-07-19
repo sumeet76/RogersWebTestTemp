@@ -48,7 +48,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath="(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
 	WebElement IncompatibleRadioBTn2;
 
-	@FindBy(xpath = "//h2[@translate='global.label.homePhoneAddons']")
+	@FindBy(xpath = "//span[@translate='global.label.homePhoneAddons']")
 	WebElement homePhoneAddOnsHeader;
 
 	/*
@@ -57,7 +57,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 */
 	public void chooseAddon(String AddOnEn, String AddOnFr)
 	{
-		By addonlocator= By.xpath("//h3[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div[@class='card-content']//div[@class='add-on-button-set']//button");
+		By addonlocator= By.xpath("//span[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div/parent::div/following-sibling::div/child::div[1]/child::div/child::button");
 		getReusableActionsInstance().getWhenReady(addonlocator,60);
 		WebElement addon= getDriver().findElement(addonlocator);
 		getReusableActionsInstance().executeJavaScriptClick(addon);
@@ -67,7 +67,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 
 	public void removeAddon(String AddOnEn, String AddOnFr)
 	{
-		By addonlocator= By.xpath("//h3[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div[@class='card-content']//div[@class='add-on-button-set']//span[contains(text(),'Remove') or contains(text(),'Retirer')]//ancestor::button");
+		By addonlocator= By.xpath("//span[contains(text(),'"+AddOnEn+"') or contains(text(),'"+AddOnFr+"')]/parent::div/parent::div/following-sibling::div/child::div[1]/child::div/child::button");
 		getReusableActionsInstance().getWhenReady(addonlocator,60);
 		WebElement addon= getDriver().findElement(addonlocator);
 		getReusableActionsInstance().executeJavaScriptClick(addon);
