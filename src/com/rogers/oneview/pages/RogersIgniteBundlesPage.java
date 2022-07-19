@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
+	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -172,16 +172,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //following::div[contains(text(),'TV')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //following::div[contains(text(),'Internet')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //following::div[contains(text(),'Home Phone')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Home Phone')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //following::div[contains(text(),'Battery Back-Up,')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Battery Back-Up,')]")
 	WebElement reviewBattery;
 
 	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
