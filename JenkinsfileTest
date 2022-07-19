@@ -79,6 +79,8 @@ pipeline {
         XRAY_PROD_CRED_PSW = credentials('XRAY_PROD_CRED_PSW')
         MaestroLoginID= credentials('MaestroLoginID')
         MaestroUsrID= credentials('MaestroUsrID')
+        champLoginUserName = credentials('champLoginUserName')
+        champLoginPassword = credentials('champLoginPassword')
     }
     stages {
         stage('Run CI?') {
