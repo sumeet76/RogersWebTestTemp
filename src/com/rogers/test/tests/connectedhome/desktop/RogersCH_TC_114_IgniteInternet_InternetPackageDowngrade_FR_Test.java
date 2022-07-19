@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_114_IgniteInternet_InternetPackageDowngrade_FR_Test extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH"})
+    @Test
     public void checkInternetPackageDowngradeFR()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -45,11 +45,12 @@ public class RogersCH_TC_114_IgniteInternet_InternetPackageDowngrade_FR_Test ext
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
+        getRogersSolarisTVDashboardPage().clkFR();
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         //getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         //getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");

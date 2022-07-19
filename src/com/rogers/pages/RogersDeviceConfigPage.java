@@ -127,7 +127,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public void clickContinueButton() {
-        if (getReusableActionsInstance().isElementVisible(continueButton))
+        if (getReusableActionsInstance().isElementVisible(continueButton,60))
             getReusableActionsInstance().clickWhenReady(continueButton);
         getReusableActionsInstance().staticWait(3000);
     }

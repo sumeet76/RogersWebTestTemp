@@ -32,30 +32,30 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_validateRatecards_CartSummary_Review_ConfirmPages_Test extends BaseTestClass {
+public class RogersCH_TC_105_SAI_GWP_NoPSEFpromotion_validateRatecards_CartSummary_Review_ConfirmPages_Test extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH",""})
-    public void checkServiceabilitycheckRemovedClickOnLearnMoreOnISSbannerSAIOfferPageAddresShouldbeSticky() {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+    @Test(groups = {"RegressionCH"})
+    public void checkGWPcartSummarySAI() {
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
         getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
-        //getRogersHomePage().clkOnlyInternet();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
+        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -89,15 +89,11 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -110,10 +106,10 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
         getRogersPaymentOptionsPage().selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
-
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-
+        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -126,7 +122,6 @@ public class RogersCH_TC_105_ISS_GWP_Select1GBSmartstream_NoPSEFpromotion_valida
         /**
          * DB Validations in the subscriber table
          */
-
         Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 

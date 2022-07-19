@@ -144,7 +144,7 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
     }
 
 
-    @Test(groups = {"DryRunCH","RegressionCH",""})
+    @Test(groups = {"RegressionCH",""})
     public void checkNACAbandonChannelvalidation2p() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

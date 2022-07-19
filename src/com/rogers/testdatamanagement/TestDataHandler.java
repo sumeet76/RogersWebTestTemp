@@ -50,6 +50,7 @@ public class TestDataHandler {
 	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc43_44_digitalTVAccount;
 	public static AccountData tc16_17_18_19_SolarisInternetAccount;
+	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
 	public static AccountData tc05_IgniteTV4Plus1Account;
 	public static AccountData tc41IgniteTVAccount;
@@ -147,6 +148,9 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc06NACByodTermBopis;
 	public static RedesignRpotgData tc28_RPP_NACTermPotgShipping;
 	public static RedesignRpotgData tc29_RPP_NACByod_StdShipping_QCProvince;
+	public static RedesignRpotgData tc47_1P_Ignite_NACTermTermBopis;
+	public static RedesignRpotgData tc48_Legacy_NACByod;
+	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -350,6 +354,9 @@ public class TestDataHandler {
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
 	public static AccountData OVS2_Change_TV_Internet_2P;
+	public static AccountData Serve_FWACx_UpgradeInternetPlan;
+	public static AccountData Serve_FWACx_DowngradeInternetPlan;
+	public static AccountData IgniteMappedOffersSAItoSAI;
 
 	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
 	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
@@ -469,7 +476,8 @@ public class TestDataHandler {
 		tcm06_IgniteTVAccount=YamlHandler.getCableAccountData("TCM06_IgniteTVAccount");
 		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc16_17_18_19_SolarisInternetAccount = YamlHandler.getCableAccountData("TC16_17_18_19_SolarisInternetAccount");
-    	tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
+		tc122_2pInternetAccount = YamlHandler.getCableAccountData("TC122_2P_InternetAccount");
+		tc37_internetAccountUpgrade   = YamlHandler.getCableAccountData("TC37_InternetAccountUpgrade");
 		tc23_24_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_24_StandaloneInternetAccountforUpgrade");
     	tc15_SolarisInternetAccountWithUsage = YamlHandler.getCableAccountData("TC15_SolarisInternetAccountWithUsage");
 		tc20_SolarisInternetAccountForUpgrade = YamlHandler.getCableAccountData("TC20_SolarisInternetAccountForUpgrade");
@@ -644,6 +652,9 @@ public class TestDataHandler {
 		BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping = YamlHandler.getAALdata("BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping");
 		BFA_ProdTest_tc05_HUPWithPPC_StdShipping = YamlHandler.getHUPdata("BFA_ProdTest_tc05_HUPWithPPC_StdShipping");
 		BFA_ProdTest_tc06_PPC_FinancingPlan = YamlHandler.getPPCdata("BFA_ProdTest_tc06_PPC_FinancingPlan");
+		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
+		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
+		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
@@ -712,7 +723,7 @@ public class TestDataHandler {
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
 		TC032_SAI_AddingSmartStream =YamlHandler.getOVAccountData("TC32_SAI_AddingSmartstream");
 		TC030_Internet_PackageUpgrade =YamlHandler.getOVAccountData("TC_030_Internet_PackageUpgrade");
-		//SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
+		SUS_15702_TC01_Validation_Of_CallerID  =YamlHandler.getOVAccountData("SUS_15702_TC01_Validation_Of_CallerID");
 		SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer =YamlHandler.getOVAccountData("SUS_16553_TC01_Validation_of_Exchange_Flex_Channels_Existing_Customer");
 		RHPManage_AddOns =YamlHandler.getOVAccountData("RHPManageAddon");
 		InternetDashboardSupportLinks=YamlHandler.getOVAccountData("InternetDashboardSupportLinks");
@@ -761,6 +772,9 @@ public class TestDataHandler {
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
 		OVS2_Change_TV_Internet_2P=YamlHandler.getOVAccountData("OVS2_Change_TV_Internet_2P");
+		Serve_FWACx_UpgradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_UpgradeInternetPlan");
+		Serve_FWACx_DowngradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_DowngradeInternetPlan");
+		IgniteMappedOffersSAItoSAI = YamlHandler.getOVAccountData("IgniteMappedOffersSAItoSAI");
 	}
 
 	private static void ovrDataInit() throws FileNotFoundException {

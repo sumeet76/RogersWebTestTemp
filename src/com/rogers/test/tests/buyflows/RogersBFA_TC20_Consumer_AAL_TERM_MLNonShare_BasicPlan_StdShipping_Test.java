@@ -24,7 +24,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_MLNonShare_BasicPlan_StdShipping_T
     }
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void rogersAalTermMLNonSEBasicPlanSSTest() {
+    public void tc20rogersAalTermMLNonSEBasicPlanSSTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

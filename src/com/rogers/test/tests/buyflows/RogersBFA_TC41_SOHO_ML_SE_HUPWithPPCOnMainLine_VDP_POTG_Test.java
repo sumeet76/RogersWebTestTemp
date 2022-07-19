@@ -51,8 +51,7 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test extend
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
 
-        reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
-                "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");

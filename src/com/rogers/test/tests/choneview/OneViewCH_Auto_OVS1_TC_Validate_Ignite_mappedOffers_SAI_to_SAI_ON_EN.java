@@ -10,18 +10,22 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest extends BaseTestClass {
+public class OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_EN extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
-    public void checkInternetPackageDowngrade() {
+    public void OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(),TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteMappedOffersSAItoSAI.accountDetails.getBan(),TestDataHandler.IgniteMappedOffersSAItoSAI.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
-        reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        getInternetDashboardPage().clickViewOffers();
+        reporter.reportLogWithScreenshot("view offers link clicked");
+        reporter.hardAssert(getInternetDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
+        getInternetDashboardPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Recommended offer selected");
+        getInternetDashboardPage().selectExclusiveOfferAvailable();
+        reporter.reportLogWithScreenshot("recommended offer TV Package selected");
+
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 
@@ -29,10 +33,10 @@ public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest exten
         getInternetDashboardPage().selectRadioImmediate();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -45,7 +49,7 @@ public class OneViewCH_Auto_TC_029_Internet_PackageDowngrade_ImmediateTest exten
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

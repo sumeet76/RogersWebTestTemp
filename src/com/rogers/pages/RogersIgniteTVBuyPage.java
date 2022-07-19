@@ -204,7 +204,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnStarterPackageTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex20PackageTypeOfContract;
 
 	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
@@ -487,8 +487,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Flex 20 + Sports Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 

@@ -51,17 +51,13 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_2P_Add_On_ExpressCheckout_PaymentM
 		getRogersIgniteExchangePage().clickSelectButton();
 		reporter.reportLogWithScreenshot("Channel Swapped");
 		getRogersIgniteExchangePage().clkContinue();
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContentPopup();
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteExchangePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
+		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clickAddOnAddToCart();
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("continue from cart summary");
