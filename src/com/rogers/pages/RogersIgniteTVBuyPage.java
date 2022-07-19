@@ -38,7 +38,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindAll({
    			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Order Rogers Ignite Premier online now']/span"),
 			@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/span"),
-			@FindBy(xpath = "//a[@aria-label='Order Rogers Ignite Premier online now']//span[text()='Order online']")})
+			@FindBy(xpath = "//a[@aria-label='Ignite Premier Order online']//span[text()='Order online']")})
 	WebElement btnSolarisPremierPackage;
 
 	@FindAll({
@@ -332,7 +332,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
 	WebElement buttonAddIgniteTVBoxes;
 
-	@FindBy(xpath = "//span[@translate='global.cta.updateCart']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.updateCart']/ancestor::span[@role='text']")
 	WebElement buttonUpdateCart;
 	
 	@FindBy(xpath = "//ds-modal-container[contains(@id,'ds-modal-container')]")
@@ -341,11 +341,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement okayUpgradingToIgnitebundelsModal;
 	
-	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-chevron-down')]")
-	WebElement downChevronCartSummary;
-	
-	@FindBy(xpath = "//span[contains(@class,'ds-icon rds-icon-chevron-up')]")
+	@FindBy(xpath = "//button[@aria-label='Hide your full cart']//span[contains(@class,'rds-icon-chevron-up')]")
 	WebElement upChevronCartSummary;
+	
+	@FindBy(xpath = "//button[@aria-label='View your full cart']//span[contains(@class,'rds-icon-chevron-down')]")
+	WebElement downChevronCartSummary;
 	
 	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[contains(@class,'cms-promotions-gwp ng-tns-c')]")
 	WebElement gwpYourCart;
@@ -428,7 +428,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Chinnarao.vattam
 	 */
 	public void clkChevronUpYourCart() {
-		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 120).click();
+		getReusableActionsInstance().waitForElementTobeClickable(upChevronCartSummary, 60);
+		getReusableActionsInstance().getWhenReady(upChevronCartSummary).click();
 	}
 	
 	/**
@@ -586,13 +587,26 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
 		getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
 	}
+
+	/**
+	 * Click 5 times + to add over 4 STB ignite TV boxes
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkPlusAddOverFourIgniteTVBoxes() {
+		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
+		for(int i = 0; i < 5; i++){
+			getReusableActionsInstance().clickWhenReady(buttonAddIgniteTVBoxes);
+			//getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		}
+	}
 	
 	/**
 	 * To Click Update cart button
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 90).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
 	/**
@@ -847,7 +861,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisPremierPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btnSolarisPremierPackage);
 		getReusableActionsInstance().getWhenReady(btnSolarisPremierPackage, 60).click();
 	}
 

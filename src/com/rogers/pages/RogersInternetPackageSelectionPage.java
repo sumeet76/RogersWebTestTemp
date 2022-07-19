@@ -536,7 +536,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public Boolean verifyDisneyImage() {
-		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 60);
+		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 20);
 	}
 
 	/**
