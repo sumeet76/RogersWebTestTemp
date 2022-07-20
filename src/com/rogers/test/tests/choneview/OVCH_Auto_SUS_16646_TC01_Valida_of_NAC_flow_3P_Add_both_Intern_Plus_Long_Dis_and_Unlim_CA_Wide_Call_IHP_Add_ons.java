@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test extends BaseTestClass {
+public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_Add_ons extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
         reporter.reportLogWithScreenshot("oneview env");
