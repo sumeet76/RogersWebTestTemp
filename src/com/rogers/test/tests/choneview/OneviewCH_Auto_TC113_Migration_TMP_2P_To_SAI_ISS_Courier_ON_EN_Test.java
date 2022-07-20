@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON_EN_Test extends BaseTestClass {
+public class OneviewCH_Auto_TC113_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON_EN_Test() {
+    public void OneviewCH_Auto_TC113_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo2PToSAIISSTMP(), TestDataHandler.migrationData.getContactID2PToSAIISSTMP());
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -79,6 +79,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(), "Credit Check Information Entered", "Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
@@ -86,6 +87,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getPaymentOptionsPage().clkContinue();
+
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(), "Billing And Payment Options displayed", "Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
         getCreditCheckPage().clickDigitalFrontline();
@@ -95,6 +97,7 @@ public class OneViewCH_Auto_OVS2_Validation_Migration_Campaigns_2P_To_SAI_ISS_ON
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("card details entered");
         getPaymentOptionsPage().clkContinue();
+
         reporter.reportLogWithScreenshot("Order Review Page");
         getRogersOVCheckoutPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

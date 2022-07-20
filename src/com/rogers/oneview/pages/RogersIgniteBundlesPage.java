@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
+	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -172,16 +172,16 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
 	WebElement reviewTermsAndCondition;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'TV')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Internet')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Home Phone')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Home Phone')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c166')] //following::div[contains(text(),'Battery Back-Up,')]")
+	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'Battery Back-Up,')]")
 	WebElement reviewBattery;
 
 	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
@@ -308,7 +308,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),'Numéro de compte') or contains(text(),'Account Number')]/following::div[1]")
 	WebElement inputPortInAccountNumberContainer;
 
-	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
+	@FindBy(xpath = "(//span[text()=' Add to cart ']/ancestor::button)[2]")
 	WebElement addOnAddToCart;
 
 	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
@@ -338,10 +338,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "(//span[text()='Smoke & Fire Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
-	@FindBy(xpath = "//span[text()='Add to the order:']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
+	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
 	WebElement additionalSHMAddons;
 
-	@FindBy(xpath = "//span[contains(text(),' Continue ')]")
+	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
 	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -583,6 +583,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton,80);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
@@ -1039,9 +1040,10 @@ public void activateHomePhoneltrPopUp() {
 	*
 	*/
 	public void clickReviewAddons() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(10000);
 		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
-		getReusableActionsInstance().clickWhenReady(reviewAddons);
+		getReusableActionsInstance().executeJavaScriptClick(reviewAddons);
 	}
 	/* To verify the Ignite Home Phone Setup check box
 	* @suganya p
@@ -1148,7 +1150,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 	public void clkContinueInternetAddon()
 	{
-
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
@@ -1159,6 +1161,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickAddOnAddToCart() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(addOnAddToCart, 10);
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().executeJavaScriptClick(addOnAddToCart);
@@ -1285,20 +1288,15 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void addSHMAddOn(){
-		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
-		//getReusableActionsInstance().scrollToElementAndClick(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
-		//getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons, 20);
-
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
+			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
-			getReusableActionsInstance().waitForElementTobeClickable(shmAddonContinue,10);
 			getReusableActionsInstance().executeJavaScriptClick(shmAddonContinue);
 		}
-
-		getReusableActionsInstance().staticWait(6000);
 	}
 	/**
 	 * Expands the Monthly charges on cart Summary page and validates SHM add ons charges are present
