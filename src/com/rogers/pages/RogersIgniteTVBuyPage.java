@@ -153,10 +153,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement hvr4kChannels;
 
-	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon d-inline-flex rds-icon-close']")
+		@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement hvrClose;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span[@class='ds-icon rds-icon-info']")
+	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span")
 	WebElement hvrFelxChannels;
 
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]")
@@ -165,7 +165,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]/ancestor::li//div//button")
 	WebElement btnViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected')]//span[@class='ds-icon rds-icon-info']")
+	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected')]//span")
 	WebElement hvrPreSelectedChannels;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'available')]//span[@class='ds-icon rds-icon-info']")
@@ -478,7 +478,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectPremierMonthToMonthTypeOfContract() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierTypeOfContract, 120);
+	//	getReusableActionsInstance().javascriptScrollByVisibleElement(drpdwnPremierTypeOfContract);
+		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierTypeOfContract, 30);
+		getReusableActionsInstance().getWhenReady(drpdwnPremierTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -1373,6 +1375,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	public void scrollToSolarisPremier() {
+		getReusableActionsInstance().staticWait(15000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 }

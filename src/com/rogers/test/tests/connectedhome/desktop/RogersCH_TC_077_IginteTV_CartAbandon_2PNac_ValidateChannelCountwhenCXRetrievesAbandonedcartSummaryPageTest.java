@@ -167,7 +167,7 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+        //reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
         getRogersIgniteTVBuyPage().scrollToSolarisPremier();
         reporter.reportLogWithScreenshot("Scrolled to Premier package");
         getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
@@ -188,20 +188,21 @@ public class RogersCH_TC_077_IginteTV_CartAbandon_2PNac_ValidateChannelCountwhen
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-/*       getRogersIgniteTVBuyPage().clkViewFlexChannels();
+        getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
-        getRogersIgniteTVBuyPage().clkHoverClose();*/
+        getRogersIgniteTVBuyPage().clkHoverClose();
         getRogersIgniteTVBuyPage().clickMyRogers();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is availabe","EmailModal is not availabe");
         reporter.reportLogWithScreenshot("Launched the Email Modal");
-        getRogersIgniteTVProfileCreationPage().setEmail();
-        getRogersIgniteTVProfileCreationPage().setFirstname();
-        getRogersIgniteTVProfileCreationPage().setLastName();
-        getRogersIgniteTVProfileCreationPage().setPhone();
-        reporter.reportLogWithScreenshot("Entered the details on Profile page");
-        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+        getRogersIgniteTVBuyPage().setFirstname();
+        getRogersIgniteTVBuyPage().setLastName();
+        getRogersIgniteTVBuyPage().setEmail();
+        getRogersIgniteTVBuyPage().setPhone();
+        getRogersIgniteTVBuyPage().clickEmailCheckbox();
+        reporter.reportLogWithScreenshot("Entered the details on Email Modal");
+        getRogersIgniteTVBuyPage().clickSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Confirmation Modal is available","Confirmation Modal is not available");
         getRogersIgniteTVBuyPage().clickOkay();
