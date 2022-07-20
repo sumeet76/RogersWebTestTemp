@@ -35,7 +35,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		})
 	WebElement btnSolarisStarterPackage;
 
-	@FindAll({
+@FindAll({
    			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Order Rogers Ignite Premier online now']/span"),
 			@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/span"),
 			@FindBy(xpath = "//a[@aria-label='Ignite Premier Order online']//span[text()='Order online']")})
@@ -1384,7 +1384,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	public void scrollToSolarisPremier() {
-		//getReusableActionsInstance().staticWait(15000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 }
