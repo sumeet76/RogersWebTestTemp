@@ -1295,7 +1295,7 @@ public void activateHomePhoneltrPopUp() {
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
-			getReusableActionsInstance().clickWhenReady(shmAddonContinue);
+			getReusableActionsInstance().executeJavaScriptClick(shmAddonContinue);
 		}
 	}
 	/**
