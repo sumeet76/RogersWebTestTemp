@@ -47,7 +47,7 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_103_IginteNewConstruct_NewStarter_PrimeTimethemepackDisplay_Add_ManageChannelThemepackSection_ChangeTVflowValidationTest extends BaseTestClass {
+public class RogersCH_TC_103_IginteNewConstruct_NewStarter_PrimeTimethemepack_ChangeTVflowValidationTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH",""})
 	    public void checkBuyStarterTVOffer() {

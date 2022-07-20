@@ -117,6 +117,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@translate='global.message.buyThemepacksLater']")
 	WebElement bnrPriceIncreaseThemeCopy;
 
+	@FindBy(xpath="//h2[text()='Your bundle comes with:']")
+	WebElement headerBundlesChannelsAndThemepacks;
+
 	@FindBy(xpath = "//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@translate='global.cta.continue']")
 	WebElement btnGoodNewsContinue;
 
@@ -404,7 +407,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChannelsTab() {
-		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnChannelsTab);
+		//getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
 	}
 
 	/**
@@ -412,7 +416,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkThemepacksTab() {
-		getReusableActionsInstance().getWhenReady(btnThemepacksTab, 60).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnThemepacksTab);
+		//getReusableActionsInstance().getWhenReady(btnThemepacksTab, 60).click();
 	}
 	/**
 	 * To verify Price Increase Channel Copy banner
@@ -420,8 +425,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPriceIncreaseChannelCopy() {
-		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseChannelCopy, 120);
-		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseChannelCopy);
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseChannelCopy, 30);
+		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrPriceIncreaseChannelCopy);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(bnrPriceIncreaseChannelCopy);
+		return isBannerAvailable;
 	}
 	/**
 	 * To verify Price Increase Theme Copy banner
@@ -429,8 +436,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPriceIncreaseThemeCopy() {
-		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 120);
-		return	getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
+		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 30);
+		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
+		return isBannerAvailable;
 	}
 	/**
 	 * To click on the chevron of your cart
@@ -1375,7 +1384,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	public void scrollToSolarisPremier() {
-		getReusableActionsInstance().staticWait(15000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 }

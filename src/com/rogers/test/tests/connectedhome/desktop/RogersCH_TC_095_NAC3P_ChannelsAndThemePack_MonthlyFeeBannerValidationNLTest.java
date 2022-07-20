@@ -52,13 +52,14 @@ public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidati
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void checkNAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidationNL() {
-    reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 	getRogersHomePage().clkTVBundle();
-	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+
+	getRogersHomePage().clkTVBundlesForNL();
+	reporter.reportLogWithScreenshot("Selected NL province");
+
+	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 	getRogersHomePage().clkServiceability();
-	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 	String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
 	String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
@@ -67,10 +68,10 @@ public class RogersCH_TC_095_NAC3P_ChannelsAndThemePack_MonthlyFeeBannerValidati
 	reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 	reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 	getRogersIgniteTVBuyPage().clkHomephone();
+	reporter.reportLogWithScreenshot("Home Phone selected");
 	getRogersIgniteTVBuyPage().clkChannelsTab();
 	reporter.reportLogWithScreenshot("Launched the Channels");
 	reporter.hardAssert(getRogersIgniteTVBuyPage().verifyPriceIncreaseChannelCopy(),"Price Increase Channel Copy is present","Price Increase Channel Copy is not present");
-	reporter.reportLogWithScreenshot("Launched the Channels");
 	getRogersIgniteTVBuyPage().clkThemepacksTab();
 	reporter.reportLogWithScreenshot("Launched the Theme packs");
 	reporter.hardAssert(getRogersIgniteTVBuyPage().verifyPriceIncreaseThemeCopy(),"Price Increase Theme Copy is present","Price Increase Theme Copy is not present");

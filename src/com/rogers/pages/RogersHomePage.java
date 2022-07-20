@@ -706,6 +706,7 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
 	}
 
+
 	/**
 	 * Clicks on the 'Service ability' button
 	 * @author chinnarao.vattam
@@ -856,6 +857,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(15000);
 	}
 
 	/**
