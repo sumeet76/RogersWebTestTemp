@@ -37,13 +37,12 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
 
     @Test(groups = {"RegressionCH","saiCH"})
     public void checkIssNacLearnPageToggleOffHotTest() {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
         getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
@@ -55,19 +54,24 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
         reporter.reportLogWithScreenshot("Launched BEST PACKAGE FOR YOU page");
         getRogersInternetPackageSelectionPage().clkWebEmail();
         getRogersInternetPackageSelectionPage().clkWorkHome();
+        reporter.reportLogWithScreenshot("Checked web Email and Work Home");
         getRogersInternetPackageSelectionPage().clkDSTContinue();
         getRogersInternetPackageSelectionPage().clkInternetCount();
+        reporter.reportLogWithScreenshot("Selected Internet Count");
         getRogersInternetPackageSelectionPage().clkDSTContinue();
         getRogersInternetPackageSelectionPage().clkInternetDevice();
+        reporter.reportLogWithScreenshot("Selected Internet Device");
         getRogersInternetPackageSelectionPage().clkDSTContinue();
         getRogersInternetPackageSelectionPage().VerifyBestFit();
         reporter.reportLogWithScreenshot("Best Fit package for the selected");
         getRogersInternetPackageSelectionPage().clkDSTClose();
+        reporter.reportLogWithScreenshot("Closed the DST Recommendation");
         getRogersInternetPackageSelectionPage().VerifyYourBestFit();
-        reporter.reportLogWithScreenshot("Recommended pack is displayed on top of all");
+        reporter.reportLogWithScreenshot("Recommended pack is displayed");
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Type of contract selected");
         getRogersInternetPackageSelectionPage().clkBestAdd();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
-        //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -75,10 +79,10 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
         getRogersInternetProfilePage().setFirstname();
         getRogersInternetProfilePage().setLastName();
         getRogersInternetProfilePage().setPhone();
+        reporter.reportLogWithScreenshot("Profile details entered");
         getRogersInternetProfilePage().clkSubmitProfile();
-
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        reporter.reportLogWithScreenshot("Launched the credit evaluation page");
         getRogersInternetCreditCheckPage().selectDOBYear();
         getRogersInternetCreditCheckPage().selectDOBMonth();
         getRogersInternetCreditCheckPage().selectDOBDay();
@@ -107,10 +111,6 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
-
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
@@ -143,7 +143,7 @@ public class RogersCH_TC_100_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBanner_P
                 .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R"); 
     }
 
 
