@@ -37,9 +37,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindAll({
    			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Order Rogers Ignite Premier online now']/span"),
-			@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/span"),
+			@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/span"),
 			@FindBy(xpath = "//a[@aria-label='Ignite Premier Order online']//span[text()='Order online']")})
 	WebElement btnSolarisPremierPackage;
+
+	@FindBy(xpath= "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]")
+	WebElement headerIgnitePremier;
 
 	@FindAll({
 			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 5 Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
@@ -198,7 +201,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@translate='global.label.ourBundles']")
 	WebElement txtOffersPage;
 
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnPremierTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
@@ -237,22 +240,28 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
 
-	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card__plan p-24']//h4/span")
+	@FindBy(xpath = "//button[@aria-label='See all channels included in the Ignite Premier Bundle']//span[contains(text(), 'Channels')]")
 	WebElement txtTotalChannelsRateCardHead;
 
-	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card__plan p-24']//h4[@class='bundle-tile__tv-channels__flex inline-block']")
+	@FindBy(xpath = "//button[@aria-label='See all flex channels included in the Ignite Premier Bundle']//span[contains(text(), 'Channels')]")
 	WebElement txtFlexChannelsRateCardHead;
 
-	@FindAll({
-			@FindBy(xpath = "//button[@aria-label='View more details about the Rogers Ignite Premier']"),
+	/*@FindAll({
+			@FindBy(xpath = "//a[@aria-label='Ignite Premier View more details']//span[@role='text']"),
 			@FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier']")})
+	WebElement txtFlexChannelsRateCardExpansion; */
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Premier View more details']//span[@role='text']")
 	WebElement txtFlexChannelsRateCardExpansion;
 
-	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card ds-shadow ds-corners ds-no-overflow']//span[@translate='global.label.totalChannels']")
+	@FindBy(xpath = "//span[@translate='global.label.totalChannels']")
 	WebElement txtTotalChannelsRateCardDetails;
 
-	@FindBy(xpath = "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]/ancestor::div[@class='dsa-rate-card ds-shadow ds-corners ds-no-overflow']//span[contains(text(),'Flex')]")
+	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement iconCloseModal;
 
 	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageMobile;	
@@ -428,8 +437,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Chinnarao.vattam
 	 */
 	public void clkChevronUpYourCart() {
-		getReusableActionsInstance().waitForElementTobeClickable(upChevronCartSummary, 60);
-		getReusableActionsInstance().getWhenReady(upChevronCartSummary).click();
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 20).click();
 	}
 	
 	/**
@@ -458,7 +467,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyOffersPage() {
-		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 120);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 10);
 		return	getReusableActionsInstance().isElementVisible(txtOffersPage);
 	}
 
@@ -469,7 +479,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void selectPremierMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierTypeOfContract, 120);
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Premier Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
@@ -870,8 +880,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisPremier() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 30);
-		getReusableActionsInstance().executeJavaScriptClick(btnSolarisPremierPackage);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnSolarisPremierPackage);
+		getReusableActionsInstance().getWhenReady(btnSolarisPremierPackage, 60).click();
+		//getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 30);
+		//getReusableActionsInstance().executeJavaScriptClick(btnSolarisPremierPackage);
 	}
 	/**
 	 * To verify Total Channel
@@ -879,7 +891,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyChannelAtRateCard() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 120);
+
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 10);
 		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 50).getText();
 		String[] channels = strChannels.split("\\s+");
 		getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardExpansion,30).click();
@@ -900,7 +913,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		String strDetailFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardDetails, 50).getText();
 		String[] detailFlexChannels = strDetailFlexChannels.split("\\s+");
 		String strFlexChannelsValue =detailFlexChannels[0];
-		getReusableActionsInstance().executeJavaScriptClick(txtFlexChannelsRateCardExpansion);
+		getReusableActionsInstance().clickWhenReady(iconCloseModal);
+		//getReusableActionsInstance().executeJavaScriptClick(txtFlexChannelsRateCardExpansion);
 		return flexChannels[0].equals(strFlexChannelsValue);
 	}
 
@@ -1022,6 +1036,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clickOkay() {
 		getReusableActionsInstance().getWhenReady(btnOkay, 60).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	/**
@@ -1355,5 +1370,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	public boolean verifyHomePhoneAddOnPage() {
 		return getReusableActionsInstance().isElementVisible(headerHomePageAddOn, 40);
+	}
+
+	public void scrollToSolarisPremier() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 }
