@@ -714,7 +714,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCheckOutforCartSummary() {
-		getReusableActionsInstance().staticWait(15000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(checkOut,60);
 	//	getReusableActionsInstance().scrollToElement(checkOut);
 	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
