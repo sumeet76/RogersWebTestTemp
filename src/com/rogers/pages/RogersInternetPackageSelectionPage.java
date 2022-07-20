@@ -38,6 +38,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Take the quiz']")
 	WebElement btnTakeQuiz;
+
 	@FindBy(xpath = "//input[@id='dsQ1A2']/following::span[contains(text(),'Netflix')]")
 	WebElement clkUsualInterentUsage;
 	@FindBy(xpath = "//span[text()=' Continue ']")
@@ -55,6 +56,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwn150pkgTypeOfContract;
+
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnDST150pkgTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnSSpkgTypeOfContract;
@@ -146,19 +150,19 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//*[text()='Take the quiz']")
 	WebElement btnquiz;
 
-	@FindBy(xpath = "//*[text()=' Web browsing and email ']")
+	@FindBy(xpath = "//label[@aria-label='Select web browsing and email']/span[@class='selection-label']")
 	WebElement btnWebEmail;
 
-	@FindBy(xpath = "//*[text()=' Working from home (e.g. Teams, Skype, Zoom) ']")
+	@FindBy(xpath = "//label[@aria-label='Select working from home']/span[@class='selection-label']")
 	WebElement btnWorkHome;
 
 	@FindBy(xpath = "//*[text()=' Continue ']")
 	WebElement btnDSTContinue;
 
-	@FindBy(xpath = "//*[text()=' 2-3 ']")
+	@FindBy(xpath = "//label[@aria-label='Select 2-3']/span[@class='selection-label']")
 	WebElement btnInternetCount;
 
-	@FindBy(xpath = "//*[text()=' 1-5 ']")
+	@FindBy(xpath = "//label[@aria-label='Select 4-7']/span[@class='selection-label']")
 	WebElement btnInternetDevice;
 
 	@FindBy(xpath = "//button[@aria-label='BEST FITIgnite Internet 150u']")
@@ -167,10 +171,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement btnDSTClose;
 
-	@FindBy(xpath = "//*[text()='Here’s the package we recommend for you']")
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']")
 	WebElement VerifyYourBestFit;
 
-	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/span[@role='text']")
 	WebElement btnBestAdd;
 
 	/**
@@ -316,6 +320,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void select150MonthToMonthTypeOfContact() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 120);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * To select type of contract to month-to-month for Ignite Internet 150 Mbps after DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectDST150MonthToMonthTypeOfContract() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnDST150pkgTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
