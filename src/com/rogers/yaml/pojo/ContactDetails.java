@@ -68,6 +68,7 @@ public class ContactDetails {
 	private String address_Flagges_Fraud;
 	private String address_not_Serviceable2;
 	private String address_MDU_NAC;
+	private String address_ALT;
 
 
 
@@ -794,6 +795,12 @@ public class ContactDetails {
 	}
 
 	public void setAddress_MDU_NAC(String address_MDU_NAC) {this.address_MDU_NAC = address_MDU_NAC;
+	}
+
+	public String getAddress_ALT() {return address_ALT;
+	}
+
+	public void setAddress_ALT(String address_ALT) {this.address_ALT = address_ALT;
 	}
 
 

@@ -82,7 +82,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Select Change Date' or text()='Sélectionner la date du changement' ]/ancestor::div//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueChangeDate;
 
-	@FindBy(xpath = "//div[contains(@id,'ds-radio-input-id-1-label-container')]/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	@FindBy(xpath = "//p[contains(text(),'Immédiatement') or contains(text(),'Immediately')]/parent::div/preceding-sibling::div[contains(@class,'ds-radioButton')]")
 	WebElement btnImmediateBill;
 
 	@FindBy(xpath="//span[contains(text(),'Add SmartStream') or contains(text(),'Ajouter le service Diffusion futée')]/ancestor::button")
@@ -391,7 +391,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author suganya p
 	 * */
 	public void clickImmediateBill() {
-		getReusableActionsInstance().getWhenReady(btnImmediateBill,120).click();
+		getReusableActionsInstance().clickWhenReady(btnImmediateBill,120);
 	}
 	/*Clicks on add smart stream button
 	 * @author suganya p
@@ -542,7 +542,7 @@ public class InternetDashboardPage  extends BasePageClass {
 
 		/*To click on internet plan*/
 		By planNameLocator = By.xpath("//div[contains(text(),'"+tvPackage+"')]/ancestor::div[@class='bundle-tile__body__row']/following-sibling::div//span[text()='"+internetPlan+"']");
-		getReusableActionsInstance().getWhenReady(planNameLocator, 120);
+		getReusableActionsInstance().isElementVisible(planNameLocator, 120);
 		WebElement pkg = getDriver().findElement(planNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 

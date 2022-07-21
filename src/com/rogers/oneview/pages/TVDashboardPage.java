@@ -170,7 +170,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[text()='Continuer' or text()='Continue']/ancestor::button)[2]")
 	WebElement btnContinueOn4kChannelPack;
 
-	@FindBy(xpath = "(//div[@class='ds-radioButton__outerCircle my-12'])[2]")
+	@FindBy(xpath = "(//p[contains(text(),'Immédiatement') or contains(text(),'Immediately')]/parent::div/preceding-sibling::div[contains(@class,'ds-radioButton')]")
 	WebElement btnImmediateBill;
 
 	@FindBy(xpath = "//div[@class='button-set set-end-to-end']//button[@translate='global.cta.submit']")
@@ -225,7 +225,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
+	@FindBy(xpath = "//button[@name='tab-themepack']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
@@ -240,7 +240,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
 	WebElement existingPackages;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1] | (//span[text()=' Add to cart '])[2]")
 	WebElement callingAddToCart;
 
 
@@ -321,10 +321,10 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
 	WebElement viewMyChannelLineUpLink;
 
-	@FindBy(xpath = "//button[@id='cl-65619']")
+	@FindBy(xpath = "//button[@id='cl-60645']")
 	WebElement removeChannel;
 
-	@FindBy(xpath = "//button[@id='cl-73142']")
+	@FindBy(xpath = "//button[@id='cl-80173']")
 	WebElement addChannelBtn;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -595,9 +595,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 *
 	 * @author chinnarao.vattam
 	 */
-	public void clickContinue4kChannelPack() {
-		getReusableActionsInstance().getWhenReady(btnContinueOn4kChannelPack, 60).click();
-		getReusableActionsInstance().waitForElementVisibility(btnContinueChangeDate, 120);
+	public void clickContinue4kChannelPack() {;
+		getReusableActionsInstance().clickWhenReady(btnContinueOn4kChannelPack, 60);
 	}
 
 	/**
@@ -993,7 +992,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author suganya.p
 	 * */
 	public void clickImmediateBill() {
-		getReusableActionsInstance().getWhenReady(btnImmediateBill, 60).click();
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickWhenReady(btnImmediateBill,120);
 	}
 
 	/*
