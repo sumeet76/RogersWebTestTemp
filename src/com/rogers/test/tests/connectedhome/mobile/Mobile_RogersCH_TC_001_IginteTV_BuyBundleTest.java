@@ -65,7 +65,8 @@ public class Mobile_RogersCH_TC_001_IginteTV_BuyBundleTest extends BaseTestClass
         reporter.reportLogWithScreenshot("Availability check button enabled");
         getRogersHomePage().clkIgniteAddressLookupSubmitMobile();
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
+        getRogersIgniteTVBuyPage().scrollToIgniteStarter();
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();

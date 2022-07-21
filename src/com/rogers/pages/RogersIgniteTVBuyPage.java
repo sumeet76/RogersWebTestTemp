@@ -30,8 +30,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindAll({
 		@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-		@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']//span[text()='Add to cart']"),
-			@FindBy(xpath = "//a[@aria-label='Order Rogers Ignite Starter online now']//span[text()='Order online']")
+		@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']"),
+			@FindBy(xpath = "//a[@aria-label='Ignite Starter Order online']//span[text()='Order online']")
 		})
 	WebElement btnSolarisStarterPackage;
 
@@ -43,6 +43,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath= "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]")
 	WebElement headerIgnitePremier;
+
+	@FindBy(xpath="//h3[text()='Ignite Starter']")
+	WebElement headerIgniteStarter;
 
 	@FindAll({
 			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 5 Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
@@ -207,7 +210,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnPremierTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnStarterPackageTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
@@ -499,8 +502,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Rogers Ignite Starter Bundle to cart']/ancestor::div[@class='bundle-tile-price']/descendant::select[@aria-label='Show contract types and select an option']")));
+		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 30);
+		getReusableActionsInstance().getWhenReady(drpdwnPremierTypeOfContract,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
@@ -1383,7 +1387,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(headerHomePageAddOn, 40);
 	}
 
+	/**
+	 * To scroll to Ignite Premier at offers page
+	 * @author Manpreet.Kaur3
+	 */
 	public void scrollToSolarisPremier() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
+	}
+
+	/**
+	 * To scroll to Ignite Starter at offers page
+	 * @author Manpreet.Kaur3
+	 */
+	public void scrollToIgniteStarter() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgniteStarter);
 	}
 }
