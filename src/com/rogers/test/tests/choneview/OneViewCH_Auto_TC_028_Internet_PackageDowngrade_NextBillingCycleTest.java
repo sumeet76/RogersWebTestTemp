@@ -20,7 +20,7 @@ public class OneViewCH_Auto_TC_028_Internet_PackageDowngrade_NextBillingCycleTes
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradePlanEn());
+        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradeTvPlanEn(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getDowngradeInternetPlanFr());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");

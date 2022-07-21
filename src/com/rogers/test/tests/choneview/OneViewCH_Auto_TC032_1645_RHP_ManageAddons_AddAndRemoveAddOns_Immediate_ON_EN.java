@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1645_TC01_RHP_ManageAddons_RemoveAddOns_ImmediateTest(){
+    public void oneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN(){
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");

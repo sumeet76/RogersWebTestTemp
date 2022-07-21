@@ -19,10 +19,10 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 
-public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest extends BaseTestClass {
+public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN extends BaseTestClass {
 
     @Test
-    public void oneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest (){
+    public void oneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN (){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");

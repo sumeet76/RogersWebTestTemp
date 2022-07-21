@@ -69,6 +69,13 @@ public class AccountDetails {
 	private String themepackNameFr;
 	private String targetedOfferEn;
 	private String targetedOfferFr;
+	private String downgradeTvPlanEn;
+	private String downgradeTvPlanFr;
+	private String downgradeInternetPlanEn;
+	private String downgradeInternetPlanFr;
+	private String removeAddOnNameEn;
+	private String removeAddOnNameFr;
+
 
 
 
@@ -856,4 +863,43 @@ public class AccountDetails {
 	 * @param targetedOfferFr the targetedOfferFr to set
 	 */
 	public void setTargetedOfferFr(String targetedOfferFr) {this.targetedOfferFr = targetedOfferFr;}
+
+	public String getDowngradeTvPlanEn() {return downgradeTvPlanEn;
+	}
+
+	public void setDowngradeTvPlanEn(String downgradeTvPlanEn) {this.downgradeTvPlanEn = downgradeTvPlanEn;
+	}
+	public String getDowngradeTvPlanFr() {return downgradeTvPlanFr;
+	}
+
+	public void setDowngradeTvPlanFr(String downgradeTvPlanFr) {this.downgradeTvPlanFr = downgradeTvPlanFr;
+	}
+	public String getDowngradeInternetPlanEn() {return downgradeInternetPlanEn;
+	}
+
+	public void setDowngradeInternetPlanEn(String downgradeInternetPlanEn) {this.downgradeInternetPlanEn = downgradeInternetPlanEn;
+	}
+
+	public String getDowngradeInternetPlanFr() {return downgradeInternetPlanFr;
+	}
+
+	public void setDowngradeInternetPlanFr(String downgradeInternetPlanFr) {this.downgradeInternetPlanFr = downgradeInternetPlanFr;
+	}
+
+	public String getRemoveAddOnNameEn() {
+		return removeAddOnNameEn;
+	}
+
+	public void setRemoveAddOnNameEn(String removeAddOnNameEn) {
+		this.removeAddOnNameEn = removeAddOnNameEn;
+	}
+
+	public String getRemoveAddOnNameFr() {
+		return removeAddOnNameFr;
+	}
+
+	public void setRemoveAddOnNameFr(String removeAddOnNameFr) {
+		this.removeAddOnNameFr = removeAddOnNameFr;
+	}
+
 }

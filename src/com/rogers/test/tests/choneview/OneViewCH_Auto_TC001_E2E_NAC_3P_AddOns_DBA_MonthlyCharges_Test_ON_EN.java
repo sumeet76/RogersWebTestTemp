@@ -10,10 +10,17 @@ import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test extends BaseTestClass {
+/*
+"1. Language - EN
+2. Province - ON
+3. Add-Ons - Exchange Later, with 4K TV and Add any Channels and Themepacks and Homephone add-ons.
+4. Installation Page - DBA
+5. Payment Details - Monthly Charges
+6. Discounts - NA"
+ */
+public class OneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test(){
+    public void oneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -81,10 +88,18 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_CreditCard_Test e
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in-person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
+		//getCreditCheckPage().goToPageBottom();
+		reporter.reportLogWithScreenshot("Delivery by Appointment installation");
+		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();

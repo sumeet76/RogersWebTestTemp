@@ -9,10 +9,17 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest extends BaseTestClass {
+/*
+"1. Language - FR
+2. Province - ON
+3. Change Type - Change Internet. (Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Immediate"
+ON
+ */
+public class OneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
-    public void checkTVPackageUpgrade() {
+    public void oneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),  TestDataHandler.TC030_Internet_PackageUpgrade.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");

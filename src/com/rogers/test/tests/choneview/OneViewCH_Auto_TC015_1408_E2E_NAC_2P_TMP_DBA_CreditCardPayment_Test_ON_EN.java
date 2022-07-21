@@ -21,9 +21,9 @@ import java.lang.reflect.Method;
 6. Discounts - Apply any Product Campaigns."
  */
 
-public class OneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-	public void oneViewCH_Auto_1408_TC01_E2E_NAC_2P_TMP_PaymentMethod_MonthlyCharges_Test(){
+	public void oneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");

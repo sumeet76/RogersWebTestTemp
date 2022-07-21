@@ -9,10 +9,16 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseTestClass {
+/*
+"1. Language - FR
+2. Province - ON
+3. Change Type - Change TV package. (Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Immediate"
+ */
+public class OneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR extends BaseTestClass {
     @Test(groups = {"RChangeTv","Baseline","ChangePackage","RunOV1","MaySanity"})
-    public void checkTVPackageUpgrade() {
+    public void oneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
