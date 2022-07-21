@@ -11,10 +11,10 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddon_ProInstall_ON_EN_Test extends BaseTestClass {
 
     @Test(groups="RegressionCHOV")
-    public void oneViewCH_Auto_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_EN_Test() {
+    public void oneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddon_ProInstall_ON_EN_Test() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHM3PInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHM3PInternet());
         reporter.reportLogWithScreenshot("OneviewLaunched");
 
@@ -37,11 +37,12 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
+        getRogersIgniteBundlesPage().clickKeepNumber();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+
         reporter.reportLogWithScreenshot("review terms and condition");
         getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
@@ -49,8 +50,17 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
         getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
         getRogersIgniteBundlesPage().clickReviewAddons();
         reporter.reportLogWithScreenshot("Clicked customer’s legacy add-ons.");
+        getTVDashboardPage().clickThemepacksTab();
+        reporter.reportLogWithScreenshot("Themepack tab");
+        getTVDashboardPage().addThemepack();
+        reporter.reportLogWithScreenshot("themepack added");
+        getTVDashboardPage().clickstandaloneAndSeasonalTab();
+        reporter.reportLogWithScreenshot("StandAlone and Seasonal Events Selected");
+        getTVDashboardPage().clickAddChannel();
+        reporter.reportLogWithScreenshot("add channel");
         getRogersIgniteBundlesPage().clkContinue();
 
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -61,6 +71,7 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
+        getRogersIgniteBundlesPage().clickReviewAddons();
         getRogersIgniteBundlesPage().clickAddOnAddToCart();
         reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
         getCustomerProfilePage().clkContinue();
@@ -90,26 +101,30 @@ public class OneViewCH_Auto_OVI_TC20_Validation_SHM_Migration_Legacy_SHM_3P_ON_E
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("Phone number generated");
+
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
+        reporter.reportLogWithScreenshot("go To Page Bottom");
         getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("Delivery By Appointment");
-        getCreditCheckPage().selectDeliveryByAppointment();
+        reporter.reportLogWithScreenshot("professional installation");
+        getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
         getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
         reporter.reportLogWithScreenshot(".enter Email Mail Address");
         getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-        reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
-        getCreditCheckPage().clkContinueInstallationOption();
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getPaymentOptionsPage().clkContinue();
+
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
+
         reporter.reportLogWithScreenshot("submit order");
         getRogersOVCheckoutPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

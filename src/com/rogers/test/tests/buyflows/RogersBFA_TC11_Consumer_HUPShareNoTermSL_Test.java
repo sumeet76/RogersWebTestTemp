@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-        public void rogersHUPShareKeepCurrentPlanNoTermSLTest() {
+        public void tc11rogersHUPShareKeepCurrentPlanNoTermSLTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();

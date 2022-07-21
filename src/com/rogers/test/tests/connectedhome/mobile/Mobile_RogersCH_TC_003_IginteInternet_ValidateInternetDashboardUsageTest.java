@@ -33,43 +33,40 @@ public class Mobile_RogersCH_TC_003_IginteInternet_ValidateInternetDashboardUsag
 
     @Test(groups = {"MobileRegressionCH"})
     public void checkInternetDashboardMobile() {
-        reporter.reportLogWithScreenshot("Home Page");
-    	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         if (getRogersLoginPage().isOverlayContainerDisplayed()) {
             reporter.reportLogWithScreenshot("Select Continue in browser.");
             getRogersLoginPage().clkContinueInBrowser();
+            reporter.reportLogWithScreenshot("Continue in Browser Selected");
         }
-        reporter.reportLogWithScreenshot("Continue in Browser Selected");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
+        getRogersLoginPage().setUsernameMobile(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
+        getRogersLoginPage().setPasswordMobile(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc15_SolarisInternetAccountWithUsage.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkInternetBadgeMobile();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-          getRogersInternetDashboardPage().clkInternetPopup();
-          reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-  		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
-  		reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
-          getRogersInternetDashboardPage().clkInternetUsageAlerts();
-          reporter.reportLogWithScreenshot("Launched the UsageAlerts page");                  
-          reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
-          reporter.reportLogWithScreenshot("Daily Breakdown details");
-          reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-          getRogersInternetUsagePage().clkMonthlyUsageMobile();
-          reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
-          reporter.reportLogWithScreenshot("Monthly Breakdown details");
-          reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-          getRogersInternetUsagePage().clkUsageAlertsMobile();
-          reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
-          reporter.reportLogWithScreenshot("Usage and Alerts details");
+        getRogersInternetDashboardPage().clkInternetPopup();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
+        getRogersInternetDashboardPage().clkInternetUsageAlerts();
+        reporter.reportLogWithScreenshot("Launched the UsageAlerts page");
+        reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
+        reporter.reportLogWithScreenshot("Daily Breakdown details");
+        reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
+        getRogersInternetUsagePage().clkMonthlyUsageMobile();
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
+        reporter.reportLogWithScreenshot("Monthly Breakdown details");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
+        getRogersInternetUsagePage().clkUsageAlertsMobile();
+        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
+        reporter.reportLogWithScreenshot("Usage and Alerts details");
       	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

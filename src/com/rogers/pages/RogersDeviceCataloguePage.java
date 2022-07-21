@@ -1,13 +1,34 @@
 package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import com.rogers.test.base.BaseTestClass;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
+import utils.LoginSessionAuth;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class RogersDeviceCataloguePage extends BasePageClass {
 
@@ -152,6 +173,10 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='rpp-migration-accept-cta']//span[contains(text(),'Continue')]")
     WebElement btnContinuemigrationRpp;
+
+    @FindBy(xpath = "//button[@data-test='trident-cta-cnac']")
+    WebElement btnAddALineForIgniteCustomer;
+
     /**
      * To verify the Home page
      * @return true if the signin link is available on home page, else false
@@ -291,7 +316,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     public void clickDeviceTileCTAButton(String deviceName) {
         WebElement deviceCtaButton = getReusableActionsInstance().getWhenReady(By.xpath(createXpathForCTAButton(deviceName)));
         getReusableActionsInstance().scrollToElement(deviceCtaButton);
-        getReusableActionsInstance().clickWhenReady(deviceCtaButton,30);
+        getReusableActionsInstance().executeJavaScriptClick(deviceCtaButton);
     }
 
     /**
@@ -506,6 +531,16 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyGetStartedButtonOnModal() {
+        return getReusableActionsInstance().isElementVisible(modalContainerGetStartedbutton,10);
+
+    }
+
+    /**
+     * This method verifies whether or not Get Started button is available in a modal
+     * @return a boolean true if element is present else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyOnModal() {
         return getReusableActionsInstance().isElementVisible(modalContainerGetStartedbutton);
 
     }
@@ -644,7 +679,29 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * Question about getting methods of one page to other
      * @author saurav.goyal
      */
-    public Boolean clickGetStartedButtonOnModal() {
+    public boolean clickGetStartedButtonOnModal() {
+        do {
+            getReusableActionsInstance().clickWhenVisible(modalContainerGetStartedbutton);
+            getReusableActionsInstance().staticWait(3000);
+            if (getDriver().getCurrentUrl().toUpperCase().contains("STORAGE")) {
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+            }
+            do {
+                getDriver().get(System.getProperty("AWSUrl"));
+                clickDeviceTileCTAButton("iPhone 13 Pro");
+                getReusableActionsInstance().staticWait(2000);
+            } while (!verifyGetStartedButtonOnModal());
+
+        } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
+        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+    }
+
+    /**
+     * This method verifies if continue button is displayed in existing customer RPP modal
+     * @return true if continue button is displayed else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean clickGetStartedButtonOnModalRPP(){
         getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
         return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
@@ -844,6 +901,72 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void clkContinueBtnMigrationFeeRpp() {
         getReusableActionsInstance().clickIfAvailable(btnContinuemigrationRpp);
+    }
+
+    /**
+     * This method gets the customer info from accounts API and stores it in Map
+     * @param email
+     * @param password
+     * @return Customer info map
+     * @throws IOException
+     * @author praveen.kumar7
+     */
+    public Map<String,String> getCustomerInfoMap(String email,String password) throws IOException {
+        LoginSessionAuth loginSessionAuth = new LoginSessionAuth();
+        CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
+        JSONObject jsonObject= null;
+        Map<String,String> customerInfoMap = new HashMap<>();
+        HttpGet httpGet = new HttpGet(System.getProperty("QaUrl")+"api/subscriptions/v1/accounts");
+        httpGet.addHeader("content-type", "application/json");
+        httpGet.addHeader("province","ON");
+        httpGet.addHeader("lang","en");
+        httpGet.addHeader("applicationid","Rogers.com");
+        httpGet.addHeader("Cookie",(BaseTestClass.getAuthHeaders(loginSessionAuth.getLoginSessionToken("https://qa0"+System.getProperty("QaUrl").split("qa")[1].charAt(0)+"-mservices.rogers.com/v1",email,password),System.getProperty("QaUrl"))).get("Cookie"));
+        HttpResponse response = closeableHttpClient.execute(httpGet);
+        HttpEntity httpEntity = response.getEntity();
+        if (httpEntity != null) {
+            String responseStr = EntityUtils.toString(httpEntity, "UTF-8");
+            jsonObject = new JSONObject(responseStr);
+            System.out.println(jsonObject);
+            Assert.assertEquals(response.getStatusLine().getStatusCode(),200,"accounts API failed");
+            boolean flag = (boolean) jsonObject.get("isWirelessCustomer");
+            Assert.assertFalse(flag, "Customer already has wireless a product");
+        }
+        JSONArray linkedAccountsJsonArray = jsonObject.getJSONArray("linkedAccounts");
+        JSONObject custInfoJsonObejct = linkedAccountsJsonArray.getJSONObject(0);
+        if (custInfoJsonObejct.get("emailAddress").toString().equals("null")) {
+            customerInfoMap.put("emailAddress","null");
+        }
+        if (custInfoJsonObejct.get("firstName").toString().equals("null")) {
+            customerInfoMap.put("firstName","null");
+        }
+        if (custInfoJsonObejct.get("lastName").toString().equals("null")) {
+            customerInfoMap.put("lastName","null");
+        }
+        if (custInfoJsonObejct.get("homePhone").toString().equals("null")) {
+            customerInfoMap.put("homePhone","null");
+        }
+        if (custInfoJsonObejct.get("billingProvince").toString().equals("null")) {
+            customerInfoMap.put("billingProvince", "null");
+        }
+        return customerInfoMap;
+    }
+
+    /**
+     * This method verifies if add a line CTA is present in existing customer modal
+     * @return true if Add a line button is present, else false
+     * @author praveen.kumar7
+     */
+    public boolean verifyAddALineBtnForIgniteCustomer() {
+        return getReusableActionsInstance().isElementVisible(btnAddALineForIgniteCustomer);
+    }
+
+    /**
+     * Clicks on Add a line button in existing customer modal
+     * @author praveen.kumar7
+     */
+    public void clkAddALineBtnForIgniteCustomer() {
+        getReusableActionsInstance().clickWhenVisible(btnAddALineForIgniteCustomer);
     }
 
 }

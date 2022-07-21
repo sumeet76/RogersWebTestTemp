@@ -75,27 +75,22 @@ public class OneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test extends Ba
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Home Phone selection page");
-	//	getHomePhoneSelectionPage().clkGeneratePhoneNo();
-	//	getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-	//	getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-	//	getHomePhoneSelectionPage().clickContinueDirectoryListing();
-		getHomePhoneSelectionPage().clkContinue();
+		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+		getCreditCheckPage().goToPageBottom();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Home Phone selection continue");
 	//	getCreditCheckPage().continueConfirmation();
-
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyInstallationOption();
 
-		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkCourierDelivery();
 		reporter.reportLogWithScreenshot("In person delivery");
-
 		getCreditCheckPage().clickInPersonDelivery();
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
 		reporter.reportLogWithScreenshot("Front line");
-
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());

@@ -197,7 +197,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
 	WebElement manageChannelsAndThemeparks;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
+	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -228,7 +228,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
+	@FindBy(xpath = "//button[@name='tab-themepack']")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
@@ -236,6 +236,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
 	WebElement continueToAddThemepack;
+
+	@FindBy (xpath = "//span[@translate='global.cta.tabs.standaloneChannelsAndSeasonalEvents']")
+	WebElement standaloneAndSeasonal;
 
 	@FindBy(xpath = "//span[contains(text(), 'Your Changes')]")
 	WebElement yourChanges;
@@ -466,10 +469,17 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickChannelTab() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(channelsTab, 60);
 		getReusableActionsInstance().scrollToElement(channelsTab);
 //		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
+	}
+
+	public void clickstandaloneAndSeasonalTab() {
+		getReusableActionsInstance().waitForElementVisibility(standaloneAndSeasonal, 60);
+		getReusableActionsInstance().scrollToElement(standaloneAndSeasonal);
+		getReusableActionsInstance().executeJavaScriptClick(standaloneAndSeasonal);
 	}
 
 	public void selectStandaloneChannelsTab(){
@@ -484,6 +494,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
+		getReusableActionsInstance().waitForPageLoad();
 		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();

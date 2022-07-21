@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC026_1460_ISS_Internet_Downgrade_Immediate_ON_EN_Test extends BaseTestClass {
     @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity"})
-    public void oneViewCH_1460_Tupelo_Internet_Downgrade_ImmediateTest() {
+    public void oneViewCH_Auto_TC026_1460_ISS_Internet_Downgrade_Immediate_ON_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
@@ -20,20 +20,18 @@ public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test e
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        //getInternetDashboardPage().clickCheckBoxSmartStream();
-        //reporter.reportLogWithScreenshot("Smart Stream option selected");
-        //getInternetDashboardPage().clickLoadOffers();
-        //reporter.reportLogWithScreenshot("Load offers button clicked");
-        getInternetDashboardPage().selectButtonAddSmartStream();
+
+        getInternetDashboardPage().selectTupeloDowngradeInternet(TestDataHandler.tupeloDowngradeTest.accountDetails.getInternetBundle());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Clicked Continue");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+
         //getRogersOVInstallationPage().clickInstallationCheckBox();
         //reporter.reportLogWithScreenshot("Activation Check box selected successfully");
         //getRogersOVInstallationPage().clickContinue();
-       // reporter.reportLogWithScreenshot("Continue clicked");
+        // reporter.reportLogWithScreenshot("Continue clicked");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();

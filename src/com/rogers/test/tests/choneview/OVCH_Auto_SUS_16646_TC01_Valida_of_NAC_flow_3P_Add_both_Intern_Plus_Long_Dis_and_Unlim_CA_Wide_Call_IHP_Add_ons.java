@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test extends BaseTestClass {
+public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_Add_ons extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
         reporter.reportLogWithScreenshot("oneview env");
@@ -45,10 +45,11 @@ public class OneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_In
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Clicked on Continue");
         getRogersIgniteBundlesPage().fourKTVPopup();
+        getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("4k tv pop up");
-        getRogersIgniteBundlesPage().fourKContinue();
+    //    getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("4k tv pop up continue clicked");
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         reporter.reportLogWithScreenshot("Home Phone Add on selected");
         getHomePhoneAddonsPage().clkCollapse();
@@ -75,17 +76,12 @@ public class OneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_In
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-    //   reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
         reporter.reportLogWithScreenshot("Phone Number Selected");
-    //    getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        getHomePhoneSelectionPage().clkContinue();
-     //   reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().clkCourierDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getCreditCheckPage().clickInPersonDelivery();
         getRogersIgniteBundlesPage().clkContinue();

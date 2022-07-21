@@ -49,9 +49,6 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(),"Internet Speed Displayed", "Internet Speed not displayed");
         reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available","Usage and Alerts link not Available");
         reporter.reportLogWithScreenshot("View Usgae and Alert link displayed");
-        reporter.softAssert(getInternetDashboardPage().verifyChangePackageButton(), "Change Package Button Available","Change Package Button not Available");
-        reporter.reportLogWithScreenshot("Change package buton displayed");
-        //getInternetDashboardPage().clickChangeInternetPackage();
 
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");
@@ -67,8 +64,8 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
         reporter.hardAssert(getTVDashboardPage().verifyExchangeFlexChannels(), "Exchange Flex channels Available","Exchange Flex channels not Available");
         reporter.reportLogWithScreenshot("Exchange Flex channels button displayed");
-        reporter.hardAssert(getTVDashboardPage().verifyChangeTvPackage(), "Change Tv Package Available","Change Tv Package not Available");
-        reporter.reportLogWithScreenshot("Change TV package button displayed ");
+        //reporter.hardAssert(getTVDashboardPage().verifyChangeTvPackage(), "Change Tv Package Available","Change Tv Package not Available");
+        //reporter.reportLogWithScreenshot("Change TV package button displayed ");
         reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
         reporter.reportLogWithScreenshot("Restart setup box link displayed");
         getTVDashboardPage().clickRestartSetupbox();

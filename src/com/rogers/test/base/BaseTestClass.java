@@ -1210,6 +1210,7 @@ public class BaseTestClass {
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
                 RogersNACOrderConfirmationPageThreadLocal.set(new RogersNACOrderConfirmationPage(getDriver()));
                 RogersOneTimePaymentPageThreadLocal.set(new RogersOneTimePaymentPage(getDriver()));
+                RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
 
             case "buyflowsoneview":
 
@@ -1357,6 +1358,16 @@ public class BaseTestClass {
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException {
         TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
+    }
+
+    public static Map<String, String> getAuthHeaders(Map<String, String> authHeaderMap,String franchise) {
+        Map<String, String> authCookieMap = new HashMap<>();
+        if (franchise.toUpperCase().contains("ROGERS")) {
+            authCookieMap.put("Cookie", "Authorization="+authHeaderMap.get("authorization")+"; x-info-token="+authHeaderMap.get("xInfoToken"));
+        } else {
+            authCookieMap.put("Cookie", "AuthN="+authHeaderMap.get("AuthN")+"; AuthZ="+authHeaderMap.get("AuthZ"));
+        }
+        return authCookieMap;
     }
 
 }

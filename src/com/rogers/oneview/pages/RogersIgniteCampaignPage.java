@@ -87,7 +87,8 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void enterCoupon(String couponInputValue) {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementVisibility(couponInputContainer,60);
 		getReusableActionsInstance().getWhenReady(couponInputContainer, 60).click();
 		getReusableActionsInstance().getWhenReady(couponInput, 10).clear();
 		getReusableActionsInstance().getWhenReady(couponInput, 10).sendKeys(couponInputValue);
@@ -102,6 +103,8 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickCampaignTab() {
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(campaignTab, 30);
 		getReusableActionsInstance().clickWhenReady(campaignTab);
 	}

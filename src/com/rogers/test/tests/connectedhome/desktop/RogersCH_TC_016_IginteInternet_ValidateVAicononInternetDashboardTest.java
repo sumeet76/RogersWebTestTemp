@@ -37,9 +37,6 @@ public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTes
 
 	@Test
     public void checkVAicononInternetDashboard() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
@@ -48,15 +45,12 @@ public class RogersCH_TC_016_IginteInternet_ValidateVAicononInternetDashboardTes
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetPage(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(),"Launched the internet dashboard Page","Internet dashboard Page dosen't launched");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyVAButton(),"VA button is present","VA button is not present");
         getRogersInternetDashboardPage().clkVAButton();
         getRogersInternetDashboardPage().switchToVAIFrame();

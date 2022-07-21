@@ -23,8 +23,8 @@ public class RogersBFA_TC33_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA"})
-    public void rogersPPC_TC36_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
+    @Test(groups = {"RegressionBFA","JUN2"})
+    public void rogersPPC_TC33_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

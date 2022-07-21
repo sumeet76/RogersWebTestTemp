@@ -166,6 +166,16 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='live-chat-section d-flex align-items-center']/descendant::span[text()='Live Chat']")
 	WebElement lnkLiveChat;
 
+	@FindBy(xpath = "//div[@class='popup-modal-component']")
+	WebElement divInvalidOfferPopup;
+
+	@FindBy(xpath = "//h2[text()='Offer invalid' or text()='Offre non valide']")
+	WebElement txtInvalidOffer;
+
+	@FindBy(xpath = "//button[@aria-label='View Ignite Internet in entered province']")
+	WebElement btnViewPkgs;
+
+
 	/**
 	 * Verify the Internet usage on the Internet dash board page
 	 * @return true if the Internet usage displayed; else false
@@ -704,4 +714,15 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		return false;
 	}
 
+    public boolean verifyInvalidTnacOfferPopup() {
+		getReusableActionsInstance().waitForElementVisibility(divInvalidOfferPopup, 40);
+		return getReusableActionsInstance().isElementVisible(txtInvalidOffer, 10);
+
+	}
+
+	public void clkViewPkgs() {
+		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs,10);
+		getReusableActionsInstance().getWhenReady(btnViewPkgs).click();
+		getReusableActionsInstance().staticWait(5000);
+	}
 }
