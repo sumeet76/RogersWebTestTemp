@@ -243,7 +243,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
 	WebElement existingPackages;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1] | (//span[text()=' Add to cart '])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1] | (//span[text()=' Add to cart '] or [text()='Ajouter au panier'])[2]")
 	WebElement callingAddToCart;
 
 
