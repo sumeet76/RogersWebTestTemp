@@ -85,11 +85,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes']")
 	WebElement btnyes;
 
-	@FindBy(xpath = "//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Continue']/..")
+	@FindBy(xpath = "//a[contains(@aria-label,'Continue to the next step')]/span")
 	WebElement btnInternetBuyContinue;
 	
 	@FindBy(xpath = "//a[contains(@aria-label,'Ignite Internet 150u')]//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
+
+	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
+	WebElement headerIgniteInternet150;
 
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternet1GbpsPackage;
@@ -447,17 +450,26 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetPackage);
 	}
 
+	/**
+	 * To scroll to Ignite Starter at offers page
+	 * @author Manpreet.Kaur3
+	 */
+	public void scrollToIgniteInternet150() {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgniteInternet150);
+	}
+
 	public void selectMonthToMonthTypeOfContractMobile(){
-		getReusableActionsInstance().waitForElementVisibility(drpdwnTypeOfContract,120);
-		Select monthToMonthContract = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")));
-				monthToMonthContract.selectByVisibleText("Month-to-month");
+		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 30);
+		getReusableActionsInstance().getWhenReady(drpdwn150pkgTypeOfContract,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 	public void clkInternetBuyContinueMobile() {
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().moveToElementAndClick(btnInternetBuyContinue,90);
+		//getReusableActionsInstance().moveToElementAndClick(btnInternetBuyContinue,90);
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetBuyContinue);
-		getReusableActionsInstance().clickIfAvailable(btnInternetBuyContinue,90);
+		//getReusableActionsInstance().clickIfAvailable(btnInternetBuyContinue,90);
 	}
 
 	/**
@@ -570,4 +582,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
     public boolean verifyGWPTag() {
 		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
     }
+
+
 }

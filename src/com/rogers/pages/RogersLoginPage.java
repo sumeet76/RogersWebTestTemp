@@ -20,6 +20,12 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(id = "username")
 	WebElement txtUsername;
 
+	@FindBy(xpath="//input[@id='username']")
+	WebElement txtUsernameMobile;
+
+	@FindBy(xpath="//input[@id='password']")
+	WebElement txtPasswordMobile;
+
 	@FindBy(id = "password")
 	WebElement txtPassword;
 
@@ -125,7 +131,28 @@ public class RogersLoginPage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
 		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
-	
+
+	/**
+	 * Enter the user name on Mobile login page
+	 * @param strUsername user name to be login
+	 * @author manpreet.kaur3
+	 */
+
+	public void setUsernameMobile(String strUsername) {
+		getReusableActionsInstance().getWhenReady(txtUsernameMobile).sendKeys(strUsername);
+	}
+
+	/**
+	 * Enter the password on Mobile login page
+	 * @param strPassword user password to be login
+	 * @author manpreet.kaur3
+	 */
+	public void setPasswordMobile(String strPassword) {
+			getReusableActionsInstance().getWhenReady(lblPassword).click();
+			//getReusableActionsInstance().getWhenVisible(txtPasswordMobile, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPasswordMobile).sendKeys(strPassword);
+
+	}
 	/**
 	 * Enter the user name on Sign in frame
 	 * @param strUsername user name to be login
