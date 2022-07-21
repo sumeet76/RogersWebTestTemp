@@ -45,7 +45,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 		@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
 	WebElement addThemepack;
 
-	@FindBy(xpath = "//*[text()='Yes, they do']")
+	@FindBy(xpath = "//*[text()='Yes, they do' or text()='Oui, ils le font']")
 	WebElement yesTheyDoBtn;
 
 
