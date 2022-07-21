@@ -11,15 +11,16 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_PaymentMethod_CreditCard_Test(){
+    public void oneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
+
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 			reporter.reportLogWithScreenshot("Select Services Customer Wants");
 			getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -37,7 +38,7 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Paym
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
-			getRogersIgniteBundlesPage().noTo4KTVPopup();
+
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clkExpressCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
@@ -63,23 +64,40 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Paym
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
+			reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 			getCreditCheckPage().verifyInstallationOption();
+			reporter.reportLogWithScreenshot("go To Page Bottom");
 			getCreditCheckPage().goToPageBottom();
-			reporter.reportLogWithScreenshot("in-person delivery");
-			getCreditCheckPage().clkCourierDelivery();
-			getCreditCheckPage().clickInPersonDelivery();
+			reporter.reportLogWithScreenshot("professional installation");
+			getCreditCheckPage().selectProfessionalInstallation();
+			reporter.reportLogWithScreenshot("click Date Time Radio Button");
+			getFulfillmentPage().clkFirstAvailableAppointment();
+			reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+			getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+			reporter.reportLogWithScreenshot(".enter Email Mail Address");
+			getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+			reporter.reportLogWithScreenshot(".enter Special Instructions");
+			getCreditCheckPage().enterSpecialInstructions();
+			reporter.reportLogWithScreenshot(".enter Special Instructions");
 			getPaymentOptionsPage().clkContinue();
+
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 			getCreditCheckPage().verifyBillingAndPaymentOption();
-			getCreditCheckPage().clickDigitalFrontline();
-			reporter.reportLogWithScreenshot("digital frontline");
-			getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-			reporter.reportLogWithScreenshot("Payment screen");
+			reporter.reportLogWithScreenshot("digital front line");
+			getCreditCheckPage().selectPaymentOption(2);
+			reporter.reportLogWithScreenshot("Pre-authorized Chequing");
+			getRogersOVCheckoutPage().enterTransitNumber("00333");
+			reporter.reportLogWithScreenshot("Transit number");
+			getRogersOVCheckoutPage().enterInstitutionNumber("003");
+			reporter.reportLogWithScreenshot("Institution Number");
+			getRogersOVCheckoutPage().enterAccountNumber("1234003");
+			reporter.reportLogWithScreenshot("Account Number");
 			getPaymentOptionsPage().clkContinue();
+
 			reporter.reportLogWithScreenshot("submit order");
 			getRogersOVCheckoutPage().clkSubmit();
 			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -90,12 +108,12 @@ public class OneViewCH_Auto_1437_TC04_E2E_NAC_3P_Without4KTVExpressCheckout_Paym
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID3PWithout4KTVExpressCheckout(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

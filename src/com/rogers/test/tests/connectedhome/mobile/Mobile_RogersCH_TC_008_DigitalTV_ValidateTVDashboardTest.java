@@ -30,22 +30,19 @@ public class Mobile_RogersCH_TC_008_DigitalTV_ValidateTVDashboardTest extends Ba
 
     @Test(groups = {"MobileRegressionCH"})
 	public void checkLegacyTVDashboardMobile() {
-        reporter.reportLogWithScreenshot("Home Page");
-    	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		if (getRogersLoginPage().isOverlayContainerDisplayed()) {
 			reporter.reportLogWithScreenshot("Select Continue in browser.");
 			getRogersLoginPage().clkContinueInBrowser();
 		}
 		reporter.reportLogWithScreenshot("Continue in Browser Selected");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
+		getRogersLoginPage().setPasswordMobile(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadgeMobile();

@@ -38,6 +38,9 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']"),
 			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
 	WebElement lnkSignOut;
+
+	@FindBy(xpath = "//form[@id='LoginForm']")
+	WebElement formLogin;
 	
 	@FindAll({
 	@FindBy(xpath = "//li[@class='dds_o-navLinkList__item']/a[contains(@class,'dds_m-navLink dropdown-hide')]"),
@@ -703,6 +706,7 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
 	}
 
+
 	/**
 	 * Clicks on the 'Service ability' button
 	 * @author chinnarao.vattam
@@ -852,6 +856,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(15000);
 	}
 
@@ -928,7 +933,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteAddressLookupSubmitSS() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
-		getReusableActionsInstance().staticWait(7000);
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	/**
@@ -957,6 +962,8 @@ public class RogersHomePage extends BasePageClass {
 	public void clkIgniteAddressLookupSubmitMobile() {
 		getReusableActionsInstance().waitForElementVisibility(btnIgniteAddressLookupSubmit,90);
 		getReusableActionsInstance().executeJavaScriptClick(btnIgniteAddressLookupSubmit);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(15000);
 	}
 	
 	/**
@@ -1099,6 +1106,16 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(lnkInternetAvailability,30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkInternetAvailability);
 	}
-	
+
+	/**
+	 * To verify the login page
+	 * @return true if login page loaded else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyLoginPage() {
+
+		getReusableActionsInstance().waitForElementVisibility(formLogin, 30);
+		return getReusableActionsInstance().isElementVisible(formLogin);
+	}
 }
 

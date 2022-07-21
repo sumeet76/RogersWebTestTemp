@@ -571,6 +571,13 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	}
 
+	public void selectTupeloDowngradeInternet(String intPackage){
+		By downgradePackage = By.xpath("//div[text()='Ignite Internet "+intPackage+"']//parent::div//following-sibling::div//child::div[contains(text(),'Streaming')]//following::button");
+		getReusableActionsInstance().getWhenReady(downgradePackage, 60);
+		WebElement button = getDriver().findElement(downgradePackage);
+		getReusableActionsInstance().executeJavaScriptClick(button);
+	}
+
 	public void clickCheckBoxSmartStream() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(chkBtnSmartStreamSelect, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);

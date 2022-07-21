@@ -9,6 +9,7 @@ public class ContactDetails {
 	private String contactIDISS;
 	private String contactIDSAI;
 	private String address;
+	private String addressATL;
 	private String yearOfBirth;
 	private String monthOfBirth;
 	private String dateOfBirth;
@@ -55,6 +56,7 @@ public class ContactDetails {
 	private String contactIDSAIAndSmartHomeMonitoringTMP;
 	private String contactID3PChannelAndThemepack;
 	private String contactID2PWithout4KTVExpressCheckout;
+	private String contactID3PWithout4KTVExpressCheckout;
 	private String contactID3PExchangeNow;
 	private String contactID2PFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
@@ -176,6 +178,19 @@ public class ContactDetails {
 	 */
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	/**
+	 * @return the Address
+	 */
+	public String getAddressATL() {
+		return addressATL;
+	}
+	/**
+	 * @param addressATL the address to set
+	 */
+	public void setAddressATL(String addressATL) {
+		this.addressATL = addressATL;
 	}
 	/**
 	 * @return the Year of Birth
@@ -680,6 +695,19 @@ public class ContactDetails {
 
 	public String getContactID2PWithout4KTVExpressCheckout() {
 		return contactID2PWithout4KTVExpressCheckout;
+	}
+	/**
+	 * @param contactID3PExchangeNow
+	 */
+	/**
+	 * @param contactID2PWithout4KTVExpressCheckout
+	 */
+	public void setContactID3PWithout4KTVExpressCheckout(String contactID2PWithout4KTVExpressCheckout) {
+		this.contactID3PWithout4KTVExpressCheckout= contactID2PWithout4KTVExpressCheckout;
+	}
+
+	public String getContactID3PWithout4KTVExpressCheckout() {
+		return contactID3PWithout4KTVExpressCheckout;
 	}
 	/**
 	 * @param contactID3PExchangeNow

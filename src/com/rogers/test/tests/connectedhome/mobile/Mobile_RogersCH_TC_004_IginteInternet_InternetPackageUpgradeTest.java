@@ -37,16 +37,16 @@ public class Mobile_RogersCH_TC_004_IginteInternet_InternetPackageUpgradeTest ex
 
     @Test(groups = {"MobileRegressionCH"})
     public void checkInternetPackageUpgradeMobile() {
-        reporter.reportLogWithScreenshot("Home Page");
-    	getRogersHomePage().clkSignInMobile();    	
+
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         if (getRogersLoginPage().isOverlayContainerDisplayed()) {
             reporter.reportLogWithScreenshot("Select Continue in browser.");
             getRogersLoginPage().clkContinueInBrowser();
+            reporter.reportLogWithScreenshot("Continue in Browser Selected");
         }
-        reporter.reportLogWithScreenshot("Continue in Browser Selected");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
+
+        getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
