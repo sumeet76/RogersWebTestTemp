@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends BaseTestClass {
+public class OneViewCH_Auto_TC099_1565_TargetedMigration_3P_to_SAI_TargetedOfferType_Recommended_ON_EN_Test extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest(){
   //      Launching One View
@@ -96,5 +96,4 @@ public class OneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest  extends
     public void afterTest() {
         closeSession();
     }
-
 }

@@ -35,7 +35,6 @@ public class OneViewCH_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test_ON_
 		getTVDashboardPage().clickYourChanges();
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("Themepack tab");
-
 		getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().addThemepack();
@@ -44,8 +43,6 @@ public class OneViewCH_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test_ON_
 	//	getRogersIgniteBundlesPage().fourKTVPopup();
 	//	reporter.reportLogWithScreenshot("4k continue");
 	//	getRogersIgniteBundlesPage().fourKContinue();
-
-
 		getTVDashboardPage().clickYesContinueIfPresent();
 		reporter.reportLogWithScreenshot("continue for package");
 		getTVDashboardPage().clickContinueForPackage();

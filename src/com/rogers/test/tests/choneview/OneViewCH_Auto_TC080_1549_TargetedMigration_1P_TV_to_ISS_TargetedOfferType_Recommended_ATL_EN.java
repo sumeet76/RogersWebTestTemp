@@ -25,12 +25,15 @@ public class OneViewCH_Auto_TC080_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        getRogersIgniteBundlesPage().clkSmartStream();
+//        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
-        getRogersIgniteBundlesPage().noPortInPopup();
+//        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
@@ -76,9 +79,9 @@ public class OneViewCH_Auto_TC080_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
-	    getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//	    getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

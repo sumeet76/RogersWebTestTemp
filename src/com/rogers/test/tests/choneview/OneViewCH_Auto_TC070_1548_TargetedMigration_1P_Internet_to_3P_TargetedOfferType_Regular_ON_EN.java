@@ -24,6 +24,7 @@ public class OneViewCH_Auto_TC070_1548_TargetedMigration_1P_Internet_to_3P_Targe
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
+
         getRogersIgniteBundlesPage().clkTVCheckbox();
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
@@ -92,10 +93,9 @@ public class OneViewCH_Auto_TC070_1548_TargetedMigration_1P_Internet_to_3P_Targe
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
-
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//      reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

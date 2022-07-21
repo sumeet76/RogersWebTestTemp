@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_InstallType_DeliveryByAppointment_PaymentMethod_PreauthorizedChequing_ATL_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_DeliveryByAppointment_PaymentMethod_PreauthorizedChequing_ATL_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_PreauthorizedChequing_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -91,8 +91,9 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_InstallType_De
 		reporter.reportLogWithScreenshot("Institution Number");
 		getRogersOVCheckoutPage().enterAccountNumber("1234003");
 		reporter.reportLogWithScreenshot("Account Number");
-
 		getPaymentOptionsPage().clkContinue();
+
+		//Submit order Page
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
