@@ -33,7 +33,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
-	@FindBy(xpath = "//*[text()='No, they don’t']")
+	@FindBy(xpath = "//*[text()='No, they don’t' or text()='Oui, ils le font']")
 	WebElement noTheyDontBtn;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
