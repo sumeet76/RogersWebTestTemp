@@ -35,22 +35,21 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailabilityMobile();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+        getRogersInternetPackageSelectionPage().scrollToIgniteInternet150();
         getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContractMobile();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackageMobile();
-        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.reportLogWithScreenshot("Selected Add to Cart");
-
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
+        reporter.reportLogWithScreenshot("Continue to profile page");
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmailMobile();
@@ -111,16 +110,9 @@ public class Mobile_RogersCH_TC_002_Internet_BuyInternetOfferTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+       // String ban = getRogersOrderConfirmationPage().getBAN();
+       // System.out.println("BAN from the portal : " + ban);
 
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
 

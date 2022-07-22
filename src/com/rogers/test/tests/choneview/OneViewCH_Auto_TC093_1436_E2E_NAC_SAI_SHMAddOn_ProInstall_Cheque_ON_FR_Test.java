@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC093_1436_E2E_NAC_SAI_SHMAddOn_ProInstall_Cheque_ON_FR_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Test(){
+    public void oneViewCH_Auto_TC093_1436_E2E_NAC_SAI_SHMAddOn_ProInstall_Cheque_ON_FR_Test(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -22,14 +22,14 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Payme
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
+		getRogersIgniteBundlesPage().setLanguageFrench();
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
 		reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		System.out.println(TestDataHandler.anonymousData.getPlanEngSAI());
-		System.out.println(TestDataHandler.anonymousData.getplanFr());
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -38,15 +38,23 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Payme
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+
+		reporter.reportLogWithScreenshot("Internet Addons Page");
+		getRogersIgniteBundlesPage().clkContinue();
+
+		getRogersIgniteBundlesPage().addSHMAddOn();
+		reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
+		getRogersIgniteBundlesPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
+
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
+
 		reporter.reportLogWithScreenshot("credit eval form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -56,13 +64,14 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Payme
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
+
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
+		reporter.reportLogWithScreenshot("go To Page Bottom");
 		getCreditCheckPage().goToPageBottom();
-//		getCreditCheckPage().clkCourierDelivery();
 		reporter.reportLogWithScreenshot("professional installation");
 		getCreditCheckPage().selectProfessionalInstallation();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
@@ -71,19 +80,23 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Payme
 		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
-		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getPaymentOptionsPage().clkContinue();
+
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.reportLogWithScreenshot("billing and payment");
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("entered billing details");
+		reporter.reportLogWithScreenshot("digital front line");
+		getCreditCheckPage().selectPaymentOption(2);
+		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
+		getRogersOVCheckoutPage().enterTransitNumber("00333");
+		reporter.reportLogWithScreenshot("Transit number");
+		getRogersOVCheckoutPage().enterInstitutionNumber("003");
+		reporter.reportLogWithScreenshot("Institution Number");
+		getRogersOVCheckoutPage().enterAccountNumber("1234003");
+		reporter.reportLogWithScreenshot("Account Number");
 		getPaymentOptionsPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -99,7 +112,7 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartHomeMonitoring_Payme
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

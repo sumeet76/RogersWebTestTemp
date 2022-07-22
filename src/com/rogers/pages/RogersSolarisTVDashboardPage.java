@@ -432,9 +432,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeTVPackageMobile() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(btnChangeTVPackage,90);
-		getReusableActionsInstance().executeJavaScriptClick(btnChangeTVPackage);
+		getReusableActionsInstance().staticWait(10000);
+		By btnChangeTVPkg = By.xpath("//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]");
+		getReusableActionsInstance().getWhenReady(btnChangeTVPkg, 120).click();
+		//getReusableActionsInstance().executeJavaScriptClick((WebElement) btnChangeTVPkg);
 	}
 	/**
 	 * Click the Manage Channels And Theme Packs link on solaris TV dashboard page
@@ -459,10 +460,10 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChangeFlexChannelsMobile() {
-		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		//getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
 		//Need ti to pull channels from ATG
-		getReusableActionsInstance().staticWait(6000);
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().staticWait(10000);
+		WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
 		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);
 	}
 	/**
