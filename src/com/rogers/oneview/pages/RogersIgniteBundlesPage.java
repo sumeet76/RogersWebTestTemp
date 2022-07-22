@@ -1270,8 +1270,8 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateInternetAddOnsInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
-		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+//		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
+//		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
 	}
