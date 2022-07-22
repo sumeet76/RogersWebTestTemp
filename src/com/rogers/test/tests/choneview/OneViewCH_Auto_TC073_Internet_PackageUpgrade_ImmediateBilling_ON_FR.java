@@ -9,26 +9,37 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest extends BaseTestClass {
+/*
+"1. Language - FR
+2. Province - ON
+3. Change Type - Change Internet. (Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Immediate"
+ON
+ */
+public class OneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
-    public void checkTVPackageUpgrade() {
+    public void oneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),  TestDataHandler.TC030_Internet_PackageUpgrade.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
+        getAccountOverViewPage().setLanguageFrench();
+        reporter.reportLogWithScreenshot("switched to French Language");
         getAccountOverViewPage().selectInternetBadage();
-        reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
+        reporter.reportLogWithScreenshot("Internet Badge selected");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+        getInternetDashboardPage().clickImmediateBill();
+        reporter.reportLogWithScreenshot("select immediate bill");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Continue clicked");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -41,7 +52,7 @@ public class OneViewCH_Auto_TC_030_Internet_PackageUpgrade_NextBillingCycleTest 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

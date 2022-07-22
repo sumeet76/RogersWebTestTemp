@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_1645_TC01_RHP_ManageAddons_RemoveAddOns_ImmediateTest(){
+    public void oneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN(){
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -20,18 +20,20 @@ public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Te
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launched the Home Phone dashboard page");
         getHomePhonedashboard().clickManageAddOns();
-        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
+        getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
+        reporter.reportLogWithScreenshot("Addons selected for addition");
+        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameFr());
         reporter.reportLogWithScreenshot("Remove addon button is selected");
-        getHomePhoneAddonsPage().clickContinueButton();
-        reporter.reportLogWithScreenshot("Billing selection pop up appears");
+        getTVDashboardPage().clickYourChanges();
+        getHomePhoneAddonsPage().clickConfirmButton();
+        reporter.reportLogWithScreenshot("Select the billing cycle");
         getHomePhoneAddonsPage().clickImmediateBill();
-        reporter.reportLogWithScreenshot("Immediate bill check box is selected");
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup");
 
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -43,6 +45,6 @@ public class OneViewCH_Auto_1645_TC01_RHP_ManageAddons_RemoveAddOns_Immediate_Te
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+        //closeSession();
     }
 }

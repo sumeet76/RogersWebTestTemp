@@ -10,10 +10,18 @@ import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+/*
+"1. Language - EN
+2. Province - ON
+3. Add-Ons - NA
+4. Installation Page - Courier
+5. Payment Details - Monthly Charges
+6. Discounts - NA"
+ */
 
-public class OneViewCH_Auto_OVS2_Pods_Buy_TC04_ValidateNACSAIFlowByAddingBothFreeAndChargeablePodsTest extends BaseTestClass {
+public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Chargeable_Pods_Courier_MonthlyCharges_ON_EN extends BaseTestClass {
     @Test
-    public void OneViewCH_Auto_OVS2_Pods_Buy_TC04_ValidateNACSAIFlowByAddingBothFreeAndChargeablePodsTest(){
+    public void oneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Chargeable_Pods_Courier_MonthlyCharges_ON_EN(){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
@@ -70,19 +78,15 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC04_ValidateNACSAIFlowByAddingBothFre
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        getCreditCheckPage().verifyBillingAndPaymentOption();
-        reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().clickDigitalFrontline();
-        reporter.reportLogWithScreenshot("front line");
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("entered billing details");
-		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("verify billing and payments");
+        reporter.reportLogWithScreenshot("Billing and payment");
+        getCreditCheckPage().selectPaymentOption(1);
+        reporter.reportLogWithScreenshot("Monthly charges");
+		//getPaymentOptionsPage().clkContinue();
+		//reporter.reportLogWithScreenshot("submit order");
+		//getRogersOVCheckoutPage().clkSubmit();
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
