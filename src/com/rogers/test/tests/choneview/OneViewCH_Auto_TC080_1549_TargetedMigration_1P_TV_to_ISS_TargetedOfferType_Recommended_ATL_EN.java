@@ -80,8 +80,8 @@ public class OneViewCH_Auto_TC080_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 //	    getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -92,9 +92,9 @@ public class OneViewCH_Auto_TC080_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        //closeSession();
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterTest() {
+//        closeSession();
+//    }
 
 }
