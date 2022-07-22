@@ -106,7 +106,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_E2E_Dealer_EN_ON_Test
         getRogersOVCheckoutPage().setFirstNameCreateProfile();
         getRogersOVCheckoutPage().setLastNameCreateProfile();
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
-        getRogersOVCheckoutPage().setContactNumberCreateProfile("6472188923");
+        getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
