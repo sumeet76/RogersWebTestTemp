@@ -361,7 +361,7 @@ public class TestDataHandler {
 	public static OvrReusableData tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods;
 	public static OvrReusableData tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods;
 	public static OvrReusableData tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM;
-	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM;
+	public static OvrReusableData tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM_and_InternetPods;
 	public static OvrReusableData tc_22_Ovr_Mig_Data_3p_to_3p_AddPods;
 	public static OvrReusableData tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM;
 	public static OvrReusableData tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM;
@@ -369,6 +369,9 @@ public class TestDataHandler {
 	public static OvrReusableData tc_42_Ovr_Mig_Data_1p_to_ISS;
 	public static OvrReusableData tc_43_Ovr_Mig_Data_1p_to_2p_TV_INT;
 	public static OvrReusableData tc_44_Ovr_Mig_Data_1p_to_3p;
+	public static OvrReusableData tc_45_Ovr_Mig_Data_Non_Consolidated_Ban;
+	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
+	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -796,7 +799,7 @@ public class TestDataHandler {
 		tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods = YamlHandler.getOvrReusableData("TC26_Mig_Data_1P_INT_to_1P_INT_AddPods");
 		tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM = YamlHandler.getOvrReusableData("TC29_Mig_Data_1P_INT_to_2P_TV_INT_with_SHM");
 		tc_22_Ovr_Mig_Data_3p_to_3p_AddPods = YamlHandler.getOvrReusableData("TC22_Mig_Data_3P_to_3P_AddPods");
-		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
+		tc_30_Ovr_Mig_Data_1pINT_to_ISS_with_SHM_and_InternetPods = YamlHandler.getOvrReusableData("TC30_Mig_Data_1P_INT_to_ISS_with_SHM");
 		tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM = YamlHandler.getOvrReusableData("TC33_Mig_Data_1P_INT_to_3P_with_SHM");
 		tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM = YamlHandler.getOvrReusableData("TC34_Mig_Data_1P_INT_to_SAI_with_SHM");
 		tc_35_DashboardValidation_Ignite_3P = YamlHandler.getOvrReusableData("TC35_DashboardValidation_Ignite3P");
@@ -805,5 +808,8 @@ public class TestDataHandler {
 		tc_42_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC42_Mig_Data_1p_to_ISS");
 		tc_43_Ovr_Mig_Data_1p_to_2p_TV_INT = YamlHandler.getOvrReusableData("TC43_Mig_Data_1p_to_2p_TV_INT");
 		tc_44_Ovr_Mig_Data_1p_to_3p = YamlHandler.getOvrReusableData("TC44_Mig_Data_1p_to_3p");
+		tc_45_Ovr_Mig_Data_Non_Consolidated_Ban = YamlHandler.getOvrReusableData("TC45_Mig_Data_Non_Consolidated_Ban_Validation");
+		tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP = YamlHandler.getOvrReusableData("TC47_Mig_Data_Downgrade_Mig_Not_Supported_RHP");
+		tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported = YamlHandler.getOvrReusableData("TC48_Mig_Data_LegacyCx_Move_Migration_Not_Supported");
 	}
 }
