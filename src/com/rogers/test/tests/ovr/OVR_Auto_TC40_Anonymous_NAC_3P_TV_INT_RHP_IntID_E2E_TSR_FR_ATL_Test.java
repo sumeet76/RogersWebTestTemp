@@ -22,7 +22,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_E2E_TSR_FR_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp("Trci25.Test@trci.trogers.ca", "Ramp@720");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_TSR_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");

@@ -36,21 +36,18 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
 
     @Test(groups = {"MobileRegressionCH"})
     public void checkSolarisTVPackageUpgradeMobile() {
-        reporter.reportLogWithScreenshot("Home Page");
-    	getRogersHomePage().clkSignInMobile();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         if (getRogersLoginPage().isOverlayContainerDisplayed()) {
             reporter.reportLogWithScreenshot("Select Continue in browser.");
             getRogersLoginPage().clkContinueInBrowser();
         }
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
+        getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -69,9 +66,8 @@ public class Mobile_RogersCH_TC_005_IginteTV_TVPackageUpgradeTest extends BaseTe
         getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4KMobile();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
+        reporter.reportLogWithScreenshot("Click continue 4K content");
     	//reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageTVMobile(),"Agreement page has Launched","Agreement page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the order review page");
-		
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");;
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateTVMobile();
         reporter.reportLogWithScreenshot("Agreement details");

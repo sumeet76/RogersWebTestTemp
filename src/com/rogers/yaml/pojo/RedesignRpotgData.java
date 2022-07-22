@@ -33,6 +33,25 @@ public class RedesignRpotgData {
 	private String dpDeviceStorage;
 	private String dpDeviceColor;
 	private String portInNumber;
+	private String username;
+	private String password;
+	private String ban;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getCreditCardDetailsOTP() {
 		return creditCardDetailsOTP;
@@ -302,5 +321,13 @@ public class RedesignRpotgData {
 	 */
 	public void setPortInNumber(String portInNumber) {
 		this.portInNumber = portInNumber;
+	}
+
+	public String getBan() {
+		return ban;
+	}
+
+	public void setBan(String ban) {
+		this.ban = ban;
 	}
 }

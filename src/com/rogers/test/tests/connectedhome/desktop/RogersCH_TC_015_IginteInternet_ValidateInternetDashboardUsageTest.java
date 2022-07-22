@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_TC_015_IginteInternet_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH"})
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH"})
     public void checkInternetDashboard() {
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());

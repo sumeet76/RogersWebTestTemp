@@ -9,6 +9,7 @@ public class ContactDetails {
 	private String contactIDISS;
 	private String contactIDSAI;
 	private String address;
+	private String addressATL;
 	private String yearOfBirth;
 	private String monthOfBirth;
 	private String dateOfBirth;
@@ -55,6 +56,7 @@ public class ContactDetails {
 	private String contactIDSAIAndSmartHomeMonitoringTMP;
 	private String contactID3PChannelAndThemepack;
 	private String contactID2PWithout4KTVExpressCheckout;
+	private String contactID3PWithout4KTVExpressCheckout;
 	private String contactID3PExchangeNow;
 	private String contactID2PFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDISSFlowByAddingBothFreeAndChargeablePods;
@@ -68,6 +70,7 @@ public class ContactDetails {
 	private String address_Flagges_Fraud;
 	private String address_not_Serviceable2;
 	private String address_MDU_NAC;
+	private String address_ALT;
 
 
 
@@ -175,6 +178,19 @@ public class ContactDetails {
 	 */
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	/**
+	 * @return the Address
+	 */
+	public String getAddressATL() {
+		return addressATL;
+	}
+	/**
+	 * @param addressATL the address to set
+	 */
+	public void setAddressATL(String addressATL) {
+		this.addressATL = addressATL;
 	}
 	/**
 	 * @return the Year of Birth
@@ -683,6 +699,19 @@ public class ContactDetails {
 	/**
 	 * @param contactID3PExchangeNow
 	 */
+	/**
+	 * @param contactID2PWithout4KTVExpressCheckout
+	 */
+	public void setContactID3PWithout4KTVExpressCheckout(String contactID2PWithout4KTVExpressCheckout) {
+		this.contactID3PWithout4KTVExpressCheckout= contactID2PWithout4KTVExpressCheckout;
+	}
+
+	public String getContactID3PWithout4KTVExpressCheckout() {
+		return contactID3PWithout4KTVExpressCheckout;
+	}
+	/**
+	 * @param contactID3PExchangeNow
+	 */
 	public void setContactID3PExchangeNow(String contactID3PExchangeNow) {
 		this.contactID3PExchangeNow= contactID3PExchangeNow;
 	}
@@ -794,6 +823,12 @@ public class ContactDetails {
 	}
 
 	public void setAddress_MDU_NAC(String address_MDU_NAC) {this.address_MDU_NAC = address_MDU_NAC;
+	}
+
+	public String getAddress_ALT() {return address_ALT;
+	}
+
+	public void setAddress_ALT(String address_ALT) {this.address_ALT = address_ALT;
 	}
 
 
