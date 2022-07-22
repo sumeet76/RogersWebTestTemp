@@ -886,7 +886,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Jarmanjeet.Batth
 	 */
 	public boolean verifyManageChannelsAndThemepacks() {
-		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 120);
+		getReusableActionsInstance().waitForElementVisibility(manageChannelsAndThemeparks, 60);
 		return getReusableActionsInstance().isElementVisible(manageChannelsAndThemeparks);
 	}
 
