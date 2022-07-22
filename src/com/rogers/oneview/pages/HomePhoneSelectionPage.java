@@ -15,10 +15,11 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	//@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[1]")
+	//@FindBy(xpath = "(//span[@translate='global.cta.continue'])/ancestor::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[3]")
 	WebElement continueOnCallDisplayName;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[3]")
 	WebElement continueOnDirectoryListing;
 
 	@FindBy(xpath = "//span[@class='ng-star-inserted' and contains(text(),'Générer les numéros de téléphone') or contains(text(),'Generate phone numbers')]")
@@ -144,7 +145,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	public void clickOnContinueCallDisplay(){
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnCallDisplayName);
-		getReusableActionsInstance().executeJavaScriptClick(continueOnCallDisplayName);
+		getReusableActionsInstance().clickWhenReady(continueOnCallDisplayName);
 	}
 	public void clickContinueDirectoryListing(){
 		getReusableActionsInstance().staticWait(5000);

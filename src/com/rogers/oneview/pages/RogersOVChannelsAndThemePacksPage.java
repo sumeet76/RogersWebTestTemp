@@ -18,7 +18,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
 	WebElement customerAddonReveiwLink;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']")
 	WebElement continueButton;
 
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
@@ -33,8 +33,20 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
-	@FindBy(xpath = "//*[text()='No, they don’t']")
+	@FindBy(xpath = "//*[text()='No, they don’t' or text()='Non, ils ne le font pas']")
 	WebElement noTheyDontBtn;
+
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
+	WebElement addChannel;
+
+	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
+	WebElement themePacksTab;
+
+		@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
+	WebElement addThemepack;
+
+	@FindBy(xpath = "//*[text()='Yes, they do' or text()='Oui, ils le font']")
+	WebElement yesTheyDoBtn;
 
 
 	/**
@@ -82,6 +94,8 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkContinue() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().staticWait(30000);
 		getReusableActionsInstance().clickWhenReady(continueButton,120);
 	}
 
@@ -109,6 +123,39 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	public void clickNoTheyDont() {
 		getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 30);
 		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
+
+
+	}
+
+	public void clickAddChannel() {
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().staticWait(3000);
+	}
+
+	public void clickThemepacksTab() {
+
+//		if (getReusableActionsInstance().isElementVisible(cancel)) {
+//			clickCancel();
+//		}
+		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
+		getReusableActionsInstance().scrollToElement(themePacksTab);
+		getReusableActionsInstance().executeJavaScriptClick(themePacksTab);
+//		getReusableActionsInstance().getWhenReady(themePacksTab, 30).click();
+	}
+
+	public void addThemepack() {
+		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
+		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
+		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
+			getReusableActionsInstance().clickWhenReady(yesToContinue);
+		}*/
+	}
+
+	public void clickYesTheyDo() {
+		getReusableActionsInstance().waitForElementVisibility(yesTheyDoBtn, 30);
+		getReusableActionsInstance().clickWhenReady(yesTheyDoBtn);
 
 
 	}

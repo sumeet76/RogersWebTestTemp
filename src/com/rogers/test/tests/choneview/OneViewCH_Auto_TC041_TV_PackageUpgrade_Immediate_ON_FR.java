@@ -9,16 +9,23 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseTestClass {
+/*
+"1. Language - FR
+2. Province - ON
+3. Change Type - Change TV package. (Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Immediate"
+ */
+public class OneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR extends BaseTestClass {
     @Test(groups = {"RChangeTv","Baseline","ChangePackage","RunOV1","MaySanity"})
-    public void checkTVPackageUpgrade() {
+    public void oneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         /*getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         getAccountOverViewPage().setSkipNotification();*/
+        getAccountOverViewPage().setLanguageFrench();
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
@@ -38,13 +45,13 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
-        getTVDashboardPage().clickImmediateBill();
+        getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
-        getTVDashboardPage().clickContinueOnSelectDateChange();
+        getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+        //getRogersOVOrderReviewPage().clkSubmit();
+        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -57,7 +64,7 @@ public class OneViewCH_Auto_TC_026_TV_PackageUpgrade_ImmediateTest extends BaseT
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

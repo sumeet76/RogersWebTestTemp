@@ -10,11 +10,19 @@ import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+/*
+"1. Language - EN
+2. Province - ON
+3. Add-Ons - NA
+4. Installation Page - DBA
+5. Payment Details - Monthly Charges
+6. Discounts - NA"
+ */
 
-public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest extends BaseTestClass {
+public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN extends BaseTestClass {
 
     @Test
-    public void oneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFreeAndChargeablePodsTest (){
+    public void oneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN (){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
@@ -71,24 +79,29 @@ public class OneViewCH_Auto_OVS2_Pods_Buy_TC01_ValidateNAC2PFlowByAddingBothFree
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in person delivery");
-        getCreditCheckPage().clkCourierDelivery();
-        getCreditCheckPage().clickInPersonDelivery();
+        reporter.reportLogWithScreenshot("professional installation");
+        getCreditCheckPage().selectDeliveryByAppointment();
+
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("verify billing and payments");
-        getCreditCheckPage().verifyBillingAndPaymentOption();
-        getCreditCheckPage().clickDigitalFrontline();
-        reporter.reportLogWithScreenshot("front line");
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("card details entered");
-		getPaymentOptionsPage().clkContinue();
-		getRogersOVCheckoutPage().clkSubmit();
-        reporter.reportLogWithScreenshot("submit order");
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Billing and payment");
+        getCreditCheckPage().selectPaymentOption(1);
+        reporter.reportLogWithScreenshot("Monthly charges");
+        //getPaymentOptionsPage().clkContinue();
+		//getRogersOVCheckoutPage().clkSubmit();
+        //reporter.reportLogWithScreenshot("submit order");
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		//reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
