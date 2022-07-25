@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest extends BaseTestClass {
+public class OneViewCH_Auto_TC097_1566_TargetedMigration_3P_to_2P_ATL_EN_Test extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_1566_TC01_TargetedMigration_3P_to_2PTest() {
+    public void oneViewCH_Auto_TC097_1566_TargetedMigration_3P_to_2P_ATL_EN_Test() {
 //               Launching One View
 
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration_3P_to_2P.getAccountNo(), TestDataHandler.targetedMigration_3P_to_2P.getContactID());

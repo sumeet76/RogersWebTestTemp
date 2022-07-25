@@ -9,39 +9,34 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-public class OneViewCH_Auto_1460_TC01_Tupelo_Internet_Downgrade_Immediate_Test extends BaseTestClass {
-    @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity"})
-    public void oneViewCH_1460_Tupelo_Internet_Downgrade_ImmediateTest() {
+/*
+"1. Language - EN
+2. Province - ATL
+3. Change Type - Change Internet.(Upgrade)
+4. Add-Ons - NA
+5. Bill Cycle - Next Bill Cycle"
+ */
+public class OneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN extends BaseTestClass {
+    @Test(groups = {"Baseline","ChangePackage","RunOV1"})
+    public void oneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickChangePackageButton();
+        getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        //getInternetDashboardPage().clickCheckBoxSmartStream();
-        //reporter.reportLogWithScreenshot("Smart Stream option selected");
-        //getInternetDashboardPage().clickLoadOffers();
-        //reporter.reportLogWithScreenshot("Load offers button clicked");
-        getInternetDashboardPage().selectButtonAddSmartStream();
+        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
-        reporter.reportLogWithScreenshot("Clicked Continue");
-        getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        //getRogersOVInstallationPage().clickInstallationCheckBox();
-        //reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-        //getRogersOVInstallationPage().clickContinue();
-       // reporter.reportLogWithScreenshot("Continue clicked");
-        getInternetDashboardPage().clickImmediateBill();
-        reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
+
+        /*Billing option to be selected*/;
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
-
+        //getRogersOVOrderReviewPage().clkSubmit();
+       // reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        //reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
