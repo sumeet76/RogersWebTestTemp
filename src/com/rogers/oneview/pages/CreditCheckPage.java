@@ -93,13 +93,13 @@ public class CreditCheckPage  extends BasePageClass {
 
 
 	@FindAll({
-			@FindBy(xpath = "//h2[text()='Self-installation option(s)']"),
+			@FindBy(xpath = "//h2[text()='Self-installation option(s)' or contains(text(),'Options d’installation par l'utilisateur')]"),
 			@FindBy(xpath = "//h2[text()='Professional installation option(s)']"),
 			@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
 	})
 	WebElement installationOption;
 
-	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery']")
+	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
 	WebElement courierDelivery;
 
 
