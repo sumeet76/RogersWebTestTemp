@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonitoring_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMonitoring_DeliveryByAppointment_PaymentMethod_Monthly_Test_ATL_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonitoring_Test(){
 		reporter.reportLogWithScreenshot("OneView env");
@@ -58,12 +58,16 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonit
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in person delivery");
+		reporter.reportLogWithScreenshot("Select delivery by appointment");
+
+		// Install Type - Delivery By Appointment
+		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
-		getCreditCheckPage().selectProfessionalInstallation();
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
@@ -74,18 +78,15 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonit
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("entered billing details");
+
+		// Payment Method - Monthly
+		getCreditCheckPage().selectPaymentOption(1);
+		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -98,7 +99,4 @@ public class OneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonit
 	public void afterTest() {
 		closeSession();
 	}
-
 }
-
-

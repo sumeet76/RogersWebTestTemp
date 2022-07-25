@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC045_1435_E2E_NAC_2P_ExchangeNow_Professional_Install_PaymentMethod_CreditCard_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_CreditCard_Test(){
         reporter.reportLogWithScreenshot("oneview env");
@@ -22,6 +22,7 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyLineUpAddressON(),"ON address is displayed","ON address is not displayed");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -71,23 +72,34 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
         reporter.reportLogWithScreenshot("evaluation form filled");
-        getCreditCheckPage().clkAuthorize();
+		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Options Displays","Installation Options note Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-        reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+
+		// Install Type - Professional Install
+		reporter.reportLogWithScreenshot("professional installation");
+		getCreditCheckPage().selectProfessionalInstallation();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("verify billing and payments");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
+
+		// Payment Method - Credit Card
 		getCreditCheckPage().clickDigitalFrontline();
         reporter.reportLogWithScreenshot("front line");
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
@@ -99,8 +111,6 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_Credi
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
-
 	}
 
 	@BeforeMethod (alwaysRun=true)

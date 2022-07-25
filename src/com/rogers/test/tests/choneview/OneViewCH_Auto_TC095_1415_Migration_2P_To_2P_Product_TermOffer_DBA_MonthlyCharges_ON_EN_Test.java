@@ -34,7 +34,7 @@ public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-		//getRogersIgniteBundlesPage().expandInternetdiv();
+		getRogersIgniteBundlesPage().expandInternetdiv();
 		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -66,20 +66,20 @@ public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_
 
 //		In the case of credit evaluation not required
 
-		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
-		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clkContinue();
+//		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+//		getCreditCheckPage().goToPageBottom();
+//		getCreditCheckPage().clkContinue();
 
 //		In the case if credit evaluation required
-
-//		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-//		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-//		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-//		reporter.reportLogWithScreenshot("evaluation form filled");
-//		getCreditCheckPage().clkAuthorize();
-//		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-//		reporter.reportLogWithScreenshot("Credit Check Information");
-//		getCreditCheckPage().clkContinue();
+		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		reporter.reportLogWithScreenshot("evaluation form filled");
+		getCreditCheckPage().clkAuthorize();
+		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+		reporter.reportLogWithScreenshot("Credit Check Information");
+		getCreditCheckPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
