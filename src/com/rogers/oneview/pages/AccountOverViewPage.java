@@ -71,6 +71,12 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[@translate='global.dashboard.tv.includedWithOnlyDefaultBundle']")
     WebElement IgniteTVBox;
 
+    @FindBy(xpath = "//div[@class='customer-address flyout-address account-overview-padding']/span[contains(text(),'ON')]")
+    WebElement Province;
+
+    @FindBy(xpath = "//div[@class='arrow-down-container care-border']")
+    WebElement arrowDownAccountOverview;
+
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
     WebElement btnTVBadge;
 
@@ -191,7 +197,7 @@ public class AccountOverViewPage extends BasePageClass {
 //    @FindBy(xpath = "//h2[@ng-reflect-translate='global.label.noOfChannels']")
 //    WebElement tvOrChannelHeader;
 
-    @FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
+    @FindBy(xpath = "//h3[@translate='global.dashboard.tv.ManageTabTitle']")
     WebElement customerFollowingHeader;
 
     @FindBy(xpath = "//a[@id='language-changed']")
@@ -254,6 +260,8 @@ public class AccountOverViewPage extends BasePageClass {
      * @author aditi.jain
      */
     public boolean verifyCustomerFollowingsHeader() {
+        WebElement bTn = getReusableActionsInstance().getWhenReady(customerFollowingHeader, 60);
+        getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
         return getReusableActionsInstance().isElementVisible(customerFollowingHeader, 60);
     }
 
@@ -289,6 +297,10 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 10);
         }
 
+    }
+
+    public void clickAccountOverview(){
+        getReusableActionsInstance().getWhenReady(arrowDownAccountOverview, 20).click();
     }
 
     /**
@@ -724,6 +736,10 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public boolean clickIgniteTVBox() {
         return getReusableActionsInstance().isElementVisible(IgniteTVBox);
+    }
+
+    public boolean verifyProvince() {
+        return getReusableActionsInstance().isElementVisible(Province,10);
     }
     /**
      * This method click View Offers

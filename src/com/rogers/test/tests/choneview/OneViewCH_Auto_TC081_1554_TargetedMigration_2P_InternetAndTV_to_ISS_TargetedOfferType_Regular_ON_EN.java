@@ -11,50 +11,46 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P_Bundle_ON_EN extends BaseTestClass {
-    @Test
-    public void OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P_Bundle_ON_EN(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
-        reporter.reportLogWithScreenshot("OneView Interface has Launched");
-        //	getAccountOverViewPage().enterDealerCodeDialogue();
+public class OneViewCH_Auto_TC081_1554_TargetedMigration_2P_InternetAndTV_to_ISS_TargetedOfferType_Regular_ON_EN extends BaseTestClass {
+    @Test(groups = {"RegressionCHOV"})
+    public void TargetedMigrationFlow_2P_InternetAndTV_to_SAIISSTest(){
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getContactID() );
+        reporter.reportLogWithScreenshot("Account Overview page has Launched");
+        getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
-        reporter.reportLogWithScreenshot("use this address");
-        //	getRogersIgniteBundlesPage().clkUsethisAddress();
-        reporter.reportLogWithScreenshot("Service Availability");
+        reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clkContinueServiceable();
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkTVCheckbox();
-        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-        reporter.reportLogWithScreenshot("Triple play selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
-        reporter.reportLogWithScreenshot("added to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
+        reporter.reportLogWithScreenshot("Service Availability-Success window");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyRecommendedOffers(),"Verified targeted offer","Targeted offer not available");
+        reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        getRogersIgniteBundlesPage().clkSmartStream();
+//        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+        reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-        reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("review terms and condition");
+        reporter.reportLogWithScreenshot("checkout");
+        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        reporter.reportLogWithScreenshot("points to mention");
-        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later");
-        reporter.reportLogWithScreenshot("After Exchange later");
-        getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        getRogersIgniteBundlesPage().contiue4KContent();
+        reporter.reportLogWithScreenshot("review terms and conditions");
+        //getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinuePTM();
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-        reporter.reportLogWithScreenshot("Intenet addons page");
-        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
-        //	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
+        reporter.reportLogWithScreenshot("Product Added");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
@@ -62,38 +58,38 @@ public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.reportLogWithScreenshot("Phone Number Selected");
-        getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+        reporter.reportLogWithScreenshot("Installation options");
+
         getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("installation options");
+        getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
-        reporter.reportLogWithScreenshot("in person delivery");
         getPaymentOptionsPage().clkContinue();
+        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+
         getCreditCheckPage().verifyBillingAndPaymentOption();
-        reporter.reportLogWithScreenshot("Billing and payment");
         getCreditCheckPage().clickDigitalFrontline();
-        reporter.reportLogWithScreenshot("Front line");
         getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("Entered card detail");
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+    	getRogersOVCheckoutPage().clkSubmit();
+    	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
+
     }
+
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
+
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
+
 }

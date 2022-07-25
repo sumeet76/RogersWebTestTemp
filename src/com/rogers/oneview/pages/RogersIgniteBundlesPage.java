@@ -197,6 +197,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
 	WebElement selectServiceCustomerWant;
 
+	@FindBy(xpath = "//div[@translate='global.label.currentLineup']//following::div[contains(text(),'ON')]")
+	WebElement provinceON;
+
 	@FindBy(xpath = "//span[@translate='global.label.totalMonthlyFees']")
 	WebElement monthFeesInCollapse;
 
@@ -910,6 +913,15 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean verifyAvailableServicesCheckboxes() {
 		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
+	}
+
+	/**
+	 * Verify Province for selected lineup address
+	 * @return true if available, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyLineUpAddressON(){
+		return getReusableActionsInstance().isElementVisible(provinceON,30);
 	}
 
 

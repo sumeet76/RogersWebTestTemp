@@ -11,34 +11,42 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAIISS_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC080_1549_TargetedMigration_1P_TV_to_ISS_TargetedOfferType_Recommended_ATL_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void TargetedMigrationFlow_2P_InternetAndTV_to_SAIISSTest(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getContactID() );
+    public void oneViewCH_1617_TC01_TargetedMigrationFlowTvToSAIISSTest(){
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PTvToSAIISS.getAccountNo(), TestDataHandler.targetedMigration1PTvToSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
-        getRogersIgniteBundlesPage().clkContinue();
+        //getRogersIgniteBundlesPage().clkUsethisAddress();
+        getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyRecommendedOffers(),"Verified targeted offer","Targeted offer not available");
+        getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        getRogersIgniteBundlesPage().clkSmartStream();
+//        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
+//        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("checkout");
-        getRogersIgniteBundlesPage().reviewAllTerms();
+        //getRogersIgniteBundlesPage().clkCheckOut();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        reporter.reportLogWithScreenshot("review terms and conditions");
-        //getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clkContinuePTM();
+        getRogersIgniteBundlesPage().clkReviewContinue();
+        /*To Add the chargeable Pods*/
+        getRogersIgniteBundlesPage().addPods(5);
+        reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
+        /*To Add the free pods in the internt addons page*/
+        getRogersIgniteBundlesPage().addPods(0);
+        reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
@@ -47,11 +55,11 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
-        reporter.reportLogWithScreenshot("Product Added");
-        /*getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        //reporter.reportLogWithScreenshot("Product Added");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        getCreditCheckPage().clkAuthorize();*/
+        getCreditCheckPage().clkAuthorize();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
@@ -71,8 +79,8 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
-    	getRogersOVCheckoutPage().clkSubmit();
-    	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//	    getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -84,9 +92,9 @@ public class OneViewCH_Auto_1554_TC01_TargetedMigration_2P_InternetAndTV_to_SAII
 
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        //closeSession();
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterTest() {
+//        closeSession();
+//    }
 
 }
