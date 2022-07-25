@@ -102,6 +102,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery']")
 	WebElement courierDelivery;
 
+
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
 			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']")
