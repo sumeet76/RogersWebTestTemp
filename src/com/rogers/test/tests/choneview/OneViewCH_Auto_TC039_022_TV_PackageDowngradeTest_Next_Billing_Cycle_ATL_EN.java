@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC039_022_TV_PackageDowngradeTest_ATL_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC039_022_TV_PackageDowngradeTest_Next_Billing_Cycle_ATL_EN extends BaseTestClass {
 	@Test (groups = {"RChangeTv","RegressionCHOV","SanityCHOV"})
 	public void checkTVPackageDowngrade() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getBan(), TestDataHandler.TC023_TVPackageDowngrade.getContactID());

@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test extends BaseTestClass {
 
     @Test(groups="RegressionCHOV")
-    public void oneViewCH_Auto_OVS2_Validation_Change_2P_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
+    public void oneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(), TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();

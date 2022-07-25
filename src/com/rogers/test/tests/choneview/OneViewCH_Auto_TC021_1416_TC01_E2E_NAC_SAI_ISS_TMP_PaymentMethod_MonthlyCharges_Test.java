@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyCharges_Test(){
+    public void oneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyCharges_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -95,6 +95,7 @@ public class OneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_Mo
         getRogersOVCheckoutPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
+
     }
 
 	@BeforeMethod (alwaysRun=true)

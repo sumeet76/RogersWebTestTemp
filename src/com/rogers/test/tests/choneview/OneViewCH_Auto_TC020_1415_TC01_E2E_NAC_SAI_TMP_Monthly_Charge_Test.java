@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_PaymentMethod_CreditCard_Test(){
+    public void oneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");

@@ -12,23 +12,25 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_SAIISS_Test_FR extends BaseTestClass {
+public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Test_FR extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_1618_TC01_E2E_Migration_To_SAIISS_Test(){
+    public void oneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Test_FR(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("click ignite");
+		getAccountOverViewPage().setLanguageFrench();
 		getAccountOverViewPage().clickIgnite();
 		reporter.reportLogWithScreenshot("use this address");
 	//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
-		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkSmartStream();
-		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
+		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS selected");
+		getRogersIgniteBundlesPage().clkInternetCheckbox();
+		reporter.reportLogWithScreenshot("Internet checkbox is selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -66,12 +68,12 @@ public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_SAIISS_
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and Payment test");
-	//	getCreditCheckPage().clickDigitalFrontline();
-	//	reporter.reportLogWithScreenshot("Digital front line");
-	//	getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-	//	getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-	//	getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-	//	reporter.reportLogWithScreenshot("Entered card details");
+		getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("Digital front line");
+		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("Entered card details");
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
 	//	reporter.reportLogWithScreenshot("submit order");

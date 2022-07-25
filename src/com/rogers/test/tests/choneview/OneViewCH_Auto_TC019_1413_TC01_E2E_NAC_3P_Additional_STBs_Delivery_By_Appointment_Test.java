@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_PaymentMethod_CreditCard_Test(){
+    public void oneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test (){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");

@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN extends BaseTestClass {
     @Test
-    public void OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P_Bundle_ON_EN(){
+    public void oneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         //	getAccountOverViewPage().enterDealerCodeDialogue();
@@ -26,6 +26,7 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkTVCheckbox();
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+        getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("Triple play selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -36,7 +37,9 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+    //    getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
