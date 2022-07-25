@@ -12,15 +12,16 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC022_1417_E2E_NAC_3P_TMP_Professional_Install_PaymentMethod_PreauthorizedChequing_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.nacTMP.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyLineUpAddressON(),"ON address is displayed","ON address is not displayed");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -39,14 +40,17 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		reporter.reportLogWithScreenshot("4K TV Pop up");
 		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContinue();
-		getRogersIgniteBundlesPage().clkCollapse();
+		reporter.reportLogWithScreenshot("4K Channel Pop up");
+		getRogersIgniteBundlesPage().contiue4KContent();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.reportLogWithScreenshot("campaign");
+
+		// Campaign Type - OTBC
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("KDT");
-		reporter.reportLogWithScreenshot("Campaign code entered");
+		getRogersIgniteCampaignPage().enterCoupon("PCR6");
+		reporter.reportLogWithScreenshot("OTBC Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
@@ -74,25 +78,42 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Te
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.reportLogWithScreenshot("Phone Number Generated");
-		//getHomePhoneSelectionPage().clkContinue();
+		getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
-		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in-person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+
+		// Install Type - Professional Install
+
+		reporter.reportLogWithScreenshot("professional installation");
+		getCreditCheckPage().selectProfessionalInstallation();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.reportLogWithScreenshot("payment options");
-		getCreditCheckPage().clickDigitalFrontline();
-		reporter.reportLogWithScreenshot("digital front line");
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("added cart details");
+		reporter.reportLogWithScreenshot("billing and payment");
+
+		// Payment Method - Pre-authorized Cheque
+
+		getCreditCheckPage().selectPaymentOption(2);
+		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
+		getRogersOVCheckoutPage().enterTransitNumber("00333");
+		reporter.reportLogWithScreenshot("Transit number");
+		getRogersOVCheckoutPage().enterInstitutionNumber("003");
+		reporter.reportLogWithScreenshot("Institution Number");
+		getRogersOVCheckoutPage().enterAccountNumber("1234003");
+		reporter.reportLogWithScreenshot("Account Number");
+
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
 		getRogersOVCheckoutPage().clkSubmit();
