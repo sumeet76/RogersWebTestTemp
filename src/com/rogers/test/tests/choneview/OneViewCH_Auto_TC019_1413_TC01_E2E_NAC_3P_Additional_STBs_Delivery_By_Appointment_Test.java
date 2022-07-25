@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_Test(){
+    public void oneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test (){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
@@ -74,10 +74,14 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 			getCreditCheckPage().verifyInstallationOption();
 			getCreditCheckPage().goToPageBottom();
-			getCreditCheckPage().clkCourierDelivery();
-			getCreditCheckPage().clickInPersonDelivery();
-			reporter.reportLogWithScreenshot("IN PERSON DELIVERY");
-			getPaymentOptionsPage().clkContinue();
+			getCreditCheckPage().selectDeliveryByAppointment();
+			getFulfillmentPage().clkFirstAvailableAppointment();
+			reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+			getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+			getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+			reporter.reportLogWithScreenshot(".enter Special Instructions");
+			getCreditCheckPage().enterSpecialInstructions();
+			getCreditCheckPage().clkContinueInstallationOption();
 			reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 			getCreditCheckPage().verifyBillingAndPaymentOption();
 			reporter.reportLogWithScreenshot("front line");
@@ -91,8 +95,8 @@ public class OneViewCH_Auto_1413_TC01_E2E_NAC_3P_STBs_PaymentMethod_CreditCard_T
 			reporter.reportLogWithScreenshot("card details entered");
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
-			getRogersOVCheckoutPage().clkSubmit();
-			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+	//		getRogersOVCheckoutPage().clkSubmit();
+	//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }

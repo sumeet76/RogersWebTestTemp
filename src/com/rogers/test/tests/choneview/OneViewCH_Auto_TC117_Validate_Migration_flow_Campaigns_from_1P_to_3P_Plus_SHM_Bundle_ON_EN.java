@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P_Bundle_ON_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN extends BaseTestClass {
     @Test
-    public void OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P_Bundle_ON_EN(){
+    public void oneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         //	getAccountOverViewPage().enterDealerCodeDialogue();
@@ -26,6 +26,7 @@ public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkTVCheckbox();
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+        getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("Triple play selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -36,7 +37,9 @@ public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+    //    getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
@@ -47,6 +50,11 @@ public class OneViewCH_Auto_OVS3_Validate_Migration_flow_Campaigns_from_1P_to_3P
         getRogersIgniteBundlesPage().contiue4KContent();
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Intenet addons page");
+        reporter.reportLogWithScreenshot("campaign");
+        getRogersIgniteCampaignPage().clickCampaignTab();
+        getRogersIgniteCampaignPage().enterCoupon("KCS");
+        getRogersIgniteCampaignPage().clickApplyCoupon();
+        reporter.reportLogWithScreenshot("campaign coupon applied");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
         //	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
