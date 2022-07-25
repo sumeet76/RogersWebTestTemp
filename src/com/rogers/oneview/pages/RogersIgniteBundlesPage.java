@@ -175,16 +175,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
+	//@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,')]")
 	WebElement reviewBattery;
 
-	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+	String collapsible = "(//rch-collapsible)";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
