@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTestClass {
+public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherStore_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -88,6 +88,8 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
+        getRogersCheckoutPage().clickSkipAutopay();
+        reporter.reportLogPassWithScreenshot("AutoPay Enrollment is skipped");
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
         getRogersCheckoutPage().setEmailShippingPage();
@@ -102,6 +104,20 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_Test extends BaseTes
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
+        getRogersReviewOrderPage().clickEditShipping();
+        getRogersCheckoutPage().clkDeliveryMethod("Express");
+        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
+                "Express pickup location map is not available");
+        getRogersCheckoutPage().selectAnotherBOPISStore();
+        String selectedBOPISStore = getRogersCheckoutPage().getSelectedBOPISStoreLoc();
+        getRogersCheckoutPage().clkContinueBtnShipping();
+        getRogersCheckoutPage().clksubmitBtnCheckoutPage();
+        reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
+                "Order Review Page Title is not Present");
+        reporter.reportLogPassWithScreenshot("Order Review Page");
+        String selectedBOPISStoreLoc = getRogersReviewOrderPage().getSelectedStoreLocation();
+        reporter.hardAssert(selectedBOPISStore.equalsIgnoreCase(selectedBOPISStoreLoc),"Selected Express Pickup Store is same as in Review Page","Selected Express Pickup Store is not same as in Review Page");
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         //getRogersReviewOrderPage().clkAllAgreementConsentCheckbox("financing");
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
