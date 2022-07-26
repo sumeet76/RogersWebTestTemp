@@ -107,7 +107,7 @@ public class TestDataHandler {
 	public static AccountData tc87_NativeTNcourierFulfilmentHot;
 	public static AccountData tc88_Legacy2PTVIntToIgnite3P;
 	public static AccountData tc117_Legacy2PTVToIgnite3P;
-	public static AccountData tc89_Legacy3pToIgnite3P;
+	public static AccountData tc124_Legacy3pToIgnite3P;
 	public static AccountData tc90_Legacy1PTVtoIgnite2P;
 	public static AccountData tc92_2L7ContractType3PBulkTenant;
 	public static AccountData tc93_FWACappedPlan;
@@ -468,7 +468,7 @@ public class TestDataHandler {
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
 		tc88_Legacy2PTVIntToIgnite3P= YamlHandler.getCableAccountData("TC88_Legacy2PTVIntToIgnite3P");
 		tc117_Legacy2PTVToIgnite3P= YamlHandler.getCableAccountData("TC117_Legacy2PTVToIgnite3P");
-		tc89_Legacy3pToIgnite3P= YamlHandler.getCableAccountData("TC89_Legacy3pToIgnite3P");
+		tc124_Legacy3pToIgnite3P= YamlHandler.getCableAccountData("TC124_Legacy3pToIgnite3P");
 		tc90_Legacy1PTVtoIgnite2P= YamlHandler.getCableAccountData("TC90_Legacy1PTVtoIgnite2P");
 		//RHP test data
 		tc48_legacyRHP = YamlHandler.getCableAccountData("TC48_LegacyRHP");
