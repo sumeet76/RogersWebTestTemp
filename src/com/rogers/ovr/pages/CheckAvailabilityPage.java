@@ -38,8 +38,6 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//input[contains(@id,'algoliaInput') or contains(@id,'canada-post-address-complete')]")
     WebElement addressInput;
 
-    //@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-    //@FindBy(xpath = "//div[contains(@class,'ds-formField__autoComplete')]")
     @FindBy(xpath = "(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
     WebElement searchResult;
 
@@ -48,6 +46,9 @@ public class CheckAvailabilityPage extends BasePageClass {
 
     @FindBy(xpath = "//span[@translate='global.cta.otherAddress']")
     WebElement otherAddressRadioButton;
+
+    @FindBy(xpath = "//div[contains(text(),'account has not been consolidated')]")
+    WebElement nonConsolidatedBanErrorMessage;
 
 
     public void useThisAddress()  {
@@ -100,6 +101,10 @@ public class CheckAvailabilityPage extends BasePageClass {
     public boolean verifyCheckAvailabilityPopup(){
         return getReusableActionsInstance().isElementVisible(checkAvailabilityHeader, 60) &&
                 getReusableActionsInstance().isElementVisible(checkAvailabilityBtn, 60);
+    }
+
+    public boolean verifyNonConsolidatedBanErrorMessage(){
+        return getReusableActionsInstance().isElementVisible(nonConsolidatedBanErrorMessage,60);
     }
 
 }

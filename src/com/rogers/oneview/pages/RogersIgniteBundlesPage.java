@@ -175,16 +175,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
+	//@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,']")
+	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,')]")
 	WebElement reviewBattery;
 
-	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
+	String collapsible = "(//rch-collapsible)";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
 	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
@@ -195,6 +196,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
 	WebElement selectServiceCustomerWant;
+
+	@FindBy(xpath = "//div[@translate='global.label.currentLineup']//following::div[contains(text(),'ON')]")
+	WebElement provinceON;
 
 	@FindBy(xpath = "//span[@translate='global.label.totalMonthlyFees']")
 	WebElement monthFeesInCollapse;
@@ -911,6 +915,15 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
 	}
 
+	/**
+	 * Verify Province for selected lineup address
+	 * @return true if available, else false
+	 * @author Jarmanjeet.Batth
+	 */
+	public boolean verifyLineUpAddressON(){
+		return getReusableActionsInstance().isElementVisible(provinceON,30);
+	}
+
 
 	/**
 	 * Verify Monthly Fees available
@@ -1273,8 +1286,8 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateInternetAddOnsInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
-		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+//		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
+//		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
 	}
