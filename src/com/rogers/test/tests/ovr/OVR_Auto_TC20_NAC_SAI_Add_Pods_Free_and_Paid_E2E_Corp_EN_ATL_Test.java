@@ -104,7 +104,7 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
-        //getBundleBuilderPage().selectExpressProInstall();
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");

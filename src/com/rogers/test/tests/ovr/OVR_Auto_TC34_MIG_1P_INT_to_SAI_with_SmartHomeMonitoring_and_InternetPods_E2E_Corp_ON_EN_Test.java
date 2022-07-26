@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_ON_FR_Test extends BaseTestClass {
+public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_InternetPods_E2E_Corp_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -21,60 +21,58 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
     public void afterTest() {
         //closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_ON_FR_Test() {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    public void ovr_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_InternetPods_E2E_Corp_ON_EN_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getChampLoginPage().changeChampToFR();
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM.getBanNumber(), TestDataHandler.tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM_and_InternetPods.getBanNumber(), TestDataHandler.tc_34_Ovr_Mig_Data_1pINT_to_SAI_with_SHM_and_InternetPods.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        reporter.reportLogWithScreenshot("Address Availability popup");
         getCheckAvailabilityPage().useThisAddress();
-        reporter.reportLogWithScreenshot("Service Availability");
-        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
+        reporter.reportLogWithScreenshot("Service Availability Page");
+        reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(),"Current plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
-        reporter.reportLogWithScreenshot("Bundle Builder Page displayed");
+        reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkTVCheckbox();
+        reporter.reportLogWithScreenshot("Internet Selected");
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
-        reporter.reportLogWithScreenshot("Internet and TV with SHM are Selected");
+        reporter.reportLogWithScreenshot("SAI Internet with SHM selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load Offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("Add to cart 1st offer");
-        getRogersIgniteBundlesPage().noPortInPopup();
-
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+        reporter.reportLogWithScreenshot("Continue with SAI internet and SHM bundle");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
+
+        reporter.reportLogWithScreenshot("Points to mention pop-up");
+        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
-//        getRogersIgniteBundlesPage().clickReviewAddons();
-//        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to 4k tv popup");
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        reporter.reportLogWithScreenshot("4k content modal");
-        getRogersIgniteBundlesPage().contiue4KContent();
-
+        //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to SHM Add ons page");
+        /*To Add the chargeable Pods*/
+        getRogersIgniteBundlesPage().addPods(5);
+        reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
+        getRogersIgniteBundlesPage().addAdditionalPods(5);
+        /*To Add the free pods in the internet addons page*/
+        getRogersIgniteBundlesPage().addPods(0);
+        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
+        //getRogersIgniteBundlesPage().addAdditionalPods(0);
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
+
 
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"SHM Add ons page loaded","SHM add ons page not loaded");
         getRogersIgniteBundlesPage().addSHMAddOn();
@@ -86,6 +84,8 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
         //Validation for SHM Addon
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMOnetimeChargesInCartSummary(),"One time SHM charges present", "One time SHM charges not Present");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
+        //Validation for pods
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
@@ -106,27 +106,26 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Install page");
 
-        reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.reportLogWithScreenshot("Launched the install page");
         getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Select Express Pro install");
+        reporter.reportLogWithScreenshot("Select Express Pro Install");
         getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Select a time slot");
+        reporter.reportLogWithScreenshot("Select tech install slot");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
-        reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
         getBundleBuilderPage().clkContinueBillingAndPayment();
 
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
         reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-        //validate SHM charges one time fees
+        //validate SHM charges and Internet pods one time fees
         reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         //Validation for SHM Addon monthly fees.
         reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
         reporter.reportLogWithScreenshot("Order review Page");
@@ -139,13 +138,15 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_E2E_
         getOVRAgreementPage().clkAgreementCheckbox();
         reporter.reportLogWithScreenshot("Click Agreement Checkbox");
         getOVRAgreementPage().clkCompleteOrder();
+
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-        //validate SHM charges one time fees
+        //validate SHM charges and Internet pods one time fees
         reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
         //Validation for SHM Addon monthly fees.
         reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
 

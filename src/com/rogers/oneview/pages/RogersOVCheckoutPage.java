@@ -657,7 +657,7 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	public String setEmailCreateProfile() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
+		getReusableActionsInstance().clickWhenReady(emailCreateProfile,60);
 		getReusableActionsInstance().getWhenReady(inputEmail, 40).sendKeys(FormFiller.generateEmail());
 		return getReusableActionsInstance().getWhenReady(inputEmail, 40).getAttribute("value");
 	}
