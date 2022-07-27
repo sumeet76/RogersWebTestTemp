@@ -312,14 +312,22 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath="//p[@data-test='step-title-shipping']")
 	WebElement deliveryMethodHeader;
-	
-	@FindBy(xpath ="//ds-radio-button[@data-test='standard-delivery']/label")
+
+	@FindAll({
+			@FindBy(xpath = "//ds-radio-button[@data-test='standard-delivery']/label"),
+			@FindBy(xpath = "//ds-selection[@data-test='shipping-option-standard']//p[contains(text(),'Standard Delivery')]"),
+			@FindBy(xpath = "//p[contains(text(),'Standard Delivery')]/ancestor::span[contains(@class,'ds-selection__label')]")
+	})
 	WebElement deliveryMethodStandard;
 
 	@FindBy(xpath ="//ds-radio-button[@data-test='potg-delivery']/label")
 	WebElement deliveryMethodProOnTheGo;
 
-	@FindBy(xpath ="//ds-radio-button[@data-test='in-store-pickup']/label")
+	@FindAll({
+			@FindBy(xpath = "//ds-radio-button[@data-test='in-store-pickup']/label"),
+			@FindBy(xpath = "//p[contains(text(),'Express Pickup')]/ancestor::span[contains(@class,'ds-selection__label')]"),
+			@FindBy(xpath = "//ds-selection[@data-test='shipping-option-inStorePickUP']//p[contains(text(),' Express Pickup – FREE')]")
+	})
 	WebElement deliveryMethodExpress;
 
 	@FindBy(xpath ="//location-container//div[@id='store-map-div']")
@@ -327,6 +335,24 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath ="//p[@data-test='timeslot-appointment']")
 	WebElement deliveryAppointmentTime;
+
+	@FindAll({
+			@FindBy(xpath = "//span[contains(@class,'ds-button__copy text-button') and contains(.,'Change address')]"),
+			@FindBy(xpath = "//button[@data-test='change-address-btn']//span[contains(text(),'Change address')]")
+	})
+	WebElement changeShipAddressbtn;
+
+	@FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+	WebElement inputNewShippingAddress;
+
+	@FindBy(xpath = "//button[@data-test='edit-email-btn']//span[contains(text(),'Edit')]")
+	WebElement editEmail;
+
+	@FindBy(xpath = "//div[@data-test='location-item']//span[contains(text(),'2')]")
+	WebElement selectAnotherBOPISStore;
+
+	@FindBy(xpath = "//div[@data-test='location-item']//span[contains(text(),'2')]/following::div[2]/p")
+	WebElement selectedBOPISStoreLoc;
 
 	@FindBy(xpath="//span[@data-test='email-address']")
 	WebElement txtEmailAddress;
@@ -406,6 +432,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox[contains(@id,'dsa-terms-conditions')]")
 	WebElement chAutoPayConsent;
 
+	@FindBy(xpath = "//div[contains(text(),'Not now')]/parent::label")
+	WebElement skipAutoPay;
+
+	@FindBy(xpath = "//button[@data-test='payment-method-continue']")
+	WebElement paymentContinueButton;
+
+	@FindBy(xpath = "//button[@data-test='auto-pay-removal-modal-button']//span[contains(text(),'Continue')]")
+	WebElement autoPayRemovalCtnBtn;
 
 	/**
 	 * To get the Title of post checkout page
@@ -553,8 +587,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	 public void clkNoThanks() {
-			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,5)) {
-				getReusableActionsInstance().executeJavaScriptClick(btnClkNoThanks);
+			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,10)) {
+				getReusableActionsInstance().doubleClick(btnClkNoThanks,8);
 			}
 		}
 	/**
@@ -1314,15 +1348,55 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkDeliveryMethod(String deliveryMethod) {
 		getReusableActionsInstance().staticWait(2000);
 		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
-			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,30);
+			getReusableActionsInstance().staticWait(2000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,20);
 		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
-			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,30);
+			getReusableActionsInstance().staticWait(2000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,20);
 		}else{
-			getReusableActionsInstance().staticWait(5000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
+			getReusableActionsInstance().staticWait(2000);
+			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,20);
 		}
+	}
+
+	/**
+	 * This method selects the another Express Pickup Store Location on Shipping page
+	 * @author Subash.Nedunchezhian
+	 */
+	public void selectAnotherBOPISStore(){
+		getReusableActionsInstance().executeJavaScriptClick(selectAnotherBOPISStore);
+	}
+	/**
+	 * This method gets the Express Pickup Store Location on Order Review page
+	 *  @return String Express Pickup Store Location
+	 * @author Subash.Nedunchezhian
+	 */
+	public String getSelectedBOPISStoreLoc(){
+		return getReusableActionsInstance().getWhenReady(selectedBOPISStoreLoc).getText().replaceAll("\\n", "");
+	}
+
+	/**
+	 * Enter the new Shipping Address on the Shipping page and select it from the dropdown
+	 * @param newShippingAddress from yaml file
+	 * @author subash.nedunchezhian
+	 */
+	public void selectNewShippingAddress(String newShippingAddress) {
+		getReusableActionsInstance().clickWhenVisible(changeShipAddressbtn);
+		getReusableActionsInstance().executeJavaScriptClick(inputNewShippingAddress);
+		getReusableActionsInstance().getWhenReady(inputNewShippingAddress, 5).sendKeys(newShippingAddress);
+		if(getReusableActionsInstance().isElementVisible(billingAddressSelection,10)) {
+			getReusableActionsInstance().executeJavaScriptClick(billingAddressSelection);
+		}
+	}
+
+	/**
+	 * This method opts out AutoPay payment method and clicks Continue in AutoPay Removal Modal
+	 * @author subash.nedunchezhian
+	 */
+	public void clickSkipAutopay(){
+		getReusableActionsInstance().clickWhenVisible(skipAutoPay);
+		getReusableActionsInstance().clickWhenReady(paymentContinueButton,20);
+		getReusableActionsInstance().clickWhenReady(autoPayRemovalCtnBtn,20);
 	}
 
 	/**
@@ -1361,7 +1435,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 
 	public void clkContinueBtnShipping() {
-		clkNoThanks();
+		//clkNoThanks();
 		getReusableActionsInstance().getWhenReady(continueBtnShipping,30);
         getReusableActionsInstance().scrollToElement(continueBtnShipping);
 		getReusableActionsInstance().clickWhenReady(continueBtnShipping, 30);

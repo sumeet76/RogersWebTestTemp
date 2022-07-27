@@ -74,8 +74,8 @@ class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTest
         reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
-        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Appointment time is available",
-                "Appointment time is not available");
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Pickup Location Map is available",
+                "Express Pickup Location Map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
