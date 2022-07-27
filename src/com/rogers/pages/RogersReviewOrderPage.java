@@ -82,6 +82,18 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Prem Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement dpAddonCarLineItem;
 
+    @FindAll({
+            @FindBy(xpath="//span[contains(text(),'Delivery Method') or contains(text(),'Mode de livraison')]/following::a[@class='link']"),
+            @FindBy(xpath = "//a[@class='link' and contains(text(),'Edit')]")
+    })
+    WebElement editDeliveryMethod;
+
+    @FindBy(xpath="//div[@data-test='in-store-pickup-address']/p[1]")
+    WebElement selectedStoreLocation;
+
+    @FindBy(xpath = "//p[contains(.,'Shipping Address')]/following-sibling::p")
+    WebElement selectedShippingAddress;
+
     /**
      * To Verify the Title of Order Review Page is Present
      * @return true or false
@@ -301,5 +313,31 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public String getDeviceProtectionAddon() {
         return dpAddonCarLineItem.getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * This method clicks on Edit Shipping Method on Order Review page
+     * @author Subash.Nedunchezhian
+     */
+    public void clickEditShipping(){
+        getReusableActionsInstance().clickWhenReady(editDeliveryMethod);
+    }
+
+    /**
+     * This method gets the Express Pickup Store Location on Order Review page
+     *  @return String Express Pickup Store Location
+     * @author Subash.Nedunchezhian
+     */
+    public String getSelectedStoreLocation(){
+        return getReusableActionsInstance().getWhenReady(selectedStoreLocation).getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * This method gets the Selected Shipping Address on Order Review page
+     *  @return String Selected Shipping Address
+     * @author Subash.Nedunchezhian
+     */
+    public String getSelectedShippingAddress(){
+        return getReusableActionsInstance().getWhenReady(selectedShippingAddress).getText().replaceAll("\\n", "");
     }
 }

@@ -274,10 +274,11 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to Ignite Internet Information Pages']")
 	WebElement subnavIgniteInternet;
 
-	@FindAll({
-	@FindBy(xpath = "//li[@role='menuitem']/dsa-subnav-link/a[contains(@title,'View links to TV & Streaming information pages')]"),
-	@FindBy(xpath = "//span[text()='TV & Streaming Bundles']/ancestor::li[@role='menuitem']")})
+	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV & Streaming')]")
 	WebElement subnavIgniteSmartStream;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Shop Ignite TV with Ignite Internet')]/span[@role='text']")
+	WebElement lnkGetItNow;
 
 	@FindAll({
 	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite SmartStream']"),
@@ -413,6 +414,10 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(subnavIgniteSmartStream, 30).click();
 	}
 
+	public void clkGetIgniteTvWithIgniteInternet(){
+		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
+		getReusableActionsInstance().getWhenReady(lnkGetItNow,30).click();
+	}
 	/**
 	 * Click the Ignite Internet from the sub navigator
 	 * @author chinnarao.vattam
@@ -1057,6 +1062,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkUseAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	/**
