@@ -584,7 +584,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 60);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 20);
+	}
+
+	public boolean verifyNoThanks(){
+		return getReusableActionsInstance().isElementVisible(btnNoThnx, 30);
 	}
 	
 	/**
@@ -1063,6 +1067,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkUseAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**

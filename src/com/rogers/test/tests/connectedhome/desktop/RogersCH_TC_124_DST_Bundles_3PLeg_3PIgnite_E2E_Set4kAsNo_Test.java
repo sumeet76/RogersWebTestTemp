@@ -57,21 +57,26 @@ public class RogersCH_TC_124_DST_Bundles_3PLeg_3PIgnite_E2E_Set4kAsNo_Test exten
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc124_Legacy3pToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+		/*if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc124_Legacy3pToIgnite3P.getAccountDetails().getBan());
 		}
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.reportLogWithScreenshot("Launched the Account Page");*/
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
 		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		//getRogersHomePage().clkNoThnx();
+		reporter.reportLogWithScreenshot("Clicked on Get it Now");
+		if(getRogersHomePage().verifyNoThanks()) {
+			getRogersHomePage().clkNoThnx();
+			reporter.reportLogWithScreenshot("Clicked on No Thanks");
+			getRogersHomePage().clkServiceability();
+		}
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
