@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
  * 31. Order confirmation page will be displayed with the order number and validate the order details.
  **/
 
-public class RogersCH_TC_117_2PLegTV_Int_to3P_No4K_Over4STBs_AUTL_E2E_DBAasDefaultFO_ProInstallOption_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
+public class RogersCH_TC_117_2PLeg_to3P_ValidateSVODRemovedFromGenre_No4K_Over4STBs_AUTL_E2E_DBAasDefaultFO_ProInstallOption_Test extends BaseTestClass {
 
     @Test
     public void check2PLegacyTo3PIgniteMigrationTest() {
@@ -88,6 +88,18 @@ public class RogersCH_TC_117_2PLegTV_Int_to3P_No4K_Over4STBs_AUTL_E2E_DBAasDefau
         getRogersIgniteTVBuyPage().selectSolarisPremier(); */
         getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        getRogersIgniteTVBuyPage().clkTotalChannelsFlex20();
+        reporter.reportLogWithScreenshot("Clicked on Total channels link");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewTotalChannelsPopupModal(), "View Total Channels Popup Modal has launched", "View Total Channels Popup Modal has not launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
+        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
+        reporter.reportLogWithScreenshot("Clicked on Close Total Channels popup Modal");
+        getRogersIgniteTVBuyPage().clkFlexChannelsFlex20();
+        reporter.reportLogWithScreenshot("Clicked on Flex channels link");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewFlexChannelsPopupModal(), "View Flex Channels Popup Modal has launched", "View Flex Channels Popup Modal has not launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
+        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
+        reporter.reportLogWithScreenshot("Clicked on Close Flex Channels popup Modal");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();

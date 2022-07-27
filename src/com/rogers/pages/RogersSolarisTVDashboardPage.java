@@ -17,7 +17,19 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-		
+
+	@FindBy(xpath="//button[@aria-label='View more details about Ignite Flex 5']/span")
+	WebElement btnViewMoreDetails;
+
+	@FindBy(xpath="//button[@aria-label='Hide details about Ignite Flex 5']/following-sibling::ds-expander/descendant::div[@translate='global.label.additionalFeatures']")
+	WebElement txtAdditionalFeature;
+
+	@FindBy(xpath="//button[@aria-label='Hide details about Ignite Flex 5']/span")
+	WebElement btnHideDetails;
+
+	@FindBy(xpath="//button[@aria-label='Hide details about Ignite Flex 5']/following-sibling::ds-expander/descendant::div[@translate='global.label.additionalFeatures']/parent::div/descendant::li")
+	WebElement listAdditionalFeature;
+
 	@FindAll({
         @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or  contains(text(),'Télé')]"),
         @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
@@ -959,5 +971,28 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 		return false;
 	}
+
+	public void clkViewMoreDetailsFlex5() {
+		getReusableActionsInstance().getWhenReady(btnViewMoreDetails, 90).click();
+	}
+
+	public void clkHideDetailsFlex5() {
+		getReusableActionsInstance().getWhenReady(btnHideDetails, 30).click();
+	}
+
+	public boolean verifyIgniteBoxPrice() {
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(txtAdditionalFeature);
+		String additionalFeatureText = getReusableActionsInstance().getWhenReady(listAdditionalFeature, 30).getText();
+		String[] subs= additionalFeatureText.split("\\$");
+		String[] finalPrice= subs[1].split(" ");
+		if(finalPrice[0].equals("0")){
+			return false;
+		}
+		return true;
+
+	}
+
+
+
 
 }

@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import utils.FormFiller;
 
+import java.util.List;
+
 public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	public RogersIgniteTVBuyPage(WebDriver driver) {
@@ -321,6 +323,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.label.totalChannels']")
 	WebElement txtTotalChannelsRateCardDetails;
 
+	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
+	WebElement drpdwnGenre;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]/span")
+	WebElement btnTotalChannelsFlex20;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]/span")
+	WebElement btnFlexChannelsFlex20;
+
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
 
@@ -575,6 +586,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
+
 
 	/**
 	 * To verify Bundles Page
@@ -1605,5 +1617,38 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	public void clkBestAdd() {
 		getReusableActionsInstance().getWhenReady(btnBestAdd, 60).click();
+	}
+
+	public void clkTotalChannelsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
+	}
+
+	public void clkFlexChannelsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+	}
+
+	public boolean verifyViewTotalChannelsPopupModal() {
+		//getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 40);
+		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
+	}
+
+	public boolean verifyViewFlexChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
+	}
+
+	public void clkCloseChannelsPopup() {
+		getReusableActionsInstance().getWhenReady(iconCloseModal, 20).click();
+	}
+
+	public boolean verifySVODRemovedFromGenre() {
+		getReusableActionsInstance().getWhenReady(drpdwnGenre, 30).click();
+		Select DrpDwnGenreSel = new Select(drpdwnGenre);
+		List<WebElement> DrpDwnGenreList = DrpDwnGenreSel.getOptions();
+		for (WebElement indElem : DrpDwnGenreList) {
+			if (indElem.getText().contains("SVOD")) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
