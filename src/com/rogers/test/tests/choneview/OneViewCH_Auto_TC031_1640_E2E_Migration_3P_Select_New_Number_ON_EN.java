@@ -82,10 +82,8 @@ public class OneViewCH_Auto_TC031_1640_E2E_Migration_3P_Select_New_Number_ON_EN 
 		//getFulfillmentPage().clkContinue();
 
 		/*Bill and Payment page*/
-		
+
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getCreditCheckPage().selectDeliveryByAppointment();
