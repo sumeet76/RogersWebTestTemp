@@ -715,6 +715,17 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
 	}
 
+	/**
+	 * Click the NL Province link from the top tile bar
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkNLProvinceLnk() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
+	}
+
 
 	/**
 	 * Clicks on the 'Service ability' button
@@ -1057,7 +1068,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 60);
 	}
 
 	/**

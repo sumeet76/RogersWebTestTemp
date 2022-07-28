@@ -45,7 +45,7 @@ import java.util.Map;
  * 26. Validate the Ban ID in the DB
  **/
 
-public class RogersCH_TC_116_1PLegInt_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAutomatedGoestoMaestroTest extends BaseTestClass {
+public class RogersCH_TC_116_1PLeg_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAutomatedGoestoMaestro_NL_Test extends BaseTestClass {
 
     @Test
     public void check1PLegacyTo2PIgniteMigrationTest() {
@@ -54,7 +54,7 @@ public class RogersCH_TC_116_1PLegInt_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAu
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+       // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
@@ -62,22 +62,50 @@ public class RogersCH_TC_116_1PLegInt_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAu
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersHomePage().clkNLProvinceLnk();
+        reporter.reportLogWithScreenshot("Selected the NL Province");
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
-        getRogersHomePage().clkSmartInternet();
+       // getRogersHomePage().clkSmartInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("selected address on file");
         getRogersHomePage().clkUseAddress();
 
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
-        getRogersInternetPackageSelectionPage().selectIgniteSmartStream1GbpsCheckBox();
-        reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
-        getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+
+
+        getRogersInternetPackageSelectionPage().clkTakQuiz();
+        reporter.reportLogWithScreenshot("Launched BEST PACKAGE FOR YOU page");
+        getRogersInternetPackageSelectionPage().clkWebEmail();
+        getRogersInternetPackageSelectionPage().clkStreamingShowsBtn();
+        getRogersInternetPackageSelectionPage().clkOnlineGamingBtn();
+        getRogersInternetPackageSelectionPage().clkSharingLargeVideosBtn();
+        getRogersInternetPackageSelectionPage().clkSmartDevicesBtn();
+        getRogersInternetPackageSelectionPage().clkWorkHome();
+        reporter.reportLogWithScreenshot("Checked Internet usage of household");
+        getRogersInternetPackageSelectionPage().clkDSTContinue();
+        getRogersInternetPackageSelectionPage().clkInternetCount6OrMore();
+        reporter.reportLogWithScreenshot("Selected Internet Count");
+        getRogersInternetPackageSelectionPage().clkDSTContinue();
+        getRogersInternetPackageSelectionPage().clkInternetDevice16OrMore();
+        reporter.reportLogWithScreenshot("Selected Internet Device");
+        getRogersInternetPackageSelectionPage().clkDSTContinue();
+        getRogersInternetPackageSelectionPage().clkAddSmartStream();
+        reporter.reportLogWithScreenshot("Add smart stream add on");
+        getRogersInternetPackageSelectionPage().clkDSTContinue();
+        getRogersInternetPackageSelectionPage().VerifyBestFit();
+        reporter.reportLogWithScreenshot("Best Fit package for the selected");
+        getRogersInternetPackageSelectionPage().clkBackToPackagesPage();
+        reporter.reportLogWithScreenshot("Clicked on back to packages");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(),"Best Fit package displayed post quiz","Best Fit package displayed post quiz");
+        //getRogersInternetPackageSelectionPage().selectIgniteSmartStream1GbpsCheckBox();
+        //reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
+        //getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();
+        //reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternet1GbpsPackage();
         reporter.reportLogWithScreenshot("Selected Add to Cart");
         getRogersInternetPackageSelectionPage().clkIUnderstand();
