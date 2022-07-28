@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test extends BaseTestClass {
    @Test
        public void OneViewCH_Auto_OVS2_Pods_Buy_TC03_ValidateMigration3PFlowByAddingBothFreeAndChargeablePods_1PTo3P_Test(){
        getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
