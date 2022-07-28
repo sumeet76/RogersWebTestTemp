@@ -25,6 +25,7 @@ public class AALData {
 	private String dpDeviceStorage;
 	private String dpDeviceColor;
 	private String passcode;
+	private String newShippingAddress;
 	/**
 	 * @return the postalCode
 	 */
@@ -295,5 +296,17 @@ public class AALData {
 	 */
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
+	}
+	/**
+	 * @return the new Shipping Address from yaml
+	 */
+	public String getNewShippingAddress() {
+		return newShippingAddress;
+	}
+	/**
+	 * @param newShippingAddress to set
+	 */
+	public void setNewShippingAddress(String newShippingAddress) {
+		this.newShippingAddress = newShippingAddress;
 	}
 }

@@ -408,7 +408,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkBestAdd() {
-		getReusableActionsInstance().getWhenReady(btnBestAdd, 2000).click();
+		getReusableActionsInstance().getWhenReady(btnBestAdd, 60).click();
 	}
 
 	public void clkSmartStreamPackage() {

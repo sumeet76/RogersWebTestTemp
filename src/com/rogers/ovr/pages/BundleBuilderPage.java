@@ -1,12 +1,9 @@
 package com.rogers.ovr.pages;
 
 import com.rogers.pages.base.BasePageClass;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FormFiller;
 
 /**
@@ -107,6 +104,12 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
     WebElement courierDeliveryCheckbox;
+
+    @FindBy(xpath = "//div[contains(text(),'Services selected must include Internet')]")
+    WebElement nonValidBundlesErrorMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'This service change is not supported in Oneview')]")
+    WebElement downgradeMigrationFlowErrorMessage;
 
 
 
@@ -256,5 +259,13 @@ public class BundleBuilderPage extends BasePageClass {
 
     public void validateSessionTimerWait(int waitTime){
         getReusableActionsInstance().staticWait(waitTime);
+    }
+
+    public boolean verifyNonValidBundlesMessage(){
+        return getReusableActionsInstance().isElementVisible(nonValidBundlesErrorMessage,20);
+    }
+
+    public boolean verifyDowngradeMigrationFlowErrorMessage(){
+        return getReusableActionsInstance().isElementVisible(downgradeMigrationFlowErrorMessage,20);
     }
 }

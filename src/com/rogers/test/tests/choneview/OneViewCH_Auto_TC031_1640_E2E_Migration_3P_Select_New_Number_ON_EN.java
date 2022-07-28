@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC031_1640_E2E_Migration_3P_Select_New_Number_ON_EN extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_1640_TC01_E2E_Migration_3P_NewNumber_Test(){
+    public void oneViewCH_Auto_TC031_1640_E2E_Migration_3P_Select_New_Number_ON_EN(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
@@ -30,7 +30,6 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test exte
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add to cart");
-
 		reporter.softAssert(getRogersIgniteBundlesPage().verifyIgniteHomePhoneSetup(),"Ignite HomePhone Setup pop up","Failed");
 		reporter.reportLogWithScreenshot("Ignite home Phone Setup pop up is displayed");
 		getRogersIgniteBundlesPage().clickNewNumber();
@@ -40,10 +39,8 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test exte
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-
-
-
 		getRogersIgniteBundlesPage().clickExchangeLater();
+
 		//add channel themepack
 		getRogersIgniteBundlesPage().clickReviewAddons();
 		getCustomerProfilePage().clkContinue();
@@ -52,7 +49,7 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test exte
 		//getTVDashboardPage().clickAddOnIfPresent();
 		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
-		getRogersIgniteBundlesPage().clkContinue();
+	//	getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -60,11 +57,6 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test exte
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
-		getCustomerProfilePage().clkContinue();
-		/*Create profile page*/
-		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
-		reporter.reportLogWithScreenshot("Customer Profile");
-		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
 
 		/*Credit evaulation page*/
@@ -86,30 +78,28 @@ public class OneViewCH_Auto_1640_TC01_E2E_Migration_3P_To_3P_NewNumber_Test exte
 		getHomePhoneSelectionPage().clkContinue();
 
 		/*Installation page*/
-		getFulfillmentPage().clkFirstAvailableAppointment();
-		reporter.reportLogWithScreenshot("Appointment Selected");
-		getFulfillmentPage().clkContinue();
+		//reporter.reportLogWithScreenshot("Appointment Selected");
+		//getFulfillmentPage().clkContinue();
 
 		/*Bill and Payment page*/
-	//	reporter.hardAssert(getPaymentOptionsPage().verifyPaymentPage(),"Payment Option Page Loaded","Failed to load payment option page");
-		reporter.reportLogWithScreenshot("Payment Options Page");
-		getPaymentOptionsPage().clkContinue();
-		getRogersOVOrderReviewPage().expandMonthlyBill();
-		getCreditCheckPage().goToPageBottom();
-		getPaymentOptionsPage().clkContinue();
-		getCreditCheckPage().continueConfirmation();
-		getCreditCheckPage().goToPageBottom();
-		getPaymentOptionsPage().clkContinue();
+
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("in person delivery");
+		getCreditCheckPage().selectDeliveryByAppointment();
+		getCreditCheckPage().selectProfessionalInstallation();
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getCreditCheckPage().clkContinueInstallationOption();
+		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		getCreditCheckPage().clickDigitalFrontline();
-		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-		reporter.reportLogWithScreenshot("Entered card details");
+		reporter.reportLogWithScreenshot("billing and payment");
+		getCreditCheckPage().selectPaymentOption(1);
+		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 
 //		getRogersOVCheckoutPage().clkSubmit();
