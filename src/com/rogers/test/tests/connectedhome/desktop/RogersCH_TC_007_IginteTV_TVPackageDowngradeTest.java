@@ -45,10 +45,10 @@ public class RogersCH_TC_007_IginteTV_TVPackageDowngradeTest extends BaseTestCla
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-      /*  getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
-         reporter.reportLogWithScreenshot("more details");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteBoxPrice(),"zero Additional feature price","Additional feature price not zero");
-         reporter.reportLogWithScreenshot("verify details"); */
+        getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
+        reporter.reportLogWithScreenshot("clicked on more details");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteBoxPrice(),"Additional feature price not zero","zero Additional feature price not zero");
+        reporter.reportLogWithScreenshot("clicked on verify details");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");
