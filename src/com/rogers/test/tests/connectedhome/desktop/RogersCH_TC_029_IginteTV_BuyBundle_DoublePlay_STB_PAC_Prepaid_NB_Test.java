@@ -179,8 +179,8 @@ public class RogersCH_TC_029_IginteTV_BuyBundle_DoublePlay_STB_PAC_Prepaid_NB_Te
         // getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         //getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         getRogersIgniteTVBuyPage().selectFlex20Package();
-        reporter.reportLogWithScreenshot("Flex20+ Order online");
-        getRogersIgniteTVBuyPage().selectFlex20Package();
+       /* reporter.reportLogWithScreenshot("Flex20+ Order online");
+        getRogersIgniteTVBuyPage().selectFlex20Package(); */
         reporter.reportLogWithScreenshot("Flex20+ Added to cart");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
