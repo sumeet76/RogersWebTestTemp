@@ -984,9 +984,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		//getReusableActionsInstance().javascriptScrollByVisibleElement(txtAdditionalFeature);
 		String additionalFeatureText = getReusableActionsInstance().getWhenReady(listAdditionalFeature, 30).getText();
 		String[] subs= additionalFeatureText.split("\\$");
-		String[] finalPrice= subs[1].split(" ");
-		if(finalPrice[0].equals("0")){
-			return false;
+		if(subs.length > 1) {
+			String[] finalPrice = subs[1].split(" ");
+			if (finalPrice[0].equals("0")) {
+				return false;
+			}
 		}
 		return true;
 

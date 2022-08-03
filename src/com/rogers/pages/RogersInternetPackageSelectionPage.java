@@ -47,11 +47,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement clkNoOfPPLUsedInternet;
 	@FindBy(xpath = "//span[text()=' 1-5 ']")
 	WebElement clkNoOFDeviceConnectedToInternet;
-	@FindBy(xpath = "//span[text()=' Yes ']")
+	@FindBy(xpath = "//label[contains(@aria-label,'Yes')]/span[@class='selection-label']")
 	WebElement clkAddSmartStreamAddon;
 	@FindBy(xpath="//span[contains(text(),'Back to all pack')]")
 	WebElement clkbtnBackToAllPackages;
-	@FindBy(xpath = "//h2[text()='Here’s the package we recommend for you']")
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']")
 	WebElement VerifyRecommendedBannertitle;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
@@ -67,7 +67,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement headerInternet;
 
 
-	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__main']/descendant::div[@class='internet-bundle-tile__content__checkbox']/descendant::label")
@@ -94,7 +94,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
 	WebElement headerIgniteInternet150;
 
-	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternet1GbpsPackage;
 
 	@FindBy(xpath = "//span[contains(text(),'Yes')]")
@@ -156,6 +156,18 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//label[@aria-label='Select web browsing and email']/span[@class='selection-label']")
 	WebElement btnWebEmail;
 
+	@FindBy(xpath = "//label[@aria-label='Select streaming shows and movies']/span[@class='selection-label']")
+	WebElement btnStreamingMovies;
+
+	@FindBy(xpath = "//label[@aria-label='Select online gaming']/span[@class='selection-label']")
+	WebElement btnOnlineGaming;
+
+	@FindBy(xpath = "//label[@aria-label='Select sharing and uploading large files']/span[@class='selection-label']")
+	WebElement btnSharingLargeFiles;
+
+	@FindBy(xpath = "//label[@aria-label='Select smart home devices']/span[@class='selection-label']")
+	WebElement btnSmartHomeDevices;
+
 	@FindBy(xpath = "//label[@aria-label='Select working from home']/span[@class='selection-label']")
 	WebElement btnWorkHome;
 
@@ -165,10 +177,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//label[@aria-label='Select 2-3']/span[@class='selection-label']")
 	WebElement btnInternetCount;
 
+	@FindBy(xpath = "//label[@aria-label='Select 6 or more']/span[@class='selection-label']")
+	WebElement btnInternetCount6OrMore;
+
 	@FindBy(xpath = "//label[@aria-label='Select 4-7']/span[@class='selection-label']")
 	WebElement btnInternetDevice;
 
-	@FindBy(xpath = "//button[@aria-label='BEST FITIgnite Internet 150u']")
+	@FindBy(xpath = "//label[@aria-label='Select 16 or more']/span[@class='selection-label']")
+	WebElement btnInternetDevice16OrMore;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'BEST FIT')]")
 	WebElement VerifyBestFit;
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
@@ -371,34 +389,111 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(VerifyRecommendedBannertitle,30);
 	}
 
+	/**
+	 * To click on Take the Quiz for DST
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkTakeQuiz() {
 		getReusableActionsInstance().getWhenReady(btnquiz, 90).click();
 	}
 
+	/**
+	 * To select the WeB Email- Internet Usage activity of household
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkWebEmail() {
 		getReusableActionsInstance().getWhenReady(btnWebEmail, 90).click();
 	}
 
+	/**
+	 * To select the Work from Home- Internet Usage activity of household
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkWorkHome() {
 		getReusableActionsInstance().getWhenReady(btnWorkHome, 90).click();
 	}
 
+	/**
+	 * To select the Online Gaming- Internet Usage activity of household
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkOnlineGamingBtn() {
+		getReusableActionsInstance().getWhenReady(btnOnlineGaming, 90).click();
+	}
+
+	/**
+	 * To select the Sharing large videos- Internet Usage activity of household
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkSharingLargeVideosBtn() {
+		getReusableActionsInstance().getWhenReady(btnSharingLargeFiles, 90).click();
+	}
+
+	/**
+	 * To select the Smart Devices activity of household
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkSmartDevicesBtn() {
+		getReusableActionsInstance().getWhenReady(btnSmartHomeDevices, 90).click();
+	}
+
+	/**
+	 * To select the Streaming shows and Movies- Internet Usage activity of household
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkStreamingShowsBtn() {
+		getReusableActionsInstance().getWhenReady(btnStreamingMovies, 90).click();
+	}
+
+	/**
+	 * To click on DST continue on next page
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkDSTContinue() {
 		getReusableActionsInstance().getWhenReady(btnDSTContinue, 90).click();
 	}
 
+	/**
+	 * To select the Internet Count on DST
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkInternetCount() {
 		getReusableActionsInstance().getWhenReady(btnInternetCount, 90).click();
 	}
 
+	/**
+	 * To select the Internet Count on DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkInternetCount6OrMore() {
+		getReusableActionsInstance().getWhenReady(btnInternetCount6OrMore, 90).click();
+	}
+
+	/**
+	 * To select the Internet Devices on DST
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkInternetDevice() {
 		getReusableActionsInstance().getWhenReady(btnInternetDevice, 90).click();
 	}
+
+	/**
+	 * To select the Internet Devices on DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkInternetDevice16OrMore() {
+		getReusableActionsInstance().getWhenReady(btnInternetDevice16OrMore, 90).click();
+	}
+
 
 	public void VerifyBestFit() {
 		getReusableActionsInstance().getWhenReady(VerifyBestFit, 90).isDisplayed();
 	}
 
+	/**
+	 * To close the DST
+	 * @author Manpreet.Kaur3
+	 */
 	public void clkDSTClose() {
 		getReusableActionsInstance().getWhenReady(btnDSTClose, 90).click();
 	}
@@ -406,6 +501,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void VerifyYourBestFit() {
 		getReusableActionsInstance().getWhenReady(VerifyYourBestFit, 90).isDisplayed();
 	}
+
 
 	public void clkBestAdd() {
 		getReusableActionsInstance().getWhenReady(btnBestAdd, 60).click();
@@ -422,6 +518,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void clkSmartStreamCheckBox() {
 		getReusableActionsInstance().getWhenReady(chkSmartStream, 90).click();
 	}
+
 	public void clkSmartStreamAvailability() {
 		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
