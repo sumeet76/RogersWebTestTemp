@@ -17,7 +17,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//h4[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 
-	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.profile.createProfile']")
 	WebElement txtSaiProfile;
 
 	@FindBy(xpath = "//div[@class='text-semi mt-3 -f24 ng-star-inserted']")

@@ -4,13 +4,11 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 
 /**
@@ -33,10 +31,10 @@ import java.util.List;
  * 11. Click on Ok.
  **/
 
-public class RogersCH_TC_003_IginteTV_TVChannelsSwapFromAddressmodalTest extends BaseTestClass {
+public class RogersCH_Auto_TC003_ExistingSolarisCx_TVChannelsSwapFromAddressmodalTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "IgniteTVDashboardCH"})
-    public void checkSolarisTVSwapChannels() {
+    public void rogersCH_Auto_TC003_ExistingSolarisCx_TVChannelsSwapFromAddressmodal() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
