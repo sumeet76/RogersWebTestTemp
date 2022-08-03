@@ -27,30 +27,28 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_014_IginteTV_ValidateStarterPackDashboardButtonsRepositioningTest extends BaseTestClass {
+public class RogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5PackDashboardButtonsRepositioningTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-    public void checkStarterPackDashboardButtonsRepositioning() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
+    public void rogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5PackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_solarisTVAccountStarterPackage.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc14_solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Zero","FlexChannel are not Zero");
+        reporter.reportLogWithScreenshot("Launched the TV dashboard Page");          
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getFlexChannelsCount()),"FlexChannel are Five","FlexChannel are not Five");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
-        reporter.hardAssert(!getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is not available","Exchange FlexChannel Link is available");
-    }       
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is available","Exchange FlexChannel Link is not available");
+    	                       
+    	}       
 
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

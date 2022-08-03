@@ -25,10 +25,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC002_ExistingSolarisCx_ResetParentalControlsAndPinTest extends BaseTestClass {
+public class RogersCH_Auto_TC002_SolarisTVCx_ResetParentalControlsAndPinTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-    public void rogersCH_Auto_TC002_ExistingSolarisCx_ResetParentalControlsAndPin() {
+    public void rogersCH_Auto_TC002_SolarisTVCx_ResetParentalControlsAndPin() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();

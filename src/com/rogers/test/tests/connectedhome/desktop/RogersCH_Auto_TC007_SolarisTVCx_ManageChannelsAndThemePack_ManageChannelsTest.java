@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  *8. Click accept the agreement and Submit the order
  **/
 
-public class RogersCH_Auto_TC007_SolarisCx_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
+public class RogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-	public void rogersCH_Auto_TC007_SolarisCx_ManageChannelsAndThemePack_ManageChannels() {
+	public void rogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageChannels() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());

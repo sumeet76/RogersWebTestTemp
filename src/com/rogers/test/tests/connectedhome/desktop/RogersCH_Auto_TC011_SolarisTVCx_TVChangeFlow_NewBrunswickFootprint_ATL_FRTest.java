@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC011_ExistingSolarisCx_TVChangeFlow_NewBrunswickFootprint_ATL_FRTest extends BaseTestClass {
+public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_ATL_FRTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-	    public void rogersCH_Auto_TC011_ExistingSolarisCx_TVChangeFlow_NewBrunswickFootprint_ATL_FR() {
+	    public void rogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_ATL_FR() {
 	        reporter.reportLogWithScreenshot("Launched the Home Page");
 	        getRogersHomePage().clkSignIn();
 	        //getRogersLoginPage().switchToSignInIFrame();

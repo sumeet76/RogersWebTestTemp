@@ -31,10 +31,10 @@ import java.lang.reflect.Method;
  * 11. Click on Ok.
  **/
 
-public class RogersCH_Auto_TC003_ExistingSolarisCx_TVChannelsSwapFromAddressmodalTest extends BaseTestClass {
+public class RogersCH_Auto_TC003_SolarisTVCx_TVChannelsSwapFromAddressmodalTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "IgniteTVDashboardCH"})
-    public void rogersCH_Auto_TC003_ExistingSolarisCx_TVChannelsSwapFromAddressmodal() {
+    public void rogersCH_Auto_TC003_SolarisTVCx_TVChannelsSwapFromAddressmodal() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());

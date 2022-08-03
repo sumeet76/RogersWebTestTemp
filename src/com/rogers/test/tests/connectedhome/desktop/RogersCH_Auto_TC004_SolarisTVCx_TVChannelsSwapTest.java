@@ -34,11 +34,11 @@ import java.util.List;
  *
  **/
 
-public class RogersCH_Auto_TC004_ExistingSolarisCx_TVChannelsSwapTest extends BaseTestClass {
+public class RogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwapTest extends BaseTestClass {
 
 
     @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
-    public void rogersCH_Auto_TC004_ExistingSolarisCx_TVChannelsSwap() {
+    public void rogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwap() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();

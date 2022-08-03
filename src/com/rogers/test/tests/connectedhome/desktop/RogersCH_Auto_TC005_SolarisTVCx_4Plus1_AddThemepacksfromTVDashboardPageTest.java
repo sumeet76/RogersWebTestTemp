@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  *8. Click accept the agreement and Submit the order
  **/
 
-public class RogersCH_Auto_TC005_4Plus1_AddThemepacksfromTVDashboardPageTest extends BaseTestClass {
+public class RogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboardPageTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-	public void rogersCH_Auto_TC005_4Plus1_AddThemepacksfromTVDashboardPage() {
+	public void rogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboardPage() {
 		reporter.reportLogWithScreenshot("Launched the Home Page");
 		getRogersHomePage().clkSignIn();
 		//getRogersLoginPage().switchToSignInIFrame();

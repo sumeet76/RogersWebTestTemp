@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC008_Negative_ExistingSolarisCx_TVPackageDowngradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest extends BaseTestClass {
 
     @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH"})
-    public void rogersCH_Auto_TC008_Negative_ExistingSolarisCx_TVPackageDowngrade() {
+    public void rogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
