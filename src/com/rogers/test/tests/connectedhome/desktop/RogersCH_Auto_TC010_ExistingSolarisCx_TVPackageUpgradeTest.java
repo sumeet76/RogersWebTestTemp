@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_009_IginteTV_TVPackageUpgradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC010_ExistingSolarisCx_TVPackageUpgradeTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-    public void checkSolarisTVPackageUpgrade() 
+    public void rogersCH_Auto_TC010_ExistingSolarisCx_TVPackageUpgrade()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getUsername());

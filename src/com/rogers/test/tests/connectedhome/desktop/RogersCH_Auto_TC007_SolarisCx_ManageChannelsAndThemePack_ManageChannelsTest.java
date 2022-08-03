@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * This class contains the test method to test the Manage theme packs functionality in TV buy flow for Rogers.com   
+ * This class contains the test method to test the Manage channels packs functionality in TV buy flow for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author Saurav.Goyal
  * 
  * Test steps:
  *
@@ -20,51 +20,45 @@ import java.lang.reflect.Method;
  *2. Login into the application
  *3. Click TV badge
  *4. Click Manage channels and theme packs
- *5. Click on theme pack
- *6. Add theme pack and remove it and again add it
+ *5. Click on channels
+ *6. Add channel and remove it and again add it
  *7. Click confirm changes on manage channels and theme packs
  *8. Click accept the agreement and Submit the order
  **/
 
-public class RogersCH_TC_005_Regression_4Plus1AddThemepacksfromTVDashboardPage extends BaseTestClass {
+public class RogersCH_Auto_TC007_SolarisCx_ManageChannelsAndThemePack_ManageChannelsTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-	public void check4Plus1AddThemepacksfromTVDashboardPage() { 
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+	public void rogersCH_Auto_TC007_SolarisCx_ManageChannelsAndThemePack_ManageChannels() {
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
+
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc05_IgniteTV4Plus1Account.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");
 		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();
-		reporter.reportLogWithScreenshot("Clicked on themepack tab");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkAddButtonOnThemePackListOnManageChannelsAndThemePacks4plus1();
-		reporter.reportLogWithScreenshot("Clicked on confirm button");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkContinueOnExistingChannelAlertWindow();
-		reporter.reportLogWithScreenshot("ThemePack added");    
+		 reporter.reportLogWithScreenshot("Manage Channels and Theme Packs clicked");
+		getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
+		reporter.reportLogWithScreenshot("Channel added");
 		getRogersSolarisTVChannelsAndThemepacksPage().clkConfirmChangesOnManageChannelsAndThemePacks();
 		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-
+	
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
 		reporter.reportLogWithScreenshot("Agreement details");
 		getRogersOrderReviewPage().clkSubmitUpdate();
-		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderSuccess(),"Update order completed","Update order Failed");
+
+        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderSuccess(),"Update order completed","Update order Failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-		}
+    	}
+
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -74,7 +68,7 @@ public class RogersCH_TC_005_Regression_4Plus1AddThemepacksfromTVDashboardPage e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-	closeSession();
+		closeSession();
 	}
 
 

@@ -13,7 +13,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//h2[@translate='global.checkout.billingAndPayment.title']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.billingAndPayment.title']")
 	WebElement txtPaymentpage;
 	
 	@FindBy(xpath = "//label[@translate='global.accessibility.selectPaymentOptions']/parent::div//select")

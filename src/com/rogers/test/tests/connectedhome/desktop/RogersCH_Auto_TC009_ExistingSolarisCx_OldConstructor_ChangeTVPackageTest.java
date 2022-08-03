@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_008_IginteTV_OldConstructor_ExistingSolarisChangeTVPackageTest extends BaseTestClass {
+public class RogersCH_Auto_TC009_ExistingSolarisCx_OldConstructor_ChangeTVPackageTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-    public void checkIginteTVOldConstructorExistingSolarisChangeTVPackageTest() {
+    public void rogersCH_Auto_TC009_ExistingSolarisCx_OldConstructor_ChangeTVPackage() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
