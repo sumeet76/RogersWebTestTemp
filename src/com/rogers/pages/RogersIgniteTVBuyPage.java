@@ -683,7 +683,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
 		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
-		getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		//getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		getReusableActionsInstance().clickWhenReady(buttonAddIgniteTVBoxes);
 	}
 
 	/**
