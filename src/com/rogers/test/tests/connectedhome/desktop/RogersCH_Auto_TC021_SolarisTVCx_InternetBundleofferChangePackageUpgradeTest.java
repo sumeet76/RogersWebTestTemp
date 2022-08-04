@@ -10,39 +10,35 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
-
 /**
- * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
+ * This class contains the test method to verify the solaris bundle change package upgrade flow for Rogers.com   
  * 
  * @author chinnarao.vattam
  * 
  * Test steps:
  *
- *1. Launch the Rogers.com url.
- *2. Log into rogers.com url with valid credentials.
- *3. Click on internet package.
- *4. Click on chage package button.
- *5. Select a package which has price higher to the current package.
- *6. Scroll down to the last in the page and Click on Checkout.
- *7. Enter appropriate Contact details.
- *8. Pick a date time in step 2 - Most Convenient Time for us to call.
- *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
- *11. Click on Submit.
+ *1. Launch Rogers.com url
+ *2. Log into rogers.com url with valid Solaris Account credentials that has either Select or Popular bundle associated to the account/Profile
+ *3. Go to Shop menu and select Ignite TV option
+ *4. Go to Ignite TV bundle section, and select bundle that is higher than the current bundle and click on Add to Cart
+ *5. Click on Ignite Internet speed
+ *6. Go to bundle section and click on Rogers Ignite bundle that is higher price than the current bundle
+ *7. Validate appropriate information is displayed in Review order page
+ *8. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox
+ *9. Order confirmation page will be displayed with the order number and validate the order details
  *
  **/
 
-public class RogersCH_TC_021_IginteInternet_OldConstructor_ExistingSolarisChangeInternetPackageTest extends BaseTestClass {
+public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpgradeTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
-    public void checkIginteInternetOldConstructorExistingSolarisChangeInternetPackageTest() {
+    public void rogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -50,20 +46,23 @@ public class RogersCH_TC_021_IginteInternet_OldConstructor_ExistingSolarisChange
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc21_SolarisInternetOldConstructor.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        getRogersHomePage().clkExistingCustomerShop();
+        getRogersHomePage().clkIgniteTVExistingCustomer();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    	getRogersHomePage().clkServiceabilityMigration();
+        reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
+        getRogersBuyPage().clkIgniteInternetSpeed();
+        reporter.reportLogWithScreenshot("Launched the TV packge Page");
         getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-        getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc21_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc21_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc20_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-
+		reporter.reportLogWithScreenshot("Launched the order review page");
+		
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitUpdateInternet();
@@ -71,7 +70,7 @@ public class RogersCH_TC_021_IginteInternet_OldConstructor_ExistingSolarisChange
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
     	}
-
+	
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -80,10 +79,10 @@ public class RogersCH_TC_021_IginteInternet_OldConstructor_ExistingSolarisChange
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
+	public void afterTest() { closeSession();
 	}
 
 
 }
+
 

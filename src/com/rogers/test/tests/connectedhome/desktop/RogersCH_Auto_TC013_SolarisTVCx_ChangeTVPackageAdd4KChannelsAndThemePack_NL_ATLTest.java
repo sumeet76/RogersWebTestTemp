@@ -33,10 +33,10 @@ import java.lang.reflect.Method;
  *15. Click accept the agreement and Submit the order
  **/
 
-public class RogersCH_TC_013_ExistingSolarisCustomer_ChangeTVPackageAdd4KChannelsAndThemePackTest extends BaseTestClass {
+public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThemePack_NL_ATLTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-    public void checkSolarisChangeTVPackageAdd4KChannelsAndThemePackFlow() { 
+    public void rogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThemePack_NL_ATL() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
