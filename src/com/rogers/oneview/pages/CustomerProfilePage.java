@@ -28,6 +28,12 @@ public class CustomerProfilePage  extends BasePageClass {
 
 	@FindBy(xpath = "//p[@class='ds-modal__heading mb-24 text-title-3' and contains(text(),'Are you sure you want to cancel?')]")
 	WebElement AreYouSureToCancelModal;
+
+	@FindBy(xpath = "//div[contains(text(),'Use another address')]")
+	WebElement useAnotherAddress;
+
+	@FindBy(xpath = "(//span[contains(.,'Enter new address here')])[1]")
+	WebElement enternewAdress;
 	
 	/**
 	 * Verify the Customer Profile Page is Displayed
@@ -77,5 +83,17 @@ public class CustomerProfilePage  extends BasePageClass {
 
 	public boolean verifyAreYouSureModal(){
 		return getReusableActionsInstance().isElementVisible(AreYouSureToCancelModal,60);
+	}
+
+	public void useAnotheraddress(){
+		getReusableActionsInstance().scrollToElement(useAnotherAddress);
+		getReusableActionsInstance().executeJavaScriptClick(useAnotherAddress);
+	}
+
+	public void enterNewAddress(String adr){
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(enternewAdress,30);
+		getReusableActionsInstance().enterText(enternewAdress,adr,30);
+
 	}
 }

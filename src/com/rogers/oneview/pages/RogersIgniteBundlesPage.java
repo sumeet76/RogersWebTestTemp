@@ -421,6 +421,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement clickCancel;
 
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
+	WebElement termoffer;
+
 
 	/**
 	 * Click Load Offers button
@@ -1466,6 +1469,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//input[@id='algoliaInput']"),120);
 	}
 
+	public void termOffer(){
+		getReusableActionsInstance().waitForElementVisibility(termoffer,30);
+		getReusableActionsInstance().scrollToElement(termoffer);
+		getReusableActionsInstance().executeJavaScriptClick(termoffer);
+	}
 
 
 }
