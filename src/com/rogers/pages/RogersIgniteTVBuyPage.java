@@ -585,6 +585,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
@@ -831,6 +832,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkIUnderstand() {
 		getReusableActionsInstance().getWhenReady(btnIUnderstand, 60).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 		
 	/**

@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com
@@ -47,124 +46,10 @@ import java.util.Map;
  * 27. Click on Submit
  **/
 
-public class RogersCH_TC_032_085_IginteTV_BuyBundleValidateMonthAsteriskTest extends BaseTestClass {
+public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH"})
-    public void checkBuyIgniteTVOffer() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
-
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Clicked Home Phone");
-        getRogersIgniteTVBuyPage().selectFlex20Package();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Entered Serviceability address");
-        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        getRogersIgniteTVBuyPage().selectFlex20Package();
-        reporter.reportLogWithScreenshot("Added to cart");
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
-        reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersIgniteTVBuyPage().clkHomePhone();
-
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
-        getRogersIgniteTVBuyPage().set4KTVNo();
-        reporter.reportLogWithScreenshot("4k TV selected");
-        getRogersIgniteTVBuyPage().clkCheckout();
-
-        reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersIgniteTVProfileCreationPage().setEmail();
-        getRogersIgniteTVProfileCreationPage().setFirstname();
-        getRogersIgniteTVProfileCreationPage().setLastName();
-        getRogersIgniteTVProfileCreationPage().setPhone();
-        reporter.reportLogWithScreenshot("Entered the profile information");
-        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-
-        reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evaluation page has Launched", "Credit Evaluation page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evaluation page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYear();
-        getRogersIgniteTVCreditCheckPage().selectDOBMonth();
-        getRogersIgniteTVCreditCheckPage().selectDOBDay();
-        reporter.reportLogWithScreenshot("Entered DOB details");
-        getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
-        getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
-        getRogersIgniteTVCreditCheckPage().selectExpiryYear();
-        getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
-        getRogersIgniteTVCreditCheckPage().selectExpiryDay();
-        getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ON");
-        reporter.reportLogWithScreenshot("Driving License Details");
-        getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
-        getRogersIgniteTVCreditCheckPage().setPassportNumber();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
-        getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
-        getRogersIgniteTVCreditCheckPage().clkCreditConsent();
-        reporter.reportLogWithScreenshot("Passport Details");
-        getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
-
-        reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(), "Ignite page has Launched", "Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
-        getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
-
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkProInstallUpgradeNo();
-        reporter.reportLogWithScreenshot("tech install details");
-        getRogersTechInstallPage().clkTechInstallContinueSelf();
-        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
-        getRogersTechInstallPage().clkTechInstallContinue();
-
-        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        //getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
-        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-        getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-        getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
-        getRogersPaymentOptionsPage().selectExpiryMonth();
-        getRogersPaymentOptionsPage().selectExpiryYear();
-        reporter.reportLogWithScreenshot("Payment options Details");
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
-
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
-        getRogersOrderReviewPage().clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmit();
-
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Launched the Confirmation page", "Confirmation page has not Launched");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        /**
-         * DB Validations in the subscriber table
-         */
-
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
-
-        reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R"); 
-    }
-
-    @Test(groups = {"SanityCH"})
-    public void checkBuyIgniteTVOfferSanity() {
+    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH","SanityCH"})
+    public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");

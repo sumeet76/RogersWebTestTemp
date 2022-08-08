@@ -25,10 +25,10 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_042_IgniteRHP_ValidateRHPDasboardTest extends BaseTestClass {
+public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH","DryRunCH"})
-    public void checkSolarisRHPDasboard() {
+    public void rogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_igniteRHP.getUsername());

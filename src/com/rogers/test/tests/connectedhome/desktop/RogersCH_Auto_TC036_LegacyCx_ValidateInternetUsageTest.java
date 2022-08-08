@@ -24,10 +24,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_046_LegacyInternet_ValidateInternetUsageTest extends BaseTestClass {
+public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends BaseTestClass {
 	
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
-	public void checkLegacyInternetUsage() {
+	public void rogersCH_Auto_TC036_LegacyCx_ValidateInternetUsage() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());

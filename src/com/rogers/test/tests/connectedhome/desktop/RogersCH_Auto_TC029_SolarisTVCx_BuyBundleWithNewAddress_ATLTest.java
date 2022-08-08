@@ -47,13 +47,11 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAddressTest extends BaseTestClass {
+public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-    public void checkExistingSolarisCustomerBuyBundleWithNewAddress() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATL() {
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
@@ -62,7 +60,6 @@ public class RogersCH_TC_036_IginteTV_ExistingSolarisCustomerBuyBundleWithNewAdd
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 

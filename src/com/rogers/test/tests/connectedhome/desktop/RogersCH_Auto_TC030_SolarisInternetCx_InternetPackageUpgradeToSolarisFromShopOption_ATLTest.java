@@ -50,13 +50,11 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest extends BaseTestClass {
+public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolarisFromShopOption_ATLTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-	public void checkInternetPackageUpgrade() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+	public void rogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolarisFromShopOption_ATL() {
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_internetAccountUpgrade.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_internetAccountUpgrade.getPassword());
@@ -65,7 +63,7 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
+
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_internetAccountUpgrade.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
@@ -91,15 +89,15 @@ public class RogersCH_TC_037_InternetPackageUpgradeToSolarisFromShopOptionTest e
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		getRogersIgniteTVBuyPage().clkHomePhone();
 
-	        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
-	        reporter.reportLogWithScreenshot("Launched the cart summary page");
-	        getRogersIgniteTVBuyPage().set4KTV();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		getRogersIgniteTVBuyPage().set4KTV();
 
-	        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTVSelection(),"4KTV Selected","4KTV is not Selected");
-	        reporter.reportLogWithScreenshot("4k TV selected");
-	        getRogersIgniteTVBuyPage().clkCheckout();
-	        reporter.reportLogWithScreenshot("Launched the create profile page");
-	        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTVSelection(),"4KTV Selected","4KTV is not Selected");
+		reporter.reportLogWithScreenshot("4k TV selected");
+		getRogersIgniteTVBuyPage().clkCheckout();
+		reporter.reportLogWithScreenshot("Launched the create profile page");
+		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
 		reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the home phone selection page");
