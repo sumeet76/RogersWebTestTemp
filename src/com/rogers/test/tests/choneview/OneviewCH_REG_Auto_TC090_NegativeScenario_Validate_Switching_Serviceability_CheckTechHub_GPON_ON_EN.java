@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_GPON extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Serviceability_CheckTechHub_GPON_ON_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp", "MaySanity"})
-    public void oneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_GPON() {
+    public void oneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Serviceability_CheckTechHub_GPON_ON_EN() {
         {
             /* serviceability check to Techhub for GPON 3P+SHA_NAC ENG*/
             reporter.reportLogWithScreenshot("OneView env");

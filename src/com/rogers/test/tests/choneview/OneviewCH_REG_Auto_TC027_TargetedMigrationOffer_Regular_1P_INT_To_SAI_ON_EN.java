@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1545_TC01_TargetedMigration_1P_Internet_to_SAITest extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_SAI_ON_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void oneViewCH_1617_TC01_TargetedMigrationFlowInternetToSAITest(){
+    public void oneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_SAI_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PInternetToSAI.getAccountNo(), TestDataHandler.targetedMigration1PInternetToSAI.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();

@@ -16,9 +16,9 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
 
-public class OneViewCH_Auto_TC_018b_Internet_HeaderFooterUsageTest extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC034_InternetDashboard_Internet_HeaderFooterUsage_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void checkInternetHeaderFooterAndUsage() {
+    public void oneviewCH_REG_Auto_TC034_InternetDashboard_Internet_HeaderFooterUsage_ON_EN() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.solarisAccount.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");

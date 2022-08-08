@@ -16,9 +16,9 @@ import java.lang.reflect.Method;
 4. Add-Ons - NA
 5. Bill Cycle - Next Bill Cycle"
  */
-public class OneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCycle_ATL_EN extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
-    public void oneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN() {
+    public void oneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCycle_ATL_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");

@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC022_1417_E2E_NAC_3P_TMP_Professional_Install_PaymentMethod_PreauthorizedChequing_Test_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_PreAuthChequing_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1417_TC01_E2E_NAC_3P_TMP_PaymentMethod_CreditCard_Test(){
+    public void oneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_PreAuthChequing_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");

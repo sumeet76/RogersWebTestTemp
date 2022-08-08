@@ -17,9 +17,9 @@ import java.lang.reflect.Method;
 5. Bill Cycle - Immediate."
  */
 
-public class OneViewCH_Auto_TC002_1537_ChangeTV_Channel_Themepack_Immediate_Downgrade_Test_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow_AddChannels_Themepacks_Immediate_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_TC002_1537_ChangeTV_Channel_Themepack_Immediate_Downgrade_Test_ON_EN() {
+    public void oneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow_AddChannels_Themepacks_Immediate_ON_EN() {
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getBan(),TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();

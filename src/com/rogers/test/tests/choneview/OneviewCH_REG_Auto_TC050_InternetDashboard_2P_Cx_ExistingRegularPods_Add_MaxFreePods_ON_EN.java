@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVS2_2PCxExistingRegularPods_AgentAddingMaxFreePods_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPods_Add_MaxFreePods_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
-    public void oneviewCH_Auto_OVS2_2PCxExistingRegularPods_AgentAddingMaxFreePods_Test() {
+    public void oneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPods_Add_MaxFreePods_ON_EN() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max2pCx_Pods.getAccountNo(),TestDataHandler.Max2pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();

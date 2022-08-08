@@ -1,4 +1,5 @@
 package com.rogers.test.tests.choneview;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -11,20 +12,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-
-public class OneViewCH_Auto_TC083_MigrationTriplePlay_TMP_OTBC_DBA_ON_EN_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_TC083_MigrationTriplePlay_TMP_OTBC_DBA_ON_EN_Test(){
-		getEnvironmentSelectionPage().launchOneView( TestDataHandler.migrationData.getAccountNo(),TestDataHandler.migrationData.getContactID());
-		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getAccountOverViewPage().selectGetIgniteTVBadge();
-		reporter.reportLogWithScreenshot("Check Availability Pop Up");
-		//reporter.hardAssert(getRogersIgniteBundlesPage().verifyCheckAvailabilityPopUp(),"Check availability pop up appears","Failed to Load check availability pop up");
-		getRogersIgniteBundlesPage().clkContinue();
-
-
-		//getRogersIgniteBundlesPage().clkUsethisAddress();
-		//reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CrediCard_ON_EN extends BaseTestClass {
+	@Test (groups = {"RNAC","RegressionCHOV"})
+    public void oneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CrediCard_ON_EN(){
+		reporter.reportLogWithScreenshot("OneView env");
+		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		reporter.reportLogWithScreenshot("address");
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 
@@ -33,12 +28,11 @@ public class OneViewCH_Auto_TC083_MigrationTriplePlay_TMP_OTBC_DBA_ON_EN_Test ex
 		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-		reporter.reportLogWithScreenshot("Triple Play Selected");
+		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
+		reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
-		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
-		reporter.reportLogWithScreenshot("Added to Cart");
-//		getRogersIgniteBundlesPage().clkKeepNumberbtn();
+		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
@@ -47,70 +41,46 @@ public class OneViewCH_Auto_TC083_MigrationTriplePlay_TMP_OTBC_DBA_ON_EN_Test ex
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 
-		getRogersIgniteBundlesPage().reviewAllTerms();
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
-		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-
+		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clickExchangeLater();
-		reporter.reportLogWithScreenshot("add channel");
-		getRogersIgniteBundlesPage().clickReviewAddons();
-		reporter.reportLogWithScreenshot("Clicked customer’s legacy add-ons.");
-		getTVDashboardPage().clickThemepacksTab();
-		reporter.reportLogWithScreenshot("Themepack tab");
-		getTVDashboardPage().addThemepack();
-		reporter.reportLogWithScreenshot("themepack added");
-		getTVDashboardPage().clickChannelTab();
-		reporter.reportLogWithScreenshot("Channel Tab Selected");
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContentPopup();
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		getRogersIgniteBundlesPage().clkContinue();
 
-		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().contiue4KContent();
-
-		getRogersIgniteBundlesPage().addPods(5);
-		getRogersIgniteBundlesPage().addPods(0);
-		reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
-		getRogersIgniteBundlesPage().clkContinueInternetAddon();
-
-		getRogersIgniteBundlesPage().clickReviewAddons();
-		getRogersIgniteBundlesPage().clickAddOnAddToCart();
-		reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
-		getCustomerProfilePage().clkContinue();
+		getRogersIgniteBundlesPage().addSHMAddOn();
+		reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
+		getRogersIgniteBundlesPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Cart Summary");
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-		reporter.reportLogWithScreenshot("campaign");
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR6");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
-		reporter.reportLogWithScreenshot("OTBC coupon applied");
-		getRogersIgniteCampaignPage().enterCoupon("KR2");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("Product coupon applied");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
-		getRogersIgniteCampaignPage().closeCouponAlert();
-		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+		getRogersIgniteBundlesPage().clkCheckOut();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
-
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
 
+		reporter.reportLogWithScreenshot("credit eval form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
 		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		reporter.reportLogWithScreenshot("credit eval form details filled");
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 
+		reporter.reportLogWithScreenshot("Phone Number Generate");
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+		reporter.reportLogWithScreenshot("Phone number generated");
 
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displayed","Installation Options not Displayed");
-		reporter.reportLogWithScreenshot("Installation Options");
+		reporter.reportLogWithScreenshot("Installation options");
+		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
@@ -122,23 +92,28 @@ public class OneViewCH_Auto_TC083_MigrationTriplePlay_TMP_OTBC_DBA_ON_EN_Test ex
 		getCreditCheckPage().enterSpecialInstructions();
 		getCreditCheckPage().clkContinueInstallationOption();
 
+		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.reportLogWithScreenshot("Billing and Payment Options");
-		/*getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("billing and payment");
+		getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("front line");
 		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());*/
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("entered billing details");
 		getPaymentOptionsPage().clkContinue();
+
+		reporter.reportLogWithScreenshot("submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
+
     }
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDInternetHomePhoneSmartHomeMonitoring(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)
