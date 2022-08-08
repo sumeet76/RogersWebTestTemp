@@ -36,9 +36,6 @@ public class RogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
 	    public void rogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_ATL_FR() {
-	        reporter.reportLogWithScreenshot("Launched the Home Page");
-	        getRogersHomePage().clkSignIn();
-	        //getRogersLoginPage().switchToSignInIFrame();
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
 	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
@@ -47,7 +44,6 @@ public class RogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_
 	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	        reporter.reportLogWithScreenshot("Skip popup");
 	        getRogersLoginPage().clkSkipIFrame();
-	        getRogersLoginPage().switchOutOfSignInIFrame();
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");

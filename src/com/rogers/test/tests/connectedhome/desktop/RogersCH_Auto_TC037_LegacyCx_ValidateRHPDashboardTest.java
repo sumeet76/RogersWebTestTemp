@@ -23,11 +23,11 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_048_LegacyRHP_ValidateRHPDashboardTest extends BaseTestClass {
+public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseTestClass {
 
 
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
-	public void checkLegacyRHPDashboard () {
+	public void rogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());

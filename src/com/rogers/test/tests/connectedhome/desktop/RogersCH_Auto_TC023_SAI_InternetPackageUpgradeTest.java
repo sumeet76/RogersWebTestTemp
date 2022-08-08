@@ -36,9 +36,6 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC023_SAI_InternetPackageUpgrade() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getPassword());
@@ -49,7 +46,6 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

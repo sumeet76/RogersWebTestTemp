@@ -30,13 +30,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServiceabilityCheckTest extends BaseTestClass {
+public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServiceabilityCheck_No4kTVTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-    public void checkCRMaddressMismatchWithSGI_ServiceabilityTest() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServiceabilityCheck_No4kTV() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getPassword());
@@ -45,7 +42,6 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -64,7 +60,7 @@ public class RogersCH_TC_035_IginteTV_CRMaddressMismatchWithSGI_ValidateServicea
 		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
+		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the create profile page");

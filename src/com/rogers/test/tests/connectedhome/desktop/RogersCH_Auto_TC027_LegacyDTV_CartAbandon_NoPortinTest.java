@@ -49,77 +49,72 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_034_CartAbandon_NoPortinExistingLegacySignedinfromMyRogersTest extends BaseTestClass {
+public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCartAbandon"})
-	public void checkCartAbandonNoPortinExistingLegacySignedinfromMyRogersTest() {
+	public void rogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortin() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+		getRogersLoginPage().clkSkipIFrame();
+		reporter.reportLogWithScreenshot(" Click Skip");
+		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+			reporter.reportLogWithScreenshot("Select an account.");
+			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+		}
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-	    reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkShopCartAbondon();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-     	//getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
-     	getRogersHomePage().clkNoThnx();
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceabilityMigration();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-       // getRogersHomePage().clkUseThisAddress();
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+		reporter.reportLogWithScreenshot("Clicked on Get it Now");
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
+		reporter.reportLogWithScreenshot("Selected Address on file");
 		getRogersHomePage().clkUseAddress();
-		reporter.reportLogWithScreenshot("Selected the address on file");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		//getRogersIgniteTVBuyPage().clkHomephone();
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-        reporter.reportLogWithScreenshot("Launched the information popup");
-        getRogersIgniteTVBuyPage().clkIUnderstand();
-		//reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the home phone selection page");
-		//getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
-		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-		//getRogersIgniteTVBuyPage().clkHomePhone();
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
+		reporter.reportLogWithScreenshot("Launched the Bundles Page");
+		getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+		reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+		getRogersHomePage().clkNoThnx();
+		getRogersIgniteTVBuyPage().selectFlex20Package();
+		reporter.reportLogWithScreenshot("Added to cart");
+		getRogersIgniteTVBuyPage().clkIUnderstand();
+        reporter.reportLogWithScreenshot("Clicked on Yes, I understand");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersHomePage().clkSignOut();
 		reporter.reportLogWithScreenshot("Signed Out");
-		}
-
-	@Test(groups = {"RegressionCH","RogersIgniteBuyCH"})
-	public void checkCartAbandonTest() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		getRogersLoginPage().switchToSignInIFrame();
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		getRogersHomePage().clkEasyLogin();
+		reporter.reportLogWithScreenshot("Launched the SignIn popup 2");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersLoginPage().switchOutOfSignInIFrame();
+		reporter.reportLogWithScreenshot(" Click Skip");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkShopAbandon();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		//getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+		reporter.reportLogWithScreenshot("Clicked on Get it Now");
 		reporter.hardAssert(getRogersHomePage().verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Welcome back popup");
 		getRogersHomePage().clkWelcomeback();
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.reportLogWithScreenshot("Launched the information popup");
-	}
+		}
+
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin

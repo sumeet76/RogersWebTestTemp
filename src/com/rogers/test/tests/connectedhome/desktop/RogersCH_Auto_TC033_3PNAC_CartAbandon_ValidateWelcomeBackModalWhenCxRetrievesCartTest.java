@@ -46,10 +46,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_041_CartAbandon_ValidateWelcomeBackModalWhencxRetrievesCartTest extends BaseTestClass {
+public class RogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCartTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersCartAbandon"})
-    public void checkWelcomeBackModalWhencxCart() {
+    public void rogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCart() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");

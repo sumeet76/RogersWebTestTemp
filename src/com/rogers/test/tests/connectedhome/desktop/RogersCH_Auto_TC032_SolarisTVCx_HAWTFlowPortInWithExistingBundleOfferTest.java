@@ -8,15 +8,11 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
-public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends BaseTestClass {
+public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOfferTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-    public void checkBuyIginteTVOfferPortIn() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOffer() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
    		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());
@@ -25,12 +21,12 @@ public class RogersCH_TC_040_SolarisHAWTFlowExistingInternetPortInTest extends B
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
        // getRogersHomePage().clkIgniteTVExistingCustomer();
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
 	    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");

@@ -37,10 +37,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_050_IginteBundle_TriplePlay_ValidateFlexChannelModel extends BaseTestClass {
+public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
-    public void checkBuyIgniteTVOfferTriplePlayValidateChannels() {
+    public void rogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATL() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");

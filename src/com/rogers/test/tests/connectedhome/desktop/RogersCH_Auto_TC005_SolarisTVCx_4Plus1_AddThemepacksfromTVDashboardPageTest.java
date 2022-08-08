@@ -30,9 +30,6 @@ public class RogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboard
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void rogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboardPage() {
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getPassword());
@@ -41,7 +38,6 @@ public class RogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboard
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersLoginPage().switchOutOfSignInIFrame();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc05_IgniteTV4Plus1Account.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
