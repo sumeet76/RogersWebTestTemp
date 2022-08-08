@@ -71,7 +71,12 @@ public class RogersCH_TC_124_DST_Bundles_3PLeg_3PIgnite_E2E_Set4kAsNo_Test exten
 		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		//getRogersHomePage().clkNoThnx();
+		reporter.reportLogWithScreenshot("Clicked on Get it Now");
+		if(getRogersHomePage().verifyNoThanks()) {
+			getRogersHomePage().clkNoThnx();
+			reporter.reportLogWithScreenshot("Clicked on No Thanks");
+			getRogersHomePage().clkServiceability();
+		}
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");

@@ -27,13 +27,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_018_IginteInternet_InternetBundleofferChangePackageDowngradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDowngradeTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
-    public void checkInternetBundleofferChangePackageDowngrade() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
@@ -42,7 +39,6 @@ public class RogersCH_TC_018_IginteInternet_InternetBundleofferChangePackageDown
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
     	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

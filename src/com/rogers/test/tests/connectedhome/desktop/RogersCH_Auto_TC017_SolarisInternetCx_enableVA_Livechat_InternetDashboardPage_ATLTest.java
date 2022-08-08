@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_016_ExistingSolarisInternetCX_enableVA_Livechat_InternetDashboardPageTest extends BaseTestClass {
+public class RogersCH_Auto_TC017_SolarisInternetCx_enableVA_Livechat_InternetDashboardPage_ATLTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
-    public void checkVAicononInternetDashboard() {
+    public void rogersCH_Auto_TC017_SolarisInternetCx_enableVA_Livechat_InternetDashboardPage_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());

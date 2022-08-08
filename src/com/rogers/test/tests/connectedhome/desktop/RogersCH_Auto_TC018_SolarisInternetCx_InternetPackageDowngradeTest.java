@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_017_IginteInternet_InternetPackageDowngradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH"})
-    public void checkInternetPackageDowngrade() {
+    public void rogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngrade() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());

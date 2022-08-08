@@ -32,16 +32,16 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_011_IginteTV_TVPackagesNewBrunswickFootprintTest extends BaseTestClass {
+public class RogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_ATL_FRTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-	    public void checkSolarisTVPackageUpgrade() {
+	    public void rogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_ATL_FR() {
 	        reporter.reportLogWithScreenshot("Launched the Home Page");
 	        getRogersHomePage().clkSignIn();
 	        //getRogersLoginPage().switchToSignInIFrame();
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getUsername());
-	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
+	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
+	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
 	        getRogersLoginPage().clkSignInIFrame();
 	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -49,14 +49,14 @@ public class RogersCH_TC_011_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        getRogersLoginPage().clkSkipIFrame();
 	        getRogersLoginPage().switchOutOfSignInIFrame();
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
+		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");
 	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
 	        getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
 	        reporter.reportLogWithScreenshot("Launched the TV packages page");
 	        //reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
-	        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanEn(),TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanFr());
+	        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanEn(),TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getUpgradePlanFr());
 	        getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
 	        reporter.reportLogWithScreenshot("Launched the personalize channel page");
 	        getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
@@ -72,7 +72,7 @@ public class RogersCH_TC_011_IginteTV_TVPackagesNewBrunswickFootprintTest extend
 	        reporter.reportLogWithScreenshot("Agreement details");
 	        getRogersOrderReviewPage().clkSubmitUpdateTV();
 	        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-	        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
+	        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(),"Update order completed","Update order Failed");
 	        reporter.reportLogWithScreenshot("Verified the Confirmation page");
         	}
 

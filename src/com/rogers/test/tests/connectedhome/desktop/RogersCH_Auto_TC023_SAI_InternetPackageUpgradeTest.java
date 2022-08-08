@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 
 /**
@@ -33,10 +32,10 @@ import java.util.List;
  *
  **/
 
-public class RogersCH_TC_023_StandaloneInternet_InternetPackageUpgradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-    public void checkStandalonePackageUpgrade() {
+    public void rogersCH_Auto_TC023_SAI_InternetPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
