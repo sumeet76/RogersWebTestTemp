@@ -28,15 +28,13 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
+public class RogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternetHome extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","IHP","saiCH"})
-    public void checkSolarisIhpValidateOrderInternet() {
+    public void rogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternet() {
 		String  strAddressLine1=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc53_iHPAccount.getAccountDetails().getAddress().get("line2");
-		reporter.reportLogWithScreenshot("Launched the Home Page");
-		getRogersHomePage().clkSignIn();
-		//getRogersLoginPage().switchToSignInIFrame();
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc53_iHPAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc53_iHPAccount.getPassword());
@@ -45,7 +43,7 @@ public class RogersCH_TC_053_IHP_ValidateOrderInternet extends BaseTestClass {
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
  	    reporter.reportLogWithScreenshot("Skip popup");
  	    getRogersLoginPage().clkSkipIFrame();
- 	    getRogersLoginPage().switchOutOfSignInIFrame();
+
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
  	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc53_iHPAccount.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");

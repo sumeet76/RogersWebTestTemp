@@ -33,13 +33,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_058_IgniteTV_SignedInSAIBuyBundlesDiffAddressTest extends BaseTestClass {
+public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-    public void checkSignedInSAIBuyTVBundlesSameAddressTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getPassword());
@@ -50,7 +47,6 @@ public class RogersCH_TC_058_IgniteTV_SignedInSAIBuyBundlesDiffAddressTest exten
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

@@ -33,10 +33,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_055_IginteTV_NacDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
+public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheckTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
-    public void checkAnonymousDifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditTest() {
+    public void rogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheck() {
 		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
 		getRogersHomePage().clkTVBundle();
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");

@@ -33,13 +33,11 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_056_SignedInWirelessBuyInternetSameaddressBasementHouseTest extends BaseTestClass {
+public class RogersCH_Auto_TC044_WirelessLegacySAICx_BuyInternet_SameAddressBasementHouseTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-    public void checkSignedInWirelessBuyInternetSameaddressBasementHouseTest() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+    public void rogersCH_Auto_TC044_WirelessLegacySAICx_BuyInternet_SameAddressBasementHouse() {
+
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.getPassword());
@@ -48,7 +46,6 @@ public class RogersCH_TC_056_SignedInWirelessBuyInternetSameaddressBasementHouse
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc56_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
