@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC47_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_Test extends BaseTestClass {
+public class RogersBFA_TC47_POM_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -47,6 +46,16 @@ public class RogersBFA_TC47_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_T
         getRogersDeviceConfigPage().clickContinueButton();
         //############################Plan config page###############################
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
+        // ***************************Promo Section************************************
+        getRogersPlanConfigPage().clkPromoSection();
+        reporter.reportLogWithScreenshot("Promo Section Displayed");
+        getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPromoCode());
+        reporter.reportLogWithScreenshot("Promo Code Entered");
+        getRogersPlanConfigPage().clkCheckPromoBtn();
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+                "Promo Code Applied Successfully", "Promo Code Not Applied");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(),
+                "Discount Value and Duration displayed", "Promo Code Not Applied");
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         reporter.reportLogWithScreenshot("Down payment checkbox is selected");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
@@ -58,6 +67,8 @@ public class RogersBFA_TC47_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_T
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
+                "Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //***************Create Profile Stepper*************//
         if(!(custInfoMap.size()==0)) {
