@@ -31,10 +31,10 @@ import java.lang.reflect.Method;
  **/
 
 
-public class RogersCH_TC_051_IgniteSmartStream_ValidateSupportSectionTest extends BaseTestClass {
+public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
-    public void checkIgniteSmartStreamDasboard() {
+    public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_igniteSmartStream.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_igniteSmartStream.getPassword());
