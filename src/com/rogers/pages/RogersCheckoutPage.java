@@ -588,7 +588,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	 public void clkNoThanks() {
 			if(getReusableActionsInstance().isElementVisible(btnClkNoThanks,10)) {
-				getReusableActionsInstance().doubleClick(btnClkNoThanks,8);
+				getReusableActionsInstance().executeJavaScriptClick(btnClkNoThanks);
 			}
 		}
 	/**
@@ -818,7 +818,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			clkNoThanks();
+			//clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
 			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);

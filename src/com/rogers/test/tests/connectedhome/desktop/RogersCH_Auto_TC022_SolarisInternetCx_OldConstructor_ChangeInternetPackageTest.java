@@ -37,9 +37,6 @@ public class RogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternet
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternetPackage() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getPassword());
@@ -48,7 +45,6 @@ public class RogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternet
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc21_SolarisInternetOldConstructor.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
