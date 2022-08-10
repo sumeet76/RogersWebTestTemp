@@ -32,8 +32,14 @@ public class CustomerProfilePage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Use another address')]")
 	WebElement useAnotherAddress;
 
-	@FindBy(xpath = "(//span[contains(.,'Enter new address here')])[1]")
+	@FindBy(xpath = "//div[@class='address-lookup space-for-address ng-star-inserted']//div[@class='ng-star-inserted']")
 	WebElement enternewAdress;
+
+	@FindBy(xpath = "(//div[@title='105 Abbeywood Trail'])[1]")
+	WebElement newAddressSearchResult;
+
+	@FindBy(xpath = "//input[@type='text']")
+	WebElement inputAddress;
 	
 	/**
 	 * Verify the Customer Profile Page is Displayed
@@ -50,12 +56,9 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {	
-		//getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
-//		getReusableActionsInstance().staticWait(5000);
+//		getReusableActionsInstance().getWhenReady(continueButton,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		//getReusableActionsInstance().clickWhenReady(continueButton,90);
-		getReusableActionsInstance().executeJavaScriptClick(continueButton);
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().clickWhenReady(continueButton,90);
 	}
 
 	/**
@@ -90,10 +93,17 @@ public class CustomerProfilePage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(useAnotherAddress);
 	}
 
-	public void enterNewAddress(String adr){
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+	public void enterNewAddress(String address){
+	//	getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().scrollToElement(enternewAdress);
 		getReusableActionsInstance().clickWhenReady(enternewAdress,30);
-		getReusableActionsInstance().enterText(enternewAdress,adr,30);
+		getReusableActionsInstance().enterText(inputAddress,address+Keys.BACK_SPACE,30);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().clickAndHoldFor(newAddressSearchResult,333);
 
+	}
+
+	public void clickContinueWithoutScrollDown(){
+		getReusableActionsInstance().clickWhenReady(continueButton,30);
 	}
 }

@@ -424,6 +424,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
 	WebElement termoffer;
 
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
+	WebElement oneTimeCredit;
+
 
 	/**
 	 * Click Load Offers button
@@ -1475,6 +1478,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(termoffer);
 	}
 
+	public void oneTimeCredit(){
+		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,30);
+		getReusableActionsInstance().scrollToElement(oneTimeCredit);
+		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+	}
 
 }
 

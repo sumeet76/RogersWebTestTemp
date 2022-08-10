@@ -39,6 +39,7 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		System.out.println(TestDataHandler.anonymousData.getPlanEngSAI());
 		System.out.println(TestDataHandler.anonymousData.getplanFr());
+		getRogersIgniteBundlesPage().oneTimeCredit();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().yesPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
@@ -93,7 +94,7 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		//getPaymentOptionsPage().clkContinue();
 		//getRogersOVCheckoutPage().clkSubmit();
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		//reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
