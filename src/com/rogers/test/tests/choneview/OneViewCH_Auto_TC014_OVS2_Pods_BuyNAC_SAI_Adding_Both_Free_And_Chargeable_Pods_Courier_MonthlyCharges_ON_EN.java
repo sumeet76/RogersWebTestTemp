@@ -58,7 +58,10 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
-        getCustomerProfilePage().clkContinue();
+        getCreditCheckPage().goToPageBottom();
+        getCustomerProfilePage().useAnotheraddress();
+        getCustomerProfilePage().enterNewAddress(TestDataHandler.anonymousData.contactDetails.getAddress_docsis_2P_SHA_NAC());
+        getCustomerProfilePage().clickContinueWithoutScrollDown();
         reporter.reportLogWithScreenshot("credit eval form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -86,7 +89,7 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
 		//reporter.reportLogWithScreenshot("submit order");
 		//getRogersOVCheckoutPage().clkSubmit();
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
