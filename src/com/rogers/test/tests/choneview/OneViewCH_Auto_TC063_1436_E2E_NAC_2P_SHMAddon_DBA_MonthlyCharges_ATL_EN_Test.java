@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC092_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_ATL_EN_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_ATL_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_TC092_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_ATL_EN_Test(){
 		reporter.reportLogWithScreenshot("OneView env");
@@ -93,9 +93,9 @@ public class OneViewCH_Auto_TC092_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 		getPaymentOptionsPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

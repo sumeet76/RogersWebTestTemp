@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MDU_Address_NAC extends BaseTestClass {
+public class OneViewCH_Auto_TC092_Validate_SwitchingServiceability_CheckTechhub_MDU_Address_NAC_ON_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp", "MaySanity"})
     public void oneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MDU_Address_NAC() {
         {

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC045_1435_E2E_NAC_2P_ExchangeNow_Professional_Install_PaymentMethod_CreditCard_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC040_1435_E2E_NAC_2P_ExpressCheckoutWithout4KTv_ExchangeNow_Professional_Install_CreditCard_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1435_TC02_E2E_NAC_2P_ExchangeNow_PaymentMethod_CreditCard_Test(){
         reporter.reportLogWithScreenshot("oneview env");
@@ -108,9 +108,9 @@ public class OneViewCH_Auto_TC045_1435_E2E_NAC_2P_ExchangeNow_Professional_Insta
 		reporter.reportLogWithScreenshot("Payment screen");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 	@BeforeMethod (alwaysRun=true)
@@ -119,11 +119,10 @@ public class OneViewCH_Auto_TC045_1435_E2E_NAC_2P_ExchangeNow_Professional_Insta
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID2PExchangeNow(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-
+//	@AfterMethod(alwaysRun = true)
+//	public void afterTest() {
+//		closeSession();
+//	}
 }
 
 

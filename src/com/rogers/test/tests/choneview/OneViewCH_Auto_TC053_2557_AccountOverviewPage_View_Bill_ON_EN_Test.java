@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2557_TC02_View_Bill_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC053_2557_AccountOverviewPage_View_Bill_ON_EN_Test extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneViewCH_Auto_2557_TC02_View_Bill_Test() {
         reporter.reportLogWithScreenshot("One view is launched");

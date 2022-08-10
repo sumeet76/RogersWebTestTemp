@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_Docsis_FR extends BaseTestClass {
+public class OneViewCH_Auto_TC088_Validate_SwitchingServiceability_CheckTechhub_Docsis_FR extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp", "MaySanity"})
     public void oneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_Docsis_FR() {
         {
@@ -43,10 +43,6 @@ public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_Docsis
             getRogersIgniteBundlesPage().clkContinue();
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
             reporter.reportLogWithScreenshot("Select Services Customer Wants");
-
-
-
-
 
         }
     }

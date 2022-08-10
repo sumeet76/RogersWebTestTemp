@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_Delivery_By_Appointment_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Delivery_By_Appointment_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_Delivery_By_Appointment_Test (){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -38,7 +38,7 @@ public class OneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_De
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().fourKContinue();
+		getRogersIgniteBundlesPage().contiue4KContent();
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("portin");
@@ -72,12 +72,11 @@ public class OneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_De
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
 		reporter.reportLogWithScreenshot("generate phone number");
 		//reporter.reportLogWithScreenshot("Phone Number Selected");
-		getCreditCheckPage().goToPageBottom();
 		//reporter.reportLogWithScreenshot("continue");
-		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-		getHomePhoneSelectionPage().clkContinue();
-		reporter.reportLogWithScreenshot("Phone number generated");
+		//getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		//getHomePhoneSelectionPage().clkContinue();
+		reporter.reportLogWithScreenshot("Phone number generated");
+		getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
@@ -98,10 +97,10 @@ public class OneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_De
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.reportLogWithScreenshot("submit payment");
-	//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.reportLogWithScreenshot("submit payment");
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -111,10 +110,10 @@ public class OneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_De
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID3PPortIn(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+//	@AfterMethod(alwaysRun = true)
+//	public void afterTest() {
+//		closeSession();
+//	}
 
 }
 

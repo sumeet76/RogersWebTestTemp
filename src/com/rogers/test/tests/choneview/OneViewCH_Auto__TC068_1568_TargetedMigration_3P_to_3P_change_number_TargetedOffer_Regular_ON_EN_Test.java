@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest extends BaseTestClass {
+public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number_TargetedOffer_Regular_ON_EN_Test extends BaseTestClass {
 
     @Test
     public void oneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest(){

@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChangeTest extends BaseTestClass {
+public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChange_ON_EN_Test extends BaseTestClass {
     @Test(groups = {"RAddingISS","Baseline","ChangePackage"})
     public void checkAddSmartStream() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

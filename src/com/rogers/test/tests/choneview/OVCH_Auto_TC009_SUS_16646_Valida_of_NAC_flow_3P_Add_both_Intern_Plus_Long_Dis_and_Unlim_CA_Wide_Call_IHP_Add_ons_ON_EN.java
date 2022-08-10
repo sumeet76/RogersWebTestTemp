@@ -53,11 +53,11 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         reporter.reportLogWithScreenshot("Home Phone Add on selected");
         getHomePhoneAddonsPage().clkCollapse();
-       // getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
+//        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Home phone Add on selected");
-        getHomePhoneAddonsPage().incompatibleAddonRadioBtn();
-        reporter.reportLogWithScreenshot("Incompatible Add ons Dialog box displayed");
+//        getHomePhoneAddonsPage().incompatibleAddonRadioBtn();
+//        reporter.reportLogWithScreenshot("Incompatible Add ons Dialog box displayed");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Clicked on Continue");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -77,15 +77,14 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Phone Number Selected");
-        getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().clkCourierDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getCreditCheckPage().clickInPersonDelivery();
         getRogersIgniteBundlesPage().clkContinue();
-       // reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().verifyBillingAndPaymentOption();
         getCreditCheckPage().clickDigitalFrontline();
@@ -101,8 +100,6 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
-
-
     }
 
     @BeforeMethod (alwaysRun=true)
@@ -115,9 +112,6 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
     public void afterTest() {
         closeSession();
     }
-
-
-
 
 }
 

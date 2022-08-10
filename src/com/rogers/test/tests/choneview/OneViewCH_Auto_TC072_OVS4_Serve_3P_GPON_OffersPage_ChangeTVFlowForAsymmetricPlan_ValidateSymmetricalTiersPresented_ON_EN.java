@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVS4_Serve_3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan_ValidateSymmetricalTiersPresented extends BaseTestClass {
+public class OneViewCH_Auto_TC072_OVS4_Serve_3P_GPON_OffersPage_ChangeTVFlowForAsymmetricPlan_ValidateSymmetricalTiersPresented_ON_EN extends BaseTestClass {
     @Test(groups = {"Regression"})
     public void oneviewCH_Auto_OVS4_Serve_3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan_ValidateSymmetricalTiersPresented() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.accountDetails.getBan(), TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.getContactID());
