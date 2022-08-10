@@ -326,6 +326,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
 	WebElement drpdwnGenre;
 
+	@FindBy(xpath = "//button[@aria-label='Enter your address to check package prices and offers now.']/span")
+	WebElement btnEnterAddress;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]/span")
 	WebElement btnTotalChannelsFlex20;
 
@@ -582,6 +585,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
@@ -680,7 +684,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
 		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
-		getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		//getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		getReusableActionsInstance().clickWhenReady(buttonAddIgniteTVBoxes);
 	}
 
 	/**
@@ -827,6 +832,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkIUnderstand() {
 		getReusableActionsInstance().getWhenReady(btnIUnderstand, 60).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 		
 	/**
@@ -1615,32 +1621,64 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnReviewCallerInfoContinue, 10).click();
 	}
 
+	/**
+	 * Click Add to Cart on recommeded pkg
+	 * @author manpreet.kaur3
+	 */
 	public void clkBestAdd() {
 		getReusableActionsInstance().getWhenReady(btnBestAdd, 60).click();
 	}
 
+	/**
+	 * Click Total Channels on Flex20 pkg
+	 * @author manpreet.kaur3
+	 */
 	public void clkTotalChannelsFlex20() {
 		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
 	}
 
+	/**
+	 * Click Flex Channels on Flex20
+	 * @author manpreet.kaur3
+	 */
 	public void clkFlexChannelsFlex20() {
 		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
 	}
 
+	/**
+	 * verify Total Channels popup
+	 * @return true if displayed, else false
+	 * @author manpreet.kaur3
+	 */
 	public boolean verifyViewTotalChannelsPopupModal() {
 		//getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 40);
 		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
 	}
 
+	/**
+	 * verify Flex Channels popup
+	 * @return true if displayed, else false
+	 * @author manpreet.kaur3
+	 */
 	public boolean verifyViewFlexChannelsPopupModal() {
 		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
 	}
 
+	/**
+	 * Clicks on close button for Total Channels/Flex Channels popup
+	 * @author manpreet.kaur3
+	 */
 	public void clkCloseChannelsPopup() {
 		getReusableActionsInstance().getWhenReady(iconCloseModal, 20).click();
 	}
 
+	/**
+	 * verify SVOD is removed from genre dropdown
+	 * @return true if  not available in the list, else false
+	 * @author manpreet.kaur3
+	 */
 	public boolean verifySVODRemovedFromGenre() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 90);
 		getReusableActionsInstance().getWhenReady(drpdwnGenre, 30).click();
 		Select DrpDwnGenreSel = new Select(drpdwnGenre);
 		List<WebElement> DrpDwnGenreList = DrpDwnGenreSel.getOptions();
@@ -1650,5 +1688,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Click on enter address button on offers page
+	 * @author manpreet.kaur3
+	 */
+	public void clkEnterAddress() {
+		getReusableActionsInstance().getWhenReady(btnEnterAddress, 60).click();
 	}
 }

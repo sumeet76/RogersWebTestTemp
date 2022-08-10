@@ -16,7 +16,7 @@ public class RogersIgniteTVProfileCreationPage extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//h2[@translate='global.checkout.profile.createProfile']")
+	@FindBy(xpath = "//h1[@translate='global.checkout.profile.createProfile']")
 	WebElement txtProfile;
 	
 	@FindBy(xpath = "//input[@name='email']/ancestor::div[contains(@class,'ds-formField__inputContainer')]")

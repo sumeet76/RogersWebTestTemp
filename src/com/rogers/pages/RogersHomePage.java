@@ -385,7 +385,8 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkEasyLogin() {		
+	public void clkEasyLogin() {
+		getReusableActionsInstance().waitForElementVisibility(lnkEasyLogin, 120);
 		getReusableActionsInstance().getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
@@ -412,11 +413,13 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSubnavIgniteSmartStream() {
 		getReusableActionsInstance().getWhenVisible(subnavIgniteSmartStream, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	public void clkGetIgniteTvWithIgniteInternet(){
 		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
 		getReusableActionsInstance().getWhenReady(lnkGetItNow,30).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 	/**
 	 * Click the Ignite Internet from the sub navigator
@@ -584,7 +587,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 60);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 20);
+	}
+
+	public boolean verifyNoThanks(){
+		return getReusableActionsInstance().isElementVisible(btnNoThnx, 30);
 	}
 	
 	/**
@@ -709,6 +716,17 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
 		getReusableActionsInstance().getWhenReady(lnkProvinceNB, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
+	}
+
+	/**
+	 * Click the NL Province link from the top tile bar
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkNLProvinceLnk() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
 	}
 
 
@@ -939,6 +957,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkIgniteAddressLookupSubmitSS() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**
@@ -1053,7 +1072,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 60);
 	}
 
 	/**
@@ -1063,6 +1082,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkUseAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**
