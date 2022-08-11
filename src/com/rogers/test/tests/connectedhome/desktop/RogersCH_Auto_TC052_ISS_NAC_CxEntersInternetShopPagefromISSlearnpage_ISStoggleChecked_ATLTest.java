@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpage_ISStoggleChecked_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkISSforNL();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
