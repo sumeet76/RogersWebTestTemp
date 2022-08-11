@@ -385,7 +385,8 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkEasyLogin() {		
+	public void clkEasyLogin() {
+		getReusableActionsInstance().waitForElementVisibility(lnkEasyLogin, 120);
 		getReusableActionsInstance().getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
@@ -412,11 +413,13 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSubnavIgniteSmartStream() {
 		getReusableActionsInstance().getWhenVisible(subnavIgniteSmartStream, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	public void clkGetIgniteTvWithIgniteInternet(){
 		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
 		getReusableActionsInstance().getWhenReady(lnkGetItNow,30).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 	/**
 	 * Click the Ignite Internet from the sub navigator

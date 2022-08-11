@@ -40,6 +40,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		reporter.reportLogWithScreenshot("Internet and TV Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("Load Offers");
+		getRogersIgniteBundlesPage().termOffer();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add To Cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -120,7 +121,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		//getPaymentOptionsPage().clkContinue();
 		//reporter.reportLogWithScreenshot("Order Review Page");
 		//getRogersOVCheckoutPage().clkSubmit();
-		//reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 
