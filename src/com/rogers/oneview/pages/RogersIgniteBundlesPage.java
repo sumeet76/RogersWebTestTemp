@@ -55,7 +55,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
 	WebElement homePhoneCheckbox;
 
-	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement addToCart;
 
 	@FindBy(xpath = "//span[@translate='global.cta.addToCart']")
@@ -101,6 +101,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='Exchange later' or text()='Échanger plus tard']/ancestor::button")
 	WebElement exchangeLaterbtn;
+
+	@FindBy(xpath = "//div[text()='TV' or text()='la télé']//parent::div")
+	WebElement pointsToMentionTV;
 
 	@FindBy(xpath = "//div[text()='Internet']")
 	WebElement pointsToMentionInternet;
@@ -830,7 +833,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void expandInternetdiv() {
 		getReusableActionsInstance().clickWhenReady(pointsToMentionInternet,120);
-	}	
+	}
+	/**
+	 * Click Tv to Expand in Points to Mention
+	 * @author Jarmanjeet.Batth
+	 */
+	public void expandTvdiv() {
+		getReusableActionsInstance().clickWhenReady(pointsToMentionTV,30);
+	}
 	/**
 	 * Click Home Phone to Expand in Points to Mention
 	 * @author chinnarao.vattam

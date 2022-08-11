@@ -38,8 +38,14 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        reporter.reportLogWithScreenshot("Product Added");
        getRogersIgniteBundlesPage().clkContinue();
        reporter.reportLogWithScreenshot("review terms and condition");
-       getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//     getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//       getRogersIgniteBundlesPage().expandTvdiv();
+       getRogersIgniteBundlesPage().expandInternetdiv();
+       getRogersIgniteBundlesPage().expandHomePhonediv();
+       getRogersIgniteBundlesPage().expandBatteryBackUpdiv();
+       getRogersIgniteBundlesPage().goToPageBottom();
        reporter.reportLogWithScreenshot("points to mention");
+       getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
        getRogersIgniteBundlesPage().clickExchangeLater();
        reporter.reportLogWithScreenshot("After Exchange later");
@@ -55,7 +61,7 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getRogersIgniteBundlesPage().addPods(0);
        reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
        getRogersIgniteBundlesPage().clkContinueInternetAddon();
-    //   getRogersIgniteBundlesPage().clkContinue();
+       getRogersIgniteBundlesPage().clkContinue();
        reporter.reportLogWithScreenshot("Cart Summary");
        getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
        reporter.reportLogWithScreenshot("Cart Summary");
@@ -74,7 +80,7 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getHomePhoneSelectionPage().clkGeneratePhoneNo();
        reporter.reportLogWithScreenshot("Phone Number Selected");
    //    getCreditCheckPage().goToPageBottom();
-       getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+//       getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
        getHomePhoneSelectionPage().clkContinue();
        getCreditCheckPage().verifyInstallationOption();
        reporter.reportLogWithScreenshot("installation options");
