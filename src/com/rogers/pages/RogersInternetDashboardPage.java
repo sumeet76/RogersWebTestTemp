@@ -61,7 +61,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
-	@FindBy(xpath="//span[contains(text(),'Add it now')]")
+	@FindBy(xpath="//span[contains(text(),'Continue')]")
 	WebElement btnInternetChangeOK;
 
 
