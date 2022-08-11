@@ -44,10 +44,9 @@ public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpg
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc20_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        getRogersHomePage().clkIgniteTVExistingCustomer();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceabilityMigration();
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
         getRogersBuyPage().clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page");
