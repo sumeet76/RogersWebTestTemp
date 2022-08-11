@@ -10,7 +10,14 @@ import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+/*
+"1. Language - FR
+2. Province - ATL
+3. Add-Ons - NA
+4. Installation Page - Pro Install
+5. Payment Details - Monthly Charges
+6. Discounts - NA"
+ */
 
 public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})

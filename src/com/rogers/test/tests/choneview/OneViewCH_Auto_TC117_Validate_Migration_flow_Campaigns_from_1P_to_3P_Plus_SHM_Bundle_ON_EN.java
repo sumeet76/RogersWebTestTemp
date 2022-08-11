@@ -45,17 +45,24 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Exchange later");
         reporter.reportLogWithScreenshot("After Exchange later");
+        getRogersOVChannelsAndThemePacksPage().clickAddChannel();
+        getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
+        getRogersOVChannelsAndThemePacksPage().addThemepack();
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().contiue4KContent();
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-        reporter.reportLogWithScreenshot("Intenet addons page");
+        getRogersIgniteBundlesPage().goToPageBottom();
+        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().addSHMAddOn();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("smart home addons page");
         reporter.reportLogWithScreenshot("campaign");
         getRogersIgniteCampaignPage().clickCampaignTab();
-        getRogersIgniteCampaignPage().enterCoupon("KCS");
+        getRogersIgniteCampaignPage().enterCoupon("pCR6");
         getRogersIgniteCampaignPage().clickApplyCoupon();
         reporter.reportLogWithScreenshot("campaign coupon applied");
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clickCancelButton();
         reporter.reportLogWithScreenshot("Cart Summary");
         //	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -63,12 +70,13 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
-        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        getCreditCheckPage().clkAuthorize();
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        //getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        //getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+        //getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        //getCreditCheckPage().clkAuthorize();
+        //reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
+        getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Phone Number Selected");
@@ -93,11 +101,11 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
-        getPaymentOptionsPage().clkContinue();
+//        getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("Submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -107,6 +115,6 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
