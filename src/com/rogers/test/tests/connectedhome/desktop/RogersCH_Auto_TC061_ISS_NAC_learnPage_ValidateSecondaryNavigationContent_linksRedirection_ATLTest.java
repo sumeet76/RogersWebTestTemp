@@ -167,10 +167,10 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 	}
 
-	/*@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}*/
+	}
 
 
 }
