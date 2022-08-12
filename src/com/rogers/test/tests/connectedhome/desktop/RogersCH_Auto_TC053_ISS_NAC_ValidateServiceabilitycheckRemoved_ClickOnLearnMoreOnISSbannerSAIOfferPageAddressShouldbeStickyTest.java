@@ -36,27 +36,32 @@ public class RogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_Clic
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeSticky() {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+        reporter.reportLogWithScreenshot("clicked on Easy Internet");
         getRogersHomePage().clkEasyInternet();
-        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+
+        reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        //getRogersHomePage().clkAddressCheck();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        //reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        reporter.reportLogWithScreenshot("Launched the offers page to select package");
+        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
+        
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
-        //getRogersHomePage().clkOnlyInternet();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+        //getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        //getRogersInternetPackageSelectionPage().clkInternetPackage();
+
+
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmail();
