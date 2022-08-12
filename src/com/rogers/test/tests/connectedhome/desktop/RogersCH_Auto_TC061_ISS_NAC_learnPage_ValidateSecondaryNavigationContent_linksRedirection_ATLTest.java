@@ -37,39 +37,43 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
 
 	@Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirection_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
         reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
+       // reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
+      //  getRogersHomePage().clkAboutIgniteInternetLink();
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
-        getRogersHomePage().clkSubnavIgniteSmartStream() ;
+        getRogersHomePage().clkSubnavSmartStream() ;
         reporter.reportLogWithScreenshot("Smart Stream Sub nav");
         reporter.hardAssert(getRogersHomePage().isSubnavHelpAndSupport(),"Help And Support Sub nav is Present","Help And Support Sub nav is not Present");
         reporter.reportLogWithScreenshot("Help And Support Sub nav");
         getRogersHomePage().clkSubnavHelpAndSupport();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        //reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
         reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
-        reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
+        //reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
         getRogersHomePage().clkIgniteWiFiPromise();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        reporter.reportLogWithScreenshot("clicked Ignite wifi");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersHomePage().clkSubnavIgniteInternet();
         getRogersHomePage().clkIgniteWiFiHub();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        reporter.reportLogWithScreenshot("clicked Ignite wifi hub");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        getRogersHomePage().clkSubnavIgniteInternet();
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
-        getRogersHomePage().clkSubnavIgniteSmartStream() ;
-        reporter.reportLogWithScreenshot("Smart Stream Sub nav");
-        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+       // getRogersHomePage().clkSubnavIgniteInternet();
+       // reporter.reportLogWithScreenshot("Launched the Internet packages page");
+       // reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
+       // getRogersHomePage().clkSubnavIgniteSmartStream() ;
+       // reporter.reportLogWithScreenshot("Smart Stream Sub nav");
+       // reporter.hardAssert(getRogersHomePage().isAboutTVandStreamingLinkPresent(),"About TV and Streaming Link is present","About TV and Streaming Link is not present");
+       // reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        //getRogersHomePage().clkAboutIgniteInternetLink();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
@@ -163,10 +167,10 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
 	}
 
-	@AfterMethod(alwaysRun = true)
+	/*@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}
+	}*/
 
 
 }
