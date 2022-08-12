@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  *
  *1. Launch the Rogers.com url.
  *2. Log into rogers.com url with valid credentials.
- *3. Click on a Internet badge
+ *3. Click on a TV account
  *4. Click on change package button
  *5. Choose a tv package whose price is lower than the current package and click on Select
  *6. Verify the Contact Us Popup
@@ -29,36 +29,35 @@ import java.lang.reflect.Method;
  *9. Verify the book a call link
  **/
 
-public class RogersCH_TC_114_IgniteInternet_InternetPackageDowngrade_FR_Test extends BaseTestClass {
+public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTestClass {
 
     @Test
-    public void checkInternetPackageDowngradeFR()
+    public void rogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
+        //getRogersHomePage().clkNBProvinceLnk();
         getRogersSolarisTVDashboardPage().clkFR();
-        getRogersInternetDashboardPage().clkSolarisInternetBadge();
-        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
-        //getRogersInternetDashboardPage().clkInternetPopup();
-        getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
-        //getRogersInternetDashboardPage().clkInternetChangeOK();
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
-        reporter.reportLogWithScreenshot("Launched the customercare popup");
-
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
+        reporter.reportLogWithScreenshot("Launched the Account Page FR");
+        getRogersSolarisTVDashboardPage().clkTVBadge();
+        reporter.reportLogWithScreenshot("Launched the TV dash board");
+        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
+        reporter.reportLogWithScreenshot("Launched the TV packages page");
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
+        reporter.reportLogWithScreenshot("Launched the customer care popup");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
         reporter.reportLogWithScreenshot("Verified the customer care popup content");
     }
 
