@@ -2,7 +2,6 @@ package com.rogers.test.tests.connectedhome.desktop;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -26,10 +25,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_126_SignedInCx_SVODRemovedFromChannelsTab_Test extends BaseTestClass {
+public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest extends BaseTestClass {
 
 	@Test//(groups = {"RegressionCH")
-	public void checkSignedInCx_ChannelsTab_SVODRemovedFromGenre() {
+	public void rogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTab() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getPassword());

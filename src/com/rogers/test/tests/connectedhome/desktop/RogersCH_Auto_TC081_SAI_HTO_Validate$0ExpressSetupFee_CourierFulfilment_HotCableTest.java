@@ -3,13 +3,11 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.By;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to test the HTO SAI flow for Rogers.com
@@ -48,10 +46,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_TC_110_SAI_SAIHTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCableCondition_ON_Test extends BaseTestClass {
+public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH",""})
-    public void checkTargetedOfferForSAI() {
+    public void rogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCable() {
        // getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc110_StandaloneInternetAccount.getUsername());

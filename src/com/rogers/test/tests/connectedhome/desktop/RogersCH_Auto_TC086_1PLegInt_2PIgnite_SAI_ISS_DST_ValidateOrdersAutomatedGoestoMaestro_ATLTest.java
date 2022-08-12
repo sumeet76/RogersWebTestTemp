@@ -45,10 +45,10 @@ import java.util.Map;
  * 26. Validate the Ban ID in the DB
  **/
 
-public class RogersCH_TC_116_1PLeg_2PIgnite_SAI_ISS_AUTL_E2E_ValidateOrdersAutomatedGoestoMaestro_NL_Test extends BaseTestClass {
+public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATLTest extends BaseTestClass {
 
     @Test
-    public void check1PLegacyTo2PIgniteMigrationTest() {
+    public void rogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getPassword());
