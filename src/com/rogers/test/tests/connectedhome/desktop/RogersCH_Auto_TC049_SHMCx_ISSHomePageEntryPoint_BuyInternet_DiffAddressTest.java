@@ -79,28 +79,6 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().clkSubmitProfile();
 
-        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersInternetCreditCheckPage().selectDOBYear();
-        getRogersInternetCreditCheckPage().selectDOBMonth();
-        getRogersInternetCreditCheckPage().selectDOBDay();
-        reporter.reportLogWithScreenshot("Entered DOB details");
-        getRogersInternetCreditCheckPage().selectFirstID("Driver's License");
-        getRogersInternetCreditCheckPage().selectProvince("Ontario");
-        getRogersInternetCreditCheckPage().selectExpiryYear();
-        getRogersInternetCreditCheckPage().selectExpiryMonth();
-        getRogersInternetCreditCheckPage().selectExpiryDay();
-        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
-        reporter.reportLogWithScreenshot("Driving License Details");
-        getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
-        getRogersInternetCreditCheckPage().setPassportNumber();
-        getRogersInternetCreditCheckPage().selectPassportExpiryYear();
-        getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
-        getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsentSai();
-        reporter.reportLogWithScreenshot("Passport Details");
-        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
-
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkProInstallUpgradeNo();
@@ -108,12 +86,6 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-
-        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        // getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
-        // For reference  - for monthly bill uncomment above line & comment from payment mode pre-authorized till the expiry year line 100 to 106
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
