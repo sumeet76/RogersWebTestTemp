@@ -33,10 +33,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_120_1P_HTO_GPON_DualTopology_VerifyErrorPopup_Test extends BaseTestClass {
+public class RogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyErrorPopupTest extends BaseTestClass {
 
     @Test
-    public void checkErrorPopupForHTODowngradeTest() {
+    public void rogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyErrorPopup() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getPassword());

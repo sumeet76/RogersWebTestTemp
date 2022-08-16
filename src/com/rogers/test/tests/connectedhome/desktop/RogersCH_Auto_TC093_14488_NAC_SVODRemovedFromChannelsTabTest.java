@@ -25,10 +25,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_125_NAC_SVODRemovedFromChannelsTab_Test extends BaseTestClass {
+public class RogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTabTest extends BaseTestClass {
 
 	@Test//(groups = {"RegressionCH")
-	public void checkNAC_ChannelsTab_SVODRemovedFromGenre() {
+	public void rogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTab() {
 		getRogersHomePage().clkTVBundle();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");

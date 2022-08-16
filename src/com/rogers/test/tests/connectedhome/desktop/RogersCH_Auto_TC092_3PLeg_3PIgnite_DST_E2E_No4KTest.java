@@ -48,10 +48,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_124_DST_Bundles_3PLeg_3PIgnite_E2E_Set4kAsNo_Test extends BaseTestClass {
+public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTestClass {
 
     @Test//(groups = {"RegressionCH"})
-	public void checkTVPackageUpgradeTest() {
+	public void rogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4K() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc124_Legacy3pToIgnite3P.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc124_Legacy3pToIgnite3P.getPassword());

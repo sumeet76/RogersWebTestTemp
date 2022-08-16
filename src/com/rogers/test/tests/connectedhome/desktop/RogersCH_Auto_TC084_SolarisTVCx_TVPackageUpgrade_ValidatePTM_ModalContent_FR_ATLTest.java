@@ -29,10 +29,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_115_IginteTV_TVPackageUpgrade_ValidatePTM_ModalContent_FR_Test extends BaseTestClass {
+public class RogersCH_Auto_TC084_SolarisTVCx_TVPackageUpgrade_ValidatePTM_ModalContent_FR_ATLTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
-    public void checkSolarisTVPackageUpgrade() 
+    public void rogersCH_Auto_TC084_SolarisTVCx_TVPackageUpgrade_ValidatePTM_ModalContent_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getUsername());
