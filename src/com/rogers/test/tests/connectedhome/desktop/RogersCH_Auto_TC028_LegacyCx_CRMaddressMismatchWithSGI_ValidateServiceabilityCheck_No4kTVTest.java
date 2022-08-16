@@ -45,28 +45,31 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		//getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		getRogersHomePage().clkUseThisAddress();
+		getRogersHomePage().selectAddressOnFile();
+		getRogersHomePage().clkUseAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-		getRogersIgniteTVBuyPage().clkIUnderstand();
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
+		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+		//reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+		getRogersIgniteTVBuyPage().selectFlex20Package();
+		reporter.reportLogWithScreenshot("Added to cart");
+
+
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
-		reporter.reportLogWithScreenshot("Launched the create profile page");
+
+		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the credit evalution page");
+
+		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evaluation page has Launched", "Credit Evaluation page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the credit evaluation page");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
