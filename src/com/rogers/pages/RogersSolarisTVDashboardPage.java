@@ -318,6 +318,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
+		getReusableActionsInstance().waitForPageLoad();
 	}
 	
 	/**
@@ -476,6 +477,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		//Need ti to pull channels from ATG
 		getReusableActionsInstance().staticWait(10000);
 		WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
+		getReusableActionsInstance().waitForElementVisibility(lnkChangeFlexChannelsMobile, 60);
+		getReusableActionsInstance().waitForElementTobeClickable(lnkChangeFlexChannelsMobile, 60);
 		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);
 	}
 	/**

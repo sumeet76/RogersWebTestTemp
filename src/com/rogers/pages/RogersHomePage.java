@@ -278,7 +278,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV & Streaming')]")
 	WebElement subnavIgniteSmartStream;
 
-	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'TV & Streaming information pages')]")
+	@FindAll({
+			@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'TV & Streaming information pages')]"),
+			@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'TV and Streaming Information Pages')]")
+	})
 	WebElement subnavSmartStream;
 
 	@FindBy(xpath = "//a[contains(@aria-label,'Shop Ignite TV with Ignite Internet')]/span[@role='text']")
@@ -295,7 +298,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath ="//li[@class='mb-0 ng-star-inserted']/a[contains(@aria-label,'About TV & Streaming')]")
 	WebElement lnkAboutTVandStreaming;
 
-	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Promise')]")
+	@FindAll({
+			@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Promise')]"),
+			@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Satisfaction')]")
+	})
 	WebElement lnkIgniteWiFiPromise;
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Hub')]")
@@ -404,6 +410,11 @@ public class RogersHomePage extends BasePageClass {
 	public void clkEasyInternet() {
 		getReusableActionsInstance().getWhenVisible(lnkEasyInternet, 30).click();
 		getReusableActionsInstance().clickIfAvailable(lnkEasyInternet, 30);
+	}
+
+	public void waitBeforeSwapSecondRun(){
+		getReusableActionsInstance().staticWait(20000);
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	/**
