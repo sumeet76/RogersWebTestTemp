@@ -66,15 +66,10 @@ public class RogersCH_Auto_TC058_SolarisTVCx_SwapChannelExperienceSwapMultipleTi
         reporter.reportLogWithScreenshot("Swap Success popup has launched");
         getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
         reporter.reportLogWithScreenshot("Tv Dashboard has launched");
-
-     }
-
-    @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-    public void checkSolarisTVSwapChannelsSecondTry() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        getRogersLoginPage().switchToSignInIFrame();
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        getDriver().get(System.getProperty("QaUrl"));
+        getRogersHomePage().waitBeforeSwapSecondRun();
+        getRogersHomePage().clkEasyLogin();
+        reporter.reportLogWithScreenshot("Launched the SignIn popup for second try");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc73_IgniteTVAccountMultipleSwap.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc73_IgniteTVAccountMultipleSwap.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -94,16 +89,18 @@ public class RogersCH_Auto_TC058_SolarisTVCx_SwapChannelExperienceSwapMultipleTi
         reporter.reportLogWithScreenshot("TV channels exchange page has launched");
         getRogersSolarisChannelsExchangePage().verifyChannelsPannel();
         reporter.reportLogWithScreenshot("TV channels pannel has displayed");
-        List<WebElement> availableChannels = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
+        List<WebElement> availableChannelsList = getRogersSolarisChannelsExchangePage().uncheckTVChannels();
         reporter.reportLogWithScreenshot("TV Channels are removed");
-        getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannels);
+        getRogersSolarisChannelsExchangePage().checkTVChannels(availableChannelsList);
         reporter.reportLogWithScreenshot("TV Channels are added");
         getRogersSolarisChannelsExchangePage().clkConfirmSwap();
         reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
         reporter.reportLogWithScreenshot("Swap Success popup has launched");
         getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
         reporter.reportLogWithScreenshot("Tv Dashboard has launched");
-    }
+
+     }
+
 
 @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 //login flow

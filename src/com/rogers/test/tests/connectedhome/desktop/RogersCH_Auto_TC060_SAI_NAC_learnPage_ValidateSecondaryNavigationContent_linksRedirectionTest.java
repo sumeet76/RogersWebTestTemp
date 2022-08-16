@@ -33,7 +33,7 @@ import java.util.Map;
  *
  **/
 
-public class rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirection extends BaseTestClass {
+public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirectionTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirection() {
@@ -41,24 +41,28 @@ public class rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersHomePage().clkEasyInternet();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
-		reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(), "Ignite Internet Sub nav is Present", "Ignite Internet Sub nav is not Present");
+
+		reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
 		getRogersHomePage().clkSubnavIgniteInternet();
 		reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
-		reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(), "Smart Stream Sub nav is Present", "Smart Stream Sub nav is not Present");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
+		reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
+		getRogersHomePage().clkSubnavSmartStream() ;
 		reporter.reportLogWithScreenshot("Smart Stream Sub nav");
-		reporter.hardAssert(getRogersHomePage().isSubnavHelpAndSupport(), "Help And Support Sub nav is Present", "Help And Support Sub nav is not Present");
+		reporter.hardAssert(getRogersHomePage().isSubnavHelpAndSupport(),"Help And Support Sub nav is Present","Help And Support Sub nav is not Present");
 		reporter.reportLogWithScreenshot("Help And Support Sub nav");
 		getRogersHomePage().clkSubnavHelpAndSupport();
+
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 		getDriver().get(System.getProperty("QaUrl"));
 		getRogersHomePage().clkEasyInternet();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
-		reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(), "Ignite Internet Sub nav is Present", "Ignite Internet Sub nav is not Present");
+		reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
 		getRogersHomePage().clkSubnavIgniteInternet();
-		reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(), "About Ignite Internet Link is present", "About Ignite Internet Link is not present");
+		reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
 		getRogersHomePage().clkIgniteWiFiPromise();
+		reporter.reportLogWithScreenshot("clicked Ignite wifi");
+
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 		getDriver().get(System.getProperty("QaUrl"));
 		getRogersHomePage().clkEasyInternet();
@@ -67,17 +71,19 @@ public class rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersHomePage().clkSubnavIgniteInternet();
 		getRogersHomePage().clkIgniteWiFiHub();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
-	    }
 
-
-		@Test(groups = {"RegressionCH","saiCH"})
-		public void checkSAIlearnPage_ValidateSecondaryNavigationContentTest() {
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+		getDriver().get(System.getProperty("QaUrl"));
 		getRogersHomePage().clkEasyInternet();
+		//getRogersHomePage().waitForPageLoad();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
+
 		getRogersHomePage().clkSubnavIgniteInternet();
-		getRogersHomePage().clkIgniteInternet();
+		//getRogersHomePage().clkIgniteInternet();
+
+		reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
+		getRogersHomePage().clkAboutIgniteInternetLink();
+		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
@@ -140,13 +146,14 @@ public class rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-			String ban = getRogersOrderConfirmationPage().getBAN();
-			System.out.println("BAN from the portal : " + ban);
-			Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-					.executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
 
-			reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-			reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+		String ban = getRogersOrderConfirmationPage().getBAN();
+		System.out.println("BAN from the portal : " + ban);
+		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+				.executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+
+		reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
 	}
 
 
