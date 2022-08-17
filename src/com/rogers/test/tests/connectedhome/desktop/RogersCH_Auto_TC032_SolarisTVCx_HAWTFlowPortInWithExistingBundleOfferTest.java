@@ -27,26 +27,33 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
+
        // getRogersHomePage().clkIgniteTVExistingCustomer();
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
-	    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-	    	getRogersHomePage().clkNoThnx();
-	    	getRogersHomePage().clkServiceability();
-	    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");    	
-	        //getRogersHomePage().clkUseThisAddress();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-    	String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkNoThnx();
+        getRogersHomePage().clkServiceability();
+
         getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+        reporter.reportLogWithScreenshot("Clicked Home Phone");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+
+        String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
+        reporter.reportLogWithScreenshot("Entered Serviceability address");
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the Bundles page");
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Added to cart");
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        reporter.reportLogWithScreenshot("Phone number eligibility test");
         getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         
         reporter.hardAssert(getRogersHomePhonePortInPage().verifyPhoneNumberSuccess(),"Port-in Number validation success","Port-in Number validation Failed");
@@ -58,8 +65,11 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         reporter.reportLogWithScreenshot("Port-in details set");
         getRogersHomePhonePortInPage().selIMEI();
         getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
-        getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
+
+        getRogersIgniteTVBuyPage().clkHomePhoneAddOn();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyHomePhoneAddOnPage(), "Launched the Home phone add-on page", "Home phone add-on page has not launched");
         getRogersIgniteTVBuyPage().clkHomePhone();
         
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
