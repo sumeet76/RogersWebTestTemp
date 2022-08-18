@@ -30,12 +30,12 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_TC_072_081_SHM_AutomatePage_NavigatefromSubnav_ValidateAlltheSections_HeroBanner_Assessment_Packages_ServiceTest extends BaseTestClass {
+public class RogersCH_Auto_TC095_SHM_NAC_AutomatePage_Subnav_ValidateAlltheSections_ATLTest extends BaseTestClass {
     final String strLanguage=System.getProperty("Language");
 
 
   @Test(groups = {"RegressionCH","RhpAndRhmCH"})
-    public void checkShmAutomationPageDsaBillboardTest() {
+    public void rogersCH_Auto_TC095_SHM_NAC_AutomatePage_Subnav_ValidateAlltheSections_ATL() {
         String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
         reporter.reportLogWithScreenshot("Launched the security package Home Page");

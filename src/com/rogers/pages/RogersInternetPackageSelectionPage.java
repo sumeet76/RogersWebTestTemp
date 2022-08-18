@@ -73,11 +73,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__main']/descendant::div[@class='internet-bundle-tile__content__checkbox']/descendant::label")
 	WebElement chkbox1GbpsSmartStream;
 
-
 	@FindBy(xpath = "//a[contains(@aria-label,'View internet bundles available to you')]/span")
 	WebElement btnSmartStream;
 	//div//a[@title='View internet bundles available to you']
 	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
+	//a[contains(@aria-label,'Get SmartStream')]/span
 
 	@FindBy(xpath = "//a[contains(@title,'View internet bundles available to you')]")
 	WebElement lnkSmartStream;

@@ -48,10 +48,10 @@ import java.lang.reflect.Method;
  * 31. Order confirmation page will be displayed with the order number and validate the order details.
  **/
 
-public class RogersCH_TC_117_2PLeg_to3P_ValidateSVODRemovedFromGenre_No4K_Over4STBs_AUTL_E2E_DBAasDefaultFO_ProInstallOption_Test extends BaseTestClass {
+public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOptionTest extends BaseTestClass {
 
     @Test
-    public void check2PLegacyTo3PIgniteMigrationTest() {
+    public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getPassword());

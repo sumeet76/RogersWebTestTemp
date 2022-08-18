@@ -56,6 +56,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
         getRogersHomePage().clkServiceabilityMobile();
         reporter.reportLogWithScreenshot("Bundles Page has launched");
+        getRogersIgniteTVBuyPage().scrollToIgniteStarter();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 
@@ -70,6 +71,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackageMobile();
+        reporter.reportLogWithScreenshot("Added to cart");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
