@@ -22,6 +22,7 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         //getRogersIgniteBundlesPage().clkUsethisAddress();
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
+//        getRogersIgniteBundlesPage().clickNo();
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
@@ -33,15 +34,15 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 //        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 //        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
-//        getRogersIgniteBundlesPage().noPortInPopup();
+        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        //getRogersIgniteBundlesPage().clkCheckOut();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        getRogersIgniteBundlesPage().clkReviewContinue();
+//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        getRogersIgniteBundlesPage().clkReviewContinue();
         /*To Add the chargeable Pods*/
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet header addon displayed", "Internet header not displayed");
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
         /*To Add the free pods in the internt addons page*/
@@ -64,10 +65,11 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         reporter.reportLogWithScreenshot("Installation options");
 
         getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
@@ -79,9 +81,9 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
-//	    getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+	    getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -89,12 +91,11 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
-
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 }

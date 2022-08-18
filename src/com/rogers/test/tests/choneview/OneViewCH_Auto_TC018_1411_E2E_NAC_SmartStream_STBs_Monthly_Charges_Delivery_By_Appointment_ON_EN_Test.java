@@ -53,8 +53,8 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation headers");
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-//		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-//		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 //		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Installation bottom");
@@ -71,9 +71,9 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

@@ -26,7 +26,7 @@ public class OneViewCH_Auto_TC088_Validate_SwitchingServiceability_CheckTechhub_
             reporter.reportLogWithScreenshot("Select Services Customer Wants");
             getRogersIgniteBundlesPage().setLanguageFrench();
             getRogersIgniteBundlesPage().clickCheckAnotherAddress();
-            getRogersIgniteBundlesPage().refreshCheckAvailability();
+//            getRogersIgniteBundlesPage().refreshCheckAvailability();
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC());
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC()+" not serviceable");
             reporter.reportLogWithScreenshot("Service Availability");

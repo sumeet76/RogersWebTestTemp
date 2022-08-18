@@ -108,9 +108,9 @@ public class OneViewCH_Auto_TC040_1435_E2E_NAC_2P_ExpressCheckoutWithout4KTv_Exc
 		reporter.reportLogWithScreenshot("Payment screen");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
 	@BeforeMethod (alwaysRun=true)
@@ -119,10 +119,10 @@ public class OneViewCH_Auto_TC040_1435_E2E_NAC_2P_ExpressCheckoutWithout4KTv_Exc
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID2PExchangeNow(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void afterTest() {
-//		closeSession();
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 }
 
 

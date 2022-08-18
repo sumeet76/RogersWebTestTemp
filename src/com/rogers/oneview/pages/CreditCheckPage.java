@@ -239,6 +239,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void clkCourierDelivery(){
 		getReusableActionsInstance().waitForElementVisibility(courierDelivery,240);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(courierDelivery);
 		getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
 	}
 	public void clickInPersonDelivery() {
@@ -323,8 +324,9 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
-		getReusableActionsInstance().clickWhenReady(continueButton);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		WebElement btn = getReusableActionsInstance().getWhenReady(continueButton, 30);
+		getReusableActionsInstance().clickWhenReady(btn,30);
 	}
 
 
@@ -380,7 +382,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,100);
+		return getReusableActionsInstance().isElementVisible(installationHeader,120);
 	}
 
 	/**

@@ -111,7 +111,7 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //getDriver().quit();
+        getDriver().quit();
     }
 }
 

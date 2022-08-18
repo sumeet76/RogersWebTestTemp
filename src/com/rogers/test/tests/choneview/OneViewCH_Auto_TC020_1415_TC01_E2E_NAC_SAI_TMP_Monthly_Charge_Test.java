@@ -27,6 +27,7 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		reporter.reportLogWithScreenshot("Internet Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
+		getRogersIgniteBundlesPage().selectProductCampaign();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -39,13 +40,13 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("TAH");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		getRogersIgniteCampaignPage().closeCouponAlert();
+//		getRogersIgniteCampaignPage().clickCampaignTab();
+//		reporter.reportLogWithScreenshot("load offers");
+//		getRogersIgniteCampaignPage().enterCoupon("TAG");
+//		getRogersIgniteCampaignPage().clickApplyCoupon();
+//		reporter.reportLogWithScreenshot("apply coupon");
+//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+//		getRogersIgniteCampaignPage().closeCouponAlert();
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -62,7 +63,7 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
@@ -77,9 +78,18 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		reporter.reportLogWithScreenshot("load offers");
+		getRogersIgniteCampaignPage().enterCoupon("KQ1");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("apply coupon");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -88,10 +98,10 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails.getContactIDSAI(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void afterTest() {
-//		closeSession();
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 
 }
 

@@ -149,13 +149,13 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[contains(text(),'The customer understands that someone 18 years of age or older must be present to receive the equipment delivery') or contains(text(),'Le client convient qu’une personne d’au moins 18 ans doit être présente pour recevoir l’équipement')]")
 	WebElement customerUnderstandCheckbox;
 
-	@FindBy(xpath = "//*[text()=' SmartStream ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
+	@FindBy(xpath = "//*[text()=' Streaming ' or text() = ' Diffusion ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement chkBtnSmartStreamSelect;
 
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
-	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + Streaming' or text()='Élan Internet 50 illimité + Diffusion Élan']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement btnSelectSmartStream;
 
 	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")

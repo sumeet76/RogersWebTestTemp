@@ -78,6 +78,9 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getHomePhoneSelectionPage().clkContinue();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().clkCourierDelivery();
@@ -94,11 +97,11 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-       reporter.reportLogWithScreenshot("payment details entered");
+        reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
     }
 

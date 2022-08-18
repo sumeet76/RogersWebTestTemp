@@ -55,7 +55,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
 	WebElement homePhoneCheckbox;
 
-	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
 	@FindBy(xpath = "//span[@translate='global.cta.addToCart']")
@@ -333,6 +333,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.header']")
 	WebElement internetAddOnsCharges;
 
+	@FindBy(xpath = "//span[@translate='global.label.homePhoneAddons']")
+	WebElement homephoneAddonsHeader;
+
 	@FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
 
@@ -426,6 +429,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
 	WebElement termoffer;
+
+	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	WebElement productCampaign;
 
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
 	WebElement oneTimeCredit;
@@ -729,8 +735,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(checkOut,60);
-	//	getReusableActionsInstance().scrollToElement(checkOut);
-	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().waitForElementTobeClickable(checkOut,90);
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
@@ -1036,7 +1040,7 @@ public void activateHomePhoneltrPopUp() {
 	*/
 	public boolean verifyRecommendedOffers() {
 //		getReusableActionsInstance().javascriptScrollByVisibleElement(recommendedOffer);
-		return getReusableActionsInstance().isElementVisible(recommendedOffer);
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 	/*
 	*Click Add to cart for the recommended offer
@@ -1312,6 +1316,10 @@ public void activateHomePhoneltrPopUp() {
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
 
+	public boolean validateHomephoneAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible(homephoneAddonsHeader,60);
+	}
+
 	public boolean validateSmartHomeAddOnsHeader() {
 		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
 	}
@@ -1486,6 +1494,12 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(termoffer,30);
 		getReusableActionsInstance().scrollToElement(termoffer);
 		getReusableActionsInstance().executeJavaScriptClick(termoffer);
+	}
+
+	public void selectProductCampaign(){
+		getReusableActionsInstance().waitForElementVisibility(productCampaign,30);
+		getReusableActionsInstance().scrollToElement(productCampaign);
+		getReusableActionsInstance().executeJavaScriptClick(productCampaign);
 	}
 
 	public void oneTimeCredit(){

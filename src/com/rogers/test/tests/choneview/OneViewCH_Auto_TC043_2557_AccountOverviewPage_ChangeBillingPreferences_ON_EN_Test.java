@@ -33,8 +33,8 @@ public class OneViewCH_Auto_TC043_2557_AccountOverviewPage_ChangeBillingPreferen
 //xmlTestParameters=newHashMap<String,String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
     }
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }

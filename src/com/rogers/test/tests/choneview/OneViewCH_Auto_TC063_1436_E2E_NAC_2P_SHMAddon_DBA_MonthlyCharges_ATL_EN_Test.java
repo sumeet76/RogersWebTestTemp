@@ -47,6 +47,7 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
+		reporter.softAssert(getCustomerProfilePage().verifySHMAddonsHeader(),"Customer Profile","Failed");
 		getRogersIgniteBundlesPage().addSHMAddOn();
 		reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
 		getRogersIgniteBundlesPage().clkContinue();
@@ -74,7 +75,6 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
-		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
@@ -93,9 +93,9 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 		getPaymentOptionsPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -106,6 +106,6 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 }

@@ -31,7 +31,6 @@ public class OneViewCH_Auto_TC072_OVS4_Serve_3P_GPON_OffersPage_ChangeTVFlowForA
         reporter.reportLogWithScreenshot("Lowest TV Package selected");
         reporter.hardAssert(getTVDashboardPage().verifyContinueAndCancelButton()," Continue and Cancel button displayed", " Continue and Cancel button not displayed");
 
-
     }
 
         @BeforeMethod(alwaysRun=true)
@@ -44,9 +43,5 @@ public class OneViewCH_Auto_TC072_OVS4_Serve_3P_GPON_OffersPage_ChangeTVFlowForA
         public void afterTest(){
             closeSession();
         }
-
-
-
-
 
 }
