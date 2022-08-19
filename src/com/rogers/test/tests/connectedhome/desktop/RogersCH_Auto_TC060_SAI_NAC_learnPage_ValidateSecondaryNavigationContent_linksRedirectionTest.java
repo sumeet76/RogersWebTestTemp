@@ -52,8 +52,9 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		reporter.reportLogWithScreenshot("Help And Support Sub nav");
 		getRogersHomePage().clkSubnavHelpAndSupport();
 
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
 		getDriver().get(System.getProperty("QaUrl"));
+		getRogersHomePage().waitforURLNavigation();
 		getRogersHomePage().clkEasyInternet();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
@@ -63,18 +64,20 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersHomePage().clkIgniteWiFiPromise();
 		reporter.reportLogWithScreenshot("clicked Ignite wifi");
 
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
 		getDriver().get(System.getProperty("QaUrl"));
+		getRogersHomePage().waitforURLNavigation();
 		getRogersHomePage().clkEasyInternet();
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkSubnavIgniteInternet();
 		getRogersHomePage().clkIgniteWiFiHub();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
 		getDriver().get(System.getProperty("QaUrl"));
+		getRogersHomePage().waitforURLNavigation();
 		getRogersHomePage().clkEasyInternet();
-		//getRogersHomePage().waitForPageLoad();
+
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 
@@ -91,7 +94,7 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();
-		reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
 		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 		reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -121,10 +124,12 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersInternetCreditCheckPage().clkCreditConsentSai();
 		reporter.reportLogWithScreenshot("Passport Details");
 		getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
-		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
-		getRogersTechInstallPage().clkTechInstalConsent();
+		getRogersTechInstallPage().clkProInstallUpgradeNo();
 		reporter.reportLogWithScreenshot("tech install details");
+		getRogersTechInstallPage().clkTechInstallContinueSelf();
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
 		getRogersTechInstallPage().clkTechInstallContinue();
 		reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");

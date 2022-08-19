@@ -129,7 +129,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
-	@FindBy(xpath = "//button[@aria-label='Take the quiz']")
+	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]")
 	WebElement btnTakeAquiz;
 
 	@FindBy(xpath = "//img[@alt='Image of Disney+']")
@@ -265,7 +265,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	public void clkInternetPackage() {
 		
-		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
+		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
 	}
 
 	/**
@@ -580,11 +580,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 
 	public void clkInternetBuyContinue() {
-		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
+		} */
+		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(btnInternetBuyContinue, 60);
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
 	}
 
