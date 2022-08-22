@@ -31,15 +31,15 @@ public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTe
 	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
 	public void rogersCH_Auto_TC035_LegacyCx_ValidateTVDashboard() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_44_digitalTVAccount.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_44_digitalTVAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_digitalTVAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_digitalTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc43_44_digitalTVAccount.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_digitalTVAccount.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");

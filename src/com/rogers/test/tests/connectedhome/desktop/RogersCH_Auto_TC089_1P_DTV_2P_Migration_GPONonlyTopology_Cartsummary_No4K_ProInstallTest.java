@@ -45,15 +45,15 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
     @Test
 	public void rogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummary_No4K_ProInstall() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc119_2PMigrationGPON.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc119_2PMigrationGPON.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc89_2PMigrationGPON.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc89_2PMigrationGPON.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Launched the Account Page");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc119_2PMigrationGPON.accountDetails.getBan());
+			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc89_2PMigrationGPON.accountDetails.getBan());
 		}
 		reporter.reportLogWithScreenshot("Account Selected");
 		getRogersHomePage().clkExistingCustomerShop();
@@ -83,9 +83,9 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
         reporter.reportLogWithScreenshot("Launched the credit evaluation page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc112_Legacy2PtoIgnite2PMigration.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");

@@ -36,14 +36,14 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
     @Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATL() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_wirelessSignedInInternetBuy.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_wirelessSignedInInternetBuy.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_wirelessSignedInInternetBuy.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc50_wirelessSignedInInternetBuy.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();

@@ -30,8 +30,8 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 	public void rogersCH_Auto_TC036_LegacyCx_ValidateInternetUsage() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_legacyInternetAccount.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_legacyInternetAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_legacyInternetAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_legacyInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -39,7 +39,7 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 	    getRogersLoginPage().clkSkipIFrame();
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_legacyInternetAccount.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36_legacyInternetAccount.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkLegacyInternetBadge();

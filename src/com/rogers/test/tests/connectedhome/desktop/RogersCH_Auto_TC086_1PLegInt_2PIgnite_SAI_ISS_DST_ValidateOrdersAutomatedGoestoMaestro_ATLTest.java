@@ -50,8 +50,8 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
     @Test
     public void rogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
        // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
@@ -59,7 +59,7 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
         getRogersLoginPage().clkSkipIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc116_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");

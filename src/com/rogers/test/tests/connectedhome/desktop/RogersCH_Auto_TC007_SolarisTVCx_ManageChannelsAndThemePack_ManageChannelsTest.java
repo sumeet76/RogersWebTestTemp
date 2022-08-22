@@ -32,14 +32,14 @@ public class RogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageCh
 	public void rogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageChannels() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");

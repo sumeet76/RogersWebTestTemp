@@ -36,8 +36,8 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
     public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_igniteSmartStream.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_igniteSmartStream.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_igniteSmartStream.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		getRogersLoginPage().clkSignInIFrame();
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");

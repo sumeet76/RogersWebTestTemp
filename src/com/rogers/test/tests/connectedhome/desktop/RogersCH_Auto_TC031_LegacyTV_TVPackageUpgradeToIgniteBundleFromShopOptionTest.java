@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to verify the upgarde flow for Legacy TV to IgniteTV for Rogers.com  
@@ -55,15 +54,15 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 	public void rogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShopOption() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");

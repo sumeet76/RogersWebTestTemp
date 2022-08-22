@@ -38,22 +38,22 @@ public class RogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternet
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternetPackage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21_SolarisInternetOldConstructor.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc21_SolarisInternetOldConstructor.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc22_SolarisInternetOldConstructor.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc21_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc21_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc22_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc22_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");

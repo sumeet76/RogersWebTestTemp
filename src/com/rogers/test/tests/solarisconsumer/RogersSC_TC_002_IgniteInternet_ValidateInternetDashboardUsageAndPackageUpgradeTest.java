@@ -64,7 +64,7 @@ public class RogersSC_TC_002_IgniteInternet_ValidateInternetDashboardUsageAndPac
 		reporter.reportLogWithScreenshot("Launched the Interent dashboard");
 		getRogersInternetDashboardPage().clkSolChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Interent packages page");
-		getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+		getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
 		reporter.reportLogWithScreenshot("Launched the agreement page"); 
 		getRogersOrderReviewPage().verifyAgreementPage();
 		reporter.reportLogWithScreenshot("Launched the order review page");
