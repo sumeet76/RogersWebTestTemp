@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_REG_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC056_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
@@ -20,7 +20,6 @@ public class OneViewCH_REG_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
-
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 			reporter.reportLogWithScreenshot("Select Services Customer Wants");
 			getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -114,7 +113,7 @@ public class OneViewCH_REG_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_REG_Auto_1544_TC03_Manage_Channels_Themepacks_Immediate_Test extends BaseTestClass {
+public class OneViewCH_Auto_1544_TC03_Remove_Themepack_Immediate_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void OneViewCH_1544_TC03_RemoveThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.RemoveThemepack1544Tc03.getAccountDetails().getBan(), TestDataHandler.RemoveThemepack1544Tc03.getContactID());

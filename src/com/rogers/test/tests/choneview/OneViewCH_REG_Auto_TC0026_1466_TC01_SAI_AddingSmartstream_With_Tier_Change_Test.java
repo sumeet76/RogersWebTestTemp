@@ -21,7 +21,7 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().clickCheckBoxSmartStream();
         reporter.reportLogWithScreenshot("Smart Stream option selected");
-        getInternetDashboardPage().clickLoadOffers();
+        getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers button clicked");
         getInternetDashboardPage().selectButtonAddSmartStream();
         reporter.reportLogWithScreenshot(" Smart Stream Selected");

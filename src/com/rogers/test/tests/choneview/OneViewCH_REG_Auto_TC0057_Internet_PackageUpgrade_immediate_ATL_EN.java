@@ -50,7 +50,7 @@ public class OneViewCH_REG_Auto_TC0057_Internet_PackageUpgrade_immediate_ATL_EN 
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+     //   closeSession();
     }
 
 }

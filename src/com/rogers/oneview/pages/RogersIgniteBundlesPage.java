@@ -527,7 +527,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,60);
 		getReusableActionsInstance().scrollToElement(addToCart);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
@@ -1473,7 +1473,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void termOffer(){
-		getReusableActionsInstance().waitForElementVisibility(termoffer,30);
+		getReusableActionsInstance().waitForElementVisibility(termoffer,90);
 		getReusableActionsInstance().scrollToElement(termoffer);
 		getReusableActionsInstance().executeJavaScriptClick(termoffer);
 	}

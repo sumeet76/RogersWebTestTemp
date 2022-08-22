@@ -20,11 +20,10 @@ import java.lang.reflect.Method;
 6. Discounts - NA
  */
 
-public class OneViewCH_REG_TC0005_Auto_1624_Migration_1P_To_3P_Test_ATL_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
     public void oneViewCH_Auto_1624_TC01_E2E_Migration_1P_RHP_To_3P_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PRHPTo3P.getAccountNo(), TestDataHandler.migrationData1PRHPTo3P.getContactID());
-
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
@@ -75,12 +74,12 @@ public class OneViewCH_REG_TC0005_Auto_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Evaluation form");
-		//getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		//getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		//getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		//reporter.reportLogWithScreenshot("Evaluation form filled");
-		//getCreditCheckPage().clkAuthorize();
-		//reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		reporter.reportLogWithScreenshot("Evaluation form filled");
+		getCreditCheckPage().clkAuthorize();
+		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();

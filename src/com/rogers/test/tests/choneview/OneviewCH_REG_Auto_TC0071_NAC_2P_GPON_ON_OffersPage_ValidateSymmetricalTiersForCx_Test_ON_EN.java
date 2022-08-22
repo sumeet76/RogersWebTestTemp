@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_TC0071_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTiersForCx_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC0071_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTiersForCx_Test_ON_EN extends BaseTestClass {
 
     @Test(groups = {"RegressionCHOV"})
     public void oneviewCH_Auto_OVS4_NAC_2P_GPON_ON_OffersPage_ValidateSymmetricalTiersForCx_Test(){

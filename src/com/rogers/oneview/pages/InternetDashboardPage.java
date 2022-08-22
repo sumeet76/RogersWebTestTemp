@@ -120,7 +120,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.dashboard.internet.pods.addPods']/ancestor::button")
 	WebElement addPodsButton;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
 	WebElement addPodToCart;
 
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
@@ -732,7 +732,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifyIgniteWiFiPod() {
-		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 30);
+		getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
+		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 60);
 		return getReusableActionsInstance().isElementVisible(IgniteWiFiPod);
 	}
 	/*

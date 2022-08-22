@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_REG_Auto_TC030_1640_E2E_Migration_3P_Select_New_Number_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_ON_EN extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
     public void oneViewCH_Auto_TC031_1640_E2E_Migration_3P_Select_New_Number_ON_EN(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
