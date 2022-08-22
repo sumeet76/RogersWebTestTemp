@@ -121,7 +121,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtHardwarePage;
 
-	@FindBy(xpath = "//a[contains(@aria-label,'View Smart Home Monitoring features')]")
+	@FindBy(xpath = "//a[contains(@aria-label,'View Smart Home Monitoring features')]/span")
 	WebElement btnSHMfeatures;
 
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
@@ -529,9 +529,10 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifySHMFeasturePage()
 	{
-		//getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(10000);
+		WebElement txtSHMFeaturePage = getDriver().findElement(By.xpath("//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']"));
 		//getReusableActionsInstance().waitForElementVisibility(txtSHMFeasturePage, 90);
-		return getReusableActionsInstance().isElementVisible(txtSHMFeasturePage, 90);
+		return getReusableActionsInstance().isElementVisible(txtSHMFeaturePage, 90);
 	}
 
 	/**
@@ -548,6 +549,14 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void ViewHardwarePackages() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
+
+	/**
+	 * Click on View Hardware
+	 * @author chinnarao.vattam
+	 */
+	public void ViewTopOfPage() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 	}
 
 	/**
@@ -596,7 +605,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifySHMAppPage()
 	{
-		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(txtSHMAppPage, 90);
 		return getReusableActionsInstance().isElementVisible(txtSHMAppPage);
 	}
