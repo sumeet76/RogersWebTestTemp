@@ -155,9 +155,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(text(),'SmartStream')]/ancestor::label"),
+			@FindBy(xpath = "//div[contains(text(),'Streaming')]/ancestor::label"),
 			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']"),
-			@FindBy(xpath = "//div[contains(text(), ' SmartStream ')]")
+			@FindBy(xpath = "//div[contains(text(), 'Streaming')]")
 	})
 	WebElement smartStreamCheckbox;
 
@@ -424,8 +424,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
 	WebElement termoffer;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
-	WebElement oneTimeCredit;
+	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
+	WebElement promoModule;
 
 
 	/**
@@ -1479,9 +1479,9 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void oneTimeCredit(){
-		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,30);
-		getReusableActionsInstance().scrollToElement(oneTimeCredit);
-		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+		getReusableActionsInstance().waitForElementVisibility(promoModule,60);
+		getReusableActionsInstance().scrollToElement(promoModule);
+		getReusableActionsInstance().executeJavaScriptClick(promoModule);
 	}
 
 }

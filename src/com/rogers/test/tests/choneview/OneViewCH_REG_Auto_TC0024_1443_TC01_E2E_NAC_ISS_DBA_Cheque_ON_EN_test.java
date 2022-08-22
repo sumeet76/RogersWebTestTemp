@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_DeliveryByAppointment_PaymentMethod_CreditCard_test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_ISS_DBA_Cheque_ON_EN_test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
 	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_DeliveryByAppointment_PaymentMethod_CreditCard_test(){
 		reporter.reportLogWithScreenshot("oneview env");

@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVS2_3PCxExistingFreePods_AgentAddingMaxRegularPods_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max_Regular_Pods_Test_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneviewCH_Auto_OVS2_3PCxExistingFreePods_AgentAddingMaxRegularPods_Test() {
         reporter.reportLogWithScreenshot("One view is launched");

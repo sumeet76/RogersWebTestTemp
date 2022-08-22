@@ -18,7 +18,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 
 
 
-public class OneViewCH_Auto_TC_018d_TV_ChannelLineupViewPDFTest extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0036_018d_TV_ChannelLineupViewPDFTest_ON_EN extends BaseTestClass {
 	@Test (groups = {"RChannelsandThemepacks","RegressionCHOV","SanityCHOV"})
     public void checkChannelLineupAndViewPdf() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

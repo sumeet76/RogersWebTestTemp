@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC01_InternetDashboard_Validate_Support_Links extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0046_InternetDashboard_Validate_Support_Links_ON_EN extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_TC01_InternetDashboard_Validate_Support_Links() {
 

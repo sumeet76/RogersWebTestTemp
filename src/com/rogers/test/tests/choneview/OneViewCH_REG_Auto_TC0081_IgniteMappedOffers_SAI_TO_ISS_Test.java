@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2557_TC02_IgniteMappedOffers_SAI_Adding_ISS_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0081_IgniteMappedOffers_SAI_TO_ISS_Test extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneViewCH_Auto_2557_TC02_IgniteMappedOffers_SAI_Adding_ISS_Test() {
         reporter.reportLogWithScreenshot("One view is launched");

@@ -79,6 +79,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Home Phone Personalization' or text()='Personnalisation du téléphone résidentiel']")
 	WebElement homePhonePersonalizationHeader;
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-28']")
+	WebElement selectDifferentNumber;
 
 
 	/**
@@ -173,6 +175,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 		}
 
+		public void selectDiffNumb(){
+		getReusableActionsInstance().getWhenReady(selectDifferentNumber,30);
+		getReusableActionsInstance().executeJavaScriptClick(selectDifferentNumber);
+		}
 
 
 }

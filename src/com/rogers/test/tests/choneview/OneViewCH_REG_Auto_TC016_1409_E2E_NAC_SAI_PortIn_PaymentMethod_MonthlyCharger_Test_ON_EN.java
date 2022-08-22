@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN(){
 
@@ -26,12 +26,12 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().setLanguageFrench();
-		getRogersIgniteBundlesPage().clickCheckAnotherAddress();
-		getRogersIgniteBundlesPage().refreshCheckAvailability();
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT());
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
-		reporter.reportLogWithScreenshot("Service Availability");
-		getRogersIgniteBundlesPage().clkContinue();
+	//	getRogersIgniteBundlesPage().clickCheckAnotherAddress();
+	//	getRogersIgniteBundlesPage().refreshCheckAvailability();
+	//	getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT());
+	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
+	//	reporter.reportLogWithScreenshot("Service Availability");
+	//	getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -39,7 +39,6 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		System.out.println(TestDataHandler.anonymousData.getPlanEngSAI());
 		System.out.println(TestDataHandler.anonymousData.getplanFr());
-		getRogersIgniteBundlesPage().oneTimeCredit();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().yesPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
@@ -58,6 +57,15 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		reporter.reportLogWithScreenshot("CART SUMMARY");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
 		reporter.reportLogWithScreenshot("Cart Summary");
+		getRogersIgniteBundlesPage().oneTimeCredit();
+		reporter.reportLogWithScreenshot("Campaign code");
+		getRogersIgniteCampaignPage().enterCoupon("");
+		reporter.reportLogWithScreenshot("Campaign code entered");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("Campaign code applied");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+		reporter.reportLogWithScreenshot("close Coupon Alert");
 //		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("wish to continue");
@@ -75,14 +83,22 @@ public class OneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyC
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+	//	reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("professional installation");
+		getCreditCheckPage().selectProfessionalInstallation();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().verifyBillingAndPaymentOption();

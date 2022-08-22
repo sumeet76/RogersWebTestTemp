@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_ProInstall_Cheque_ON_EN_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
@@ -64,11 +64,12 @@ public class OneViewCH_Auto_TC072_1437_E2E_NAC_3P_Without4KTVExpressCheckout_Pro
 			reporter.reportLogWithScreenshot("Phone Number Selected");
 			getCreditCheckPage().goToPageBottom();
 		    getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+			getHomePhoneSelectionPage().clkContinue();
 
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
-			reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+//			reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+//			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 			getCreditCheckPage().verifyInstallationOption();
 			reporter.reportLogWithScreenshot("go To Page Bottom");
 			getCreditCheckPage().goToPageBottom();
