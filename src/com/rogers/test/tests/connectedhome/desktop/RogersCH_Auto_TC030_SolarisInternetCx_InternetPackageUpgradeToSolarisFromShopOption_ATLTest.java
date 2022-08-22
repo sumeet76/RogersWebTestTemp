@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to verify the upgarde flow for Legacy Internet to solaris internet for Rogers.com   
@@ -56,15 +55,15 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 	public void rogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolarisFromShopOption_ATL() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_internetAccountUpgrade.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_internetAccountUpgrade.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc30_internetAccountUpgrade.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc30_internetAccountUpgrade.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
 
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_internetAccountUpgrade.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc30_internetAccountUpgrade.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 	    reporter.reportLogWithScreenshot("Launched the Internet dashboard");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -73,8 +72,8 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc37_internetAccountUpgrade.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc37_internetAccountUpgrade.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc30_internetAccountUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc30_internetAccountUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

@@ -38,15 +38,15 @@ public class RogersCH_Auto_TC088_2P_HTO_2P_StarterPack_GPON_DualTopology_HAWTFlo
     @Test
     public void rogersCH_Auto_TC088_2P_HTO_2P_StarterPack_GPON_DualTopology_HAWTFlowType() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc118_GPON_DualTopology.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc118_GPON_DualTopology.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc88_GPON_DualTopology.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc88_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc118_GPON_DualTopology.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc88_GPON_DualTopology.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {

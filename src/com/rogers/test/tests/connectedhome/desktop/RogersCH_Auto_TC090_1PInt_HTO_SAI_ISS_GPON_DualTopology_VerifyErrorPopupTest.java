@@ -38,15 +38,15 @@ public class RogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyError
     @Test
     public void rogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyErrorPopup() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc120_1P_HTO_GPON_DualTopology.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {

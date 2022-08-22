@@ -57,7 +57,7 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-         getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
+         getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
         getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
         reporter.reportLogWithScreenshot("Channel added");
         getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();

@@ -57,8 +57,8 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
         getRogersIgniteTVBuyPage().clkHomephone();
         getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -69,7 +69,7 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
         getRogersIgniteTVBuyPage().selectSolarisPremier();
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
 
         reporter.hardAssert(getRogersHomePhonePortInPage().verifyPhoneNumberSuccess(), "Port-in Number validation success", "Port-in Number validation Failed");
@@ -80,7 +80,7 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
         getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
         getRogersHomePhonePortInPage().selIMEI();
-        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei());
+        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getImei());
         getRogersIgniteTVBuyPage().clkHomePhoneAddOn();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 

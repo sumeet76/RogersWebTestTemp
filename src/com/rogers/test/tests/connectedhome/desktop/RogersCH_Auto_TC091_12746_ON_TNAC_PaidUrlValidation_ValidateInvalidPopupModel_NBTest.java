@@ -30,8 +30,8 @@ public class RogersCH_Auto_TC091_12746_ON_TNAC_PaidUrlValidation_ValidateInvalid
     public void rogersCH_Auto_TC091_12746_ON_TNAC_PaidUrlValidation_ValidateInvalidPopupModel_NB() {
         getDriver().get(System.getProperty("QaUrl")+"home/internet/offers?offerid=TNACRUC2ON");
         reporter.reportLogWithScreenshot("Launched the ON TNAC paid URL");
-        String strAddressLine1 = TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc29_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

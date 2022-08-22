@@ -14,8 +14,8 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void rogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOffer() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-   		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_40_SolarisPortinFlows.getPassword());
+   		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc32_SolarisPortinFlows.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_SolarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -23,7 +23,7 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         getRogersLoginPage().clkSkipIFrame();
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc39_40_SolarisPortinFlows.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
@@ -39,8 +39,8 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 
-        String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         reporter.reportLogWithScreenshot("Entered Serviceability address");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
@@ -52,7 +52,7 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         reporter.reportLogWithScreenshot("Phone number eligibility test");
         getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         
@@ -64,7 +64,7 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         getRogersHomePhonePortInPage().setCurrentPhoneNumber();
         reporter.reportLogWithScreenshot("Port-in details set");
         getRogersHomePhonePortInPage().selIMEI();
-        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getImei()) ;
+        getRogersHomePhonePortInPage().setAccountNumberOrIMEI(TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getImei()) ;
 
         getRogersIgniteTVBuyPage().clkHomePhoneAddOn();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");

@@ -31,15 +31,15 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
     public void rogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_igniteRHP.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_igniteRHP.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_igniteRHP.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_igniteRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc42_igniteRHP.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_igniteRHP.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");

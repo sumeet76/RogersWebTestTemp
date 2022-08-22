@@ -38,8 +38,8 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
 	@Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -47,7 +47,7 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_saiAccountForIgniteBundleBuy.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -58,8 +58,8 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc58_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

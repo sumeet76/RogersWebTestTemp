@@ -41,8 +41,8 @@ public class RogersCH_Auto_TC047_SolarisInternetCx_BuyInterent_DiffAddressTest e
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc59_saiforIgniteBundle.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc59_saiforIgniteBundle.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47_saiforIgniteBundle.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc47_saiforIgniteBundle.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -51,7 +51,7 @@ public class RogersCH_Auto_TC047_SolarisInternetCx_BuyInterent_DiffAddressTest e
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc59_saiforIgniteBundle.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc47_saiforIgniteBundle.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -64,8 +64,8 @@ public class RogersCH_Auto_TC047_SolarisInternetCx_BuyInterent_DiffAddressTest e
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc59_saiforIgniteBundle.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc47_saiforIgniteBundle.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc47_saiforIgniteBundle.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");

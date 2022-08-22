@@ -45,8 +45,8 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		//getRogersHomePage().clkAddressCheck();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		String  strAddressLine1=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -61,10 +61,10 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
-		getRogersIgniteTVProfileCreationPage().setEmail(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getUsername());
-		getRogersIgniteTVProfileCreationPage().setFirstname(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getFirstName());
-		getRogersIgniteTVProfileCreationPage().setLastName(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getLastName());
-		getRogersIgniteTVProfileCreationPage().setPhone(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getPhoneNumber());
+		getRogersIgniteTVProfileCreationPage().setEmail(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getUsername());
+		getRogersIgniteTVProfileCreationPage().setFirstname(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getFirstName());
+		getRogersIgniteTVProfileCreationPage().setLastName(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getLastName());
+		getRogersIgniteTVProfileCreationPage().setPhone(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getPhoneNumber());
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
 		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
@@ -75,20 +75,20 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 		reporter.reportLogWithScreenshot("Entered DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
-		getRogersIgniteTVCreditCheckPage().selectExpiryYear(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
-		getRogersIgniteTVCreditCheckPage().selectExpiryMonth(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getMonth());
-		getRogersIgniteTVCreditCheckPage().selectExpiryDay(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDate());
-		getRogersIgniteTVCreditCheckPage().setDrivingLicense(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDrivingLicence());
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getMonth());
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDate());
+		getRogersIgniteTVCreditCheckPage().setDrivingLicense(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDrivingLicence());
 		reporter.reportLogWithScreenshot("Driving License Details");
 		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Birth Certificate");
-		getRogersIgniteTVCreditCheckPage().setBirthCertificateNumber(TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getBirthCertNumber());
+		getRogersIgniteTVCreditCheckPage().setBirthCertificateNumber(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getBirthCertNumber());
 		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
 		reporter.reportLogWithScreenshot("Passport Details");
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 		if (getRogersIgniteTVCreditCheckPage().verifyAddressModal()) {
 			reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-			String strAddressLineOne = TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-			String strAddressLineTwo = TestDataHandler.tc55_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+			String strAddressLineOne = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
+			String strAddressLineTwo = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
 			getRogersIgniteTVCreditCheckPage().setIgniteAddressLookupSecond(strAddressLineOne + ", " + strAddressLineTwo + ", CANADA");
 			getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
 		}

@@ -34,14 +34,14 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
     @Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH"})
     public void rogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_SolarisInternetAccountWithUsage.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc15_SolarisInternetAccountWithUsage.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_SolarisInternetAccountWithUsage.accountDetails.getBan());
         //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();

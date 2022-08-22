@@ -35,8 +35,8 @@ public class Mobile_RogersCH_Auto_TC009_LegacyCx_ValidateRHPDashboardTest extend
 			reporter.reportLogWithScreenshot("Continue in Browser Selected");
 		}
 
-		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc48_legacyRHP.getUsername());
-		getRogersLoginPage().setPasswordMobile(TestDataHandler.tc48_legacyRHP.getPassword());
+		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc37_legacyRHP.getUsername());
+		getRogersLoginPage().setPasswordMobile(TestDataHandler.tc37_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");

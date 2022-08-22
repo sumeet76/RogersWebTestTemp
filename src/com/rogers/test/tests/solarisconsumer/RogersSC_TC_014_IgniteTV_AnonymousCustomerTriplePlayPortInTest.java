@@ -61,8 +61,8 @@ public class RogersSC_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest exte
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -70,7 +70,7 @@ public class RogersSC_TC_014_IgniteTV_AnonymousCustomerTriplePlayPortInTest exte
         reporter.reportLogWithScreenshot("Launched the port-in popup");
         getRogersIgniteTVBuyPage().clickOptPhone();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc39_40_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
+        getRogersHomePhonePortInPage().setHomePhoneNumber(TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getPhoneNumber());
         getRogersHomePhonePortInPage().clkPhoneNumberEligibiltyCheck();
         getRogersHomePhonePortInPage().clkPhoneCheck();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");

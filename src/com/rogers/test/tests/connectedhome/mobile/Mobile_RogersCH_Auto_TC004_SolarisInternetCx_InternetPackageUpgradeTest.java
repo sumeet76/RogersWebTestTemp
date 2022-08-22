@@ -65,7 +65,7 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackageMobile();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectSolarisInternetPackageMobile(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackageMobile(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
         if(getRogersInternetDashboardPage().verifySmartStreamHeader()){

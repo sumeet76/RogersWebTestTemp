@@ -30,8 +30,8 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 	@Test//(groups = {"RegressionCH")
 	public void rogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTab() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -39,7 +39,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		getRogersLoginPage().clkSkipIFrame();
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
+			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
 		}
 		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");

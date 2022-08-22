@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
@@ -43,8 +42,8 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -53,7 +52,7 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getDriver().get(System.getProperty("QaUrl")+"/internet");
@@ -62,8 +61,8 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc60_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");

@@ -54,14 +54,14 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
     @Test(groups = {"RegressionCH",""})
 	public void rogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromoContentReviewConfirmPages() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
 		 getRogersHomePage().clkExistingCustomerShop();
@@ -86,9 +86,9 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc38_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
