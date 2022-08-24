@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MoveMigration_NO_YES_3P_SHA extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0091_Validate_SwitchingServiceability_CheckTechhub_MoveMigration_NO_YES_3P_SHA extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp", "MaySanity"})
     public void oneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MoveMigration_NO_YES_3P_SHA() {
         {
@@ -55,6 +55,6 @@ public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_MoveMi
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 }

@@ -10,25 +10,27 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
 	public void oneViewCH_1544_TC01_AddThemepackImmediate(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getAccountOverViewPage().enterDealerCodeDialogue();
+//		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("Enter dealer code if present");
+/*
 		getAccountOverViewPage().clickAccountOverview();
 		reporter.reportLogWithScreenshot("clicked on account overview arrow-down to see the customer address");
 		reporter.hardAssert(getAccountOverViewPage().verifyProvince(),"ON address displayed","ON address doesn't displayed");
-//		getAccountOverViewPage().goToPageBottom();
-		getAccountOverViewPage().clickIgniteTVBadge();
+		getAccountOverViewPage().goToPageBottom();
+*/
+		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("TV Ignite Badge");
 		reporter.hardAssert(getTVDashboardPage().verifyManageChannelsAndThemepacks(),"Manage Channel and Theme pack Displayed","Manage channel and theme pack doesn't displayed");
 		reporter.reportLogWithScreenshot("Click on Manage Channel and Theme Packs");
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
-		getTVDashboardPage().clickChannelTab();
+	//	getTVDashboardPage().clickChannelTab();
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickAddChannel();
 		reporter.reportLogWithScreenshot("add channel");

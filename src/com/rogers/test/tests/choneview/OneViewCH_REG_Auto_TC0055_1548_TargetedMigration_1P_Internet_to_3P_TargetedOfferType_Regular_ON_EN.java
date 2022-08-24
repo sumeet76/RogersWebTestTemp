@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC070_1548_TargetedMigration_1P_Internet_to_3P_TargetedOfferType_Regular_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_TargetedOfferType_Regular_ON_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV","SanityCHOV"})
     public void oneViewCH_1548_TC01_TargetedMigrationFlow_1P_Internet_to_3PTest(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PInternetTo3P.getAccountNo(), TestDataHandler.targetedMigration1PInternetTo3P.getContactID() );

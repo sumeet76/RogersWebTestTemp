@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_MonthlyCharges_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer_DBA_MonthlyCharges_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_MonthlyCharges_ON_EN_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo2PToISSTMP(), TestDataHandler.migrationData.getContactID2PToISSTMP() );
@@ -39,7 +39,7 @@ public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		reporter.reportLogWithScreenshot("contine from terms");
-		getRogersIgniteBundlesPage().scrollToContinue();
+	//	getRogersIgniteBundlesPage().scrollToContinue();
 		reporter.reportLogWithScreenshot("bottom to continue");
 		getRogersIgniteBundlesPage().clkContinue();
 
@@ -66,20 +66,20 @@ public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_
 
 //		In the case of credit evaluation not required
 
-//		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
-//		getCreditCheckPage().goToPageBottom();
-//		getCreditCheckPage().clkContinue();
+		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+		getCreditCheckPage().goToPageBottom();
+		getCreditCheckPage().clkContinue();
 
 //		In the case if credit evaluation required
-		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
-		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		reporter.reportLogWithScreenshot("evaluation form filled");
-		getCreditCheckPage().clkAuthorize();
-		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		reporter.reportLogWithScreenshot("Credit Check Information");
-		getCreditCheckPage().clkContinue();
+//		reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+//		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+//		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+//		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+//		reporter.reportLogWithScreenshot("evaluation form filled");
+//		getCreditCheckPage().clkAuthorize();
+//		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+//		reporter.reportLogWithScreenshot("Credit Check Information");
+//		getCreditCheckPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
@@ -95,12 +95,11 @@ public class OneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getPaymentOptionsPage().clkContinue();
-
-		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+	//	reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
-		getCreditCheckPage().selectPaymentOption(1);
-		reporter.reportLogWithScreenshot("Monthly charges");
+	//	getCreditCheckPage().selectPaymentOption(1);
+	//	reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Order Review Page");
