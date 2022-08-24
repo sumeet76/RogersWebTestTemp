@@ -47,8 +47,8 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         reporter.reportLogWithScreenshot("Channel Add selected");
         getTVDashboardPage().clickContinueBottomOfPage();
         reporter.reportLogWithScreenshot("click continue");
-        getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
-        reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
+       // getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
+        //reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
         getTVDashboardPage().clickThemepacksTab();
         reporter.reportLogWithScreenshot("click Theme pack Tab");
         getTVDashboardPage().clickContinueChangeTVPackage();

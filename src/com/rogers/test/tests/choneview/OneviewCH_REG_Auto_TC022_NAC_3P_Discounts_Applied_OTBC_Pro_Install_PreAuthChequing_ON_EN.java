@@ -45,17 +45,7 @@ public class OneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_
 		reporter.reportLogWithScreenshot("4K Channel Pop up");
 		getRogersIgniteBundlesPage().contiue4KContent();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		reporter.reportLogWithScreenshot("campaign");
 
-		// Campaign Type - OTBC
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR6");
-		reporter.reportLogWithScreenshot("OTBC Campaign code entered");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("Campaign code applied");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		reporter.reportLogWithScreenshot("close coupon alert");
-		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -116,6 +106,24 @@ public class OneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_
 
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
+		// Campaign Type - OTBC
+		reporter.reportLogWithScreenshot("campaign");
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		getRogersIgniteCampaignPage().enterCoupon("PCR6");
+		reporter.reportLogWithScreenshot("OTBC Campaign code entered");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("Campaign code applied");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		reporter.reportLogWithScreenshot("close coupon alert");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		getRogersIgniteCampaignPage().enterCoupon("KBM");
+		reporter.reportLogWithScreenshot("Installation code entered");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("Campaign code applied");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		reporter.reportLogWithScreenshot("close coupon alert");
+		getRogersIgniteCampaignPage().closeCouponAlert();
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
@@ -124,12 +132,14 @@ public class OneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+		String testProjectKey = System.getProperty("JiraProjectKey");
+
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.nacTMP.contactDetails.getContactID(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

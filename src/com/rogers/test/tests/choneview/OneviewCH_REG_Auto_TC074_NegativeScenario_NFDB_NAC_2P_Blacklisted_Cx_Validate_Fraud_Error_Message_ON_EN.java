@@ -32,7 +32,7 @@ public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_C
         reporter.reportLogWithScreenshot("Package Details");
         getRogersIgniteBundlesPage().clkExpandPackageDetails();
         reporter.reportLogWithScreenshot("Package details section expanded");
-        reporter.hardAssert(getTVDashboardPage().verifyDownloadAndUploadSpeed(),"Download and upload speed symmetrical"," Download and upload speed not symmetrical");
+       // reporter.hardAssert(getTVDashboardPage().verifyDownloadAndUploadSpeed(),"Download and upload speed symmetrical"," Download and upload speed not symmetrical");
         getRogersIgniteBundlesPage().clkCloseBtn();
         reporter.reportLogWithScreenshot("View details modal closed");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -49,9 +49,9 @@ public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_C
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
+        //reporter.hardAssert(getRogersIgniteBundlesPage().verifyPersonalizeYourChannels(),"Personalize You Channel displayed","Personalize You Channel did not Displayed");
         reporter.reportLogWithScreenshot("Cart Summary");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyFibreActivationMSg(),"CUSTOMER WILL BE ACTIVATED ON FIBRE Msg shown","CUSTOMER WILL BE ACTIVATED ON FIBRE did not Displayed");
+       // reporter.hardAssert(getRogersIgniteBundlesPage().verifyFibreActivationMSg(),"CUSTOMER WILL BE ACTIVATED ON FIBRE Msg shown","CUSTOMER WILL BE ACTIVATED ON FIBRE did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");

@@ -26,7 +26,9 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
+        getRogersIgniteBundlesPage().clkLoadOffers();
+        reporter.reportLogWithScreenshot("Loaded Offers");
+        getInternetDashboardPage().selectInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
@@ -34,9 +36,9 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         /*Billing option to be selected*/;
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        //getRogersOVOrderReviewPage().clkSubmit();
-       // reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -49,7 +51,7 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

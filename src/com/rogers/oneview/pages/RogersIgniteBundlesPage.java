@@ -588,7 +588,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void clkContinue() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton,80);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
@@ -766,6 +766,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1302,6 +1303,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void addSHMAddOn(){
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);

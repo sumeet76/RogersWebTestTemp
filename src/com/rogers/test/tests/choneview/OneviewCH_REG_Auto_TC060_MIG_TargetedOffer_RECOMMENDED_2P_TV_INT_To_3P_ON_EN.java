@@ -24,12 +24,10 @@ public class OneviewCH_REG_Auto_TC060_MIG_TargetedOffer_RECOMMENDED_2P_TV_INT_To
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("Triple Play - Internet TV and HomePhone Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
+        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        //getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
 		//getRogersIgniteBundlesPage().clkAddtoCart(TestDataHandler.anonymousData.getplanEng(),TestDataHandler.anonymousData.getplanFr());
         // getRogersIgniteBundlesPage().clickFirstAddToCart(TestDataHandler.anonymousData.getPlanEngSAI());
         getRogersIgniteBundlesPage().noPortInPopup();
@@ -106,6 +104,6 @@ public class OneviewCH_REG_Auto_TC060_MIG_TargetedOffer_RECOMMENDED_2P_TV_INT_To
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

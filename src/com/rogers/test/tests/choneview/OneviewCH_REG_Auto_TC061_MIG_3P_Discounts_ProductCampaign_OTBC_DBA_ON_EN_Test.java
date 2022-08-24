@@ -17,7 +17,7 @@ public class OneviewCH_REG_Auto_TC061_MIG_3P_Discounts_ProductCampaign_OTBC_DBA_
     public void oneviewCH_REG_Auto_TC061_MIG_3P_Discounts_ProductCampaign_OTBC_DBA_ON_EN_Test(){
 		getEnvironmentSelectionPage().launchOneView( TestDataHandler.migrationData.getAccountNo(),TestDataHandler.migrationData.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getAccountOverViewPage().selectGetIgniteTVBadge();
+		getAccountOverViewPage().clickIgnite();
 		reporter.reportLogWithScreenshot("Check Availability Pop Up");
 		//reporter.hardAssert(getRogersIgniteBundlesPage().verifyCheckAvailabilityPopUp(),"Check availability pop up appears","Failed to Load check availability pop up");
 		getRogersIgniteBundlesPage().clkContinue();
@@ -38,8 +38,8 @@ public class OneviewCH_REG_Auto_TC061_MIG_3P_Discounts_ProductCampaign_OTBC_DBA_
 		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Added to Cart");
-//		getRogersIgniteBundlesPage().clkKeepNumberbtn();
-		getRogersIgniteBundlesPage().noPortInPopup();
+		getRogersIgniteBundlesPage().clkKeepNumberbtn();
+		//getRogersIgniteBundlesPage().noPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
 		reporter.reportLogWithScreenshot("Product in cart");
 		getRogersIgniteBundlesPage().clkCollapse();

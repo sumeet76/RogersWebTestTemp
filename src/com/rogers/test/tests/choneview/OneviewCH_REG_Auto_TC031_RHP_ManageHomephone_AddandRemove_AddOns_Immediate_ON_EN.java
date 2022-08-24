@@ -31,9 +31,9 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup");
 
-        //getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

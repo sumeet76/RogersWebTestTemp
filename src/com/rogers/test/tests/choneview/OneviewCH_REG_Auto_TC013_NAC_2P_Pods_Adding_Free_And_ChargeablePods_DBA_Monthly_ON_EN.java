@@ -93,15 +93,15 @@ public class OneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("verify billing and payments");
         reporter.reportLogWithScreenshot("Billing and payment");
+        getCreditCheckPage().selectPaperBilling();
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
-        //getPaymentOptionsPage().clkContinue();
-		//getRogersOVCheckoutPage().clkSubmit();
-        //reporter.reportLogWithScreenshot("submit order");
-		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		//reporter.reportLogWithScreenshot("Order Placed");
+        getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

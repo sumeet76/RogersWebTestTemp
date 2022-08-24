@@ -21,15 +21,16 @@ public class OneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPod
         reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click AddPods Button ");
-        getInternetDashboardPage().clickAddToCartForPods();
+        //getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
-        getInternetDashboardPage().clickAddToCartForPods();
-        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
-        reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
+        //reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
+//        getInternetDashboardPage().clickAddToCartForPods();
+//        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
+        
+//        reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
         reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");

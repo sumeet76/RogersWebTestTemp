@@ -182,6 +182,9 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Online billing' or text()='Facture en ligne']/parent::div/preceding-sibling::div")
 	WebElement onlineBillingOption;
 
+	@FindBy(xpath = "//span[text()='Paper billing' or text()='Facture papier']/parent::div/preceding-sibling::div")
+	WebElement paperBillingOption;
+
 	@FindBy(xpath="//h3[text()='Payment Options']//following::div//following::rch-dropdown")
 	WebElement selectPaymentOVR;
 
@@ -209,7 +212,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 */
 	public boolean verifyBillingAndPaymentOption() {
 		getReusableActionsInstance().staticWait(6000);
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,80);
 	}
 
 	/**
@@ -499,6 +502,12 @@ public class CreditCheckPage  extends BasePageClass {
 	{
 		getReusableActionsInstance().isElementVisible(onlineBillingOption);
 		getReusableActionsInstance().clickWhenReady(onlineBillingOption);
+	}
+
+	public void selectPaperBilling()
+	{
+		getReusableActionsInstance().isElementVisible(paperBillingOption);
+		getReusableActionsInstance().clickWhenReady(paperBillingOption);
 	}
 
 	public void selectPaymentOptionOVR()

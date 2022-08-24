@@ -32,7 +32,7 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
-        getRogersIgniteBundlesPage().clkCheckOut();
+        getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -49,7 +49,7 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
         getCreditCheckPage().clkAuthorize();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
-        //getCreditCheckPage().clkContinue();
+        getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
 
@@ -66,7 +66,7 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -80,7 +80,7 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

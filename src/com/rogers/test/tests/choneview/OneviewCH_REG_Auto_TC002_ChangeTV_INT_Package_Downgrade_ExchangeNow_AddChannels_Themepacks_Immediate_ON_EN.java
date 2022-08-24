@@ -53,8 +53,8 @@ public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow
 		getTVDashboardPage().continueFromChangeDate();
 		reporter.reportLogWithScreenshot("Continue");
 
-		//getRogersOVOrderReviewPage().clickSubmitOrder();
-		//reporter.reportLogWithScreenshot("Order Confirmation page");
+		getRogersOVOrderReviewPage().clickSubmitOrder();
+		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
 	@BeforeMethod (alwaysRun=true)
