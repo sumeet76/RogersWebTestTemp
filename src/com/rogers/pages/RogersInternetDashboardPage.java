@@ -175,6 +175,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='View Ignite Internet in entered province']")
 	WebElement btnViewPkgs;
 
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-info']")
+	WebElement imgInfoIconPTMmodal;
+
+	@FindBy(xpath= "//span[text()='Changing your Internet package']")
+	WebElement headerPTMmodal;
+
+	@FindBy(xpath = "//h2[contains(@class, 'popup-modal-body__heading')]")
+	WebElement txtPTMmodal;
 
 	/**
 	 * Verify the Internet usage on the Internet dash board page
@@ -714,7 +722,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		return false;
 	}
 
-    public boolean verifyInvalidTnacOfferPopup() {
+	/**
+	 * Verifies the Invalid TNAC offer popup
+	 * @return true if popup present, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyInvalidTnacOfferPopup() {
 		getReusableActionsInstance().waitForElementVisibility(divInvalidOfferPopup, 40);
 		return getReusableActionsInstance().isElementVisible(txtInvalidOffer, 10);
 
@@ -724,5 +737,36 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs,10);
 		getReusableActionsInstance().getWhenReady(btnViewPkgs).click();
 		getReusableActionsInstance().staticWait(5000);
+	}
+
+	/**
+	 * Verifies if PTM modal is present
+	 * @return true if present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyInfoIconPTMmodal() {
+		return getReusableActionsInstance().isElementVisible(imgInfoIconPTMmodal, 60);
+	}
+
+	/**
+	 * Verifies if PTM modal Header is present
+	 * @return true if Header is present else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPTMmodalHeader() {
+		return getReusableActionsInstance().isElementVisible(headerPTMmodal, 20);
+	}
+	/**
+	 * Gets the PTM modal content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPTMmodalContent() {
+		String contactUsContentDesired = "Congrats on selecting your new internet package! Please note that by making this change, you’ll lose any discounts or promotions on your current package.";
+		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtPTMmodal, 20).getText();
+		if(contactUsContentActual.equals(contactUsContentDesired)){
+			return true;
+		}
+		return false;
 	}
 }

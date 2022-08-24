@@ -50,6 +50,8 @@ public class TestDataHandler {
 	public static AccountData tc111_Legacy1PtoIgnite2P;
 	public static AccountData tc35_digitalTVAccount;
 	public static AccountData tc17_18_19_20_SolarisInternetAccount;
+	public static AccountData tc99_3PCxInternetAccount;
+	public static AccountData tc100_SAIonlyAccount;
 	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
 	public static AccountData tc05_IgniteTV4Plus1Account;
@@ -480,6 +482,8 @@ public class TestDataHandler {
 		tcm06_IgniteTVAccount=YamlHandler.getCableAccountData("TCM06_IgniteTVAccount");
 		tcm04_SolarisInternetAccount = YamlHandler.getCableAccountData("TCM04_SolarisInternetAccount");
     	tc17_18_19_20_SolarisInternetAccount = YamlHandler.getCableAccountData("TC17_18_19_20_SolarisInternetAccount");
+		tc99_3PCxInternetAccount = YamlHandler.getCableAccountData("TC99_3PCxInternetAccount");
+		tc100_SAIonlyAccount = YamlHandler.getCableAccountData("TC100_SAIonlyAccount");
 		tc122_2pInternetAccount = YamlHandler.getCableAccountData("TC122_2P_InternetAccount");
 		tc30_internetAccountUpgrade = YamlHandler.getCableAccountData("TC30_InternetAccountUpgrade");
 		tc23_24_standaloneInternetAccountforUpgrade   = YamlHandler.getCableAccountData("TC23_24_StandaloneInternetAccountforUpgrade");
