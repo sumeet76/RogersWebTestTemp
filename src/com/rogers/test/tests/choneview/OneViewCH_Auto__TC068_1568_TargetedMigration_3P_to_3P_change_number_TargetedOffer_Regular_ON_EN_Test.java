@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest extends BaseTestClass {
+public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number_TargetedOffer_Regular_ON_EN_Test extends BaseTestClass {
 
     @Test
     public void oneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest(){
@@ -68,6 +68,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("bottom to continue");
         getRogersIgniteBundlesPage().clkContinue();
+        reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Home Phone Header Display", "Home Phone Header not Displayed");
         reporter.reportLogWithScreenshot("Home Phone Add on page displayed");
         getHomePhoneAddonsPage().clkContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -75,6 +76,7 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile");
+        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile Header displayed","Customer Profile Header did not display");
         getCustomerProfilePage().clkContinue();
 
 //        In the case of Credit evaluation not required
@@ -123,9 +125,8 @@ public class OneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
-
     }
 
 

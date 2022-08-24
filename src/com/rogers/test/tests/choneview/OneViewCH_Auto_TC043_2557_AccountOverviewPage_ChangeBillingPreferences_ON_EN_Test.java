@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2557_TC01_ChangeBillingPreferences_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC043_2557_AccountOverviewPage_ChangeBillingPreferences_ON_EN_Test extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_2557_TC01_ChangeBillingPreferences(){
         //Launch One view
@@ -22,6 +22,8 @@ public class OneViewCH_Auto_2557_TC01_ChangeBillingPreferences_Test extends Base
         getAccountOverViewPage().clickonBillingDropDown();
         reporter.reportLogWithScreenshot("Billing options are displayed");
         getAccountOverViewPage().clickOnlineBilling();
+        reporter.reportLogWithScreenshot("Click On Change to Change the Billing Type");
+        getAccountOverViewPage().clickOnConfirmChange();
         reporter.reportLogWithScreenshot("Test Passed");
 
     }
@@ -35,6 +37,4 @@ public class OneViewCH_Auto_2557_TC01_ChangeBillingPreferences_Test extends Base
     public void afterTest() {
         closeSession();
     }
-
-
 }

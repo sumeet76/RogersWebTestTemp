@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test extends BaseTestClass {
+public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test extends BaseTestClass {
     @Test(groups = {"RMigration","RegressionCHOV"})
     public void oneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHMInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHMInternet());
@@ -41,7 +41,9 @@ public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         reporter.reportLogWithScreenshot("review terms and condition");
         //getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().expandInternetdiv();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
@@ -49,8 +51,8 @@ public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
-        getRogersIgniteBundlesPage().addSHMAddOn();
-        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
+//        getRogersIgniteBundlesPage().addSHMAddOn();
+//        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -62,6 +64,9 @@ public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
 
+        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+        reporter.reportLogWithScreenshot("Credit check page is displayed");
+
         reporter.reportLogWithScreenshot("evaluation form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -70,16 +75,22 @@ public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getCreditCheckPage().clkAuthorize();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
-        getCreditCheckPage().clkContinue();
 
+        getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clkCourierDelivery();
-        getCreditCheckPage().clickInPersonDelivery();
-        reporter.reportLogWithScreenshot("in person delivery");
-        getPaymentOptionsPage().clkContinue();
+        getCreditCheckPage().selectProfessionalInstallation();
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
@@ -91,11 +102,14 @@ public class OneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
          reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
          reporter.reportLogWithScreenshot("Order Placed");
 
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser","strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
+    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
     }
 }

@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 4. Add-Ons - NA
 5. Bill Cycle - Immediate"
  */
-public class OneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR extends BaseTestClass {
+public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR extends BaseTestClass {
     @Test(groups = {"RChangeTv","Baseline","ChangePackage","RunOV1","MaySanity"})
     public void oneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -49,9 +49,9 @@ public class OneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR extends Base
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
         getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        //getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -64,7 +64,7 @@ public class OneViewCH_Auto_TC041_TV_PackageUpgrade_Immediate_ON_FR extends Base
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

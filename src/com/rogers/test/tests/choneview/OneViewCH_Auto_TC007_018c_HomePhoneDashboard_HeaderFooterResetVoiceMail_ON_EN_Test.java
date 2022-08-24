@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest extends BaseTestClass {
+public class OneViewCH_Auto_TC007_018c_HomePhoneDashboard_HeaderFooterResetVoiceMail_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
     public void checkHomePhoneHeaderFooterAndResetVoiceMailTest() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -40,12 +40,10 @@ public class OneViewCH_Auto_TC_018c_HomePhone_HeaderFooterResetVoiceMailTest ext
 		startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","", "", method);
   	}
 
-
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
 	}
-
 }
 
 

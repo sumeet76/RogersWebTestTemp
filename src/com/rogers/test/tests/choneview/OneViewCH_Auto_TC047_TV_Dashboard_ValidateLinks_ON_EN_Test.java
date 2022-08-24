@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test  extends BaseTestClass {
+public class OneViewCH_Auto_TC047_TV_Dashboard_ValidateLinks_ON_EN_Test extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test(){
 
@@ -19,13 +19,14 @@ public class OneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test  extends BaseTe
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched TV Dashboard Page");
         getTVDashboardPage().clickViewChannelLineUp();
+        reporter.reportLogWithScreenshot("Click View Channel Lineup");
         getTVDashboardPage().clickCloseButton();
         reporter.reportLogWithScreenshot("Closing My Channels Modal");
         getTVDashboardPage().clickViewMyFlexChannelsLink();
         reporter.reportLogWithScreenshot("Closing Flex Channels Modal");
         getTVDashboardPage().clickCloseButton();
-        reporter.reportLogWithScreenshot("Closing My Channels Modal");
-        getTVDashboardPage().goToPageMid();
+
+//        getTVDashboardPage().goToPageMid();
         getTVDashboardPage().clickCloudStorageBubble();
         reporter.reportLogWithScreenshot("Cloud Storage Bubble Button is clicked");
         getTVDashboardPage().clickCloseButton();
@@ -34,7 +35,7 @@ public class OneViewCH_Auto_TC01_TV_Dashboard_ValidateLinks_Test  extends BaseTe
         reporter.reportLogWithScreenshot("Download & Go Bubble is clicked");
         getTVDashboardPage().clickCloseButton();
         reporter.reportLogWithScreenshot("Download & Go Bubble closed");
-        getTVDashboardPage().goToPageBottom();
+
         getTVDashboardPage().clickRestartSetupbox();
         reporter.reportLogWithScreenshot("Clicked on restart Set Top Box link");
         getTVDashboardPage().clickContinueReset();

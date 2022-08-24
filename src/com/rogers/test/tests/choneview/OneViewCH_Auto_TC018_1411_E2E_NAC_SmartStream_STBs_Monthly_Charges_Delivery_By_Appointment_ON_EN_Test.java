@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC018_1411_TC01_E2E_NAC_SmartStream_STBs_Monthly_Charges_Delivery_By_Appointment_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_Delivery_By_Appointment_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_1411_TC01_E2E_NAC_SmartStream_STBs_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -56,7 +56,7 @@ public class OneViewCH_Auto_TC018_1411_TC01_E2E_NAC_SmartStream_STBs_Monthly_Cha
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
+//		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Installation bottom");
 		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().clickInPersonDelivery();
@@ -64,6 +64,9 @@ public class OneViewCH_Auto_TC018_1411_TC01_E2E_NAC_SmartStream_STBs_Monthly_Cha
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("continue");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
+		reporter.reportLogWithScreenshot("Billing and Payment header displayed");
+		getCreditCheckPage().clkPaperBilling();
+		reporter.reportLogWithScreenshot("Paper Billing Option Selected");
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
@@ -80,10 +83,10 @@ public class OneViewCH_Auto_TC018_1411_TC01_E2E_NAC_SmartStream_STBs_Monthly_Cha
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID_STB_ISS(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+//	@AfterMethod(alwaysRun = true)
+//	public void afterTest() {
+//		closeSession();
+//	}
 
 }
 

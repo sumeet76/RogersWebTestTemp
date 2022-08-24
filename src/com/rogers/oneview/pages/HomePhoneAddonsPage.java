@@ -178,7 +178,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	}
 
 	public boolean verifyHomePhoneAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible((homePhoneAddOnsHeader));
+		return getReusableActionsInstance().isElementVisible(homePhoneAddOnsHeader,60);
 	}
 }
 

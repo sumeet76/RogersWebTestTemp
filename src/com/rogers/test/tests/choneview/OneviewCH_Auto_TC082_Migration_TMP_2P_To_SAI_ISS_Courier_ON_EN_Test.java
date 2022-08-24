@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_TC113_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test extends BaseTestClass {
+public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
     public void OneviewCH_Auto_TC113_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo2PToSAIISSTMP(), TestDataHandler.migrationData.getContactID2PToSAIISSTMP());
@@ -111,7 +111,7 @@ public class OneviewCH_Auto_TC113_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //getDriver().quit();
+        getDriver().quit();
     }
 }
 

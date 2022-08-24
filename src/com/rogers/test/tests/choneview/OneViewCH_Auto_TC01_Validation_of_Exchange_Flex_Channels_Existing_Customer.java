@@ -59,6 +59,6 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //closeSession();
+        closeSession();
     }
 }

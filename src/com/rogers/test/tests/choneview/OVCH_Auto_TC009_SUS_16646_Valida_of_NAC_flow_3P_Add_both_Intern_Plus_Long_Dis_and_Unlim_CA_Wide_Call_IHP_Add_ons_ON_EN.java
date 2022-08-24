@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_Add_ons extends BaseTestClass {
+public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_Add_ons_ON_EN extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
         reporter.reportLogWithScreenshot("oneview env");
@@ -53,11 +53,11 @@ public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         reporter.reportLogWithScreenshot("Home Phone Add on selected");
         getHomePhoneAddonsPage().clkCollapse();
-       // getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
+//        getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
         reporter.reportLogWithScreenshot("Home phone Add on selected");
-        getHomePhoneAddonsPage().incompatibleAddonRadioBtn();
-        reporter.reportLogWithScreenshot("Incompatible Add ons Dialog box displayed");
+//        getHomePhoneAddonsPage().incompatibleAddonRadioBtn();
+//        reporter.reportLogWithScreenshot("Incompatible Add ons Dialog box displayed");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Clicked on Continue");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -77,15 +77,17 @@ public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Phone Number Selected");
-        getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinue();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().clkCourierDelivery();
         reporter.reportLogWithScreenshot("in person delivery");
         getCreditCheckPage().clickInPersonDelivery();
         getRogersIgniteBundlesPage().clkContinue();
-       // reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+        reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().verifyBillingAndPaymentOption();
         getCreditCheckPage().clickDigitalFrontline();
@@ -95,13 +97,11 @@ public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus
         getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
         reporter.reportLogWithScreenshot("set Card Expiry Month And Year");
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-       reporter.reportLogWithScreenshot("payment details entered");
+        reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-
-
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
     }
 
@@ -115,9 +115,6 @@ public class OVCH_Auto_SUS_16646_TC01_Valida_of_NAC_flow_3P_Add_both_Intern_Plus
     public void afterTest() {
         closeSession();
     }
-
-
-
 
 }
 

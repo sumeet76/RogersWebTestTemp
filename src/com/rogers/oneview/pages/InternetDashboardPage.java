@@ -149,7 +149,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[contains(text(),'The customer understands that someone 18 years of age or older must be present to receive the equipment delivery') or contains(text(),'Le client convient qu’une personne d’au moins 18 ans doit être présente pour recevoir l’équipement')]")
 	WebElement customerUnderstandCheckbox;
 
-	@FindBy(xpath = "//*[text()=' Streaming ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
+
+	@FindBy(xpath = "//*[text()=' Streaming ' or text() = ' Diffusion ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement chkBtnSmartStreamSelect;
 
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
