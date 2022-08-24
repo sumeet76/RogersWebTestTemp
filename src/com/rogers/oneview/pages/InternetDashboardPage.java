@@ -171,7 +171,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	WebElement RemovePods;
 
 
-	@FindBy(xpath = "//span[contains(text(), 'Customer has Ignite WiFi Pod')]")
+	@FindBy(xpath = "//span[contains(text(), 'Customer has ')]")
 	WebElement  IgniteWiFiPod;
 
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.banner']")
@@ -571,6 +571,13 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	}
 
+	public void selectInternetPlan(String intPackage){
+		By changePlan= By.xpath("//p[contains(text(),'"+intPackage+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+		WebElement changePlanElement= getDriver().findElement(changePlan);
+		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
+		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);
+	}
+
 	public void selectTupeloDowngradeInternet(String intPackage){
 		By downgradePackage = By.xpath("//div[text()='Ignite Internet "+intPackage+"']//parent::div//following-sibling::div//child::div[contains(text(),'Streaming')]//following::button");
 		getReusableActionsInstance().getWhenReady(downgradePackage, 60);
@@ -630,6 +637,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickAddPodsButton() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(addPodsButton, 30);
 		getReusableActionsInstance().scrollToElement(addPodsButton);
 		getReusableActionsInstance().executeJavaScriptClick(addPodsButton);
@@ -640,6 +648,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickAddToCartForPods() {
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(addPodToCart);
 		getReusableActionsInstance().waitForElementVisibility(addPodToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addPodToCart);
@@ -670,7 +680,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickPlusToAddPod() {
-		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
 
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){
