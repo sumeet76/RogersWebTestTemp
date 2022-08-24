@@ -11,55 +11,66 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-
 /**
  * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
  * 
- * @author chinnarao.vattam
+ * @author manpreet.kaur3
  * 
  * Test steps:
  *
  *1. Launch the Rogers.com url.
  *2. Log into rogers.com url with valid credentials.
  *3. Click on internet package.
- *4. Click on chage package button.
+ *4. Click on change package button.
  *5. Select a package which has price higher to the current package.
- *6. Scroll down to the last in the page and Click on Checkout.
- *7. Enter appropriate Contact details.
- *8. Pick a date time in step 2 - Most Convenient Time for us to call.
- *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *6. Validate the PTM modal.
+ *7. Click continue on PTM modal.
+ *8. Validate the PSEF promotion on Order Review page.
+ *9. Validate the GWP on Order Review page.
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit.
+ * 12. Verify Order Confirmation
  *
  **/
 
-public class RogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternetPackageTest extends BaseTestClass {
+public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_ValidatePSEFpromotionGWP_ATLTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
-    public void rogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternetPackage() {
+    public void rogersCH_Auto_TC099_3PCx_ChangeInternetPackage_PTMmodal_ValidatePSEFpromotionGWP_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc99_3PCxInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc99_3PCxInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
+        reporter.reportLogWithScreenshot("Skip popup");
+        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc99_3PCxInternetAccount.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc22_SolarisInternetOldConstructor.accountDetails.getBan());
-    	reporter.reportLogWithScreenshot("Launched the Account Page");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc22_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc22_SolarisInternetOldConstructor.getAccountDetails().getUpgradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc99_3PCxInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
+        reporter.reportLogWithScreenshot("Launched the agreement page");
+        getRogersInternetDashboardPage().verifyInfoIconPTMmodal();
+        reporter.reportLogWithScreenshot("Verified the PTM modal");
+        getRogersInternetDashboardPage().verifyPTMmodalHeader();
+        reporter.reportLogWithScreenshot("Verified the PTM modal header");
+        getRogersInternetDashboardPage().verifyPTMmodalContent();
+        reporter.reportLogWithScreenshot("Verified the PTM modal content");
         getRogersInternetDashboardPage().clkInternetChangeOK();
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the order review page");
-
+        reporter.reportLogWithScreenshot("Clicked continue on the PTM modal");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the order review page");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-
+		
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitUpdateInternet();

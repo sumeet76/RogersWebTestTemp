@@ -32,14 +32,14 @@ public class RogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDow
 	@Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.accountDetails.getBan());
     	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getDriver().get(System.getProperty("QaUrl")+"/bundles");
@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDow
         getRogersBuyPage().clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page"); 
        
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc16_17_18_19_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngarde(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customercare popup");
     	}                        

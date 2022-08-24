@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
@@ -40,8 +39,8 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkISSforNL();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

@@ -52,8 +52,8 @@ public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfil
     public void rogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCable() {
        // getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc110_StandaloneInternetAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc110_StandaloneInternetAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -62,7 +62,7 @@ public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfil
         getRogersLoginPage().switchOutOfSignInIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc110_StandaloneInternetAccount.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc81_StandaloneInternetAccount.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {

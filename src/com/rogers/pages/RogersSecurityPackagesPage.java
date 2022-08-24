@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -18,24 +19,29 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//a[contains(@title,'Learn how to get a Security package') or contains(@title,'Voyez comment obtenir le forfait Sécurité')]")
+	@FindBy(xpath = "//a[contains(@aria-label,'Learn how to get a Security package') or contains(@aria-label,'Voyez comment obtenir le forfait Sécurité')]")
 	WebElement lnkHowToGetSecurityPackages;
 	
-	@FindBy(xpath = "//shm-ways-to-buy-modal//p[@class='ds-modal__heading text-title-3 mb-24']")
+	@FindBy(xpath = "//div[@id='shaShmServiceableCallCare']")
 	WebElement popupSecurityPackagesModel;
 
-	@FindAll({@FindBy(xpath = "//a[@href='1-855-214-6825']"),
-			@FindBy(xpath = "//a[@href='1 855 214-6825']"),
-	@FindBy(xpath = "//a[@href='1 855 214 6825']")})
+	@FindBy(xpath = "//div[@id='shaShmServiceableCallCare']/descendant::a")
 	WebElement lnkSecurityPackagesByCall;
+	//div[@id='shaShmServiceableCallCare']/descendant::a[contains(@href,'18552203526')]
+	//div[@id='shaShmServiceableCallCare']/descendant::a[contains(@href,'18668530923')]
 
 	@FindBy(xpath = "//a[contains(@title,'Call Rogers at') or contains(@title,'Appelez Rogers au')]")
 	WebElement lnkSHMCC;
 
-	@FindBy(xpath = "//a[@href='livechat']")
+	@FindAll({
+			@FindBy(xpath = "//span[@bckey='shaShmCallCare']/div/a[@aria-label='global.chatWithAnAgent.shm']"),
+			@FindBy(xpath = "//span[@bckey='shaShmCallCare']/div/a[@aria-label='global.chatWithAnAgent.sha']")})
 	WebElement lnkSecurityPackagesByLivechat;
 
-	@FindBy(xpath = "//a[@title='Live Chat with Rogers' or @title='Clavardez avec Rogers']")
+	@FindAll({
+			@FindBy(xpath = "//a[@aria-label='global.chatWithAnAgent.sha']"),
+			@FindBy(xpath = "//a[@aria-label='global.chatWithAnAgent.shm']")
+	})
 	WebElement lnkLiveChatwithRogers;
 
 	@FindAll({
@@ -58,41 +64,43 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bc-headbtn bc-headbtn-minimize']")
 	WebElement btnCloseLivechat;
 
+	@FindBy(xpath = "//div[@class='bc-headbtn bc-headbtn-menulist']")
+	WebElement btnCloseLivechatMenu;
+
 	@FindBy(xpath = "//div[@class='bc-headbtn-icon bc-headbtn-close-icon']")
 	WebElement btnCloseLivechatOption;
 
 	@FindBy(xpath = "//h1[@class='SearchHero-title']")
 	WebElement txtStorePage;
 
-	@FindBy(xpath = "//p[contains(text(),'Protect') or contains(text(),'Protection')]/ancestor::ds-tile//button[@title='View more details about the Protect package' or @title='Afficher plus de détails sur le forfait Protection']")
-	WebElement btnProtectPackDetails;
 
-	@FindBy(xpath = "//p[contains(text(),'Protect') or contains(text(),'Protection')]/ancestor::ds-tile//button[@title='How to get the Protect package'  or @title='Comment obtenir le forfait Protection']//ds-icon//span")
-	WebElement btnHowToGetItProtectPack;
-
-	@FindBy(xpath = "//p[contains(text(),'Assure') or contains(text(),'Tranquillité')]/ancestor::ds-tile//button[@title='View more details about the Assure package' or @title='Afficher plus de détails sur le forfait Tranquillité']")
+	@FindBy(xpath = "//button[contains(@aria-label,'View more details about the Assure package')]")
 	WebElement btnAssurePackDetails;
 
-	@FindBy(xpath = "//p[contains(text(),'Assure') or contains(text(),'Tranquillité')]/ancestor::ds-tile//button[@title='How to get the Assure package'  or @title='Comment obtenir le forfait Tranquillité']//ds-icon//span")
+	@FindBy(xpath = "//button[contains(@aria-label,'How to get the Assure package')]")
 	WebElement btnHowToGetItAssurePack;
 
-	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='View more details about the Control package' or @title='Afficher plus de détails sur le forfait Contrôle']")
+	@FindBy(xpath = "//button[contains(@aria-label,'View more details about the Control package')]")
 	WebElement btnControlPackDetails;
 
-	@FindBy(xpath = "//button[@title='How to get the Automate package'  or @title='Comment obtenir le forfait Automatique']//ds-icon//span")
+	@FindBy(xpath = "//button[contains(@aria-label,'How to get the Automate package')]")
 	WebElement btnHowToGetItAutomatePack;
 
-	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]/ancestor::ds-tile//button[@title='How to get the Control package'  or @title='Comment obtenir le forfait Contrôle']//ds-icon//span")
+
+	@FindBy(xpath = "//button[contains(@aria-label,'How to get the Control package')]")
 	WebElement btnHowToGetItControl;
 
 	@FindBy(xpath = "//ds-modal-container[@id='ds-modal-container-0']")
 	WebElement popupPackageDetails;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-info-circle']")
+	@FindBy(xpath = "//button[@aria-label='More details View more details about the Automate package']")
 	WebElement btnAutomatePackageDetails;
 
-	@FindBy(xpath = "//button[@title='close modal']")
+	@FindBy(xpath = "//button[@title='Close Details']")
 	WebElement popupPackageDetailsCloseModal;
+
+	@FindBy(xpath="//button[@title='Close window for Address Found']/span")
+	WebElement popupAddressFoundCloseModal;
 
 	@FindBy(xpath = "//p[contains(text(),'Protect') or contains(text(),'Protection')]")
 	WebElement txtProtectPackageDetails;
@@ -103,32 +111,32 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(text(),'Control') or contains(text(),'Contrôle')]")
 	WebElement txtControlPackageDetails;
 
-	@FindAll({
-	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring hardware') or contains(@title,'Voir l’équipement du Système de domotique Rogers')]"),
-			@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring hardware') or contains(@title,'Voir l’équipement domotique Rogers')]")})
+	@FindBy(xpath = "//p[contains(text(),'Automate Package') or contains(text(),'du forfait Automatique')]")
+	WebElement txtAutomatePackageDetails;
+
+
+	@FindBy(xpath = "//a[contains(@aria-label,'View Smart Home Monitoring hardware')]")
 	WebElement btnViewHardware;
 
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtHardwarePage;
 
-	@FindAll({
-	@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring features') or contains(@title,'Voir l’équipement domotique Rogers')]"),
-			@FindBy(xpath = "//a[contains(@title,'View Smart Home Monitoring features') or contains(@title,'Voir fonctions domotique Rogers')]")})
+	@FindBy(xpath = "//a[contains(@aria-label,'View Smart Home Monitoring features')]/span")
 	WebElement btnSHMfeatures;
 
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtSHMFeasturePage;
 
-	@FindBy(xpath = "//a[contains(@title,'Learn more about the Smart Home Monitoring app') or contains(@title,'Obtenez plus de renseignements sur l’application Système de domotique Rogers')]")
+	@FindBy(xpath = "//a[contains(@aria-label,'Learn more about the Smart Home Monitoring app')]")
 	WebElement btnHomeMonitoringapp;
 
 	@FindBy(xpath = "//img[contains(@src,'English-AppHero.png')]")
 	WebElement txtSHMAppPage;
 
-	@FindBy(xpath = "//a[contains(@title,'View Automate package') or contains(@title,'Voir le forfait Automatique')]")
+	@FindBy(xpath = "//a[contains(@aria-label,'View Automate package')]")
 	WebElement btnViewAutomatePackage;
 
-	@FindBy(xpath = "//a[contains(@title,'View Security packages') or contains(@title,'Voir les forfaits Sécurité')]")
+	@FindBy(xpath = "//a[contains(@aria-label,'View Security packages')]")
 	WebElement btnViewSecurityPackage;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/consumer/support/homemonitoring']")
@@ -146,22 +154,22 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Help and Support' or @data-text='Soutien']/ancestor::a//ds-icon[@name='down']")
 	WebElement subNavHelpAndSupport;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/support/moving-your-services']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Moving?')]")
 	WebElement subNavMovingYourServices;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/home-monitoring/why']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Why Smart Home Monitoring')]")
 	WebElement lnkWhySHM;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'automation-packages')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Automate Package')]")
 	WebElement lnkAutomatePackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'security-packages')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Security Package')]")
 	WebElement lnkSecurityPackage;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/hardware')]")
 	WebElement lnkHardwarePackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/features') or contains(@href,'/home-monitoring/fonctions')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Features page')]")
 	WebElement lnkFeatures;
 
 
@@ -169,11 +177,21 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	WebElement btnSecurityPack;
 
 	//+++++++++++++++++++++++++++++++++++++++++//
-	@FindBy(xpath = "//a[@title='Learn how to get the Automate package' or @title='Voyez comment obtenir le forfait Automatique']")
+	@FindBy(xpath = "//a[contains(@aria-label,'Learn how to get the Automate package') or contains(@aria-label,'Voyez comment obtenir le forfait Automatique')]")
 	WebElement btnHowToGetAutomatePackage;
 
 	@FindBy(xpath = "//a[@href='/home-security/automation-packages']")
 	WebElement btnAutmationPack;
+
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]/..")
+	WebElement txaIgniteAddressContainerExisting;
+
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]")
+	WebElement txaIgniteAddressLookup;
+
+	@FindBy(xpath = "//button[@id='checkAddressBtn']/span")
+	WebElement btnIgniteAddressLookupSubmit;
+
 
 	/**
 	 * Verify the Title of the page
@@ -238,7 +256,8 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSecurityPackagesByLivechat() {
-		getReusableActionsInstance().getWhenReady(lnkSecurityPackagesByLivechat, 60).click();
+		getReusableActionsInstance().waitForElementVisibility(lnkSecurityPackagesByLivechat, 60);
+		getReusableActionsInstance().getWhenReady(lnkSecurityPackagesByLivechat, 30).click();
 	}
 
 	/**
@@ -266,6 +285,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void clkHowToGetSecurityPackages() {
 		getReusableActionsInstance().getWhenReady(lnkHowToGetSecurityPackages, 60).click();
+
 	}
 
 	/**
@@ -286,7 +306,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifyIfrmLiveChatDisplayed()
 	{
-		getReusableActionsInstance().waitForElementVisibility(ifrmLiveChat, 90);
+		getReusableActionsInstance().waitForElementVisibility(ifrmLiveChat, 120);
 		return getReusableActionsInstance().isElementVisible(ifrmLiveChat);
 	}
 
@@ -344,21 +364,6 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtStorePage);
 	}
 
-	/**
-	 * Click on Protect Pack Details button
-	 * @author chinnarao.vattam
-	 */
-	public void clkProtectPackDetails() {
-		getReusableActionsInstance().getWhenReady(btnProtectPackDetails, 60).click();
-	}
-	/**
-	 * Click on How To Get It Protect Pack Button
-	 * @author chinnarao.vattam
-	 */
-	public void clkHowToGetItProtectPack() {
-		getReusableActionsInstance().waitForElementVisibility(btnHowToGetItProtectPack, 90);
-		getReusableActionsInstance().getWhenReady(btnHowToGetItProtectPack, 60).click();
-	}
 
 	/**
 	 * Click on How To Get It Automate Pack Button
@@ -475,6 +480,17 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	}
 
 	/**
+	 * Checks if Control Package Details is displayed
+	 * @return true if the Control Package Details is displayed else false
+	 * @author chinnarao.vattam
+	 */
+	public Boolean verifyAutomatePackageMoreDetails()
+	{
+		getReusableActionsInstance().waitForElementVisibility(txtAutomatePackageDetails, 30);
+		return getReusableActionsInstance().isElementVisible(txtAutomatePackageDetails);
+	}
+
+	/**
 	 * Click on View Hardware button
 	 * @author chinnarao.vattam
 	 */
@@ -501,6 +517,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifyHardwarePage()
 	{
+		//getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(txtHardwarePage, 90);
 		return getReusableActionsInstance().isElementVisible(txtHardwarePage);
 	}
@@ -511,8 +528,11 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public Boolean verifySHMFeasturePage()
-	{		getReusableActionsInstance().waitForElementVisibility(txtSHMFeasturePage, 90);
-		return getReusableActionsInstance().isElementVisible(txtSHMFeasturePage);
+	{
+		getReusableActionsInstance().staticWait(10000);
+		WebElement txtSHMFeaturePage = getDriver().findElement(By.xpath("//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']"));
+		//getReusableActionsInstance().waitForElementVisibility(txtSHMFeasturePage, 90);
+		return getReusableActionsInstance().isElementVisible(txtSHMFeaturePage, 90);
 	}
 
 	/**
@@ -529,6 +549,14 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void ViewHardwarePackages() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
+
+	/**
+	 * Click on View Hardware
+	 * @author chinnarao.vattam
+	 */
+	public void ViewTopOfPage() {
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
 	}
 
 	/**
@@ -577,6 +605,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifySHMAppPage()
 	{
+		//getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(txtSHMAppPage, 90);
 		return getReusableActionsInstance().isElementVisible(txtSHMAppPage);
 	}
@@ -785,5 +814,34 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void clkHowToGetAutomatePackage() {
 		getReusableActionsInstance().getWhenReady(btnHowToGetAutomatePackage, 60).click();
+	}
+
+	public void setIgniteAddressLookup(String strAddress) {
+		getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
+		//getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		try{
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+
+		}catch (Exception e){
+			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		}
+	}
+
+	public void clkIgniteAddressLookupSubmit() {
+		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().staticWait(15000);
+	}
+
+	/**
+	 * Click on Address Found Close button
+	 * @author manpreet.kaur3
+	 */
+	public void clkAddressFoundCloseModal() {
+		getReusableActionsInstance().getWhenReady(popupAddressFoundCloseModal, 60).click();
 	}
 }

@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -53,14 +52,14 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
     public void rogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATL() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page"); 
         getDriver().get(System.getProperty("QaUrl")+"/bundles");
@@ -68,8 +67,8 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Launched the csutomer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc04_07_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

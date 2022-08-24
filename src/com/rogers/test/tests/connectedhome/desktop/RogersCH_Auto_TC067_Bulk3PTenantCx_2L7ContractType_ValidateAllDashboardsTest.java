@@ -32,15 +32,15 @@ public class RogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashb
     public void rogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashboards() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc92_2L7ContractType3PBulkTenant.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc92_2L7ContractType3PBulkTenant.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
          if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
              reporter.reportLogWithScreenshot("Select an account.");
-             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc92_2L7ContractType3PBulkTenant.accountDetails.getBan());
+             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc67_2L7ContractType3PBulkTenant.accountDetails.getBan());
          }
          reporter.reportLogWithScreenshot("Account Selected");
          getRogersInternetDashboardPage().clkSolarisInternetBadge();

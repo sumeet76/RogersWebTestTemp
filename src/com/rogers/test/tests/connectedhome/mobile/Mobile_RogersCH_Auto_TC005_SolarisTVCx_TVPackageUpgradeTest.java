@@ -56,7 +56,7 @@ public class Mobile_RogersCH_Auto_TC005_SolarisTVCx_TVPackageUpgradeTest extends
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackageMobile();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLaterMobile();

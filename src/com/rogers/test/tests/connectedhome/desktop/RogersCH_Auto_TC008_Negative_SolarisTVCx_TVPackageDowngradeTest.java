@@ -31,14 +31,14 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
     @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH"})
     public void rogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_07_SolarisTVAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
         reporter.reportLogWithScreenshot("clicked on more details");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteBoxPrice(),"Additional feature price not zero","zero Additional feature price not zero");
         reporter.reportLogWithScreenshot("clicked on verify details");
-        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_07_SolarisTVAccount.accountDetails.getDowngradePlanFr());
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");

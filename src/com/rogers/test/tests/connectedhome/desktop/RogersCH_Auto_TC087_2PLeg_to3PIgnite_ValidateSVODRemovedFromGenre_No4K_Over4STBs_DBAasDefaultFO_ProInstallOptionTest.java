@@ -53,8 +53,8 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
     @Test
     public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkSkipIFrame();
@@ -62,7 +62,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
        // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
@@ -129,9 +129,9 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc117_Legacy2PTVToIgnite3P.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
         getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");

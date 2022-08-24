@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to verify the upgarde flow for Legacy TV to IgniteTV for Rogers.com  
@@ -54,14 +53,14 @@ public class RogersCH_Auto_TC062_1PLegInt_2PIgniteTV_4K_E2E_ValidateOrdersAutoma
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
 	public void rogersCH_Auto_TC062_1PLegInt_2PIgniteTV_4K_E2E_ValidateOrdersAutomatedGoestoMaestro_ATL() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc82_Legacy1PtoIgnite2P.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc82_Legacy1PtoIgnite2P.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    reporter.reportLogWithScreenshot("Skip popup");
 	    getRogersLoginPage().clkSkipIFrame();
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82_Legacy1PtoIgnite2P.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_Legacy1PtoIgnite2P.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");

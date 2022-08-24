@@ -30,8 +30,8 @@ public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseT
 	public void rogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_legacyRHP.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_legacyRHP.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -39,7 +39,7 @@ public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseT
 	    getRogersLoginPage().clkSkipIFrame();
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_legacyRHP.accountDetails.getBan());
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");

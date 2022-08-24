@@ -35,15 +35,15 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void rogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServiceabilityCheck_No4kTV() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_CRMaddressMismatchWithSGI.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_CRMaddressMismatchWithSGI.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc28_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");

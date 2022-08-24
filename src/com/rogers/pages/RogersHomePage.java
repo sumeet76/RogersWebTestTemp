@@ -417,6 +417,11 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForPageLoad();
 	}
 
+	public void waitforURLNavigation(){
+		//getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
 	/**
 	 * Click the Ignite Internet from the sub navigator
 	 * @author chinnarao.vattam
@@ -529,7 +534,9 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteWiFiPromise() {
-		getReusableActionsInstance().getWhenVisible(lnkIgniteWiFiPromise, 30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(lnkIgniteWiFiPromise,40);
+		getReusableActionsInstance().getWhenReady(lnkIgniteWiFiPromise).click();
+		//getReusableActionsInstance().getWhenVisible(lnkIgniteWiFiPromise, 30).click();
 	}
 
 	/**

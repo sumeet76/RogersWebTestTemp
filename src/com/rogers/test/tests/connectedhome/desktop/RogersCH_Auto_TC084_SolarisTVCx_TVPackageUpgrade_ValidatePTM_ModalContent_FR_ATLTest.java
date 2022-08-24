@@ -35,20 +35,20 @@ public class RogersCH_Auto_TC084_SolarisTVCx_TVPackageUpgrade_ValidatePTM_ModalC
     public void rogersCH_Auto_TC084_SolarisTVCx_TVPackageUpgrade_ValidatePTM_ModalContent_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09_SolarisTVAccountForUpgrade.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkFR();
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopUp(),"Displayed the Change TV Package popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the ChangeTV Package popup");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
