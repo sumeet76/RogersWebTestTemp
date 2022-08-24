@@ -138,6 +138,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath="//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']")
 	WebElement txtGWP;
 
+	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
+	WebElement txtPackageDetails;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
 	WebElement chkbox150IgniteStreaming;
 
@@ -683,6 +686,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
     public boolean verifyGWPTag() {
 		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
     }
+
+	public void scrollToPackageDetails(){
+		getReusableActionsInstance().javascriptScrollByVisibleElement(txtPackageDetails);
+	}
 
 
 }
