@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_Address_Flagged_FRAUD_NAC extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0087_Validate_SwitchingServiceability_CheckTechhub_Address_Flagged_FRAUD_NAC extends BaseTestClass {
     @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp", "MaySanity"})
     public void oneViewCH_Auto_Validate_SwitchingServiceability_CheckTechhub_Address_Flagged_FRAUD_NAC() {
         {

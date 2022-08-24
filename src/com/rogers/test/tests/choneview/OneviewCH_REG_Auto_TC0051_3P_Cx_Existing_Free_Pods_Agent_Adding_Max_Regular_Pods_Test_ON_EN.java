@@ -10,15 +10,15 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVS2_3PCxExistingFreePods_AgentAddingMaxRegularPods_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max_Regular_Pods_Test_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneviewCH_Auto_OVS2_3PCxExistingFreePods_AgentAddingMaxRegularPods_Test() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max3pCx_Pods.getAccountNo(),TestDataHandler.Max3pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-        reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
+    //   reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
+    //   reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click AddPods Button ");
         getInternetDashboardPage().clickAddToCartForPods();
@@ -34,9 +34,8 @@ public class OneviewCH_Auto_OVS2_3PCxExistingFreePods_AgentAddingMaxRegularPods_
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-        reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
-
-//        getRogersOVOrderReviewPage().clickSubmitOrder();
+    //   reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
+        getRogersOVOrderReviewPage().clickSubmitOrder();
 ////        reporter.reportLogWithScreenshot("click Submit Order");
     }
 

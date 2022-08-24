@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_DeliveryByAppointment_PaymentMethod_PreauthorizedChequing_ATL_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_ISS_DBA_Cheque_ON_EN_test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1443_TC01_E2E_NAC_SmartStream_SAIISS_PaymentMethod_PreauthorizedChequing_Test(){
+	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_DeliveryByAppointment_PaymentMethod_CreditCard_test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
@@ -22,7 +22,9 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_DeliveryByAppo
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("Service click Continue");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
+		reporter.reportLogWithScreenshot("click Internet Checkbox");
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
@@ -30,26 +32,20 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_DeliveryByAppo
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
+		reporter.reportLogWithScreenshot("no Port In Popup");
 		getRogersIgniteBundlesPage().clkCollapse();
+		reporter.reportLogWithScreenshot("click Collapse");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-		reporter.reportLogWithScreenshot("Product Added");
+		reporter.reportLogWithScreenshot("click Continue");
 		getRogersIgniteBundlesPage().clkContinue();
-		/*To Add the chargeable Pods*/
-		getRogersIgniteBundlesPage().addPods(5);
-		reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
-		/*To Add the free pods in the internt addons page*/
-		getRogersIgniteBundlesPage().addPods(0);
-		reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
-		getRogersIgniteBundlesPage().clkContinueInternetAddon();
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		//getRogersIgniteBundlesPage().clkCheckOut();
-
+		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		reporter.reportLogWithScreenshot("cart summary checkout");
+		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+//		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
-        reporter.reportLogWithScreenshot("Customer Profile");
+		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("evaluation form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
@@ -58,52 +54,45 @@ public class OneViewCH_Auto_TC025_1443_E2E_NAC_SmartStream_SAIISS_DeliveryByAppo
 		reporter.reportLogWithScreenshot("evaluation form filled");
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
-		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-
-		// Install Type - Delivery By appointment
-		reporter.reportLogWithScreenshot("Select Delivery By Appointment");
+		reporter.reportLogWithScreenshot("Delivery By Appointment");
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
+//		getCreditCheckPage().clickDateTimeRadioButton();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
 		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
-		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("in person delivery");
+//		getCreditCheckPage().clickInPersonDelivery();
+		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing and payment");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-
-		// Payment Method - Pre-Authorized Cheque
-		getCreditCheckPage().selectPaymentOption(2);
-		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
-		getRogersOVCheckoutPage().enterTransitNumber("00333");
-		reporter.reportLogWithScreenshot("Transit number");
-		getRogersOVCheckoutPage().enterInstitutionNumber("003");
-		reporter.reportLogWithScreenshot("Institution Number");
-		getRogersOVCheckoutPage().enterAccountNumber("1234003");
-		reporter.reportLogWithScreenshot("Account Number");
+		getCreditCheckPage().clickDigitalFrontline();
+		reporter.reportLogWithScreenshot("digital front line");
+		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+		reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
-
-		//Submit order Page
 		reporter.reportLogWithScreenshot("sumbit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
-    }
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+
+	}
 
 	@BeforeMethod (alwaysRun=true)
 	@Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDISS(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactIDISSDeliveryByAppt(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
 	@AfterMethod(alwaysRun = true)

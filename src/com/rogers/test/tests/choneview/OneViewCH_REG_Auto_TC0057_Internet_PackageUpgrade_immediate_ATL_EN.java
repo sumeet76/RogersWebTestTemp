@@ -16,12 +16,13 @@ import java.lang.reflect.Method;
 4. Add-Ons - NA
 5. Bill Cycle - Next Bill Cycle"
  */
-public class OneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0057_Internet_PackageUpgrade_immediate_ATL_EN extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
     public void oneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
+    //    getAccountOverViewPage().setLanguageFrench();
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
@@ -49,7 +50,7 @@ public class OneViewCH_Auto_TC043_Internet_PackageUpgrade_NextBillingCycle_ALT_E
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+     //   closeSession();
     }
 
 }

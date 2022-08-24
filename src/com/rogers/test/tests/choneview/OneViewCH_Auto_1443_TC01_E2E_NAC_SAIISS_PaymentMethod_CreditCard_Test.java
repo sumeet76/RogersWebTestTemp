@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_SAIISS_DBA_Cheque_ATL_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV","MaySanity"})
     public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
@@ -21,7 +21,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Te
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		//reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		//reporter.reportLogWithScreenshot("Service Availability");
-		//getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
@@ -53,9 +53,15 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Te
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
-		getPaymentOptionsPage().clkContinue();
+		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
+		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		reporter.reportLogWithScreenshot(".enter Special Instructions");
+		getCreditCheckPage().enterSpecialInstructions();
+		getCreditCheckPage().clkContinueInstallationOption();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing and payment");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
@@ -66,11 +72,11 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Te
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
 
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("sumbit order");
+		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

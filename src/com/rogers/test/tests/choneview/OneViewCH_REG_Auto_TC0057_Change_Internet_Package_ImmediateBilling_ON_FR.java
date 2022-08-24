@@ -17,9 +17,9 @@ import java.lang.reflect.Method;
 5. Bill Cycle - Immediate"
 ON
  */
-public class OneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0057_Change_Internet_Package_ImmediateBilling_ON_FR extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage"})
-    public void oneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR() {
+    public void oneViewCH_Auto_TC0057_Internet_PackageUpgrade_ImmediateBilling_ON_FR() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),  TestDataHandler.TC030_Internet_PackageUpgrade.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -29,7 +29,7 @@ public class OneViewCH_Auto_TC073_Internet_PackageUpgrade_ImmediateBilling_ON_FR
         reporter.reportLogWithScreenshot("Internet Badge selected");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
+        getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
