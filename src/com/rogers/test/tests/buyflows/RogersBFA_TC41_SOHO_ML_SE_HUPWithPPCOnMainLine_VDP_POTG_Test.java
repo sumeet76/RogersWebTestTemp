@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void sohoHUP_tc41_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test() {
+    public void tc41_sohoHUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
