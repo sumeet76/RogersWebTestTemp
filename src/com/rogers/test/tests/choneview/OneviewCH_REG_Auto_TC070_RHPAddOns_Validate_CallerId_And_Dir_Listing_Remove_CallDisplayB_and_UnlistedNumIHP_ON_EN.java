@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listing_Page_Remove_CallDisplayBlocking_and_UnlistedNumberIHP_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listing_Remove_CallDisplayB_and_UnlistedNumIHP_ON_EN extends BaseTestClass {
     @Test
     public void oneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listing_Page_Remove_CallDisplayBlocking_and_UnlistedNumberIHP_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage.getAccountNo(),TestDataHandler.Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation.getContactID());
