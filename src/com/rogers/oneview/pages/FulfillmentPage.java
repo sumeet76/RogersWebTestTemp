@@ -33,6 +33,10 @@ public class FulfillmentPage  extends BasePageClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'fadeInPicker')]")
 	WebElement dates;
+
+	@FindBy(xpath = "//input[@id='ds-form-input-id-40']")
+	WebElement enterDate;
+
 	/**
 	 * Click First Available Appointment
 	 * @author Chinnarao.Vattam

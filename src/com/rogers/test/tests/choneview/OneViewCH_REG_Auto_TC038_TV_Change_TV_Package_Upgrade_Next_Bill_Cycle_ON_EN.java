@@ -10,15 +10,15 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC042_TV_PackageUpgrade_NextBillingCycleTest_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC038_TV_Change_TV_Package_Upgrade_Next_Bill_Cycle_ON_EN extends BaseTestClass {
     @Test(groups = {"RchangeTv","Baseline","ChangePackage","OVSet2"})
-    public void checkTVPackageDowngrade() {
+    public void oneViewCH_REG_Auto_TC038_TV_Change_TV_Package_Upgrade_Next_Bill_Cycle_ON_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(), TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().clickAccountOverview();
-        reporter.reportLogWithScreenshot("clicked on account overview arrow-down to see the customer address");
-        reporter.hardAssert(getAccountOverViewPage().verifyProvince(),"ON address displayed","ON address doesn't displayed");
+        //getAccountOverViewPage().clickAccountOverview();
+        //reporter.reportLogWithScreenshot("clicked on account overview arrow-down to see the customer address");
+        //reporter.hardAssert(getAccountOverViewPage().verifyProvince(),"ON address displayed","ON address doesn't displayed");
         getAccountOverViewPage().clickIgniteTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.hardAssert(getTVDashboardPage().verifyChangePackage(),"Change Package Displayed","Change Package doesn't displayed");
@@ -57,7 +57,7 @@ public class OneViewCH_Auto_TC042_TV_PackageUpgrade_NextBillingCycleTest_ON_EN e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

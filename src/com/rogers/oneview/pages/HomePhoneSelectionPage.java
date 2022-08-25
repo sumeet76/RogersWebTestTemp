@@ -92,7 +92,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
+		getReusableActionsInstance().executeJavaScriptClick(generatePhoneNumber);
+
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -141,6 +142,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(continueOnGeneratePhone,45);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+
 
 	}
 

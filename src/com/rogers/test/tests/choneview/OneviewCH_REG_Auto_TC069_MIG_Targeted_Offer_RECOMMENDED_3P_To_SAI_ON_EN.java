@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC099_1565_TargetedMigration_3P_to_SAI_TargetedOfferType_Recommended_ON_EN_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC069_MIG_Targeted_Offer_RECOMMENDED_3P_To_SAI_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_1565_TC01_TargetedMigration_3P_toSAIISSTest(){
+    public void oneviewCH_REG_Auto_TC069_MIG_Targeted_Offer_RECOMMENDED_3P_To_SAI_ON_EN(){
   //      Launching One View
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration3PtoSAIISS.getAccountNo(), TestDataHandler.targetedMigration3PtoSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
