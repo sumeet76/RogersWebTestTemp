@@ -105,7 +105,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	public void clickCampaignTab() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().waitForElementTobeClickable(campaignTab, 30);
+		getReusableActionsInstance().waitForElementTobeClickable(campaignTab, 60);
 		getReusableActionsInstance().clickWhenReady(campaignTab);
 	}
 

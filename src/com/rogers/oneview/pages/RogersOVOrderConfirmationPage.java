@@ -12,8 +12,8 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 		super(driver);
 	}
 	
-//	@FindBy(xpath = "//div[@class='text-title-2 text-bold mb-0 text-left']")
-	@FindBy(xpath = "//*[text()='We received the order.']")
+	@FindBy(xpath = "//div[@class='text-title-2 text-bold mb-0 text-left']")
+//	@FindBy(xpath = "//*[text()='We received the order.']")
 	WebElement orderConfirmation;
 	
 	@FindAll({

@@ -51,7 +51,7 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement btnOk;
 
 
-	@FindBy(xpath = "//span[text()='Restart box(es)' or text()='Redémarrer les terminaux numériques']")
+	@FindBy(xpath = "//span[text()='Restart box(es)' or text()='Redémarrer les terminaux numériques']//ancestor::button")
 	WebElement btnRestartSetupbox;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -206,7 +206,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -913,11 +913,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
-		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
+		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 60);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
-		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(btnRestartSetupbox, 120).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnRestartSetupbox);
 	}
 
 	/**
@@ -1013,7 +1012,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void goToPageMid() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		;
 	}
 
 	/*
@@ -1114,8 +1112,10 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickCloudStorageBubble() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().clickWhenReady(CloudStorageBubble);
+//		getReusableActionsInstance().staticWait(5000);
+		WebElement btn = getReusableActionsInstance().getWhenReady(CloudStorageBubble, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(CloudStorageBubble).click();
 	}
 
 	public void clickDownloadGoBubble() {

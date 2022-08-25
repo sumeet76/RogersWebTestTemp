@@ -102,6 +102,9 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
 	WebElement courierDelivery;
 
+	@FindBy(xpath="//span[@translate='global.checkout.billingAndPayment.paperBill.title']")
+	WebElement paperBilling;
+
 	@FindAll({
 			@FindBy(xpath ="//div[@class='ds-checkbox__box my-12']"),
 			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']")
@@ -193,7 +196,7 @@ public class CreditCheckPage  extends BasePageClass {
              * @author aditi.jain
              */
 	public boolean verifyInstallationOption() {
-		return getReusableActionsInstance().isElementVisible(installationOption,100);
+		return getReusableActionsInstance().isElementVisible(installationOption,30);
 	}
 
 	/**
@@ -209,9 +212,17 @@ public class CreditCheckPage  extends BasePageClass {
 	 */
 	public boolean verifyBillingAndPaymentOption() {
 		getReusableActionsInstance().staticWait(6000);
-		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,60);
+		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,70);
 	}
 
+	/**
+	 * Select paper bill option
+	 * @author Jarmanjeet.Batth
+	 */
+	public void clkPaperBilling(){
+		getReusableActionsInstance().waitForElementVisibility(paperBilling,30);
+		getReusableActionsInstance().executeJavaScriptClick(paperBilling);
+	}
 	/**
 	 * Choose option digital frontline
 	 * @author aditi.jain
@@ -228,6 +239,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void clkCourierDelivery(){
 		getReusableActionsInstance().waitForElementVisibility(courierDelivery,240);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(courierDelivery);
 		getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
 	}
 	public void clickInPersonDelivery() {
@@ -312,8 +324,9 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
-		getReusableActionsInstance().waitForElementTobeClickable(continueButton, 5);
-		getReusableActionsInstance().clickWhenReady(continueButton);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		WebElement btn = getReusableActionsInstance().getWhenReady(continueButton, 30);
+		getReusableActionsInstance().clickWhenReady(btn,30);
 	}
 
 
@@ -369,7 +382,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,100);
+		return getReusableActionsInstance().isElementVisible(installationHeader,120);
 	}
 
 	/**
