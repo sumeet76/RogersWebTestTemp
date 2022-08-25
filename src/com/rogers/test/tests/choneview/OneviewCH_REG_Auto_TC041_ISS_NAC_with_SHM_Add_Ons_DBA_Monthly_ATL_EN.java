@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMonitoring_DeliveryByAppointment_PaymentMethod_Monthly_Test_ATL_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1436_TC01_E2E_NAC_Internet_SmartStrem_SmartHomeMonitoring_Test(){
+    public void oneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_EN(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
-		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT(),"Chrome");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -41,7 +41,10 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		getRogersIgniteBundlesPage().clkContinue();
+		//getRogersIgniteBundlesPage().addSHMAddOn();
+		getRogersIgniteBundlesPage().goToPageBottom();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -62,16 +65,14 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Select delivery by appointment");
-
 		// Install Type - Delivery By Appointment
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
-		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+		//getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+		//getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getRogersIgniteBundlesPage().clkContinue();
@@ -97,6 +98,6 @@ public class OneViewCH_Auto_TC046_1436_E2E_NAC_Internet_SmartStream_SmartHomeMon
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 }

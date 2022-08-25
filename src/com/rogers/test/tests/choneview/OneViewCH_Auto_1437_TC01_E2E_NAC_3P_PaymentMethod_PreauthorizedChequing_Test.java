@@ -17,7 +17,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
-			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -36,9 +36,9 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			getRogersIgniteBundlesPage().clkCollapse();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 			reporter.reportLogWithScreenshot("Product Added");
-			getRogersIgniteBundlesPage().clkContinue();
+			//getRogersIgniteBundlesPage().clkContinue();
 			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();
+		//getRogersIgniteBundlesPage().fourKContinue();
 			reporter.reportLogWithScreenshot("continue to exchange later");
 			getRogersIgniteBundlesPage().clkCheckOut();
 			reporter.reportLogWithScreenshot("Cart Summary");
@@ -85,9 +85,9 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.reportLogWithScreenshot("Account Number");
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
-			getRogersOVCheckoutPage().clkSubmit();
-			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			reporter.reportLogWithScreenshot("Order Placed");
+			//getRogersOVCheckoutPage().clkSubmit();
+			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			//reporter.reportLogWithScreenshot("Order Placed");
 		
     }
 
@@ -99,7 +99,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

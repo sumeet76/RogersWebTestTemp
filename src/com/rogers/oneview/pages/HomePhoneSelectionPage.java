@@ -91,7 +91,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
 
-		getReusableActionsInstance().clickWhenReady(generatePhoneNumber);
+		getReusableActionsInstance().executeJavaScriptClick(generatePhoneNumber);
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -138,8 +138,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().waitForElementVisibility(continueOnGeneratePhone,45);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(continueOnGeneratePhone);
-		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+		getReusableActionsInstance().scrollToElement(continueOnGeneratePhone);
+		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone);
 
 	}
 

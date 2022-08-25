@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS3_RHPAddOns_Validate_ConfigureCallerId_And_DirectoryListingPage_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listing_Page_Remove_CallDisplayBlocking_and_UnlistedNumberIHP_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_OVS3_RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage_Test(){
+    public void oneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listing_Page_Remove_CallDisplayBlocking_and_UnlistedNumberIHP_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage.getAccountNo(),TestDataHandler.Validation_of_Things_to_know_copy_Directory_Listing_Home_Phone_Personalisation.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -29,15 +29,11 @@ public class OneViewCH_Auto_OVS3_RHPAddOns_Validate_ConfigureCallerId_And_Direct
         reporter.hardAssert(getHomePhoneSelectionPage().verifyConfigureCallDisplayAndDirectoryListingHeader(),"Configure Call display And Directory Listing Page is Displayed","Failed");
         getHomePhoneSelectionPage().clickOnContinueCallDisplay();
         reporter.reportLogWithScreenshot("Continue on call Display Clicked");
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        reporter.reportLogWithScreenshot("Continue on Directory Listing is Clicked");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Final Continue is Clicked on Home Phone Selection Page");
         getTVDashboardPage().immediateDateChangeOption();
         reporter.reportLogWithScreenshot("Change date Selection Modal Is Displayed");
         getTVDashboardPage().continueFromChangeDate();
         reporter.reportLogWithScreenshot("Order Review Page is Displayed");
-     //   getRogersOVCheckoutPage().clkSubmit();
+        getRogersOVCheckoutPage().clkSubmit();
         reporter.reportLogWithScreenshot("Test Passed");
 
     }

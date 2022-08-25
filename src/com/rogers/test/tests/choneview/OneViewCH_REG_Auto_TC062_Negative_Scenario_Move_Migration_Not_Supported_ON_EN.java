@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC062_Negative_Scenario_Move_Migration_Not_Supported_ON_EN extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported(){
+    public void oneViewCH_REG_Auto_TC062_Negative_Scenario_Move_Migration_Not_Supported_ON_EN(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getaccountNoMigrationNotSupported(), TestDataHandler.migrationData.getContactIDMigrationNotSupported());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -32,7 +32,7 @@ public class OneViewCH_Auto_1618_TC01_E2E_MoveMigrationNotSupported extends Base
 		reporter.reportLogWithScreenshot("Continue");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
 		getRogersIgniteBundlesPage().clickYes();
-	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigrationNotSupported(),"warning Move Migration Not Supported","warning Move Migration Not Supported  display");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigrationNotSupported(),"warning Move Migration Not Supported","warning Move Migration Not Supported  display");
     }
 
 	@BeforeMethod (alwaysRun=true)

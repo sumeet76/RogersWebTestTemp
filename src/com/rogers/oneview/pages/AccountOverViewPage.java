@@ -74,7 +74,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='customer-address flyout-address account-overview-padding']/span[contains(text(),'ON')]")
     WebElement Province;
 
-    @FindBy(xpath = "//div[@class='arrow-down-container care-border']")
+    @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
@@ -353,6 +353,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author aditi.jain
      */
     public void clickIgnite() {
+        getReusableActionsInstance().staticWait(5000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
        if (getReusableActionsInstance().isElementVisible(OK, 30)) {

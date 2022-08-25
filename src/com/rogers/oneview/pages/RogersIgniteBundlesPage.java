@@ -141,7 +141,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 //	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
 
-	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue') or contains(text(),'Continuer')]")
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
 	WebElement fourKContinue;
 
 
@@ -424,7 +424,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
 	WebElement termoffer;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
+	@FindBy(xpath = "//div[@id='ds-radio-input-id-14-label-container']/child::span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087')]")
 	WebElement oneTimeCredit;
 
 
@@ -498,7 +498,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void selectAdditionalIgniteTVBoxes() {
-		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,60);
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,120);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, "1");
 		getReusableActionsInstance().staticWait(5000);
 	}
@@ -737,9 +737,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
-			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
-			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
+		//getReusableActionsInstance().isElementVisible(fourKContinue, 60)
+			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 45);
+			getReusableActionsInstance().clickWhenReady(fourKContinue);
 			getReusableActionsInstance().staticWait(2000);
 	}
 
@@ -1152,9 +1152,9 @@ public void activateHomePhoneltrPopUp() {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExpressCheckOut() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
-		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
+		getReusableActionsInstance().clickWhenReady(expressCheckout);
 //    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
@@ -1480,7 +1480,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void oneTimeCredit(){
-		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,30);
+		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
 	}
