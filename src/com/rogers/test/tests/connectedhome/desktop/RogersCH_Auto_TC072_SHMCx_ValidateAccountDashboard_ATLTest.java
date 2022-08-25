@@ -29,8 +29,8 @@ public class RogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATLTest extends 
 	@Test(groups = {"RegressionCH","RhpAndRhmCH","DryRunCH"})
         public void rogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATL() {
             reporter.reportLogWithScreenshot("Launched the SignIn popup");
-            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc98_RogersSHM_NB.getUsername());
-            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc98_RogersSHM_NB.getPassword());
+            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc72_RogersSHM_NB.getUsername());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc72_RogersSHM_NB.getPassword());
             reporter.reportLogWithScreenshot("Enter the account credentails");
             getRogersLoginPage().clkSignInIFrame();
             reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login succeed.", "Login got error.");

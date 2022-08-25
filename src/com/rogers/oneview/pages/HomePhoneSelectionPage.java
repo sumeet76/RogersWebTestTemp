@@ -11,8 +11,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[contains(text(),'Cancel') or contains(text(),'Annuler')]//following::button//child::span[contains(text(),'Continue') or contains(text(),'Continuer')]")
-	//@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+//	@FindBy(xpath = "//span[contains(text(),'Cancel') or contains(text(),'Annuler')]//following::button//child::span[contains(text(),'Continue') or contains(text(),'Continuer')]")
+	@FindBy(xpath = "//div[@class='button-set']/child::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement continueOnGeneratePhone;
 
 	//@FindBy(xpath = "(//span[@translate='global.cta.continue'])/ancestor::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
@@ -79,6 +79,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Home Phone Personalization' or text()='Personnalisation du téléphone résidentiel']")
 	WebElement homePhonePersonalizationHeader;
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-28']")
+	WebElement selectDifferentNumber;
 
 
 	/**
@@ -90,8 +92,8 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		WebElement btn=getReusableActionsInstance().getWhenReady(generatePhoneNumber,120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-
 		getReusableActionsInstance().executeJavaScriptClick(generatePhoneNumber);
+
 	}
 	/**
 	 * Verify the Phone Number is Selected
@@ -138,8 +140,9 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	 */
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().waitForElementVisibility(continueOnGeneratePhone,45);
-		getReusableActionsInstance().scrollToElement(continueOnGeneratePhone);
-		getReusableActionsInstance().clickWhenReady(continueOnGeneratePhone);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
+
 
 	}
 
@@ -173,6 +176,10 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 
 		}
 
+		public void selectDiffNumb(){
+		getReusableActionsInstance().getWhenReady(selectDifferentNumber,30);
+		getReusableActionsInstance().executeJavaScriptClick(selectDifferentNumber);
+		}
 
 
 }

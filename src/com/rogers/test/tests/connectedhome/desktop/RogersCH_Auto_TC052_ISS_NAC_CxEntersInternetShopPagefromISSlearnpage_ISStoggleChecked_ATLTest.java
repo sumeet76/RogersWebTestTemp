@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
@@ -40,12 +39,17 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkISSforNL();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc65_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        reporter.reportLogWithScreenshot("Launched the offers page to select package");
+        //Contract type is default
+        //getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
@@ -86,12 +90,10 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
+        // getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
@@ -112,17 +114,6 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        /**
-         * DB Validations in the subscriber table
-         */
-
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
-
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
 

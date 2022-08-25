@@ -13,6 +13,9 @@ public class CustomerProfilePage  extends BasePageClass {
 	
 	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Profile']")
 	WebElement customerProfile;
+
+	@FindBy(xpath = "//h1[text()='Smart Home Monitoring Add-ons' or text()='Options du Système de domotique Rogers']")
+	WebElement shmHeader;
 	
 	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]/ancestor::button")
 	WebElement continueButton;
@@ -51,6 +54,16 @@ public class CustomerProfilePage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(customerProfile,120);
 	
 	}
+
+	/**
+	 * Verify SHM Header
+	 * @author Jarmanjeet.batth
+	 */
+	public boolean verifySHMAddonsHeader() {
+		//getReusableActionsInstance().clickIfAvailable(collapse,60);
+		return getReusableActionsInstance().isElementVisible(shmHeader,60);
+	}
+
 	/**
 	 * Click Continue Button 
 	 * @author chinnarao.vattam

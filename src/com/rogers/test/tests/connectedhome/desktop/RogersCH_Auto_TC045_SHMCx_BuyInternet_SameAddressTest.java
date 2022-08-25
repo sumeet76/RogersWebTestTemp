@@ -30,14 +30,14 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
 	@Test(groups = {"RegressionCH","saiCH"})
         public void rogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddress() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc57_sHMSignedInInternetBuy.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc57_sHMSignedInInternetBuy.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc45_sHMSignedInInternetBuy.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();

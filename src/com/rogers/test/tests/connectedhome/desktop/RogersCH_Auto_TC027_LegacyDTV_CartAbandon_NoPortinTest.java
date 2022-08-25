@@ -54,8 +54,8 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
     @Test(groups = {"RegressionCH","RogersCartAbandon"})
 	public void rogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortin() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
@@ -63,7 +63,7 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot(" Click Skip");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
 		}
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -91,14 +91,14 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Signed Out");
 		getRogersHomePage().clkEasyLogin();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup 2");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_NoPortInAbondoneFlows.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersLoginPage().clkSkipIFrame();
 		reporter.reportLogWithScreenshot(" Click Skip");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_NoPortInAbondoneFlows.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();

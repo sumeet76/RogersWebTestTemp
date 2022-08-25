@@ -39,14 +39,14 @@ public class RogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternetTest
     public void rogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternet() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_ShmSignedInInternetBuyBasement.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
@@ -57,8 +57,8 @@ public class RogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternetTest
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc63_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().selectIgniteAddressLookupBasement(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");

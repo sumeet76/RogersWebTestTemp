@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
@@ -42,8 +41,8 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
@@ -52,7 +51,7 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getDriver().get(System.getProperty("QaUrl")+"/internet");
@@ -61,8 +60,8 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc61_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
@@ -79,28 +78,6 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().clkSubmitProfile();
 
-        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersInternetCreditCheckPage().selectDOBYear();
-        getRogersInternetCreditCheckPage().selectDOBMonth();
-        getRogersInternetCreditCheckPage().selectDOBDay();
-        reporter.reportLogWithScreenshot("Entered DOB details");
-        getRogersInternetCreditCheckPage().selectFirstID("Driver's License");
-        getRogersInternetCreditCheckPage().selectProvince("Ontario");
-        getRogersInternetCreditCheckPage().selectExpiryYear();
-        getRogersInternetCreditCheckPage().selectExpiryMonth();
-        getRogersInternetCreditCheckPage().selectExpiryDay();
-        getRogersInternetCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
-        reporter.reportLogWithScreenshot("Driving License Details");
-        getRogersInternetCreditCheckPage().selectSecondIDOption("Passport");
-        getRogersInternetCreditCheckPage().setPassportNumber();
-        getRogersInternetCreditCheckPage().selectPassportExpiryYear();
-        getRogersInternetCreditCheckPage().selectPassportExpiryMonth();
-        getRogersInternetCreditCheckPage().selectPassportExpiryDay();
-        getRogersInternetCreditCheckPage().clkCreditConsentSai();
-        reporter.reportLogWithScreenshot("Passport Details");
-        getRogersInternetCreditCheckPage().clkCreditConsentSubmit();
-
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
         getRogersTechInstallPage().clkProInstallUpgradeNo();
@@ -108,12 +85,6 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-
-        reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the payment options page");
-        // getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
-        // For reference  - for monthly bill uncomment above line & comment from payment mode pre-authorized till the expiry year line 100 to 106
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
