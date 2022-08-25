@@ -12,17 +12,16 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC042_ISS_NAC_with_Port_In_DBA_Credit_Card_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-	public void oneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test(){
+	public void oneViewCH_REG_Auto_TC042_ISS_NAC_with_Port_In_DBA_Credit_Card_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
-
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
@@ -35,25 +34,21 @@ public class OneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test e
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
-
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
-
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
 		getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
 		reporter.reportLogWithScreenshot("Port In completed");
 		getRogersIgniteBundlesPage().contiueFromPortIn();
 		getRogersIgniteBundlesPage().contiueToCartSummary();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		getCustomerProfilePage().clkContinue();
-
 		reporter.reportLogWithScreenshot("evaluation form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -62,12 +57,10 @@ public class OneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test e
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		getCreditCheckPage().clkContinue();
-
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(),"Installation Options Displays","Installation Options note Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Delivery By Appointment");
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
@@ -79,7 +72,6 @@ public class OneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test e
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getPaymentOptionsPage().clkContinue();
-
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing and payment");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
@@ -106,7 +98,7 @@ public class OneViewCH_Auto_TC047_1426_E2E_NAC_ISS_PortIn_DBA_CCard_ON_EN_Test e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

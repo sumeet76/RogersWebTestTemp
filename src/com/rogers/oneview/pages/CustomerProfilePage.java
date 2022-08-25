@@ -108,7 +108,7 @@ public class CustomerProfilePage  extends BasePageClass {
 
 	public void enterNewAddress(String address){
 	//	getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().scrollToElement(enternewAdress);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(enternewAdress,30);
 		getReusableActionsInstance().enterText(inputAddress,address+Keys.BACK_SPACE,30);
 		getReusableActionsInstance().staticWait(3000);

@@ -18,13 +18,13 @@ import java.lang.reflect.Method;
 5. Payment Details - Monthly Charges
 6. Discounts - NA"
  */
-public class OneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homephone_Addons_DBA_Monthly_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_EN(){
+    public void oneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homephone_Addons_DBA_Monthly_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -69,6 +69,8 @@ public class OneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_E
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
+		getCustomerProfilePage().useAnotheraddress();
+		getCustomerProfilePage().enterNewAddress("105 Abbeywood Trail");
 		getCustomerProfilePage().clkContinue();
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -86,8 +88,10 @@ public class OneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_E
 		reporter.reportLogWithScreenshot("Phone display name");
 		//getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-		reporter.reportLogWithScreenshot("Installation options");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
+		reporter.reportLogWithScreenshot("Installation options");
 		//getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Delivery by Appointment installation");
 		getCreditCheckPage().selectDeliveryByAppointment();
@@ -107,10 +111,10 @@ public class OneViewCH_Auto_TC001_E2E_NAC_3P_AddOns_DBA_MonthlyCharges_Test_ON_E
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
-	        //reporter.reportLogWithScreenshot("submit order");
-			//getRogersOVCheckoutPage().clkSubmit();
-			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			//reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

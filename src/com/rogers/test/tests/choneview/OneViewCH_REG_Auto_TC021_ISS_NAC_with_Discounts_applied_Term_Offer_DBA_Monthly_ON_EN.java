@@ -10,15 +10,23 @@ import utils.FormFiller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+/*
+1. Language - EN
+2. Province - ON
+3. Add-Ons - NA
+4. Installation Page - DBA
+5. Payment Details - Monthly Charges
+6. Discounts - Apply any Term Offer.
+ */
 
 
-public class OneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyCharges_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC021_ISS_NAC_with_Discounts_applied_Term_Offer_DBA_Monthly_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_MonthlyCharges_Test(){
+    public void oneViewCH_REG_Auto_TC021_ISS_NAC_with_Discounts_applied_Term_Offer_DBA_Monthly_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
@@ -28,6 +36,8 @@ public class OneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_Mo
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("loading offers");
+		getRogersIgniteBundlesPage().oneTimeCredit();
+		reporter.reportLogWithScreenshot("One Time Bill Credit applied");
 //		String promoCode = getRogersIgniteCampaignPage().getPromoCode();
 //		System.out.println("promoCode :: " +  promoCode);
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -106,7 +116,7 @@ public class OneViewCH_Auto_TC021_1416_TC01_E2E_NAC_SAI_ISS_TMP_PaymentMethod_Mo
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }
