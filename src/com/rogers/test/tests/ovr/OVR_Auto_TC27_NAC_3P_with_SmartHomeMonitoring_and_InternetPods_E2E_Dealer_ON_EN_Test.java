@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
-    @Parameters({"strBrowser", "strLanguage"})
+    @Parameters({"strBrowser", "strLanguage","ReleaseSanity"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         startSession(System.getProperty("OVRURL"), strBrowser, strLanguage, RogersEnums.GroupName.ovr, method);
     }

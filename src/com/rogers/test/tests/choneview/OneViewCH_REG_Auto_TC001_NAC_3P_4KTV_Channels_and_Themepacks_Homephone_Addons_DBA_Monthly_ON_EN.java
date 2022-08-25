@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homephone_Addons_DBA_Monthly_ON_EN extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV","ReleaseSanity"})
     public void oneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homephone_Addons_DBA_Monthly_ON_EN(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));

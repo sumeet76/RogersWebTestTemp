@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON_EN extends BaseTestClass {
-    @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity"})
+    @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity","ReleaseSanity"})
     public void oneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());

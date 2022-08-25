@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH"})
+    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH","ReleaseSanity"})
     public void rogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());

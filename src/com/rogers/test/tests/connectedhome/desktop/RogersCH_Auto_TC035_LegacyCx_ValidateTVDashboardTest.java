@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTestClass {
 
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH","ReleaseSanity"})
 	public void rogersCH_Auto_TC035_LegacyCx_ValidateTVDashboard() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_digitalTVAccount.getUsername());

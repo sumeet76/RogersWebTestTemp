@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_Internet_Dashboard_Validation_Test extends BaseTestClass {
-    @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp","MaySanity"})
+    @Test(groups = {"RegressionCHOV", "SanityCHOV", "SanityCHOVTemp","MaySanity","ReleaseSanity"})
     public void oneViewCH_Auto_Internet_Dashboard_Validation_Test() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Internet_Dashboard_Validation.accountDetails.getBan(),TestDataHandler.Internet_Dashboard_Validation.getContactID());
         reporter.reportLogWithScreenshot("One view page launched");
