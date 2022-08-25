@@ -26,7 +26,7 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","POM"})
-	public void tc03pomRogersNACTermPotgShippingTest() throws InterruptedException {
+	public void tc03_pomRogersNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 //		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
 //				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",

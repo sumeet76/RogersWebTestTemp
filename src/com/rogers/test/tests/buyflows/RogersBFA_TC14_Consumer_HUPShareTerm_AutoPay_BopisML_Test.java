@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc14rogersHUPShareTermBopisMLTest() {
+    public void tc14_rogersHUPShareTermBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
