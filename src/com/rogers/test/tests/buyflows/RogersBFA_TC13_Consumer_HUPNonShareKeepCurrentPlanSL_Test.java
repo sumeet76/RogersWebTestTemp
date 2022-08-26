@@ -59,12 +59,15 @@ public class RogersBFA_TC13_Consumer_HUPNonShareKeepCurrentPlanSL_Test extends B
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
-            reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
-                    "Billing Address is not selected");
+//            reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
+//                    "Billing Address is not selected");
             reporter.reportLogPassWithScreenshot("On Checkout page");
-            getRogersCheckoutPage().clkDeliveryMethod("PRO");
-            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+//            getRogersCheckoutPage().clkDeliveryMethod("PRO");
+//            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+//            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+            getRogersCheckoutPage().clickSkipAutopay();
+            getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+            reporter.reportLogPassWithScreenshot("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
             getRogersCheckoutPage().clksubmitBtnCheckoutPage();

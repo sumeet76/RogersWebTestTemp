@@ -60,17 +60,17 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+            getRogersCheckoutPage().clickSkipAutopay();
             reporter.reportLogPassWithScreenshot("On Checkout page");
             getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
             reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
-            reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Appointment time is available",
-                    "Appointment time is not available");
+            reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Location Map is available",
+                    "Express Location Map is not available");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
             getRogersCheckoutPage().clksubmitBtnCheckoutPage();
             reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
-            getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+            //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
 
             reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                     "Order Review Page Title is not Present");

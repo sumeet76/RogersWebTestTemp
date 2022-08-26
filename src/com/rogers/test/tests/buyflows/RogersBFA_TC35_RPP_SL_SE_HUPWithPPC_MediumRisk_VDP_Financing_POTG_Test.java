@@ -61,16 +61,18 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_POTG_T
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+            getRogersCheckoutPage().clickSkipAutopay();
             reporter.reportLogPassWithScreenshot("On Checkout page");
-            getRogersCheckoutPage().clkDeliveryMethod("PRO");
-            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+//            getRogersCheckoutPage().clkDeliveryMethod("PRO");
+//            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+//            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+            getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+            reporter.reportLogPassWithScreenshot("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();
             reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
             getRogersCheckoutPage().clksubmitBtnCheckoutPage();
             reporter.reportLogPass("Clicked submit button below cart summary");
-            getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+            //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
 
             reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                     "Order Review Page Title is not Present");

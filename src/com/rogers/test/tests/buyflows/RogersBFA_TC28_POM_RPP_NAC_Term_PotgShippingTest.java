@@ -32,12 +32,12 @@ public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestCl
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
 		getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
-		getRogersDeviceCataloguePage().clickGetStartedButtonOnModal();
+		getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP();
 		//-------------------------------Device Catalog Page----------------------------
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDeviceName());
-		reporter.reportLogWithScreenshot("Modal window Popup");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
-				"Get Started button not able to click");
+//		reporter.reportLogWithScreenshot("Modal window Popup");
+//		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
+//				"Get Started button not able to click");
 		// ***************************Device config page************************************
 		reporter.reportLogWithScreenshot("Device Config page");
 		getRogersDeviceConfigPage().clickContinueButton();
@@ -58,7 +58,7 @@ public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestCl
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-		getRogersPlanConfigPage().skipBPOOffer();
+		//getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
@@ -124,9 +124,12 @@ public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestCl
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipNacAutopay();
 		// ***************Shipping Stepper*************//
-		getRogersCheckoutPage().clkDeliveryMethod("PRO");
-		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
+//		getRogersCheckoutPage().clkDeliveryMethod("PRO");
+//		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
+		getRogersCheckoutPage().clkDeliveryMethod("standard");
+		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();

@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA","DP"})
+	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void tc07_rogersHupPpcPotgMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -71,9 +71,12 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         reporter.reportLogPassWithScreenshot("On Checkout page");
-        getRogersCheckoutPage().clkDeliveryMethod("PRO");
-        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+//        getRogersCheckoutPage().clkDeliveryMethod("PRO");
+//        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+//        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+        getRogersCheckoutPage().clickSkipAutopay();
+        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+        reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -89,6 +92,7 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+        //getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         getRogersOrderReviewPage().clkSubmitOrder();

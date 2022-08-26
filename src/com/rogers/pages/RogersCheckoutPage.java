@@ -1398,7 +1398,13 @@ public class RogersCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().clickWhenReady(paymentContinueButton,20);
 		getReusableActionsInstance().clickWhenReady(autoPayRemovalCtnBtn,20);
 	}
-
+	/**
+	 * This method opts out AutoPay payment method and clicks Continue in AutoPay Removal Modal in NAC flow
+	 * @author subash.nedunchezhian
+	 */
+	public void clickSkipNacAutopay(){
+		getReusableActionsInstance().clickWhenReady(autoPayRemovalCtnBtn,20);
+	}
 	/**
 	 * To Verify the appointment time
 	 * @return true if Appointment time is available else false

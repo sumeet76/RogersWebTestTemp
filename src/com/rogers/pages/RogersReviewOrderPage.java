@@ -252,7 +252,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chEmailConsent,5);
+        getReusableActionsInstance().clickIfAvailable(chEmailConsent,5);
     }
 
     /**

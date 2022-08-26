@@ -57,7 +57,7 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test extend
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
 
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc41_SOHO_HUP_ML_SE_HUPWithPPCOnMainLine_VDP_POTG.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan config page data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
@@ -68,11 +68,13 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_POTG_Test extend
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
-
+        getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
-        getRogersCheckoutPage().clkDeliveryMethod("PRO");
-        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+//        getRogersCheckoutPage().clkDeliveryMethod("PRO");
+//        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
+//        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
+        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+        reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
