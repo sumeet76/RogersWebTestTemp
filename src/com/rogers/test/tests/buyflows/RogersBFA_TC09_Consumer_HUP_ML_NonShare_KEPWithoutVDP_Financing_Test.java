@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC09_Consumer_HUP_ML_NonShare_KEPWithoutVDP_Financing_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc09rogersHUPNpotgMLTest() {
+    public void tc09_rogersHUPNpotgMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();

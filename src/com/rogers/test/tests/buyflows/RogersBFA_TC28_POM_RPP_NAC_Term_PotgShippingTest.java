@@ -24,7 +24,7 @@ public class RogersBFA_TC28_POM_RPP_NAC_Term_PotgShippingTest extends BaseTestCl
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","POM"})
-	public void rogersRPPNACTermPotgShippingTest() throws InterruptedException {
+	public void tc28_rogersRPPNACTermPotgShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");

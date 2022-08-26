@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC04_AALTerm_Tablet_StdShipping_Test extends 
 	}
 
 	@Test(groups = {"PRODSanity","PRODAALSanity"})
-	public void rogersProdSanity_AAL_TERM_Tablet() throws InterruptedException {
+	public void tc04_rogersProdSanity_AAL_TERM_Tablet() throws InterruptedException {
 
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");
