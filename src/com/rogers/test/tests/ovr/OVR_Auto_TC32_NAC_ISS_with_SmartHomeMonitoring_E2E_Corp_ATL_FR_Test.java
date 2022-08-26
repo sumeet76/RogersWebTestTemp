@@ -19,10 +19,10 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ON_FR_Test() {
+    public void ovr_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
@@ -36,8 +36,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        //getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
-        getCheckAvailabilityPage().checkAvailability("642 Abana, L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"This address is serviceable","This Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -110,8 +109,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

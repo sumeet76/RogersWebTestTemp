@@ -19,7 +19,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -107,16 +107,11 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        reporter.reportLogWithScreenshot("continue from call display");
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        reporter.reportLogWithScreenshot("continue from directory listing");
         getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Select install by appointment");

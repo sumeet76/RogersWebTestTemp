@@ -73,7 +73,7 @@ public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends 
         getRogersOVCheckoutPage().setFirstNameCreateProfile();
         getRogersOVCheckoutPage().setLastNameCreateProfile();
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
-        getRogersOVCheckoutPage().setContactNumberCreateProfile("6473216677");
+        getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
@@ -85,15 +85,12 @@ public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends 
         getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
                 FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
-        reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check authorized");
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-        reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

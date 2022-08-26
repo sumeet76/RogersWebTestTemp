@@ -19,7 +19,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -35,9 +35,8 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
         //getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacATL.getBanNumber(),TestDataHandler.ovrWirelessNacATL.getPostalCode(),TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacON.getBanNumber(),TestDataHandler.ovrWirelessNacON.getPostalCode(),TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        //getOvrDashboardPage().changeLangToFR();
         reporter.reportLogWithScreenshot("Ignite language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
@@ -88,7 +87,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
 
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Launched the install options  page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");

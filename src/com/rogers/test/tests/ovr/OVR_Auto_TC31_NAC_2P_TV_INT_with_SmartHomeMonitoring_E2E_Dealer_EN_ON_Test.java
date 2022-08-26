@@ -19,7 +19,7 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR","Nac Flow"})
@@ -57,7 +57,7 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to PortIn Popup");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed to add to cart");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Channel Personalization page");
@@ -114,8 +114,7 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

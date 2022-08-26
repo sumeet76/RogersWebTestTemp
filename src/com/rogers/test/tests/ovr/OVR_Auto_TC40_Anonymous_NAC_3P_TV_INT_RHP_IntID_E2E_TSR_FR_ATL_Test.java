@@ -18,7 +18,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_E2E_TSR_FR_ATL_Test() {
@@ -34,7 +34,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -114,19 +114,18 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        reporter.reportLogWithScreenshot("continue from call display");
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        reporter.reportLogWithScreenshot("continue from directory listing");
-        getHomePhoneSelectionPage().clkContinue();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+//        reporter.reportLogWithScreenshot("continue from generate phone number");
+//        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+//        reporter.reportLogWithScreenshot("continue from call display");
+//        getHomePhoneSelectionPage().clickContinueDirectoryListing();
+//        reporter.reportLogWithScreenshot("continue from directory listing");
+//        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
-        //getBundleBuilderPage().selectExpressProInstall();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");
