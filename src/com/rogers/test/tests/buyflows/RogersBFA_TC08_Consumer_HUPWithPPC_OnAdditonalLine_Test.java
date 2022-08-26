@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc08rogersHUPOnAdditonalLineTest() {
+    public void tc08_rogersHUPOnAdditonalLineTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();

@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC07_NewActivationBYOD_TillCreditEvaluationPa
 	}
 
 	@Test(groups = {"PRODSanity","PRODNACSanity"})
-	public void rogersProdSanity_NewActivation_BYOD() throws InterruptedException {
+	public void tc07_rogersProdSanity_NewActivation_BYOD() throws InterruptedException {
 
 		getDriver().get(System.getProperty("AWSPRODUrl")+"/phones/bring-your-own-device?flowType=byod");
 		//---------------------------------Plan config page---------------------------------

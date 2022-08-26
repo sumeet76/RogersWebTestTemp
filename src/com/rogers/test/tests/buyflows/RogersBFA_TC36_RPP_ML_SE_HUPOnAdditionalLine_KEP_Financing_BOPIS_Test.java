@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RPPHUPBFA"})
-    public void rppHUP_tc36_ML_SE_HUPOnAdditionaLineByKEP_BOPIS_Test() {
+    public void tc36_rppHUP_ML_SE_HUPOnAdditionaLineByKEP_BOPIS_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -33,6 +33,7 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
+        
         String deviceName = TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getDeviceName();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getDeviceName());
@@ -89,6 +90,7 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
+        
    }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
