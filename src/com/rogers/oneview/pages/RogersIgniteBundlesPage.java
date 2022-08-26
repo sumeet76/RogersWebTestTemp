@@ -212,7 +212,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
 	WebElement inputAccountNumber;
 
-	@FindBy(xpath = "//span/following-sibling::select")
+	@FindBy(xpath = "(//span[text()='Select provider']/following::select)[1]")
 	WebElement provider;
 
 	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
@@ -1286,10 +1286,12 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateInternetAddOnsInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 10);
-//		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
-//		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+		if(getReusableActionsInstance().isElementVisible(monthlyChargesExpandButton)){
+			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
+			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+		}
 		getReusableActionsInstance().javascriptScrollByVisibleElement(internetAddOnsCharges);
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 10);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges, 15);
 	}
 
 	public boolean validateInternetAddOnsHeader(){
@@ -1318,8 +1320,10 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateSHMMonthlyChargesInCartSummary(){
 		getReusableActionsInstance().getWhenReady(monthlyCharges, 20);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
-		getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+		if(getReusableActionsInstance().isElementVisible(monthlyChargesExpandButton)){
+			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
+			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
+		}
 		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
@@ -1330,7 +1334,10 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public boolean validateSHMOnetimeChargesInCartSummary(){
 		getReusableActionsInstance().getWhenReady(oneTimeCharges, 20);
-		getReusableActionsInstance().executeJavaScriptClick(oneTimeChargesExpandButton);
+		if(getReusableActionsInstance().isElementVisible(oneTimeChargesExpandButton)){
+			getReusableActionsInstance().javascriptScrollByVisibleElement(oneTimeChargesExpandButton);
+			getReusableActionsInstance().executeJavaScriptClick(oneTimeChargesExpandButton);
+		}
 		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringOneTimeCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringOneTimeCharges,10);
 	}
