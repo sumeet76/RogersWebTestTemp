@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_OVS4_Serve_GPON_ATL_ISS_OffersPage_ChangeInternetFlowSymmetricPlan_ValidateSymmetricalTiersPresented extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC073_GPON_Int_Dashboard_ISS_Offers_Page_ChangeInt_SymmetricPlan_Validate_Symmetrical_Tiers_Presented_ATL_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void OneviewCH_Auto_OVS4_Serve_GPON_ATL_ISS_OffersPage_ChangeInternetFlowSymmetricPlan_ValidateSymmetricalTiersPresented(){
+    public void oneviewCH_REG_Auto_TC073_GPON_Internet_Dashboard_ISS_Offers_Page_ChangeInternet_SymmetricPlan_Validate_Symmetrical_Tiers_Presented_ATL_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan.accountDetails.getBan(),TestDataHandler.SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
@@ -37,7 +37,7 @@ public class OneviewCH_Auto_OVS4_Serve_GPON_ATL_ISS_OffersPage_ChangeInternetFlo
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

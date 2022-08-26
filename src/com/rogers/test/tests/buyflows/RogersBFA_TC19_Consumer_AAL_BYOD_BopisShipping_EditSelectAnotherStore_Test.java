@@ -24,7 +24,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA"})
-    public void tc19rogersAalByodBopisTest() {
+    public void tc19_rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -64,7 +64,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
         reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
         getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc19AALBYODBopisShipping.getDpIMEI());
         reporter.reportLogPassWithScreenshot("DP Addon IMEI Entered");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyNotEligibleMsg(),"Entered IMEI is not eligible for Device Protection Addon","Entered IMEI is eligible");
+        reporter.softAssert(getRogersPlanConfigPage().verifyNotEligibleMsg(),"Entered IMEI is not eligible for Device Protection Addon","Entered IMEI is eligible");
         getRogersPlanConfigPage().selectNoDeviceProtection();
         reporter.reportLogPassWithScreenshot("No Device Protection option selected after checking the eligibility(failure)");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();

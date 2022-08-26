@@ -39,10 +39,10 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
-	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
+	@FindBy(xpath = "//button[@name='tab-themepack']")
 	WebElement themePacksTab;
 
-		@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
+	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "//*[text()='Yes, they do' or text()='Oui, ils le font']")
@@ -128,7 +128,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	}
 
 	public void clickAddChannel() {
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);

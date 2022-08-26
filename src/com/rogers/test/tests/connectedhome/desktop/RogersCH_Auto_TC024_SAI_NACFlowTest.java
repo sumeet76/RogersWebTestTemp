@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "saiCH", "SanityCH", "DryRunCH"})
+    @Test(groups = {"RegressionCH", "saiCH", "SanityCH", "DryRunCH","ReleaseSanity"})
     public void rogersCH_Auto_TC024_SAI_NACFlow() throws InterruptedException {
 
         reporter.reportLogWithScreenshot("clicked on Easy Internet");

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestClass {
-    @Test (groups = {"Regression","MaySanity"})
+    @Test (groups = {"Regression","MaySanity","ReleaseSanity"})
     public void oneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHP_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");

@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH", "DryRunCH"})
+    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH", "DryRunCH","ReleaseSanity"})
     public void rogersCH_Auto_TC057_ISS_NAC_BuyFlow() {
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

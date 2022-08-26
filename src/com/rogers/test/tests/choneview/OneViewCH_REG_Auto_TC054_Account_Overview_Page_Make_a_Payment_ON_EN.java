@@ -11,10 +11,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC15_Make_a_Payment_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC054_Account_Overview_Page_Make_a_Payment_ON_EN extends BaseTestClass {
 
     @Test(groups = {"RegressionCHOV"})
-    public void makeBillingPayment (){
+    public void oneViewCH_REG_Auto_TC054_Account_Overview_Page_Make_a_Payment_ON_EN (){
         // getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Make_a_Payment_EN.getAccountNo(),TestDataHandler.Make_a_Payment_EN.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");

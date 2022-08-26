@@ -22,6 +22,7 @@ public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest ext
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
+		getTVDashboardPage().goToPageBottom();
 		getTVDashboardPage().clickResetParentalControl();
 		reporter.reportLogWithScreenshot("Reset Parental Controls popup has launched");		
 		getTVDashboardPage().clickContinueReset();
@@ -49,7 +50,7 @@ public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest ext
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

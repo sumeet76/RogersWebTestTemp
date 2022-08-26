@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -144,7 +144,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 //	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
 
-	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue')]")
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
 	WebElement fourKContinue;
 
 
@@ -424,11 +424,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[contains(text(),'Please advise the Bulk Tenant to contact a Solution Specialist at ') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement addressMDU;
 
-	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::span")
 	WebElement clickCancel;
 
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
 	WebElement termoffer;
+
 
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
@@ -510,7 +511,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void selectAdditionalIgniteTVBoxes() {
-		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,30);
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,120);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, "1");
 		getReusableActionsInstance().staticWait(5000);
 	}
@@ -553,7 +554,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
@@ -579,7 +580,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
-		getReusableActionsInstance().clickIfAvailable(continueButton);
+		//getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 
@@ -747,9 +748,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
-			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
-			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
+		//getReusableActionsInstance().isElementVisible(fourKContinue, 60)
+			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 45);
+			getReusableActionsInstance().clickWhenReady(fourKContinue);
 			getReusableActionsInstance().staticWait(2000);
 	}
 
@@ -1169,9 +1170,9 @@ public void activateHomePhoneltrPopUp() {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExpressCheckOut() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
-		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
+		getReusableActionsInstance().clickWhenReady(expressCheckout);
 //    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
@@ -1485,8 +1486,9 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void clickCancelButton() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementTobeClickable(clickCancel,30);
-		getReusableActionsInstance().clickWhenReady(clickCancel);
+		getReusableActionsInstance().executeJavaScriptClick(clickCancel);
 	}
 
 	public void refreshEnterAddress() {
@@ -1506,9 +1508,10 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void oneTimeCredit(){
-		getReusableActionsInstance().waitForElementVisibility(promoModule,60);
-		getReusableActionsInstance().scrollToElement(promoModule);
-		getReusableActionsInstance().executeJavaScriptClick(promoModule);
+		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
+		getReusableActionsInstance().scrollToElement(oneTimeCredit);
+		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+
 	}
 
 }

@@ -112,9 +112,13 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     public String getMonthlyFeeAfterTax() {
     	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
-    	getReusableActionsInstance().staticWait(4000);
+    	getReusableActionsInstance().staticWait(1500);
     	System.out.println(monthlyFeeAfterTax.getText());
-    	return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
+    	String[] str = monthlyFeeAfterTax.getText().replaceAll("\\n","").split("\\$");
+    	String[] splittedStr = str[1].split("\\/");
+    	return splittedStr[0];
+    	
+    	}
 
     /**
      * This method will get the total one time fees amount after tax from the cart summary
@@ -248,7 +252,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clkEmailConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chEmailConsent,5);
+        getReusableActionsInstance().clickIfAvailable(chEmailConsent,5);
     }
 
     /**

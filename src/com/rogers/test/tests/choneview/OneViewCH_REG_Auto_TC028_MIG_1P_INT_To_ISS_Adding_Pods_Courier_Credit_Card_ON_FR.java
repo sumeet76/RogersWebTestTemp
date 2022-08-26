@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Test_FR extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Credit_Card_ON_FR extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Test_FR(){
+    public void oneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Credit_Card_ON_FR(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -41,6 +41,7 @@ public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Tes
 		reporter.reportLogWithScreenshot("review terms and condition");
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+		getRogersIgniteBundlesPage().refreshContinue();
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 	//	getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
@@ -52,13 +53,15 @@ public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Tes
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Credit evaluation");
-		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		reporter.reportLogWithScreenshot("Credit evaluation form filled");
-		getCreditCheckPage().clkAuthorize();
-		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		reporter.reportLogWithScreenshot("Credit Check Information");
+		//getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		//getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		//getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		//reporter.reportLogWithScreenshot("Credit evaluation form filled");
+		//getCreditCheckPage().clkAuthorize();
+		//reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+		//reporter.reportLogWithScreenshot("Credit Check Information");
+		getCreditCheckPage().refreshContinue();
+		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("Installation Options");
@@ -76,9 +79,9 @@ public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Tes
 		reporter.reportLogWithScreenshot("Entered card details");
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
-	//	reporter.reportLogWithScreenshot("submit order");
-	//	getRogersOVCheckoutPage().clkSubmit();
-	//	reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -90,7 +93,7 @@ public class OneViewCH_Auto_TC029_1618_TC01_E2E_Migration_1P_Internet_To_ISS_Tes
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

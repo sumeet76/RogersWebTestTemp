@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaign_ChannelsandThemepacks_SHM_AddOns_ProInstall_Monthly_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3P_Plus_SHM_Bundle_ON_EN(){
+    public void oneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaign_ChannelsandThemepacks_SHM_AddOns_ProInstall_Monthly_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHM3PInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHM3PInternet());
         reporter.reportLogWithScreenshot("OneviewLaunched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -45,30 +45,29 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
-        getRogersIgniteBundlesPage().clickReviewAddons();
-        reporter.reportLogWithScreenshot("Clicked customer’s legacy add-ons.");
-        getTVDashboardPage().clickThemepacksTab();
-        reporter.reportLogWithScreenshot("Themepack tab");
-        getTVDashboardPage().addThemepack();
-        reporter.reportLogWithScreenshot("themepack added");
-    //    getTVDashboardPage().clickstandaloneAndSeasonalTab();
-    //    reporter.reportLogWithScreenshot("StandAlone and Seasonal Events Selected");
-        getTVDashboardPage().clickAddChannel();
-        reporter.reportLogWithScreenshot("add channel");
+        reporter.reportLogWithScreenshot("Exchange later");
+        reporter.reportLogWithScreenshot("After Exchange later");
+        getRogersOVChannelsAndThemePacksPage().clickAddChannel();
+        getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
+        getRogersOVChannelsAndThemePacksPage().addThemepack();
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().contiue4KContent();
-        getRogersIgniteBundlesPage().addPods(5);
+        getRogersIgniteBundlesPage().addPods( 5 );
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-        getRogersIgniteBundlesPage().clickReviewAddons();
-        getRogersIgniteBundlesPage().clickAddOnAddToCart();
-        reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
-        getCustomerProfilePage().clkContinue();
-        getRogersIgniteBundlesPage().addSHMAddOn();
+        getRogersIgniteBundlesPage().goToPageBottom();
         getRogersIgniteBundlesPage().clkContinue();
+        //getRogersIgniteBundlesPage().addSHMAddOn();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("smart home addons page");
+        reporter.reportLogWithScreenshot("campaign");
+        getRogersIgniteCampaignPage().clickCampaignTab();
+        getRogersIgniteCampaignPage().enterCoupon("pCR6");
+        getRogersIgniteCampaignPage().clickApplyCoupon();
+        reporter.reportLogWithScreenshot("campaign coupon applied");
+        getRogersIgniteBundlesPage().clickCancelButton();
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -78,13 +77,14 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("evaluation form");
-        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        reporter.reportLogWithScreenshot("evaluation form filled" );
-        getCreditCheckPage().clkAuthorize();
-        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        //getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        //getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+        //getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        //reporter.reportLogWithScreenshot("evaluation form filled" );
+        //getCreditCheckPage().clkAuthorize();
+        //reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
+        getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Phone Number Generate");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
@@ -112,10 +112,9 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
-        reporter.reportLogWithScreenshot("submit order");
-        getRogersOVCheckoutPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -125,6 +124,6 @@ public class OneViewCH_Auto_TC117_Validate_Migration_flow_Campaigns_from_1P_to_3
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

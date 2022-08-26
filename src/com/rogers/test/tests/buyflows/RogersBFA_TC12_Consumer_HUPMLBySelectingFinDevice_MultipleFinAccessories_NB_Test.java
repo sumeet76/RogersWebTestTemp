@@ -15,8 +15,8 @@ package com.rogers.test.tests.buyflows;
  */
 public class RogersBFA_TC12_Consumer_HUPMLBySelectingFinDevice_MultipleFinAccessories_NB_Test extends BaseTestClass{
 
-    @Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc12rogersHUPMLFinDeviceMultiplAccessories_NB_Test() {
+    @Test(groups = {"RegressionBFA"})
+    public void tc12_rogersHUPMLFinDeviceMultiplAccessories_NB_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
