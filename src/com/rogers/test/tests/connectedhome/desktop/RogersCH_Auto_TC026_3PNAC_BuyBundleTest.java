@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH","SanityCH"})
+    @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH","SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

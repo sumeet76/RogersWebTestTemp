@@ -80,7 +80,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
 	WebElement authorizecheckbox;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button | //span[text()='Continuer' or text()='Continue']/ancestor::button[@ng-reflect-disabled='false']")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
 	WebElement continueButton;
 
 
@@ -93,14 +93,15 @@ public class CreditCheckPage  extends BasePageClass {
 
 
 	@FindAll({
-			@FindBy(xpath = "//h2[text()='Self-installation option(s)' or contains(text(),'Options d’installation par l'utilisateur')]"),
-			@FindBy(xpath = "//h2[text()='Professional installation option(s)']"),
+			//@FindBy(xpath = "//h2[text()='Self-installation option(s)' or contains(text(),'Options d’installation par l'utilisateur')]"),
+			//@FindBy(xpath = "//h2[text()='Professional installation option(s)']"),
 			@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
 	})
 	WebElement installationOption;
 
 	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
 	WebElement courierDelivery;
+
 
 	@FindBy(xpath="//span[@translate='global.checkout.billingAndPayment.paperBill.title']")
 	WebElement paperBilling;
@@ -153,7 +154,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[3]")
 	WebElement permitExpiryDate;
 
-	@FindBy(xpath ="//span[contains(text(),'professional') or contains(text(),'Professional') or contains(text(),'Installation professionnelle')]")
+	@FindBy(xpath ="//span[contains(text(),'Professional') or contains(text(),'Installation professionnelle')]/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement installationProfessional;
 
 	@FindBy(xpath ="(//ds-radio-button[@ng-reflect-disabled='false']/descendant::input[@name='dateTime'])[1]")
@@ -174,7 +175,8 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//input[@formControlName='enrouteEmail']")
 	WebElement emailMailAddress;
 
-	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
+	//@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
+	@FindBy(xpath = "//span[text()='Delivery by Appointment' or text()='Livraison par rendez-vous']/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement deliveryByAppointment;
 
 	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
@@ -200,6 +202,7 @@ public class CreditCheckPage  extends BasePageClass {
              */
 	public boolean verifyInstallationOption() {
 		return getReusableActionsInstance().isElementVisible(installationOption,30);
+
 	}
 
 	/**
@@ -216,6 +219,7 @@ public class CreditCheckPage  extends BasePageClass {
 	public boolean verifyBillingAndPaymentOption() {
 		getReusableActionsInstance().staticWait(6000);
 		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,70);
+
 	}
 
 	/**
@@ -330,6 +334,7 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		WebElement btn = getReusableActionsInstance().getWhenReady(continueButton, 30);
 		getReusableActionsInstance().clickWhenReady(btn,30);
+
 	}
 
 
@@ -473,6 +478,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void selectProfessionalInstallation() {
 		getReusableActionsInstance().waitForElementVisibility(installationProfessional);
+		getReusableActionsInstance().scrollToElement(installationProfessional);
 		getReusableActionsInstance().executeJavaScriptClick(installationProfessional);
 	}
 
@@ -497,7 +503,7 @@ public class CreditCheckPage  extends BasePageClass {
 	}
 
 	public void selectDeliveryByAppointment() {
-		getReusableActionsInstance().waitForElementVisibility(deliveryByAppointment);
+		getReusableActionsInstance().isElementVisible(deliveryByAppointment);
 		getReusableActionsInstance().scrollToElement(deliveryByAppointment);
 		getReusableActionsInstance().executeJavaScriptClick(deliveryByAppointment);
 	}

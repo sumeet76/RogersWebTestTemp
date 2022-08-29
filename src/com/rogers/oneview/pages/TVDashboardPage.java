@@ -249,7 +249,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h3[@translate='global.dashboard.tv.customerHasTheFollowing']")
 	WebElement existingPackages;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1] | (//span[text()=' Add to cart '] or [text()='Ajouter au panier'])[2]")
+	//@FindBy(xpath = "(//span[@translate='global.cta.addToCart']/ancestor::button)[1] | (//span[text()=' Add to cart '] or [text()='Ajouter au panier'])[2]")
+	@FindBy(xpath = "//span[text()=' Add to cart ' or text()='Ajouter au panier ']")
 	WebElement callingAddToCart;
 
 
@@ -916,10 +917,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
-		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 60);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
-		getReusableActionsInstance().executeJavaScriptClick(btnRestartSetupbox);
+		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
+		getReusableActionsInstance().clickWhenReady(btnRestartSetupbox, 120);
+
 	}
 
 	/**

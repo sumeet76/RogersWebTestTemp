@@ -25,7 +25,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 	}
 
 	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityBFA"})
-	public void sohoNACTermMediumRiskPotgTest() throws InterruptedException {
+	public void tc38_sohoNACTermMediumRiskPotgTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
 				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",

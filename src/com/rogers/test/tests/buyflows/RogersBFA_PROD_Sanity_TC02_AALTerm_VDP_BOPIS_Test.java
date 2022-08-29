@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC02_AALTerm_VDP_BOPIS_Test extends BaseTestC
 	}
 
 	@Test(groups = {"PRODSanity","PRODAALSanity"})
-	public void rogersProdSanity_AAL_TERM() throws InterruptedException {
+	public void tc02_rogersProdSanity_AAL_TERM() throws InterruptedException {
 
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC13_Account_Registration_From_Profile_Tab extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC044_Account_Overview_Page_Account_Registration_From_Profile_Tab_Adding_new_Profile_ON_EN extends BaseTestClass {
     @Test
-    public void accountRegistrationFromProfileTab() {
+    public void OneViewCH_REG_Auto_TC044_Account_Overview_Page_Account_Registration_From_Profile_Tab_Adding_new_Profile_ON_EN() {
         // getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.User_New_Profile_Creation.getAccountNo(),TestDataHandler.User_New_Profile_Creation.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -24,7 +24,7 @@ public class OneViewCH_Auto_TC13_Account_Registration_From_Profile_Tab extends B
         reporter.reportLogWithScreenshot("Entered Email Address for New Profile Creation");
         getDashboardProfilePage().enterConfirmEmailForProfile(TestDataHandler.anonymousData.contactDetails.getConfirmEmail());
         reporter.reportLogWithScreenshot("Entered Confirm Email Address for New Profile Creation");
-        //reporter.hardAssert(getDashboardProfilePage().verifyEmailAddressForNewProfileUser(TestDataHandler.anonymousData.contactDetails.getEmail(),TestDataHandler.anonymousData.contactDetails.getConfirmEmail()),"Both NewEmail and ConfirmEmail address same","Both NewEmail and ConfirmEmail address different");
+        reporter.hardAssert(getDashboardProfilePage().verifyEmailAddressForNewProfileUser(TestDataHandler.anonymousData.contactDetails.getEmail(),TestDataHandler.anonymousData.contactDetails.getConfirmEmail()),"Both NewEmail and ConfirmEmail address same","Both NewEmail and ConfirmEmail address different");
         getDashboardProfilePage().clickCreateButton();
         reporter.reportLogWithScreenshot("Create button clicked");
         getDashboardProfilePage().clickCloseButton();
@@ -42,6 +42,6 @@ public class OneViewCH_Auto_TC13_Account_Registration_From_Profile_Tab extends B
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
 
-        closeSession();
+        //closeSession();
     }
 }

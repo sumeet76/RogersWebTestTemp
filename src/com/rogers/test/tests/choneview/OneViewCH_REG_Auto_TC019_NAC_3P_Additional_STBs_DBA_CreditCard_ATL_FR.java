@@ -12,16 +12,18 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC019_NAC_3P_Additional_STBs_DBA_CreditCard_ATL_FR extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_By_Appointment_Test (){
+    public void oneViewCH_REG_Auto_TC019_NAC_3P_Additional_STBs_DBA_CreditCard_ATL_FR (){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
-			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT(),"Chrome");
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
+			getAccountOverViewPage().setLanguageFrench();
+			reporter.reportLogWithScreenshot("Switched language from english to french");
 			reporter.reportLogWithScreenshot("Select Services Customer Wants");
 			getRogersIgniteBundlesPage().clkTVCheckbox();
 			getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -38,10 +40,13 @@ public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_
 			reporter.reportLogWithScreenshot("Product Added");
 			getRogersIgniteBundlesPage().clkContinue();
 			reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		    getRogersIgniteBundlesPage().clkExpressCheckOut();
-		    reporter.reportLogWithScreenshot("Cart Summary");
+		    getRogersIgniteBundlesPage().clickExchangeLater();
+			getRogersOVChannelsAndThemePacksPage().clkContinue();
 			getRogersIgniteBundlesPage().fourKTVPopup();
 			getRogersIgniteBundlesPage().fourKContinue();
+		    reporter.reportLogWithScreenshot("Cart Summary");
+			getRogersIgniteBundlesPage().clkContinue();
+			getRogersIgniteBundlesPage().clkContinue();
 			reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"cart summary header found","cart summary header not found");
 			getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		    reporter.reportLogWithScreenshot("verify Customer Profile");
@@ -95,8 +100,8 @@ public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_
 			reporter.reportLogWithScreenshot("card details entered");
 			getPaymentOptionsPage().clkContinue();
 			reporter.reportLogWithScreenshot("submit order");
-	//		getRogersOVCheckoutPage().clkSubmit();
-	//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			reporter.reportLogWithScreenshot("Order Placed");
 		
     }
@@ -109,7 +114,7 @@ public class OneViewCH_Auto_TC019_1413_TC01_E2E_NAC_3P_Additional_STBs_Delivery_
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

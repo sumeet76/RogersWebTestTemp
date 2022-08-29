@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC06_PPC_FinancingPlan_Test extends BaseTestC
     }
 
     @Test(groups = {"PRODSanity"})
-    public void rogersProdSanity_PPC_SelectingFinancingPlan() {
+    public void tc06_rogersProdSanity_PPC_SelectingFinancingPlan() {
 
         reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");

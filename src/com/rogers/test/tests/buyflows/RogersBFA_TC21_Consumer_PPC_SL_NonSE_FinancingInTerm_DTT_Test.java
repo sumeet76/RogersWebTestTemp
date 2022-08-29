@@ -24,7 +24,7 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
     }
 
     @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
-    public void rogersPPC_TC21_SLNonSE_FINInTerm_DTTPlanTest() {
+    public void tc21_rogersPPC_SLNonSE_FINInTerm_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
@@ -53,6 +53,7 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        //getRogersCheckoutPage().clickSkipAutopay();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
@@ -64,7 +65,6 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(),
                 "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");
-
     }
 
 

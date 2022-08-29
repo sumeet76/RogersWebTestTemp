@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2559_TC01_ChangePaymentMethod_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC008_AccountOverviewPage_ChangePaymentMethod_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_2559_TC01_ChangePaymentMethod(){
+    public void oneviewCH_REG_Auto_TC008_AccountOverviewPage_ChangePaymentMethod_ON_EN(){
         //Launch one view
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.ChangePaymentMethod.getAccountDetails().getBan(),TestDataHandler.ChangePaymentMethod.getContactID());

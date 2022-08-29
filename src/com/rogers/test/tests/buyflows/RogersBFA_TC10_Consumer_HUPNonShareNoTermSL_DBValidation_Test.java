@@ -17,7 +17,7 @@ import java.util.Map;
 public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_DBValidation_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
-        public void tc10rogersHUPNonShareNoTermSLTest() {
+        public void tc10_rogersHUPNonShareNoTermSLTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();

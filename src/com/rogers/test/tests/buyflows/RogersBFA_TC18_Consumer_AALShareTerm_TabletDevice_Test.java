@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void tc18rogersAalTabletTest() {
+    public void tc18_rogersAalTabletTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -83,8 +83,9 @@ public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_Test extends Base
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
-        reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
+        reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");
+        //getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("standard");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
