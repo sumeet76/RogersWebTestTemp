@@ -60,7 +60,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnDST150pkgTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 50 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnSSpkgTypeOfContract;
 
 	@FindBy(xpath="//h1[contains(@class,'dsa-hero-billboard__heading')]")
@@ -73,11 +73,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__main']/descendant::div[@class='internet-bundle-tile__content__checkbox']/descendant::label")
 	WebElement chkbox1GbpsSmartStream;
 
-
 	@FindBy(xpath = "//a[contains(@aria-label,'View internet bundles available to you')]/span")
 	WebElement btnSmartStream;
 	//div//a[@title='View internet bundles available to you']
 	//(//div//a[@title='Get Ignite Internet + SmartStream now'])[1]
+	//a[contains(@aria-label,'Get SmartStream')]/span
 
 	@FindBy(xpath = "//a[contains(@title,'View internet bundles available to you')]")
 	WebElement lnkSmartStream;
@@ -105,7 +105,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternet500uPackage;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 50 Ultd + Streaming Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnSmartStreamPackage;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
@@ -129,7 +129,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
-	@FindBy(xpath = "//button[@aria-label='Take the quiz']")
+	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]")
 	WebElement btnTakeAquiz;
 
 	@FindBy(xpath = "//img[@alt='Image of Disney+']")
@@ -137,6 +137,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath="//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']")
 	WebElement txtGWP;
+
+	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
+	WebElement txtPackageDetails;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
 	WebElement chkbox150IgniteStreaming;
@@ -265,7 +268,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	
 	public void clkInternetPackage() {
 		
-		getReusableActionsInstance().getWhenReady(btnInternetPackage, 90).click();
+		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
 	}
 
 	/**
@@ -361,7 +364,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 */
 	public void selectSmartStreamPkgMonthToMonthTypeOfContact() {
 		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 50 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
@@ -580,11 +583,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 
 	public void clkInternetBuyContinue() {
-		if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
+		} */
+		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(btnInternetBuyContinue, 60);
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
 	}
 
@@ -679,6 +686,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
     public boolean verifyGWPTag() {
 		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
     }
+
+	public void scrollToPackageDetails(){
+		getReusableActionsInstance().javascriptScrollByVisibleElement(txtPackageDetails);
+	}
 
 
 }

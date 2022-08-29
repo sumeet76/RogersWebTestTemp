@@ -37,9 +37,6 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void rogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThemePack_NL_ATL() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getPassword());
@@ -48,7 +45,6 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -61,7 +57,7 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-         getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
+         getRogersSolarisTVChannelsAndThemepacksPage().SelectChannelGenres(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getSwapInChannelOne());
         getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
         reporter.reportLogWithScreenshot("Channel added");
         getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();

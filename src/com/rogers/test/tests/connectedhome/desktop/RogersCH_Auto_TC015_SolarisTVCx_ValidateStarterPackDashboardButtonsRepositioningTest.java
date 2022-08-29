@@ -32,18 +32,18 @@ public class RogersCH_Auto_TC015_SolarisTVCx_ValidateStarterPackDashboardButtons
 	@Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void rogersCH_Auto_TC015_SolarisTVCx_ValidateStarterPackDashboardButtonsRepositioning() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_solarisTVAccountStarterPackage.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_solarisTVAccountStarterPackage.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc15_solarisTVAccountStarterPackage.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc14_solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Zero","FlexChannel are not Zero");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc15_solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Zero","FlexChannel are not Zero");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
         reporter.hardAssert(!getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is not available","Exchange FlexChannel Link is available");
     }       

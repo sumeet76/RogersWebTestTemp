@@ -36,26 +36,22 @@ public class RogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackageTest 
 
 	 @Test(groups = {"RegressionCH","TVPlanUpgardeCH"})
     public void rogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackage() {
-        reporter.reportLogWithScreenshot("Launched the Home Page");
-        getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08_SolarisTVOldConstructor.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08_SolarisTVOldConstructor.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVOldConstructor.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09_SolarisTVOldConstructor.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc08_SolarisTVOldConstructor.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVOldConstructor.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");                
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc08_SolarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc08_SolarisTVOldConstructor.getAccountDetails().getUpgradePlanFr());
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc09_SolarisTVOldConstructor.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc09_SolarisTVOldConstructor.getAccountDetails().getUpgradePlanFr());
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
