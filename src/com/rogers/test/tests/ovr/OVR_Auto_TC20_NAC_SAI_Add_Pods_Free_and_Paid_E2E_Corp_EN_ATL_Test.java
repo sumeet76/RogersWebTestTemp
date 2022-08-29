@@ -19,11 +19,11 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test() throws InterruptedException {
+    public void ovr_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -34,7 +34,8 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
-        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
+        reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -54,19 +55,13 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-        reporter.reportLogWithScreenshot("Product Added");
         reporter.reportLogWithScreenshot("Continue with internet bundle");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.reportLogWithScreenshot("Lands in Internet Addons page");
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
         getRogersIgniteBundlesPage().addAdditionalPods(5);
-        /*To Add the free pods in the internet addons page*/
-        //getRogersIgniteBundlesPage().addPods(0);
-        //reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
-        //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
@@ -102,7 +97,7 @@ public class OVR_Auto_TC20_NAC_SAI_Add_Pods_Free_and_Paid_E2E_Corp_EN_ATL_Test e
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");

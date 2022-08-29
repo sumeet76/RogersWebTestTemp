@@ -99,6 +99,7 @@ public class CreditCheckPage  extends BasePageClass {
 	})
 	WebElement installationOption;
 
+
 	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
 	WebElement courierDelivery;
 
@@ -204,6 +205,7 @@ public class CreditCheckPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(installationOption,30);
 
 	}
+
 
 	/**
 	 * Go to Page bottom
@@ -361,6 +363,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void clkAuthorize() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 5)) {
 			getReusableActionsInstance().clickWhenReady(authorizecheckbox);
 		}
