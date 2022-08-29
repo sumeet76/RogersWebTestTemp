@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test extends BaseTestClass {
-    @Test (groups = {"Regression","MaySanity","ReleaseSanity"})
-    public void oneViewCH_Auto_RHP_Dashboard_ValidateLinks_Test() {
+public class OneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN extends BaseTestClass {
+    @Test (groups = {"Regression","MaySanity"})
+    public void oneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHP_Dashboard_Validation.accountDetails.getBan(), TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();

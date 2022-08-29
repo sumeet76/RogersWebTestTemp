@@ -10,10 +10,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionCHOV"})
-    public void OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test(){
+    public void oneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymmetricalTiersforCx_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx.accountDetails.getBan(),TestDataHandler.SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -69,7 +69,7 @@ public class OneviewCH_Auto_TC110_OVS4_Migration_3P_GPON_ATL_OffersPage_Validate
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

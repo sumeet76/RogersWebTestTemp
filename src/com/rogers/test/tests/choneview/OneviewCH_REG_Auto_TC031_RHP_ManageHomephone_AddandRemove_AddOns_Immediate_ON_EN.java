@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Immediate_ON_EN extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
-    public void oneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immediate_ON_EN(){
+    public void oneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Immediate_ON_EN(){
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
@@ -31,9 +31,9 @@ public class OneViewCH_Auto_TC032_1645_RHP_ManageAddons_AddAndRemoveAddOns_Immed
         getHomePhoneAddonsPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date popup");
 
-        //getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

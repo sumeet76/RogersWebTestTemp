@@ -10,11 +10,11 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS3_SUS_15702_TC01_Validation_Of_CallerIDChangedSuccessfully_Modal extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC010_HomePhone_Dashboard_Validation_CallerIDChangedSuccessfully_Modal_ON_EN extends BaseTestClass {
 
     @Test(groups = {"RRhp","RegressionCHOV"})
 
-    public void oneViewCH_Auto_OVS3_SUS_15702_TC01_Validation_Of_CallerIDChangedSuccessfully_Modal() {
+    public void oneviewCH_REG_Auto_TC010_HomePhone_Dashboard_Validation_CallerIDChangedSuccessfully_Modal_ON_EN() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SUS_15702_TC01_Validation_Of_CallerID.accountDetails.getBan(),TestDataHandler.SUS_15702_TC01_Validation_Of_CallerID.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
