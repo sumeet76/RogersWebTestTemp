@@ -1,7 +1,7 @@
 package com.rogers.oneview.pages;
 
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -173,7 +173,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[text()='Continuer' or text()='Continue']/ancestor::button)[2]")
 	WebElement btnContinueOn4kChannelPack;
 
-	@FindBy(xpath = "(//p[contains(text(),'Immédiatement') or contains(text(),'Immediately')]/parent::div/preceding-sibling::div[contains(@class,'ds-radioButton')]")
+	@FindBy(xpath = "//p[contains(text(),'Immédiatement') or contains(text(),'Immediately')]/parent::div/preceding-sibling::div[contains(@class,'ds-radioButton')]")
 	WebElement btnImmediateBill;
 
 	@FindBy(xpath = "//div[@class='button-set set-end-to-end']//button[@translate='global.cta.submit']")
@@ -199,6 +199,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
+
+	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
+	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
 	WebElement standaloneChannelTab;
@@ -228,7 +231,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Exchange Flex Channels' or text()='Échanger chaînes flexibles']/ancestor::button")
 	WebElement ExchangeFlexChannels;
 
-	@FindBy(xpath = "//button[@name='tab-themepack']")
+	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
@@ -447,9 +450,9 @@ public class TVDashboardPage  extends BasePageClass {
 //		if (getReusableActionsInstance().isElementVisible(cancel)) {
 //			clickCancel();
 //		}
-		getReusableActionsInstance().waitForElementVisibility(themePacksTab, 45);
-		getReusableActionsInstance().scrollToElement(themePacksTab);
-		getReusableActionsInstance().executeJavaScriptClick(themePacksTab);
+		getReusableActionsInstance().waitForElementVisibility(themesTab, 45);
+		getReusableActionsInstance().scrollToElement(themesTab);
+		getReusableActionsInstance().executeJavaScriptClick(themesTab);
 //		getReusableActionsInstance().getWhenReady(themePacksTab, 30).click();
 	}
 

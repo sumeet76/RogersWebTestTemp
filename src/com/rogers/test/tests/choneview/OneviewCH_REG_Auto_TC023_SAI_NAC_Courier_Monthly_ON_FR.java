@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC023_1436_E2E_NAC_SAI_InstallType_Courier_PaymentMethod_MonthlyCharges_ON_FR extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_1436_TC01_E2E_NAC_SAI_PaymentMethod_CreditCard_Test(){
+    public void oneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
