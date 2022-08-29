@@ -81,7 +81,7 @@ public class OVR_Auto_TC42_FS_MIG_1P_to_ISS_E2E_FTO_ON_EN_Test extends BaseTestC
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
         getBundleBuilderPage().selectExpressProInstall();
         getBundleBuilderPage().clkTechInstallSlot();

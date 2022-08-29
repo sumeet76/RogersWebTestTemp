@@ -96,7 +96,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

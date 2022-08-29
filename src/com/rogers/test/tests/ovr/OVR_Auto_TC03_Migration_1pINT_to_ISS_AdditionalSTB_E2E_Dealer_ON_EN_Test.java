@@ -84,7 +84,7 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
         getBundleBuilderPage().selectExpressProInstall();
         getBundleBuilderPage().clkTechInstallSlot();

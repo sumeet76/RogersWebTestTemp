@@ -104,7 +104,7 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         reporter.reportLogWithScreenshot("Continue to Install page");
 
         reporter.reportLogWithScreenshot("Launched the install page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro Install");
         getBundleBuilderPage().clkTechInstallSlot();

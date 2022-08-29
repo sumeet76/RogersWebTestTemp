@@ -109,7 +109,7 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

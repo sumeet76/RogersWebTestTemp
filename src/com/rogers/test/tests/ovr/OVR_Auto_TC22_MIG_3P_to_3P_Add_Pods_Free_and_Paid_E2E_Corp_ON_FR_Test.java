@@ -124,7 +124,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();

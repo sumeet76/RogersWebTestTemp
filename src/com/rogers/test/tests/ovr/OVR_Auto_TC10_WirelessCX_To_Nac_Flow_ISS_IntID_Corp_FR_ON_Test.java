@@ -87,7 +87,7 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
 
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Launched the install options  page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");

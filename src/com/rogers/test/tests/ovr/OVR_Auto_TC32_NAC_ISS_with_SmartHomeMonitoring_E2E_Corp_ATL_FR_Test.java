@@ -109,7 +109,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

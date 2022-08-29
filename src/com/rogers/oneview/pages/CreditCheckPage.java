@@ -99,8 +99,6 @@ public class CreditCheckPage  extends BasePageClass {
 	})
 	WebElement installationOption;
 
-	@FindBy(xpath = "//h1[@translate='global.checkout.fulfillment.title']")
-	WebElement installPageHeader;
 
 	@FindBy(xpath="//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
 	WebElement courierDelivery;
@@ -205,9 +203,6 @@ public class CreditCheckPage  extends BasePageClass {
 
 	}
 
-	public boolean verifyInstallationPageHeader() {
-		return getReusableActionsInstance().isElementVisible(installPageHeader,180);
-	}
 
 	/**
 	 * Go to Page bottom

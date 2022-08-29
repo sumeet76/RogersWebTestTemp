@@ -104,7 +104,7 @@ public class OVR_Auto_TC24_NAC_ISS_Add_Pods_Free_and_Paid_E2E_Corp_ATL_EN_Test e
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

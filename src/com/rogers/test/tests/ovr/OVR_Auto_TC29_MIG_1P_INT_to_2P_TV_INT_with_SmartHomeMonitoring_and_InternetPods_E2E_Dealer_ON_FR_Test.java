@@ -115,7 +115,7 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_and_
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");

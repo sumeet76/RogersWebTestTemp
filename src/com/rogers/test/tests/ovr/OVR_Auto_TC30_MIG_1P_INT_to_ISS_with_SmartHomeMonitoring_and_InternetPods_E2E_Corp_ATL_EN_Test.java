@@ -99,7 +99,7 @@ public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_and_Intern
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();

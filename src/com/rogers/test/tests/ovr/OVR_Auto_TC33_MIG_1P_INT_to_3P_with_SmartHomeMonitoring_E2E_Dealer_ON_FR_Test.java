@@ -131,7 +131,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         //For GPON Address, skip select pro install as it's the only available installation option.
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");

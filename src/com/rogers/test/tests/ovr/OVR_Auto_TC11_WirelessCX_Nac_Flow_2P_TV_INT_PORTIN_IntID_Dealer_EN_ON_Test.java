@@ -102,7 +102,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationPageHeader(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in-person deliver");
