@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
+	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -102,6 +102,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Exchange later' or text()='Échanger plus tard']/ancestor::button")
 	WebElement exchangeLaterbtn;
 
+	@FindBy(xpath = "//div[text()='TV' or text()='la télé']//parent::div")
+	WebElement pointsToMentionTV;
+
 	@FindBy(xpath = "//div[text()='Internet']")
 	WebElement pointsToMentionInternet;
 
@@ -141,7 +144,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 //	@FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
 
-	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue')]")
+	@FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
 	WebElement fourKContinue;
 
 
@@ -155,9 +158,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(text(),'SmartStream')]/ancestor::label"),
+			@FindBy(xpath = "//div[contains(text(),'Streaming')]/ancestor::label"),
 			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']"),
-			@FindBy(xpath = "//div[contains(text(), ' SmartStream ')]")
+			@FindBy(xpath = "//div[contains(text(), 'Streaming')]")
 	})
 	WebElement smartStreamCheckbox;
 
@@ -330,6 +333,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.label.internetAddOns.header']")
 	WebElement internetAddOnsCharges;
 
+	@FindBy(xpath = "//span[@translate='global.label.homePhoneAddons']")
+	WebElement homephoneAddonsHeader;
+
 	@FindBy(xpath = "//*[@translate='global.label.monthlyBill']")
 	WebElement monthlyCharges;
 
@@ -418,8 +424,21 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[contains(text(),'Please advise the Bulk Tenant to contact a Solution Specialist at ') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement addressMDU;
 
-	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::span")
 	WebElement clickCancel;
+
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-1']//span[contains(text(),'$20 Term Offer')]")
+	WebElement termoffer;
+
+
+	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	WebElement productCampaign;
+
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
+	WebElement oneTimeCredit;
+
+	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
+	WebElement promoModule;
 
 
 	/**
@@ -492,7 +511,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void selectAdditionalIgniteTVBoxes() {
-		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,30);
+		getReusableActionsInstance().getWhenReady(additionalIgniteTVBoxes,120);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(additionalIgniteTVBoxes, "1");
 		getReusableActionsInstance().staticWait(5000);
 	}
@@ -521,7 +540,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(addToCart,45);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,60);
 		getReusableActionsInstance().scrollToElement(addToCart);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
@@ -535,7 +554,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().clickWhenReady(inputContainer,45);
 		getReusableActionsInstance().enterText(addressInput,address+Keys.BACK_SPACE,60);
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
+		getReusableActionsInstance().clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		getReusableActionsInstance().staticWait(5000);
@@ -561,7 +580,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
-		getReusableActionsInstance().clickIfAvailable(continueButton);
+		//getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
 
 
@@ -720,8 +739,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkCheckOutforCartSummary() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(checkOut,60);
-	//	getReusableActionsInstance().scrollToElement(checkOut);
-	//	getReusableActionsInstance().getWhenReady(checkOut,120).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().waitForElementTobeClickable(checkOut,90);
 		getReusableActionsInstance().executeJavaScriptClick(checkOut);
 	}
@@ -731,9 +748,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void fourKContinue() {
-		if(getReusableActionsInstance().isElementVisible(fourKContinue, 60))
-			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 20);
-			getReusableActionsInstance().executeJavaScriptClick(fourKContinue);
+		//getReusableActionsInstance().isElementVisible(fourKContinue, 60)
+			getReusableActionsInstance().waitForElementTobeClickable(fourKContinue, 45);
+			getReusableActionsInstance().clickWhenReady(fourKContinue);
 			getReusableActionsInstance().staticWait(2000);
 	}
 
@@ -786,7 +803,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clkInternetCheckbox() {
 		getReusableActionsInstance().staticWait(4000);
 //		getReusableActionsInstance().scrollToElement(internetCheckbox);
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 40);
+		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 60);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 
@@ -830,7 +847,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */	
 	public void expandInternetdiv() {
 		getReusableActionsInstance().clickWhenReady(pointsToMentionInternet,120);
-	}	
+	}
+	/**
+	 * Click Tv to Expand in Points to Mention
+	 * @author Jarmanjeet.Batth
+	 */
+	public void expandTvdiv() {
+		getReusableActionsInstance().clickWhenReady(pointsToMentionTV,30);
+	}
 	/**
 	 * Click Home Phone to Expand in Points to Mention
 	 * @author chinnarao.vattam
@@ -1020,7 +1044,7 @@ public void activateHomePhoneltrPopUp() {
 	*/
 	public boolean verifyRecommendedOffers() {
 //		getReusableActionsInstance().javascriptScrollByVisibleElement(recommendedOffer);
-		return getReusableActionsInstance().isElementVisible(recommendedOffer);
+		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 	/*
 	*Click Add to cart for the recommended offer
@@ -1146,9 +1170,9 @@ public void activateHomePhoneltrPopUp() {
 	 * @author chinnarao.vattam
 	 */
 	public void clkExpressCheckOut() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
-		getReusableActionsInstance().executeJavaScriptClick(expressCheckout);
+		getReusableActionsInstance().clickWhenReady(expressCheckout);
 //    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
@@ -1296,6 +1320,10 @@ public void activateHomePhoneltrPopUp() {
 
 	public boolean validateInternetAddOnsHeader(){
 		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+	}
+
+	public boolean validateHomephoneAddOnsHeader(){
+		return getReusableActionsInstance().isElementVisible(homephoneAddonsHeader,60);
 	}
 
 	public boolean validateSmartHomeAddOnsHeader() {
@@ -1465,15 +1493,33 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public void clickCancelButton() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementTobeClickable(clickCancel,30);
-		getReusableActionsInstance().clickWhenReady(clickCancel);
+		getReusableActionsInstance().executeJavaScriptClick(clickCancel);
 	}
 
 	public void refreshEnterAddress() {
 		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//input[@id='algoliaInput']"),120);
 	}
 
+	public void termOffer(){
+		getReusableActionsInstance().waitForElementVisibility(termoffer,90);
+		getReusableActionsInstance().scrollToElement(termoffer);
+		getReusableActionsInstance().executeJavaScriptClick(termoffer);
+	}
 
+	public void selectProductCampaign(){
+		getReusableActionsInstance().waitForElementVisibility(productCampaign,30);
+		getReusableActionsInstance().scrollToElement(productCampaign);
+		getReusableActionsInstance().executeJavaScriptClick(productCampaign);
+	}
+
+	public void oneTimeCredit(){
+		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
+		getReusableActionsInstance().scrollToElement(oneTimeCredit);
+		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+
+	}
 
 }
 

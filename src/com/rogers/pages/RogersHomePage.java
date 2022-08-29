@@ -271,26 +271,40 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
 	WebElement btnIconAvatar;
 
-	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='View links to Ignite Internet Information Pages']")
+	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'Ignite Internet Information Pages')]")
 	WebElement subnavIgniteInternet;
 
-	@FindAll({
-	@FindBy(xpath = "//li[@role='menuitem']/dsa-subnav-link/a[contains(@title,'View links to TV & Streaming information pages')]"),
-	@FindBy(xpath = "//span[text()='TV & Streaming Bundles']/ancestor::li[@role='menuitem']")})
+
+	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV & Streaming')]")
 	WebElement subnavIgniteSmartStream;
 
 	@FindAll({
-	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite SmartStream']"),
-	@FindBy(xpath = "//dsa-subnav-desktop//a[@title='Open for help on Ignite Internet products']")})
+			@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'TV & Streaming information pages')]"),
+			@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'TV and Streaming Information Pages')]")
+	})
+	WebElement subnavSmartStream;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Shop Ignite TV with Ignite Internet')]/span[@role='text']")
+	WebElement lnkGetItNow;
+
+
+	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'Help and Support')]")
 	WebElement subnavHelpAndSupport;
 
-	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Open to learn more about Ignite Internet') or contains(@title,'Ouvrir pour en savoir plus sur Élan Internet')]")
+
+	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'About Ignite Internet')]")
 	WebElement lnkAboutIgniteInternet;
 
-	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Ignite WiFi Promise') or contains(@title,'promesse Élan WiFi')]")
+	@FindBy(xpath ="//li[@class='mb-0 ng-star-inserted']/a[contains(@aria-label,'About TV & Streaming')]")
+	WebElement lnkAboutTVandStreaming;
+
+	@FindAll({
+			@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Promise')]"),
+			@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Satisfaction')]")
+	})
 	WebElement lnkIgniteWiFiPromise;
 
-	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Ignite WiFi Hub') or contains(@title,'centre Élan WiFi')]")
+	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'Ignite WiFi Hub')]")
 	WebElement lnkIgniteWiFiHub;
 
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@title,'Check availability of Ignite') or contains(@title,'d’Élan Internet à votre adresse')]")
@@ -384,7 +398,8 @@ public class RogersHomePage extends BasePageClass {
 	 * Click the SignIn button from the top tile bar 
 	 * @author chinnarao.vattam 
 	 */
-	public void clkEasyLogin() {		
+	public void clkEasyLogin() {
+		getReusableActionsInstance().waitForElementVisibility(lnkEasyLogin, 120);
 		getReusableActionsInstance().getWhenVisible(lnkEasyLogin, 30).click();
 	}
 	
@@ -395,6 +410,16 @@ public class RogersHomePage extends BasePageClass {
 	public void clkEasyInternet() {
 		getReusableActionsInstance().getWhenVisible(lnkEasyInternet, 30).click();
 		getReusableActionsInstance().clickIfAvailable(lnkEasyInternet, 30);
+	}
+
+	public void waitBeforeSwapSecondRun(){
+		getReusableActionsInstance().staticWait(20000);
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
+	public void waitforURLNavigation(){
+		//getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	/**
@@ -411,8 +436,14 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSubnavIgniteSmartStream() {
 		getReusableActionsInstance().getWhenVisible(subnavIgniteSmartStream, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
+	public void clkGetIgniteTvWithIgniteInternet(){
+		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
+		getReusableActionsInstance().getWhenReady(lnkGetItNow,30).click();
+		getReusableActionsInstance().waitForPageLoad();
+	}
 	/**
 	 * Click the Ignite Internet from the sub navigator
 	 * @author chinnarao.vattam
@@ -436,7 +467,15 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean isSubnavIgniteSmartStream()  {
-		return getReusableActionsInstance().isElementVisible(subnavIgniteSmartStream, 30);
+		return getReusableActionsInstance().isElementVisible(subnavSmartStream, 30);
+	}
+
+	/**
+	 * Click the About Ignite Internet link
+	 * @author manpreet.kaur3
+	 */
+	public void clkSubnavSmartStream() {
+		getReusableActionsInstance().getWhenVisible(subnavSmartStream, 30).click();
 	}
 
 	/**
@@ -458,6 +497,31 @@ public class RogersHomePage extends BasePageClass {
 	}
 
 	/**
+	 * Click the About Ignite Internet link
+	 * @author manpreet.kaur3
+	 */
+	public void clkAboutIgniteInternetLink() {
+		getReusableActionsInstance().getWhenVisible(lnkAboutIgniteInternet, 30).click();
+	}
+
+	/**
+	 * checks if the About TV and Streaming link is displayed
+	 * @return true if the About TV and Streaming link is displayed else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean isAboutTVandStreamingLinkPresent()  {
+		return getReusableActionsInstance().isElementVisible(lnkAboutIgniteInternet, 30);
+	}
+
+	/**
+	 * Click the About TV and Streaming link
+	 * @author manpreet.kaur3
+	 */
+	public void clkAboutTVandStreamingLink() {
+		getReusableActionsInstance().getWhenVisible(lnkAboutIgniteInternet, 30).click();
+	}
+
+	/**
 	 * Click the SignIn button from the top tile bar
 	 * @author chinnarao.vattam
 	 */
@@ -470,7 +534,9 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteWiFiPromise() {
-		getReusableActionsInstance().getWhenVisible(lnkIgniteWiFiPromise, 30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(lnkIgniteWiFiPromise,40);
+		getReusableActionsInstance().getWhenReady(lnkIgniteWiFiPromise).click();
+		//getReusableActionsInstance().getWhenVisible(lnkIgniteWiFiPromise, 30).click();
 	}
 
 	/**
@@ -579,7 +645,11 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam 
 	 */
 	public void clkNoThnx() {	
-		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 60);
+		getReusableActionsInstance().clickIfAvailable(btnNoThnx, 20);
+	}
+
+	public boolean verifyNoThanks(){
+		return getReusableActionsInstance().isElementVisible(btnNoThnx, 30);
 	}
 	
 	/**
@@ -706,6 +776,17 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
 	}
 
+	/**
+	 * Click the NL Province link from the top tile bar
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkNLProvinceLnk() {
+		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
+	}
+
 
 	/**
 	 * Clicks on the 'Service ability' button
@@ -812,7 +893,8 @@ public class RogersHomePage extends BasePageClass {
 	}
 
 	public void setIgniteAddressLookup(String strAddress) {
-		getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
+		//getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
@@ -934,6 +1016,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkIgniteAddressLookupSubmitSS() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 60).click();
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**
@@ -1048,7 +1131,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 30);
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 60);
 	}
 
 	/**
@@ -1057,6 +1140,8 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkUseAddress() {
 		getReusableActionsInstance().getWhenReady(btnUseAddress, 90).click();
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 	}
 
 	/**

@@ -33,14 +33,14 @@ public class RogersSC_TC_009_02_ExistingSolarisCustomer_ManageChannelsAndThemePa
 		getRogersHomePage().clkSignIn();
 		getRogersLoginPage().switchToSignInIFrame();
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_2_SolarisChangeTVManageChannels.getPassword());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getUsername());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersLoginPage().switchOutOfSignInIFrame();
-		getRogersAccountOverviewPage().selectAccount((TestDataHandler.tc06_2_SolarisChangeTVManageChannels.accountDetails.getBan()));
+		getRogersAccountOverviewPage().selectAccount((TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getBan()));
 		reporter.softAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();

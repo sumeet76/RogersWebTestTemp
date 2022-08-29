@@ -24,7 +24,7 @@ public class RogersBFA_TC39_POM_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Tes
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","SOHOBFA","POM"})
-    public void sohoAalByodNonShareStdShippingMBTest() {
+    public void tc39_sohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -90,6 +90,7 @@ public class RogersBFA_TC39_POM_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Tes
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
+        //getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("standard");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();

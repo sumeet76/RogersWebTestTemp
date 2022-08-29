@@ -74,7 +74,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='customer-address flyout-address account-overview-padding']/span[contains(text(),'ON')]")
     WebElement Province;
 
-    @FindBy(xpath = "//div[@class='arrow-down-container care-border']")
+    @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
     @FindBy(xpath = "//div[contains(@class,'IPTV')]")
@@ -91,6 +91,9 @@ public class AccountOverViewPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Change to paper billing')]")
     WebElement ChangetoPaperBilling;
+
+    @FindBy(xpath = "//button[@class='lg red font-s btn-continue']")
+    WebElement ConfirmBillingChange;
 
     @FindBy(xpath = "//span[contains(text(),'Change to online billing')]")
     WebElement ChangetoOnlineBilling;
@@ -242,7 +245,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@id='bb-bs-bill-messages']/child::div/child::div[text()=' Account Messages']")
     WebElement accountMessages;
 
-    @FindBy(xpath ="//iframe[contains(@class,'bill ng-tns-c288')]")
+    @FindBy(xpath ="//iframe[contains(@class,'bill')]")
     WebElement iframewindow;
 
     /**
@@ -353,6 +356,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author aditi.jain
      */
     public void clickIgnite() {
+        getReusableActionsInstance().staticWait(5000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
        if (getReusableActionsInstance().isElementVisible(OK, 30)) {
@@ -676,7 +680,7 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public void clickonBillingDropDown() {
         getReusableActionsInstance().javascriptScrollByVisibleElement(BillingDropDownbutton);
-        getReusableActionsInstance().clickWhenReady(BillingDropDownbutton);
+        getReusableActionsInstance().executeJavaScriptClick(BillingDropDownbutton);
     }
 
     public void clickPaperBilling() {
@@ -690,10 +694,15 @@ public class AccountOverViewPage extends BasePageClass {
      */
     public void clickOnlineBilling() {
         if(getReusableActionsInstance().isElementVisible(ChangetoPaperBilling)){
-            getReusableActionsInstance().clickWhenReady(ChangetoPaperBilling,30);
+            getReusableActionsInstance().executeJavaScriptClick(ChangetoPaperBilling);
         }     else{
-            getReusableActionsInstance().clickWhenReady(ChangetoOnlineBilling,30);
+            getReusableActionsInstance().executeJavaScriptClick(ChangetoOnlineBilling);
         }
+    }
+
+    public void clickOnConfirmChange(){
+        getReusableActionsInstance().waitForElementTobeClickable(ConfirmBillingChange,20);
+        getReusableActionsInstance().clickWhenReady(ConfirmBillingChange,20);
     }
     /**
      * This method verifies the Profile Page is displayed
@@ -751,7 +760,7 @@ public class AccountOverViewPage extends BasePageClass {
     }
 
     /**
-     * This method click View Offers
+     * Scroll to the bottom of the page
      *
      * @author Jarmanjeet.Batth
      */

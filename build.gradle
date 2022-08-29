@@ -45,7 +45,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
 	systemProperty 'XrayImportFlag', xray_import_flag
-	systemProperty 'TestProject',test_project
+	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'JiraAssignee', test_jira_assignee
@@ -97,7 +97,7 @@ task "localTest"(type: Test) {
 	systemProperty 'XrayImportFlag', xray_import_flag
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
-	systemProperty 'TestProject',test_project
+	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
 	systemProperties(System.getProperties())

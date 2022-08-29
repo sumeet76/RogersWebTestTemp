@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import utils.FormFiller;
 
+import java.util.List;
+
 public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	public RogersIgniteTVBuyPage(WebDriver driver) {
@@ -46,6 +48,55 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath="//h3[text()='Ignite Starter']")
 	WebElement headerIgniteStarter;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]/span[@role='text']")
+	WebElement btnTakeQuiz;
+
+	@FindBy(xpath = "//label[@for='dsQ1A1']/span")
+	WebElement btnLiveTVChannels;
+
+	@FindBy(xpath = "//label[@for='dsQ1A2']/span")
+	WebElement btnLiveSports;
+
+	@FindBy(xpath = "//label[@for='dsQ1A3']/span")
+	WebElement btnFlexibleChannels;
+
+	@FindBy(xpath = "//label[@for='dsQ1A4']/span")
+	WebElement btnMobileApp;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'Continue')]/span")
+	WebElement btnDSTcontinue;
+
+	@FindBy(xpath = "//ds-icon[@title='Rate network category 4 stars']/span")
+	WebElement imgRateNetworkCategoryFour;
+
+	@FindBy(xpath = "//ds-icon[@title='Rate news category 4 stars']/span")
+	WebElement imgRateNewsCategoryFour;
+
+	@FindBy(xpath = "//ds-icon[@title='Rate entertainment category 4 stars']/span")
+	WebElement imgRateEntertainmentCategoryFour;
+
+	@FindBy(xpath = "//ds-icon[@title='Rate lifestyle category 4 stars']/span")
+	WebElement imgRateLifestyleCategoryFour;
+
+	@FindBy(xpath = "//input[@aria-label='Select 6 to 11']/parent::label/span")
+	WebElement btnInternetDevices;
+
+	@FindBy(xpath="//input[@aria-label='Yes, add Ignite Home Phone for an additional $10/mo']/parent::label/span")
+	WebElement btnAddHomePhoneDST;
+
+	@FindBy(xpath= "//button[@aria-label='BEST FITRogers Ignite Flex 10 Bundle']")
+	WebElement txtBestFit;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement btnDSTClose;
+
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']")
+	WebElement VerifyYourBestFit;
+
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/ancestor::div[@class='vertical-tile-component']/descendant::a[@aria-label='Ignite Flex 10 Add to cart']/span/span")
+	WebElement btnBestAdd;
+
 
 	@FindAll({
 			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Add Rogers Ignite Flex 5 Bundle to cart']/ancestor::div[@class='bundle-tile-price']//span[text()='/mo*']"),
@@ -84,7 +135,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 5']/ancestor::a")
 	WebElement btnFlex5Package;
 
-	@FindBy(xpath = "//div[@class='bundle-tile-price']//span[@id='ariaBundlesAddToCart_Rogers Ignite Flex 10']/ancestor::a")
+	@FindAll({
+			@FindBy(xpath="//a[contains(@aria-label,'Ignite Flex 10 Add to cart')]//span[text()='Order online']"),
+			@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/span/span")
+	})
 	WebElement btnFlex10Package;
 
 	@FindAll({
@@ -137,6 +191,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Press here to continue with this number']/span[@role='text']")
 	WebElement btnHomePhoneAddOnContinue;
+
+	@FindBy(xpath = "//a[@aria-label='Click here to continue to the next step']/span")
+	WebElement btnReviewCallerInfoContinue;
 
 	@FindBy(xpath = "//h1[@translate='global.rhpAddOns.homePhoneAddons']")
 	WebElement headerHomePageAddOn;
@@ -216,6 +273,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex20PackageTypeOfContract;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwnFlex10PackageTypeOfContract;
+
 	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
 	WebElement btnOkay;
 
@@ -262,6 +322,18 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[@translate='global.label.totalChannels']")
 	WebElement txtTotalChannelsRateCardDetails;
+
+	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
+	WebElement drpdwnGenre;
+
+	@FindBy(xpath = "//button[@aria-label='Enter your address to check package prices and offers now.']/span")
+	WebElement btnEnterAddress;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]/span")
+	WebElement btnTotalChannelsFlex20;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]/span")
+	WebElement btnFlexChannelsFlex20;
 
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
@@ -513,10 +585,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
+
 
 	/**
 	 * To verify Bundles Page
@@ -610,7 +684,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkPlusAddIgniteTVBoxes() {
 		getReusableActionsInstance().waitForElementVisibility(buttonAddIgniteTVBoxes, 90);
-		getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		//getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
+		getReusableActionsInstance().clickWhenReady(buttonAddIgniteTVBoxes);
 	}
 
 	/**
@@ -757,6 +832,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkIUnderstand() {
 		getReusableActionsInstance().getWhenReady(btnIUnderstand, 60).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 		
 	/**
@@ -764,7 +840,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHomePhone() {
-		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 30);
+		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 60);
 		getReusableActionsInstance().getWhenReady(btnHomePhoneContinue, 10).click();
 	}
 
@@ -1401,5 +1477,224 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void scrollToIgniteStarter() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgniteStarter);
+	}
+
+	/**
+	 * To click on take the quiz
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkTaketheQuiz() {
+			getReusableActionsInstance().waitForElementVisibility(btnTakeQuiz, 90);
+			getReusableActionsInstance().executeJavaScriptClick(btnTakeQuiz);
+	}
+
+	/**
+	 * To select Live TV channels in DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkLiveTVChannels() {
+		getReusableActionsInstance().getWhenReady(btnLiveTVChannels, 30).click();
+	}
+
+	/**
+	 * To select Flexible channels in DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFlexibleChannels() {
+		getReusableActionsInstance().getWhenReady(btnFlexibleChannels, 30).click();
+	}
+
+	/**
+	 * To select Live Sports plus in DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkLiveSports() {
+		getReusableActionsInstance().getWhenReady(btnLiveSports, 30).click();
+	}
+
+	/**
+	 * To select Mobile App with Download and Go in DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkMobileApp() {
+		getReusableActionsInstance().getWhenReady(btnMobileApp, 30).click();
+	}
+
+	/**
+	 * To Click on DST Continue to next question
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkDSTContinue() {
+		getReusableActionsInstance().getWhenReady(btnDSTcontinue, 30).click();
+	}
+
+	/**
+	 * To select 4 starts for network category
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFourStarsNetworkCategory() {
+		getReusableActionsInstance().getWhenReady(imgRateNetworkCategoryFour, 30).click();
+	}
+
+	/**
+	 * To select 4 starts for entertainment category
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFourStarsEntertainmentCategory() {
+		getReusableActionsInstance().getWhenReady(imgRateEntertainmentCategoryFour, 30).click();
+	}
+
+	/**
+	 * To select 4 starts for network category
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFourStarsNewsCategory() {
+		getReusableActionsInstance().getWhenReady(imgRateNewsCategoryFour, 30).click();
+	}
+
+	/**
+	 * To select 4 starts for lifestyle category
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkFourStarsLifestyleCategory() {
+		getReusableActionsInstance().getWhenReady(imgRateLifestyleCategoryFour, 30).click();
+	}
+
+	/**
+	 * To select Internet devices DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkInternetDevices() {
+		getReusableActionsInstance().getWhenReady(btnInternetDevices, 30).click();
+	}
+
+	/**
+	 * To select Add Home Phone DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkAddHomePhoneDST() {
+		getReusableActionsInstance().getWhenReady(btnAddHomePhoneDST, 30).click();
+	}
+
+	/**
+	 * To Verify the DST best fit
+	 * @return true if best fit is displayed, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyBestFit() {
+		return getReusableActionsInstance().getWhenReady(txtBestFit, 60).isDisplayed();
+	}
+
+	/**
+	 * To close DST
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkDSTClose() {
+		getReusableActionsInstance().getWhenReady(btnDSTClose, 90).click();
+	}
+
+	/**
+	 * To Verify the best fit on offers page
+	 * @return true if best fit promo is displayed, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean VerifyYourBestFit() {
+		return getReusableActionsInstance().getWhenReady(VerifyYourBestFit, 90).isDisplayed();
+	}
+
+	/**
+	 * To select type of contract to month-to-month
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectFlex10PackageMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().getWhenReady(drpdwnFlex10PackageTypeOfContract,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
+	/**
+	 * Click Continue on review caller information page
+	 * @author manpreet.kaur3
+	 */
+	public void clkReviewCallerContinuebtn() {
+		getReusableActionsInstance().waitForElementVisibility(btnReviewCallerInfoContinue, 60);
+		getReusableActionsInstance().getWhenReady(btnReviewCallerInfoContinue, 10).click();
+	}
+
+	/**
+	 * Click Add to Cart on recommeded pkg
+	 * @author manpreet.kaur3
+	 */
+	public void clkBestAdd() {
+		getReusableActionsInstance().getWhenReady(btnBestAdd, 60).click();
+	}
+
+	/**
+	 * Click Total Channels on Flex20 pkg
+	 * @author manpreet.kaur3
+	 */
+	public void clkTotalChannelsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
+	}
+
+	/**
+	 * Click Flex Channels on Flex20
+	 * @author manpreet.kaur3
+	 */
+	public void clkFlexChannelsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+	}
+
+	/**
+	 * verify Total Channels popup
+	 * @return true if displayed, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyViewTotalChannelsPopupModal() {
+		//getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 40);
+		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
+	}
+
+	/**
+	 * verify Flex Channels popup
+	 * @return true if displayed, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyViewFlexChannelsPopupModal() {
+		return getReusableActionsInstance().isElementVisible(drpdwnGenre, 60);
+	}
+
+	/**
+	 * Clicks on close button for Total Channels/Flex Channels popup
+	 * @author manpreet.kaur3
+	 */
+	public void clkCloseChannelsPopup() {
+		getReusableActionsInstance().getWhenReady(iconCloseModal, 20).click();
+	}
+
+	/**
+	 * verify SVOD is removed from genre dropdown
+	 * @return true if  not available in the list, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifySVODRemovedFromGenre() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 90);
+		getReusableActionsInstance().getWhenReady(drpdwnGenre, 30).click();
+		Select DrpDwnGenreSel = new Select(drpdwnGenre);
+		List<WebElement> DrpDwnGenreList = DrpDwnGenreSel.getOptions();
+		for (WebElement indElem : DrpDwnGenreList) {
+			if (indElem.getText().contains("SVOD")) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Click on enter address button on offers page
+	 * @author manpreet.kaur3
+	 */
+	public void clkEnterAddress() {
+		getReusableActionsInstance().getWhenReady(btnEnterAddress, 60).click();
 	}
 }

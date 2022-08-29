@@ -25,7 +25,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "//div[contains(text(), 'Ignite TV Premier')]/ancestor::div[@class='bundle-tile-wrapper']/descendant::div[@class='bundle-price__cta -group text-right']")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']/ancestor::button)[2]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -120,7 +120,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.dashboard.internet.pods.addPods']/ancestor::button")
 	WebElement addPodsButton;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
 	WebElement addPodToCart;
 
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
@@ -149,16 +149,17 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[contains(text(),'The customer understands that someone 18 years of age or older must be present to receive the equipment delivery') or contains(text(),'Le client convient qu’une personne d’au moins 18 ans doit être présente pour recevoir l’équipement')]")
 	WebElement customerUnderstandCheckbox;
 
-	@FindBy(xpath = "//*[text()=' SmartStream ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
+
+	@FindBy(xpath = "//*[text()=' Streaming ' or text() = ' Diffusion ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement chkBtnSmartStreamSelect;
 
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
-	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[3]/child::button")
+	@FindBy(xpath = "(//span[@translate='global.cta.select' and contains(text(),'Select')])[4]/ancestor::button")
 	WebElement btnSelectSmartStream;
 
-	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + SmartStream']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
 	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
@@ -600,12 +601,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickViewDetails() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewDetails, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0,btn.getLocation().y-300);
-		getReusableActionsInstance().getWhenReady(btnViewDetails,60).click(); }
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().clickWhenReady(btnViewDetails,60); }
 
 	public void clickPackageDetails(){
 		getReusableActionsInstance().waitForElementVisibility(expandPackageDetails, 60);
-		getReusableActionsInstance().getWhenReady(expandPackageDetails, 30).click();
+		getReusableActionsInstance().clickWhenReady(expandPackageDetails, 30);
 //		getReusableActionsInstance().executeJavaScriptClick(expandPackageDetails);
 	}
 
@@ -732,7 +733,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifyIgniteWiFiPod() {
-		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 30);
+		getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
+		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 60);
 		return getReusableActionsInstance().isElementVisible(IgniteWiFiPod);
 	}
 	/*

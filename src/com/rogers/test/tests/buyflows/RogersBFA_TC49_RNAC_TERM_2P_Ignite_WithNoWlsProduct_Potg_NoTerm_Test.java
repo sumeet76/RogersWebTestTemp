@@ -98,6 +98,7 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_Potg_NoTerm_Tes
         getRogersCheckoutPage().clkCreditEvalContinue();
         reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
         // ***************Choose a Number Stepper*************//
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc49_2P_Ignite_NACTermTermPotg.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
         getRogersCheckoutPage().clkNoThanks();
@@ -110,9 +111,10 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_Potg_NoTerm_Tes
         // ***************Billing & Payment Stepper*************//
         getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc49_2P_Ignite_NACTermTermPotg.getPaymentMethod());
         getRogersCheckoutPage().clkBillingContinueButton();
+        getRogersCheckoutPage().clickSkipNacAutopay();
         //***************Shipping Stepper*************//
-        getRogersCheckoutPage().clkDeliveryMethod("PRO");
-        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
+        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+        reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPass("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
