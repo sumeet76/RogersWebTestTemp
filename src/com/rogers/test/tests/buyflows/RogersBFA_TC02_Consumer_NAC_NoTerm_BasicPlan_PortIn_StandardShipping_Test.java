@@ -25,7 +25,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc02rogersNACNoTermStandardShippingTest() throws InterruptedException {
+	public void tc02_rogersNACNoTermStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
