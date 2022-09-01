@@ -19,7 +19,7 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test() {
@@ -35,7 +35,7 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -97,9 +97,8 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
-        //getBundleBuilderPage().selectExpressProInstall();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Select a time slot");

@@ -36,6 +36,7 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
 
         reporter.reportLogWithScreenshot("Address Availability popup");
+        reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
@@ -108,8 +109,7 @@ public class OVR_Auto_TC19_NAC_2P_TV_INT_Add_Pods_Free_and_Paid_E2E_Dealer_EN_ON
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

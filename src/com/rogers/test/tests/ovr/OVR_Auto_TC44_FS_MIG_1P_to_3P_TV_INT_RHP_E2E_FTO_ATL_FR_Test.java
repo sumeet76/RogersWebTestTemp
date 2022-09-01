@@ -19,7 +19,7 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extend
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FT_ATL_FR_Test() {
@@ -35,7 +35,6 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extend
 
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_44_Ovr_Mig_Data_1p_to_3p.getBanNumber(), TestDataHandler.tc_44_Ovr_Mig_Data_1p_to_3p.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
-        reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();
@@ -117,8 +116,7 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extend
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         //For GPON Address, skip select pro install as it's the only available installation option.
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");

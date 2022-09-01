@@ -10,10 +10,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test extends BaseTestClass {
 
     @Test(groups="RegressionCHOV")
-    public void oneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
+    public void oneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(), TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
@@ -25,7 +25,7 @@ public class OneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         getTVDashboardPage().clickAddChannel();
         reporter.reportLogWithScreenshot("add channel");
         getTVDashboardPage().clickThemepacksTab();
@@ -36,11 +36,11 @@ public class OneViewCH_Auto_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("Pop for selecting billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        getInternetDashboardPage().clickImmediateBill();
+        //getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
         reporter.reportLogWithScreenshot("Order Review Page");
-    //    getRogersOVCheckoutPage().clkSubmit();
-    //    reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVCheckoutPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
     }

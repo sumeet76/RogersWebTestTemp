@@ -19,7 +19,7 @@ public class OVR_Auto_TC28_NAC_SAI_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -38,7 +38,7 @@ public class OVR_Auto_TC28_NAC_SAI_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
 
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("642 abana L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -102,9 +102,8 @@ public class OVR_Auto_TC28_NAC_SAI_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
-        getBundleBuilderPage().selectExpressProInstall();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
+        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");
