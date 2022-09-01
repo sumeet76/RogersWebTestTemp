@@ -276,6 +276,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex10PackageTypeOfContract;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")
+	WebElement drpdwnInternetSpeed;
+
 	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
 	WebElement btnOkay;
 
@@ -1696,5 +1699,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkEnterAddress() {
 		getReusableActionsInstance().getWhenReady(btnEnterAddress, 60).click();
+	}
+
+	public void select1GbpsInternetSpeed() {
+		getReusableActionsInstance().getWhenReady(drpdwnInternetSpeed,30).click();
+		Select internetSpeed = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")));
+		internetSpeed.selectByVisibleText("1 Gbps");
 	}
 }
