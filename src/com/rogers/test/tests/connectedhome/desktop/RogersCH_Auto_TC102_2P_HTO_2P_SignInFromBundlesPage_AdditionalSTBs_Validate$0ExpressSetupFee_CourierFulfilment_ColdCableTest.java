@@ -122,7 +122,7 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.reportLogWithScreenshot("Launched the order review page");
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAdditionalSTBs(), "Additional STBs verified","Additional STBs not verified");
-        
+
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
 
