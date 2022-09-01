@@ -125,10 +125,19 @@ public class RogersHomePage extends BasePageClass {
 	@FindAll({
 	@FindBy(xpath = "//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large']"),
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -secondary -large']")})
-	WebElement btnAddress;	
+	WebElement btnAddress;
 
 	@FindBy(xpath = "//button[@class='a-btnPrimary']")
 	WebElement btnAddressValidation;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'Enter your address')]/span")
+	WebElement btnEnterYourAddress;
+
+	@FindBy(xpath ="//div[@class='serviceability__search']")
+	WebElement headerServiceability;
+
+	@FindBy(xpath = "//a[@aria-label = 'Already a Rogers customer?  Sign into MyRogers']/span")
+	WebElement btnSignIntoMyRogers;
 
 	@FindAll({
 			@FindBy(xpath = "//input[contains(@id,'ds-form-input-id-')]"),
@@ -1201,6 +1210,33 @@ public class RogersHomePage extends BasePageClass {
 
 		getReusableActionsInstance().waitForElementVisibility(formLogin, 30);
 		return getReusableActionsInstance().isElementVisible(formLogin);
+	}
+
+	/**
+	 * Clicks on the Address Check  button to check Service ability
+	 * @author manpreet.kaur3
+	 */
+	public void clkEnterAddress() {
+		getReusableActionsInstance().waitForElementVisibility(btnEnterYourAddress, 90);
+		getReusableActionsInstance().getWhenReady(btnEnterYourAddress, 20).click();
+	}
+
+	/**
+	 * Verify the Serviceability modal
+	 * @returns true if modal is visible, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyServiceabilityPopup() {
+		return getReusableActionsInstance().isElementVisible(headerServiceability, 30);
+	}
+
+	/**
+	 * Clicks on the Sign In button on serviceability modal
+	 * @author manpreet.kaur3
+	 */
+	public void clkSignIntoMyRogers() {
+		getReusableActionsInstance().waitForElementVisibility(btnSignIntoMyRogers, 10);
+		getReusableActionsInstance().clickWhenReady(btnSignIntoMyRogers, 10);
 	}
 }
 
