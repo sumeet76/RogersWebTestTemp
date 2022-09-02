@@ -11,10 +11,10 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC109_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecommendation_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRecommendation_ON_EN_Test extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
 
-    public void OneViewCH_Auto_TC109_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecommendation_Test(){
+    public void oneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRecommendation_ON_EN_Test(){
         reporter.reportLogWithScreenshot("OneView env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
@@ -98,6 +98,6 @@ public class OneViewCH_Auto_TC109_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecom
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

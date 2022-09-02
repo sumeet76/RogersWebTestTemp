@@ -19,7 +19,7 @@ public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_and_Intern
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -64,10 +64,6 @@ public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_and_Intern
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
         getRogersIgniteBundlesPage().addAdditionalPods(5);
-        /*To Add the free pods in the internet addons page*/
-        getRogersIgniteBundlesPage().addPods(0);
-        reporter.reportLogWithScreenshot("Free internet add on Pod is added to the cart");
-        //getRogersIgniteBundlesPage().addAdditionalPods(0);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"SHM Add ons page loaded","SHM add ons page not loaded");
@@ -103,8 +99,7 @@ public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_and_Intern
         getCreditCheckPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Select Express Pro install");
         getBundleBuilderPage().clkTechInstallSlot();

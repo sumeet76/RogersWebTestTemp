@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS3_Validate_IPTV_dashboard_for_the_account_having_Mulitpls_STB_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC084_Validate_IPTV_Dashboard_Mulitple_STB_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_OVS3_Validate_IPTV_dashboard_for_the_account_having_Mulitpls_STB_EN(){
+    public void oneviewCH_REG_Auto_TC084_Validate_IPTV_Dashboard_Mulitple_STB_ON_EN(){
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IPTVDasboad_MulitplsSTB.getAccountNo(),TestDataHandler.IPTVDasboad_MulitplsSTB.getContactID());
         getAccountOverViewPage().clickIgniteTVBadge();

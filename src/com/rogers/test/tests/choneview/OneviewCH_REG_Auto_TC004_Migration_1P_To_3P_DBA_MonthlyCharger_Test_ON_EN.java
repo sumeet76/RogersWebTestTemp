@@ -20,9 +20,9 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 
-public class OneViewCH_Auto_TC004_1620_E2E_Migration_1P_To_3P_DBA_MonthlyCharger_Test_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC004_Migration_1P_To_3P_DBA_MonthlyCharger_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void oneViewCH_Auto_TC004_1620_E2E_Migration_1P_To_3P_DBA_MonthlyCharger_Test_ON_EN(){
+    public void oneviewCH_REG_Auto_TC004_Migration_1P_To_3P_DBA_MonthlyCharger_Test_ON_EN(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
@@ -64,12 +64,12 @@ public class OneViewCH_Auto_TC004_1620_E2E_Migration_1P_To_3P_DBA_MonthlyCharger
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
-		//getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		//getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		//getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		//getCreditCheckPage().clkAuthorize();
-		//reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-		//reporter.reportLogWithScreenshot("Credit Check Information");
+		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		getCreditCheckPage().clkAuthorize();
+		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
 		reporter.reportLogWithScreenshot("Phone Number Selected");
@@ -85,20 +85,18 @@ public class OneViewCH_Auto_TC004_1620_E2E_Migration_1P_To_3P_DBA_MonthlyCharger
 		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		reporter.reportLogWithScreenshot(".enter Email Mail Address");
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getPaymentOptionsPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");
-		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
-		//getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

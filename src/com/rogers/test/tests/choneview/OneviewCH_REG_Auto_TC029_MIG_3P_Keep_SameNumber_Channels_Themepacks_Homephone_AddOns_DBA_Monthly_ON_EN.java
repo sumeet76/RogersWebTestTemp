@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks_Homephone_AddOns_DBA_Monthly_ON_EN extends BaseTestClass {
 	@Test (groups = {"RMigration","RegressionCHOV"})
-    public void oneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN(){
+    public void oneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks_Homephone_AddOns_DBA_Monthly_ON_EN(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData3PSameNumber.getAccountNo(), TestDataHandler.migrationData3PSameNumber.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		//	getAccountOverViewPage().enterDealerCodeDialogue();
@@ -38,6 +38,7 @@ public class OneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN e
 		//getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().reviewAllTerms();
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		getRogersIgniteBundlesPage().clickExchangeLater();
@@ -58,20 +59,19 @@ public class OneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN e
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCreditCheckPage().goToPageBottom();
 		getCustomerProfilePage().clkContinue();
-		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-		getCreditCheckPage().clkAuthorize();
+//		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+//		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+//		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+//		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
-		getCreditCheckPage().clkContinue();
+		//getCreditCheckPage().clkContinue();
 
-/*
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
-		getCreditCheckPage().continueConfirmation();
-		getCreditCheckPage().goToPageBottom();
-		getPaymentOptionsPage().clkContinue();*/
+		//getCreditCheckPage().continueConfirmation();
+		/*getCreditCheckPage().goToPageBottom();*/
+		getPaymentOptionsPage().clkContinue();
 
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
@@ -93,9 +93,9 @@ public class OneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN e
 		getPaymentOptionsPage().clkContinue();
 		//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -107,7 +107,7 @@ public class OneViewCH_Auto_TC030_1639_E2E_Migration_3P_Keep_Same_Number_ON_EN e
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

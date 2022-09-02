@@ -30,9 +30,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath="//button[@aria-label='Hide details about Ignite Flex 5']/following-sibling::ds-expander/descendant::div[@translate='global.label.additionalFeatures']/parent::div/descendant::li")
 	WebElement listAdditionalFeature;
 
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or  contains(text(),'Télé')]"),
-        @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
+
+	@FindBy(xpath ="//span[text()=' TV '  or text() =' Télévision ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSolaristvBadge;
 	
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")

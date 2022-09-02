@@ -157,28 +157,6 @@ public class RogersCH_Auto_TC095_SHM_NAC_AutomatePage_ValidateAllSectionsTest ex
         reporter.reportLogWithScreenshot("security packages");
 
     }
-    /*
-    public void checkAutomationPageContactUsTest() {
-       String actualTitle = getDriver().getTitle();
-       getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
-       reporter.reportLogWithScreenshot("Launched the Automation package Home Page");
-        getRogersSecurityPackagesPage().clkLiveChatwithRogers();
-        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
-        getRogersSecurityPackagesPage().switchToLivechatIFrame();
-        getRogersSecurityPackagesPage().clkNoShmOption();
-        reporter.reportLogWithScreenshot("Options Live chat window questions");
-        getRogersSecurityPackagesPage().clkCloseLivechat();
-        getRogersSecurityPackagesPage().clkFindRogersStore();
-        getReporter().hardAssert(getRogersSecurityPackagesPage().verifyStorePageDisplayed(), "Store has displayed", "Store is not displayed");
-        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
-
-       getDriver().get(System.getProperty("QaUrl") + "/home-security/automation-packages"+ "?setLanguage=" + strLanguage);
-       getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
-       reporter.reportLogWithScreenshot("Launched the security package Home Page");
-        getRogersSecurityPackagesPage().clkSHMCustomerCare();
-        reporter.reportLogWithScreenshot("Smart Home Monitoring Customer care");
-    } */
-
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous

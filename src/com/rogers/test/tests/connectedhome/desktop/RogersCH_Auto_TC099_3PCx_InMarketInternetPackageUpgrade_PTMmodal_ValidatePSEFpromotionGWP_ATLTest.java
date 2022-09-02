@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
- * 
+ * This class contains the test method to verify the Internet package upgrade flow for Rogers.com
+ * CH-13233,CH-13908,CH-13909_Regression_3PCx Change Internet_PTM Modal_Eligible for PSEF and GWP_E2E_NL_CH_EN
  * @author manpreet.kaur3
  * 
  * Test steps:

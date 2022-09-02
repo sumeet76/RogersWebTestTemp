@@ -65,7 +65,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[@translate='global.cta.submit']")
     WebElement changeCallerNameSubmit;
 
-    @FindBy(xpath = "//span[@translate='global.dashboard.tv.notIncludedWithBundleWithoutPrice']")
+    @FindBy(xpath = "//span[contains(text(),' Box 2')]")
     WebElement displayedMulitplsSTB;
 
     @FindBy(xpath = "//span[@translate='global.dashboard.tv.includedWithOnlyDefaultBundle']")

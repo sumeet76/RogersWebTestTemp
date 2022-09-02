@@ -6,7 +6,6 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -19,8 +18,9 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test exte
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("FS_SFU_username"), System.getenv("FS_password"));
@@ -80,7 +80,7 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test exte
         getRogersOVCheckoutPage().setFirstNameCreateProfile();
         getRogersOVCheckoutPage().setLastNameCreateProfile();
         reporter.reportLogWithScreenshot("First and Last name entered for customer Profile");
-        getRogersOVCheckoutPage().setContactNumberCreateProfile("6478973278");
+        getRogersOVCheckoutPage().setContactNumberCreateProfile("1010000061");
         reporter.reportLogPassWithScreenshot("Create Profile Page details");
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
@@ -96,8 +96,7 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test exte
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("Installation Page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
