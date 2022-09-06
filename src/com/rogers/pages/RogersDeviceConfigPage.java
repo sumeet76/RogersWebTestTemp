@@ -20,7 +20,6 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String xpathDeviceName;
 
     @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
-    public
     WebElement continueButton;
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")

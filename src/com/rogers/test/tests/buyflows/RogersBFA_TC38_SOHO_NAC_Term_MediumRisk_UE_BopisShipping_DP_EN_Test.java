@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test extends BaseTestClass {
+public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,9 +25,9 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 	}
 
 	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityBFA"})
-	public void tc38_sohoNACTermMediumRiskPotgTest() throws InterruptedException {
+	public void tc38_sohoNACTermMediumRiskBopisTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
-		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
+		/*reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
 				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",
 				"RPOTG Banner is not present in the Device Catalog Page, verified by promo text");
 		getRogersDeviceCataloguePage().clickRpotgBannerLearnMore();
@@ -43,7 +43,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		getRogersDeviceCataloguePage().clickContinueBtn();
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
 		reporter.hardAssert(postalCode.contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()),
-				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");
+				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
 		String deviceName = TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
@@ -51,25 +51,25 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(),
 				"Get started button on the modal is present", "Get started button on the modal is not present");
 		reporter.reportLogWithScreenshot("Modal window Popup");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(), "Clicked Get Started Button",
+		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalSoho(), "Clicked Get Started Button",
 				"Get Started button not able to click");
 
 		// ***************************Device config page************************************
-		System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
+		/*System.out.println(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner());
 		System.out.println(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode());
 		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()),
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
-				"Postal Code not matching");
+				"Postal Code not matching");*/
 		String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
 		String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
 		getRogersDeviceConfigPage().selectDeviceProtectionAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon is selected in Device Config Page");
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config page***************************************
-		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()), "Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected", "Postal code not matching in Plan Config page");
+		/*reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()), "Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected", "Postal code not matching in Plan Config page");
 		String rpotgLabelPlanConfig = getRogersPlanConfigPage().getRpotgLabelPlanConfigPage();
 		reporter.reportLogWithScreenshot(
-				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
+				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);*/
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceCostIndex());
@@ -107,9 +107,9 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		getRogersCheckoutPage().setCompanySize(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCompanySize());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
 		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getBillingAddress());
-		getRogersCheckoutPage().getRpotgSuccessMessage();
+		/*getRogersCheckoutPage().getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
-				"Billing Address entered is eligible for RPOTG - Success message validated");
+				"Billing Address entered is eligible for RPOTG - Success message validated");*/
 		getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
 		reporter.reportLogPassWithScreenshot(
 				"Create Profile Page details provided for Address,Shipping Address & Language Selected");
@@ -163,11 +163,16 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipNacAutopay();
 		// ***************Shipping Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
-		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
-		getRogersCheckoutPage().clkDeliveryMethod("PRO");
-		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
+		//reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ", "Billing Address is not selected");
+		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
+		/*getRogersCheckoutPage().clkDeliveryMethod("PRO");
+		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");*/
+		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+		reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Location Map is available",
+				"Express Location Map is not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -205,7 +210,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),
 				"Order Confrimation Page Title Present", "Order Confrimation Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
-		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyRpotgTitle(), "RPOTG Title verified",
+		/*reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyRpotgTitle(), "RPOTG Title verified",
 				"RPOTG Title Not Present");
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyAppointmentDetailsTitle(),
 				"Appointment Details Title verified", "Your Appointment Details Title Not present");
@@ -216,7 +221,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_PotgShipping_DP_EN_Test 
 		String appointmentAddress = getRogersNACOrderConfirmationPage().getAppointmentAddressText();
 		reporter.reportLogWithScreenshot("Appointment Address Details" + "-->" + appointmentAddress);
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyDeviceImage(),
-				"Device Image Present in Confirmation Page", "Device Image not present");
+				"Device Image Present in Confirmation Page", "Device Image not present");*/
 	}
 
 	@AfterMethod(alwaysRun = true)
