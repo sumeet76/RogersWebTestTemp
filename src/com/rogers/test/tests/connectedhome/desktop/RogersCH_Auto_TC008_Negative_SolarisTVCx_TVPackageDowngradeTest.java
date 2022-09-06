@@ -56,7 +56,7 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
-      /* // If difference in cost between current and selected package is +/- 10
+      /* // If difference in cost between current and selected package is +/- 20 upgrade modal will be shown
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
