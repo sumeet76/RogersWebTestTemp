@@ -216,7 +216,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 		
-	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+	@FindBy(xpath = "//span[text()=' Home Monitoring '  or text() =' Système domotique ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSHMBadge;
 	
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
