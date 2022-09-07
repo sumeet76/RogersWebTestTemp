@@ -57,7 +57,7 @@ pipeline {
     }
 
     triggers {
-        parameterizedCron(env.BRANCH_NAME == 'Test' ?'''
+        parameterizedCron(env.BRANCH_NAME == 'OVNACDevelopment' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
                     45 05 * * 1-5 %Browser=saucechrome;Language=en;Groups=SanityBFA;ThreadCount=5;TestProfile=BuyFlows
