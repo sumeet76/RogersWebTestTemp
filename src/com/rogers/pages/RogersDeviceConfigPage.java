@@ -90,7 +90,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='continue-accessory-button']")
     WebElement btnContinueAccessories;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'supérieure  de l’appareil')]")
     WebElement deviceProtectionAddon;
 
     /***

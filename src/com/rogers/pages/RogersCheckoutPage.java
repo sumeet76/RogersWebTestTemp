@@ -1349,13 +1349,13 @@ public class RogersCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(2000);
 		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
 			getReusableActionsInstance().staticWait(2000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,20);
+			getReusableActionsInstance().executeJavaScriptClick(deliveryMethodExpress);
 		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
 			getReusableActionsInstance().staticWait(2000);
 			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,20);
 		}else{
 			getReusableActionsInstance().staticWait(2000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,20);
+			getReusableActionsInstance().executeJavaScriptClick(deliveryMethodStandard);
 		}
 	}
 

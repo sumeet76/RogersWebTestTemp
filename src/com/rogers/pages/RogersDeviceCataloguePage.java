@@ -688,12 +688,12 @@ public class RogersDeviceCataloguePage extends BasePageClass {
             }
             do {
                 getDriver().get(System.getProperty("AWSUrl"));
-                clickDeviceTileCTAButton("iPhone 13");
+                clickDeviceTileCTAButton("iPhone 13 Pro Max");
                 getReusableActionsInstance().staticWait(2000);
             } while (!verifyGetStartedButtonOnModal());
 
         } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
-        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
 
     /**
@@ -719,8 +719,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
                 return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
             }
             do {
-                getDriver().get(System.getProperty("AWSUrl"+"/?type=SOHO"));
-                clickDeviceTileCTAButton("iPhone 13");
+                getDriver().get(System.getProperty("AWSUrl")+"/?type=soho");
+                clickDeviceTileCTAButton("iPhone 13 Pro Max");
                 getReusableActionsInstance().staticWait(2000);
             } while (!verifyGetStartedButtonOnModal());
 
