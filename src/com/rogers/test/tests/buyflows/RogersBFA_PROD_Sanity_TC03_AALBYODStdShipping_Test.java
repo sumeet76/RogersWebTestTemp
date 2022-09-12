@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC03_AALBYODStdShipping_Test extends BaseTest
 	}
 
 	@Test(groups = {"PRODSanity","PRODAALSanity"})
-	public void rogersProdSanity_AAL_BYOD() throws InterruptedException {
+	public void tc03_rogersProdSanity_AAL_BYOD() throws InterruptedException {
 
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

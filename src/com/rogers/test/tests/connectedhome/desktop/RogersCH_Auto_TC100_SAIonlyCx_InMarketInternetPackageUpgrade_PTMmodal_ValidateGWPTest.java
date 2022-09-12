@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 
 
 /**
- * This class contains the test method to verify the Solaris Internet package downgarde flow for Rogers.com   
- * 
+ * This class contains the test method to verify the Internet package upgrade flow for Rogers.com
+ * CH-12507,CH-13908,CH-13909_Existing SAI Only in market Changing Internet package upgrade_PTM Model_E2E_ON_CH_EN
  * @author manpreet.kaur3
  * 
  * Test steps:

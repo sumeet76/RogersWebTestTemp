@@ -786,6 +786,7 @@ public class BaseTestClass {
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                getDriver().manage().deleteAllCookies();
                 break;
 
             case "redesignrogers":
@@ -1031,7 +1032,9 @@ public class BaseTestClass {
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
+                RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetPackageSelectionPageThreadLocal.set(new RogersInternetPackageSelectionPage(getDriver()));
+                RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersOrderSummaryPageThreadLocal.set(new RogersOrderSummaryPage(getDriver()));
                 RogersOrderConfirmationPageThreadLocal.set(new RogersOrderConfirmationPage(getDriver()));
                 RogersIgniteTVBuyPageThreadLocal.set(new RogersIgniteTVBuyPage(getDriver()));

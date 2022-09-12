@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC05_HUPWithPPC_StdShip_Test extends BaseTest
 	}
 
 	@Test(groups = {"PRODSanity"})
-	public void rogersProdSanity_HUPWithPPC() throws InterruptedException {
+	public void tc05_rogersProdSanity_HUPWithPPC() throws InterruptedException {
 
 		reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		reporter.reportLogWithScreenshot("Home Page");

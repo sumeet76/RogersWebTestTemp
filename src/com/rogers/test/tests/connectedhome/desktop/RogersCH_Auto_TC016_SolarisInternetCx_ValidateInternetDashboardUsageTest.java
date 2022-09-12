@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH"})
+    @Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH","ReleaseSanity"})
     public void rogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());

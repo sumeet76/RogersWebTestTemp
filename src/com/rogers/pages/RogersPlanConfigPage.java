@@ -331,6 +331,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
 
+    @FindBy(xpath = "//button[.=' Continue with selected plan ']")
+    WebElement continueWithSelectedPlanButton;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -383,7 +386,7 @@ public class RogersPlanConfigPage extends BasePageClass {
             } else {
                 getReusableActionsInstance().waitForElementTobeClickable(showMoreDetails,60);
                 getReusableActionsInstance().javascriptScrollToTopOfPage();
-                getReusableActionsInstance().clickWhenVisible(showMoreDetails);
+                getReusableActionsInstance().getWhenReady(showMoreDetails).click();;
             }
         }
     }
@@ -1413,7 +1416,9 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void setPromoCode(String promoCode) {
         getReusableActionsInstance().clickWhenReady(promoCodeField);
-        getReusableActionsInstance().getWhenReady(txtPromoCode, 40).sendKeys(promoCode);
+        getReusableActionsInstance().getWhenReady(txtPromoCode, 40).click();;
+        txtPromoCode.clear();
+        txtPromoCode.sendKeys(promoCode);
     }
 
     /**
@@ -1584,4 +1589,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(By.xpath("(//span[contains(@class,'dsa-orderTable__strikeCopy')])[1]"));
     }
 
+    public void clickContinueWithSelectedPlanButton() {
+        getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+    }
 }

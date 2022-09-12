@@ -111,6 +111,20 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(text(),'This service change is not supported in Oneview')]")
     WebElement downgradeMigrationFlowErrorMessage;
 
+    @FindBy(xpath = "//a[@id='session-indicator-remaining-time']")
+    WebElement footerSessionTimer;
+
+    @FindBy(xpath = "//a[contains(text(),'Sign out')]")
+    WebElement footerSignOutLink;
+
+    @FindBy(xpath = "//a[contains(text(),'Search for another customer')]")
+    WebElement searchForAnotherCustLink;
+
+    @FindBy(xpath = "//a[contains(text(),'Logout of Oneview & SSP')]")
+    WebElement logoutOneviewAndSSP;
+
+    @FindBy(xpath = "//h1[contains(text(),'successfully logged out')]")
+    WebElement loggedOutOfChampLbl;
 
 
     public void openFooter() throws InterruptedException {
@@ -267,5 +281,20 @@ public class BundleBuilderPage extends BasePageClass {
 
     public boolean verifyDowngradeMigrationFlowErrorMessage(){
         return getReusableActionsInstance().isElementVisible(downgradeMigrationFlowErrorMessage,20);
+    }
+
+    public boolean verifySessionTimerInFooter(){
+        return getReusableActionsInstance().isElementVisible(footerSessionTimer,10);
+    }
+
+    public boolean verifyFooterLinks(){
+        getReusableActionsInstance().clickWhenVisible(footerSignOutLink,10);
+        return getReusableActionsInstance().isElementVisible(searchForAnotherCustLink,5) &&
+                getReusableActionsInstance().isElementVisible(logoutOneviewAndSSP,5);
+    }
+
+    public boolean clickLogoutOneviewAndSSP(){
+        getReusableActionsInstance().clickWhenVisible(logoutOneviewAndSSP,5);
+        return getReusableActionsInstance().isElementVisible(loggedOutOfChampLbl,30);
     }
 }

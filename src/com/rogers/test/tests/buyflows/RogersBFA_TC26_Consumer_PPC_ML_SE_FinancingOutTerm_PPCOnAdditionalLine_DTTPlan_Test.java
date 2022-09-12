@@ -24,7 +24,7 @@ public class RogersBFA_TC26_Consumer_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalL
     }
 
     @Test(groups = {"RegressionBFA","PPCBFA"})
-    public void rogersPPC_TC26_MLSE_FinancingOutTerm_PPCONAdditioinalLines_DTTPlanTest() {
+    public void tc26_rogersPPC_MLSE_FinancingOutTerm_PPCONAdditioinalLines_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

@@ -19,10 +19,10 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 
-public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods_DBA_Monthly_ON_EN extends BaseTestClass {
 
     @Test
-    public void oneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Chargeable_Pods_DBA_MonthlyCharges_ON_EN (){
+    public void oneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods_DBA_Monthly_ON_EN (){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         reporter.reportLogWithScreenshot("address");
@@ -93,8 +93,8 @@ public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-        reporter.reportLogWithScreenshot("verify billing and payments");
         reporter.reportLogWithScreenshot("Billing and payment");
+        getCreditCheckPage().selectPaperBilling();
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();

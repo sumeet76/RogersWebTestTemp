@@ -21,9 +21,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
-        @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-internet']")})
+
+	@FindBy(xpath ="//span[text()=' Internet ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSolarisInternetBadge;
 
 	@FindAll({

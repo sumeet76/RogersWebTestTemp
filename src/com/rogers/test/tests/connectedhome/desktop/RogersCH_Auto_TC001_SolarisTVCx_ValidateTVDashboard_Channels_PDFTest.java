@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTest extends BaseTestClass {
-    @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH","DryRunCH"}, description = "Rogers Ignite TV Dashboard")
+    @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH","DryRunCH","ReleaseSanity"}, description = "Rogers Ignite TV Dashboard")
     public void rogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDF() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());

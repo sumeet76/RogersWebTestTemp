@@ -18,11 +18,11 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON_EN_Test() throws InterruptedException {
+    public void ovr_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON_EN_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
@@ -45,7 +45,6 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
-//        reporter.softAssert(getInternetDashboardPage().verifyDownloadAndUploadSpeed(),"Symmetric down/up speed", "different down/up speed");
         reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(),"Internet Speed Displayed", "Internet Speed not displayed");
         reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available","Usage and Alerts link not Available");
         reporter.reportLogWithScreenshot("View Usgae and Alert link displayed");
@@ -64,8 +63,6 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
         reporter.hardAssert(getTVDashboardPage().verifyExchangeFlexChannels(), "Exchange Flex channels Available","Exchange Flex channels not Available");
         reporter.reportLogWithScreenshot("Exchange Flex channels button displayed");
-        //reporter.hardAssert(getTVDashboardPage().verifyChangeTvPackage(), "Change Tv Package Available","Change Tv Package not Available");
-        //reporter.reportLogWithScreenshot("Change TV package button displayed ");
         reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
         reporter.reportLogWithScreenshot("Restart setup box link displayed");
         getTVDashboardPage().clickRestartSetupbox();

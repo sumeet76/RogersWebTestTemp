@@ -23,8 +23,8 @@ public class RogersBFA_TC25_Consumer_PPC_ML_SE_SubsidyInTerm_PPCONBothLines_DTTP
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA"})
-    public void rogersPPC_TC25_MLSE_SubsidyInTerm_PPCONBothLines_DTTPlanTest() {
+    @Test(groups = {"RegressionBFA"})
+    public void tc25_rogersPPC_MLSE_SubsidyInTerm_PPCONBothLines_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

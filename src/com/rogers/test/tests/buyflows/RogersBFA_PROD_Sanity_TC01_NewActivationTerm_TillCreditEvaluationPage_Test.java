@@ -23,7 +23,7 @@ public class RogersBFA_PROD_Sanity_TC01_NewActivationTerm_TillCreditEvaluationPa
 	}
 
 	@Test(groups = {"PRODSanity","PRODNACSanity"})
-	public void rogersProdSanity_NewActivation_Term() throws InterruptedException {
+	public void tc01_rogersProdSanity_NewActivation_Term() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 		//getRogersDeviceCataloguePage().setProvince("Ontario");

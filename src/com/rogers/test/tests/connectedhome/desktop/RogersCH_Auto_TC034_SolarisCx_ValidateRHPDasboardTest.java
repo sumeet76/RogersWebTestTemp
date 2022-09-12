@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH","DryRunCH","ReleaseSanity"})
     public void rogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
