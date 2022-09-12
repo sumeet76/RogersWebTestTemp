@@ -231,7 +231,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@name='tab-themepack']")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
+	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -358,8 +358,11 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='$15 off Ignite']")
 	WebElement campaign;
 
-	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink']")
+	@FindBy(xpath="//span[@translate='global.cta.remove']")
 	WebElement reviewTerms;
+
+	@FindBy(xpath="//span[@translate='global.cta.remove']")
+	WebElement removeButton;
 
 
 	/**
@@ -402,7 +405,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
-		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
+		getReusableActionsInstance().waitForElementVisibility(addThemepack, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
 			getReusableActionsInstance().clickWhenReady(yesToContinue);
@@ -532,8 +535,8 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueForPackage() {
-		getReusableActionsInstance().waitForElementVisibility(btnContnueReset, 60);
-		getReusableActionsInstance().getWhenReady(btnContnueReset, 30).click();
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnContnueReset, 30);
+		getReusableActionsInstance().getWhenReady(btn, 30).click();
 	}
 
 	/**
@@ -1203,22 +1206,16 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(selectChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(selectChannel);
-
-
 	}
 
 	public void clickReviewedAllIssuesWithCustomer() {
 		getReusableActionsInstance().waitForElementVisibility(reviewedIssuesWithCustomer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(reviewedIssuesWithCustomer);
-
-
 	}
 
 	public void clickNoTheyDont() {
 		//getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 20);
 		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
-
-
 	}
 
 	public void clickContinueBottomOfPage() {
@@ -1266,8 +1263,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
 		getReusableActionsInstance().waitForElementVisibility(removeChannel, 30);
 		getReusableActionsInstance().executeJavaScriptClick(removeChannel);
-
-
 	}
 
 	public void clickAddChannelBtn() {
@@ -1275,8 +1270,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
 		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);
-
-
 	}
 
 	public boolean verifyChangePackageButtonEN() {
@@ -1298,7 +1291,6 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickPackageDetailsExpander() {
-
 		getReusableActionsInstance().getWhenReady(packageDetailsExpander, 30);
 		getReusableActionsInstance().executeJavaScriptClick(packageDetailsExpander);
 	}
@@ -1337,15 +1329,18 @@ public class TVDashboardPage  extends BasePageClass {
 	public void selectCampaign(){
 		getReusableActionsInstance().isElementVisible(campaign);
 		getReusableActionsInstance().clickWhenReady(campaign);
-
-
 	}
 
 	public void reviewTerms() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().isElementVisible(reviewTerms);
+		getReusableActionsInstance().isElementVisible(reviewTerms,30);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTerms);
 	}
+
+	public boolean verifyRemoveButton(){
+			return getReusableActionsInstance().isElementVisible(removeButton, 60);
+	}
+
 }
 
 

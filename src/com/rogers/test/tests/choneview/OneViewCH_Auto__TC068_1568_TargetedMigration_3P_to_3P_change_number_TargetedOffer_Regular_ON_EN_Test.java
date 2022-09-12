@@ -101,10 +101,17 @@ public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number
 
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().clkCourierDelivery();
-        getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clickInPersonDelivery();
-        reporter.reportLogWithScreenshot("In Person Delivery is Selected");
+        reporter.reportLogWithScreenshot("Delivery by Appointment installation");
+        getCreditCheckPage().selectDeliveryByAppointment();
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();

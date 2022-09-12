@@ -215,6 +215,9 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath="//ds-radio-button[@ng-reflect-value='tv']//div")
     WebElement tvCheckbox;
 
+    @FindBy(xpath = "(//ds-radio-button[@class='ds-radioButton'])[2]")
+    WebElement selAddressRadioButton;
+
     @FindBy(xpath="//span[text()='Continue']")
     WebElement continueButton;
 
@@ -566,9 +569,18 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(tvCheckbox);
     }
 
+    /*To select the address in the serviceability modal
+     * @author Jarmanjeet.Batth
+     */
+    public void selectAddress(){
+        getReusableActionsInstance().waitForElementVisibility(selAddressRadioButton, 20);
+        getReusableActionsInstance().clickWhenReady(selAddressRadioButton);
+    }
+
     /*To click continue in the serviceabilty modal
      * @author aditi.jain
      */
+
     public void clickContinue()
     {
         getReusableActionsInstance().waitForElementVisibility(continueButton);

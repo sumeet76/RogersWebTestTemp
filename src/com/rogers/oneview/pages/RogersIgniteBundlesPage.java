@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
+	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -318,6 +318,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "(//span[text()=' Add to cart ']/ancestor::button)[2]")
 	WebElement addOnAddToCart;
 
+	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
+	WebElement removeButton;
+
 	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
 	WebElement smartHomeMonitoring ;
 
@@ -540,7 +543,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(addToCart,60);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,90);
 		getReusableActionsInstance().scrollToElement(addToCart);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
@@ -1185,6 +1188,7 @@ public void activateHomePhoneltrPopUp() {
 	{
 		getReusableActionsInstance().clickWhenReady(continueButtonPTM,120);
 	}
+
 	public void clkContinueInternetAddon()
 	{
 		getReusableActionsInstance().waitForPageLoad();
@@ -1204,6 +1208,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(addOnAddToCart);
 		getReusableActionsInstance().staticWait(5000);
 	}
+
+	public boolean validateAddonAddToCart(){
+		return getReusableActionsInstance().isElementVisible(removeButton,60);
+	}
+
 	/**
 	 * Click smartHomeMonitoring to Expand in Points to Mention
 	 * @author aditi.jain
@@ -1317,7 +1326,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){

@@ -51,6 +51,7 @@ public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Char
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet add on header displayed", "Internet add on header not displayed");
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
@@ -77,8 +78,7 @@ public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("professional installation");
         getCreditCheckPage().selectDeliveryByAppointment();
 
@@ -97,11 +97,11 @@ public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Billing and payment");
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
-        //getPaymentOptionsPage().clkContinue();
-		//getRogersOVCheckoutPage().clkSubmit();
-        //reporter.reportLogWithScreenshot("submit order");
-		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		//reporter.reportLogWithScreenshot("Order Placed");
+        getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
+        reporter.reportLogWithScreenshot("submit order");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -113,7 +113,7 @@ public class OneViewCH_Auto_TC013_OVS2_Pods_Buy_NAC_2P_Adding_Both_Free_And_Char
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

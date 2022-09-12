@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC109_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecommendation_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC079_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecommendation_Test extends BaseTestClass {
     @Test (groups = {"RegressionCHOV"})
 
     public void OneViewCH_Auto_TC109_OVS4_E2E_RecoEngine_2p_NAC_ValidateInstalRecommendation_Test(){
