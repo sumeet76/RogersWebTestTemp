@@ -24,6 +24,8 @@ public class RogersMOM_TC01_NAC extends BaseTestClass {
     }
 
 
+    //https://qa2.rogers.com/phones/ needs to be updated
+
 
     @Test(groups = {"MOMSanity"})
     public void tc01rogersNACcomplete() throws InterruptedException {
@@ -95,7 +97,6 @@ public class RogersMOM_TC01_NAC extends BaseTestClass {
         getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.MOM_tc01_Consumer_NAC.getDateOfBirthYear());
         getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.MOM_tc01_Consumer_NAC.getDateOfBirthMonth());
-        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.MOM_tc01_Consumer_NAC.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
         getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.MOM_tc01_Consumer_NAC.getCreditCardDetails());
@@ -132,7 +133,7 @@ public class RogersMOM_TC01_NAC extends BaseTestClass {
         reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not Displayed");
         getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.MOM_tc01_Consumer_NAC.getPaymentMethod());
         getRogersCheckoutPage().clkBillingContinueButton();
-        //getRogersCheckoutPage().clickSkipNacAutopay();
+        getRogersCheckoutPage().clickSkipNacAutopay();
 
 
                         //--------------------------------------------Shipping Stepper--------------------------------------------
@@ -149,6 +150,19 @@ public class RogersMOM_TC01_NAC extends BaseTestClass {
 
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");
+//        String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
+//        reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
+//        String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
+//        reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
+//        String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
+//        reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage);
+//        String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
+//        reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
+//        String contactNumberReviewPage = getRogersReviewOrderPage().getContactNumber();
+//        reporter.softAssert(contactNumberCreateProfile.equals(contactNumberReviewPage), "Contact Number Matched", "Contact Number not matching");
+//        String contactEmailReviewPage = getRogersReviewOrderPage().getContactEmail();
+//        reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
+//        reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
