@@ -47,8 +47,8 @@ public class DBValidation extends BaseTestClass{
 
     /**
      * This method will create a connection and return DBValidation object
-     * @param dbEnv
-     * @return
+     * @param dbEnv database environment details like sft02 / sft04 / sft06
+     * @return DBValidation object after creating statement.
      */
     public synchronized DBValidation connectionMethod(String dbEnv) {
         System.out.println("DB Environment details" + dbEnv);
@@ -59,7 +59,7 @@ public class DBValidation extends BaseTestClass{
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4","QA4APPBL19","QA4APPBL19");
                     break;
                 case "sft06":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", "QA6APPBL26", "QA6APPBL26");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526:V21QA6_SN.rci.rogers.com", "qa6sel", "qa6sel");
                     break;
                 case "sft02":
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", "QA2APPBL02", "QA2APPBL02");
