@@ -21,7 +21,10 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	WebElement btnContinueShopping;
 
 	// Thanks! We received your order.
-	@FindBy(xpath = "//div[@class='confirmation-bubble-component']")
+
+	@FindAll({
+			@FindBy(xpath = "//div[@class='confirmation-bubble-component']"),
+			@FindBy(xpath = "//div[@class='confirmation-bubble']")})
 	WebElement infoChangeOrderConfirmationnew;
 
 	@FindBy(xpath = "//ins[@translate='global.message.orderConfirmationThanksV3']")

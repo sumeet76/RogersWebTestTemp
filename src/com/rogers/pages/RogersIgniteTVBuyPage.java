@@ -276,8 +276,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex10PackageTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")
-	WebElement drpdwnInternetSpeed;
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/parent::div/following-sibling::div/descendant::select[@aria-label='Open list of internet speeds and select one']")
+	WebElement drpdwnRecommendedPkgInternetSpeed;
+
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/parent::div/following-sibling::div/descendant::a[contains(@aria-label,'View more details')]")
+	WebElement lnkRecommendedPkgViewMoreDetails;
 
 	@FindBy(xpath = "//button[@aria-label='Okay, close this window']/span")
 	WebElement btnOkay;
@@ -555,7 +558,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifyOffersPage() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 10);
+		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 60);
 		return	getReusableActionsInstance().isElementVisible(txtOffersPage);
 	}
 
@@ -1701,9 +1704,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnEnterAddress, 60).click();
 	}
 
-	public void select1GbpsInternetSpeed() {
-		getReusableActionsInstance().getWhenReady(drpdwnInternetSpeed,30).click();
-		Select internetSpeed = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")));
+	public void selectRecommendedPkg1GbpsInternetSpeed() {
+		getReusableActionsInstance().getWhenReady(drpdwnRecommendedPkgInternetSpeed,30).click();
+		Select internetSpeed = new Select(getDriver().findElement(By.xpath("//div[@class='vertical-tile__ribbon__body -promo-available']/parent::div/following-sibling::div/descendant::select[@aria-label='Open list of internet speeds and select one']")));
 		internetSpeed.selectByVisibleText("1 Gbps");
+	}
+
+	public void clkRecommendedPkgViewMoreDetails() {
+		getReusableActionsInstance().getWhenReady(lnkRecommendedPkgViewMoreDetails, 30).click();
 	}
 }
