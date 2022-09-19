@@ -220,6 +220,7 @@ public class TestDataHandler {
 	public static AALData BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg;
 	public static AALData BFA_ProdTest_tc03_AALBYOD_StdShipping;
 	public static AALData BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping;
+	public static AALData MOM_tc02_Consumer_AAL;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -669,6 +670,7 @@ public class TestDataHandler {
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
 		MOM_tc01_Consumer_NAC=YamlHandler.getRedesignNACData("MOM_tc01_Consumer_NAC");
+		MOM_tc02_Consumer_AAL=YamlHandler.getAALdata("MOM_tc02_Consumer_AAL");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
