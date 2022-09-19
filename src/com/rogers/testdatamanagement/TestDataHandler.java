@@ -156,6 +156,7 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc48_Legacy_NACByod;
 	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
 	public static RedesignRpotgData MOM_tc01_Consumer_NAC;
+	public static RedesignRpotgData MOM_TC03_PPC;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -668,7 +669,7 @@ public class TestDataHandler {
 		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
-		MOM_tc01_Consumer_NAC=YamlHandler.getRedesignNACData("MOM_tc01_Consumer_NAC");
+		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {

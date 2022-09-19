@@ -564,6 +564,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),' Financed accessories ') or contains(text(),' Accessoires financés ')]")
 	WebElement btnFinancedAccessories;
 
+	@FindBy(xpath = "(//div[@class='ds-borders ds-corners ds-brcolor-fog'])[1]//span[@class='ds-link__copy']")
+	WebElement btnManage;
+
+	@FindBy(xpath = "//a[@class='w-100 w-md-auto ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnChangePlan;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -2354,4 +2360,24 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			getReusableActionsInstance().getWhenReady(submenuTV, 10).click();
 		}
 	}
+
+	/**
+	 * This method clicks on Manage Button
+	 * @auther Nitin.Arora
+	 */
+	public void clickManageButton() {
+		getReusableActionsInstance().scrollToElement(btnManage);
+		getReusableActionsInstance().clickWhenReady(btnManage,20);
+	}
+
+	/**
+	 * This method clicks the change plan button
+	 * @auther Nitin.Arora
+	 */
+	public void clickChangePlanButton() {
+		getReusableActionsInstance().getWhenReady(btnChangePlan,20);
+		getReusableActionsInstance().scrollToElement(btnChangePlan);
+		getReusableActionsInstance().clickWhenReady(btnChangePlan,20);
+	}
+
 }
