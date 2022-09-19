@@ -22,8 +22,8 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 	    reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
 
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
+	//	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+     //   getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
@@ -34,10 +34,10 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         getRogersHomePage().clkNoThnx();
         getRogersHomePage().clkServiceability();
 
-        getRogersIgniteTVBuyPage().clkHomephone();
+      /*  getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Clicked Home Phone");
         getRogersIgniteTVBuyPage().selectFlex20Package();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");*/
 
         String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
@@ -45,6 +45,8 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         reporter.reportLogWithScreenshot("Entered Serviceability address");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Bundles page");
+        getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Clicked Home Phone");
         getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersIgniteTVBuyPage().selectFlex20Package();

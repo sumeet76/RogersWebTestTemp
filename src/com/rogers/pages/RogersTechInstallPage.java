@@ -90,7 +90,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")   
 	WebElement txtEmailExistingCustomer;
 
-	@FindBy(xpath = "//label[contains(@class,'ds-radioLabel')]")
+	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkTechInstalConsent;
 
 
@@ -153,7 +153,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath = "//label[@class='ute-label-text']")
 	WebElement clkIUnderStand;
 
-	@FindBy(xpath = "//i[@class='rch-icon-calendar']")
+	@FindBy(xpath = "//span[contains(@class,'rds-icon-calendar')]")
 	WebElement clkCalendarIcon;
 	
 	@FindBy(xpath ="//i[@class='rch-icon-calendar']")
@@ -174,14 +174,10 @@ public class RogersTechInstallPage extends BasePageClass {
 			@FindBy(xpath ="//h1[text()='Setup options']")})
 	WebElement txtTechInstalpage;
 
-	@FindAll({
-	@FindBy(xpath ="//div[@class='col-md-8 col-sm-8']//h3"),
-	@FindBy(xpath ="//div[@class='row ng-star-inserted']//h3")})
+	@FindBy(xpath = "//div[@class='tech-install-component']//h2")
 	WebElement txtIgniteExpressSetup;
 
-	@FindAll({
-	@FindBy(xpath ="//div[@class='row -mb40 ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']"),
-	@FindBy(xpath ="//div[@class='row ng-star-inserted']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")})
+	@FindBy(xpath = "//div[@class='tech-install-component']//div[contains(@class,'ds-price__amountDollars')]")
 	WebElement txtIgniteExpressSetupCost;
 
 	@FindBy(xpath ="//input[@format='MM/DD/YYYY']/ancestor::ds-form-field/div/div[1]")

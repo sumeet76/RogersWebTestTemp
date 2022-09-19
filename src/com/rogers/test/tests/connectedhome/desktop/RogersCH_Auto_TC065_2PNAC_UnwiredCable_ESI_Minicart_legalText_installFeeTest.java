@@ -108,15 +108,27 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
 
        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
+        getRogersTechInstallPage().clkProInstallUpgradeYes();
+        reporter.reportLogWithScreenshot("Click on ProInstallUpgradeYes");
+        getRogersTechInstallPage().clkTechContinue();
+
        reporter.hardAssert(getRogersTechInstallPage().verifyIgniteExpressSetup(),"Ignite Express Setup is present","Ignite Express Setup is not present");
        reporter.hardAssert(getRogersTechInstallPage().clktxtIgniteExpressSetupCost(),"Ignite Express Setup Cost verified","Ignite Express Setup Cost verification is failed");
-       getRogersTechInstallPage().selSelffinstallDateAndTime();
+      /* getRogersTechInstallPage().selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        getRogersTechInstallPage().setMobielNumber();
        getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();
-       
+       getRogersTechInstallPage().clkTechInstallContinue(); */
+
+
+        reporter.reportLogWithScreenshot("Launched the Schedule Appointment Page");
+        getRogersTechInstallPage().selectPrefferedDate();
+        getRogersTechInstallPage().selectPreferredTimeSlot();
+        getRogersTechInstallPage().setContactNumber();
+        getRogersTechInstallPage().clkTechInstalConsent();
+        getRogersTechInstallPage().clkTechInstallContinue();
+
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
@@ -144,7 +156,7 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
         /**
          * DB Validations in the subscriber table
          */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from QA6APPBL26.billing_account where BAN='" + ban + "'", false);
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
         reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
