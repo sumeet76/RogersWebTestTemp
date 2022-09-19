@@ -163,6 +163,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
+	@FindBy(xpath = "//span[text()='No, they dont' or text()='Non, il n’en a pas']/ancestor::button")
+	WebElement btnNoOn4kTv;
+
 	@FindBy(xpath = "//p[text()='Select Change Date']/ancestor::div//span[text()='Continue']")
 	WebElement btnContinueChangeDate;
 
@@ -502,7 +505,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
@@ -638,6 +641,15 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickContinueOn4kTv() {
 		if (getReusableActionsInstance().isElementVisible(btnContinueOn4kTv, 120))
 			getReusableActionsInstance().getWhenReady(btnContinueOn4kTv, 60).click();
+	}
+
+	/**
+	 * Click No,doesn't have 4K Tv
+	 * @author Jarmanjeet.Batth
+	 */
+	public void clickNoOn4KTvModal(){
+		if (getReusableActionsInstance().isElementVisible(btnNoOn4kTv, 120))
+			getReusableActionsInstance().getWhenReady(btnNoOn4kTv, 60).click();
 	}
 
 	/**
@@ -920,10 +932,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
-		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
-		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
-		getReusableActionsInstance().clickWhenReady(btnRestartSetupbox, 120);
-
+		WebElement btn = getReusableActionsInstance().getWhenReady(btnRestartSetupbox,120);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(btn);
+		getReusableActionsInstance().executeJavaScriptClick(btn);
 	}
 
 	/**
@@ -1135,7 +1146,6 @@ public class TVDashboardPage  extends BasePageClass {
 
 		getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
 		getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
 	}
 

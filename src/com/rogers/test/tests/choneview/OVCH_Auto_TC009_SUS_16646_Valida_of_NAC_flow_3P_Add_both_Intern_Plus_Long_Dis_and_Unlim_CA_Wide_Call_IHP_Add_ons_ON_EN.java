@@ -113,7 +113,7 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-//        closeSession();
+        closeSession();
     }
 
 }

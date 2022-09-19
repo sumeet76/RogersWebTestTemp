@@ -42,6 +42,7 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
         reporter.reportLogWithScreenshot("click continue at channels and themepack");
         getTVDashboardPage().clickContinueOn4kTv();
+//        getTVDashboardPage().clickNoOn4KTvModal();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
@@ -60,7 +61,6 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","", "", method);
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {

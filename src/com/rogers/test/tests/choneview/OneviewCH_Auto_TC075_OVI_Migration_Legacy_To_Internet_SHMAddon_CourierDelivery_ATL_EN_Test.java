@@ -20,6 +20,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("Use this address");
+        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().refreshContinue();
@@ -40,10 +41,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("review terms and condition");
-        //getRogersIgniteBundlesPage().reviewAllTerms();
-//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        getRogersIgniteBundlesPage().expandInternetdiv();
-        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
@@ -51,8 +50,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
-//        getRogersIgniteBundlesPage().addSHMAddOn();
-//        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
+        getRogersIgniteBundlesPage().addSHMAddOn();
+        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -94,7 +93,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().selectPaymentOption(1);
+      //  getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");

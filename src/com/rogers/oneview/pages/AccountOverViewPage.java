@@ -556,6 +556,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void setLanguageFrench() {
+        getReusableActionsInstance().waitForElementVisibility(linkFrench,60);
         //getReusableActionsInstance().clickWhenReady(infoBalanceLable);
         getReusableActionsInstance().executeJavaScriptClick(linkFrench);
     }

@@ -32,9 +32,9 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getRogersIgniteBundlesPage().clkLoadOffers();
        getRogersIgniteBundlesPage().clickFirstAddToCart();
        reporter.reportLogWithScreenshot("added to cart");
-       getRogersIgniteBundlesPage().clkKeepNumberbtn();
-       reporter.reportLogWithScreenshot("keep number");
-//       getRogersIgniteBundlesPage().noPortInPopup();
+//       getRogersIgniteBundlesPage().clkKeepNumberbtn();
+//       reporter.reportLogWithScreenshot("keep number");
+       getRogersIgniteBundlesPage().noPortInPopup();
        getRogersIgniteBundlesPage().clkCollapse();
        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
        reporter.reportLogWithScreenshot("Product Added");
@@ -81,7 +81,7 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
        reporter.reportLogWithScreenshot("Credit Check Information");
        getCreditCheckPage().clkContinue();
-//       getHomePhoneSelectionPage().clkGeneratePhoneNo();
+       getHomePhoneSelectionPage().clkGeneratePhoneNo();
        reporter.reportLogWithScreenshot("Phone Number Selected");
        getCreditCheckPage().goToPageBottom();
        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
