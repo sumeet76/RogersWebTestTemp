@@ -47,8 +47,8 @@ public class DBValidation extends BaseTestClass{
 
     /**
      * This method will create a connection and return DBValidation object
-     * @param dbEnv
-     * @return
+     * @param dbEnv database environment details like sft02 / sft04 / sft06
+     * @return DBValidation object after creating statement.
      */
     public synchronized DBValidation connectionMethod(String dbEnv) {
         System.out.println("DB Environment details" + dbEnv);
@@ -56,13 +56,13 @@ public class DBValidation extends BaseTestClass{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             switch (dbEnv.toLowerCase()) {
                 case "sft04":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB473:1526:V21QA4","QA4APPBL19","QA4APPBL19");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@exa010ldcs-npe.rci.rogers.com:1526/V21QA4_SN.rci.rogers.com","qa4sel","qa4sel");
                     break;
                 case "sft06":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB474:1526:V21QA6", "QA6APPBL26", "QA6APPBL26");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526/V21QA6_SN.rci.rogers.com", "qa6sel", "qa6sel");
                     break;
                 case "sft02":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@BHPDB471:1526:V21QA2", "QA2APPBL02", "QA2APPBL02");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526:V21QA2_SN.rci.rogers.com", "qa2sel", "qa2sel");
                     break;
             }
             connect.setAutoCommit(false);
@@ -72,6 +72,16 @@ public class DBValidation extends BaseTestClass{
             getReporter().reportLog("DB Connection error" + e.getMessage());
         }
         return this;
+    }
+
+    public String getSchemaName(String dbEnvUrl) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("sft04", "QA4APPBL19");
+        map.put("sft06", "QA6APPBL26");
+        map.put("sft02", "QA2APPBL02");
+
+        String dbEnvUrlStr = dbEnvUrl.toLowerCase();
+        return map.getOrDefault(dbEnvUrlStr, "QA2APPBL02");
     }
 }
 

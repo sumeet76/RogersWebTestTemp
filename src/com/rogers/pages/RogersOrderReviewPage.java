@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
 
+import java.util.List;
+
 public class RogersOrderReviewPage extends BasePageClass {
 
 	public RogersOrderReviewPage(WebDriver driver) {
@@ -164,6 +166,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.targetedOffer.label.orderReview']")
 	WebElement lblOrderReview;
 
+
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//ds-price[@class='custom-price ng-star-inserted']/div[@aria-label='$0.00']")
 	WebElement lblZeroOneTimeCharge;
 
@@ -187,6 +190,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class= 'row custom-note']//ds-price[@class='custom-price']//div[contains(@class,'ds-price__amountDollars')]")
 	WebElement lblCustomPrice;
+
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
 	WebElement lblOfferPrice;
@@ -554,9 +558,10 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 120);
+		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 200);
 		return getReusableActionsInstance().isElementVisible(lblOrderReview);
 	}
+
 
 	/**
 	 * To verify the Rogers Targeted Offer One-Time Charge is $0.00
@@ -630,4 +635,22 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public String getOfferPrice() {
 		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
 	}
-}
+
+	public boolean verifyAdditionalSTBs() {
+		By tvFeaturesList = By.xpath("//rch-bundle-promo-tv-details//div[@class='bundle-offer-details__content']//li/span");
+		List<WebElement> myElements = getDriver().findElements(tvFeaturesList);
+		for(WebElement e : myElements) {
+			//System.out.println(e.getText());
+			if(e.getText().contains("Ignite Entertainment")){
+				String additionalSTBText = e.getText();
+				String[] totalSTBs= additionalSTBText.split(" ");
+				//System.out.println(totalSTBs[0]);
+					if (totalSTBs[0].equals("1")) {
+						return false;
+					}
+				}
+			}
+		return true;
+		}
+
+	}

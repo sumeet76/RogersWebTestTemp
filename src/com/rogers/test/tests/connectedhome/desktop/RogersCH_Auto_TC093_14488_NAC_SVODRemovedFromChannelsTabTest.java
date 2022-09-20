@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTabTest extends BaseTestClass {
 
-	@Test//(groups = {"RegressionCH")
+	@Test(groups = {"RegressionCH"})
 	public void rogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTab() {
 		getRogersHomePage().clkTVBundle();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");

@@ -22,7 +22,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddress_Dealer_FR_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddress_Dealer_FR_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
@@ -86,7 +86,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
         getCreditCheckPage().clkAuthorize();
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationOption(), "Installation Page loaded","Installation Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
         getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Select install by appointment");

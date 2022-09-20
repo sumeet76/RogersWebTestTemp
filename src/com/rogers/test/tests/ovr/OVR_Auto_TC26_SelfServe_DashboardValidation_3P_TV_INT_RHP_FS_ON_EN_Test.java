@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON_EN_Test extends BaseTestClass {
+public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,8 +22,8 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON_EN_Test() {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    public void ovr_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -40,14 +40,13 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         //Internet Dashboard Validation
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
-        reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
-        reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(),"Internet Speed Displayed", "Internet Speed not displayed");
-        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available","Usage and Alerts link not Available");
-        reporter.reportLogWithScreenshot("View Usgae and Alert link displayed");
+        reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(), "Internet Speed Displayed", "Internet Speed not displayed");
+        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
+        reporter.reportLogWithScreenshot("View Usage and Alert link displayed");
 
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");
@@ -61,27 +60,6 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         reporter.softAssert(getTVDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on TV Dashboard page");
 
-        reporter.hardAssert(getTVDashboardPage().verifyExchangeFlexChannels(), "Exchange Flex channels Available","Exchange Flex channels not Available");
-        reporter.reportLogWithScreenshot("Exchange Flex channels button displayed");
-        reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
-        reporter.reportLogWithScreenshot("Restart setup box link displayed");
-        getTVDashboardPage().clickRestartSetupbox();
-        reporter.reportLogWithScreenshot("Restart setup box link clicked");
-        getTVDashboardPage().clickCancel();
-        reporter.reportLogWithScreenshot("Closing Restart setup box");
-        reporter.hardAssert(getTVDashboardPage().verifyResetPurchasePin(), "Reset Purchase pin Available","Reset Purchase pin not Available");
-        reporter.reportLogWithScreenshot("Reset purchase pin displayed");
-        getTVDashboardPage().clickResetPurchasePin();
-        reporter.reportLogWithScreenshot("Reset purchase pin clicked");
-        getTVDashboardPage().clickCancel();
-        reporter.reportLogWithScreenshot("Closing Reset Parent control");
-        reporter.hardAssert(getTVDashboardPage().verifyResetParentalControl(), "Reset Parental Control & pin Available","Reset Parental Control & pin not Available");
-        reporter.reportLogWithScreenshot("Reset Parent control link displayed");
-        getTVDashboardPage().clickResetParentalControl();
-        reporter.reportLogWithScreenshot("Reset Parent control clicked");
-        getTVDashboardPage().clickCancel();
-        reporter.reportLogWithScreenshot("Closing Reset Parent control");
-
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");
         getInternetDashboardPage().clickContinue();
@@ -90,32 +68,8 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
-        getHomePhonedashboard().clickResetVoiceMail();
-        reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
-        reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
-        getHomePhonedashboard().clickCancel();
-        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
-
-//        getHomePhonedashboard().clickChangeCallDisplayName();
-//        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
-//        reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
-//        getHomePhonedashboard().enterCallername("bbbdb","duhh");
-//        reporter.reportLogWithScreenshot("The new caller name are entered");
-//        getHomePhonedashboard().clickSubmit();
-//        reporter.reportLogWithScreenshot("The call display name changed successfully");
-//        //reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Call Display name changed successfully","Call display name is not changed");
-//        getHomePhonedashboard().clickBackToDashboard();
-//        reporter.reportLogWithScreenshot("Back to Dashboard button is clicked");
-
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");
         getInternetDashboardPage().clickContinue();
-
-
-
-
-
-
     }
 }
-

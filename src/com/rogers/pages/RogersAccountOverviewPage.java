@@ -33,14 +33,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ute-icon-internet']")
 	WebElement btnInternetBadge;
 
-	@FindAll({
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-tv']"),
-	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']")})
+	@FindBy(xpath = "//span[text()=' Entertainment '  or text() =' Divertissement ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSmartStream;
 
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Internet')]"),
-        @FindBy(xpath = "//span[contains(@class,'rui-icon-internet icon')]/ancestor::div[@role='button']")})
+	@FindBy(xpath = "//span[text()=' Internet ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnLegacyInternetBadge;
 	
 	@FindBy (xpath ="//div[@class='ute-dataManager-badgeList-individualBadge']")
@@ -64,14 +60,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	WebElement popUpInternetPopup;
 
 	
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or contains(text(),'Télévision')]"),
-        @FindBy(xpath = "//span[contains(@class,'rui-icon-tv icon')]/ancestor::div[@role='button']")})
+
+	@FindBy(xpath = "//span[text()=' TV '  or text() =' Télévision ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnTVBadge;
 
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]"),
-        @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']")})
+
+	@FindBy(xpath = "//span[text()=' Home Phone ' or text()= ' Téléphonie résidentielle ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnRHPBadge;
 
 	@FindBy(xpath = "//div[@linkurl='tvdashboard']/parent::div")
@@ -174,7 +168,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	
 	@FindAll({
 		@FindBy (xpath = "//p[text()='Quel compte souhaitez-vous consulter?' or text()='Which account would you like to view today?']"),
-		@FindBy (xpath = "//h3[@translate='acc_overview_which_account']")
+		@FindBy (xpath = "//h3[@translate='acc_overview_which_account']"),
+		@FindBy( xpath = "//h3[text()='Quel compte souhaitez-vous consulter?' or text()='Which account would you like to view today?']")
 	})	
 	WebElement headerAccountSelect;
 	
@@ -569,6 +564,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),' Financed accessories ') or contains(text(),' Accessoires financés ')]")
 	WebElement btnFinancedAccessories;
 
+	@FindBy(xpath = "(//div[@class='ds-borders ds-corners ds-brcolor-fog'])[1]//span[@class='ds-link__copy']")
+	WebElement btnManage;
+
+	@FindBy(xpath = "//a[@class='w-100 w-md-auto ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
+	WebElement btnChangePlan;
+
 	/**
 	 * Checks if more than one ban present in the pop up window, the count will be more than 1
 	 * @return true if more than one ban present else false
@@ -714,8 +715,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void selectAccount(String strAccountNumber) {		
 	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[@class='account-number-txt']//span[text()='" + strAccountNumber + "']")), 30);
 	}
-	
+
+
 	/**
 	 * To check if account is already linked
 	 * @param strAccountNumber account number of the Roger's customer
@@ -2357,4 +2360,24 @@ public boolean verifyPTPWidgetIsDisplayed() {
 			getReusableActionsInstance().getWhenReady(submenuTV, 10).click();
 		}
 	}
+
+	/**
+	 * This method clicks on Manage Button
+	 * @auther Nitin.Arora
+	 */
+	public void clickManageButton() {
+		getReusableActionsInstance().scrollToElement(btnManage);
+		getReusableActionsInstance().clickWhenReady(btnManage,20);
+	}
+
+	/**
+	 * This method clicks the change plan button
+	 * @auther Nitin.Arora
+	 */
+	public void clickChangePlanButton() {
+		getReusableActionsInstance().getWhenReady(btnChangePlan,20);
+		getReusableActionsInstance().scrollToElement(btnChangePlan);
+		getReusableActionsInstance().clickWhenReady(btnChangePlan,20);
+	}
+
 }
