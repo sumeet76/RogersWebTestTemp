@@ -17,7 +17,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement campaignTab;
 
-	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
+	@FindBy(xpath = "//*[@id='ds-form-input-id-5']")
 	WebElement couponInputContainer;
 
 //	@FindBy(xpath = "//span[contains(text(),'Enter') or contains(text(),'Entrer')]/ancestor::span/following-sibling::input | //div[@class='campaign-codes disabled']/descendant::label")

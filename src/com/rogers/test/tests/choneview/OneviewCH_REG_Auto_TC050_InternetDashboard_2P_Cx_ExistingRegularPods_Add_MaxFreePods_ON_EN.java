@@ -23,6 +23,7 @@ public class OneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPod
         reporter.reportLogWithScreenshot("click AddPods Button ");
         //getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
+        getRogersIgniteBundlesPage().addPods(0);
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");

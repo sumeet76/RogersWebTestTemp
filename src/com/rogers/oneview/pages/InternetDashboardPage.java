@@ -684,7 +684,7 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
 
-		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){
+		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
 			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddPod, 45);
 			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
 		}
@@ -743,7 +743,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifyIgniteWiFiPod() {
-		getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
+		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
 		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 60);
 		return getReusableActionsInstance().isElementVisible(IgniteWiFiPod);
 	}

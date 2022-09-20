@@ -63,70 +63,70 @@ public class OneviewCH_REG_Auto_TC022_NAC_3P_Discounts_Applied_OTBC_Pro_Install_
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.reportLogWithScreenshot("Phone Number Selected");
-		getCreditCheckPage().goToPageBottom();
-		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-		reporter.reportLogWithScreenshot("Phone Number Generated");
-		getHomePhoneSelectionPage().clkContinue();
-		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
-		reporter.reportLogWithScreenshot("Installation options");
-		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
-
-		// Install Type - Professional Install
-
-		reporter.reportLogWithScreenshot("professional installation");
-		getCreditCheckPage().selectProfessionalInstallation();
-		reporter.reportLogWithScreenshot("click Date Time Radio Button");
-		getFulfillmentPage().clkFirstAvailableAppointment();
-		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-		reporter.reportLogWithScreenshot(".enter Email Mail Address");
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-		reporter.reportLogWithScreenshot(".enter Special Instructions");
-		getCreditCheckPage().enterSpecialInstructions();
-		getRogersIgniteBundlesPage().clkContinue();
-		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.reportLogWithScreenshot("billing and payment");
-
-		// Payment Method - Pre-authorized Cheque
-
-		getCreditCheckPage().selectPaymentOption(2);
-		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
-		getRogersOVCheckoutPage().enterTransitNumber("00333");
-		reporter.reportLogWithScreenshot("Transit number");
-		getRogersOVCheckoutPage().enterInstitutionNumber("003");
-		reporter.reportLogWithScreenshot("Institution Number");
-		getRogersOVCheckoutPage().enterAccountNumber("1234003");
-		reporter.reportLogWithScreenshot("Account Number");
-
-		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("Order Review Page");
-		// Campaign Type - OTBC
-		reporter.reportLogWithScreenshot("campaign");
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("PCR6");
-		reporter.reportLogWithScreenshot("OTBC Campaign code entered");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("Campaign code applied");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		reporter.reportLogWithScreenshot("close coupon alert");
-		getRogersIgniteCampaignPage().closeCouponAlert();
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		getRogersIgniteCampaignPage().enterCoupon("KBM");
-		reporter.reportLogWithScreenshot("Installation code entered");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("Campaign code applied");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		reporter.reportLogWithScreenshot("close coupon alert");
-		getRogersIgniteCampaignPage().closeCouponAlert();
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+//		reporter.reportLogWithScreenshot("Phone Number Selected");
+//		getCreditCheckPage().goToPageBottom();
+//		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+//		reporter.reportLogWithScreenshot("Phone Number Generated");
+//		getHomePhoneSelectionPage().clkContinue();
+//		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+//		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+//		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+//		reporter.reportLogWithScreenshot("Installation options");
+//		getCreditCheckPage().verifyInstallationOption();
+//		getCreditCheckPage().goToPageBottom();
+//
+//		// Install Type - Professional Install
+//
+//		reporter.reportLogWithScreenshot("professional installation");
+//		getCreditCheckPage().selectProfessionalInstallation();
+//		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+//		getFulfillmentPage().clkFirstAvailableAppointment();
+//		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//		reporter.reportLogWithScreenshot(".enter Special Instructions");
+//		getCreditCheckPage().enterSpecialInstructions();
+//		getRogersIgniteBundlesPage().clkContinue();
+//		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+//		getCreditCheckPage().verifyBillingAndPaymentOption();
+//		reporter.reportLogWithScreenshot("billing and payment");
+//
+//		// Payment Method - Pre-authorized Cheque
+//
+//		getCreditCheckPage().selectPaymentOption(2);
+//		reporter.reportLogWithScreenshot("Pre-authorized Chequing");
+//		getRogersOVCheckoutPage().enterTransitNumber("00333");
+//		reporter.reportLogWithScreenshot("Transit number");
+//		getRogersOVCheckoutPage().enterInstitutionNumber("003");
+//		reporter.reportLogWithScreenshot("Institution Number");
+//		getRogersOVCheckoutPage().enterAccountNumber("1234003");
+//		reporter.reportLogWithScreenshot("Account Number");
+//
+//		getPaymentOptionsPage().clkContinue();
+//		reporter.reportLogWithScreenshot("Order Review Page");
+//		// Campaign Type - OTBC
+//		reporter.reportLogWithScreenshot("campaign");
+//		getRogersIgniteCampaignPage().clickCampaignTab();
+//		getRogersIgniteCampaignPage().enterCoupon("PCR6");
+//		reporter.reportLogWithScreenshot("OTBC Campaign code entered");
+//		getRogersIgniteCampaignPage().clickApplyCoupon();
+//		reporter.reportLogWithScreenshot("Campaign code applied");
+//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+//		reporter.reportLogWithScreenshot("close coupon alert");
+//		getRogersIgniteCampaignPage().closeCouponAlert();
+////		getRogersIgniteCampaignPage().clickCampaignTab();
+////		getRogersIgniteCampaignPage().enterCoupon("KBM");
+////		reporter.reportLogWithScreenshot("Installation code entered");
+////		getRogersIgniteCampaignPage().clickApplyCoupon();
+////		reporter.reportLogWithScreenshot("Campaign code applied");
+////		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+////		reporter.reportLogWithScreenshot("close coupon alert");
+////		getRogersIgniteCampaignPage().closeCouponAlert();
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

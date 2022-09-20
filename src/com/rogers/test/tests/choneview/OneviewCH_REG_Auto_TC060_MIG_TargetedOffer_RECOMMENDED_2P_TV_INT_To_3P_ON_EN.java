@@ -53,14 +53,12 @@ public class OneviewCH_REG_Auto_TC060_MIG_TargetedOffer_RECOMMENDED_2P_TV_INT_To
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("Internet Addons");
-        getCustomerProfilePage().goToTheBottom();
-        getCustomerProfilePage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Calling cart - Add to cart");
         getTVDashboardPage().addToCartCallingPackage();
         reporter.reportLogWithScreenshot("add calling card");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-        reporter.reportLogWithScreenshot("Cart Summary");
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

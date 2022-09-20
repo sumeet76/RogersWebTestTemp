@@ -200,7 +200,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
+	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -499,9 +499,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 90);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().staticWait(6000);
+//		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 120);
+//		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(addChannel, 90).click();
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -1196,6 +1197,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickExchangeNow() {
+		getReusableActionsInstance().staticWait(3000);
 		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);

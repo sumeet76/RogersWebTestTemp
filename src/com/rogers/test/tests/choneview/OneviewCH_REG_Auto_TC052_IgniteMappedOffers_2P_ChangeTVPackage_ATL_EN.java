@@ -49,9 +49,9 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         reporter.reportLogWithScreenshot("click continue");
        // getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
         //reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
-        getTVDashboardPage().clickThemepacksTab();
+        //getTVDashboardPage().clickThemepacksTab();
         reporter.reportLogWithScreenshot("click Theme pack Tab");
-        getTVDashboardPage().clickContinueChangeTVPackage();
+        //getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("click Continue");
         getTVDashboardPage().clickNoTheyDont();
         reporter.reportLogWithScreenshot("click No they Dont pop up option");

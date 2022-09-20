@@ -42,7 +42,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("review terms and condition");
         //getRogersIgniteBundlesPage().reviewAllTerms();
 //        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        getRogersIgniteBundlesPage().expandInternetdiv();
+        //getRogersIgniteBundlesPage().expandInternetdiv();
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -51,8 +51,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
-//        getRogersIgniteBundlesPage().addSHMAddOn();
-//        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
+        getRogersIgniteBundlesPage().addSHMAddOn();
+        reporter.reportLogWithScreenshot("clicked SHM Add On Add To Cart");
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -84,13 +84,24 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        //reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+       // getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        //reporter.reportLogWithScreenshot(".enter Email Mail Address");
+       // getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
+//        reporter.reportLogWithScreenshot("Select delivery by appointment");
+//        // Install Type - Delivery By Appointment
+//        getCreditCheckPage().selectDeliveryByAppointment();
+//        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+//        getFulfillmentPage().clkFirstAvailableAppointment();
+//        //getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//        //getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//        reporter.reportLogWithScreenshot(".enter Special Instructions");
+//        getCreditCheckPage().enterSpecialInstructions();
+//        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
@@ -110,6 +121,6 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
     }
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

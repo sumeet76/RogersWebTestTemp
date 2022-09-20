@@ -201,7 +201,7 @@ public class CreditCheckPage  extends BasePageClass {
              * @author aditi.jain
              */
 	public boolean verifyInstallationOption() {
-		return getReusableActionsInstance().isElementVisible(installationOption,30);
+		return getReusableActionsInstance().isElementVisible(installationOption,240);
 
 	}
 

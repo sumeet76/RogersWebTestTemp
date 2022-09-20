@@ -35,6 +35,8 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().addPods(5);
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("Cart Summary");
     //    reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -55,6 +57,7 @@ public class OneviewCH_REG_Auto_TC027_TargetedMigrationOffer_Regular_1P_INT_To_S
 
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
+        getCreditCheckPage().clkCourierDelivery();
         getCreditCheckPage().clickInPersonDelivery();
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
