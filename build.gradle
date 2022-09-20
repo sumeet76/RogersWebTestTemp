@@ -95,7 +95,6 @@ task "localTest"(type: Test) {
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
 	systemProperty 'XrayImportFlag', xray_import_flag
-	systemProperty 'JiraProjectKey',test_project
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'JiraProjectKey', jira_project_key
