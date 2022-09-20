@@ -42,7 +42,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummary_No4K_ProInstallTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH"})
 	public void rogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummary_No4K_ProInstall() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc89_2PMigrationGPON.getUsername());

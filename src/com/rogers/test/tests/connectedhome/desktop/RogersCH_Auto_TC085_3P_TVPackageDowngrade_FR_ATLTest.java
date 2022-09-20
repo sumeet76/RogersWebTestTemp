@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");

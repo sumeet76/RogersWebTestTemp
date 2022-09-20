@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC088_2P_HTO_2P_StarterPack_GPON_DualTopology_VerifyErrorPopupTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC088_2P_HTO_2P_StarterPack_GPON_DualTopology_VerifyErrorPopup() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc88_GPON_DualTopology.getUsername());
