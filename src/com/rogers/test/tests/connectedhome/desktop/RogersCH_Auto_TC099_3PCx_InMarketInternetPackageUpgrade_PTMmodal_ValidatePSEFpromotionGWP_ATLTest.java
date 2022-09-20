@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_ValidatePSEFpromotionGWP_ATLTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH"})
+	@Test
     public void rogersCH_Auto_TC099_3PCx_ChangeInternetPackage_PTMmodal_ValidatePSEFpromotionGWP_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc99_3PCxInternetAccount.getUsername());

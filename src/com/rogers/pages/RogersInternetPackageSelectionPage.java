@@ -36,7 +36,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@class='checkoutButton']")
 	WebElement btnCheckout;
 
-	@FindBy(xpath = "//span[text()='Take the quiz']")
+	@FindBy(xpath = "//button[@aria-label='Take the quiz']/span")
 	WebElement btnTakeQuiz;
 
 	@FindBy(xpath = "//input[@id='dsQ1A2']/following::span[contains(text(),'Netflix')]")
@@ -47,7 +47,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement clkNoOfPPLUsedInternet;
 	@FindBy(xpath = "//span[text()=' 1-5 ']")
 	WebElement clkNoOFDeviceConnectedToInternet;
-	@FindBy(xpath = "//label[contains(@aria-label,'Yes')]/span[@class='selection-label']")
+	@FindBy(xpath = "//input[contains(@aria-label,'Yes')]/parent::label//span[contains(@class,'selection__label')]")
 	WebElement clkAddSmartStreamAddon;
 	@FindBy(xpath="//span[contains(text(),'Back to all pack')]")
 	WebElement clkbtnBackToAllPackages;
@@ -94,7 +94,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
 	WebElement headerIgniteInternet150;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + SmartStream Add to cart']//span[@role='text']")
 	WebElement btnInternet1GbpsPackage;
 
 	@FindBy(xpath = "//span[contains(text(),'Yes')]")
@@ -157,37 +157,37 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//*[text()='Take the quiz']")
 	WebElement btnquiz;
 
-	@FindBy(xpath = "//label[@aria-label='Select web browsing and email']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A1']//span[contains(@class,'selection__label')]")
 	WebElement btnWebEmail;
 
-	@FindBy(xpath = "//label[@aria-label='Select streaming shows and movies']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A2']//span[contains(@class,'selection__label')]")
 	WebElement btnStreamingMovies;
 
-	@FindBy(xpath = "//label[@aria-label='Select online gaming']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A3']//span[contains(@class,'selection__label')]")
 	WebElement btnOnlineGaming;
 
-	@FindBy(xpath = "//label[@aria-label='Select sharing and uploading large files']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A4']//span[contains(@class,'selection__label')]")
 	WebElement btnSharingLargeFiles;
 
-	@FindBy(xpath = "//label[@aria-label='Select smart home devices']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A5']//span[contains(@class,'selection__label')]")
 	WebElement btnSmartHomeDevices;
 
-	@FindBy(xpath = "//label[@aria-label='Select working from home']/span[@class='selection-label']")
+	@FindBy(xpath = "//label[@for='dsQ1A6']//span[contains(@class,'selection__label')]")
 	WebElement btnWorkHome;
 
 	@FindBy(xpath = "//*[text()=' Continue ']")
 	WebElement btnDSTContinue;
 
-	@FindBy(xpath = "//label[@aria-label='Select 2-3']/span[@class='selection-label']")
+	@FindBy(xpath = "//input[@aria-label='Select 2-3']/parent::label//span[contains(@class,'selection__label')]")
 	WebElement btnInternetCount;
 
-	@FindBy(xpath = "//label[@aria-label='Select 6 or more']/span[@class='selection-label']")
+	@FindBy(xpath = "//input[@aria-label='Select 6 or more']/parent::label//span[contains(@class,'selection__label')]")
 	WebElement btnInternetCount6OrMore;
 
-	@FindBy(xpath = "//label[@aria-label='Select 4-7']/span[@class='selection-label']")
+	@FindBy(xpath = "//input[@aria-label='Select 4-7']/parent::label//span[contains(@class,'selection__label')]")
 	WebElement btnInternetDevice;
 
-	@FindBy(xpath = "//label[@aria-label='Select 16 or more']/span[@class='selection-label']")
+	@FindBy(xpath = "//input[@aria-label='Select 16 or more']/parent::label//span[contains(@class,'selection__label')]")
 	WebElement btnInternetDevice16OrMore;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'BEST FIT')]")

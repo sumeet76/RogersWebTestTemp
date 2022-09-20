@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmodal_ValidateGWPTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH"})
+	@Test
     public void rogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmodal_ValidateGWP() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc100_SAIonlyAccount.getUsername());

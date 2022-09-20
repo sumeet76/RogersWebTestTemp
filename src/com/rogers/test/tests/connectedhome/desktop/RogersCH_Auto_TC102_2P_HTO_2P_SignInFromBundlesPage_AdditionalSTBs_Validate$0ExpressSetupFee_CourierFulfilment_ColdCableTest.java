@@ -60,8 +60,8 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Clicked on View Bundles");
-        getRogersHomePage().clkEnterAddress();
-        reporter.reportLogWithScreenshot("Clicked on Enter address on Bundles page");
+       // getRogersHomePage().clkEnterAddress();
+       // reporter.reportLogWithScreenshot("Clicked on Enter address on Bundles page");
         reporter.hardAssert(getRogersHomePage().verifyServiceabilityPopup(), "Serviceability Modal verified", "Serviceability modal not verified");
         getRogersHomePage().clkSignIntoMyRogers();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -78,21 +78,14 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getAccountDetails().getBan());
             reporter.reportLogWithScreenshot("Account Selected");
         }
-
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().selectAddressOnFile();
-        reporter.reportLogWithScreenshot("Selected Address on file");
-        getRogersHomePage().clkUseAddress();
-        reporter.reportLogWithScreenshot("Launched the Bundles Page");
+        reporter.reportLogWithScreenshot("Bundles page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Bundles Page verified", "Bundles Page is not verified");
 
         getRogersIgniteTVBuyPage().VerifyYourBestFit();
         reporter.reportLogWithScreenshot("Recommended pack is displayed");
 
-        getRogersIgniteTVBuyPage().select1GbpsInternetSpeed();
-
-        // clk view more details
-        // getRogersIgniteTVBuyPage().clkBestAdd();
-
+       // getRogersIgniteTVBuyPage().selectRecommendedPkg1GbpsInternetSpeed();
+        getRogersIgniteTVBuyPage().clkRecommendedPkgViewMoreDetails();
 
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
@@ -117,7 +110,6 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
         getRogersHTOPRomotionPage().clickReviewYourUpgrade();
         reporter.reportLogWithScreenshot("Clicked on Review Your Upgrade button");
-
         reporter.hardAssert(getRogersOrderReviewPage().verifyTargetedOfferOrderReviewPage(),"Order Review Page has launched","Order Review Page has not launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
@@ -131,8 +123,6 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
-        reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
-        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
 
         getRogersOrderReviewPage().clkShowPriceBreakdown();
         reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
