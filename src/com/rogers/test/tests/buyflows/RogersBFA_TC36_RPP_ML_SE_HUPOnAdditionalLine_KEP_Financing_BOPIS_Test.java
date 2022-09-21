@@ -63,8 +63,8 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
-
+        //getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");

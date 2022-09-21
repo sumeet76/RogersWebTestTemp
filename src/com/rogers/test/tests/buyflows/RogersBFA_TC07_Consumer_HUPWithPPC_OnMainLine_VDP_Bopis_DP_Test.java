@@ -94,7 +94,7 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test ext
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
-        //getRogersReviewOrderPage().clkBopisConsentCheckbox();
+        getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         getRogersOrderReviewPage().clkSubmitOrder();

@@ -47,7 +47,7 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         reporter.reportLogWithScreenshot("Device Catalog Page");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
         //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc17AALNoTermStandardShipping.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc17AALNoTermStandardShipping.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -101,6 +101,7 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         reporter.reportLogPassWithScreenshot("Order Review Page");
         //getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+        getRogersReviewOrderPage().clkEmailConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOrderReviewPage().clkSubmitOrder();
         reporter.reportLogWithScreenshot("Rogers Payment Page");

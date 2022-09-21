@@ -171,8 +171,9 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermBopisShippingTest extends BaseT
 //		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
 //		getRogersCheckoutPage().clkContinueBtnShipping();
-		getRogersCheckoutPage().clkDeliveryMethod("standard");
-		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
+		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+		reporter.reportLogPass("Express Delivery selected");
+		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -181,23 +182,24 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermBopisShippingTest extends BaseT
 		reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
 		String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
+		reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
+		reporter.softAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
 		String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage + "3.Purchase Include :" + puchaseIncludeReviewPage);
 		String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
-		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
+		reporter.softAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
 		String contactNumberReviewPage = getRogersReviewOrderPage().getContactNumber();
 		reporter.softAssert(contactNumberCreateProfile.equals(contactNumberReviewPage), "Contact Number Matched", "Contact Number not matching");
 		String contactEmailReviewPage = getRogersReviewOrderPage().getContactEmail();
-		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
+		reporter.softAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+		getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-		//getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		// ************Order Confirmation Page***************************************************
@@ -218,16 +220,16 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermBopisShippingTest extends BaseT
 //		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyDeviceImage(),
 //				"Device Image Present in Confirmation Page", "Device Image not present");
 		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
+		reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
 				"Total Monthly Fee after tax matches with checkout page",
 				"Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesConfirmationPage = getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
+		reporter.softAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
 				"Total One time fee after tax matches with checkout page",
 				"Total One time fee after tax not matches with checkout page");
 		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
-		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
-				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
+		reporter.softAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
+				"Purchase includes Matches in Order Confirmation page", "Purchase Includes Not Matching");
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
 	}
 

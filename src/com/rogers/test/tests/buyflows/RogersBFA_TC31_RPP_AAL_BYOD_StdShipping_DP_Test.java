@@ -23,7 +23,7 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","DPBYOD"})
+    @Test(groups = {"RegressionBFA","RPPAAL","DPBYOD"})
     public void tc31_rogersRPPAalByodStdShipTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -82,15 +82,16 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc31_RPP_AALBYODStdShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkChooseNumberbutton();
-        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
-        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+        //reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
-        //getRogersCheckoutPage().clickSkipAutopay();
+        getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
         getRogersCheckoutPage().setEmailShippingPage();

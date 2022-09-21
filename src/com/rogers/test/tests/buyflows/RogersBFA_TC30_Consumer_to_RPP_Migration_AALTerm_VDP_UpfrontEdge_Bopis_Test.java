@@ -24,7 +24,7 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","RPPTEST"})
+    @Test(groups = {"RegressionBFA","RPPAAL"})
     public void tc30_ConToRPP_AALTerm_VDP_UpfronEdge_BopisTest() {
         //reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -68,7 +68,7 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
 //        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
 
         //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present", "Continue button on the device config page is not present");
         reporter.reportLogPassWithScreenshot("Device config page displayed");
@@ -77,9 +77,10 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is displayed", "Plan config page is not displayed");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         reporter.hardAssert(getRogersPlanConfigPage().isMigratedToRppFin(),"Consumer User Migrated to RPP Financing successfully","Not Migrated to RPP Financing");
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getTalkOptionIndex())),
@@ -97,13 +98,15 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
+        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         getRogersCheckoutPage().clkChooseNumberbutton();
-        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
-        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+//        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+//        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
+        getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
         getRogersCheckoutPage().setEmailShippingPage();

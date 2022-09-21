@@ -43,8 +43,9 @@ public class RogersBFA_TC05_POM_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_
 		//getRogersPlanConfigPage().clkBasicTab();
 		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
-		getRogersPlanConfigPage().clickShowMoreDetails();
-		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+		//getRogersPlanConfigPage().clickShowMoreDetails();
+		//getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -125,11 +126,12 @@ public class RogersBFA_TC05_POM_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().verifyPromoRemovedFrmCart(),"PromoCode removed from Cart","PromoCode not removed from Cart");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
-		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().clkBillingContinueButton();
+		//getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
+		//getRogersCheckoutPage().clkNoThanks();
+		//getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipAutopay();
 		//***************Shipping Options Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
+		//reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
 		getRogersCheckoutPage().clkDeliveryMethodStandard();
 		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
 		getRogersCheckoutPage().clkContinueBtnShipping();

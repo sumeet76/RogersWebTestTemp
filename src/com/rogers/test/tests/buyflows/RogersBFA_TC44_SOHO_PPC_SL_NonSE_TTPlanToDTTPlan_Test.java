@@ -23,7 +23,7 @@ public class RogersBFA_TC44_SOHO_PPC_SL_NonSE_TTPlanToDTTPlan_Test extends BaseT
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBF"})
+    @Test(groups = {"RegressionBFA","SOHOPPC"})
     public void tc44_sohoPPC_SLNonSE_TTPlanToDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -44,7 +44,7 @@ public class RogersBFA_TC44_SOHO_PPC_SL_NonSE_TTPlanToDTTPlan_Test extends BaseT
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc44_SOHO_PPC_SL_NS_TTPlanToDTTPlan.getTalkOptionIndex())),
@@ -52,7 +52,8 @@ public class RogersBFA_TC44_SOHO_PPC_SL_NonSE_TTPlanToDTTPlan_Test extends BaseT
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        getRogersCheckoutPage().clickSkipAutopay();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
