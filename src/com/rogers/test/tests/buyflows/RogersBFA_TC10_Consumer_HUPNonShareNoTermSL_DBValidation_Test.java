@@ -60,6 +60,7 @@ public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_DBValidation_Test exten
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
+            getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethodStandard();
             reporter.reportLogPass("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();

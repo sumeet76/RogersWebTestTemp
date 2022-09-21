@@ -23,7 +23,7 @@ public class RogersBFA_TC33_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","JUN2"})
+    @Test(groups = {"RegressionBFA","PPCRPP"})
     public void tc33_rogersPPC_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -61,6 +61,7 @@ public class RogersBFA_TC33_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
         getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
         reporter.reportLogWithScreenshot("Additional line data and talk selected");
         getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc33_RPP_PPC_ML_SE_SelectingDTTPlanOnMainLine.getNewPlanType());
+        getRogersCheckoutPage().clickSkipAutopay();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
