@@ -919,9 +919,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
+			System.out.println("in loading popup");
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		}
+		System.out.println("in loading popup");
 		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+
 	}
 
 	/**

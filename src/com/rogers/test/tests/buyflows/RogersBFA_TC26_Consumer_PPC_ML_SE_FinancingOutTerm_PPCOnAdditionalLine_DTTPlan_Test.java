@@ -48,7 +48,7 @@ public class RogersBFA_TC26_Consumer_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalL
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc26PPCMLSEAdditionalLineDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc26PPCMLSEAdditionalLineDTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc26PPCMLSEAdditionalLineDTTPlan.getTalkOptionIndex())),
@@ -56,6 +56,7 @@ public class RogersBFA_TC26_Consumer_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalL
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersCheckoutPage().clickSkipAutopay();
         /**reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
                 "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");

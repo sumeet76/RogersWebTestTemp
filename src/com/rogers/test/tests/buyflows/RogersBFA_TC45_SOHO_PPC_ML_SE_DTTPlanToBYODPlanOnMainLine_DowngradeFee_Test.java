@@ -23,7 +23,7 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBFA"})
+    @Test(groups = {"RegressionBFA","SOHOPPC"})
     public void tc45_sohoPPC_ML_SE_FINInTerm_BYODPlan_DowngradeFeeTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -49,7 +49,7 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         getRogersPlanConfigPage().verifyDowngradeFeeModalAndClkContinue();
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee.getTalkOptionIndex())),
@@ -59,6 +59,7 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Additional options page is displayed");
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersCheckoutPage().clickSkipAutopay();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");

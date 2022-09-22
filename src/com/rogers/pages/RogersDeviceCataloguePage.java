@@ -674,7 +674,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     }
 
     /**
-     * This method clicks on a Get Started button in a Modal window
+     * This method clicks on a Get Started button in a Consumer NAC Modal window
      * @return a boolean true if continue is present on the next device config page
      * Question about getting methods of one page to other
      * @author saurav.goyal
@@ -688,21 +688,43 @@ public class RogersDeviceCataloguePage extends BasePageClass {
             }
             do {
                 getDriver().get(System.getProperty("AWSUrl"));
-                clickDeviceTileCTAButton("iPhone 13 Pro");
+                clickDeviceTileCTAButton("iPhone 13 Pro Max");
                 getReusableActionsInstance().staticWait(2000);
             } while (!verifyGetStartedButtonOnModal());
 
         } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
-        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
 
     /**
-     * This method verifies if continue button is displayed in existing customer RPP modal
-     * @return true if continue button is displayed else false
+     * This method clicks on a Get Started button in RPP Modal window
+     * @return true if continue button is displayed on the next device config page else false
      * @author Subash.Nedunchezhian
      */
     public boolean clickGetStartedButtonOnModalRPP(){
         getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
+        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+    }
+
+    /**
+     * This method clicks on a Get Started button in SOHO NAC Modal window
+     * @return true if continue button is displayed on the next device config page else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean clickGetStartedButtonOnModalSoho() {
+        do {
+            getReusableActionsInstance().clickWhenVisible(modalContainerGetStartedbutton);
+            getReusableActionsInstance().staticWait(3000);
+            if (getDriver().getCurrentUrl().toUpperCase().contains("STORAGE")) {
+                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
+            }
+            do {
+                getDriver().get(System.getProperty("AWSUrl")+"/?type=soho");
+                clickDeviceTileCTAButton("iPhone 13 Pro Max");
+                getReusableActionsInstance().staticWait(2000);
+            } while (!verifyGetStartedButtonOnModal());
+
+        } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
         return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
 
