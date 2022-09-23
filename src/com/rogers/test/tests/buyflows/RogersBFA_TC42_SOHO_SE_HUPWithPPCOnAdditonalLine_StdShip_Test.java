@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","SOHOHUPBFA"})
     public void tc42_sohoHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -65,7 +65,7 @@ public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test exten
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+        getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
         reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();

@@ -567,6 +567,9 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "(//div[@class='ds-borders ds-corners ds-brcolor-fog'])[1]//span[@class='ds-link__copy']")
 	WebElement btnManage;
 
+	@FindBy(xpath = "(//div[@class='ds-borders ds-corners ds-brcolor-fog'])[2]//span[@class='ds-link__copy']")
+	WebElement btnManageDep;
+
 	@FindBy(xpath = "//a[@class='w-100 w-md-auto ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnChangePlan;
 
@@ -2362,7 +2365,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	/**
-	 * This method clicks on Manage Button
+	 * This method clicks on Manage Button Main
 	 * @auther Nitin.Arora
 	 */
 	public void clickManageButton() {
@@ -2380,4 +2383,12 @@ public boolean verifyPTPWidgetIsDisplayed() {
 		getReusableActionsInstance().clickWhenReady(btnChangePlan,20);
 	}
 
+	/**
+	 * This method clicks on Manage Button Dependent
+	 * @auther Nitin.Arora
+	 */
+	public void clickManageButtonDep() {
+		getReusableActionsInstance().scrollToElement(btnManageDep);
+		getReusableActionsInstance().clickWhenReady(btnManageDep,20);
+	}
 }
