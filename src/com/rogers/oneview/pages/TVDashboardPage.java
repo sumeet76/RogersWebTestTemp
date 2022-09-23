@@ -135,6 +135,12 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Change package' or text()='Changer de forfait']/ancestor::button")
 	WebElement btnChangePackage;
 
+	@FindBy(xpath = "//*[text()=' Internet ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
+	WebElement selectInternetCheckbox;
+
+	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
+	WebElement btnLoadOffers;
+
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.changeTVPackage']")
 	WebElement btnManageChannelAndThemePack;
 
@@ -733,6 +739,26 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	/**
+	 * Select Internet checkbox on the TV dashboard for SATV flow
+	 * @author Jarmanjeet.Batth
+	 */
+	public void clickCheckBoxInternet() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60).click();
+	}
+
+	/**
+	 * Click Load Offers on the TV dashboard for SATV flow
+	 * @author Jarmanjeet.Batth
+	 */
+	public void clickLoadOffers() {
+		getReusableActionsInstance().getWhenReady(btnLoadOffers, 60);
+		getReusableActionsInstance().executeJavaScriptClick(btnLoadOffers);
+
+	}
+
+	/**
 	 * Clicks select button on the channel to Add section
 	 *
 	 * @author chinnarao.vattam
@@ -1139,11 +1165,9 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickDownloadGoBubble() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().clickWhenReady(DownloadGoBubble);
-
 	}
 
 	public void clickResetPurchasePin() {
-
 		getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
@@ -1214,7 +1238,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
 
-
 	public void clickSelectChannel() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(selectChannel, 30);
@@ -1235,8 +1258,6 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(continueBottomOfPage, 30);
 		getReusableActionsInstance().clickWhenReady(continueBottomOfPage);
-
-
 	}
 
 	public boolean verifyManageChannelsAndThemePacks() {

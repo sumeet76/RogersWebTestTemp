@@ -46,12 +46,8 @@ public class OneViewCH_REG_Auto_TC094_Validate_Ignite_mappedOffers_SAI_to_SAI_ON
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","","", method);
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
 }
-
-
-

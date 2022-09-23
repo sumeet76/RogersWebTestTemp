@@ -139,6 +139,7 @@ public class TestDataHandler {
 	public static AccountData ChangeTvViaServiceability;
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
+	public static AccountData tc098_SATV2P_To_Bundle2P;
 	public static AccountData TC028_InternetPackageDowngrade;
 	public static AccountData tupeloDowngradeTest;
 	public static AccountData tupeloUpgradeTest;
@@ -736,6 +737,7 @@ public class TestDataHandler {
 		addChannelAndThempackImmediate = YamlHandler.getMigrationData("1539_AddChannelandThemepackImmediate");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
+		tc098_SATV2P_To_Bundle2P=YamlHandler.getOVAccountData("TC098_SATV_2P_to_Bundle_2P");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
 		tupeloDowngradeTest= YamlHandler.getOVAccountData("1460_Tupelo_Internet_Downgrade");
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
