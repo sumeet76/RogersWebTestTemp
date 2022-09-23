@@ -868,7 +868,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkCreditAuthorizationChkBox() 
 	{
-		getReusableActionsInstance().getWhenReady(chkCreditAuthorization).click();
+		getReusableActionsInstance().getWhenReady(chkCreditAuthorization,90).click();
 		}
 
 	/**
