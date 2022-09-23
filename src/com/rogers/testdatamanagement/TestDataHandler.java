@@ -158,6 +158,8 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
 	public static RedesignRpotgData MOM_tc01_Consumer_NAC;
 	public static RedesignRpotgData MOM_TC03_PPC;
+	public static RedesignRpotgData MOM_TC04_HUP_Main;
+	public static RedesignRpotgData MOM_TC05_HUP_Dependent;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -672,6 +674,8 @@ public class TestDataHandler {
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
 		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
+		MOM_TC04_HUP_Main=YamlHandler.getRedesignNACData("MOM_TC04_HUP_Main");
+		MOM_TC05_HUP_Dependent=YamlHandler.getRedesignNACData("MOM_TC05_HUP_Dependent");
 		MOM_tc01_Consumer_NAC=YamlHandler.getRedesignNACData("MOM_tc01_Consumer_NAC");
 		MOM_tc02_Consumer_AAL=YamlHandler.getAALdata("MOM_tc02_Consumer_AAL");
 	}

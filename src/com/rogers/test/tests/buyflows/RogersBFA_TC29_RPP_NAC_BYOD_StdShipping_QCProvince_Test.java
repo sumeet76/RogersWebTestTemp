@@ -84,7 +84,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		//reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
-		// ***************Choose a Number Stepper*************//      
+		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed","Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
 		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getCityName());
@@ -100,8 +100,8 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		//***************Shipping Options Stepper*************//
-		getRogersCheckoutPage().clkDeliveryMethodStandard();
-		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
+		getRogersCheckoutPage().clkDeliveryMethod("standard");
+		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();

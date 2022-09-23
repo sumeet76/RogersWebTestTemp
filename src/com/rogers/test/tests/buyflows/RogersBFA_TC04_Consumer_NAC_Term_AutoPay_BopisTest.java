@@ -109,8 +109,8 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		getRogersCheckoutPage().clkAutoPayConsentCheckBox();
 		getRogersCheckoutPage().clkBillingContinueButton();
 		// ***************Shipping Stepper*************//
-		String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
-		System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
+		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
+		//System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
 		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
 		reporter.reportLogPass("Express Delivery selected");
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");

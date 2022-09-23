@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","HUPBFA"})
+        @Test(groups = {"RegressionBFA","SOHOHUPBFA"})
         public void tc40_sohoHUP_NS_MediumRisk_KeepCurrentPlanSL_BOPIS_Test() {
 
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

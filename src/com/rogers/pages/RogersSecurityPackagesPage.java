@@ -381,8 +381,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHowToGetItAutomatePack() {
-		getReusableActionsInstance().waitForElementVisibility(btnHowToGetItAutomatePack, 90);
-		getReusableActionsInstance().getWhenReady(btnHowToGetItAutomatePack, 60).click();
+		getReusableActionsInstance().moveToElementAndClick(btnHowToGetItAutomatePack, 60);
 	}
 
 	/**
@@ -497,7 +496,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifyAutomatePackageMoreDetails()
 	{
-		getReusableActionsInstance().waitForElementVisibility(txtAutomatePackageDetails, 30);
+		getReusableActionsInstance().waitForElementVisibility(txtAutomatePackageDetails, 90);
 		return getReusableActionsInstance().isElementVisible(txtAutomatePackageDetails);
 	}
 

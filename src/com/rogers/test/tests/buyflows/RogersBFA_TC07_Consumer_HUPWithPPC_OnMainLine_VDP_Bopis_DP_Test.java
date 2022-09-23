@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test extends BaseTestClass {
+public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc07_rogersHupPpcPotgMLTest() {
+    public void tc07_rogersHupPpcBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -70,18 +70,20 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
 //        getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
 //        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
-        getRogersCheckoutPage().clickSkipAutopay();
-        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
-        reporter.reportLogPass("Standard Delivery selected");
+        getRogersCheckoutPage().clkDeliveryMethod("Express");
+        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Pickup Location Map is available",
+                "Express Pickup Location Map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
-        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
@@ -92,7 +94,7 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
-        //getRogersReviewOrderPage().clkBopisConsentCheckbox();
+        getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         getRogersOrderReviewPage().clkSubmitOrder();

@@ -33,14 +33,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindAll({
 		@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
 		@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']"),
-			@FindBy(xpath = "//a[@aria-label='Ignite Starter Order online']//span[text()='Order online']")
+		//	@FindBy(xpath = "//a[@aria-label='Ignite Starter Order online']//span[text()='Order online']")
 		})
 	WebElement btnSolarisStarterPackage;
 
 @FindAll({
    			@FindBy(xpath = "//div[@class='bundle-tile-price']//a[@aria-label='Order Rogers Ignite Premier online now']/span"),
 			@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/span"),
-			@FindBy(xpath = "//a[@aria-label='Ignite Premier Order online']//span[text()='Order online']")})
+			//@FindBy(xpath = "//a[@aria-label='Ignite Premier Order online']//span[text()='Order online']")
+		})
 	WebElement btnSolarisPremierPackage;
 
 	@FindBy(xpath= "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]")
@@ -910,6 +911,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
+		//getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(txtCartSummary,120);
 		return	getReusableActionsInstance().isElementVisible(txtCartSummary,90);
 	}
@@ -919,9 +921,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckout() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		}
 		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+
 	}
 
 	/**
@@ -938,9 +942,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckoutMobile() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		}
 		getReusableActionsInstance().executeJavaScriptClick(btnCheckout);
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 	}
 
 	/**

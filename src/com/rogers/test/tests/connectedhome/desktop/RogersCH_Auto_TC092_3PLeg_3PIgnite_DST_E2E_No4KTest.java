@@ -50,7 +50,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTestClass {
 
-    @Test//(groups = {"RegressionCH"})
+    @Test(groups = {"RegressionCH"})
 	public void rogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4K() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc92_Legacy3pToIgnite3P.getUsername());

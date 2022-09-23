@@ -579,6 +579,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyCartSummaryHeader() {
+		//getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().staticWait(6000);
 		return getReusableActionsInstance().isElementVisible(txtCartSummaryHeader,60);
 	}
 
