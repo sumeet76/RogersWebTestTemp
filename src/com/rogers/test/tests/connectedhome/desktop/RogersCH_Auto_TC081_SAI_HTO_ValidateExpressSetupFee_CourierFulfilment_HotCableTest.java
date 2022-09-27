@@ -46,10 +46,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
+public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH",""})
-    public void rogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCable() {
+    public void rogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCable() {
        // getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getUsername());
