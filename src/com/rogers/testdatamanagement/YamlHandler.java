@@ -329,7 +329,13 @@ public class YamlHandler {
 		return ovrReusableData;
 	}
 
-
+	public static AddonData getAddonData(String dataFileName) throws FileNotFoundException{
+		Yaml yaml = new Yaml(new Constructor(AddonData.class));
+		InputStream inputStream;
+			inputStream = new FileInputStream(new File(System.getProperty("user.dir") + "/test-data/rogers/buyflows/" + dataFileName + ".yml"));
+			AddonData addonData = yaml.load(inputStream);
+			return addonData;
+	}
 }
 
 
