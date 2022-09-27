@@ -149,13 +149,12 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
+        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
+        System.out.println("SCHEMA : " + DbSchema);
         /**
          * DB Validations in the subscriber table
          */
-
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
-
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
         reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
 	}
