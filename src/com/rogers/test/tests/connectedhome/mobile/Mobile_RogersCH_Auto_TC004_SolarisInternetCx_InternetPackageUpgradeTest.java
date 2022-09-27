@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+import java.util.Map;
 
 
 /**
@@ -72,7 +72,7 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
             reporter.reportLogWithScreenshot("Verified the smart stream modal");
             getRogersInternetDashboardPage().clkOnNoThanks();
         }
-        getRogersInternetDashboardPage().clkContinueToChangeInternetPackage();
+      //  getRogersInternetDashboardPage().clkContinueToChangeInternetPackage();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		
@@ -84,6 +84,17 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+
+        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
+        System.out.println("SCHEMA : " + DbSchema);
+        /**
+         * DB Validations in the subscriber table
+         */
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
