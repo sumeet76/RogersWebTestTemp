@@ -333,14 +333,20 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
 	WebElement drpdwnGenre;
 
+	@FindBy(xpath = "//div[@class='tile-see-full-details-modal']")
+	WebElement divViewMoreDetailsPopup;
+
 	@FindBy(xpath = "//button[@aria-label='Enter your address to check package prices and offers now.']/span")
 	WebElement btnEnterAddress;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]//span[@class='price-details__label']")
 	WebElement btnTotalChannelsFlex20;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']")
 	WebElement btnFlexChannelsFlex20;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
+	WebElement btnViewMoreDetailsFlex20;
 
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
@@ -528,7 +534,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Chinnarao.vattam
 	 */
 	public void clkChevronUpYourCart() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		}
 		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 20).click();
 	}
 	
@@ -712,7 +720,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		}
 		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
@@ -1645,7 +1655,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkTotalChannelsFlex20() {
-		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
+		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+	}
+
+	/**
+	 * Click Total Channels on Flex20 pkg
+	 * @author manpreet.kaur3
+	 */
+	public void clkViewMoreDetailsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex20, 30).click();
 	}
 
 	/**
@@ -1653,7 +1671,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkFlexChannelsFlex20() {
-		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
 	}
 
 	/**
@@ -1717,5 +1735,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	public void clkRecommendedPkgViewMoreDetails() {
 		getReusableActionsInstance().getWhenReady(lnkRecommendedPkgViewMoreDetails, 30).click();
+	}
+
+	public boolean verifyMoreDetailsPopup() {
+		return getReusableActionsInstance().isElementVisible(divViewMoreDetailsPopup, 60);
 	}
 }

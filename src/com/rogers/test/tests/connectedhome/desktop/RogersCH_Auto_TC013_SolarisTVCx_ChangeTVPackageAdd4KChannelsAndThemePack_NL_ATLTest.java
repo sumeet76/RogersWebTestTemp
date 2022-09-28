@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
+        getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanEn(),TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getUpgradePlanFr());
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
