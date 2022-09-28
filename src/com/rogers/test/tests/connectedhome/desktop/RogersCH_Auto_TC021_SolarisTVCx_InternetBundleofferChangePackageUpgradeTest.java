@@ -47,7 +47,9 @@ public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpg
         getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
-        reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button"); 
+        reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button");
+        getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("Address Selected");
         getRogersBuyPage().clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page");
         getRogersInternetDashboardPage().clkInternetPopup();
