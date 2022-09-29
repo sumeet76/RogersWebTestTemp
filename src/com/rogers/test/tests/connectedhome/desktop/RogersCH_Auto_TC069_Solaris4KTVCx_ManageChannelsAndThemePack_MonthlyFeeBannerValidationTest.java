@@ -30,28 +30,29 @@ public class RogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_Monthl
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void rogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_MonthlyFeeBannerValidation() {
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
-		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.accountDetails.getBan());
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersSolarisTVDashboardPage().clkTVBadge();
-		reporter.reportLogWithScreenshot("Launched the TV dash board");
-		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyPriceIncreaseChannelCopy(),"Price Increase Channel Copy is present","Price Increase Channel Copy is not present");
-		reporter.reportLogWithScreenshot("Launched the Channels");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();
-		reporter.reportLogWithScreenshot("Clicked on themepack tab");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyPriceIncreaseThemeCopy(),"Price Increase Theme Copy is present","Price Increase Theme Copy is not present");
-		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-    	}
+		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getUsername());
+		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getPassword());
+		 reporter.reportLogWithScreenshot("Enter the account credentails");
+		 getRogersLoginPage().clkSignInIFrame();
+		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		 reporter.reportLogWithScreenshot("Skip popup");
+		 getRogersLoginPage().clkSkipIFrame();
+		 reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.accountDetails.getBan());
+		 reporter.reportLogWithScreenshot("Launched the Account Page");
+		 getRogersSolarisTVDashboardPage().clkTVBadge();
+		 reporter.reportLogWithScreenshot("Launched the TV dash board");
+		 getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
+		 reporter.reportLogWithScreenshot("Clicked on Manage channels and theme packs");
+		 getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
+		 reporter.reportLogWithScreenshot("Launched the Channels");
+		 reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KChannelsAlert(), "Banner is present", "Banner is not present");
+		 getRogersSolarisTVChannelsAndThemepacksPage().clkThemePacks();
+		 reporter.reportLogWithScreenshot("Clicked on themepack tab");
+		 reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KChannelsAlert(), "Banner is present", "Banner is not present");
+
+	 }
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
