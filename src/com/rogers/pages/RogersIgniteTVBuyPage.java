@@ -526,7 +526,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyPriceIncreaseThemeCopy() {
 		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 30);
 		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(bnrPriceIncreaseThemeCopy);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
 		return isBannerAvailable;
 	}
 	/**

@@ -50,6 +50,7 @@ public class RogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_Clic
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         //reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Launched the offers page to select package");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
