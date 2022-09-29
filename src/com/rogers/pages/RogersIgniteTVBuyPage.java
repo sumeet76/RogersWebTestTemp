@@ -172,6 +172,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
 	WebElement bnrPriceIncreaseChannelCopy;
 
+	@FindBy(xpath = "//div[@class='alert-box__copy']")
+	WebElement bnrAlertCopy;
+
 	@FindBy(xpath = "//div[@translate='global.message.buyThemepacksLater']")
 	WebElement bnrPriceIncreaseThemeCopy;
 
@@ -1741,4 +1744,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyMoreDetailsPopup() {
 		return getReusableActionsInstance().isElementVisible(divViewMoreDetailsPopup, 60);
 	}
+
+	public boolean verify4KChannelsAlert() {
+		//getReusableActionsInstance().staticWait(50000);
+		getReusableActionsInstance().waitForElementVisibility(bnrAlertCopy, 120);
+		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrAlertCopy);
+		return isBannerAvailable;
+	}
+
 }
