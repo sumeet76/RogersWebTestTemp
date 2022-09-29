@@ -109,6 +109,15 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	@FindBy(xpath="//div[@class='contact-information__content']/p[contains(text(),'BAN')]")
 	WebElement txtBAN;
 
+	@FindBy(xpath = "//h1[contains(text(),'Confirmation')]/parent::div")
+	WebElement addonOrderConfirm;
+
+	@FindBy(xpath = "//h1[contains(text(),'Confirmation')]/following::div[1]")
+	WebElement addonOrderConfirmMessage;
+
+	@FindBy(xpath = "//span[contains(@class,'ds-button__copy text-button') and contains(.,'Back to add-ons')]")
+	WebElement backToAddonBtn;
+
 	/**
 	 * get the BAN from order confirmation page
 	 */
@@ -310,5 +319,31 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 		return String.valueOf(noTermPriceWithTax);
 	}
 
+	/**
+	 * This method verify the Confirmation title on Confirmation Page
+	 *  @return true if Confirmation title displayed; else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyAddonOrderConfirm(){
+		return getReusableActionsInstance().isElementVisible(addonOrderConfirm,20);
+	}
+
+	/**
+	 * This method gets the Confirmation message on Confirmation Page
+	 * @return String text of Confirmation message
+	 * @author subash.nedunchezhian
+	 */
+	public String getOrderConfirmMsg(){
+		getReusableActionsInstance().waitForElementVisibility(addonOrderConfirm,20);
+		return getReusableActionsInstance().getWhenReady(addonOrderConfirmMessage).getText().replaceAll("\\n", "");
+	}
+
+	/**
+	 * This method clicks on Back To Addon button on Confirmation Page
+	 * @author subash.nedunchezhian
+	 */
+	public void clickBackToAddonBtn(){
+		getReusableActionsInstance().clickWhenReady(backToAddonBtn,10);
+	}
 
 }
