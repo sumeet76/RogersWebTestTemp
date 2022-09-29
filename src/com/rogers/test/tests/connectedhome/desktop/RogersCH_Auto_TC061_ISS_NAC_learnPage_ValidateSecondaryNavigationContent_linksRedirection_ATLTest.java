@@ -81,7 +81,10 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
+        getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
+        reporter.reportLogWithScreenshot("Continue to profile page");
+       // getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
