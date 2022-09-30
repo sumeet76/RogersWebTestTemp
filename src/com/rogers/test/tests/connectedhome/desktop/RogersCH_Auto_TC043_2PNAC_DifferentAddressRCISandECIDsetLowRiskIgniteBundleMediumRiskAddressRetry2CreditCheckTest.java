@@ -87,17 +87,18 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 		if (getRogersIgniteTVCreditCheckPage().verifyAddressModal()) {
 			reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-			String strAddressLineOne = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-			String strAddressLineTwo = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+			String strAddressLineOne = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddressOnFile().get("line1");
+			String strAddressLineTwo = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddressOnFile().get("line2");
 			getRogersIgniteTVCreditCheckPage().setIgniteAddressLookupSecond(strAddressLineOne + ", " + strAddressLineTwo + ", CANADA");
 			getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
 		}
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
-		getRogersTechInstallPage().clkTechInstalConsent();
+		getRogersTechInstallPage().clkProInstallUpgradeNo();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinueSelf();
-
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
+		getRogersTechInstallPage().clkTechInstallContinue();
 		reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");
 		getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");

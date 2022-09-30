@@ -841,7 +841,9 @@ public class RogersHomePage extends BasePageClass {
 	public void clkServiceabilityMigration() {
 		//Migration flow loading for long to ger serviceability model
 		getReusableActionsInstance().staticWait(6000);
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		}
 		getReusableActionsInstance().getWhenReady(btnServiceability, 30).click();
 	}
 	
