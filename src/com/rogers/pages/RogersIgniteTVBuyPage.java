@@ -30,11 +30,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 
-	@FindAll({
-		@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-		@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']"),
-		//	@FindBy(xpath = "//a[@aria-label='Ignite Starter Order online']//span[text()='Order online']")
-		})
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']")
 	WebElement btnSolarisStarterPackage;
 
 @FindAll({
@@ -938,6 +935,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 		}
+		getReusableActionsInstance().scrollToElement(btnCheckout);
 		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
 
 	}
