@@ -41,14 +41,14 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
         reporter.reportLogWithScreenshot("click continue at channels and themepack");
-        getTVDashboardPage().clickContinueOn4kTv();
-//        getTVDashboardPage().clickNoOn4KTvModal();
+//        getTVDashboardPage().clickContinueOn4kTv();
+        getTVDashboardPage().clickNoOn4KTvModal();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
-        getInternetDashboardPage().clickImmediateBill();
-        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
-        getTVDashboardPage().continueFromChangeDate();
+//        getInternetDashboardPage().clickImmediateBill();
+//        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
+//        getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -64,6 +64,6 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
 }

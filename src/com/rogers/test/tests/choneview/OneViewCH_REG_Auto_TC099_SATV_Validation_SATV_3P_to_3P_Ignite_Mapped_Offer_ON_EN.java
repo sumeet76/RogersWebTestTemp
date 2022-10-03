@@ -10,23 +10,20 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_REG_Auto_TC098_SATV_Validation_SATV_2P_to_Bundle_2P_Offer_ON_EN extends BaseTestClass {
-    @Test(groups = {"ChangePackage"})
-    public void oneViewCH_Auto_SATV_Validation_SATV_2P_to_Bundle_2P_Offer_ON_EN(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc098_SATV2P_To_Bundle2P.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
+public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mapped_Offer_ON_EN extends BaseTestClass {
+    @Test(groups = {""})
+    public void oneViewCH_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mapped_Offer_ON_EN(){
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc099_SATV3P_To_SATV3P_Mapped_Offers.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().clickIgniteTVBadge();
         reporter.reportLogWithScreenshot("launch the Tv Dashboard page");
-        getTVDashboardPage().clickChangePackage();
-        reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        getTVDashboardPage().clickCheckBoxInternet();
-        reporter.reportLogWithScreenshot("Internet option selected");
-        getTVDashboardPage().clickLoadOffers();
-        reporter.reportLogWithScreenshot("Load offers button clicked");
-        getTVDashboardPage().selectTVPackage(TestDataHandler.tc098_SATV2P_To_Bundle2P.accountDetails.getUpgradePlanEn(),TestDataHandler.tc098_SATV2P_To_Bundle2P.accountDetails.getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Upgrade TV Package selected");
-
-        /*For Flex Channels - Exchange Later*/
+        getTVDashboardPage().clickViewOffers();
+        reporter.reportLogWithScreenshot("view offers link clicked");
+        reporter.hardAssert(getTVDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
+        getTVDashboardPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Recommended offer selected");
+        getTVDashboardPage().selectExclusiveOfferAvailable();
+        reporter.reportLogWithScreenshot("recommended offer TV Package selected");
         getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
         getTVDashboardPage().clickExchangeLater();
@@ -45,7 +42,6 @@ public class OneViewCH_REG_Auto_TC098_SATV_Validation_SATV_2P_to_Bundle_2P_Offer
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //        reporter.reportLogWithScreenshot("Order Placed");
     }
-
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -54,6 +50,7 @@ public class OneViewCH_REG_Auto_TC098_SATV_Validation_SATV_2P_to_Bundle_2P_Offer
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
+
 }

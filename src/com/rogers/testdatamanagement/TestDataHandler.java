@@ -140,6 +140,7 @@ public class TestDataHandler {
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
 	public static AccountData tc098_SATV2P_To_Bundle2P;
+	public static AccountData tc099_SATV3P_To_SATV3P_Mapped_Offers;
 	public static AccountData TC028_InternetPackageDowngrade;
 	public static AccountData tupeloDowngradeTest;
 	public static AccountData tupeloUpgradeTest;
@@ -742,6 +743,7 @@ public class TestDataHandler {
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
 		tc098_SATV2P_To_Bundle2P=YamlHandler.getOVAccountData("TC098_SATV_2P_to_Bundle_2P");
+		tc099_SATV3P_To_SATV3P_Mapped_Offers=YamlHandler.getOVAccountData("IgniteMapped_Offers_SATV3p_to_SATV3P");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
 		tupeloDowngradeTest= YamlHandler.getOVAccountData("1460_Tupelo_Internet_Downgrade");
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");

@@ -317,6 +317,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
 	WebElement recommendedOffer;
 
+	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
+	WebElement exclusiveOfferAvailable;
+
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::button")
 	WebElement closeButton;
 
@@ -1206,7 +1209,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickViewOffers() {
 		getReusableActionsInstance().staticWait(20);
-		//getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
+		getReusableActionsInstance().waitForElementVisibility(viewOffer, 30);
 		getReusableActionsInstance().executeJavaScriptClick(viewOffer);
 	}
 
@@ -1216,7 +1219,13 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
+		getReusableActionsInstance().scrollToElement(recommendedOffer);
 		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+	}
+
+	public void selectExclusiveOfferAvailable() {
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferAvailable, 30);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferAvailable);
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
