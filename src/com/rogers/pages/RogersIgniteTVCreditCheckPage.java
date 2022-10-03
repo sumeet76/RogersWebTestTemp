@@ -93,7 +93,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='passport-component']//input/..")
 	WebElement txtContainerPasportNumber;
 
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	@FindBy(xpath = "//div[@class='birth-certificate-component']//input[contains(@id,'ds-form-input-id')]/..")
 	WebElement txtContainerBirthCertificateNumber;
 
 	@FindBy(xpath = "//form[@name='cartAbandonmentForm']")
@@ -160,15 +160,20 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(TxtEnterAddress).sendKeys(Keys.ENTER);
 	}
 
+	/**
+	 * Address lookup
+	 * @author manpreet.kaur3
+	 */
 	public void setIgniteAddressLookupSecond(String strAddress) {
-		getReusableActionsInstance().waitForElementVisibility(TxtAddressContainer, 60);
+		getReusableActionsInstance().waitForElementTobeClickable(TxtAddressContainer, 60);
 		getReusableActionsInstance().getWhenReady(TxtAddressContainer, 3).click();
 		getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 3).clear();
-		getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 5).sendKeys(strAddress);
-		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.TAB);
-		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress, 5).sendKeys(Keys.ARROW_DOWN);
+		for (int i = 0; i < strAddress.length(); i++){
+			char c = strAddress.charAt(i);
+			String charAddress = new StringBuilder().append(c).toString();
+			TxtReskRuleaddress.sendKeys(charAddress);
+		}
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.ENTER);
 	}
 

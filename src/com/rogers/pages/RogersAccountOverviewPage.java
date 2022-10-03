@@ -511,7 +511,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//img[@class='star']")
 	WebElement imgSpecialOfferBadge;
 
-	@FindBy(xpath = "//span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
+	@FindBy(xpath = "//a[@title='View upgrade promotion offer']/span | //span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")
 	WebElement lblSpecialOfferBadge;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -2189,7 +2189,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 * @author Manpreet.kaur3
 	 */
 	public void clkSpecialOfferBadge() {
-		getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge).click();
+		getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge, 60).click();
 	}
 
 	/**

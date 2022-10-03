@@ -384,6 +384,8 @@ public class TestDataHandler {
 	public static OvrReusableData tc_45_Ovr_Mig_Data_Non_Consolidated_Ban;
 	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
 	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
+	public static AddonData tc50SAA_AddLongDistance;
+	public static AddonData tc51SAA_RemoveLongDistance;
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -674,6 +676,8 @@ public class TestDataHandler {
 		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
+		tc50SAA_AddLongDistance = YamlHandler.getAddonData("tc50SAA_AddLongDistance");
+		tc51SAA_RemoveLongDistance = YamlHandler.getAddonData("tc51SAA_RemoveLongDistance");
 		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
 		MOM_TC04_HUP_Main=YamlHandler.getRedesignNACData("MOM_TC04_HUP_Main");
 		MOM_TC05_HUP_Dependent=YamlHandler.getRedesignNACData("MOM_TC05_HUP_Dependent");

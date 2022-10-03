@@ -70,6 +70,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//select[@aria-describedby='formfield-5-a11yDescription formfield-5-messages']")
 	WebElement selGenres;
 
+	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
+	WebElement drpdwnGenre;
 
 	@FindBy(xpath = "//button[contains(@id,'remove-channel')]//ins")
 	WebElement removeParticularChannelFromCart;
@@ -101,7 +103,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	WebElement addThemePackClassicTVThemePacks4plus1;
 	//h3[@class='header-1 font-regular margin-0' and contains(text(),'Super Sports Pack (TP)')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']
 	
-	@FindBy(xpath = "//span[contains(text(),'Confirm')]")
+	@FindBy(xpath = "//span[@translate= 'global.modals.conflictWarnings.themepackToFlexWarning.primaryButton']/ancestor::span[@role='text']")
 	WebElement yesContinueOnExistingChannelAlert;
 	//button[@class='ute-btn-primary ute-md']
 
@@ -188,8 +190,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void SelectChannelGenres(String strGenres) {
-		getReusableActionsInstance().waitForElementVisibility(selGenres,180);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(selGenres, strGenres);
+		getReusableActionsInstance().waitForElementVisibility(drpdwnGenre,60);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(drpdwnGenre, strGenres);
 	}
 
 	/**

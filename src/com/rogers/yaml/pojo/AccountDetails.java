@@ -34,6 +34,7 @@ public class AccountDetails {
 	private String postalCode;
 	private String payment;
 	private Map<String, String> address;
+	private Map<String, String> addressOnFile;
 	private String internetBundle;
 	private String phoneNumber;
 	private String swapInChannelOne;
@@ -557,6 +558,20 @@ public class AccountDetails {
     public void setAddress(Map<String, String> address) {
         this.address = address;
     }
+
+	/**
+	 * @return the addressOnFile
+	 */
+	public Map<String, String> getAddressOnFile() {
+		return addressOnFile;
+	}
+
+	/**
+	 * @param addressOnFile the address to set
+	 */
+	public void setAddressOnFile(Map<String, String> address) {
+		this.addressOnFile = addressOnFile;
+	}
     
 	/**
 	 * @return the InternetBundle

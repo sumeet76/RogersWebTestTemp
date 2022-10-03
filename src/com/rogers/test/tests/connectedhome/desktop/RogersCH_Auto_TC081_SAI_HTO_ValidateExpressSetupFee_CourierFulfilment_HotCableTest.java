@@ -46,10 +46,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
+public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH",""})
-    public void rogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfilment_HotCable() {
+    public void rogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCable() {
        // getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getUsername());
@@ -65,12 +65,12 @@ public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfil
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc81_StandaloneInternetAccount.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-        if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
+       /* if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
             reporter.reportLogWithScreenshot("New Offer Modal Popup");
             getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
         }
         reporter.reportLogWithScreenshot("New Offer Modal Popup closed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available");
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available"); */
         getRogersAccountOverviewPage().clkSpecialOfferBadge();
         reporter.reportLogWithScreenshot("Clicked on the Special Offer Recommendation Bagde");
 
@@ -105,16 +105,16 @@ public class RogersCH_Auto_TC081_SAI_HTO_Validate$0ExpressSetupFee_CourierFulfil
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
-        reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
-        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
+        /*reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
+        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");*/
 
         getRogersOrderReviewPage().clkShowPriceBreakdown();
         reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
         reporter.hardAssert(getRogersOrderReviewPage().verifyFulfillmentType(),"Fulfillment Type is Courier Delivery","Fulfillment Type is not Courier Delivery");
-        reporter.reportLogWithScreenshot(" Verfified Fulfillment Type to be Courier Delivery");
+        reporter.reportLogWithScreenshot(" Verified Fulfillment Type to be Courier Delivery");
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyInstallationDetailsHeader(),"Installation Details is present","Installation Details not present");
-        reporter.reportLogWithScreenshot(" Verfified installation details header");
+        reporter.reportLogWithScreenshot(" Verified installation details header");
 
         getRogersOrderReviewPage().clkActivationCheckbox();
         reporter.reportLogWithScreenshot(" Clicked on Activation Checkbox");

@@ -30,11 +30,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 
-	@FindAll({
-		@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Starter']/ancestor::a"),
-		@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']"),
-		//	@FindBy(xpath = "//a[@aria-label='Ignite Starter Order online']//span[text()='Order online']")
-		})
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']")
 	WebElement btnSolarisStarterPackage;
 
 @FindAll({
@@ -171,6 +168,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
 	WebElement bnrPriceIncreaseChannelCopy;
+
+	@FindBy(xpath = "//div[@class='alert-box__copy']")
+	WebElement bnrAlertCopy;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyThemepacksLater']")
 	WebElement bnrPriceIncreaseThemeCopy;
@@ -333,14 +333,20 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
 	WebElement drpdwnGenre;
 
+	@FindBy(xpath = "//div[@class='tile-see-full-details-modal']")
+	WebElement divViewMoreDetailsPopup;
+
 	@FindBy(xpath = "//button[@aria-label='Enter your address to check package prices and offers now.']/span")
 	WebElement btnEnterAddress;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]//span[@class='price-details__label']")
 	WebElement btnTotalChannelsFlex20;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']")
 	WebElement btnFlexChannelsFlex20;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
+	WebElement btnViewMoreDetailsFlex20;
 
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
@@ -520,7 +526,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyPriceIncreaseThemeCopy() {
 		getReusableActionsInstance().waitForElementVisibility(bnrPriceIncreaseThemeCopy, 30);
 		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrPriceIncreaseThemeCopy);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(bnrPriceIncreaseThemeCopy);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
 		return isBannerAvailable;
 	}
 	/**
@@ -528,7 +535,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Chinnarao.vattam
 	 */
 	public void clkChevronUpYourCart() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		}
 		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 20).click();
 	}
 	
@@ -712,7 +721,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
+		}
 		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
@@ -924,6 +935,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
 		}
+		getReusableActionsInstance().scrollToElement(btnCheckout);
 		getReusableActionsInstance().getWhenReady(btnCheckout, 20).click();
 
 	}
@@ -1645,7 +1657,15 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkTotalChannelsFlex20() {
-		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
+		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+	}
+
+	/**
+	 * Click Total Channels on Flex20 pkg
+	 * @author manpreet.kaur3
+	 */
+	public void clkViewMoreDetailsFlex20() {
+		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex20, 30).click();
 	}
 
 	/**
@@ -1653,7 +1673,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkFlexChannelsFlex20() {
-		getReusableActionsInstance().getWhenReady(btnTotalChannelsFlex20, 30).click();
+		getReusableActionsInstance().getWhenReady(btnFlexChannelsFlex20, 30).click();
 	}
 
 	/**
@@ -1718,4 +1738,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkRecommendedPkgViewMoreDetails() {
 		getReusableActionsInstance().getWhenReady(lnkRecommendedPkgViewMoreDetails, 30).click();
 	}
+
+	public boolean verifyMoreDetailsPopup() {
+		return getReusableActionsInstance().isElementVisible(divViewMoreDetailsPopup, 60);
+	}
+
+	public boolean verify4KChannelsAlert() {
+		//getReusableActionsInstance().staticWait(50000);
+		getReusableActionsInstance().waitForElementVisibility(bnrAlertCopy, 120);
+		Boolean isBannerAvailable = getReusableActionsInstance().isElementVisible(bnrAlertCopy);
+		return isBannerAvailable;
+	}
+
 }
