@@ -48,7 +48,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH", "RogersIgniteBuyAnonymousCH", "DryRunCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH","RegressionCH", "RogersIgniteBuyAnonymousCH","ReleaseSanity"})
     public void rogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATL() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
