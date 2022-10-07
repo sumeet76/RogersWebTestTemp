@@ -49,6 +49,7 @@ public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
