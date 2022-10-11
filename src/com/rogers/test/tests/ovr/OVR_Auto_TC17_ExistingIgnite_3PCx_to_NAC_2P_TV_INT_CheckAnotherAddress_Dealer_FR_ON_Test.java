@@ -18,7 +18,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})

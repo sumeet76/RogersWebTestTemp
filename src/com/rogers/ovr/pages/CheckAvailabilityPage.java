@@ -13,11 +13,15 @@ public class CheckAvailabilityPage extends BasePageClass {
 
     @FindBy(xpath = "//span[text()='Use this address' or text()='Utiliser cette adresse']")
     WebElement btnUseThisAddress;
+
     @FindBy(xpath = "//*[text()='Continue' or text()='Continuer']")
     WebElement btnContinue;
 
     @FindBy(xpath = "//div[contains(text(),'This address is serviceable') or contains(text(),'Cette adresse peut être desservie')]")
     WebElement lblAddressIsServiceable;
+
+    @FindBy(xpath = "//div[@translate='global.modals.serviceability.gponAvailable']")
+    WebElement lblAddressIsServiceableForFiber;
 
     @FindBy(xpath = "//p[contains(text(),'Multiple addresses found') or contains(text(),'Plusieurs adresses trouvées')]")
     WebElement lblMultipleAddressesFound;
@@ -49,6 +53,12 @@ public class CheckAvailabilityPage extends BasePageClass {
 
     @FindBy(xpath = "//div[contains(text(),'account has not been consolidated')]")
     WebElement nonConsolidatedBanErrorMessage;
+
+    @FindBy(xpath = "//span[text()=' close ' or text()=' Fermer ']//ancestor::button")
+    WebElement closeCheckAvailabilityBtn;
+
+    @FindBy(xpath = "//span[@translate='global.modals.serviceability.checkAnotherAddress']//ancestor::button")
+    WebElement checkAnotherAddressBtn;
 
 
     public void useThisAddress()  {
@@ -103,8 +113,24 @@ public class CheckAvailabilityPage extends BasePageClass {
                 getReusableActionsInstance().isElementVisible(checkAvailabilityBtn, 60);
     }
 
+    public boolean verifyCheckAvailabilityPopupForExitingCx(){
+        return getReusableActionsInstance().isElementVisible(checkAvailabilityHeader, 60);
+    }
+
     public boolean verifyNonConsolidatedBanErrorMessage(){
         return getReusableActionsInstance().isElementVisible(nonConsolidatedBanErrorMessage,60);
+    }
+
+    public void clickCloseCheckAvailabilityPopup(){
+        getReusableActionsInstance().clickWhenReady(closeCheckAvailabilityBtn);
+    }
+
+    public void clickCheckAnotherAddressBtn(){
+        getReusableActionsInstance().clickWhenReady(checkAnotherAddressBtn);
+    }
+
+    public boolean verifyFiberServiceAvailabilityMessage() {
+        return getReusableActionsInstance().isElementVisible(lblAddressIsServiceableForFiber,30);
     }
 
 }

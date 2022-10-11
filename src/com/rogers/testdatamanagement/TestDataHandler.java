@@ -382,8 +382,10 @@ public class TestDataHandler {
 	public static OvrReusableData tc_45_Ovr_Mig_Data_Non_Consolidated_Ban;
 	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
 	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
+	public static OvrReusableData tc_50_Ovr_Mig_Data_1p_to_ISS;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
+
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -837,5 +839,6 @@ public class TestDataHandler {
 		tc_45_Ovr_Mig_Data_Non_Consolidated_Ban = YamlHandler.getOvrReusableData("TC45_Mig_Data_Non_Consolidated_Ban_Validation");
 		tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP = YamlHandler.getOvrReusableData("TC47_Mig_Data_Downgrade_Mig_Not_Supported_RHP");
 		tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported = YamlHandler.getOvrReusableData("TC48_Mig_Data_LegacyCx_Move_Migration_Not_Supported");
+		tc_50_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC50_Mig_Data_1p_to_ISS");
 	}
 }

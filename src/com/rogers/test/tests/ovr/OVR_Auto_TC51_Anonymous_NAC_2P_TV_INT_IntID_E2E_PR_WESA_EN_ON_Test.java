@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends BaseTestClass {
+public class OVR_Auto_TC51_Anonymous_NAC_2P_TV_INT_IntID_E2E_PR_WESA_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -21,13 +21,12 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
     public void afterTest() {
         closeSession();
     }
-    @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
-    public void ovr_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_MDU_username"), System.getenv("FS_password"));
+
+    @Test(groups = {"OVR", "RegressionOVR","OVR_PR"})
+    public void ovr_Auto_TC51_Anonymous_NAC_2P_TV_INT_IntID_E2E_PR_WESA_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getChampLoginPage().changeChampToFR();
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -35,7 +34,7 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("876-43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -46,32 +45,36 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         reporter.reportLogWithScreenshot("Internet Selected");
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("Smart Stream Selected");
+        getRogersIgniteBundlesPage().clkTVCheckbox();
+        reporter.reportLogWithScreenshot("TV Check box selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to PortIn Popup");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
-        reporter.reportLogWithScreenshot("Product in cart");
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-        reporter.reportLogWithScreenshot("CheckOut internet and ISS bundle");
         getRogersIgniteBundlesPage().clkContinue();
 
+        reporter.reportLogWithScreenshot("Channel Personalization page");
+        getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Channels and theme packs page");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to 4k tv popup");
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        reporter.reportLogWithScreenshot("4k tv popup");
+        getRogersIgniteBundlesPage().contiue4KContent();
+
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
+        reporter.reportLogWithScreenshot("Customer Profile Page");
 
-        reporter.reportLogWithScreenshot("continue to Customer Profile Page");
         String email = getRogersOVCheckoutPage().setEmailCreateProfile();
         getRogersOVCheckoutPage().confirmEmailCreateProfile(email);
         reporter.reportLogWithScreenshot("Email entered for customer Profile");
@@ -86,28 +89,25 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Evaluation Page");
-
-        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
-
+        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Select a time slot");
+        reporter.reportLogWithScreenshot("Time Slot selected");
         getBundleBuilderPage().setMobileNumber();
         reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Frais mensuels");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
@@ -127,7 +127,5 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
-
     }
-
 }

@@ -18,7 +18,7 @@ public class OVR_Auto_TC48_MIG_Validate_LegacyCX_Move_Migration_Not_Supported_De
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
