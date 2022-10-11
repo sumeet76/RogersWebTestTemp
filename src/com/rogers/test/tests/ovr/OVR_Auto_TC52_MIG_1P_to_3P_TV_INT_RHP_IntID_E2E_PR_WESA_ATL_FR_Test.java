@@ -27,7 +27,7 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
