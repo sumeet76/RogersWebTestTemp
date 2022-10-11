@@ -383,6 +383,7 @@ public class TestDataHandler {
 	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
 	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
 	public static OvrReusableData tc_50_Ovr_Mig_Data_1p_to_ISS;
+	public static OvrReusableData tc_18_Ovr_existingIgniteSHAToNacISS;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
 
@@ -823,6 +824,7 @@ public class TestDataHandler {
 		ovrMigrationData1Pto2PAddPods = YamlHandler.getOvrReusableData("Migration_Data_1P_to_2P_Add_Pods");
 		existingIgnite3PtoNac2pON = YamlHandler.getOvrReusableData("ExistingIgnite_3PCx_to_Nac_3P_ON");
 		ovrMigrationData1pINTto2pTVINTAddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
+		tc_18_Ovr_existingIgniteSHAToNacISS = YamlHandler.getOvrReusableData("TC18_Existing_Ignite_SHA");
 		tc_25_Ovr_Mig_Data_1pINT_to_2pTVINT_AddPods = YamlHandler.getOvrReusableData("TC25_Mig_Data_1P_INT_to_2P_TV_INT_AddPods");
 		tc_26_Ovr_Mig_Data_1pINT_to_1pINT_AddPods = YamlHandler.getOvrReusableData("TC26_Mig_Data_1P_INT_to_1P_INT_AddPods");
 		tc_29_Ovr_Mig_Data_1pINT_to_2pTVINT_with_SHM_and_InternetPods = YamlHandler.getOvrReusableData("TC29_Mig_Data_1P_INT_to_2P_TV_INT_with_SHM");
