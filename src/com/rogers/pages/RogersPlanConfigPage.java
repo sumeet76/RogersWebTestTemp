@@ -289,8 +289,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
-    @FindBy(xpath = "//span[contains(text(),'Promo code:') or contains(text(),'Code promotionnel :')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+    @FindBy(xpath = "//span[contains(text(),'Plan discount') or contains(text(),'Rabais sur le forfait')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement promoCartLineItem;
+
+    @FindBy(xpath = "//span[@data-test='delete-promo-detail-info']")
+    WebElement deletePromo;
 
     @FindBy(xpath = "//button[contains(@class,'ds-tablet')]//p[contains(text(),'Device Protection') or contains(text(),'Protection de l’appareil')]")
     WebElement deviceProtectionAddonTab;
@@ -330,6 +333,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
+
+    @FindBy(xpath = "//button[.=' Continue with selected plan ']")
+    WebElement continueWithSelectedPlanButton;
 
 
     /**
@@ -544,11 +550,12 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void selectDataOptionAndClickonContinueButton(String dataOptionIndex, String className) {
-        if (noofDataOptions.size() != 1) {
+           if (noofDataOptions.size() != 1) {
             int stepper = 2;
             String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, stepper);
             if (Integer.parseInt(dataOptionIndex) == 0) {
                 autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
+                getReusableActionsInstance().staticWait(5000);
                 getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
             } else {
                 autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
@@ -568,7 +575,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This menthod selects basic plan based on the index value
+     * This method selects basic plan based on the index value
      *
      * @param dataOptionIndex : String value of data option to be selected
      * @author praveen.kumar7
@@ -1276,7 +1283,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkSecondLineCheckBox(String ctn2) {
-        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') or contains(@id,'ds-checkbox')]/.."));
+        getReusableActionsInstance().clickWhenReady(By.xpath("//div[contains(.,'" + ctn2 + "') and contains(@id,'ds-checkbox')]/.."));
         getReusableActionsInstance().clickWhenReady(btnAddInModal, 10);
     }
 
@@ -1456,6 +1463,13 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Clicks on the 'Delete' button to remove the applied Promo code
+     * @author Subash.Nedunchezhian
+     */
+    public void clickDeletePromo(){
+        getReusableActionsInstance().clickIfAvailable(deletePromo);
+    }
+    /**
      * This method clicks on Device Protection Tab in Add-ons stepper
      * @author Subash.Nedunchezhian
      */
@@ -1586,4 +1600,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(By.xpath("(//span[contains(@class,'dsa-orderTable__strikeCopy')])[1]"));
     }
 
+    public void clickContinueWithSelectedPlanButton() {
+        getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+    }
 }

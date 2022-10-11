@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
-        getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+      //  getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");

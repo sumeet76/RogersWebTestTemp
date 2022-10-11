@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Set;
+
 /**
  * 
  * @author rajesh.varalli1
@@ -52,7 +54,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//a[@title='Find a Rogers store' or @title='Trouver un magasin']")
 	WebElement lnkFindRogersStore;
 
-	@FindBy(xpath = "//span[@class='ds-icon rds-icon-chevron-down']")
+	@FindBy(xpath = "//button[contains(@aria-label,'See full details about Security packages')]//span")
 	WebElement btnSeefullDetails;
 
 	@FindBy(xpath = "//iframe[@name='bc-window']")
@@ -121,6 +123,15 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtHardwarePage;
 
+	@FindBy(xpath = "//p[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	WebElement txtWhySHMPage;
+
+	@FindBy(xpath = "//h1[text()='Home Monitoring' or text()='Système de domotique']")
+	WebElement txtSHMSupportPage;
+
+	@FindBy(xpath = "//h2[contains(text(),'Moving soon') or contains(text(),'Vous déménagez bientôt')]")
+	WebElement txtMovingYourServicesPage;
+
 	@FindBy(xpath = "//a[contains(@aria-label,'View Smart Home Monitoring features')]/span")
 	WebElement btnSHMfeatures;
 
@@ -139,7 +150,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@aria-label,'View Security packages')]")
 	WebElement btnViewSecurityPackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[@href='/consumer/support/homemonitoring']")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Smart Home Monitoring support page')]")
 	WebElement lnkSHMSupport;
 
 	@FindBy(xpath = "//h1[@class='dsa-billboard__copyHeading mb-16 mb-md-24 ng-star-inserted']")
@@ -154,7 +165,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none d-flex']//span[@data-text='Help and Support' or @data-text='Soutien']/ancestor::a//ds-icon[@name='down']")
 	WebElement subNavHelpAndSupport;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Moving?')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'moving page')]")
 	WebElement subNavMovingYourServices;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Why Smart Home Monitoring')]")
@@ -370,8 +381,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkHowToGetItAutomatePack() {
-		getReusableActionsInstance().waitForElementVisibility(btnHowToGetItAutomatePack, 90);
-		getReusableActionsInstance().getWhenReady(btnHowToGetItAutomatePack, 60).click();
+		getReusableActionsInstance().moveToElementAndClick(btnHowToGetItAutomatePack, 60);
 	}
 
 	/**
@@ -486,7 +496,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public Boolean verifyAutomatePackageMoreDetails()
 	{
-		getReusableActionsInstance().waitForElementVisibility(txtAutomatePackageDetails, 30);
+		getReusableActionsInstance().waitForElementVisibility(txtAutomatePackageDetails, 90);
 		return getReusableActionsInstance().isElementVisible(txtAutomatePackageDetails);
 	}
 
@@ -843,5 +853,47 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	 */
 	public void clkAddressFoundCloseModal() {
 		getReusableActionsInstance().getWhenReady(popupAddressFoundCloseModal, 60).click();
+	}
+
+	public void switchTabsUsingPartOfUrl(String platform) {
+		String currentHandle = null;
+		try {
+			final Set<String> handles = getDriver().getWindowHandles();
+			if (handles.size() > 1) {
+				currentHandle = getDriver().getWindowHandle();
+			}
+			if (currentHandle != null) {
+				for (final String handle : handles) {
+					getDriver().switchTo().window(handle);
+					if (getDriver().getCurrentUrl().contains(platform) && !currentHandle.equals(handle)) {
+						break;
+					}
+				}
+			} else {
+				for (final String handle : handles) {
+					getDriver().switchTo().window(handle);
+					if (getDriver().getCurrentUrl().contains(platform)) {
+						break;
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Switching tabs failed");
+		}
+	}
+
+	public boolean verifyWhySHMPage() {
+		getReusableActionsInstance().waitForElementVisibility(txtWhySHMPage, 90);
+		return getReusableActionsInstance().isElementVisible(txtWhySHMPage);
+	}
+
+	public boolean verifySHMSupportPage() {
+		getReusableActionsInstance().waitForElementVisibility(txtSHMSupportPage, 90);
+		return getReusableActionsInstance().isElementVisible(txtSHMSupportPage);
+	}
+
+	public boolean verifyMovingServicesPage() {
+		getReusableActionsInstance().waitForElementVisibility(txtMovingYourServicesPage, 90);
+		return getReusableActionsInstance().isElementVisible(txtMovingYourServicesPage);
 	}
 }

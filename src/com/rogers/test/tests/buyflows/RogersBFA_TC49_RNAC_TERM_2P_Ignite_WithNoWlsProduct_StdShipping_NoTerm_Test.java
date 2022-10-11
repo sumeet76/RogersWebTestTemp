@@ -9,14 +9,13 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Map;
 
 /**
  * TC01 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(Finance plan with Non POTG)_E2E
  */
 
-public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_Potg_NoTerm_Test extends BaseTestClass {
+public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdShipping_NoTerm_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_Potg_NoTerm_Tes
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})
-    public void tc49_RNAC_2p_Ignite_PotgTest() throws InterruptedException, IOException {
+    public void tc49_RNAC_2p_Ignite_StdShippingTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc49_2P_Ignite_NACTermTermPotg.getDeviceName());

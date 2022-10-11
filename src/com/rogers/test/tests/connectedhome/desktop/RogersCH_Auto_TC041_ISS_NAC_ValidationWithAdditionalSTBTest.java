@@ -36,9 +36,9 @@ public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void checkSaiTupeloBuyflowAddAdditionalSTB() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
@@ -115,13 +115,12 @@ public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
+        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
+        System.out.println("SCHEMA : " + DbSchema);
         /**
          * DB Validations in the subscriber table
          */
-
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from billing_account where BAN='" + ban + "'", false);
-
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
         reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }

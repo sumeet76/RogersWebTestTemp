@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());

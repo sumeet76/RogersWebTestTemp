@@ -14,6 +14,21 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		super(driver);
 	}
 
+	@FindBy(xpath = "//button[@id='tab-themepack']")
+	WebElement btnThemepacksTab;
+
+	@FindBy(xpath = "//button[@aria-label='Add Prime Time Pack to cart']/span")
+	WebElement btnAddPrimePack;
+
+	@FindBy(xpath = "//button[@aria-label='Remove Prime Time Pack from cart']")
+	WebElement btnRemovePrimePack;
+
+	@FindBy(xpath ="//button[@aria-label='Continue']/span")
+	WebElement btnMiniCartContinue;
+
+	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span")
+	WebElement btnNoIDontHave4K;
+
 	@FindBy(xpath="//span[text()='Continue']")
 	WebElement btnContinueFromThemepacks;
 	//ins[@translate='global.cta.continue']
@@ -55,6 +70,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//select[@aria-describedby='formfield-5-a11yDescription formfield-5-messages']")
 	WebElement selGenres;
 
+	@FindBy(xpath = "//span[@class='genre-dropdown-component']/descendant::select")
+	WebElement drpdwnGenre;
 
 	@FindBy(xpath = "//button[contains(@id,'remove-channel')]//ins")
 	WebElement removeParticularChannelFromCart;
@@ -86,7 +103,7 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	WebElement addThemePackClassicTVThemePacks4plus1;
 	//h3[@class='header-1 font-regular margin-0' and contains(text(),'Super Sports Pack (TP)')]/ancestor::div[@class='row theme-header']//button[@id='add-themepack-button']
 	
-	@FindBy(xpath = "//span[contains(text(),'Confirm')]")
+	@FindBy(xpath = "//span[@translate= 'global.modals.conflictWarnings.themepackToFlexWarning.primaryButton']/ancestor::span[@role='text']")
 	WebElement yesContinueOnExistingChannelAlert;
 	//button[@class='ute-btn-primary ute-md']
 
@@ -173,8 +190,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void SelectChannelGenres(String strGenres) {
-		getReusableActionsInstance().waitForElementVisibility(selGenres,180);
-		getReusableActionsInstance().selectWhenReadyByVisibleText(selGenres, strGenres);
+		getReusableActionsInstance().waitForElementVisibility(drpdwnGenre,60);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(drpdwnGenre, strGenres);
 	}
 
 	/**
@@ -221,8 +238,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	public void clkThemePacks() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().waitForElementVisibility(tabThemePacks, 180);
-		getReusableActionsInstance().getWhenReady(tabThemePacks, 120).click();
+		getReusableActionsInstance().waitForElementVisibility(btnThemepacksTab, 180);
+		getReusableActionsInstance().getWhenReady(btnThemepacksTab, 120).click();
 	}	
 	
 	/**
@@ -293,6 +310,15 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	}
 
 	/**
+	 * Click on the "No I dont have 4K" button
+	 * @author manpreet.kaur3
+	 */
+	public void clkNoIDontHave4K() {
+		getReusableActionsInstance().waitForElementVisibility(btnNoIDontHave4K, 90);
+		getReusableActionsInstance().getWhenReady(btnNoIDontHave4K, 90).click();
+	}
+
+	/**
 	 * Click on the "YesIHave4K" button
 	 * @author chinnarao.vattam
 	 */
@@ -309,5 +335,32 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btn4KContent, 120);
 		getReusableActionsInstance().getWhenReady(btn4KContent, 90).click();
 	}
-	
+
+
+	/**
+	 * Click on the "Add Prime Pack" button
+	 * @author manpreet.kaur3
+	 */
+	public void clkAddPrimePack() {
+		getReusableActionsInstance().getWhenReady(btnAddPrimePack,60);
+		getReusableActionsInstance().clickWhenReady(btnAddPrimePack,10);
+	}
+
+	/**
+	 * Verify "Remove" Prime Pack button
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPrimePackAdded() {
+		getReusableActionsInstance().staticWait(5000);
+		return getReusableActionsInstance().isElementVisible(btnRemovePrimePack, 30);
+	}
+
+	/**
+	 * Click on the "Continue" button on MiniCart
+	 * @author manpreet.kaur3
+	 */
+	public void clkContinueMiniCart() {
+		getReusableActionsInstance().getWhenReady(btnMiniCartContinue, 60);
+		getReusableActionsInstance().clickWhenReady(btnMiniCartContinue,10);
+	}
 }

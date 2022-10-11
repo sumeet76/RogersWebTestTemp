@@ -20,7 +20,6 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String xpathDeviceName;
 
     @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
-    public
     WebElement continueButton;
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
@@ -91,7 +90,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='continue-accessory-button']")
     WebElement btnContinueAccessories;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'supérieure  de l’appareil')]")
     WebElement deviceProtectionAddon;
 
     /***
@@ -128,8 +127,8 @@ public class RogersDeviceConfigPage extends BasePageClass {
      */
     public void clickContinueButton() {
         if (getReusableActionsInstance().isElementVisible(continueButton,60))
+            getReusableActionsInstance().staticWait(3000);
             getReusableActionsInstance().clickWhenReady(continueButton);
-        getReusableActionsInstance().staticWait(3000);
     }
 
     /***

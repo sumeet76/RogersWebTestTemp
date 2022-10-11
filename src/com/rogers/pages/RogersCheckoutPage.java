@@ -11,6 +11,7 @@ import utils.FormFiller;
 
 public class RogersCheckoutPage extends BasePageClass {
 	public RogersCheckoutPage(WebDriver driver){super(driver);}
+	public String strXpathAddonViewcta;
 
 	@FindBy(xpath = "//h1[@id='bfa-page-title']")
 	WebElement checkoutTitle;
@@ -58,7 +59,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='lastName']")
 	WebElement inputLastName;
 
-	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-name']//div[@class='ds-formField__wrapper']")
+	@FindBy(xpath = "//ds-form-field[@data-test='personal-info-business-name']")
 	WebElement businessNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='companyName']")
@@ -441,6 +442,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-test='auto-pay-removal-modal-button']//span[contains(text(),'Continue')]")
 	WebElement autoPayRemovalCtnBtn;
 
+	@FindBy(xpath = "//h1[@id='manageaddons-page-title' or contains(text(),'Manage add ons Page')]")
+	WebElement manageAddonsPageTitle;
+
+	@FindBy(xpath = "//addons-tile[contains(@data-test,'existing-addon')]/parent::div")
+	WebElement activeAddons;
+
+	@FindBy(xpath ="//p[contains(text(),'changes to your add-ons')]")
+	WebElement addonConflictModal;
+
+	@FindBy(xpath = "//button[@data-test='addons-removal-modal-button-primary' and contains(.,'Continue')]")
+	WebElement conflictContinueBtn;
+
 	/**
 	 * To get the Title of post checkout page
 	 * @return checkoutTitle
@@ -818,7 +831,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			//clkNoThanks();
+			clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
 			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
@@ -868,7 +881,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkCreditAuthorizationChkBox() 
 	{
-		getReusableActionsInstance().getWhenReady(chkCreditAuthorization).click();
+		getReusableActionsInstance().getWhenReady(chkCreditAuthorization,90).click();
 		}
 
 	/**
@@ -945,7 +958,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt) {
 		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt));
 		if (riskClass.toUpperCase().contains("HIGH")) {
-			double expectedDownPayment = (mandatoryDownPayment / 100) * 40.0;
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 40.0;
 			return String.valueOf(expectedDownPayment);
 		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
 			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
@@ -1083,8 +1096,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void setExistingPortInNumber(String eligiblePortInNumber){
-	getReusableActionsInstance().getWhenReady(existingNumberField).click();
-	getReusableActionsInstance().getWhenReady(inputPortInNumber).sendKeys(eligiblePortInNumber);
+	getReusableActionsInstance().clickWhenReady(existingNumberField);
+	getReusableActionsInstance().executeJavaScriptClick(inputPortInNumber);
+	inputPortInNumber.clear();
+	inputPortInNumber.sendKeys(eligiblePortInNumber);
 	}
 
 	/**
@@ -1331,11 +1346,11 @@ public class RogersCheckoutPage extends BasePageClass {
 		{
 		System.out.println("inside loop");
 		getReusableActionsInstance().scrollToElementAndClick(viewAnotherOption);
-		getReusableActionsInstance().clickWhenReady(deliveryMethodStandard);
+		getReusableActionsInstance().executeJavaScriptClick(deliveryMethodStandard);
 		
 		}
 		else {
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,30);
+			getReusableActionsInstance().executeJavaScriptClick(deliveryMethodStandard);
 		}
 		
 	}
@@ -1349,13 +1364,13 @@ public class RogersCheckoutPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(2000);
 		if(deliveryMethod.equalsIgnoreCase("EXPRESS")){
 			getReusableActionsInstance().staticWait(2000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodExpress,20);
+			getReusableActionsInstance().executeJavaScriptClick(deliveryMethodExpress);
 		}else if(deliveryMethod.equalsIgnoreCase("PRO")){
 			getReusableActionsInstance().staticWait(2000);
 			getReusableActionsInstance().clickWhenReady(deliveryMethodProOnTheGo,20);
 		}else{
 			getReusableActionsInstance().staticWait(2000);
-			getReusableActionsInstance().clickWhenReady(deliveryMethodStandard,20);
+			getReusableActionsInstance().executeJavaScriptClick(deliveryMethodStandard);
 		}
 	}
 
@@ -1394,16 +1409,16 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clickSkipAutopay(){
-		getReusableActionsInstance().clickWhenVisible(skipAutoPay);
-		getReusableActionsInstance().clickWhenReady(paymentContinueButton,20);
-		getReusableActionsInstance().clickWhenReady(autoPayRemovalCtnBtn,20);
+		getReusableActionsInstance().clickIfAvailable(skipAutoPay);
+		getReusableActionsInstance().clickIfAvailable(paymentContinueButton,10);
+		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn,10);
 	}
 	/**
 	 * This method opts out AutoPay payment method and clicks Continue in AutoPay Removal Modal in NAC flow
 	 * @author subash.nedunchezhian
 	 */
 	public void clickSkipNacAutopay(){
-		getReusableActionsInstance().clickWhenReady(autoPayRemovalCtnBtn,20);
+		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn);
 	}
 	/**
 	 * To Verify the appointment time
@@ -1574,6 +1589,62 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public void clkAutoPayConsentCheckBox() {
 		getReusableActionsInstance().clickWhenReady(chAutoPayConsent);
+	}
+
+	/**
+	 * Selects by clicking on 'View' button against the addon needed
+	 * @param addonName Name of the addon needed
+	 * @return true if addon found; else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean selectAddon(String addonName) {
+		getReusableActionsInstance().waitForElementTobeClickable(getReusableActionsInstance().getWhenReady(By.xpath("//p[contains(text(),'"+addonName+"')]")),20);
+		strXpathAddonViewcta = createXpathWithAddonName(addonName);
+		if(getReusableActionsInstance().isElementVisible(By.xpath(strXpathAddonViewcta),30)) {
+			getReusableActionsInstance().executeJavaScriptClick(getDriver().findElement(By.xpath(strXpathAddonViewcta)));
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * This method creates Xpath of a particular CTA button
+	 * @param	addonName : name of the addon used to create the xpath
+	 * @return a String value which is a xpath for View CTA button
+	 * @author subash.nedunchezhian
+	 */
+	public String createXpathWithAddonName(String addonName) {
+		strXpathAddonViewcta = "//p[contains(text(),'"+addonName+"')]//following::button[1]";
+		System.out.println("Xpath Created = " +strXpathAddonViewcta);
+		return strXpathAddonViewcta;
+	}
+
+	/**
+	 * This method verify if conflict modal appears on the Addon page and clicks on Continue Button
+	 * @return true if clicked Continue button; else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean clkConflictContinueBtn(){
+		getReusableActionsInstance().isElementVisible(addonConflictModal,10);
+		getReusableActionsInstance().clickWhenReady(conflictContinueBtn,10);
+		return true;
+	}
+
+	/**
+	 * This method verify if Addon page displayed or not
+	 * @return true if addon page displayed; else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyAddonsPage(){
+		return getReusableActionsInstance().isElementVisible(manageAddonsPageTitle,30);
+	}
+
+	/**
+	 * This method gets the value of Addon under Active Addons section
+	 * @return String text of Addon under Active Addons section
+	 * @author subash.nedunchezhian
+	 */
+	public String getSelectedAddon(){
+		return  getReusableActionsInstance().getWhenReady(activeAddons).getText().replaceAll("\\n", "");
 	}
 }
 

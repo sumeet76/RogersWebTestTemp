@@ -38,6 +38,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
 	WebElement btnReviewYourUpgrade;
 
+	@FindBy(xpath = "//div[contains(@class,'progress-loader')]")
+	WebElement divProgressLoader;
+
 	@FindBy(xpath = "//a[contains(@aria-label,'Upgrade to')]")
 	WebElement btnUpgradeNow;
 
@@ -145,6 +148,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
 	}
 
+	public void waitForProgressLoaderToComplete(){
+		getReusableActionsInstance().waitForElementInvisibility(divProgressLoader, 200);
+	}
 	/**
 	 * To Click on Learn More link
 	 * @author Manpreet.Kaur3

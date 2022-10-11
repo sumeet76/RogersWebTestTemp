@@ -41,8 +41,8 @@ public class RogersCH_Auto_TC096_SHM_NAC_SecurityPage_ValidateAllSectionsTest ex
        String actualTitle = getDriver().getTitle();
        getReporter().hardAssert(getRogersSecurityPackagesPage().verifySecurityPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");
 
-      /* reporter.reportLogWithScreenshot("View Automate package page component in Security package page");
-       checkShmSecurityPageViewAutomatePackage_RedirectTopOfAutomatePackageTest(); */
+       reporter.reportLogWithScreenshot("View Automate package page component in Security package page");
+       checkShmSecurityPageViewAutomatePackage_RedirectTopOfAutomatePackageTest();
 
        reporter.reportLogWithScreenshot("How to get Security Package test");
        checkHowToGetSecurityPackageTest();

@@ -123,6 +123,7 @@ public class RogersBFA_TC47_POM_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_V
      // ***************Billing & Payment Stepper*************//
         getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPaymentMethod());
         getRogersCheckoutPage().clkBillingContinueButton();
+        getRogersCheckoutPage().clickSkipNacAutopay();
         //***************Shipping Stepper*************//
         getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
         reporter.reportLogPass("Express Delivery selected");

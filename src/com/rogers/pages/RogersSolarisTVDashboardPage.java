@@ -30,9 +30,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath="//button[@aria-label='Hide details about Ignite Flex 5']/following-sibling::ds-expander/descendant::div[@translate='global.label.additionalFeatures']/parent::div/descendant::li")
 	WebElement listAdditionalFeature;
 
-	@FindAll({
-        @FindBy(xpath = "//rss-subscription-detail//a//span[contains(text(),'TV') or  contains(text(),'Télé')]"),
-        @FindBy(xpath = "//span[@class='ds-icon rds-icon-tv' or @class='ds-icon d-inline-flex rds-icon-tv']")})
+
+	@FindBy(xpath ="//span[text()=' TV '  or text() =' Télévision ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSolaristvBadge;
 	
 	@FindBy(xpath = "//div[@class='col-md-12 loading']")
@@ -193,13 +192,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement btnOk;
 
-	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]")
+	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]/ancestor::span[@role='text']")
 	WebElement lnkResetParentalConrolsAndPin;
 
-	@FindBy(xpath = "//span[contains(text(),'Actualiser vos terminaux Télé Élan') or contains(text(),'Refresh your Ignite TV Box(es)') ]")
+	@FindBy(xpath = "//span[contains(text(),'Actualiser vos terminaux Télé Élan') or contains(text(),'Refresh') ]/ancestor::span[@role='text']")
 	WebElement lnkRefreshYourIgniteTVBox;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset Purchase PIN') or contains(text(),'Réinitialiser le NIP d’achat')]")
+	@FindBy(xpath = "//span[contains(text(),'Reset Purchase PIN') or contains(text(),'Réinitialiser le NIP d’achat')]/ancestor::span[@role='text']")
 	WebElement lnkResetPurchasePIN;
 
 	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
@@ -217,7 +216,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
 		
-	@FindBy(xpath = "//span[contains(text(),'Home Monitoring') or contains(text(),'Système domotique')]/ancestor::div[@class='subscription-detail']")
+	@FindBy(xpath = "//span[text()=' Home Monitoring '  or text() =' Système domotique ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSHMBadge;
 	
 	@FindBy(xpath = "//ins[@usertype-translate='global.dashboard.tv.digitalBoxes']")
@@ -251,6 +250,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkResetParentalConrolsAndPin() {
+		getReusableActionsInstance().staticWait(20000);
 		getReusableActionsInstance().clickWhenReady(lnkResetParentalConrolsAndPin,40);
 	}
 

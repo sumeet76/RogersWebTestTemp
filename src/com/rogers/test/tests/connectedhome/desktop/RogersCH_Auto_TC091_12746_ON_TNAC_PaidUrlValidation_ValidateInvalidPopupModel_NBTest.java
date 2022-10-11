@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_Auto_TC091_12746_ON_TNAC_PaidUrlValidation_ValidateInvalidPopupModel_NBTest extends BaseTestClass {
-    @Test
+    @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC091_12746_ON_TNAC_PaidUrlValidation_ValidateInvalidPopupModel_NB() {
         getDriver().get(System.getProperty("QaUrl")+"home/internet/offers?offerid=TNACRUC2ON");
         reporter.reportLogWithScreenshot("Launched the ON TNAC paid URL");

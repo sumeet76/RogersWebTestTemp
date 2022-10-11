@@ -94,6 +94,24 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'Shipping Address')]/following-sibling::p")
     WebElement selectedShippingAddress;
 
+    @FindBy(xpath = "//h4[contains(text(),'Order Summary')]/ancestor::div[@data-test='addOn-summary']")
+    WebElement addonOrderSummary;
+
+    @FindBy(xpath = "//ds-checkbox[@formcontrolname='checkboxControl']/label[contains(@class,'ds-checkboxLabel')]")
+    WebElement addonsAgreement;
+
+    @FindBy(xpath = "//button[@data-test='add-to-plan-btn' and contains(.,'Add to my plan')]")
+    WebElement addToPlanButton;
+
+    @FindBy(xpath = "//button[@data-test='remove-addon-btn' and contains(.,'Remove')]")
+    WebElement addonRemoveButton;
+
+    @FindBy(xpath = "//p[contains(text(),'Remove add-on')]")
+    WebElement addonRemovalModal;
+
+    @FindBy(xpath = "//button[@data-test='addOn-removal-modal-button' and contains(.,'Remove')]")
+    WebElement addonRemovalModalbtn;
+
     /**
      * To Verify the Title of Order Review Page is Present
      * @return true or false
@@ -343,5 +361,63 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public String getSelectedShippingAddress(){
         return getReusableActionsInstance().getWhenReady(selectedShippingAddress).getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * This method verify if url contains Review on Order Review page
+     *  @return true if review page displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean isAddonReviewPageDisplayed(){
+        if (getDriver().getCurrentUrl().contains("review")) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * This method gets the Order Summary content on Review page
+     * @return String text of Order Summary
+     * @author subash.nedunchezhian
+     */
+    public String addonOrderSummary(){
+        getReusableActionsInstance().javascriptScrollByVisibleElement(addonOrderSummary);
+        return  getReusableActionsInstance().getWhenReady(addonOrderSummary).getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * This method clicks the Addons Agreement checkbox on Order Review page
+     * @author Subash.Nedunchezhian
+     */
+    public void clkAddonsAgreementConsent(){
+        getReusableActionsInstance().clickWhenVisible(addonsAgreement,15);
+    }
+
+    /**
+     * This method clicks Add To Plan button on Order Review page
+     * @author Subash.Nedunchezhian
+     */
+    public void clkAddToPlanBtn(){
+        getReusableActionsInstance().clickWhenVisible(addToPlanButton,10);
+    }
+
+    /**
+     * This method clicks Remove Button on Order Review page
+     * @author Subash.Nedunchezhian
+     */
+    public void clkRemoveBtn(){
+        getReusableActionsInstance().clickWhenVisible(addonRemoveButton,10);
+    }
+
+    /**
+     * This method clicks Remove button on Addon Removal Modal
+     *  @return true if Remove button on Addon Removal Modal clicked; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean clkRemovalModalBtn(){
+        getReusableActionsInstance().isElementVisible(addonRemovalModal,10);
+        getReusableActionsInstance().clickWhenReady(addonRemovalModalbtn,10);
+        return true;
     }
 }

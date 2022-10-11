@@ -52,6 +52,8 @@ public class TestDataHandler {
 	public static AccountData tc17_18_19_20_SolarisInternetAccount;
 	public static AccountData tc99_3PCxInternetAccount;
 	public static AccountData tc100_SAIonlyAccount;
+	public static AccountData tc101_2P_HTO_HotCableAccount;
+	public static AccountData tc102_2P_HTO_ColdCableAccount;
 	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
 	public static AccountData tc05_IgniteTV4Plus1Account;
@@ -153,6 +155,10 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc47_1P_Ignite_NACTermTermBopis;
 	public static RedesignRpotgData tc48_Legacy_NACByod;
 	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
+	public static RedesignRpotgData MOM_tc01_Consumer_NAC;
+	public static RedesignRpotgData MOM_TC03_PPC;
+	public static RedesignRpotgData MOM_TC04_HUP_Main;
+	public static RedesignRpotgData MOM_TC05_HUP_Dependent;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -217,6 +223,7 @@ public class TestDataHandler {
 	public static AALData BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg;
 	public static AALData BFA_ProdTest_tc03_AALBYOD_StdShipping;
 	public static AALData BFA_ProdTest_tc04_AALTERM_Tablet_StdShipping;
+	public static AALData MOM_tc02_Consumer_AAL;
 	public static HUPData buyFlowsOVtestCase01;
 	public static HUPData buyFlowsOVtestCase02;
 	public static HUPData buyFlowsOVtestCase05;
@@ -376,6 +383,9 @@ public class TestDataHandler {
 	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
 	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
 	public static OvrReusableData tc_50_Ovr_Mig_Data_1p_to_ISS;
+	public static AddonData tc50SAA_AddLongDistance;
+	public static AddonData tc51SAA_RemoveLongDistance;
+
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -466,6 +476,8 @@ public class TestDataHandler {
 		tc88_GPON_DualTopology = YamlHandler.getCableAccountData("TC88_2P_HTO_GPON_DualTopology");
 		tc89_2PMigrationGPON = YamlHandler.getCableAccountData("TC89_2PMigrationGPON");
 		tc90_1P_HTO_GPON_DualTopology = YamlHandler.getCableAccountData("TC90_1P_HTO_GPON_DualTopology");
+		tc101_2P_HTO_HotCableAccount = YamlHandler.getCableAccountData("TC101_2P_HTO_HotCable");
+		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
 		tc63_Legacy2PtoIgnite2P = YamlHandler.getCableAccountData("TC63_Legacy2PtoIgnite2P");
 		tc82_Legacy2PtoIgnite2PMigration = YamlHandler.getCableAccountData("TC82_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
@@ -664,6 +676,13 @@ public class TestDataHandler {
 		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
+		tc50SAA_AddLongDistance = YamlHandler.getAddonData("tc50SAA_AddLongDistance");
+		tc51SAA_RemoveLongDistance = YamlHandler.getAddonData("tc51SAA_RemoveLongDistance");
+		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
+		MOM_TC04_HUP_Main=YamlHandler.getRedesignNACData("MOM_TC04_HUP_Main");
+		MOM_TC05_HUP_Dependent=YamlHandler.getRedesignNACData("MOM_TC05_HUP_Dependent");
+		MOM_tc01_Consumer_NAC=YamlHandler.getRedesignNACData("MOM_tc01_Consumer_NAC");
+		MOM_tc02_Consumer_AAL=YamlHandler.getAALdata("MOM_tc02_Consumer_AAL");
 	}
 	
 	private static void buyFlowsOneViewDataInit() throws FileNotFoundException {
