@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC28 - Regression - RPP Customer [RNAC TERM] - Perform Rogers Net New Activation - POTG Shipping(Finance plan with POTG)_E2E
  */
 
-public class RogersBFA_TC28_POM_RPP_NAC_Term_BopisShippingTest extends BaseTestClass {
+public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
