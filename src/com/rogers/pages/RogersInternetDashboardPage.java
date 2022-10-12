@@ -533,7 +533,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(5000);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label, '" + strPackageNameEn+ "')]/span");
-		By packageNameLocator = By.xpath("//div[contains(@rchapiexposer,'offerPrice')]//button[contains(@aria-label, '1 Gbps')]/span");
+		By packageNameLocator = By.xpath("//div[@class='change-internet-bundle-tile__price']//button[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().getWhenReady(pkg,60).click();
