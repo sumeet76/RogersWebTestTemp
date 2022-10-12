@@ -11,7 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+
 public class OneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRecommendation_ON_EN_Test extends BaseTestClass {
+
     @Test (groups = {"RegressionCHOV"})
 
     public void oneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRecommendation_ON_EN_Test(){
@@ -98,6 +100,6 @@ public class OneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRec
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 }

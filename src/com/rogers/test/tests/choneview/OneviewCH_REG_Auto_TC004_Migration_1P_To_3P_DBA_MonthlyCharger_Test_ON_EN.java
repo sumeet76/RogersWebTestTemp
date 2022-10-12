@@ -97,7 +97,6 @@ public class OneviewCH_REG_Auto_TC004_Migration_1P_To_3P_DBA_MonthlyCharger_Test
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -108,9 +107,8 @@ public class OneviewCH_REG_Auto_TC004_Migration_1P_To_3P_DBA_MonthlyCharger_Test
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
-
 }
 
 

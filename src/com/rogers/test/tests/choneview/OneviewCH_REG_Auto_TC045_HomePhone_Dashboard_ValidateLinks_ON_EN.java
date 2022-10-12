@@ -42,8 +42,8 @@ public class OneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN ex
             startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
         }
 
-        @AfterMethod(alwaysRun=true)
-        public void afterTest(){
-            closeSession();
-    }
+//        @AfterMethod(alwaysRun=true)
+//        public void afterTest(){
+//            closeSession();
+//    }
 }

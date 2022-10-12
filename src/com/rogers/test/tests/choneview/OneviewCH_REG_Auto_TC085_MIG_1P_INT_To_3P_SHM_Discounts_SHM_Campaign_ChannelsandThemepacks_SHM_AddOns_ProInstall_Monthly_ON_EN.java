@@ -64,7 +64,7 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         reporter.reportLogWithScreenshot("smart home addons page");
         reporter.reportLogWithScreenshot("campaign");
         getRogersIgniteCampaignPage().clickCampaignTab();
-        getRogersIgniteCampaignPage().enterCoupon("pCR6");
+        getRogersIgniteCampaignPage().enterCoupon("PCR6");
         getRogersIgniteCampaignPage().clickApplyCoupon();
         reporter.reportLogWithScreenshot("campaign coupon applied");
         getRogersIgniteBundlesPage().clickCancelButton();
@@ -77,12 +77,12 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("evaluation form");
-        //getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-        //getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        //getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        //reporter.reportLogWithScreenshot("evaluation form filled" );
-        //getCreditCheckPage().clkAuthorize();
-        //reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        reporter.reportLogWithScreenshot("evaluation form filled" );
+        getCreditCheckPage().clkAuthorize();
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().goToPageBottom();
         getCreditCheckPage().clkContinue();
@@ -124,6 +124,6 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 }

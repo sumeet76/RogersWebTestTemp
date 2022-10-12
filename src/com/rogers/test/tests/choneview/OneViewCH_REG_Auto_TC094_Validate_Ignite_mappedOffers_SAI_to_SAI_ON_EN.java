@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC094_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_EN extends BaseTestClass {
     @Test(groups = {"Baseline","ChangePackage","RunOV1"})
     public void OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_EN() {
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -33,10 +33,10 @@ public class OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_E
         getInternetDashboardPage().selectRadioImmediate();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        //reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        //getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -46,13 +46,8 @@ public class OneViewCH_Auto_OVS1_TC_Validate_Ignite_mappedOffers_SAI_to_SAI_ON_E
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","","", method);
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
-
 }
-
-
-
