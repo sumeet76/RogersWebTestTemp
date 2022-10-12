@@ -82,6 +82,9 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Prem Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement dpAddonCarLineItem;
 
+    @FindBy(xpath = "//span[contains(text(),'Plan discount') or contains(text(),'Rabais sur le forfait')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
+    WebElement promoCartLineItem;
+
     @FindAll({
             @FindBy(xpath="//span[contains(text(),'Delivery Method') or contains(text(),'Mode de livraison')]/following::a[@class='link']"),
             @FindBy(xpath = "//a[@class='link' and contains(text(),'Edit')]")
@@ -111,6 +114,9 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='addOn-removal-modal-button' and contains(.,'Remove')]")
     WebElement addonRemovalModalbtn;
+
+    @FindBy(xpath = "//h1[@id='bfa-page-title']/ancestor::div[2]")
+    WebElement selectedDpAddon;
 
     /**
      * To Verify the Title of Order Review Page is Present
@@ -318,7 +324,15 @@ public class RogersReviewOrderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(submitOrderBtn,5);
         getReusableActionsInstance().staticWait(9000);
     }
-
+    /**
+     * Validates the Line Item of the Promotion in cart summary
+     * @return true if the Promo code and discount amount line item displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyCartLineItem() {
+        getReusableActionsInstance().javascriptScrollByVisibleElement(promoCartLineItem);
+        return getReusableActionsInstance().isElementVisible(promoCartLineItem);
+    }
     /**
      * This method verifies the Device Protection Add-on added to Cart
      * @return True if Device Protection Line Item is displayed in Cart summary; else false
@@ -369,6 +383,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author Subash.Nedunchezhian
      */
     public boolean isAddonReviewPageDisplayed(){
+        getReusableActionsInstance().staticWait(5000);
         if (getDriver().getCurrentUrl().contains("review")) {
             return true;
         }else {

@@ -385,6 +385,7 @@ public class TestDataHandler {
 	public static OvrReusableData tc_50_Ovr_Mig_Data_1p_to_ISS;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
+	public static AddonData tc52SAA_AddDeviceProtection;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -678,6 +679,7 @@ public class TestDataHandler {
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
 		tc50SAA_AddLongDistance = YamlHandler.getAddonData("tc50SAA_AddLongDistance");
 		tc51SAA_RemoveLongDistance = YamlHandler.getAddonData("tc51SAA_RemoveLongDistance");
+		tc52SAA_AddDeviceProtection = YamlHandler.getAddonData("tc52SAA_AddDeviceProtection");
 		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
 		MOM_TC04_HUP_Main=YamlHandler.getRedesignNACData("MOM_TC04_HUP_Main");
 		MOM_TC05_HUP_Dependent=YamlHandler.getRedesignNACData("MOM_TC05_HUP_Dependent");

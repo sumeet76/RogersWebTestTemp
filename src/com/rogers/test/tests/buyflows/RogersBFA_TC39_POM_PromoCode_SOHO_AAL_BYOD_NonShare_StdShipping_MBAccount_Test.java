@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC39_POM_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends BaseTestClass {
+public class RogersBFA_TC39_POM_PromoCode_SOHO_AAL_BYOD_NonShare_StdShipping_MBAccount_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})

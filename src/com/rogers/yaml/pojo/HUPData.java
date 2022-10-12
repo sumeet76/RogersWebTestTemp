@@ -21,6 +21,7 @@ public class HUPData {
 	private String ccNumberOTP;
 	private String expiryDateOTP;
 	private String passcode;
+	private String promoCode;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -239,6 +240,16 @@ public class HUPData {
 	 */
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
+	}
+	/**
+	 * @return the Promo Code
+	 */
+	public String getPromoCode() {return promoCode;}
+	/**
+	 * @param promoCode Promocode to set
+	 */
+	public void setPromoCode(String promoCode){
+		this.promoCode = promoCode;
 	}
 
 }
