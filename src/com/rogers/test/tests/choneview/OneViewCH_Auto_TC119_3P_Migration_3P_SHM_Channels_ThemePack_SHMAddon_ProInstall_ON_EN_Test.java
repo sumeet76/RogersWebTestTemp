@@ -21,6 +21,7 @@ public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddo
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("Use this address");
+        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().refreshContinue();
@@ -37,7 +38,7 @@ public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddo
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
-        getRogersIgniteBundlesPage().clickKeepNumber();
+        getRogersIgniteBundlesPage().clickNewNumber();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
@@ -74,9 +75,11 @@ public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddo
         getRogersIgniteBundlesPage().clickReviewAddons();
         getRogersIgniteBundlesPage().clickAddOnAddToCart();
         reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
-        getCustomerProfilePage().clkContinue();
+        getRogersIgniteBundlesPage().validateAddonAddToCart();
+        reporter.reportLogWithScreenshot("validate add on add to cart");
+        getRogersIgniteBundlesPage().clkContinue();
 
-        getRogersIgniteBundlesPage().addSHMAddOn();
+//        getRogersIgniteBundlesPage().addSHMAddOn();
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -105,8 +108,6 @@ public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddo
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
-        reporter.reportLogWithScreenshot("go To Page Bottom");
-        getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("professional installation");
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
@@ -121,13 +122,13 @@ public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddo
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().selectPaymentOption(1);
+//        getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
 
         reporter.reportLogWithScreenshot("submit order");
-        getRogersOVCheckoutPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        getRogersOVCheckoutPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 
