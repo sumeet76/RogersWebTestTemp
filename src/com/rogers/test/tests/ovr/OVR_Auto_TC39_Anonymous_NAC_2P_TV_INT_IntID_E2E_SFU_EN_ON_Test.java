@@ -18,7 +18,7 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test exte
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})

@@ -1337,7 +1337,10 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateSmartHomeAddOnsHeader() {
-		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn,120);
+		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringAddOn);
 	}
 
 	public void addSHMAddOn(){
