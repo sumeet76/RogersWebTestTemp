@@ -53,6 +53,7 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 
     @Test(groups = {"RegressionCH",""})
 	public void rogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromoContentReviewConfirmPages() {
+		
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
@@ -67,7 +68,9 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		 getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		 //getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+
+
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceabilityMigration();
