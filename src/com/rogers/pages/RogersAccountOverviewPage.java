@@ -699,7 +699,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkRHPBadgeMobile() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnRHPBadge);
 		}
 	
 	/**
