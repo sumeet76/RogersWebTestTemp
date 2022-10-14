@@ -38,6 +38,7 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Added to Cart");
+
 		getRogersIgniteBundlesPage().clkKeepNumberbtn();
 		reporter.reportLogWithScreenshot("keep number");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -53,26 +54,36 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 /* getRogersIgniteBundlesPage().fourKTVPopup();
    getRogersIgniteBundlesPage().contiue4KContent();*/
 		getRogersIgniteBundlesPage().clickExchangeLater();
-		reporter.reportLogWithScreenshot("add channel");
+//		reporter.reportLogWithScreenshot("customer add review link");
+//		getRogersOVChannelsAndThemePacksPage().clkCustomerAddonReview();
+		reporter.reportLogWithScreenshot("click standalone channels tab");
+		getTVDashboardPage().selectStandaloneChannelsTab();
 		getTVDashboardPage().clickAddChannel();
-   		reporter.reportLogWithScreenshot("Tab themepack");
-	   	getTVDashboardPage().clickThemepacksTab();
-   		reporter.reportLogWithScreenshot("add themepack");
-   		getTVDashboardPage().addThemepack();
-		//getRogersIgniteBundlesPage().clickReviewAddons();
-		getCustomerProfilePage().clkContinue();
+		reporter.reportLogWithScreenshot("add channel");
+		getTVDashboardPage().clickThemepacksTab();
+		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("add themepack");
+		getTVDashboardPage().verifyRemoveButton();
+		reporter.reportLogWithScreenshot("verify theme pack");
+		getTVDashboardPage().clickContinueForPackage();
+		reporter.reportLogWithScreenshot("continue to calling package");
 		getRogersIgniteBundlesPage().fourKTVPopup();
-		getRogersIgniteBundlesPage().contiue4KContent();
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkContinueInternetAddon();
-		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().customerWishtoContinue();
-		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
-		reporter.reportLogWithScreenshot("Customer Profile");
-		getCreditCheckPage().goToPageBottom();
+		getRogersIgniteBundlesPage().fourKContentPopup();
+		reporter.reportLogWithScreenshot("Internet Addons");
+		getRogersIgniteBundlesPage().validateInternetAddOnsHeader();
 		getCustomerProfilePage().clkContinue();
+
+		reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Home Phone Header Display", "Home Phone Header not Displayed");
+		reporter.reportLogWithScreenshot("Home Phone Add on page displayed");
+		getHomePhoneAddonsPage().clkContinue();
+		reporter.reportLogWithScreenshot("Cart Summary");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+		getRogersIgniteBundlesPage().customerWishtoContinue();
+		reporter.reportLogWithScreenshot("Customer Profile");
+		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile Header displayed","Customer Profile Header did not display");
+		getCustomerProfilePage().clkContinue();
+
 		reporter.reportLogWithScreenshot("Evaluation form");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
 		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
@@ -81,11 +92,13 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
-		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("Home Phone selection page");
+//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
 		getCreditCheckPage().goToPageBottom();
-		getHomePhoneSelectionPage().clickOnContinueCallDisplay();
+		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("installation options");
 		reporter.reportLogWithScreenshot("Delivery by Appointment installation");
@@ -104,8 +117,8 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -118,7 +131,7 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+//		closeSession();
 	}
 
 }

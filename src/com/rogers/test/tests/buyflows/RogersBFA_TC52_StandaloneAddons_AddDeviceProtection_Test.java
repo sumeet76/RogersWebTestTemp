@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTestClass {
+public class RogersBFA_TC52_StandaloneAddons_AddDeviceProtection_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -19,9 +19,9 @@ public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTe
     }
 
     @Test(groups = {"RegressionBFA","SAABFA"})
-    public void tc50_rogersSAAAddLongDistanceTest() {
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50SAA_AddLongDistance.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50SAA_AddLongDistance.getPassword());
+    public void tc52_rogersSAAAddDeviceProtectionTest() {
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getPassword());
         reporter.reportLogWithScreenshot("Login Popup");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().switchOutOfSignInIFrame();
@@ -32,11 +32,18 @@ public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTe
         getDriver().get(System.getProperty("AWSUrl") + "/manage-addons");
         reporter.hardAssert(getRogersCheckoutPage().verifyAddonsPage(),
                 "Rogers Standalone Addons Page Displayed","Rogers Standalone Addons Page not Displayed");
-        String newAddon = TestDataHandler.tc50SAA_AddLongDistance.getAddonName();
+        String newAddon = TestDataHandler.tc52SAA_AddDeviceProtection.getAddonName();
         getRogersCheckoutPage().selectAddon(newAddon);
         reporter.reportLogPassWithScreenshot(  "New " +newAddon +"Addon Selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyDpAddonPage(),
+                "DP Addon Page Displayed","DP Addon Page Not Displayed");
+        getRogersCheckoutPage().enterDPIMEI(TestDataHandler.tc52SAA_AddDeviceProtection.getDpIMEI());
+        reporter.reportLogPassWithScreenshot("DP Addon IMEI Entered");
+        reporter.hardAssert(getRogersCheckoutPage().clkDpAddonContinue(),
+                "Continue Btn clicked","Continue btn not clicked");
         reporter.hardAssert(getRogersReviewOrderPage().isAddonReviewPageDisplayed(),
                 "Addons Order Review Page Displayed","Addons Order Review Page Not Displayed");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyEligibilityMsg(),"Entered IMEI is eligible for Device Protection Addon","Entered IMEI is not eligible");
         String addonOrderSummary = getRogersReviewOrderPage().addonOrderSummary();
         reporter.reportLogPassWithScreenshot("Addons Order Summary: " +addonOrderSummary);
         getRogersReviewOrderPage().clkAddonsAgreementConsent();
@@ -50,11 +57,11 @@ public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTe
         reporter.hardAssert(getRogersCheckoutPage().verifyAddonsPage(),
                 "Rogers Standalone Addons Page Displayed","Rogers Standalone Addons Page not Displayed");
         String selectedAddon = getRogersCheckoutPage().getSelectedAddon();
-        reporter.hardAssert(selectedAddon.contains(newAddon),
-                "Selected Addon is reflected in Addons page after submission","Selected Addon is not reflected");
+        reporter.reportLogPassWithScreenshot("Active Addons: " +selectedAddon);
     }
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
 }
+

@@ -23,16 +23,14 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
-        //getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
-        //getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrWirelessNacON.getBanNumber(),TestDataHandler.ovrWirelessNacON.getPostalCode(),TestDataHandler.ovrConfigData.getOvrQaEnvironment());

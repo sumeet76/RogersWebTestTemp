@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC059_1553_TargetedMigration_Regular_2P_InternetAndTV_to_SAI_ON_EN_Test extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
     public void TargetedMigrationFlow_2P_InternetAndTV_to_SAITest(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVToSAI.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVToSAI.getContactID() );
@@ -25,17 +25,20 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
+        getRogersIgniteBundlesPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Selected the Recommended offer");
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
+//        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clickInternetCollapse();
+        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        getRogersIgniteBundlesPage().clickReviewTearmAndConditionsContinueButton();
+        reporter.reportLogWithScreenshot("Points to mention");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyInternetAddOnsHeader(),"Internet Add ons header Available","Internet Add ons header not available");
         getRogersIgniteBundlesPage().scrollToContinue();
         getRogersIgniteBundlesPage().clkContinue();
@@ -47,12 +50,14 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("Product Added");
-        //getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-        //getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-        //getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-        //getCreditCheckPage().clkAuthorize();
-        //reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        getCreditCheckPage().clkAuthorize();
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
+
         getCreditCheckPage().refreshContinue();
         getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
@@ -64,10 +69,10 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-        getCreditCheckPage().clickDigitalFrontline();
-        //getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        //getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        //getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//        getCreditCheckPage().clickDigitalFrontline();
+//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -84,8 +89,7 @@ public class OneViewCH_Auto_1553_TC01_TargetedMigration_2P_InternetAndTV_to_SAI_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
-
 
 }

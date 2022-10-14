@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
-    @Parameters({"strBrowser", "strLanguage","ReleaseSanity"})
+    @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         startSession(System.getProperty("OVRURL"), strBrowser, strLanguage, RogersEnums.GroupName.ovr, method);
     }
@@ -135,10 +135,6 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

@@ -19,7 +19,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test() {
@@ -36,7 +36,7 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE. MOUNT PEARL, NL A1N 4N5", "chrome");
+        getCheckAvailabilityPage().checkAvailability("876-43 Airport heights ,NL A1A4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"This address is serviceable","This Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -114,8 +114,8 @@ public class OVR_Auto_TC32_NAC_ISS_with_SmartHomeMonitoring_E2E_Corp_ATL_FR_Test
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Select a time slot");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
+        //getBundleBuilderPage().setMobileNumber();
+        //reporter.reportLogWithScreenshot("tech install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");

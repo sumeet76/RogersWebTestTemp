@@ -17,7 +17,7 @@ public class CustomerProfilePage  extends BasePageClass {
 	@FindBy(xpath = "//h1[text()='Smart Home Monitoring Add-ons' or text()='Options du Système de domotique Rogers']")
 	WebElement shmHeader;
 	
-	@FindBy(xpath = "//span[@translate='global.cta.continue' and contains(text(),'Continue') ]/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueButton;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-expand']/ancestor::button")

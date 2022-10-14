@@ -106,8 +106,8 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Evaluation DOB set");
-        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
-                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        getCreditCheckPage().setDriversLicense("Colombie-Britannique",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("BC"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
         reporter.reportLogWithScreenshot("Credit Check Authorized");
@@ -123,11 +123,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-//        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-//        reporter.reportLogWithScreenshot("continue from call display");
-//        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-//        reporter.reportLogWithScreenshot("continue from directory listing");
-//        getHomePhoneSelectionPage().clkContinue();
+        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

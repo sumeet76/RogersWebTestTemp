@@ -83,10 +83,10 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
 		startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID_STB_ISS(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
 	}
 
-//	@AfterMethod(alwaysRun = true)
-//	public void afterTest() {
-//		closeSession();
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 
 }
 

@@ -40,7 +40,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		reporter.reportLogWithScreenshot("Internet and TV Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("Load Offers");
-		getRogersIgniteBundlesPage().termOffer();
+//		getRogersIgniteBundlesPage().termOffer();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add To Cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -83,9 +83,9 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 //		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
-	//	reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-	//	reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-	//	reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("go To Page Bottom");
 		getCreditCheckPage().goToPageBottom();
@@ -101,7 +101,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		getCreditCheckPage().enterSpecialInstructions();
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getPaymentOptionsPage().clkContinue();
-	//	reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		reporter.reportLogWithScreenshot("billing options");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		getCreditCheckPage().clickDigitalFrontline();
@@ -110,18 +110,18 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
-	//	getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("Campaign code");
-	//	getRogersIgniteCampaignPage().clickCampaignTab();
-	//	getRogersIgniteCampaignPage().enterCoupon("KDT");
-	//	reporter.reportLogWithScreenshot("Campaign code entered");
-	//	getRogersIgniteCampaignPage().clickApplyCoupon();
-	//	reporter.reportLogWithScreenshot("Campaign code applied");
-	//	reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
-	//	getRogersIgniteCampaignPage().closeCouponAlert();
-	//	reporter.reportLogWithScreenshot("close Coupon Alert");
-	//	reporter.reportLogWithScreenshot("Order Review Page");
-	//	getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		reporter.reportLogWithScreenshot("load offers");
+		getRogersIgniteCampaignPage().enterCoupon("K17");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("apply coupon");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+
+		reporter.reportLogWithScreenshot("Order Review Page");
+		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
@@ -134,9 +134,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-	//	closeSession();
+		closeSession();
 	}
 
 }
-
-

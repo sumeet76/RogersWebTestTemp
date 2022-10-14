@@ -32,6 +32,8 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getRogersIgniteBundlesPage().clkLoadOffers();
        getRogersIgniteBundlesPage().clickFirstAddToCart();
        reporter.reportLogWithScreenshot("added to cart");
+//       getRogersIgniteBundlesPage().clkKeepNumberbtn();
+//       reporter.reportLogWithScreenshot("keep number");
        getRogersIgniteBundlesPage().noPortInPopup();
        getRogersIgniteBundlesPage().clkCollapse();
        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -47,9 +49,11 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
        getRogersIgniteBundlesPage().clickExchangeLater();
        reporter.reportLogWithScreenshot("After Exchange later");
-       getRogersIgniteBundlesPage().clkContinue();
+       getRogersIgniteBundlesPage().clickReviewAddons();
+       getCustomerProfilePage().clkContinue();
        getRogersIgniteBundlesPage().fourKTVPopup();
        getRogersIgniteBundlesPage().contiue4KContent();
+
 //       getCustomerProfilePage().clkContinue();
        reporter.reportLogWithScreenshot("Lands in Internet Addons page");
        /*To Add the chargeable Pods*/
@@ -79,7 +83,8 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getCreditCheckPage().clkContinue();
        getHomePhoneSelectionPage().clkGeneratePhoneNo();
        reporter.reportLogWithScreenshot("Phone Number Selected");
-       getHomePhoneSelectionPage().clkContinue();
+       getCreditCheckPage().goToPageBottom();
+       getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
        getCreditCheckPage().verifyInstallationOption();
        reporter.reportLogWithScreenshot("installation options");
        getCreditCheckPage().clkCourierDelivery();
@@ -89,12 +94,12 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
        getCreditCheckPage().verifyBillingAndPaymentOption();
        reporter.reportLogWithScreenshot("Billing and payment");
 
-       getCreditCheckPage().clickDigitalFrontline();
-       reporter.reportLogWithScreenshot("Front line");
-       getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-       getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-       getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-       reporter.reportLogWithScreenshot("Entered card detail");
+//       getCreditCheckPage().clickDigitalFrontline();
+//       reporter.reportLogWithScreenshot("Front line");
+//       getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//       getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//       getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//       reporter.reportLogWithScreenshot("Entered card detail");
 
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Submit order");
