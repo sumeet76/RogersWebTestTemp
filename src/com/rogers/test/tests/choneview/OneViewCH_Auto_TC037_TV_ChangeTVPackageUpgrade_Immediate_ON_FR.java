@@ -50,8 +50,8 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 //        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
 //        getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

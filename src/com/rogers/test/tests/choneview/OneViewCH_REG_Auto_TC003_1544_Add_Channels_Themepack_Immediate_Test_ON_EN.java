@@ -52,7 +52,7 @@ public class OneViewCH_REG_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test
 		getTVDashboardPage().immediateDateChangeOption();
 //		reporter.reportLogWithScreenshot("Collapse");
 		getTVDashboardPage().continueFromChangeDate();
-		getRogersOVOrderReviewPage().clkSubmit();
+//		getRogersOVOrderReviewPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
