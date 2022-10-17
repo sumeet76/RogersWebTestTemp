@@ -41,7 +41,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnSolChangeInternetPackage;
 	//span[@translate='global.dashboard.common.changeInternetPackage']
 
-	@FindBy(xpath = "//h1[@class='header-1 primary']")
+	@FindBy(xpath = "//h1[@class='flex items-center mb-5 text-headline1']")
 	WebElement txtIgniteWifiHub;
 
 	@FindBy(xpath = "//div[@class='live-support']")
