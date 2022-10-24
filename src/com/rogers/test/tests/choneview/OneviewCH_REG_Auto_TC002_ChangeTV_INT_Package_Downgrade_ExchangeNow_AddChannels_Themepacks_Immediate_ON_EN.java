@@ -34,7 +34,7 @@ public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow
 		reporter.reportLogWithScreenshot("Lowest Internet Package selected");
 		getInternetDashboardPage().clickContinueChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-		//getTVDashboardPage().clickExchangeNow();
+		getTVDashboardPage().clickExchangeNow();
 		getTVDashboardPage().clickRemoveChannel();
 		getTVDashboardPage().clickSelectChannelRemove();
 		getTVDashboardPage().clickAddChannelBtn();

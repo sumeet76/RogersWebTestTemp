@@ -784,6 +784,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 

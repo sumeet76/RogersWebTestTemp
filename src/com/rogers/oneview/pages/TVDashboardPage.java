@@ -1,16 +1,12 @@
 package com.rogers.oneview.pages;
 
 
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-
-import com.rogers.pages.base.BasePageClass;
-import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -197,10 +193,10 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
 	WebElement manageChannelsAndThemeparks;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.tabs.themePacks'])[1]")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -209,7 +205,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -217,6 +213,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button | //button[@title='close']")
 	WebElement cancel;
+
+	@FindBy(xpath = "//span[contains(text(),'Yes, Continue')]")
+	WebElement duplicateYes;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
 	WebElement reviewAddOns;
@@ -234,7 +233,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add']")
+	@FindBy(xpath = "(//span[contains(@class,'button')]/child::span[text()='Add'])[50]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -311,7 +310,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']/ancestor::button")
 	WebElement closeButton;
 
-	@FindBy(xpath = "//*[text()='Exchange now']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Exchange now']/ancestor::button")
 	WebElement exchangeNow;
 
 
@@ -447,7 +446,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickThemepacksTab() {
 
-//		if (getReusableActionsInstance().isElementVisible(cancel)) {
+		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
+			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
+		}
 //			clickCancel();
 //		}
 		getReusableActionsInstance().waitForElementVisibility(themesTab, 45);
@@ -502,7 +503,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(6000);
 //		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 120);
 //		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(addChannel, 90).click();
+		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -920,7 +921,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickRestartSetupbox() {
 		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
 		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
-		getReusableActionsInstance().clickWhenReady(btnRestartSetupbox, 120);
+		//getReusableActionsInstance().clickWhenReady(btnRestartSetupbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnRestartSetupbox);
 
 	}
 

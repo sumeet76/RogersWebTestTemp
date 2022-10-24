@@ -2,7 +2,6 @@ package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import com.rogers.testdatamanagement.TestDataHandler;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -479,6 +478,13 @@ public class RogersOVCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@data-test='modal-credit-evaluation-fraud']")
 	WebElement nfdbFraudPopup;
+
+	@FindBy(xpath="//span[text()='View 4K content']")
+	WebElement fourKDetails;
+	@FindBy(xpath="//span[text()='4K Premium Access']")
+	WebElement fourKPremiumAccess;
+	@FindBy(xpath="//span[text()='4K Channel Pack']")
+	WebElement fourKChannelPack;
 
 
 	/**
@@ -1916,4 +1922,17 @@ public class RogersOVCheckoutPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(nfdbFraudPopup);
 	}
 
+
+	/**
+	 * Click Submit Button
+	 * @author Aditi.jain
+	 */
+	public boolean verifyfourKdetails() {
+		getReusableActionsInstance().staticWait(120000);
+		getReusableActionsInstance().waitForElementTobeClickable(fourKDetails,60);
+		getReusableActionsInstance().clickWhenReady(fourKDetails);
+		getReusableActionsInstance().isElementVisible(fourKChannelPack) ;
+		return getReusableActionsInstance().isElementVisible(fourKPremiumAccess);
+
+	}
 }

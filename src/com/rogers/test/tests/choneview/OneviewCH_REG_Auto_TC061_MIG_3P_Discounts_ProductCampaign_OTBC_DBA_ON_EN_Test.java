@@ -51,7 +51,7 @@ public class OneviewCH_REG_Auto_TC061_MIG_3P_Discounts_ProductCampaign_OTBC_DBA_
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-		getRogersIgniteBundlesPage().clickExchangeLater();
+		//getRogersIgniteBundlesPage().clickExchangeLater();
 		reporter.reportLogWithScreenshot("add channel");
 		getRogersIgniteBundlesPage().clickReviewAddons();
 		reporter.reportLogWithScreenshot("Clicked customer’s legacy add-ons.");
@@ -74,16 +74,16 @@ public class OneviewCH_REG_Auto_TC061_MIG_3P_Discounts_ProductCampaign_OTBC_DBA_
 		//getRogersIgniteBundlesPage().clickReviewAddons();
 		getRogersIgniteBundlesPage().clickAddOnAddToCart();
 		reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
-		getCustomerProfilePage().clkContinue();
+		//getCustomerProfilePage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-//		reporter.reportLogWithScreenshot("campaign");
-//		getRogersIgniteCampaignPage().clickCampaignTab();
-//		getRogersIgniteCampaignPage().enterCoupon("PCR6");
-//		getRogersIgniteCampaignPage().clickApplyCoupon();
-//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
-//		reporter.reportLogWithScreenshot("OTBC coupon applied");
+		reporter.reportLogWithScreenshot("campaign");
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		//getRogersIgniteCampaignPage().enterCoupon("PCR6");
+		//getRogersIgniteCampaignPage().clickApplyCoupon();
+		//reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
+		reporter.reportLogWithScreenshot("OTBC coupon applied");
 //		getRogersIgniteCampaignPage().enterCoupon("KR2");
 //		getRogersIgniteCampaignPage().clickApplyCoupon();
 //		reporter.reportLogWithScreenshot("Product coupon applied");

@@ -40,13 +40,13 @@ public class OneviewCH_REG_Auto_TC060_MIG_TargetedOffer_RECOMMENDED_2P_TV_INT_To
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
-        getTVDashboardPage().clickAddChannel();
-        reporter.reportLogWithScreenshot("add channel");
-        getTVDashboardPage().clickThemepacksTab();
-/*			getRogersIgniteBundlesPage().fourKTVPopup();
-			getRogersIgniteBundlesPage().fourKContinue();*/
-        getTVDashboardPage().addThemepack();
-        reporter.reportLogWithScreenshot("add themepack");
+//        getTVDashboardPage().clickAddChannel();
+//        reporter.reportLogWithScreenshot("add channel");
+//        getTVDashboardPage().clickThemepacksTab();
+///*			getRogersIgniteBundlesPage().fourKTVPopup();
+//			getRogersIgniteBundlesPage().fourKContinue();*/
+//        getTVDashboardPage().addThemepack();
+//        reporter.reportLogWithScreenshot("add themepack");
         getTVDashboardPage().reviewTerms();
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("continue to calling package");

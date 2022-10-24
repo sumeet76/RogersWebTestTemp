@@ -4,8 +4,6 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -46,12 +44,12 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         getTVDashboardPage().clickSelectChannel();
         reporter.reportLogWithScreenshot("Channel Add selected");
         getTVDashboardPage().clickContinueBottomOfPage();
-        reporter.reportLogWithScreenshot("click continue");
+        reporter.reportLogWithScreenshot("clicked continue");
        // getTVDashboardPage().clickReviewedAllIssuesWithCustomer();
         //reporter.reportLogWithScreenshot("click link reviewed all issues with customer");
-        //getTVDashboardPage().clickThemepacksTab();
+        getTVDashboardPage().clickThemepacksTab();
         reporter.reportLogWithScreenshot("click Theme pack Tab");
-        //getTVDashboardPage().clickContinueChangeTVPackage();
+        getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("click Continue");
         getTVDashboardPage().clickNoTheyDont();
         reporter.reportLogWithScreenshot("click No they Dont pop up option");

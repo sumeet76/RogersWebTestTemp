@@ -1,12 +1,10 @@
 package com.rogers.oneview.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-import utils.Reporter;
 
 import java.util.List;
 
@@ -687,6 +685,7 @@ public class InternetDashboardPage  extends BasePageClass {
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
 			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddPod, 45);
 			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
+			getReusableActionsInstance().waitForPageLoad();
 		}
 	}
 
