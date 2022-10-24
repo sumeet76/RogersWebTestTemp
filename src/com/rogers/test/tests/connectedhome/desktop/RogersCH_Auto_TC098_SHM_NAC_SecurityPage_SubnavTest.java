@@ -42,7 +42,8 @@ public class RogersCH_Auto_TC098_SHM_NAC_SecurityPage_SubnavTest extends BaseTes
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
    getRogersSecurityPackagesPage().clkWhySHM();
-   getRogersSecurityPackagesPage().clkSecurityPack();
+   getReporter().hardAssert(getRogersSecurityPackagesPage().verifyWhySHMPage(), "Why SHM? Page is displayed", "Why SHM? page is not displayed");
+   getDriver().get(System.getProperty("QaUrl") + "/home-security/security-packages" + "?setLanguage=" + strLanguage);
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
    reporter.reportLogWithScreenshot("Launched the security package Home Page");
    getRogersSecurityPackagesPage().clkProducts();
@@ -61,15 +62,16 @@ public class RogersCH_Auto_TC098_SHM_NAC_SecurityPage_SubnavTest extends BaseTes
 
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
-   getRogersSecurityPackagesPage().ViewHardwarePackages();
+   getRogersSecurityPackagesPage().clkHardwarePackage();
+   //reporter.reportLogWithScreenshot("SHM hardware page");
+   //getRogersSecurityPackagesPage().ViewHardwarePackages();
    reporter.reportLogWithScreenshot("View Hardware packages");
-
+   getRogersSecurityPackagesPage().clkSecurityPack();
    getRogersSecurityPackagesPage().MoveToTopOfPage();
    getRogersSecurityPackagesPage().clkProducts();
    reporter.reportLogWithScreenshot("SHM Products");
    getRogersSecurityPackagesPage().clkFeatures();
    reporter.reportLogWithScreenshot("SHM Feature page");
-
    getRogersSecurityPackagesPage().clkSecurityPack();
    getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHowToGetSecurityPackages(), "Launched  security package Home Page", "Security package Home Page is not Launched");
    reporter.reportLogWithScreenshot("Launched the security package Home Page");

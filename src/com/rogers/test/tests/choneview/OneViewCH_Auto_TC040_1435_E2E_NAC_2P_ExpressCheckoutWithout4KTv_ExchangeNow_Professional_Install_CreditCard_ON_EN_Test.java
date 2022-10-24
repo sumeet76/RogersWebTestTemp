@@ -55,7 +55,7 @@ public class OneViewCH_Auto_TC040_1435_E2E_NAC_2P_ExpressCheckoutWithout4KTv_Exc
 /*		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();*/
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		getRogersIgniteBundlesPage().clkExpressCheckout();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("Cart Summary");

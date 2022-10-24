@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest extends BaseTestClass {
 
-	@Test(groups = {"RegressionCH","RogersInternetCH","DryRunCH","ReleaseSanity"})
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
     public void rogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsage() {
                     reporter.reportLogWithScreenshot("Launched the SignIn popup");
                     getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc68_FWACappedPlan.getUsername());

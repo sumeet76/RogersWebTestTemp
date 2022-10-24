@@ -17,7 +17,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement campaignTab;
 
-	@FindBy(xpath = "//*[@id='ds-form-input-id-5']")
+	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)")
 	WebElement couponInputContainer;
 
 //	@FindBy(xpath = "//span[contains(text(),'Enter') or contains(text(),'Entrer')]/ancestor::span/following-sibling::input | //div[@class='campaign-codes disabled']/descendant::label")
@@ -60,7 +60,7 @@ public class RogersIgniteCampaignPage extends BasePageClass{
 	 * @author Aditi.jain
 	 */
 	public boolean verifyCouponRemoveLink() {
-		return getReusableActionsInstance().isElementVisible(couponRemoveLink,30);
+		return getReusableActionsInstance().isElementVisible(couponRemoveLink,60);
 	}
 
 	/**

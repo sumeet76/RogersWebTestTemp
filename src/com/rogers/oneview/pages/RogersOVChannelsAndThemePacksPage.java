@@ -95,7 +95,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	 */
 	public void clkContinue() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().staticWait(30000);
+		getReusableActionsInstance().staticWait(40000);
 		getReusableActionsInstance().clickWhenReady(continueButton,120);
 	}
 

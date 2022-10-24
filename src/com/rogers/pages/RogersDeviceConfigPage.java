@@ -20,7 +20,6 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String xpathDeviceName;
 
     @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
-    public
     WebElement continueButton;
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
@@ -91,8 +90,14 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='continue-accessory-button']")
     WebElement btnContinueAccessories;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Prem Device Protection') or contains(@title,'Protect supér appareil ')]")
+    @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'supérieure  de l’appareil')]")
     WebElement deviceProtectionAddon;
+
+    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']")
+    WebElement regularPromoRibbon;
+
+    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']/following::p[1]")
+    WebElement regularPromoDetail;
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -128,7 +133,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      */
     public void clickContinueButton() {
         if (getReusableActionsInstance().isElementVisible(continueButton,60))
-            getReusableActionsInstance().staticWait(3000);
+            getReusableActionsInstance().staticWait(10000);
             getReusableActionsInstance().clickWhenReady(continueButton);
     }
 
@@ -547,4 +552,24 @@ public class RogersDeviceConfigPage extends BasePageClass {
         getReusableActionsInstance().clickWhenReady(deviceProtectionAddon,20);
     }
 
+    /**
+     * This method verifies Regular Promo Ribbon on Device Config page
+     * @return true if Regular Promo Ribbon displayed else false
+     * @author subash.nedunchezhian
+     */
+    public boolean verifyRegularPromoRibbon() {
+        getReusableActionsInstance().waitForElementVisibility(regularPromoRibbon,10);
+        getReusableActionsInstance().scrollToElement(regularPromoRibbon);
+        return getReusableActionsInstance().isElementVisible(regularPromoRibbon);
+    }
+
+    /**
+     * This method gets Regular Promo Discount value and Promo Duration text on Device Config page
+     * @return Regular Promo Discount value and Promo Duration text
+     * @author subash.nedunchezhian
+     */
+    public String getRegularPromoDetails(){
+        getReusableActionsInstance().scrollToElement(regularPromoDetail);
+        return regularPromoDetail.getText().replaceAll("\\n", "");
+    }
 }

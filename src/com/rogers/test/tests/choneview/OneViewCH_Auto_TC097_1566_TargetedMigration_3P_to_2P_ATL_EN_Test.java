@@ -65,27 +65,29 @@ public class OneViewCH_Auto_TC097_1566_TargetedMigration_3P_to_2P_ATL_EN_Test ex
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile");
+        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile Header displayed","Customer Profile Header did not display");
         getCustomerProfilePage().clkContinue();
 
 //      In the case of Credit evaluation not required
-        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
-        getCreditCheckPage().goToPageBottom();
+//        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+//        getCreditCheckPage().goToPageBottom();
 
 //        In the case of credit evaluation is required
-
-//        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-//        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), FormFiller.generateLicenseNumber("ONTARIO"));
-//        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), TestDataHandler.anonymousData.contactDetails.getPassportNo());
-//        getCreditCheckPage().clkAuthorize();
-//        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(), "Credit Check Information Entered", "Credit Check Information Failed");
-//        reporter.reportLogWithScreenshot("Credit Check Information");
+        reporter.reportLogWithScreenshot("Evaluation form");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), FormFiller.generateLicenseNumber("ONTARIO"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(), TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        reporter.reportLogWithScreenshot("Evaluation form filled");
+        getCreditCheckPage().clkAuthorize();
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(), "Credit Check Information Entered", "Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("Credit Check Information");
 
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue button is clicked");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().clkCourierDelivery();
-        getCreditCheckPage().goToPageBottom();
+        reporter.reportLogWithScreenshot("select courier delivery");
         getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("In Person Delivery is Selected");
         getPaymentOptionsPage().clkContinue();
@@ -94,10 +96,10 @@ public class OneViewCH_Auto_TC097_1566_TargetedMigration_3P_to_2P_ATL_EN_Test ex
         getPaymentOptionsPage().clkContinue();
 
 //               Checkout Page
-        if(getRogersOVCheckoutPage().isErrorToApplyOfferCodeVisible()){
-        reporter.reportLogWithScreenshot("Invalid Offer code pop displayed");
-        getRogersOVCheckoutPage().closeInvalidOfferCodePopUp();
-        }
+//        if(getRogersOVCheckoutPage().isErrorToApplyOfferCodeVisible()){
+//        reporter.reportLogWithScreenshot("Invalid Offer code pop displayed");
+//        getRogersOVCheckoutPage().closeInvalidOfferCodePopUp();
+//        }
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");

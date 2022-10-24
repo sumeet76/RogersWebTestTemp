@@ -54,7 +54,7 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
 
        // getRogersIgniteBundlesPage().clkExpressCheckOut();
         reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
         reporter.reportLogWithScreenshot("campaign");
         getRogersIgniteCampaignPage().clickCampaignTab();

@@ -80,6 +80,10 @@ public class RogersChoosePhonePage extends BasePageClass {
 	@FindBy(xpath = "//button[@res='eligible_cancel']")
 	WebElement formProOnTheGoCancel;
 
+	@FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
+	public
+	WebElement continueButton;
+
 	/**
 	 * To verify the Rogers Choose Phone Page
 	 * @return true if the search text filter for phone is available on page, else false 
@@ -213,5 +217,15 @@ public class RogersChoosePhonePage extends BasePageClass {
 			getReusableActionsInstance().clickWhenReady(formProOnTheGoCancel, 30);
 		}
 		return false;
+	}
+
+	/**
+	 * This method clicks on the continue button after device selection
+	 * @auther: Nitin.Arora
+	 */
+	public void clickContinueButton() {
+		 getReusableActionsInstance().isElementVisible(continueButton,60);
+		 getReusableActionsInstance().scrollToElement(continueButton);
+		 getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 }

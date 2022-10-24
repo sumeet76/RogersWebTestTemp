@@ -4,8 +4,6 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -16,8 +14,7 @@ import java.lang.reflect.Method;
  * TC03 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with POTG Shipping(Finance plan with POTG)_E2E
  */
 
-public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTestClass {
-	String deviceName;
+public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTest extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -26,7 +23,7 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","POM"})
-	public void tc03_pomRogersNACTermPotgShippingTest() throws InterruptedException {
+	public void tc03_pomRogersNACTermBopisShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 //		reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
 //				"RPOTG Banner is present in the Device Catalog Page, verified by promo text",
@@ -62,6 +59,10 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 //				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 //				"Postal Code not matching");
 		//reporter.hardAssert(getRogersDeviceConfigPage().verifyBreadCrumb(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
+		reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+				"Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+		String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
+		reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ****************************Plan config page***************************************
 //		reporter.softAssert(getRogersDeviceConfigPage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc03NACTermPotgShipping.getPostalCode()), "Eligible postal code verified in Device Catalog & Device Config page POTG Banner is carried on to Plan Config Page Banner as expected", "Postal code not matching in Plan Config page");
@@ -70,14 +71,10 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 //				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		// ***************************Promo Section************************************
-		getRogersPlanConfigPage().clkPromoSection();
-		reporter.reportLogWithScreenshot("Promo Section Displayed");
-		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc03NACTermPotgShipping.getPromoCode());
-		reporter.reportLogWithScreenshot("Promo Code Entered");
-		getRogersPlanConfigPage().clkCheckPromoBtn();
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+				"Promotion Applied Successfully", "Promotion Not Applied");
+		String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
+		getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
 		// ***************************Plan config page************************************
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
@@ -93,7 +90,8 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
 		reporter.reportLogPassWithScreenshot(
 				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
-		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
+				"Promo Discount amount Line Item displayed","Promo line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
@@ -167,12 +165,14 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipNacAutopay();
 		// ***************Shipping Stepper*************//
 //		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
 //		getRogersCheckoutPage().clkContinueBtnShipping();
-		getRogersCheckoutPage().clkDeliveryMethod("standard");
-		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
+		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+		reporter.reportLogPass("Express Delivery selected");
+		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -180,24 +180,27 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 		// ***************Order Review Page****************************************************
 		reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
+		reporter.hardAssert(getRogersReviewOrderPage().verifyCartLineItem(),
+				"Promo Discount amount Line Item displayed","Promo line item not displayed");
 		String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
+		reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
+		reporter.softAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
 		String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
 		reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage + "3.Purchase Include :" + puchaseIncludeReviewPage);
 		String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
-		reporter.hardAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
+		reporter.softAssert(fullNameCreateProfile.equals(contactNameReviewPage), "Contact Name in Order Review Page matches as entered in Create Profile stepper", "Contact Name in Order Review Page not matches as entered in Create Profile stepper");
 		String contactNumberReviewPage = getRogersReviewOrderPage().getContactNumber();
 		reporter.softAssert(contactNumberCreateProfile.equals(contactNumberReviewPage), "Contact Number Matched", "Contact Number not matching");
 		String contactEmailReviewPage = getRogersReviewOrderPage().getContactEmail();
-		reporter.hardAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
+		reporter.softAssert(emailCreateProfile.equals(contactEmailReviewPage), "Contact email in Order Review Page matches as entered in Create Profile stepper", "Contact email in Order Review Page not matches as entered in Create Profile stepper");
 		reporter.reportLogPassWithScreenshot("Order Review Page : Contact Details");
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+		getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-		//getRogersReviewOrderPage().clkEmailConsentCheckbox();
+		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		// ************Order Confirmation Page***************************************************
@@ -218,16 +221,16 @@ public class RogersBFA_TC03_POM_Consumer_NAC_TermPotgShippingTest extends BaseTe
 //		reporter.hardAssert(getRogersNACOrderConfirmationPage().verifyDeviceImage(),
 //				"Device Image Present in Confirmation Page", "Device Image not present");
 		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
+		reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
 				"Total Monthly Fee after tax matches with checkout page",
 				"Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesConfirmationPage = getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-		reporter.hardAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
+		reporter.softAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
 				"Total One time fee after tax matches with checkout page",
 				"Total One time fee after tax not matches with checkout page");
 		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
-		reporter.hardAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
-				"Purchase includes Matches in ORder Confirmation page", "Purchase Includes Not Matching");
+		reporter.softAssert(purchaseIncludesConfrimation.equals(puchaseIncludeReviewPage),
+				"Purchase includes Matches in Order Confirmation page", "Purchase Includes Not Matching");
 		reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" + purchaseIncludesConfrimation);
 	}
 

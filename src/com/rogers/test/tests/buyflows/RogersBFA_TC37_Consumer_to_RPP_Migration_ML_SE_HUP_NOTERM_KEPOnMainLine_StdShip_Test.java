@@ -57,6 +57,8 @@ public class RogersBFA_TC37_Consumer_to_RPP_Migration_ML_SE_HUP_NOTERM_KEPOnMain
                     "Continue button on the device config page is not present");
             getRogersDeviceConfigPage().clickContinueButton();
             //*********************Plan Builder Page***************************************
+            reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
+                    "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
             reporter.hardAssert(getRogersPlanConfigPage().isMigratedToRppFin(),"Consumer User Migrated to RPP Financing successfully","Not Migrated to RPP Financing");
             getRogersPlanConfigPage().clkRadioButtonNoTerm();

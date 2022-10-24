@@ -1,11 +1,11 @@
 package com.rogers.oneview.pages;
-
-import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import com.rogers.pages.base.BasePageClass;
+import utils.FormFiller;
 
 import java.util.List;
 public class CreditCheckPage  extends BasePageClass {
@@ -176,8 +176,8 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//input[@formControlName='enrouteEmail']")
 	WebElement emailMailAddress;
 
-	//@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
-	@FindBy(xpath = "//span[text()='Delivery by Appointment' or text()='Livraison par rendez-vous']/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
+//	@FindBy(xpath = "//span[text()='Delivery by Appointment' or text()='Livraison par rendez-vous']/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
+	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
 	WebElement deliveryByAppointment;
 
 	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
@@ -209,7 +209,7 @@ public class CreditCheckPage  extends BasePageClass {
              * @author aditi.jain
              */
 	public boolean verifyInstallationOption() {
-		return getReusableActionsInstance().isElementVisible(installationOption,240);
+		return getReusableActionsInstance().isElementVisible(installationOption,120);
 
 	}
 
@@ -343,7 +343,6 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		WebElement btn = getReusableActionsInstance().getWhenReady(continueButton, 30);
 		getReusableActionsInstance().clickWhenReady(btn,30);
-
 	}
 
 
@@ -400,7 +399,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,120);
+		return getReusableActionsInstance().isElementVisible(installationHeader,180);
 	}
 
 	/**

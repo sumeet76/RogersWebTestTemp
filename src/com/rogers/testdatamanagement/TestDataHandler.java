@@ -139,6 +139,8 @@ public class TestDataHandler {
 	public static AccountData ChangeTvViaServiceability;
 	public static AccountData TC023_TVPackageDowngrade;
 	public static AccountData TC026_TVPackageUpgrade;
+	public static AccountData tc098_SATV2P_To_Bundle2P;
+	public static AccountData tc099_SATV3P_To_SATV3P_Mapped_Offers;
 	public static AccountData TC028_InternetPackageDowngrade;
 	public static AccountData tupeloDowngradeTest;
 	public static AccountData tupeloUpgradeTest;
@@ -157,6 +159,8 @@ public class TestDataHandler {
 	public static RedesignRpotgData tc49_2P_Ignite_NACTermTermPotg;
 	public static RedesignRpotgData MOM_tc01_Consumer_NAC;
 	public static RedesignRpotgData MOM_TC03_PPC;
+	public static RedesignRpotgData MOM_TC04_HUP_Main;
+	public static RedesignRpotgData MOM_TC05_HUP_Dependent;
 	public static RedesignRpotgOVData buyFlowsOVtestCase14;
 	public static RedesignRpotgOVData buyFlowsOVtestCase15;
 	public static RedesignRpotgOVData buyFlowsOVtestCase16;
@@ -380,6 +384,11 @@ public class TestDataHandler {
 	public static OvrReusableData tc_45_Ovr_Mig_Data_Non_Consolidated_Ban;
 	public static OvrReusableData tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP;
 	public static OvrReusableData tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported;
+	public static OvrReusableData tc_50_Ovr_Mig_Data_1p_to_ISS;
+	public static AddonData tc50SAA_AddLongDistance;
+	public static AddonData tc51SAA_RemoveLongDistance;
+	public static AddonData tc52SAA_AddDeviceProtection;
+
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
  		sauceSettings = YamlHandler.getSauceSettings("/test-data/rogers/SauceSettings.yml");
@@ -670,7 +679,12 @@ public class TestDataHandler {
 		tc47_1P_Ignite_NACTermTermBopis = YamlHandler.getRedesignNACData("tc47_1P_Ignite_NACTermTermBopis");
 		tc48_Legacy_NACByod = YamlHandler.getRedesignNACData("tc48_Legacy_NACByod");
 		tc49_2P_Ignite_NACTermTermPotg = YamlHandler.getRedesignNACData("tc49_2P_Ignite_NACTermTermPotg");
+		tc50SAA_AddLongDistance = YamlHandler.getAddonData("tc50SAA_AddLongDistance");
+		tc51SAA_RemoveLongDistance = YamlHandler.getAddonData("tc51SAA_RemoveLongDistance");
+		tc52SAA_AddDeviceProtection = YamlHandler.getAddonData("tc52SAA_AddDeviceProtection");
 		MOM_TC03_PPC=YamlHandler.getRedesignNACData("MOM_TC03_PPC");
+		MOM_TC04_HUP_Main=YamlHandler.getRedesignNACData("MOM_TC04_HUP_Main");
+		MOM_TC05_HUP_Dependent=YamlHandler.getRedesignNACData("MOM_TC05_HUP_Dependent");
 		MOM_tc01_Consumer_NAC=YamlHandler.getRedesignNACData("MOM_tc01_Consumer_NAC");
 		MOM_tc02_Consumer_AAL=YamlHandler.getAALdata("MOM_tc02_Consumer_AAL");
 	}
@@ -736,6 +750,8 @@ public class TestDataHandler {
 		addChannelAndThempackImmediate = YamlHandler.getMigrationData("1539_AddChannelandThemepackImmediate");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
+		tc098_SATV2P_To_Bundle2P=YamlHandler.getOVAccountData("TC098_SATV_2P_to_Bundle_2P");
+		tc099_SATV3P_To_SATV3P_Mapped_Offers=YamlHandler.getOVAccountData("IgniteMapped_Offers_SATV3p_to_SATV3P");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
 		tupeloDowngradeTest= YamlHandler.getOVAccountData("1460_Tupelo_Internet_Downgrade");
 		tupeloUpgradeTest= YamlHandler.getOVAccountData("1464_Tupelo_Internet_Upgrade");
@@ -829,5 +845,6 @@ public class TestDataHandler {
 		tc_45_Ovr_Mig_Data_Non_Consolidated_Ban = YamlHandler.getOvrReusableData("TC45_Mig_Data_Non_Consolidated_Ban_Validation");
 		tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP = YamlHandler.getOvrReusableData("TC47_Mig_Data_Downgrade_Mig_Not_Supported_RHP");
 		tc_48_Ovr_Mig_Data_LegacyCx_Move_Migration_Not_Supported = YamlHandler.getOvrReusableData("TC48_Mig_Data_LegacyCx_Move_Migration_Not_Supported");
+		tc_50_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC50_Mig_Data_1p_to_ISS");
 	}
 }

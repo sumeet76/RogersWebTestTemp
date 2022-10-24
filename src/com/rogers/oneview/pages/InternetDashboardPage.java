@@ -877,6 +877,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
+		getReusableActionsInstance().scrollToElement(recommendedOffer);
 		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 

@@ -73,6 +73,9 @@ public class RogersBuildPlanPage extends BasePageClass {
 	
 	@FindBy(xpath = "//div[@res='you-selected']")
 	WebElement lblYouSelected;
+
+	@FindBy(xpath = "//div[@id='ds-radio-input-id-10-label-container']")
+	WebElement payfordeviceinfull;
 	
 
 	/**
@@ -320,4 +323,12 @@ public class RogersBuildPlanPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(btnSelectExistingPlan, 60));
 	}
 
+	/**
+	 * This method clicks pay for device in full option
+	 * @auther: Nitin.Arora
+	 */
+	public void clickPayforDeviceinFull() {
+		getReusableActionsInstance().scrollToElement(payfordeviceinfull);
+		getReusableActionsInstance().clickWhenReady(payfordeviceinfull,20);
+	}
 }

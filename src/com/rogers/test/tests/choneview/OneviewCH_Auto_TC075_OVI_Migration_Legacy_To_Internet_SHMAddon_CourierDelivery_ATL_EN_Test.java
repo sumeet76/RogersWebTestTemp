@@ -20,6 +20,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("Use this address");
+        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().refreshContinue();
@@ -40,10 +41,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("review terms and condition");
-        //getRogersIgniteBundlesPage().reviewAllTerms();
-//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        //getRogersIgniteBundlesPage().expandInternetdiv();
-        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
@@ -84,28 +83,17 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-        //reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-       // getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        //reporter.reportLogWithScreenshot(".enter Email Mail Address");
-       // getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
-//        reporter.reportLogWithScreenshot("Select delivery by appointment");
-//        // Install Type - Delivery By Appointment
-//        getCreditCheckPage().selectDeliveryByAppointment();
-//        reporter.reportLogWithScreenshot("click Date Time Radio Button");
-//        getFulfillmentPage().clkFirstAvailableAppointment();
-//        //getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-//        //getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-//        reporter.reportLogWithScreenshot(".enter Special Instructions");
-//        getCreditCheckPage().enterSpecialInstructions();
-//        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().selectPaymentOption(1);
+      //  getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
@@ -121,6 +109,6 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
     }
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 }

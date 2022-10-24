@@ -23,7 +23,7 @@ public class RogersBFA_TC46_SOHO_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","PPCBF"})
+    @Test(groups = {"RegressionBFA","SOHOPPC"})
     public void tc46_sohoPPC_ML_SE_BYODPlanToDTTPlanOnAdditionalLine() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -48,7 +48,7 @@ public class RogersBFA_TC46_SOHO_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc46_SOHO_PPC_ML_BYODPlanToDTTPlanOnAdditionalLine.getTalkOptionIndex())),
@@ -56,6 +56,7 @@ public class RogersBFA_TC46_SOHO_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersCheckoutPage().clickSkipAutopay();
         /**reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
                 "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");

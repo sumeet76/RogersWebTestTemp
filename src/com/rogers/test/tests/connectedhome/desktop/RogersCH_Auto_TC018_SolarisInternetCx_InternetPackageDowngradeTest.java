@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","DryRunCH","ReleaseSanity"})
+	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
     public void rogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngrade() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");

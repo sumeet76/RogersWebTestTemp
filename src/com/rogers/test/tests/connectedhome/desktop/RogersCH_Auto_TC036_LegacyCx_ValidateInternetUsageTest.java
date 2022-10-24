@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends BaseTestClass {
 	
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void rogersCH_Auto_TC036_LegacyCx_ValidateInternetUsage() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");

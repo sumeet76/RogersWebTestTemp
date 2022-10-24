@@ -34,7 +34,7 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 		reporter.reportLogWithScreenshot("Ignite home Phone Setup pop up is displayed");
 		getRogersIgniteBundlesPage().clickNewNumber();
 
-		//getRogersIgniteBundlesPage().noPortInPopup();
+		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().reviewAllTerms();
@@ -52,7 +52,7 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("Customer wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -61,17 +61,17 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 		getCustomerProfilePage().clkContinue();
 
 		/*Credit evaulation page*/
-	//	getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
-	//	getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
-	//	getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
-	//	getCreditCheckPage().clkAuthorize();
+		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+		getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+		getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+		getCreditCheckPage().clkAuthorize();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
         getRogersIgniteBundlesPage().clkContinue();
 
 		/*Phone Number Selection page*/
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-	//	reporter.softAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
+		reporter.softAssert(getHomePhoneSelectionPage().verifyNumber(),"Phone Number Selected","Phone Number Selection Failed");
 		getHomePhoneSelectionPage().selectDiffNumb();
 		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
@@ -83,9 +83,10 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 
 		/*Bill and Payment page*/
 		getCreditCheckPage().verifyInstallationOption();
-		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("click Date Time Radio Button");
+		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
 		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
@@ -95,13 +96,12 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 	//	reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
-		getCreditCheckPage().selectPaymentOption(1);
+		//getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -114,7 +114,6 @@ public class OneViewCH_REG_Auto_TC0030_1640_E2E_Migration_3P_Select_New_Number_O
 	public void afterTest() {
 		closeSession();
 	}
-
 }
 
 
