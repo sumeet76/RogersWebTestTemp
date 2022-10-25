@@ -49,10 +49,11 @@ public class RogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternetHome extends B
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSmartInternet();
+       // getRogersHomePage().clkSmartInternet();
+		getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
-		getRogersHomePage().clkInternetAvailability();
+		//getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
