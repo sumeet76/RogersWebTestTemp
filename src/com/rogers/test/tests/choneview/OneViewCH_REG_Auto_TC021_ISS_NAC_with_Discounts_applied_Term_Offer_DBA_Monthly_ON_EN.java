@@ -55,10 +55,10 @@ public class OneViewCH_REG_Auto_TC021_ISS_NAC_with_Discounts_applied_Term_Offer_
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("Campaign tab");
-		getRogersIgniteCampaignPage().enterCoupon("K5U");
-		reporter.reportLogWithScreenshot("Coupon entered");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
+		//getRogersIgniteCampaignPage().enterCoupon("K2E");
+		//reporter.reportLogWithScreenshot("Coupon entered");
+		//getRogersIgniteCampaignPage().clickApplyCoupon();
+		//reporter.reportLogWithScreenshot("apply coupon");
 		getRogersIgniteCampaignPage().verifyCouponRemoveLink();
 		reporter.reportLogWithScreenshot("Campaign coupon applied");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");

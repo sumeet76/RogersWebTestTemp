@@ -94,6 +94,6 @@ public class OneviewCH_REG_Auto_TC069_MIG_Targeted_Offer_RECOMMENDED_3P_To_SAI_O
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

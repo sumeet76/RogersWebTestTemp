@@ -68,7 +68,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void afterTest() {closeSession();
+	public void afterTest() {//closeSession();
 	}
 
 }

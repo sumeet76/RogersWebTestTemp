@@ -20,6 +20,9 @@ public class MigrationData {
 	public String contactIDLegacyToSHM3PInternet;
 	public String accountNo2PToSAIISSTMP;
 	public String contactID2PToSAIISSTMP;
+	public String accountNo1PTo3pINTLID;
+	public String contactID1PTo3pINTLID;
+
 
 
 	/**
@@ -302,6 +305,30 @@ public class MigrationData {
 	 */
 	public void setContactIDLegacyToSHM3PInternet(String contactIDLegacyToSHM3PInternet) {
 		this.contactIDLegacyToSHM3PInternet = contactIDLegacyToSHM3PInternet;
+	}
+
+	public String getAccountNo1PTo3pINTLID() {
+		return accountNo1PTo3pINTLID;
+	}
+
+	/**
+	 *
+	 * @param accountNo1PTo3pINTLID
+	 */
+	public void setAccountNo1PTo3pINTLID(String accountNo1PTo3pINTLID) {
+		this.accountNo1PTo3pINTLID = accountNo1PTo3pINTLID;
+	}
+
+	public String getContactID1PTo3pINTLID() {
+		return contactID1PTo3pINTLID;
+	}
+
+	/**
+	 *
+	 * @param contactID1PTo3pINTLID
+	 */
+	public void setContactID1PTo3pINTLID(String contactID1PTo3pINTLID) {
+		this.contactID1PTo3pINTLID = contactID1PTo3pINTLID;
 	}
 
 }
