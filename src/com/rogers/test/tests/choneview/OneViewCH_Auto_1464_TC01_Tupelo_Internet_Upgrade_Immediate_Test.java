@@ -13,52 +13,25 @@ import java.lang.reflect.Method;
 public class OneViewCH_Auto_1464_TC01_Tupelo_Internet_Upgrade_Immediate_Test extends BaseTestClass {
     @Test(groups = {"RChangeInternet","RegressionCHOV"})
     public void oneViewCH_1464_Tupelo_Internet_Upgrade_ImmediateTest() {
-//        //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-//        getEnvironmentSelectionPage().launchOneView( TestDataHandler.tupeloUpgradeTest.accountDetails.getBan(),TestDataHandler.tupeloUpgradeTest.getContactID());
-//        reporter.reportLogWithScreenshot("Launched the account dashboard page");
-//        getAccountOverViewPage().selectInternetBadage();
-//        reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-//        getInternetDashboardPage().clickChangeInternetPackage();
-//        reporter.reportLogWithScreenshot("Change Internet Package clicked");
-//        getInternetDashboardPage().selectButtonAddSmartStream();
-//        reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
-//        getInternetDashboardPage().clickContinueChangeInternetPackage();
-//        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-//        getInternetDashboardPage().clickImmediateBill();
-//        reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
-//        getInternetDashboardPage().clickContinueOnSelectDateChange();
-//        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
-        reporter.reportLogWithScreenshot("Launched the account overview page");
+        getEnvironmentSelectionPage().launchOneView( TestDataHandler.tupeloUpgradeTest.accountDetails.getBan(),TestDataHandler.tupeloUpgradeTest.getContactID());
+        reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickChangePackageButton();
+        getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        //getInternetDashboardPage().clickCheckBoxSmartStream();
-        //reporter.reportLogWithScreenshot("Smart Stream option selected");
-        //getInternetDashboardPage().clickLoadOffers();
-        //reporter.reportLogWithScreenshot("Load offers button clicked");
         getInternetDashboardPage().selectButtonAddSmartStream();
-        reporter.reportLogWithScreenshot("Lowest Internet Package selected");
-        getInternetDashboardPage().clickContinue();
-        reporter.reportLogWithScreenshot("Clicked Continue");
-        //getInternetDashboardPage().clickContinueChangeInternetPackage();
-        //reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        //getRogersOVInstallationPage().clickInstallationCheckBox();
-        //reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-        //getRogersOVInstallationPage().clickContinue();
-        // reporter.reportLogWithScreenshot("Continue clicked");
+        reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
+        getInternetDashboardPage().clickContinueChangeInternetPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
-        //getInternetDashboardPage().clickContinueOnSelectDateChange();
-        //reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        //getRogersOVOrderReviewPage().clkSubmit();
-        //reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        //reporter.reportLogWithScreenshot("Order Placed");
+        getInternetDashboardPage().clickContinueOnSelectDateChange();
+        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
+
     }
 
     @BeforeMethod(alwaysRun=true)
