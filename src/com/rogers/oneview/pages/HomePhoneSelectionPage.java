@@ -142,6 +142,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	public void clkContinueOnGeneratePhone() {
 		getReusableActionsInstance().waitForElementVisibility(continueOnGeneratePhone,45);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().executeJavaScriptClick(continueOnGeneratePhone);
 
 

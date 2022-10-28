@@ -44,6 +44,11 @@ public class RogersCH_Auto_TC096_SHM_NAC_SecurityPage_ValidateAllSectionsTest ex
        reporter.reportLogWithScreenshot("View Automate package page component in Security package page");
        checkShmSecurityPageViewAutomatePackage_RedirectTopOfAutomatePackageTest();
 
+       getRogersSecurityPackagesPage().MoveToTopOfPage();
+       getRogersSecurityPackagesPage().clkProducts();
+       reporter.reportLogWithScreenshot("SHM Products");
+       getRogersSecurityPackagesPage().clkSecurityPackage();
+
        reporter.reportLogWithScreenshot("How to get Security Package test");
        checkHowToGetSecurityPackageTest();
 

@@ -166,9 +166,9 @@ public class RogersHomePhonePortInPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(txtInvoiceAddress);
 		getReusableActionsInstance().getWhenReady(txtInvoiceAddress, 3).clear();
 		getReusableActionsInstance().getWhenReady(txtInvoiceAddress, 3).sendKeys(strInvoiceAddress);
+		/*getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
-		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress, 10).sendKeys(Keys.ARROW_DOWN);*/
 		getReusableActionsInstance().getWhenVisible(txtInvoiceAddress).sendKeys(Keys.ENTER);
 	}
 	

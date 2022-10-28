@@ -10,11 +10,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test extends BaseTestClass {
-
-    @Test(groups="RegressionCHOV")
-    public void oneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(), TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
+public class OneViewCH_REG_Auto_TC104_Validation_adding_4K_enable_changePackage_Existing_2PCx_without_4Kenable_ETE_ON_EN extends BaseTestClass {
+    @Test(groups = {"RegressionCHOV"})
+    public void oneViewCH_REG_Auto_TC104_Validation_adding_4K_enable_changePackage_Existing_2PCx_without_4Kenable_ETE_ON_EN() {
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getBan(),TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
@@ -36,21 +35,26 @@ public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_T
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("Pop for selecting billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        //getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        reporter.reportLogWithScreenshot("Order Review Page");
-        getRogersOVCheckoutPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
 
+        reporter.reportLogWithScreenshot("Order Review Page");
+        reporter.hardAssert(getRogersOVCheckoutPage().verifyfourKdetails(),"4K details present in order review page","4K details not present in order review page");
+        getRogersOVCheckoutPage().clkSubmit();
+
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVCheckoutPage().verifyfourKdetails(),"4K details present in order review page","4K details not present in order review page");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
+
     @BeforeMethod(alwaysRun=true)
-    @Parameters({"strBrowser","strLanguage"})
-    public void beforeTest(@Optional("chrome")String strBrowser, @Optional("en")String strLanguage, ITestContext testContext, Method method)throws ClientProtocolException, IOException {
-        startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
+    @Parameters({"strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
-    @AfterMethod(alwaysRun=true)
-    public void afterTest(){
-        //getDriver().quit();
+
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
     }
+
 }
