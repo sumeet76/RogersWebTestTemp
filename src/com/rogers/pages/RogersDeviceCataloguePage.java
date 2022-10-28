@@ -688,7 +688,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
             }
             do {
                 getDriver().get(System.getProperty("AWSUrl"));
-                clickDeviceTileCTAButton("iPhone 13 Pro Max");
+                clickDeviceTileCTAButton("Samsung Galaxy S20 FE 5G");
                 getReusableActionsInstance().staticWait(2000);
             } while (!verifyGetStartedButtonOnModal());
 

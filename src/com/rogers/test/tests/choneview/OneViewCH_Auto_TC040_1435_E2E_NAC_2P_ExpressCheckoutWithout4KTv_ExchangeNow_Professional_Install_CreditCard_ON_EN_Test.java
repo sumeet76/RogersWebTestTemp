@@ -121,7 +121,7 @@ public class OneViewCH_Auto_TC040_1435_E2E_NAC_2P_ExpressCheckoutWithout4KTv_Exc
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 }
 

@@ -172,7 +172,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 
-	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label/input")
 	WebElement reviewTermsAndCondition;
 
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
@@ -437,7 +437,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-2']")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -786,9 +786,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-//		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().waitForElementVisibility(exchangeLater,60);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1177,9 +1177,10 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkExpressCheckOut() {
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
-		getReusableActionsInstance().clickWhenReady(expressCheckout);
-//    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().clickWhenReady(expressCheckout);
+	    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
 	public void clkContinueServiceable()
@@ -1348,7 +1349,7 @@ public void activateHomePhoneltrPopUp() {
 	public void addSHMAddOn(){
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
+		//getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){

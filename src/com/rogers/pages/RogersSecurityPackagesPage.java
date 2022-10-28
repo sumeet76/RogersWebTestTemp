@@ -123,7 +123,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='dsa-hero-billboard__headingH1 mb-16 mb-md-24 ng-star-inserted']")
 	WebElement txtHardwarePage;
 
-	@FindBy(xpath = "//p[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	@FindBy(xpath = "//p[text()=' Smart Home Monitoring ' or text()=' Système de domotique '] | //p[text()=' Ignite Home Security ' or text()=' Sécurité résidentielle Élan ']")
 	WebElement txtWhySHMPage;
 
 	@FindBy(xpath = "//h1[text()='Home Monitoring' or text()='Système de domotique']")
@@ -177,7 +177,7 @@ public class RogersSecurityPackagesPage extends BasePageClass {
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Security Package')]")
 	WebElement lnkSecurityPackage;
 
-	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@href,'/home-monitoring/hardware')]")
+	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Hardware page')]")
 	WebElement lnkHardwarePackage;
 
 	@FindBy(xpath = "//ul[@class='list-none mt-0']//a[contains(@aria-label,'Features page')]")

@@ -56,6 +56,16 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
         reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
+
+//        reporter.reportLogWithScreenshot("campaign");
+//        getRogersIgniteCampaignPage().clickCampaignTab();
+//        getRogersIgniteCampaignPage().enterCoupon("KX2");
+//        getRogersIgniteCampaignPage().clickApplyCoupon();
+//        reporter.reportLogWithScreenshot("campaign coupon applied");
+//        reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
+//        getRogersIgniteCampaignPage().closeCouponAlert();
+//        reporter.reportLogWithScreenshot("close code window");
+
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(), "Customer Profile", "Failed");
@@ -82,12 +92,12 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(), "Billing And Payment Options displayed", "Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-//        getCreditCheckPage().clickDigitalFrontline();
-//        reporter.reportLogWithScreenshot("digitalfrontline");
-//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-//        reporter.reportLogWithScreenshot("card details entered");
+        getCreditCheckPage().clickDigitalFrontline();
+        reporter.reportLogWithScreenshot("digitalfrontline");
+        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        reporter.reportLogWithScreenshot("card details entered");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("Order Review Page");
         getRogersIgniteCampaignPage().clickCampaignTab();

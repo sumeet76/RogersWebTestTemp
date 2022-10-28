@@ -168,8 +168,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannel() {
-		By addChannel = By.xpath("//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/..");
-		getReusableActionsInstance().getWhenReady(addChannel, 90).click();
+		By addChannel = By.xpath("//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/ancestor::span[@role='text']");
+		getReusableActionsInstance().getWhenReady(addChannel, 120).click();
 	}
 	
 	/**

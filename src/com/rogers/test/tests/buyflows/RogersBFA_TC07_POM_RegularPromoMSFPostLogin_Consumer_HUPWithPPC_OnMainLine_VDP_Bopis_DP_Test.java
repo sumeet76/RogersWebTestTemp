@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
+public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void tc07_rogersHupPpcBopisMLTest() {
@@ -48,10 +48,19 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test ext
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+                "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+        String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
+        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+        // ***************************Promo Section************************************
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+                "Promotion Successfully", "Promotion Not Applied");
+        String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
+        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
@@ -65,9 +74,12 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test ext
         reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page Add-ons Continue button clicked");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),
+                "DP Addon added to cart","DP Addon not added to cart");
         String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
         reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
+        reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
@@ -90,6 +102,8 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test ext
         reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
         String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
         getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
+        reporter.hardAssert(getRogersReviewOrderPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
