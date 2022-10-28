@@ -22,7 +22,7 @@ public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends Base
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
-		getAccountOverViewPage().setLanguageFrench();
+//		getAccountOverViewPage().setLanguageFrench();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
@@ -40,7 +40,8 @@ public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends Base
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		getRogersIgniteBundlesPage().clkContinue();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -57,8 +58,8 @@ public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends Base
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+//		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+//		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();

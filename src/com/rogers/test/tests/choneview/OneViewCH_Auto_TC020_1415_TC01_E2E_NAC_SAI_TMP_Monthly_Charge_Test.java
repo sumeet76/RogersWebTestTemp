@@ -35,15 +35,16 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-//		getRogersIgniteBundlesPage().clkCheckOut();
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("PCR3");
+		reporter.reportLogWithScreenshot("load promo offers");
+		getRogersIgniteCampaignPage().enterCoupon("PCR6");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("apply coupon");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");

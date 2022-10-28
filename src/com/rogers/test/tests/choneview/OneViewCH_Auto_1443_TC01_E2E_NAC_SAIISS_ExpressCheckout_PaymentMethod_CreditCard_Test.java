@@ -32,15 +32,12 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
-		reporter.reportLogWithScreenshot("no Port In Popup");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-		getCustomerProfilePage().clkContinue();
-		reporter.reportLogWithScreenshot("click Continue");
-		getRogersIgniteBundlesPage().clickAddOnAddToCart();
-		reporter.reportLogWithScreenshot("click Add On Add To Cart");
-		getCustomerProfilePage().clkContinue();
-		reporter.reportLogWithScreenshot("click Continue");
+		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("click continue");
+		getRogersIgniteBundlesPage().clkContinue();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
@@ -76,9 +73,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("sumbit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		reporter.reportLogWithScreenshot("sumbit order");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
 	}
 

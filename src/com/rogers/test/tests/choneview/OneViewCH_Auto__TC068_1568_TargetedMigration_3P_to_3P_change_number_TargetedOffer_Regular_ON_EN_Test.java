@@ -21,7 +21,7 @@ public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number
         getAccountOverViewPage().enterDealerCodeDialogue();
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().clickIgnite();
-        getAccountOverViewPage().selectAddress();
+//        getAccountOverViewPage().selectAddress();
 
 //       Rogers Ignite page.
 
@@ -44,6 +44,7 @@ public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number
         reporter.reportLogWithScreenshot("Best targeted offer for the customer is displayed");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
         getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
+//        getRogersIgniteBundlesPage().clickKeepNumber();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
@@ -62,13 +63,15 @@ public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number
         getRogersIgniteBundlesPage().clickReviewAddons();
         reporter.reportLogWithScreenshot("Clicked Review Addons");
         getTVDashboardPage().selectStandaloneChannelsTab();
-        getTVDashboardPage().clickAddChannel();
-        reporter.reportLogWithScreenshot("Channel added");
+//        getTVDashboardPage().clickAddChannel();
+//        reporter.reportLogWithScreenshot("Channel added");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("bottom to continue");
-        getRogersIgniteBundlesPage().clkContinue();
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
+//        getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Home Phone Header Display", "Home Phone Header not Displayed");
         reporter.reportLogWithScreenshot("Home Phone Add on page displayed");
         getHomePhoneAddonsPage().clkContinue();

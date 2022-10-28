@@ -105,7 +105,7 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
 		reporter.reportLogWithScreenshot("Submit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-       reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
    }
 

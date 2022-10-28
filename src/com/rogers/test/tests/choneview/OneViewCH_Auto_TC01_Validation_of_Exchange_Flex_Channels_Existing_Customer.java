@@ -47,7 +47,7 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
         getTVDashboardPage().clickConfirmExchange("chrome");
         reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
         getTVDashboardPage().clickOK();
-//        getTVDashboardPage().clickContinueChannelsAndThemePacks();
+        getTVDashboardPage().clickContinueChannelsAndThemePacks();
         getTVDashboardPage().clickSuccessOk();
         reporter.reportLogWithScreenshot("Exchange chanel completed");
 

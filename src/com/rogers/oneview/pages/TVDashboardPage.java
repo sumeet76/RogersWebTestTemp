@@ -169,7 +169,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
 	WebElement btnContinueOn4kTv;
 
-	@FindBy(xpath = "//span[text()='No, they dont' or text()='Non, il n’en a pas']/ancestor::button")
+	@FindBy(xpath = "//span[text()='No, they don’t' or text()='Non, il n’en a pas']/ancestor::button")
 	WebElement btnNoOn4kTv;
 
 	@FindBy(xpath = "//p[text()='Select Change Date']/ancestor::div//span[text()='Continue']")
@@ -1087,7 +1087,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * */
 	public void clickContinueChannelsAndThemePacks() {
 		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
-
 	}
 
 	/*To check for the existing themepacks

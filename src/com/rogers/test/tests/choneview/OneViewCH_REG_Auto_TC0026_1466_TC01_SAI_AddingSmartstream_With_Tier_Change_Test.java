@@ -34,9 +34,9 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
         getRogersOVInstallationPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked");
 
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

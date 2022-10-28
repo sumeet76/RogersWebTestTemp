@@ -77,6 +77,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();

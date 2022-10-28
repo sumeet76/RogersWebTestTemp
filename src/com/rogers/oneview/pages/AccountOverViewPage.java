@@ -230,7 +230,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//input[@id='impersonate-code']")
     WebElement inputDealerCode;
 
-    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[2]")
+    @FindBy(xpath = "(//span[@ng-bind-html='message.message'])[4]")
     WebElement requiredmessage;
 
     @FindBy(xpath = "(//span[@class='bb-amount ng-scope amount-xl'])[2]")
@@ -245,7 +245,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='product-header']")
     WebElement product;
 
-    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']/child::div/child::div[text()=' Account Messages']")
+    @FindBy(xpath = "//div[@id='bb-bs-bill-messages']/child::div/child::div/h2[text()='Account Messages']")
     WebElement accountMessages;
 
     @FindBy(xpath ="//iframe[contains(@class,'bill')]")

@@ -239,7 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
 	WebElement recommendedOffer;
 
-	@FindBy(xpath="//span[text()='BEST' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
+	@FindBy(xpath="//span[text()='Exclusive Offer Available' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
 	WebElement clickBstOffer;
 
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
@@ -348,7 +348,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
-	@FindBy(xpath = "(//span[text()='Smoke & Fire Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
 	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
@@ -434,7 +434,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement termoffer;
 
 
-	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
 	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
@@ -786,7 +786,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().waitForPageLoad();
+//		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementVisibility(exchangeLater,60);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1192,7 +1194,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clkContinueInternetAddon()
 	{
-		getReusableActionsInstance().waitForPageLoad();
+//		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
@@ -1329,7 +1331,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){

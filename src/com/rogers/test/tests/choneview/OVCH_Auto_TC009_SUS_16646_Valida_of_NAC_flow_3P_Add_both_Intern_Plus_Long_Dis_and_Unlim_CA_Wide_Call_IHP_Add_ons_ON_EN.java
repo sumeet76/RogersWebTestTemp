@@ -49,6 +49,7 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         reporter.reportLogWithScreenshot("4k tv pop up");
     //    getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("4k tv pop up continue clicked");
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         reporter.reportLogWithScreenshot("Home Phone Add on selected");

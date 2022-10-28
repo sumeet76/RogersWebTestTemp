@@ -34,9 +34,10 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
 		reporter.reportLogWithScreenshot("no port-in");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("Product Added");
-//		getRogersIgniteBundlesPage().clkCheckOut();
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("Checkout Cart Summary");
