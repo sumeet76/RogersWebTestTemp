@@ -39,7 +39,7 @@ public class RogersCH_Auto_TC054_UC1_ButtontoManageWifiHubnetwork_IgniteInternet
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
@@ -48,7 +48,7 @@ public class RogersCH_Auto_TC054_UC1_ButtontoManageWifiHubnetwork_IgniteInternet
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().clkWifiPassword();
         getRogersInternetDashboardPage().SwitchIgnitewifiPage();

@@ -39,7 +39,7 @@ public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends Base
 //		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkContinue();
+		//getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -90,7 +90,7 @@ public class OneviewCH_REG_Auto_TC023_SAI_NAC_Courier_Monthly_ON_FR extends Base
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }
