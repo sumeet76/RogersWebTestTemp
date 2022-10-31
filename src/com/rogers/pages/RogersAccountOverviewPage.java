@@ -77,7 +77,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@class='mt-24']")
 	WebElement infoWelcome;
 
-	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.contactMangerFeatures']")
+	@FindBy(xpath = "//a[contains(@class,'legacy-cta')]")
 	WebElement lnkContactUsToManageFeaturess;
 		
 	@FindAll({

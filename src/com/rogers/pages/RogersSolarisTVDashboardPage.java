@@ -509,7 +509,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
+		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-package__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
+		//By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
 		//By packageNameLocator = By.xpath("//div[@class='tv-bundle-tile__price']//button[contains(@aria-label, '" + strPackageNameEn + "')]/span");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
