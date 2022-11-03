@@ -31,6 +31,7 @@ public class RogersBFA_TC39_POM_PromoCode_SOHO_AAL_BYOD_NonShare_StdShipping_MBA
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
@@ -83,7 +84,7 @@ public class RogersBFA_TC39_POM_PromoCode_SOHO_AAL_BYOD_NonShare_StdShipping_MBA
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc39_SOHO_AALBYODStandardShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkNoThanks();
-        getRogersCheckoutPage().clkChosePhoneNumber();
+        //getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkChooseNumberbutton();
