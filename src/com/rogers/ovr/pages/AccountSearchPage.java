@@ -66,4 +66,9 @@ public class AccountSearchPage extends BasePageClass {
         getReusableActionsInstance().selectWhenReady(newCustomerDropDown, env, 5);
     }
 
+    public boolean validateAccountSearchPage(){
+        return getReusableActionsInstance().isElementVisible(txtbannumber,60) &&
+                getReusableActionsInstance().isElementVisible(txtpostalcode,60);
+    }
+
 }

@@ -61,6 +61,7 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends Bas
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
         reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();

@@ -58,7 +58,8 @@ public class RogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackageTest 
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-        getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
+         getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
+        //getRogersSolarisTVChannelsAndThemepacksPage().clkNoIDontHave4K();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");

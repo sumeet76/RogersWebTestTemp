@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * This class contains the test method to verify the upgrade flow for Legacy Int/ TV to 3P Ignite for Rogers.com
@@ -50,7 +51,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOptionTest extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
@@ -59,7 +60,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkSkipIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
-       // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
@@ -74,32 +75,32 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Clicked on View Bundles");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Home phone selected");
-        getRogersIgniteTVBuyPage().selectFlex20Package();
-        //getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("Selected Address on file");
         getRogersHomePage().clkUseAddress();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-       /* getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        getRogersIgniteTVBuyPage().selectSolarisPremier(); */
-        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        reporter.reportLogWithScreenshot("Use the address on file");
+        getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Home phone selected");
+       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
+       // getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
+       // reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersIgniteTVBuyPage().clkTotalChannelsFlex20();
-        reporter.reportLogWithScreenshot("Clicked on Total channels link");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewTotalChannelsPopupModal(), "View Total Channels Popup Modal has launched", "View Total Channels Popup Modal has not launched");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
+
+       reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewTotalChannelsPopupModal(), "View Total Channels Popup Modal has launched", "View Total Channels Popup Modal has not launched");
+       reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close Total Channels popup Modal");
-        getRogersIgniteTVBuyPage().clkFlexChannelsFlex20();
+       getRogersIgniteTVBuyPage().clkFlexChannelsFlex20();
         reporter.reportLogWithScreenshot("Clicked on Flex channels link");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewFlexChannelsPopupModal(), "View Flex Channels Popup Modal has launched", "View Flex Channels Popup Modal has not launched");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close Flex Channels popup Modal");
+         getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
+        reporter.reportLogWithScreenshot("Clicked on View More Details");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyMoreDetailsPopup(), "View More Details Modal has launched", "View More Details Popup Modal has not launched");
+        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
+        reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -187,6 +188,14 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
+        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
+        System.out.println("SCHEMA : " + DbSchema);
+        /**
+         * DB Validations in the subscriber table
+         */
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
 
     }
 

@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
  * @author rajesh.varalli1
  *
  */
-public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test extends BaseTestClass {
+public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc07_rogersHupPpcPotgMLTest() {
+    public void tc07_rogersHupPpcBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -48,10 +48,19 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+                "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+        String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
+        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
+        // ***************************Promo Section************************************
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+                "Promotion Successfully", "Promotion Not Applied");
+        String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
+        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
@@ -65,34 +74,41 @@ public class RogersBFA_TC07_Consumer_HUPWithPPC_OnMainLine_VDP_Potg_DP_Test exte
         reporter.reportLogPassWithScreenshot("Device Protection Addon is selected");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page Add-ons Continue button clicked");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),
+                "DP Addon added to cart","DP Addon not added to cart");
         String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
         reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);
+        reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
 //        getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
 //        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
-        getRogersCheckoutPage().clickSkipAutopay();
-        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
-        reporter.reportLogPass("Standard Delivery selected");
+        getRogersCheckoutPage().clkDeliveryMethod("Express");
+        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Pickup Location Map is available",
+                "Express Pickup Location Map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
-        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");
         reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
         String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
         getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
+        reporter.hardAssert(getRogersReviewOrderPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
-        //getRogersReviewOrderPage().clkBopisConsentCheckbox();
+        getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         getRogersOrderReviewPage().clkSubmitOrder();

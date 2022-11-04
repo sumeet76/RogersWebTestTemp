@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","DryRunCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","ReleaseSanity"})
     public void rogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
@@ -45,10 +45,10 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-        getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
+      /*  getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
         reporter.reportLogWithScreenshot("clicked on more details");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteBoxPrice(),"Additional feature price not zero","zero Additional feature price");
-        reporter.reportLogWithScreenshot("clicked on verify details");
+        reporter.reportLogWithScreenshot("clicked on verify details");*/
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");

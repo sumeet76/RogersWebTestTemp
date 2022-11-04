@@ -1,0 +1,60 @@
+package com.rogers.test.tests.buyflows;
+
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTestClass {
+
+    @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
+    }
+
+    @Test(groups = {"RegressionBFA","SAABFA"})
+    public void tc50_rogersSAAAddLongDistanceTest() {
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50SAA_AddLongDistance.getUsername());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50SAA_AddLongDistance.getPassword());
+        reporter.reportLogWithScreenshot("Login Popup");
+        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Error");
+        reporter.reportLogWithScreenshot("Account Overview page");
+        getRogersAccountOverviewPage().clickManageButton();
+        reporter.reportLogPassWithScreenshot("Dashboard Page");
+        getDriver().get(System.getProperty("AWSUrl") + "/manage-addons");
+        reporter.hardAssert(getRogersCheckoutPage().verifyAddonsPage(),
+                "Rogers Standalone Addons Page Displayed","Rogers Standalone Addons Page not Displayed");
+        String newAddon = TestDataHandler.tc50SAA_AddLongDistance.getAddonName();
+        getRogersCheckoutPage().selectAddon(newAddon);
+        reporter.reportLogPassWithScreenshot(  "New " +newAddon +"Addon Selected");
+        reporter.hardAssert(getRogersReviewOrderPage().isAddonReviewPageDisplayed(),
+                "Addons Order Review Page Displayed","Addons Order Review Page Not Displayed");
+        String addonOrderSummary = getRogersReviewOrderPage().addonOrderSummary();
+        reporter.reportLogPassWithScreenshot("Addons Order Summary: " +addonOrderSummary);
+        getRogersReviewOrderPage().clkAddonsAgreementConsent();
+        reporter.reportLogPassWithScreenshot("Addon Agreement clicked");
+        getRogersReviewOrderPage().clkAddToPlanBtn();
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyAddonOrderConfirm(),
+                "Addons Order Confirmation Page Displayed","Addons Order Confirmation Page Not Displayed");
+        String OrderConfirmMessage = getRogersOrderConfirmationPage().getOrderConfirmMsg();
+        reporter.reportLogPassWithScreenshot("Addons Order Confirmation Message: " +OrderConfirmMessage);
+        getRogersOrderConfirmationPage().clickBackToAddonBtn();
+        reporter.hardAssert(getRogersCheckoutPage().verifyAddonsPage(),
+                "Rogers Standalone Addons Page Displayed","Rogers Standalone Addons Page not Displayed");
+        String selectedAddon = getRogersCheckoutPage().getSelectedAddon();
+        reporter.hardAssert(selectedAddon.contains(newAddon),
+                "Selected Addon is reflected in Addons page after submission","Selected Addon is not reflected");
+    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
+}

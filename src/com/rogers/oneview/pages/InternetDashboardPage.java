@@ -1,12 +1,10 @@
 package com.rogers.oneview.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-import utils.Reporter;
 
 import java.util.List;
 
@@ -684,9 +682,10 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().scrollToElement(plusButtonToAddPod);
 
-		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 5)){
+		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
 			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddPod, 45);
 			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddPod);
+			getReusableActionsInstance().waitForPageLoad();
 		}
 	}
 
@@ -743,7 +742,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifyIgniteWiFiPod() {
-		getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
+		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().scrollToElement(IgniteWiFiPod);
 		getReusableActionsInstance().waitForElementVisibility(IgniteWiFiPod, 60);
 		return getReusableActionsInstance().isElementVisible(IgniteWiFiPod);
 	}
@@ -877,6 +877,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
+		getReusableActionsInstance().scrollToElement(recommendedOffer);
 		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 

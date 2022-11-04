@@ -71,10 +71,6 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		getCreditCheckPage().clkContinue();
 		getHomePhoneSelectionPage().clkGeneratePhoneNo();
 		reporter.reportLogWithScreenshot("generate phone number");
-		//reporter.reportLogWithScreenshot("Phone Number Selected");
-		//reporter.reportLogWithScreenshot("continue");
-		//getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-		reporter.reportLogWithScreenshot("Phone number generated");
 		getHomePhoneSelectionPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");

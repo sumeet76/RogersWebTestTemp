@@ -50,10 +50,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_Validate$0ExpressSetupFee_CourierFulfilment_ColdCableTest extends BaseTestClass {
+public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_ValidateCourierFulfilment_ColdCableTest extends BaseTestClass {
 
     @Test
-    public void rogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_Validate$0ExpressSetupFee_CourierFulfilment_ColdCable() {
+    public void rogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_ValidateCourierFulfilment_ColdCable() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");

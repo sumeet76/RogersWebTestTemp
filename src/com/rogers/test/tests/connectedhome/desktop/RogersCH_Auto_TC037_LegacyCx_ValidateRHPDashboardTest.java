@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseTestClass {
 
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","DryRunCH"})
+	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
 	public void rogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -44,7 +44,7 @@ public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseT
 		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
 		reporter.hardAssert(getRogersSolarisRHPDashboardPage().verifyRHPBanner(),"Verifed the RHP dashboard","RHP dashboard Verification has failed");
-		//reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");
+		reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(),"Contact Us To Manage Featuress link has present on RHP dashboard","Contact Us To Manage Featuress link has not present on RHP dashboard");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

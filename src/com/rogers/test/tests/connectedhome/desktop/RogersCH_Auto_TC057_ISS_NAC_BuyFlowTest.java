@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH", "DryRunCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","ReleaseSanity"})
     public void rogersCH_Auto_TC057_ISS_NAC_BuyFlow() {
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
@@ -49,6 +49,7 @@ public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");

@@ -42,7 +42,7 @@ public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_E
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinue();
-		//getRogersIgniteBundlesPage().addSHMAddOn();
+		getRogersIgniteBundlesPage().addSHMAddOn();
 		getRogersIgniteBundlesPage().goToPageBottom();
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");

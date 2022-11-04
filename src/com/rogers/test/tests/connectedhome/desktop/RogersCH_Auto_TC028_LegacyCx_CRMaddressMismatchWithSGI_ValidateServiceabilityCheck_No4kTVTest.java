@@ -58,6 +58,8 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
 		getRogersIgniteTVBuyPage().selectFlex20Package();
 		reporter.reportLogWithScreenshot("Added to cart");
 
+		getRogersIgniteTVBuyPage().clkIUnderstand();
+		reporter.reportLogWithScreenshot("Clicked on Yes, I understand");
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");

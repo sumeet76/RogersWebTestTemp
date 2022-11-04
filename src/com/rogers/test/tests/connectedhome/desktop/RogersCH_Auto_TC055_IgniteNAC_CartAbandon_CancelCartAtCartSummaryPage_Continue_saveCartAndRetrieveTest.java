@@ -40,10 +40,7 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
 
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         getRogersHomePage().clkServiceability();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Checked the Home Phone");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
@@ -52,6 +49,8 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
+        getRogersIgniteTVBuyPage().clkHomephone();
+
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
@@ -113,10 +112,10 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
     }
 
 
- /*   @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    } */
+    }
 
 
 

@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 
-public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_Pro_Install_PaymentMethod_MonthlyCharger_Test_ATL_FR extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneViewCH_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_MonthlyCharger_Test_ON_EN(){
 
@@ -54,6 +54,8 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_Mont
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().validateInternetAddOnsHeader();
+		reporter.reportLogWithScreenshot("Internet Addon page");
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 	//	reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
 		reporter.reportLogWithScreenshot("Port In Service");
@@ -64,16 +66,18 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_Mont
 		reporter.reportLogWithScreenshot("CART SUMMARY");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
 		reporter.reportLogWithScreenshot("Cart Summary");
-		getRogersIgniteBundlesPage().oneTimeCredit();
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+//		getRogersIgniteBundlesPage().oneTimeCredit();
+		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("Campaign code");
-		getRogersIgniteCampaignPage().enterCoupon("PCR6");
+		getRogersIgniteCampaignPage().enterCoupon("PCR3");
 		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("Campaign code applied");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close Coupon Alert");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -91,7 +95,7 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_Mont
 		getCreditCheckPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 	//	reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommended Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in person delivery");
@@ -111,10 +115,8 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_PaymentMethod_Mont
 		reporter.reportLogWithScreenshot("Billing and payment");
 		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
-	//	getPaymentOptionsPage().clkContinue();
-	//	reporter.reportLogWithScreenshot("submit order");
-	//	getPaymentOptionsPage().clkContinue();
-	//	getRogersOVCheckoutPage().clkSubmit();
+		getPaymentOptionsPage().clkContinue();
+		getRogersOVCheckoutPage().clkSubmit();
 		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 

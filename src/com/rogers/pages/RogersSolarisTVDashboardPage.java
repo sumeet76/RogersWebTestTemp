@@ -192,13 +192,13 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement btnOk;
 
-	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]")
+	@FindBy(xpath = "//span[contains(text(),'Réinitialiser le NIP pour le contrôle parental') or contains(text(),'Reset Parental Control PIN')]/ancestor::span[@role='text']")
 	WebElement lnkResetParentalConrolsAndPin;
 
-	@FindBy(xpath = "//span[contains(text(),'Actualiser vos terminaux Télé Élan') or contains(text(),'Refresh your Ignite TV Box(es)') ]")
+	@FindBy(xpath = "//span[contains(text(),'Actualiser vos terminaux Télé Élan') or contains(text(),'Refresh') ]/ancestor::span[@role='text']")
 	WebElement lnkRefreshYourIgniteTVBox;
 
-	@FindBy(xpath = "//span[contains(text(),'Reset Purchase PIN') or contains(text(),'Réinitialiser le NIP d’achat')]")
+	@FindBy(xpath = "//span[contains(text(),'Reset Purchase PIN') or contains(text(),'Réinitialiser le NIP d’achat')]/ancestor::span[@role='text']")
 	WebElement lnkResetPurchasePIN;
 
 	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
@@ -250,6 +250,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkResetParentalConrolsAndPin() {
+		getReusableActionsInstance().staticWait(20000);
 		getReusableActionsInstance().clickWhenReady(lnkResetParentalConrolsAndPin,40);
 	}
 
@@ -508,7 +509,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
+		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-package__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);

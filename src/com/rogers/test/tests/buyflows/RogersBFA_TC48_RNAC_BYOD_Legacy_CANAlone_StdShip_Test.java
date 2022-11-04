@@ -103,8 +103,9 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         // ***************Billing & Payment Stepper*************//
-        getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getPaymentMethod());
-        getRogersCheckoutPage().clkBillingContinueButton();
+//        getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getPaymentMethod());
+//        getRogersCheckoutPage().clkBillingContinueButton();
+        getRogersCheckoutPage().clickSkipNacAutopay();
         //***************Shipping Stepper*************//
         getRogersCheckoutPage().clkDeliveryMethodStandard();
         reporter.reportLogPassWithScreenshot("Billing Options Stepper");

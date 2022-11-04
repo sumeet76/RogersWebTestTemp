@@ -44,7 +44,6 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
@@ -62,10 +61,11 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        getRogersOrderReviewPage().clkverifyAgeCheckbox();
-        reporter.reportLogWithScreenshot("Verified the age");
+        //getRogersOrderReviewPage().clkverifyAgeCheckbox();
+        //reporter.reportLogWithScreenshot("Verified the age");
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
+
         getRogersOrderReviewPage().clkSubmitUpdateSAI();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");

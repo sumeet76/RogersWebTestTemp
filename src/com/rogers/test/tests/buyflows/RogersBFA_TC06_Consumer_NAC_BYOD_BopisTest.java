@@ -104,11 +104,12 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc06NACByodTermBopis.getPaymentMethod());
-		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().clkBillingContinueButton();
+		//getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc06NACByodTermBopis.getPaymentMethod());
+		//getRogersCheckoutPage().clkNoThanks();
+		//getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipAutopay();
 		//***************Shipping Options Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
+		//reporter.softAssert(getRogersCheckoutPage().clkBillingAddress(),"Billing Address radio button is selected ","Billing Address is not selected");
 		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
 		reporter.reportLogPass("Express Delivery selected");
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
