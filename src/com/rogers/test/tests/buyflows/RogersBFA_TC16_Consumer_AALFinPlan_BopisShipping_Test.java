@@ -105,7 +105,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc16AALFinPlanPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
-        getRogersPlanConfigPage().differentPlanSelectionModal();
+        //getRogersPlanConfigPage().differentPlanSelectionModal();
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc16AALFinPlanPotgShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
