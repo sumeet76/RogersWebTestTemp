@@ -17,7 +17,7 @@ public class RogersLoginPage extends BasePageClass {
 	}
 	
 
-	@FindBy(id = "username")
+	@FindBy(xpath = "//input[@formcontrolname='username' or @id = 'username']")
 	WebElement txtUsername;
 
 	@FindBy(xpath="//input[@id='username']")
@@ -26,7 +26,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath="//input[@id='password']")
 	WebElement txtPasswordMobile;
 
-	@FindBy(id = "password")
+	@FindBy(xpath = "//input[@formcontrolname='input_password' or @id = 'password']")
 	WebElement txtPassword;
 
 	@FindAll({
@@ -67,10 +67,10 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Forgot username' or contains(text(),'utilisateur oubli')]")
 	WebElement lnkForgotUserName;
 
-	@FindBy(xpath = "//input[@id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@id='password' or @id='input_password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblPassword;
 	
-	@FindBy(xpath = "//input[@id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@formcontrolname='username' or @id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
 
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
@@ -79,7 +79,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
 
-	@FindBy(xpath = "//a[@title='Continue in browser']/span/span")
+	@FindBy(xpath = "//a[@title='Continue in browser']/span/span | //button[@type='submit']//span[contains(text(),'Continue')]")
 	WebElement btnContinueInBrowser;
 
 
@@ -117,7 +117,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkContinueInBrowser() {
-		getReusableActionsInstance().waitForElementVisibility(btnContinueInBrowser, 30);
+		getReusableActionsInstance().getWhenReady(btnContinueInBrowser, 30);
 		getReusableActionsInstance().clickWhenReady(btnContinueInBrowser);
 	}
 	/**
@@ -128,9 +128,9 @@ public class RogersLoginPage extends BasePageClass {
 
 	public void setUsernameIFrame(String strUsername) {
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
-		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
+		getReusableActionsInstance().getWhenReady(txtUsername, 30).clear();
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
-		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
+		getReusableActionsInstance().getWhenReady(txtUsername).sendKeys(strUsername);
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class RogersLoginPage extends BasePageClass {
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 		}catch (Exception ex)
 		{
-			getReusableActionsInstance().scrollToElement(lblPassword);
+			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
 			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
