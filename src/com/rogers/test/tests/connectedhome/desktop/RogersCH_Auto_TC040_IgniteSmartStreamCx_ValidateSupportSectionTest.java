@@ -37,6 +37,7 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
     public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_igniteSmartStream.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		getRogersLoginPage().clkSignInIFrame();

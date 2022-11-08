@@ -949,7 +949,7 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
-		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(15000);
 	}
 

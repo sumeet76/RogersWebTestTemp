@@ -15,7 +15,7 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='tv_package_change']")
 	WebElement btnChangeMyPackage;
 
-	@FindBy(xpath = "//span[@translate='tv_add_channels_supportPhoneNumber']")
+	@FindBy(xpath = "//span[contains(@translate,'tvAddChannelsSupportPhoneNumber')]")
 	WebElement txtSupportPhoneNumber;
 
 	@FindBy(xpath = "//div[@class='col-xs-12 col-sm-4 col-md-3 col-lg-3']/div/div[@class='plan-cta']")

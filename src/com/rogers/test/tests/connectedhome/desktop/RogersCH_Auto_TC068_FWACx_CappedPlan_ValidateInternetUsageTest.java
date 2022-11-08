@@ -32,34 +32,35 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
     public void rogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsage() {
-                    reporter.reportLogWithScreenshot("Launched the SignIn popup");
-                    getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc68_FWACappedPlan.getUsername());
-                    getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc68_FWACappedPlan.getPassword());
-                    reporter.reportLogWithScreenshot("Enter the account credentails");
-                    getRogersLoginPage().clkSignInIFrame();
-                	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-                    reporter.reportLogWithScreenshot("Skip popup");
-                    getRogersLoginPage().clkSkipIFrame();
-                    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc68_FWACappedPlan.accountDetails.getBan());
-                	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-                    reporter.reportLogWithScreenshot("Launched the Account Page");
-                    getRogersInternetDashboardPage().clkSolarisInternetBadge();
-                    reporter.reportLogWithScreenshot("Launched the Interent dashboard");
-                    getRogersInternetDashboardPage().clkInternetPopup();
-            		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
-            		reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
-                    getRogersInternetDashboardPage().clkInternetUsageAlerts();
-                    reporter.reportLogWithScreenshot("Launched the UsageAlerts page");                  
-                    reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
-                    reporter.reportLogWithScreenshot("Daily Breakdown details");
-                    reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
-                    getRogersInternetUsagePage().clkMonthlyUsage();
-                    reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
-                    reporter.reportLogWithScreenshot("Monthly Breakdown details");
-                    reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
-                    getRogersInternetUsagePage().clkUsageAlerts();
-                    reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
-                    reporter.reportLogWithScreenshot("Usage and Alerts details");
+        reporter.reportLogWithScreenshot("Launched the SignIn popup");
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc68_FWACappedPlan.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc68_FWACappedPlan.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentails");
+        getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Skip popup");
+        getRogersLoginPage().clkSkipIFrame();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc68_FWACappedPlan.accountDetails.getBan());
+        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersInternetDashboardPage().clkSolarisInternetBadge();
+        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        getRogersInternetDashboardPage().clkInternetPopup();
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
+        getRogersInternetDashboardPage().clkInternetUsageAlerts();
+        reporter.reportLogWithScreenshot("Launched the UsageAlerts page");
+        reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdown(), "Verified the daily usage Breakdown", "Daily usage Breakdown deatils are not present");
+        reporter.reportLogWithScreenshot("Daily Breakdown details");
+        reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
+        getRogersInternetUsagePage().clkMonthlyUsage();
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
+        reporter.reportLogWithScreenshot("Monthly Breakdown details");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
+        getRogersInternetUsagePage().clkUsageAlerts();
+        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
+        reporter.reportLogWithScreenshot("Usage and Alerts details");
                 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

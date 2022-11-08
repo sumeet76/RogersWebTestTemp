@@ -37,6 +37,7 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
     public void rogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATL() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
@@ -44,18 +45,21 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
 		reporter.reportLogWithScreenshot("Skip popup");
 		getRogersLoginPage().clkSkipIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc50_wirelessSignedInInternetBuy.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		getRogersHomePage().clkExistingCustomerInternet();
+		//getRogersHomePage().clkExistingCustomerInternet();
+		getDriver().get(System.getProperty("QaUrl") + "internet");
 		reporter.reportLogWithScreenshot("Launched the Internet page");
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		getRogersHomePage().clkUseThisAddress();
-		reporter.reportLogWithScreenshot("Launched the Internet packages page");
+		String  strAddressLine1=TestDataHandler.tc50_wirelessSignedInInternetBuy.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc50_wirelessSignedInInternetBuy.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
+		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
