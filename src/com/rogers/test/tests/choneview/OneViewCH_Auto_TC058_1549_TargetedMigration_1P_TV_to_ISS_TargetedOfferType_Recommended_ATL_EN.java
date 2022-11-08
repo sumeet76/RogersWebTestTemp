@@ -22,8 +22,8 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 //        getRogersIgniteBundlesPage().clkUsethisAddress();
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-//        getRogersIgniteBundlesPage().clickNo();
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clickNo();
+//        getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().selectRecommendedOffer();
@@ -34,15 +34,16 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 //        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 //        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
-//        getRogersIgniteBundlesPage().noPortInPopup();
+        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        reporter.reportLogWithScreenshot("Points to mention");
-        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+//        getRogersIgniteBundlesPage().reviewAllTerms();
+//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        reporter.reportLogWithScreenshot("Points to mention");
+//        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+
         /*To Add the chargeable Pods*/
         reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet header addon displayed", "Internet header not displayed");
         getRogersIgniteBundlesPage().addPods(5);
@@ -75,10 +76,10 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-//        getCreditCheckPage().clickDigitalFrontline();
-//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        getCreditCheckPage().clickDigitalFrontline();
+        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 	    getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

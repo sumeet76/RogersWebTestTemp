@@ -789,6 +789,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1032,6 +1033,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void contiueToCartSummary() {
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(continueFromPort, 10);
 	}
 

@@ -92,17 +92,17 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(), "Billing And Payment Options displayed", "Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-        getCreditCheckPage().clickDigitalFrontline();
-        reporter.reportLogWithScreenshot("digitalfrontline");
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-        reporter.reportLogWithScreenshot("card details entered");
+//        getCreditCheckPage().clickDigitalFrontline();
+//        reporter.reportLogWithScreenshot("digitalfrontline");
+//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//        reporter.reportLogWithScreenshot("card details entered");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("Order Review Page");
         getRogersIgniteCampaignPage().clickCampaignTab();
         reporter.reportLogWithScreenshot("load offers");
-        getRogersIgniteCampaignPage().enterCoupon("KQ1");
+        getRogersIgniteCampaignPage().enterCoupon("KX2");
         getRogersIgniteCampaignPage().clickApplyCoupon();
         reporter.reportLogWithScreenshot("apply coupon");
         reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");

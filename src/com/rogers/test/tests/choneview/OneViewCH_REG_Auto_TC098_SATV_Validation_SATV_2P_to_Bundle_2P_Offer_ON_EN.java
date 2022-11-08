@@ -15,7 +15,7 @@ public class OneViewCH_REG_Auto_TC098_SATV_Validation_SATV_2P_to_Bundle_2P_Offer
     public void oneViewCH_Auto_SATV_Validation_SATV_2P_to_Bundle_2P_Offer_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc098_SATV2P_To_Bundle2P.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().clickIgniteTVBadge();
+        getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("launch the Tv Dashboard page");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");

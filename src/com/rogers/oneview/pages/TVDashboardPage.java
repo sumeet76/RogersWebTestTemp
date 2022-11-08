@@ -94,19 +94,19 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//h4[@translate='global.dashboard.tv.manageChannelsAndThemePacks.vpAlacartes']/parent::div/following-sibling::div/descendant::span[text()='Remove'])[1] | (//rch-channel/descendant::rch-channel-logo/descendant::div)[1]")
 	WebElement btnFirstChannelToRemove;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[3] | (//rch-channel/descendant::rch-channel-logo/descendant::div)[3]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-out']//button[@role='button'])[4]")
 	WebElement btnSecondChannelToRemove;
 
-	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select']/ancestor::button | //span[@translate='global.cta.select']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Sélectionner' or text()='Select' or text()='Remove']/ancestor::button | //span[@translate='global.cta.select']/ancestor::button")
 	WebElement btnSelectChannel;
 
 	@FindBy(xpath = "(//div[@class='col-12 exchange-channels-grid'])[2]//i[@class='rch-icon-search' and @_ngcontent-c33='']")
 	WebElement icnSearchChannelToAdd;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[1] | ((//div[@class='swapCountLimit'])[2]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[1]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[2] | ((//div[@class='swapCountLimit'])[3]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[1]")
 	WebElement btnFirstChannelToAdd;
 
-	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[3] | ((//div[@class='swapCountLimit'])[2]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[3]")
+	@FindBy(xpath = "(//div[@class='exchange-container x-in']//button[@role='button'])[4] | ((//div[@class='swapCountLimit'])[3]/descendant::rch-channel/descendant::rch-channel-logo/descendant::div)[3]")
 	WebElement btnSecondChannelToAdd;
 
 	@FindBy(xpath = "//span[text()='Confirmer l’échange' or text()='Confirm exchange']/ancestor::button")
