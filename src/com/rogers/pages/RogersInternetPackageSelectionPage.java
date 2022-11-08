@@ -90,8 +90,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[contains(@aria-label,'Continue to the next step')]/span")
 	WebElement btnInternetBuyContinue;
-	
-	@FindBy(xpath = "//a[contains(@aria-label,'Ignite Internet 500u')]//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
 
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
