@@ -34,6 +34,9 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//label[@for='number-1']")
 	WebElement rdoChosePhoneNumber;
 
+	@FindBy(xpath = "(//div[contains(@class,'ds-radioButton__outerCircle')])[2]")
+	WebElement rdoChoosePhoneNumber;
+
 	@FindBy(xpath = "//a[@aria-label='Click here to continue to the next step']")
 	//FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnContinueHomePhoneSelection;
@@ -159,5 +162,10 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	public void clkContinueHomePhonePage() {
 		getReusableActionsInstance().waitForElementVisibility(btnContinueHomePhoneSelection, 120);
 		getReusableActionsInstance().getWhenReady(btnContinueHomePhoneSelection, 90).click();
+	}
+
+	public void selectPhoneNumber() {
+		getReusableActionsInstance().waitForElementVisibility(rdoChoosePhoneNumber, 30);
+		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 10).click();
 	}
 }
