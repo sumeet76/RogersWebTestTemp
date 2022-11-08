@@ -41,6 +41,7 @@ public class RogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwapTest extends BaseTest
     public void rogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwap() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
