@@ -69,8 +69,8 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        getRogersIgniteTVBuyPage().set4KTV();
-        reporter.reportLogWithScreenshot("4k TV selected");
+        getRogersIgniteTVBuyPage().set4KTVNo();
+        reporter.reportLogWithScreenshot("4k TV selected as NO");
         getRogersIgniteTVBuyPage().clkCheckout();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();

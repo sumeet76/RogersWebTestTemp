@@ -35,6 +35,7 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
     public void rogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

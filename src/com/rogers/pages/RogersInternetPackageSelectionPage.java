@@ -57,6 +57,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwn150pkgTypeOfContract;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 500u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	WebElement drpdwn500pkgTypeOfContract;
+
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet 150u to your cart']/ancestor::div[@class='internet-bundle-tile__price']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnDST150pkgTypeOfContract;
 
@@ -87,8 +90,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[contains(@aria-label,'Continue to the next step')]/span")
 	WebElement btnInternetBuyContinue;
-	
-	@FindBy(xpath = "//a[contains(@aria-label,'Ignite Internet 150u')]//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
 
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
@@ -347,6 +350,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
+	/**
+	 * To select type of contract to month-to-month for Ignite Internet 150 Mbps
+	 * @author Manpreet.Kaur3
+	 */
+	public void select500MonthToMonthTypeOfContact() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwn500pkgTypeOfContract, 120);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 500u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		monthToMonthContact.selectByVisibleText("Month-to-month");
+	}
+
 
 	/**
 	 * To select type of contract to month-to-month for Ignite Internet 150 Mbps after DST

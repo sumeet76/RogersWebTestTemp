@@ -77,7 +77,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
 
-	@FindBy(xpath = "//a[@title='Continue in browser']/span/span")
+	@FindBy(xpath = "//a[@title='Continue in browser']/span/span | //button[@type='submit']//span[contains(text(),'Continue')]")
 	WebElement btnContinueInBrowser;
 
 	@FindBy(xpath="//button//span[text()='Continue' or text()='Continuer']")
@@ -118,7 +118,7 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkContinueInBrowser() {
-		getReusableActionsInstance().waitForElementVisibility(btnContinueInBrowser, 30);
+		getReusableActionsInstance().getWhenReady(btnContinueInBrowser, 30);
 		getReusableActionsInstance().clickWhenReady(btnContinueInBrowser);
 	}
 
@@ -190,15 +190,15 @@ public class RogersLoginPage extends BasePageClass {
 	public void setPasswordIFrame(String strPassword) {
 		//getReusableActionsInstance().waitForElementTobeClickable(txtPassword, 30);
 		try {
-			getReusableActionsInstance().scrollToElement(lblPassword);
+			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
-			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 		}catch (Exception ex)
 		{
 			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
-			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 		}
 
@@ -253,8 +253,8 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		getReusableActionsInstance().clickIfAvailable(btnSignIn,2);
-		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
+//		getReusableActionsInstance().clickIfAvailable(btnSignIn,2);
+//		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
 		if(getReusableActionsInstance().isElementVisible(btnSkip, 10)) {
 			getReusableActionsInstance().clickWhenReady(btnSkip);
 		}

@@ -15,7 +15,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[@class='row usage-ctn']")
+	@FindBy(xpath = "//section[@class='internet-my-usage']")
 	WebElement txtInternetUsage;
 
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
@@ -193,7 +193,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	public boolean verifyInternetUsageMobile() {
-		return getReusableActionsInstance().isElementVisible(txtInternetUsage,110);
+		return getReusableActionsInstance().isElementVisible(txtInternetUsage,90);
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,60).click();
+		getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,40).click();
 	}
 
 	/**
@@ -532,8 +532,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(5000);
+
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label, '" + strPackageNameEn+ "')]/span");
-		By packageNameLocator = By.xpath("//div[@class='change-internet-bundle-tile__price']//button[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().getWhenReady(pkg,60).click();
@@ -547,7 +548,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(3000);
-		By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-sai-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
+		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-sai-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
@@ -561,7 +563,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectStandAloneInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
-		By packageNameLocator = By.xpath("//div[@class='change-internet-sai-tile__price']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label,'" + strPackageNameFr+ "')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
