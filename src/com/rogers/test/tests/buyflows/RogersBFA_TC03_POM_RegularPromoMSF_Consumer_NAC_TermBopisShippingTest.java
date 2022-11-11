@@ -82,7 +82,7 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-		getRogersPlanConfigPage().skipBPOOffer();
+		//getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
@@ -161,7 +161,7 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		getRogersCheckoutPage().clkChooseNumberbutton();
 
 		// ***************Billing & Payment Stepper*************//
-		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
+		//reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc03NACTermPotgShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();

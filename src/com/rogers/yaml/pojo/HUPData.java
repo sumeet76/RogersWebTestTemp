@@ -11,6 +11,7 @@ public class HUPData {
 	private String banNo;
 	private String postalCode;
 	private String deviceName;
+	private String deviceCostIndex;
 	private String creditCardDetails;
 	private String expiryDate;
 	private String dataOptionIndex;
@@ -47,6 +48,18 @@ public class HUPData {
 		this.deviceName = deviceName;
 	}
 
+	/**
+	 * @return the deviceCostIndex
+	 */
+	public String getDeviceCostIndex() {
+		return deviceCostIndex;
+	}
+	/**
+	 * @param deviceCostIndex the deviceCostIndex to set
+	 */
+	public void setDeviceCostIndex(String deviceCostIndex) {
+		this.deviceCostIndex = deviceCostIndex;
+	}
 	
 	/**
 	 * @return the postalCode

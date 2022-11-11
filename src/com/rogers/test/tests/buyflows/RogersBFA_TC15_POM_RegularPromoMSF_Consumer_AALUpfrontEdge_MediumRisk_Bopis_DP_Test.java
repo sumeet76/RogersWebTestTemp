@@ -61,7 +61,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
         //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc15AALShareTermBopis.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc15AALShareTermBopis.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
@@ -73,8 +73,8 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
         String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15AALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
-        reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
-                "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
+       // reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
+               // "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
