@@ -298,6 +298,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
+    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'credit on device') or contains(text(),'Comprend un crédit')]")
+    WebElement promoCreditInfo;
+
     @FindBy(xpath = "//span[@data-test='promo-detail-info']/following::span[3]")
     WebElement regularPromoDetail;
 
@@ -1495,6 +1498,15 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public boolean verifyPromoDuration() {
         return getReusableActionsInstance().isElementVisible(promoCodeDuration);
+    }
+
+    /**
+     * Validates the Device Credit of the Promotion
+     * @return true if the 'Device Credit' message displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyPromoCreditInfo() {
+        return getReusableActionsInstance().isElementVisible(promoCreditInfo);
     }
 
     /**

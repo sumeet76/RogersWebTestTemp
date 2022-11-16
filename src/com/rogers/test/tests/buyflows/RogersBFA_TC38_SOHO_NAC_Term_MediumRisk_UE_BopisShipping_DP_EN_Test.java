@@ -44,7 +44,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		String postalCode = getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner();
 		reporter.hardAssert(postalCode.contains(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPostalCode()),
 				"RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
-		String deviceName = TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceName();
+		String deviceName = TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
 				"Modal element is not present on the screen");
@@ -72,10 +72,10 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);*/
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDeviceCostIndex());
+		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDeviceCostIndex());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		getRogersPlanConfigPage().clickShowMoreDetails();
-		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDataOptionIndex(),this.getClass().getSimpleName());
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDataOptionIndex(),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		getRogersPlanConfigPage().skipBPOOffer();
@@ -102,11 +102,11 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		getRogersCheckoutPage().setFirstNameCreateProfile();
 		getRogersCheckoutPage().setLastNameCreateProfile();
 		getRogersCheckoutPage().setBusinessName();
-		getRogersCheckoutPage().setBusinessNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getBusinessNumber());
-		getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getContactNumber());
-		getRogersCheckoutPage().setCompanySize(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCompanySize());
+		getRogersCheckoutPage().setBusinessNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getBusinessNumber());
+		getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getContactNumber());
+		getRogersCheckoutPage().setCompanySize(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getCompanySize());
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getBillingAddress());
+		getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getBillingAddress());
 		/*getRogersCheckoutPage().getRpotgSuccessMessage();
 		reporter.reportLogPassWithScreenshot(
 				"Billing Address entered is eligible for RPOTG - Success message validated");*/
@@ -122,17 +122,17 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthYear());
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthYear());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthMonth());
 		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthDay());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
@@ -142,7 +142,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
 				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
 		reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-		String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getRiskClass(),deviceCost,upfrontEdgeAmt);
+		String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getRiskClass(),deviceCost,upfrontEdgeAmt);
 		reporter.reportLog("Expected DownPayment" +expectedDownPayment);
 		//reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
 				//"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
@@ -153,7 +153,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -163,7 +163,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getPaymentMethod());
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		getRogersCheckoutPage().clickSkipNacAutopay();
 		// ***************Shipping Stepper*************//
@@ -201,9 +201,9 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
 		getRogersOneTimePaymentPage().setNameonCard();
 		getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getCreditCardDetailsOTP());
+		getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getCreditCardDetailsOTP());
 		getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getExpiryDateOTP());
+		getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getExpiryDateOTP());
 		getRogersOneTimePaymentPage().setCVV();
 		reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
 

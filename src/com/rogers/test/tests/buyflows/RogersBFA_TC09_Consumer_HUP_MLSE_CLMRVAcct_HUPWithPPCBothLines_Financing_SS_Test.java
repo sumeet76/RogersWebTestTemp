@@ -11,37 +11,40 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC08 - Regression - Rogers HUP on Additional line e2e
+ * TC09 - Regression - Rogers HUP with NPOTG device e2e
  * @author Saurav.Goyal
+ *
  */
-public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends BaseTestClass {
+public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Financing_SS_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc08_rogersHUPOnAdditonalLineTest() {
+    public void tc09_rogersHUPNpotgMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
+        //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc08HUPAdditionalLine.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc08HUPAdditionalLine.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
-        String deviceName = TestDataHandler.tc08HUPAdditionalLine.getDeviceName();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
+        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        reporter.reportLogWithScreenshot("Rogers Home Page");
+        String deviceName = TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getDeviceName();
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getDeviceName());
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                 "Modal element is not present on the screen");
+        reporter.reportLogWithScreenshot("Modal window Popup");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
-        reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
+        reporter.reportLogWithScreenshot("upgrade myphone clicked on Modal window Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc08HUPAdditionalLine.getCtn());
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getCtn());
         getRogersDeviceCataloguePage().clickContinueBtn();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
@@ -50,32 +53,40 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends Bas
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-        getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        //getRogersPlanConfigPage().clkRadioButtonNoTerm();
+        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
-        getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc08HUPAdditionalLine.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().clickContinueOnModalToKeepMyCurrentPhone();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+        //getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        /*getRogersPlanConfigPage().clkBasicTab();
+        getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc09HUPNpotgML.getDataOptionIndex());
+        reporter.reportLogPassWithScreenshot("Plan config page data option selected");
+        getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();*/
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
+        //getRogersPlanConfigPage().skipBPOOffer();
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clkContinueDeviceProtection();
+        reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
+        reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
-        reporter.reportLogPass("Standard Delivery selected");
+        reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
-        reporter.reportLogPass("Clicked continue button in shipping stepper");
+        reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
-        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
-        reporter.reportLogPass("Order Review Page");
+        reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
-        getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+        //getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();
@@ -88,8 +99,17 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends Bas
         } else {
             getRogersOrderReviewPage().clkSubmitOrder();
         }
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+        getRogersOneTimePaymentPage().setNameonCard();
+        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc11HUPShareNoTermSL.getCreditCardDetails());
+        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc11HUPShareNoTermSL.getExpiryDate());
+        getRogersOneTimePaymentPage().setCVV();
+        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");
     }
 
@@ -99,9 +119,9 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_Test extends Bas
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    /*@AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }*/
+    }
     
 }

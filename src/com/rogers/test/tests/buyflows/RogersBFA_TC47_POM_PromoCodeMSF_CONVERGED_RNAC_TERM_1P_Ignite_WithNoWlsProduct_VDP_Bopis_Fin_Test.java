@@ -16,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC47_POM_PromoCode_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_Test extends BaseTestClass {
+public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

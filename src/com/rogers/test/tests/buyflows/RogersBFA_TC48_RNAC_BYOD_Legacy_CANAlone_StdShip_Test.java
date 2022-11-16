@@ -85,9 +85,9 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
                 "CreditEvaluation Title not present");
-        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthYear());
-        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthMonth());
-        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthDay());
+        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthYear());
+        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthMonth());
+        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
         getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetails());
         reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
