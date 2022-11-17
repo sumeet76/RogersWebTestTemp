@@ -115,6 +115,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[contains(@class,'d-flex flex-row-reverse')]//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
+    @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
+    WebElement byodDPContinue;
+
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
@@ -180,6 +183,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
+
+    @FindBy(xpath = "//input[@value='payUpfrontEdgeAmount']/parent::label[@class='dsa-radio']")
+    WebElement keepMyCurrentPhone;
 
     @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
     List<WebElement> checkBoxAdditionalLineOPtion;
@@ -292,6 +298,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
+    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'credit on device') or contains(text(),'Comprend un crédit')]")
+    WebElement promoCreditInfo;
+
     @FindBy(xpath = "//span[@data-test='promo-detail-info']/following::span[3]")
     WebElement regularPromoDetail;
 
@@ -386,7 +395,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clkRadioButtonNoTerm() {
         getReusableActionsInstance().waitForElementVisibility(txtFinancingOptions, 30);
         getReusableActionsInstance().scrollToElement(txtFinancingOptions);
-        getReusableActionsInstance().clickWhenVisible(noTermRadioBtn);
+        getReusableActionsInstance().clickWhenReady(noTermRadioBtn);
     }
 
     /**
@@ -737,6 +746,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * This method selects the Keep My CUrrent Phone and pay my Upfront edge amount option and clicks Continue the Modal
+     * @author subash.nedunchezhian
+     */
+    public void clickContinueOnModalToKeepMyCurrentPhone() {
+        if (getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 10))
+            getReusableActionsInstance().clickWhenReady(keepMyCurrentPhone,5);
+            getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
+    }
+    /**
      * Click continue on Plan config page before cart summary
      *
      * @author saurav.goyal
@@ -785,7 +803,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton, 10);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton, 5);
     }
 
     /**
@@ -830,6 +848,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartSummaryContinueButtonAddOns() {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonAddOns, 5);
+    }
+
+    /**
+     * Click continue on BYOD Plan config page before cart summary
+     * @author subash.nedunchezhian
+     */
+    public void clickByodDPContinueButton() {
+        getReusableActionsInstance().clickIfAvailable(byodDPContinue, 5);
     }
 
     /**
@@ -1475,11 +1501,21 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Validates the Device Credit of the Promotion
+     * @return true if the 'Device Credit' message displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyPromoCreditInfo() {
+        return getReusableActionsInstance().isElementVisible(promoCreditInfo);
+    }
+
+    /**
      * Clicks on the 'Delete' button to remove the applied Promo code
      * @author Subash.Nedunchezhian
      */
     public void clickDeletePromo(){
-        getReusableActionsInstance().clickIfAvailable(deletePromo);
+        getReusableActionsInstance().isElementVisible(deletePromo);
+        getReusableActionsInstance().clickWhenReady(deletePromo);
     }
     /**
      * This method clicks on Device Protection Tab in Add-ons stepper
