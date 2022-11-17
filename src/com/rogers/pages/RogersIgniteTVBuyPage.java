@@ -129,7 +129,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnFlex10Package;
 
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/span/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span")
 	WebElement btnFlex20Package;
 
 	@FindBy(id = "addressLookup-modal")
@@ -258,7 +258,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnStarterPackageTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//*[@id='ds-form-input-id-13']")
 	WebElement drpdwnFlex20PackageTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
@@ -591,7 +591,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//*[@id='ds-form-input-id-13']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
