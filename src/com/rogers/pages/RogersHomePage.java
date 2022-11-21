@@ -39,7 +39,7 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
 	WebElement lnkSignOut;
 
-	@FindBy(xpath = "//form[@id='LoginForm']")
+	@FindBy(xpath = "//input[@formcontrolname='username' or @id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement formLogin;
 	
 	@FindAll({

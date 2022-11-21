@@ -62,29 +62,25 @@ public class RogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRet
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-
-        //reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
         getRogersIgniteTVBuyPage().scrollToSolarisPremier();
         reporter.reportLogWithScreenshot("Scrolled to Premier package");
         getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        /*reporter.softAssert(getRogersIgniteTVBuyPage().verifyChannelAtRateCard(),"Total channels are verified","Total channel verification Failed");
+        String totalChannels  = getRogersIgniteTVBuyPage().getTotalChannelCount();
+        String flexChannels = getRogersIgniteTVBuyPage().getFlexChannelCount();
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyChannelAtRateCard(totalChannels),"Total channels are verified","Total channel verification Failed");
         reporter.reportLogWithScreenshot("Rate card page");
-        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlexChannelAtRateCard(),"Flex channels are verified","Flex channel verification Failed");
-        reporter.reportLogWithScreenshot("Verified the channels");*/
+        reporter.softAssert(getRogersIgniteTVBuyPage().verifyFlexChannelAtRateCard(flexChannels),"Flex channels are verified","Flex channel verification Failed");
         getRogersIgniteTVBuyPage().selectSolarisPremier();
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyTotalChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getTotalChannelsCount()),"Total Channels Count verified","Total Channels Count verification failed");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyFlexChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getFlexChannelsCount()),"Flex Channels Count verified","Flex Channels Count verification failed");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyTotalChannelCount(totalChannels),"Total Channels Count verified","Total Channels Count verification failed");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyFlexChannelCount(flexChannels),"Flex Channels Count verified","Flex Channels Count verification failed");
         getRogersIgniteTVBuyPage().clkViewTotalChannels();
         reporter.reportLogWithScreenshot("View Total Channels");
         getRogersIgniteTVBuyPage().clkHover4kChannels();
         reporter.reportLogWithScreenshot("what are flex channels Hover message ");
         getRogersIgniteTVBuyPage().clkHoverClose();
-
         getRogersIgniteTVBuyPage().clkViewFlexChannels();
         reporter.reportLogWithScreenshot("View Flex Channels");
         getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
@@ -114,8 +110,8 @@ public class RogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRet
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyTotalChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getTotalChannelsCount()),"Total Channels Count verified","Total Channels Count verification failed");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyFlexChannelCount(TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getFlexChannelsCount()),"Flex Channels Count verified","Flex Channels Count verification failed");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyTotalChannelCount(totalChannels),"Total Channels Count verified","Total Channels Count verification failed");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyFlexChannelCount(flexChannels),"Flex Channels Count verified","Flex Channels Count verification failed");
         getRogersIgniteTVBuyPage().clkViewTotalChannels();
         reporter.reportLogWithScreenshot("View Total Channels");
         getRogersIgniteTVBuyPage().clkHover4kChannels();

@@ -100,7 +100,7 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPaymentModepage() {
-		getReusableActionsInstance().waitForElementVisibility(txtPaymentpage, 60);
+		getReusableActionsInstance().waitForElementVisibility(txtPaymentpage, 120);
 		return	getReusableActionsInstance().isElementVisible(txtPaymentpage, 20);
 	}
 
