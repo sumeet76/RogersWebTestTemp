@@ -5,6 +5,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.ITestResult;
 import utils.DigiAutoCustomException;
@@ -98,6 +99,15 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']/following::p[1]")
     WebElement regularPromoDetail;
+
+    @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")
+    WebElement modalContainerDeviceUpgradebutton;
+
+    @FindBy(xpath = "//button[@id='trident-cta-nac']//span[contains(@class,'ds-button__copy')]")
+    WebElement modalContainerGetStartedbutton;
+
+    @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]")
+    WebElement modalContainerAddALinebutton;
 
     /***
      * This method will check the presence of continue button and will return true if present else false
@@ -571,5 +581,21 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String getRegularPromoDetails(){
         getReusableActionsInstance().scrollToElement(regularPromoDetail);
         return regularPromoDetail.getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * This method clicks on Upgrade my phone button on the modal
+     * @author Subash.Nedunchezhian
+     */
+    public void clickUpgradeMyPhoneButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContainerDeviceUpgradebutton , 20);
+    }
+
+    /**
+     *  This method clicks on Add a line button on the existing customer modal
+     *  @author Subash.Nedunchezhian
+     */
+    public void clickAddALineButtonOnModal() {
+        getReusableActionsInstance().clickWhenReady(modalContainerAddALinebutton,20);
     }
 }

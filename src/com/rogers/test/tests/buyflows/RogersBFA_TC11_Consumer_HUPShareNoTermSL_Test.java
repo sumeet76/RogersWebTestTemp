@@ -17,21 +17,14 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
 
         @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
         public void tc11_rogersHUPShareKeepCurrentPlanNoTermSLTest() {
-            //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-            reporter.reportLogWithScreenshot("Home Page");
-            //getRogersHomePage().clkSignIn();
-            //getRogersLoginPage().switchToSignInIFrame();
+            getDriver().get(System.getProperty("AWSUrl"));
+            reporter.reportLogWithScreenshot("Device Catalog Page");
+            getRogersDeviceCataloguePage().clickBannerSignIn();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPShareNoTermSL.getUsername());
             getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPShareNoTermSL.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
-            //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-            //getRogersLoginPage().clkSkipIFrame();
-            //getRogersLoginPage().switchOutOfSignInIFrame();
-            reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
-            reporter.reportLogWithScreenshot("Account Overview page");
-            getDriver().get(System.getProperty("AWSUrl"));
             String deviceName = TestDataHandler.tc11HUPShareNoTermSL.getDeviceName();
             reporter.reportLogWithScreenshot("Moving to device catalogue page");
             reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
@@ -47,7 +40,6 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
             reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-
             getRogersPlanConfigPage().clkRadioButtonNoTerm();
             reporter.reportLogPassWithScreenshot("No term selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
@@ -57,7 +49,7 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-            getRogersPlanConfigPage().clickCartSummaryContinueButton();
+            //getRogersPlanConfigPage().clickCartSummaryContinueButton();
             getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("standard");
             reporter.reportLogPass("Standard Delivery selected");
