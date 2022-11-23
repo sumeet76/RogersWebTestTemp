@@ -187,6 +187,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
+			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
 		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
 		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
@@ -969,6 +970,25 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt) {
 		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt));
+		if (riskClass.toUpperCase().contains("HIGH")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 40.0;
+			return String.valueOf(expectedDownPayment);
+		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
+			return String.valueOf(expectedDownPayment);
+		} else return "0";
+	}
+
+	/**
+	 * This method calculates expected mandatory down payment amount(deviceCost-upfrontEdgeAmt) based on Risk
+	 * @param upfrontEdgeAmt upfrontEdge Offer for the device
+	 * @param financeProgramCredit finance program credit for the device
+	 * @param deviceCost full price of the device
+	 * @param riskClass HIGH/MEDIUM risk
+	 * @author Vedachalam.Vasudevan
+	 */
+	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt,String financeProgramCredit) {
+		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt)) - (Double.parseDouble(financeProgramCredit) * 24);
 		if (riskClass.toUpperCase().contains("HIGH")) {
 			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 40.0;
 			return String.valueOf(expectedDownPayment);
