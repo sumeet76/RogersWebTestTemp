@@ -38,6 +38,10 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
         reporter.reportLogWithScreenshot("Device config page");
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+        String financeProgramCredit = "0.0";
+        financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+        String upfrontEdge = "0.0";
+        upfrontEdge = getRogersDeviceConfigPage().getUpfrontEdgePrice(this.getClass().getSimpleName());
         getRogersDeviceConfigPage().clickContinueButton();
         //############################Plan config page###############################
         //reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
@@ -113,10 +117,10 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
                 "Down payment info dislayed in modal", "Down payment info not dislayed in modal");
         reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,"0");
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
         reporter.reportLog("Expected DownPayment" +expectedDownPayment);
-        //reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
-               //"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
+        reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+               "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
         //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();
         //reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not displayed");
