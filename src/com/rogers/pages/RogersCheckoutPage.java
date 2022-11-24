@@ -843,7 +843,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			clkNoThanks();
+			//clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
 			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
@@ -856,7 +856,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectDayDropdownOption(String strDay) {
 			getReusableActionsInstance().staticWait(5000);
-			clkNoThanks();
+			//clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputDayDOB);
 			getReusableActionsInstance().selectWhenReady(inputDayDOB, strDay);
