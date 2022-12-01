@@ -64,7 +64,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath="//a[contains(@aria-label,'AddSmartStream')]/following::span[contains(text(),'Add')]")
+	@FindBy(xpath="//a[contains(@aria-label, '1 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
@@ -350,7 +350,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSmartstreamPack() {
-		getReusableActionsInstance().clickIfAvailable(btnSmartstreamPack, 30);
+		getReusableActionsInstance().getWhenReady(btnSmartstreamPack, 90).click();
 	}
 
 	/**
@@ -565,7 +565,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
 		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}

@@ -55,24 +55,25 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
-
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getDriver().get(System.getProperty("QaUrl")+"/bundles");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkNoThnx();
-		getRogersHomePage().clkServiceability();
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+//		getDriver().get(System.getProperty("QaUrl")+"/bundles");
+//		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//		getRogersHomePage().clkNoThnx();
+//		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		getRogersHomePage().clkUseAddress();
-		//getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		// getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
@@ -80,9 +81,9 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
-       /* reporter.reportLogWithScreenshot("Flex20+ Order online");
-        getRogersIgniteTVBuyPage().selectFlex20Package(); */
 		reporter.reportLogWithScreenshot("Flex20+ Added to cart");
+		reporter.reportLogWithScreenshot("Launched the information popup");
+		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().set4KTV();
@@ -142,7 +143,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

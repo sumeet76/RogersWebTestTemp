@@ -22,7 +22,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@href='/consumer/internet']")
 	WebElement lnkEasyInternet;
 
-	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'Internet')]")
+	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and text()=' Internet ']")
 	WebElement lnkExstingCustInternet;
 
 	@FindBy(xpath = "//a[@href='/web/consumer/ignite-bundles/tv-internet']")
@@ -31,7 +31,8 @@ public class RogersHomePage extends BasePageClass {
 	@FindAll({
 			@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
 			@FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']"),
-			@FindBy(xpath = "//a[@title='Sign in' and contains(@class,'m-navLink')]")})
+			@FindBy(xpath = "//a[@title='Sign in' and contains(@class,'m-navLink')]"),
+			@FindBy(xpath ="//a[@title='MyRogers']/span")})
 	WebElement lnkSignIn;
 
 	@FindAll({

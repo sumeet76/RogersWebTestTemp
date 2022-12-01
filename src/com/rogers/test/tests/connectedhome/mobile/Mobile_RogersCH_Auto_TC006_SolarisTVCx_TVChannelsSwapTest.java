@@ -43,6 +43,7 @@ public class Mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwapTest extends B
       reporter.reportLogWithScreenshot("Continue in Browser Selected");
      }
      getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
+     getRogersLoginPage().clkContinueInBrowser();
      getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
      reporter.reportLogWithScreenshot("Enter the account credentails");
      getRogersLoginPage().clkSignInIFrame();
