@@ -15,7 +15,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//section[@class='internet-my-usage']")
+	@FindBy(xpath = "//section[@class='internet-my-usage'] | //h1[text()= ' Internet ']")
 	WebElement txtInternetUsage;
 
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
