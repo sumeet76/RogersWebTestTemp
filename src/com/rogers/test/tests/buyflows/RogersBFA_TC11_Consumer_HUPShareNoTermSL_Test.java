@@ -22,12 +22,13 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11HUPShareNoTermSL.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11HUPShareNoTermSL.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
-            reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+            //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
             //getRogersLoginPage().clkSkipIFrame();
-            getRogersLoginPage().switchOutOfSignInIFrame();
+            //getRogersLoginPage().switchOutOfSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
             getDriver().get(System.getProperty("AWSUrl"));
