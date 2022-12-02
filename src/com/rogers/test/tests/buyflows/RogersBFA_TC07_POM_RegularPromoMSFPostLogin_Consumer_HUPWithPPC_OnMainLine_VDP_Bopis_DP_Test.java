@@ -17,25 +17,25 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","HUPBFA"})
+	@Test(groups = {"RegressionBFA","POMHUPBFA"})
     public void tc07_rogersHupPpcBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07HupPpcPotgSharedML.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07HupPpcPotgSharedML.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07POMHupPpcBopisSharedML.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07POMHupPpcBopisSharedML.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
-        String deviceName = TestDataHandler.tc07HupPpcPotgSharedML.getDeviceName();
+        String deviceName = TestDataHandler.tc07POMHupPpcBopisSharedML.getDeviceName();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc07HupPpcPotgSharedML.getDeviceName());
+        getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc07POMHupPpcBopisSharedML.getDeviceName());
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
                 "Modal element is not present on the screen");
         reporter.reportLogWithScreenshot("Modal window Popup");
@@ -43,7 +43,7 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
         reporter.reportLogWithScreenshot("upgrade myphone clicked on Modal window Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
         reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc07HupPpcPotgSharedML.getCtn());
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc07POMHupPpcBopisSharedML.getCtn());
         getRogersDeviceCataloguePage().clkContinueBtnHupCtnSelectionModal();
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
@@ -61,12 +61,12 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
                 "Promotion Successfully", "Promotion Not Applied");
         String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
         getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
-        getRogersPlanConfigPage().clkDownPaymentChkBox();
+        //getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc07HupPpcPotgSharedML.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc07POMHupPpcBopisSharedML.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -112,7 +112,7 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
         getRogersOrderReviewPage().clkSubmitOrder();
-        reporter.reportLogWithScreenshot("Rogers Payment Page");
+        /*reporter.reportLogWithScreenshot("Rogers Payment Page");
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
         getRogersOneTimePaymentPage().setNameonCard();
         getRogersOneTimePaymentPage().switchToCreditCardIFrame();
@@ -121,7 +121,7 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
         getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc17AALNoTermStandardShipping.getExpiryDateOTP());
         getRogersOneTimePaymentPage().setCVV();
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

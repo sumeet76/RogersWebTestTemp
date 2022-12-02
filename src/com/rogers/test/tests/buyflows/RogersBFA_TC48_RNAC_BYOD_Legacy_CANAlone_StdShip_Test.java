@@ -27,18 +27,25 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
     @Test(groups = {"RegressionBFA","NACBFA"})
     public void tc48_rnacByod_Legacy_StdShipTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
-        getDriver().get(System.getProperty("QaUrl")+"consumer/profile/signin");
+
+//        reporter.reportLogWithScreenshot("Login Page");
+//        getRogersLoginPage().clkSignInIFrame();
+//        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+//        //getRogersLoginPage().clkSkipIFrame();
+//        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.BFA_ProdTest_tc03_AALBYOD_StdShipping.getBan());
+        //############################Plan config page###############################
+        getDriver().get(System.getProperty("QaUrl")+"phones/bring-your-own-device");
+        Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
+        getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_Legacy_NACByod.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_Legacy_NACByod.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.BFA_ProdTest_tc03_AALBYOD_StdShipping.getBan());
-        //############################Plan config page###############################
-        getDriver().get(System.getProperty("QaUrl")+"phones/bring-your-own-device?flowType=byod");
-        Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
+        //getRogersLoginPage().clkSkipIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc48_Legacy_NACByod.getDataOptionIndex()),this.getClass().getSimpleName());
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
@@ -50,8 +57,8 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //***************Create Profile Stepper*************//
         if(!(custInfoMap.size()==0)) {
             if (custInfoMap.containsKey("emailAddress")) {
-                getRogersCheckoutPage().setEmailCreateProfile();
-                getRogersCheckoutPage().setLastNameCreateProfile();
+                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
                 reporter.reportLogWithScreenshot("Email address entered successfullly");
             }
             if (custInfoMap.containsKey("firstName")) {
@@ -78,9 +85,9 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
                 "CreditEvaluation Title not present");
-        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthYear());
-        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthMonth());
-        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionPOTG.getDateOfBirthDay());
+        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthYear());
+        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthMonth());
+        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
         getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetails());
         reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
@@ -100,37 +107,37 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkChooseNumberbutton();
-        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
-        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+        //reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         // ***************Billing & Payment Stepper*************//
 //        getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getPaymentMethod());
 //        getRogersCheckoutPage().clkBillingContinueButton();
-        getRogersCheckoutPage().clickSkipNacAutopay();
+        getRogersCheckoutPage().clickSkipAutopay();
         //***************Shipping Stepper*************//
-        getRogersCheckoutPage().clkDeliveryMethodStandard();
-        reporter.reportLogPassWithScreenshot("Billing Options Stepper");
+        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
+        reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
-        reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+        reporter.reportLogPassWithScreenshot("Continue button clicked from Shipping Stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         //***************Order Review Page*************//
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");
-        getRogersReviewOrderPage().clkFinancingConsentCheckbox();
+        //getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+        //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
-        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
-        getRogersOneTimePaymentPage().setNameonCard();
-        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetailsOTP());
-        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc48_Legacy_NACByod.getExpiryDateOTP());
-        getRogersOneTimePaymentPage().setCVV();
-        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+//        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
+//                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
+//        getRogersOneTimePaymentPage().setNameonCard();
+//        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+//        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetailsOTP());
+//        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+//        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc48_Legacy_NACByod.getExpiryDateOTP());
+//        getRogersOneTimePaymentPage().setCVV();
+//        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+//        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");

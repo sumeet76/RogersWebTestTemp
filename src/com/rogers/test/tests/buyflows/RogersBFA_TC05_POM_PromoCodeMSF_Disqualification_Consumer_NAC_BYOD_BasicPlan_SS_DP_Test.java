@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
  */
 
-public class RogersBFA_TC05_POM_PromoCode_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
+public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {

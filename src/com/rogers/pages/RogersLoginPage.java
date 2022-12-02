@@ -17,7 +17,7 @@ public class RogersLoginPage extends BasePageClass {
 	}
 	
 
-	@FindBy(xpath = "//input[@formcontrolname='username' or @id = 'username']")
+	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
 
 	@FindBy(xpath="//input[@formcontrolname='username' or @id = 'username']")
@@ -26,12 +26,10 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath="//input[@formcontrolname='input_password' or @id = 'password']")
 	WebElement txtPasswordMobile;
 
-	@FindBy(xpath = "//input[@formcontrolname='input_password' or @id = 'password']")
+	@FindBy(xpath = "//input[@type='password']")
 	WebElement txtPassword;
 
-	@FindAll({
-		@FindBy(xpath = "//div[contains(@class,'signInButton')]"),
-		@FindBy(xpath = "//button[@data-dtname='signin submit']")})		
+	@FindBy(xpath = "//button[@title='Sign in' or @title='Select to sign in to MyRogers']")
 	WebElement btnSignIn;
 
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
@@ -67,10 +65,10 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Forgot username' or contains(text(),'utilisateur oubli')]")
 	WebElement lnkForgotUserName;
 
-	@FindBy(xpath = "//input[@id='password' or @id='input_password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@id='input_password' or @id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblPassword;
 	
-	@FindBy(xpath = "//input[@formcontrolname='username' or @id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@formcontrolname='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
 
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
@@ -81,6 +79,9 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@title='Continue in browser']/span/span | //button[@type='submit']//span[contains(text(),'Continue')] | //button//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueInBrowser;
+
+	@FindBy(xpath="//button//span[text()='Continue' or text()='Continuer']")
+	WebElement btnContinueSignIn;
 
 
 	/**
@@ -120,6 +121,15 @@ public class RogersLoginPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnContinueInBrowser, 30);
 		getReusableActionsInstance().clickWhenReady(btnContinueInBrowser);
 	}
+
+	/**
+	 * Click continue button after entering username
+	 * @author Konstantin.Stoianov
+	 */
+	public void clkContinueSignIn(){
+		getReusableActionsInstance().clickWhenReady(btnContinueSignIn, 5);
+	}
+
 	/**
 	 * Enter the user name on Sign in frame
 	 * @param strUsername user name to be login
@@ -132,6 +142,7 @@ public class RogersLoginPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txtUsername, 30).clear();
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
 		getReusableActionsInstance().getWhenReady(txtUsername).sendKeys(strUsername);
+
 	}
 
 	/**
@@ -177,15 +188,15 @@ public class RogersLoginPage extends BasePageClass {
 	public void setPasswordIFrame(String strPassword) {
 		//getReusableActionsInstance().waitForElementTobeClickable(txtPassword, 30);
 		try {
-			getReusableActionsInstance().scrollToElement(lblPassword);
+			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
-			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 		}catch (Exception ex)
 		{
 			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
-			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
+			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
 		}
 
@@ -219,14 +230,11 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 	public void clkSignInIFrame() {
 		try {
-			//getReusableActionsInstance().scrollToElement(btnSignIn);
 			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
-			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
-			getReusableActionsInstance().clickIfAvailable(btnSkip);
-		}catch (ElementClickInterceptedException ex)
-		{
-			//for mobile browsers
-			getReusableActionsInstance().getWhenReady(btnSignIn, 30).click();
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+			//getReusableActionsInstance().clickIfAvailable(btnSkip);
+		}catch (ElementClickInterceptedException ex) {
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
 		}
 	}
 	//*[text()='Remember username']
@@ -243,8 +251,11 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSkipIFrame() {
-		getReusableActionsInstance().clickIfAvailable(btnSignIn,2);
-		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
+//		getReusableActionsInstance().clickIfAvailable(btnSignIn,2);
+//		getReusableActionsInstance().clickIfAvailable(btnSkip,10);
+		if(getReusableActionsInstance().isElementVisible(btnSkip, 10)) {
+			getReusableActionsInstance().clickWhenReady(btnSkip);
+		}
 	}
 	
 	/**
