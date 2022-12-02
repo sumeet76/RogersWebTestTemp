@@ -133,11 +133,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//h2[@translate='EOP.NEW_OFFER_NOTIFICATION.sai.header']"),
-			@FindBy(xpath = "//p[contains(@translate,'EOP.NEW_OFFER_NOTIFICATION')]")
+			@FindBy(xpath = "//p[contains(@translate,'EOP.NEW_OFFER_NOTIFICATION')]"),
+			@FindBy(xpath ="//ds-modal-container[contains(@id,'ds-modal-container')]")
 	})
 	WebElement headerOfferNotificationModal;
 
-	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span")
+	@FindBy(xpath = "//button[@data-dtname='x-close-ignite migration-alert']/span | //button[contains(@class,'ds-modal__closeButton')]/span")
 	WebElement btnCloseOfferModal;
 	
 	@FindAll({
@@ -508,7 +509,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	@FindBy (xpath = "//span[contains(text(),'Payment History') or contains(text(),'Historique de paiement')]")
 	WebElement lnkPaymentHistory;
 
-	@FindBy(xpath = "//img[@class='star']")
+	@FindBy(xpath = "//img[@class='star'] | //a[@title='View upgrade promotion offer']")
 	WebElement imgSpecialOfferBadge;
 
 	@FindBy(xpath = "//a[@title='View upgrade promotion offer']/span | //span[@translate='EOP.CTAS.PROMOTION_OFFER_BADGE.LABEL']")

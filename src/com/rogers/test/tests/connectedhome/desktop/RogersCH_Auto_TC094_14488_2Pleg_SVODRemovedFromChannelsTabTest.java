@@ -31,6 +31,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 	public void rogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTab() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();

@@ -39,12 +39,11 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
     public void rogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThemePack_NL_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
     	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc13_SolarisChangeTVPackageAdd4KChannelsAndThemePack.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -68,6 +67,7 @@ public class RogersCH_Auto_TC013_SolarisTVCx_ChangeTVPackageAdd4KChannelsAndThem
         reporter.reportLogWithScreenshot("Clicked continue on existing channel alert window ");        
         getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
+       //  getRogersSolarisTVChannelsAndThemepacksPage().clkNoIDontHave4K();
         getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
         getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
