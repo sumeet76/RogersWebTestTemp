@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 6. Discounts - NA"
  */
 
-public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Chargeable_Pods_Courier_MonthlyCharges_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Chargeable_Pods_Courier_MonthlyCharges_ON_EN extends BaseTestClass {
     @Test
     public void oneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Chargeable_Pods_Courier_MonthlyCharges_ON_EN(){
         reporter.reportLogWithScreenshot("oneview env");
@@ -42,7 +42,7 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
@@ -73,8 +73,8 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+  //     reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+ //       reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
@@ -88,8 +88,8 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

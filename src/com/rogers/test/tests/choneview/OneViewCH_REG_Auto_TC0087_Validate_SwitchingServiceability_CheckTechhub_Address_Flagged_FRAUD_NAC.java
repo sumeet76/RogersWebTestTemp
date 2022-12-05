@@ -17,8 +17,8 @@ public class OneViewCH_REG_Auto_TC0087_Validate_SwitchingServiceability_CheckTec
             /* serviceability check to Techhub for Address_Flagged_FRAUD_NAC */
             reporter.reportLogWithScreenshot("OneView env");
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-            reporter.reportLogWithScreenshot("address");
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_Flagges_Fraud());
+            reporter.reportLogWithScreenshot("address");
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyFraudAddressMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_Flagges_Fraud()+" Fraud Address",TestDataHandler.anonymousData.contactDetails.getAddress_Flagges_Fraud()+" not Fraud Address");
             reporter.reportLogWithScreenshot("Flagged Fraud Address");
             getRogersIgniteBundlesPage().clickOkButton();

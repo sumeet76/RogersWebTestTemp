@@ -224,7 +224,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//rch-service-provider-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement portInContinue;
 
-	@FindBy(xpath = "//span[@translate='global.cta.cancel']//ancestor::button/following-sibling::button")
+	@FindBy(xpath = "//div[@class='button-set']//span[@translate='global.cta.continue'][normalize-space()='Continue']")
 	WebElement continueFromPort;
 
 	@FindBy(xpath = "//rch-port-in-service-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
@@ -1031,7 +1031,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void contiueToCartSummary() {
-		getReusableActionsInstance().clickWhenReady(continueFromPort, 10);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(continueFromPort);
 	}
 
 	/**
@@ -1039,7 +1040,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clkContinueFor3PPortIn() {
-		getReusableActionsInstance().waitForElementVisibility(clickContinue3PPortIn);
+		getReusableActionsInstance().waitForElementVisibility(clickContinue3PPortIn,45);
 		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
 		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
 	}
@@ -1501,7 +1502,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clickOkButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(clickOk,30);
-		getReusableActionsInstance().clickWhenReady(clickOk);
+		getReusableActionsInstance().executeJavaScriptClick(clickOk);
 	}
 
 	public boolean verifyBulkAddress() {
