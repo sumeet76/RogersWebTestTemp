@@ -34,7 +34,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use ATL region address
-        getCheckAvailabilityPage().checkAvailability("876-43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -53,7 +53,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to PortIn Popup");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed to Add product in cart");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
 
@@ -67,6 +67,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
         getRogersIgniteBundlesPage().contiue4KContent();
 
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");

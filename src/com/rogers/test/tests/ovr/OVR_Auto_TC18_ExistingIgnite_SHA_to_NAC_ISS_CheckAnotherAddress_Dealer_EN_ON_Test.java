@@ -33,7 +33,7 @@ public class OVR_Auto_TC18_ExistingIgnite_SHA_to_NAC_ISS_CheckAnotherAddress_Dea
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_18_Ovr_existingIgniteSHAToNacISS.getBanNumber(), TestDataHandler.tc_18_Ovr_existingIgniteSHAToNacISS.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_18_Ovr_Existing_Ignite_SHA_to_NacISS.getBanNumber(), TestDataHandler.tc_18_Ovr_Existing_Ignite_SHA_to_NacISS.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");

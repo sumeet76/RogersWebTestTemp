@@ -74,6 +74,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.reportLogWithScreenshot("first channel to Add");
         getRogersIgniteExchangePage().clickSelectButton();
         reporter.reportLogWithScreenshot("Channel Swapped");
+        getRogersIgniteExchangePage().clkContinue();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();

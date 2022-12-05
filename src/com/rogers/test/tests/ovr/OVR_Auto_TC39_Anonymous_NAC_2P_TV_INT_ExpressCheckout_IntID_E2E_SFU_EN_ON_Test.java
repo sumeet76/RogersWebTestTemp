@@ -18,7 +18,7 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_ExpressCheckout_IntID_E2E_SFU
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
@@ -54,7 +54,9 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_ExpressCheckout_IntID_E2E_SFU
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
+        getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().clkExpressCheckout();
+        getReporter().reportLogWithScreenshot("Express Checkout");
 
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();

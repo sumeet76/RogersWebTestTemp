@@ -34,7 +34,6 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
-        //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         //Internet Dashboard Validation

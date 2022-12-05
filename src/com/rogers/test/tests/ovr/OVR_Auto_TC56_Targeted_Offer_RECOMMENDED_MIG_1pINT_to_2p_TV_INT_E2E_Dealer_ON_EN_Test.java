@@ -19,7 +19,7 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity"})
@@ -48,32 +48,20 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
         reporter.reportLogWithScreenshot("Selected the recommended offer");
 
         getRogersIgniteBundlesPage().clickFirstAddToCart();
-        getRogersIgniteBundlesPage().noPortInPopup();
-        reporter.reportLogWithScreenshot("NO to port in popup");
-
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
 
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clkExpressCheckout();
+        getReporter().reportLogWithScreenshot("Express Checkout");
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to 4k tv popup");
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        reporter.reportLogWithScreenshot("4k content modal");
-        getRogersIgniteBundlesPage().contiue4KContent();
-
+        //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Cart Summary");
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("Cart Summary Page");
@@ -105,24 +93,24 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
 
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-//        getBundleBuilderPage().clkContinueBillingAndPayment();
-//        reporter.reportLogWithScreenshot("Order Review Page");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-//        getOVROrderReviewPage().clkContinue();
-//        reporter.reportLogWithScreenshot("Sign Agreement Page");
-//        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
-//        getOVRAgreementPage().signAgreement();
-//        reporter.reportLogWithScreenshot("Back to Agreement Page");
-//        getOVRAgreementPage().clkAgreementCheckbox();
-//        reporter.reportLogWithScreenshot("Agreement Checkbox clicked");
-//        getOVRAgreementPage().clkCompleteOrder();
-//        reporter.reportLogWithScreenshot("Order Confirmation Page");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        getBundleBuilderPage().clkContinueBillingAndPayment();
+        reporter.reportLogWithScreenshot("Order Review Page");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        getOVROrderReviewPage().clkContinue();
+        reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
+        getOVRAgreementPage().signAgreement();
+        reporter.reportLogWithScreenshot("Back to Agreement Page");
+        getOVRAgreementPage().clkAgreementCheckbox();
+        reporter.reportLogWithScreenshot("Agreement Checkbox clicked");
+        getOVRAgreementPage().clkCompleteOrder();
+        reporter.reportLogWithScreenshot("Order Confirmation Page");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
 
