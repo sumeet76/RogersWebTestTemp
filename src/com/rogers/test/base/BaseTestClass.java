@@ -1266,6 +1266,7 @@ public class BaseTestClass {
                 InternetDashboardPageThreadLocal.set(new InternetDashboardPage(getDriver()));
                 TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
                 HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
+                RogersIgniteExchangePageThreadLocal.set(new RogersIgniteExchangePage(getDriver()));
                 break;
 
 

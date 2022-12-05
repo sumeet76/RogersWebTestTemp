@@ -252,7 +252,7 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(courierDelivery);
 	}
 	public void clickInPersonDelivery() {
-		getReusableActionsInstance().waitForElementVisibility(customerAgreement, 240);
+		getReusableActionsInstance().waitForElementVisibility(customerAgreement, 100);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(customerAgreement, 30).click();
 	}
