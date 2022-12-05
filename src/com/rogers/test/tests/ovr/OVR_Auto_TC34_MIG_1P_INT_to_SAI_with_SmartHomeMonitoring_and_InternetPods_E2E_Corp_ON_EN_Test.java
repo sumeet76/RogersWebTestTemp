@@ -56,7 +56,6 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewAllTerms();
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();

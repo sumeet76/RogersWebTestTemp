@@ -6,11 +6,10 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Test extends BaseTestClass {
+public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2E_TSR_FR_ATL_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -21,11 +20,12 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
     public void afterTest() {
         closeSession();
     }
-
-    @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
+    @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
+    public void ovr_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2E_TSR_FR_ATL_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_TSR_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
+        getChampLoginPage().changeChampToFR();
+        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
@@ -33,17 +33,16 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
-        reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
-
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
+        reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         reporter.reportLogWithScreenshot("Internet Selected");
         getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -54,8 +53,8 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("added to cart");
-        getRogersIgniteBundlesPage().yesPortInPopup();
-        reporter.reportLogWithScreenshot("Yes to port in popup");
+        getRogersIgniteBundlesPage().noPortInPopup();
+        reporter.reportLogWithScreenshot("No to port in popup");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
@@ -63,19 +62,19 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Continue from Bundles page with 3p bundle");
         getRogersIgniteBundlesPage().clkContinue();
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
-        reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
-        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
-        reporter.reportLogWithScreenshot("Port In form completed");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from port in");
-
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
+        reporter.reportLogWithScreenshot("Channel Personalization page and Exchange Options");
+        getRogersIgniteExchangePage().clickExchangeNow();
+        reporter.reportLogWithScreenshot("Exchange Now");
+        getRogersIgniteExchangePage().verifyChannelToSwapHeader();
+        getRogersIgniteExchangePage().selectFirstChannelToRemove();
+        reporter.reportLogWithScreenshot("first channel selected");
+        getRogersIgniteExchangePage().clickSelectButton();
+        reporter.reportLogWithScreenshot("button select");
+        getRogersIgniteExchangePage().selectFirstChannelToAdd();
+        reporter.reportLogWithScreenshot("first channel to Add");
+        getRogersIgniteExchangePage().clickSelectButton();
+        reporter.reportLogWithScreenshot("Channel Swapped");
+        getRogersIgniteExchangePage().clkContinue();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -91,24 +90,6 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
         getHomePhoneAddonsPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to cart summary");
-
-
-
-//        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-//        reporter.reportLogWithScreenshot("Home phone for Port IN");
-//        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-//        reporter.reportLogWithScreenshot("Continue to HomePhone PortIn details");
-//        getRogersIgniteBundlesPage().enterHomePhoneAccountNumber("6742342");
-//        reporter.reportLogWithScreenshot("Account number for Port In");
-//        getRogersIgniteBundlesPage().clkContinueFromHomePhoneServiceProvider();
-//        reporter.reportLogWithScreenshot("Continue to HomePhone Number PortIn");
-//        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9055025919");
-//        reporter.reportLogWithScreenshot("Port In details filled out");
-//        getRogersIgniteBundlesPage().clkContinueFromHomePhonePortIn();
-//        reporter.reportLogWithScreenshot("Port In form filled out for HomePhone details");
-//        reporter.reportLogWithScreenshot("Port In completed");
-//        getRogersIgniteBundlesPage().contiueToCartSummary();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -144,11 +125,11 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectExpressProInstall();
+        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");
@@ -157,7 +138,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Frais mensuels");
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
@@ -178,5 +159,4 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
-
 }

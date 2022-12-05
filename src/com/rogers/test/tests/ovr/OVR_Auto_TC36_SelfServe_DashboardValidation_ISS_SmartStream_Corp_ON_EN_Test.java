@@ -18,12 +18,12 @@ public class OVR_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON_EN_Test() {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -33,16 +33,29 @@ public class OVR_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_36_DashboardValidation_Ignite_ISS.getBanNumber(), TestDataHandler.tc_36_DashboardValidation_Ignite_ISS.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
-
-        //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
-        getAccountOverViewPage().selectGetIgniteTVBadge();
-        reporter.reportLogWithScreenshot("Launched the Ignite TV dashboard page");
+        //Internet Dashboard Validation
+        getAccountOverViewPage().selectInternetBadage();
+        reporter.reportLogWithScreenshot("Launched the internet dashboard page");
+        reporter.reportLogWithScreenshot("Launched the internet dashboard page");
+        reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
+        reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
+        reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
+        reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
+        reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(),"Internet Speed Displayed", "Internet Speed not displayed");
+        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available","Usage and Alerts link not Available");
+        reporter.reportLogWithScreenshot("View Usgae and Alert link displayed");
 
-        //reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
+        getInternetDashboardPage().clickBacktoAccountOverview();
+        reporter.reportLogWithScreenshot("Back to account Over view Page");
+        getInternetDashboardPage().clickContinue();
+
+        getOvrDashboardPage().clkIgniteStreamingDashboard();
+        reporter.reportLogWithScreenshot("Launched the Ignite streaming dashboard page");
+        reporter.hardAssert(getOvrDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
         reporter.reportLogWithScreenshot("Restart setup box link displayed");
-        getTVDashboardPage().clickRestartSetupbox();
+        getOvrDashboardPage().clickRestartSetupbox();
         reporter.reportLogWithScreenshot("Restart setup box link clicked");
         getTVDashboardPage().clickCancel();
         reporter.reportLogWithScreenshot("Closing Restart setup box");
@@ -52,9 +65,9 @@ public class OVR_Auto_TC36_SelfServe_DashboardValidation_ISS_SmartStream_Corp_ON
         reporter.reportLogWithScreenshot("Reset purchase pin clicked");
         getTVDashboardPage().clickCancel();
         reporter.reportLogWithScreenshot("Closing Reset Parent control");
-        reporter.hardAssert(getTVDashboardPage().verifyResetParentalControl(), "Reset Parental Control & pin Available","Reset Parental Control & pin not Available");
+        reporter.hardAssert(getOvrDashboardPage().verifyResetParentalControl(), "Reset Parental Control & pin Available","Reset Parental Control & pin not Available");
         reporter.reportLogWithScreenshot("Reset Parent control link displayed");
-        getTVDashboardPage().clickResetParentalControl();
+        getOvrDashboardPage().clickResetParentalControl();
         reporter.reportLogWithScreenshot("Reset Parent control clicked");
         getTVDashboardPage().clickCancel();
         reporter.reportLogWithScreenshot("Closing Reset Parent control");

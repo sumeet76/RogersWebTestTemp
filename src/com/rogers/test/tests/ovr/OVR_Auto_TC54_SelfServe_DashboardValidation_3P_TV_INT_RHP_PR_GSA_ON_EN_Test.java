@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test extends BaseTestClass {
+public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,8 +22,8 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_password"));
+    public void ovr_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON_EN_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -34,18 +34,17 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
-        //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         //Internet Dashboard Validation
-        getAccountOverViewPage().selectInternetBadage();
+        getOvrDashboardPage().clkInternetDashboard();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(), "Internet Speed Displayed", "Internet Speed not displayed");
-        //reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
+        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
         reporter.reportLogWithScreenshot("View Usage and Alert link displayed");
 
         getInternetDashboardPage().clickBacktoAccountOverview();
@@ -53,20 +52,48 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         getInternetDashboardPage().clickContinue();
 
         //TV Dashboard
-        getAccountOverViewPage().selectTVBadage();
+        getOvrDashboardPage().clkTVDashboard();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on TV Dashboard page");
 
+        reporter.hardAssert(getTVDashboardPage().verifyExchangeFlexChannels(), "Exchange Flex channels Available","Exchange Flex channels not Available");
+        reporter.reportLogWithScreenshot("Exchange Flex channels button displayed");
+        reporter.hardAssert(getTVDashboardPage().verifyRestartSetUpBox(), "Restart Setup Box link Available","Restart Setup Box link not Available");
+        reporter.reportLogWithScreenshot("Restart setup box link displayed");
+        getTVDashboardPage().clickRestartSetupbox();
+        reporter.reportLogWithScreenshot("Restart setup box link clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Restart setup box");
+        reporter.hardAssert(getTVDashboardPage().verifyResetPurchasePin(), "Reset Purchase pin Available","Reset Purchase pin not Available");
+        reporter.reportLogWithScreenshot("Reset purchase pin displayed");
+        getTVDashboardPage().clickResetPurchasePin();
+        reporter.reportLogWithScreenshot("Reset purchase pin clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Parent control");
+        reporter.hardAssert(getTVDashboardPage().verifyResetParentalControl(), "Reset Parental Control & pin Available","Reset Parental Control & pin not Available");
+        reporter.reportLogWithScreenshot("Reset Parent control link displayed");
+        getTVDashboardPage().clickResetParentalControl();
+        reporter.reportLogWithScreenshot("Reset Parent control clicked");
+        getTVDashboardPage().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Parent control");
+
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");
         getInternetDashboardPage().clickContinue();
 
         //RHP Dashboard
-        getAccountOverViewPage().selectHomePhoneBadge();
+        getOvrDashboardPage().clkHomePhoneDashboard();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
+
+        getHomePhonedashboard().clickResetVoiceMail();
+        reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
+        reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
+        getHomePhonedashboard().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
+
 
         getInternetDashboardPage().clickBacktoAccountOverview();
         reporter.reportLogWithScreenshot("Back to account Over view Page");

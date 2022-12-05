@@ -53,10 +53,9 @@ public class OVR_Auto_TC30_MIG_1P_INT_to_ISS_with_SmartHomeMonitoring_and_Intern
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        //getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
-        //getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");

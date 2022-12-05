@@ -479,19 +479,19 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	public void reviewAllTerms(){
-			/*if(getReusableActionsInstance().isElementVisible(reviewTV,5)){
-				getReusableActionsInstance().waitForElementVisibility(reviewTV,10);
+			if(getReusableActionsInstance().isElementVisible(reviewTV,10)){
+				getReusableActionsInstance().waitForElementVisibility(reviewTV,5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewTV);
-			}*/
+			}
 			if(getReusableActionsInstance().isElementVisible(reviewInternet,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 10);
+				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
 			}
-			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,2)){
+			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,10)){
 				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
 			}
-			if(getReusableActionsInstance().isElementVisible(reviewBattery,2)) {
+			if(getReusableActionsInstance().isElementVisible(reviewBattery,10)) {
 				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
 			}
