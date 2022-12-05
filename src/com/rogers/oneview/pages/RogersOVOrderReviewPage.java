@@ -74,6 +74,11 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button")
 	WebElement submitOrder;
 
+	@FindBy(xpath="//p[contains(text(),'Monthly charges')]/following::button//span[contains(text(),'View details')]")
+	WebElement monthlyChargeDetails;
+
+	@FindBy(xpath="//div[@translate='global.label.carriedOver']")
+	WebElement internetAddonCarriedOver;
 
 	/**
 	 * Verify order review page is loaded properly
@@ -193,5 +198,18 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(submitOrder);
 
 	}
+
+	/**
+	 * To verify internet addons in the order review page
+	 * @return true if carried over internet addon is available else return false
+	 * @author Dani.Dominic
+	 */
+	public boolean verifyCarriedOverInternetAddon() {
+		getReusableActionsInstance().waitForElementTobeClickable(monthlyChargeDetails,120);
+		getReusableActionsInstance().executeJavaScriptClick(monthlyChargeDetails);
+		getReusableActionsInstance().waitForElementVisibility(internetAddonCarriedOver, 60);
+		return	getReusableActionsInstance().isElementVisible(internetAddonCarriedOver);
+	}
+
 }
 

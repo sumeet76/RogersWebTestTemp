@@ -40,13 +40,15 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-//		getRogersIgniteCampaignPage().clickCampaignTab();
-//		reporter.reportLogWithScreenshot("load offers");
-//		getRogersIgniteCampaignPage().enterCoupon("TAG");
-//		getRogersIgniteCampaignPage().clickApplyCoupon();
-//		reporter.reportLogWithScreenshot("apply coupon");
-//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-//		getRogersIgniteCampaignPage().closeCouponAlert();
+
+		getRogersIgniteCampaignPage().clickCampaignTab();
+		reporter.reportLogWithScreenshot("load offers");
+		getRogersIgniteCampaignPage().enterCoupon("PCR3");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("apply coupon");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		getRogersIgniteCampaignPage().closeCouponAlert();
+
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -81,9 +83,9 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("KQ1");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
+		//getRogersIgniteCampaignPage().enterCoupon("PC6");
+		//getRogersIgniteCampaignPage().clickApplyCoupon();
+		//reporter.reportLogWithScreenshot("apply coupon");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 

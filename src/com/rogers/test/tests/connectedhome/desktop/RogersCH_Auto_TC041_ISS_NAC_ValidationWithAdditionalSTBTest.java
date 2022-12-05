@@ -45,8 +45,8 @@ public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
-        /*getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-        getRogersIgniteTVBuyPage().clkUpdateCart();*/
+        getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+        getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");

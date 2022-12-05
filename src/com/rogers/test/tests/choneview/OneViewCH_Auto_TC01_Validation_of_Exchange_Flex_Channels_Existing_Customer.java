@@ -44,12 +44,12 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
         reporter.reportLogWithScreenshot("Second channel is added");
         getTVDashboardPage().ScrolltoConfirmExchangeBtn();
         reporter.reportLogWithScreenshot("Click on confirm Exchange button");
-        getTVDashboardPage().clickConfirmExchange("chrome");
-        reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
-        getTVDashboardPage().clickOK();
-//        getTVDashboardPage().clickContinueChannelsAndThemePacks();
-        getTVDashboardPage().clickSuccessOk();
-        reporter.reportLogWithScreenshot("Exchange chanel completed");
+//        getTVDashboardPage().clickConfirmExchange("chrome");
+//        reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
+//        getTVDashboardPage().clickOK();
+////        getTVDashboardPage().clickContinueChannelsAndThemePacks();
+//        getTVDashboardPage().clickSuccessOk();
+//        reporter.reportLogWithScreenshot("Exchange chanel completed");
 
     }
     @BeforeMethod(alwaysRun=true)

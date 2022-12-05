@@ -24,7 +24,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement collapse;
 
 //	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="//div[contains(@class,'ds-formField__autoComplete')]")
+	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
@@ -172,7 +172,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 
-	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']")
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label/input")
 	WebElement reviewTermsAndCondition;
 
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
@@ -318,6 +318,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "(//span[text()=' Add to cart ']/ancestor::button)[2]")
 	WebElement addOnAddToCart;
 
+	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
+	WebElement removeButton;
+
 	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
 	WebElement smartHomeMonitoring ;
 
@@ -434,7 +437,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-60']//span[contains(text(),'One Time Bill Credit - $150 (PCR3): UTE-4087, 4348') or contains(text(), 'Crédit sur facture unique de 150$ (PCR3): UTE-4087']")
+	@FindBy(xpath = "//label[@for='ds-radio-input-id-2']")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -540,7 +543,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clickFirstAddToCart() {
-		getReusableActionsInstance().waitForElementVisibility(addToCart,60);
+		getReusableActionsInstance().waitForElementVisibility(addToCart,90);
 		getReusableActionsInstance().scrollToElement(addToCart);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
@@ -784,6 +787,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1172,9 +1176,10 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkExpressCheckOut() {
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
-		getReusableActionsInstance().clickWhenReady(expressCheckout);
-//    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
+		//getReusableActionsInstance().clickWhenReady(expressCheckout);
+	    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
 	}
 
 	public void clkContinueServiceable()
@@ -1186,6 +1191,7 @@ public void activateHomePhoneltrPopUp() {
 	{
 		getReusableActionsInstance().clickWhenReady(continueButtonPTM,120);
 	}
+
 	public void clkContinueInternetAddon()
 	{
 		getReusableActionsInstance().waitForPageLoad();
@@ -1205,6 +1211,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(addOnAddToCart);
 		getReusableActionsInstance().staticWait(5000);
 	}
+
+	public boolean validateAddonAddToCart(){
+		return getReusableActionsInstance().isElementVisible(removeButton,60);
+	}
+
 	/**
 	 * Click smartHomeMonitoring to Expand in Points to Mention
 	 * @author aditi.jain
@@ -1320,7 +1331,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){
@@ -1337,7 +1348,7 @@ public void activateHomePhoneltrPopUp() {
 	public void addSHMAddOn(){
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
+		//getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){

@@ -16,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test extends BaseTestClass {
+public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -31,16 +31,17 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15AALShareTermBopis.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15AALShareTermBopis.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15POMAALShareTermBopis.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15POMAALShareTermBopis.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl"));
         //------------------------------------Device Catalog page--------------------------------------------
-        String deviceName = TestDataHandler.tc15AALShareTermBopis.getNewDevice();
+        String deviceName = TestDataHandler.tc15POMAALShareTermBopis.getNewDevice();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
                 "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         reporter.reportLogWithScreenshot("Device Catalog Page");
@@ -56,42 +57,41 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         getRogersCheckoutPage().clkAcceptButton();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-        String aalSharingType = TestDataHandler.tc15AALShareTermBopis.getSharingType();
+        String aalSharingType = TestDataHandler.tc15POMAALShareTermBopis.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
         //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc15AALShareTermBopis.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc15AALShareTermBopis.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
         reporter.reportLogPassWithScreenshot("Device config page displayed");
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+                "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+        String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
+        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
         String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15AALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
-        reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
-                "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
+       // reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
+               // "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         //reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-        //-------------------------------------Promo Section---------------------------------------------
-        getRogersPlanConfigPage().clkPromoSection();
-        reporter.reportLogWithScreenshot("Promo Section Displayed");
-        getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc15AALShareTermBopis.getPromoCode());
-        reporter.reportLogWithScreenshot("Promo Code Entered");
-        getRogersPlanConfigPage().clkCheckPromoBtn();
-        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
-        //-------------------------------------Plan config page---------------------------------------------
-        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc15AALShareTermBopis.getDeviceCostIndex()));
+        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+                "Promotion Applied Successfully", "Promotion Not Applied");
+        String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
+        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
+        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc15POMAALShareTermBopis.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc15AALShareTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc15POMAALShareTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc15AALShareTermBopis.getTalkOptionIndex())),
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc15POMAALShareTermBopis.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickGetBPOOffer();
         getRogersPlanConfigPage().selectDeviceProtectionAddon();
@@ -106,12 +106,13 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         String oneTimeFeesAmountWithTax = getRogersPlanConfigPage().getOneTimeFeesAmount();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees " + monthlyFeesAmountWithTax + "2. oneTimeFee " + oneTimeFeesAmountWithTax);
         String isSelectedDeviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
-        getReporter().hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc15AALShareTermBopis.getCtnCity());
+        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc15POMAALShareTermBopis.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -141,6 +142,8 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
         reporter.hardAssert(getRogersReviewOrderPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
         String deviceProtectionAddon = getRogersReviewOrderPage().getDeviceProtectionAddon();
         getReporter().reportLogPassWithScreenshot("Device Protection - " +deviceProtectionAddon);
+        reporter.hardAssert(getRogersReviewOrderPage().verifyCartLineItem(),
+                "Promo Discount amount Line Item displayed","Promo line item not displayed");
         getRogersReviewOrderPage().clkAllAgreementConsentCheckbox(isSelectedDeviceTier);
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
@@ -150,9 +153,9 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
                 "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
         getRogersOneTimePaymentPage().setNameonCard();
         getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc01NACTermNpotgSS.getCreditCardDetailsOTP());
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc01NACTermHighRiskStdShipping.getCreditCardDetailsOTP());
         getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc01NACTermNpotgSS.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc01NACTermHighRiskStdShipping.getExpiryDateOTP());
         getRogersOneTimePaymentPage().setCVV();
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
         getRogersOneTimePaymentPage().clkSubmitOrderBtn();
@@ -169,7 +172,7 @@ public class RogersBFA_TC15_POM_Consumer_AALUpfrontEdge_MediumRisk_Bopis_DP_Test
                 .executeDBQuery("select * from (select es.BAN,es.SUBSCRIBER_NO,s.SUB_STATUS,s.PAYEE_IND,es.RV_AMOUNT,es.MONTHLY_INSTALLMENT_AMT," +
                         "es.TOTAL_FINANCING_OBLIG as TOTAL,es.MANDATORY_CHG as MANDATORY_DP,p.ORIGINAL_AMT as MANDATORY_DP_WITH_TAX,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join payment p" +
                         " on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join subscriber s on es.subscriber_no=s.subscriber_no" +
-                        " where es.subscriber_no="+TestDataHandler.tc15AALShareTermBopis.getCtn()+"') where ROWNUM=1", false);
+                        " where es.subscriber_no="+TestDataHandler.tc15POMAALShareTermBopis.getCtn()+"') where ROWNUM=1", false);
 
         reporter.softAssert(dblists.get("SUB_STATUS").equals("R"),"Subcriber status is verified as R","Subcriber status is not verified as R");
         reporter.softAssert(dblists.get("PAYEE_IND").equals("D"), "Payee indicator is verified as D", "Payee indicator is not verified as D");

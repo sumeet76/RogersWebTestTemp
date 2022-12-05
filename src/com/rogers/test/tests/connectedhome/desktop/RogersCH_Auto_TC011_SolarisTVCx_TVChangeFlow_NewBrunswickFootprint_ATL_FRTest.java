@@ -38,15 +38,15 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 	    public void rogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_ATL_FR() {
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getUsername());
-	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
+	        getRogersLoginPage().clkContinueInBrowser();
+			getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
 	        getRogersLoginPage().clkSignInIFrame();
 	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	        reporter.reportLogWithScreenshot("Skip popup");
-	        getRogersLoginPage().clkSkipIFrame();
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");
+		 	getRogersSolarisTVDashboardPage().clkFR();
 	        getRogersSolarisTVDashboardPage().clkTVBadge();
 	        reporter.reportLogWithScreenshot("Launched the TV dash board");
 	        getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();

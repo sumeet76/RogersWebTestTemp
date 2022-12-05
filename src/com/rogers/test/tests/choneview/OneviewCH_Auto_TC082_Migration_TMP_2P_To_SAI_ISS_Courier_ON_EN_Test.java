@@ -54,11 +54,11 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
 
        // getRogersIgniteBundlesPage().clkExpressCheckOut();
         reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
         reporter.reportLogWithScreenshot("campaign");
         getRogersIgniteCampaignPage().clickCampaignTab();
-        getRogersIgniteCampaignPage().enterCoupon("KCS");
+        getRogersIgniteCampaignPage().enterCoupon("KX2");
         getRogersIgniteCampaignPage().clickApplyCoupon();
         reporter.reportLogWithScreenshot("campaign coupon applied");
         reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
@@ -111,7 +111,7 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        getDriver().quit();
+        //getDriver().quit();
     }
 }
 

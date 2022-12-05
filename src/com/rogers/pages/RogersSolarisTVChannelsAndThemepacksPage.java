@@ -47,6 +47,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	//ds-icon[@name='chevron-right']/ancestor::button
 	//button[contains(@class,'continue-btn-4k')]//ins[@translate='global.cta.continue']
 
+	@FindBy(xpath = "//button[@aria-label='Add 4K Channel Pack to your Ignite TV package']/span")
+	WebElement btnAdd4kContent;
+
 	@FindBy(xpath = "//span[@translate='global.cta.bysSwapLaterContinue']")
 	WebElement btnExchangeLater;
 	//ins[@translate='global.cta.bysSwapLaterContinue']
@@ -168,8 +171,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam	 
 	 */
 	public void addChannel() {
-		By addChannel = By.xpath("//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/..");
-		getReusableActionsInstance().getWhenReady(addChannel, 90).click();
+		By addChannel = By.xpath("//span[contains(text(),'FAITHTV') or contains(text(),'Baby TV')]/ancestor::tr//span[@translate='global.cta.add']/ancestor::span[@role='text']");
+		getReusableActionsInstance().getWhenReady(addChannel, 120).click();
 	}
 	
 	/**
@@ -332,8 +335,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clk4KContent() {
-		getReusableActionsInstance().waitForElementVisibility(btn4KContent, 120);
-		getReusableActionsInstance().getWhenReady(btn4KContent, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnAdd4kContent, 120);
+		getReusableActionsInstance().waitForElementVisibility(btn4KContent, 30);
+		getReusableActionsInstance().getWhenReady(btn4KContent, 30).click();
 	}
 
 

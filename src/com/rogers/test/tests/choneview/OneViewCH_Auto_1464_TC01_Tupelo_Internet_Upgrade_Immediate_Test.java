@@ -31,6 +31,7 @@ public class OneViewCH_Auto_1464_TC01_Tupelo_Internet_Upgrade_Immediate_Test ext
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
+
     }
 
     @BeforeMethod(alwaysRun=true)

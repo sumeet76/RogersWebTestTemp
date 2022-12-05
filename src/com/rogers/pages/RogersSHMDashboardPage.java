@@ -16,16 +16,16 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='shm_title']")
 	WebElement titleSHMPage;
 	
-	@FindBy(xpath = "//span[@translate='shm_insur_cert']")
+	@FindBy(xpath = "//a[@aria-label='Get insurance certificate']")
 	WebElement lnkInsuranceCertificate;
 	
 	@FindBy(xpath = "//span[@translate='shm_shop_accessories']")	
 	WebElement lnkShopForAccessories;
 	
-	@FindBy(xpath = "//span[@translate='shm_get_started']")
+	@FindBy(xpath = "//a[@aria-label='Get started with tips and info about your new Smart Home system.']")
 	WebElement lnkNewToSmartHome;
 	
-	@FindBy(xpath = "//span[@translate='shm_learn_more']")
+	@FindBy(xpath = "//a[@aria-label='Learn more about Smart Home Monitoring']")
 	WebElement lnkLearnSmartHomeMonitoring;
 
 
@@ -65,7 +65,7 @@ public class RogersSHMDashboardPage extends BasePageClass {
 	 */
 	public Boolean verifyLearnAboutSmartHomeMonitoringLinkdisplayed()
 	{
-		return getReusableActionsInstance().isElementVisible(lnkLearnSmartHomeMonitoring,10);
+		return getReusableActionsInstance().isElementVisible(lnkLearnSmartHomeMonitoring,60);
 	}
 	
 	/**

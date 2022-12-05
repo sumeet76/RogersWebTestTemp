@@ -46,6 +46,7 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet add on header displayed", "Internet add on header not displayed");
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
@@ -85,12 +86,11 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
         reporter.reportLogWithScreenshot("Billing and payment");
         getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
-		//getPaymentOptionsPage().clkContinue();
-		//reporter.reportLogWithScreenshot("submit order");
-		//getRogersOVCheckoutPage().clkSubmit();
-		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getPaymentOptionsPage().clkContinue();
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -103,5 +103,4 @@ public class OneViewCH_Auto_TC014_OVS2_Pods_BuyNAC_SAI_Adding_Both_Free_And_Char
     public void afterTest() {
         closeSession();
     }
-
 }

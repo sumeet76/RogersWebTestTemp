@@ -117,7 +117,7 @@ public class OneviewCH_REG_Auto_TC064_SAI_NAC_SHM_Add_Ons_Pro_Install_Cheque_ON_
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

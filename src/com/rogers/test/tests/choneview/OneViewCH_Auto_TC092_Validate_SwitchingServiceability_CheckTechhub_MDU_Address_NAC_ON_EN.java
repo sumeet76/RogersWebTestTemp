@@ -23,7 +23,6 @@ public class OneViewCH_Auto_TC092_Validate_SwitchingServiceability_CheckTechhub_
             reporter.reportLogWithScreenshot("MDU Address");
             getRogersIgniteBundlesPage().clickCancelButton();
 
-
         }
     }
 

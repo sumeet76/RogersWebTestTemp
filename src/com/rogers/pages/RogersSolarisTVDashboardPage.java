@@ -421,7 +421,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 	public void clkChangeTVPackage() {
 		//NL and FL  Provinces taking long loading time to pull the dashboard details
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(20000);
 		By btnChangeTVPkg = By.xpath("//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]");
 		getReusableActionsInstance().getWhenReady(btnChangeTVPkg, 120).click();
 	}
@@ -509,7 +509,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//h3[contains(normalize-space(.),'" + strPackageNameEn + "') or contains(normalize-space(.),'" + strPackageNameFr + "')]/ancestor::div[contains(@class,'tv-bundle-tile__row')]//span[contains(text(),'Select') or contains(text(), 'Sélectionner')]");
+		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']/button[contains(@aria-label, '" + strPackageNameEn + "')]/span");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);

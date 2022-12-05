@@ -63,6 +63,7 @@ public class ContactDetails {
 	private String contactIDSAIFlowByAddingBothFreeAndChargeablePods;
 	private String contactIDGponNFDBNAC2p;
 	private String contactIDRecoEngineValidateInstalRecommendation;
+	private String contactIDInternationalID;
 	private String address_docsis_3P_SHA_NAC;
 	private String address_docsis_2P_SHA_NAC;
 	private String GPON_3P_SHA_NAC;
@@ -775,6 +776,18 @@ public class ContactDetails {
 
 	public String getContactIDRecoEngineValidateInstalRecommendation() {
 		return contactIDRecoEngineValidateInstalRecommendation;
+	}
+
+	public String getContactIDInternationalID() {
+		return contactIDInternationalID;
+	}
+
+	/**
+	 *
+	 * @param contactIDInternationalID
+	 */
+	public void setContactIDInternationalID(String contactIDInternationalID) {
+		this.contactIDInternationalID = contactIDInternationalID;
 	}
 	
 	public String getAddress_docsis_3P_SHA_NAC() {return address_docsis_3P_SHA_NAC;

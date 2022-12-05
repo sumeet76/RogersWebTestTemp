@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 import utils.FormFiller;
 
+import java.util.List;
 public class CreditCheckPage  extends BasePageClass {
 
 	public CreditCheckPage(WebDriver driver) {
@@ -45,7 +46,6 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindBy(xpath = "(//rch-drivers-license/child::rch-date-selection/descendant::select)[3]")
 	WebElement licenseExpiryDay;
-
 
 	@FindBy(xpath = "(//rch-drivers-license/child::rch-date-selection/descendant::select)[2]")
 	WebElement licenseExpiryMonth;
@@ -146,13 +146,13 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Permit Number') or contains(text(),'Numéro du permis')]/ancestor::span//following-sibling::div/child::input")
 	WebElement permitInput;
 
-	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[1]")
+	@FindBy(xpath = "(//rch-work-study-permit//select)[1]")
 	WebElement permitExpiryYear;
 
-	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[2]")
+	@FindBy(xpath = "(//rch-work-study-permit//select)[2]")
 	WebElement permitExpiryMonth;
 
-	@FindBy(xpath = "(//div[@class='container-fluid credit-check ng-star-inserted']/descendant::rch-work-study-permit/descendant::select)[3]")
+	@FindBy(xpath = "(//rch-work-study-permit//select)[3]")
 	WebElement permitExpiryDate;
 
 	@FindBy(xpath ="//span[contains(text(),'Professional') or contains(text(),'Installation professionnelle')]/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
@@ -176,8 +176,8 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//input[@formControlName='enrouteEmail']")
 	WebElement emailMailAddress;
 
-	//@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment')]")
-	@FindBy(xpath = "//span[text()='Delivery by Appointment' or text()='Livraison par rendez-vous']/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
+//	@FindBy(xpath = "//span[text()='Delivery by Appointment' or text()='Livraison par rendez-vous']/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
+	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
 	WebElement deliveryByAppointment;
 
 	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
@@ -194,6 +194,13 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath="//h3[text()='Payment Options']//following::div//following::rch-dropdown")
 	WebElement selectPaymentOVR;
 
+	@FindBy(xpath="//p[contains(text(),'Customers can quickly')]")
+	List<WebElement> installationDesc;
+
+	@FindBy(xpath="//p[@translate='global.checkout.reviewConfirm.totalBeforeTaxes']")
+	WebElement taxTag;
+
+
 
 
 
@@ -202,7 +209,7 @@ public class CreditCheckPage  extends BasePageClass {
              * @author aditi.jain
              */
 	public boolean verifyInstallationOption() {
-		return getReusableActionsInstance().isElementVisible(installationOption,30);
+		return getReusableActionsInstance().isElementVisible(installationOption,120);
 
 	}
 
@@ -336,7 +343,6 @@ public class CreditCheckPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		WebElement btn = getReusableActionsInstance().getWhenReady(continueButton, 30);
 		getReusableActionsInstance().clickWhenReady(btn,30);
-
 	}
 
 
@@ -393,7 +399,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyInstallationHeader() {
-		return getReusableActionsInstance().isElementVisible(installationHeader,120);
+		return getReusableActionsInstance().isElementVisible(installationHeader,180);
 	}
 
 	/**
@@ -541,6 +547,14 @@ public class CreditCheckPage  extends BasePageClass {
 
 	public void refreshContinue() {
 		getReusableActionsInstance().waitForAllElementsToBeRefreshedAndVisible(By.xpath("//span[text()='Continuer' or text()='Continue']/ancestor::button"),120);
+	}
+
+	public boolean verifyInstallationDesc(){
+		return installationDesc.size()==1 ? true:false;
+	}
+
+	public boolean verifyTaxTag(){
+		return taxTag.isDisplayed();
 	}
 }
 

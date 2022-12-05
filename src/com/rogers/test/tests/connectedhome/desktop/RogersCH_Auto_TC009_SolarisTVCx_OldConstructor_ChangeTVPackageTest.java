@@ -38,14 +38,13 @@ public class RogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackageTest 
     public void rogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc09_SolarisTVOldConstructor.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09_SolarisTVOldConstructor.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+    	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVOldConstructor.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+    	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");                
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -58,10 +57,10 @@ public class RogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackageTest 
         reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
         reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-         getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
-        //getRogersSolarisTVChannelsAndThemepacksPage().clkNoIDontHave4K();
+       //  getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
+        getRogersSolarisTVChannelsAndThemepacksPage().clkNoIDontHave4K();
         reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-        getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
+        //getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
         reporter.reportLogWithScreenshot("Agreement details");

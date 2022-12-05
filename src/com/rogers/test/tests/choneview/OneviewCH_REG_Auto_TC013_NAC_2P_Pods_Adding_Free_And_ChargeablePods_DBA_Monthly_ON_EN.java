@@ -51,6 +51,7 @@ public class OneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("Lands in Internet Addons page");
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet add on header displayed", "Internet add on header not displayed");
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargable internet add on is added to the cart");
@@ -77,8 +78,7 @@ public class OneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Installation options");
-        getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("professional installation");
         getCreditCheckPage().selectDeliveryByAppointment();
 
@@ -113,7 +113,7 @@ public class OneviewCH_REG_Auto_TC013_NAC_2P_Pods_Adding_Free_And_ChargeablePods
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

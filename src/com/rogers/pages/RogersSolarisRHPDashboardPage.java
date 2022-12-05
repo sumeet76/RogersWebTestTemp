@@ -25,7 +25,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//ins[@translate='global.label.homePhoneDashboard']")
 	WebElement infoSolarisrhpDashboard;
 
-	@FindBy(xpath = "//span[@translate='ute.rogers.rhpDashboard.homePhone']")
+	@FindBy(xpath = "//h3[contains(@class,'rhp_feature-title')]")
 	WebElement infoLegacyrhpDashboard;
 
 	@FindBy(xpath = "//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")
@@ -86,7 +86,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyRHPBanner() {
-		return getReusableActionsInstance().isElementVisible(infoLegacyrhpDashboard, 20);
+		return getReusableActionsInstance().isElementVisible(infoLegacyrhpDashboard, 60);
 	}
 
 	/**

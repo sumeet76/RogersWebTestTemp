@@ -25,7 +25,7 @@ public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_T
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
-        //getRogersIgniteBundlesPage().clickExchangeLater();
+        getRogersIgniteBundlesPage().clickExchangeLater();
         getTVDashboardPage().clickAddChannel();
         reporter.reportLogWithScreenshot("add channel");
         getTVDashboardPage().clickThemepacksTab();

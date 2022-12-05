@@ -40,31 +40,35 @@ public class RogersCH_Auto_TC044_WirelessLegacySAICx_BuyInternet_SameAddressBase
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
+        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkExistingCustomerInternet();
+        //getRogersHomePage().clkExistingCustomerInternet();
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkUseThisAddress();
-        getRogersHomePage().setIgniteAddressLookupBasement();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup for basement address");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+        getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("selected address on file");
+        getRogersHomePage().clkUseAddress();
+
 
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
+        reporter.reportLogWithScreenshot("Added to cart");
+        getRogersIgniteTVBuyPage().clkIUnderstand();
+        reporter.reportLogWithScreenshot("Clicked on Yes, I understand");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
