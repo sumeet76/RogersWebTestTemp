@@ -17,7 +17,7 @@ public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max3pCx_Pods.getAccountNo(),TestDataHandler.Max3pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-    //   reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
+    //    reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
     //   reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click AddPods Button ");
@@ -26,16 +26,16 @@ public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRestrictedDoesNotAppear(),"Restricted appeared","Restricted did not appeared");
-        getInternetDashboardPage().clickContinueButton();
+    //    reporter.hardAssert(getInternetDashboardPage().verifyRestrictedDoesNotAppear(),"Restricted appeared","Restricted did not appeared");
+    //    getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-        reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");
-        getInternetDashboardPage().clickCustomerUnderstandCheckbox();
+    //    reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");
+    //    getInternetDashboardPage().clickCustomerUnderstandCheckbox();
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
     //   reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
-        getRogersOVOrderReviewPage().clickSubmitOrder();
+    //    getRogersOVOrderReviewPage().clickSubmitOrder();
 ////        reporter.reportLogWithScreenshot("click Submit Order");
     }
 

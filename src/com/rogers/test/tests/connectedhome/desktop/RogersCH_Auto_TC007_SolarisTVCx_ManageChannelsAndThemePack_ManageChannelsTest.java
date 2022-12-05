@@ -30,33 +30,34 @@ public class RogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageCh
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
 	public void rogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageChannels() {
-
-		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
-		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getBan());
-		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersSolarisTVDashboardPage().clkTVBadge();
-		reporter.reportLogWithScreenshot("Launched the TV dash board");
-		getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
+		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getUsername());
+		 getRogersLoginPage().clkContinueInBrowser();
+		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getPassword());
+		 reporter.reportLogWithScreenshot("Enter the account credentails");
+		 getRogersLoginPage().clkSignInIFrame();
+		 reporter.reportLogWithScreenshot("Login Successful !!");
+		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		 reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getBan());
+		 reporter.reportLogWithScreenshot("Launched the Account Page");
+		 getRogersSolarisTVDashboardPage().clkTVBadge();
+		 reporter.reportLogWithScreenshot("Launched the TV dash board");
+		 getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
+		 getRogersSolarisTVDashboardPage().clkManageChannelsAndThemePacks();
 		 reporter.reportLogWithScreenshot("Manage Channels and Theme Packs clicked");
-		getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
-		reporter.reportLogWithScreenshot("Channel added");
-		getRogersSolarisTVChannelsAndThemepacksPage().clkConfirmChangesOnManageChannelsAndThemePacks();
-		reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
-	
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-		getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
-		reporter.reportLogWithScreenshot("Agreement details");
-		getRogersOrderReviewPage().clkSubmitUpdate();
+		 getRogersSolarisTVChannelsAndThemepacksPage().addChannel();
+		 reporter.reportLogWithScreenshot("Channel added");
+		 getRogersSolarisTVChannelsAndThemepacksPage().clkConfirmChangesOnManageChannelsAndThemePacks();
+		 reporter.reportLogWithScreenshot("Clicked in confirm changes on manage channels and theme packs");
 
-        reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderSuccess(),"Update order completed","Update order Failed");
-		reporter.reportLogWithScreenshot("Launched the Confirmation page");
+		 reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		 getRogersOrderReviewPage().clkAcceptenceCheckboxUpdate();
+		 reporter.reportLogWithScreenshot("Agreement details");
+		 getRogersOrderReviewPage().clkSubmitUpdate();
+
+		 reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderSuccess(),"Update order completed","Update order Failed");
+		 reporter.reportLogWithScreenshot("Launched the Confirmation page");
     	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

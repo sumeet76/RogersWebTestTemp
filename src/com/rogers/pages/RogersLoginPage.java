@@ -20,10 +20,10 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
 
-	@FindBy(xpath="//input[@id='username']")
+	@FindBy(xpath="//input[@formcontrolname='username' or @id = 'username']")
 	WebElement txtUsernameMobile;
 
-	@FindBy(xpath="//input[@id='password']")
+	@FindBy(xpath="//input[@formcontrolname='input_password' or @id = 'password']")
 	WebElement txtPasswordMobile;
 
 	@FindBy(xpath = "//input[@type='password']")
@@ -77,7 +77,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
 
-	@FindBy(xpath = "//a[@title='Continue in browser']/span/span | //button[@type='submit']//span[contains(text(),'Continue')]")
+	@FindBy(xpath = "//a[@title='Continue in browser']/span/span | //button[@type='submit']//span[contains(text(),'Continue')] | //button//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueInBrowser;
 
 	@FindBy(xpath="//button//span[text()='Continue' or text()='Continuer']")
@@ -137,15 +137,12 @@ public class RogersLoginPage extends BasePageClass {
 	 */	
 
 	public void setUsernameIFrame(String strUsername) {
-		getReusableActionsInstance().getWhenReady(lblUserName,20).click();
-		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
-		//getReusableActionsInstance().clickIfAvailable(lblUserName,20);
-		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
-		//getReusableActionsInstance().clickWhenReady(lblUserName,5);
-		//getReusableActionsInstance().getWhenVisible(txtUsername, 5).clear();
-		//getReusableActionsInstance().clickIfAvailable(lblUserName,5);
-		//getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
-		//getReusableActionsInstance().enterText(txtUsername, strUsername, 5);
+		//getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
+		getReusableActionsInstance().getWhenReady(txtUsername, 30).clear();
+		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
+		getReusableActionsInstance().getWhenReady(txtUsername).sendKeys(strUsername);
+
 	}
 
 	/**
@@ -155,7 +152,8 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 
 	public void setUsernameMobile(String strUsername) {
-		getReusableActionsInstance().getWhenReady(txtUsernameMobile).sendKeys(strUsername);
+		getReusableActionsInstance().getWhenReady(lblUserName, 90).click();
+		getReusableActionsInstance().getWhenReady(txtUsernameMobile, 60).sendKeys(strUsername);
 	}
 
 	/**

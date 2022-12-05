@@ -47,7 +47,7 @@ public class OVROrderReviewPage extends BasePageClass {
     }
 
     public boolean verifyOrderOverviewHeader(){
-        return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,100);
+        return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,120);
     }
 
     public boolean verifyOneTimeFees(){

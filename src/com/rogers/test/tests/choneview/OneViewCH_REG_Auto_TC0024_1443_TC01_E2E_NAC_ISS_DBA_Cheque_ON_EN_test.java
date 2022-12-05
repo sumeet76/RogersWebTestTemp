@@ -37,12 +37,10 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_ISS_DBA_Cheque_ON_EN_te
 		reporter.reportLogWithScreenshot("click Collapse");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("click Continue");
-		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("cart summary checkout");
-		getRogersIgniteBundlesPage().clkCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
+		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
 		reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");

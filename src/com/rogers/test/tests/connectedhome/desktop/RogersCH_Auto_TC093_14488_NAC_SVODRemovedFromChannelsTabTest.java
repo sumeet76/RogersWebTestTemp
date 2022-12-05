@@ -33,8 +33,8 @@ public class RogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTabTest extend
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
 		getRogersHomePage().clkServiceability();
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().clkEnterAddress();
+		//reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		//getRogersIgniteTVBuyPage().clkEnterAddress();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");

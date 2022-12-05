@@ -42,7 +42,8 @@ public class OneviewCH_REG_Auto_TC079_NAC_2P_RecoEngine_Validate_InstallationRec
         reporter.reportLogWithScreenshot("Product Added");
         reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clkExpressCheckOut();
+        getRogersIgniteBundlesPage().clkContinue();
+//        getRogersIgniteBundlesPage().clkExpressCheckOut();
         reporter.reportLogWithScreenshot("Cart Summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         getRogersIgniteBundlesPage().customerWishtoContinue();

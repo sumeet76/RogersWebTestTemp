@@ -57,10 +57,13 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		String  strAddressLine1=TestDataHandler.tc50_wirelessSignedInInternetBuy.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc50_wirelessSignedInInternetBuy.getAccountDetails().getAddress().get("line2");
+		
 		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();
+
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
 		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();

@@ -37,19 +37,14 @@ public class Mobile_RogersCH_Auto_TC005_SolarisTVCx_TVPackageUpgradeTest extends
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC005_SolarisTVCx_TVPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
-            reporter.reportLogWithScreenshot("Select Continue in browser.");
-            getRogersLoginPage().clkContinueInBrowser();
-        }
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+    	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
+    	//reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         
         getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
