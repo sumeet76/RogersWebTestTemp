@@ -31,10 +31,11 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");

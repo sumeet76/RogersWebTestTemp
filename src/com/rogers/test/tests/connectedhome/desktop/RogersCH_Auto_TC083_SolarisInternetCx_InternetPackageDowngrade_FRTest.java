@@ -36,6 +36,7 @@ public class RogersCH_Auto_TC083_SolarisInternetCx_InternetPackageDowngrade_FRTe
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
@@ -53,11 +54,10 @@ public class RogersCH_Auto_TC083_SolarisInternetCx_InternetPackageDowngrade_FRTe
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         //getRogersInternetDashboardPage().clkInternetChangeOK();
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
-        reporter.reportLogWithScreenshot("Launched the customercare popup");
+
 
         reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+      //  reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
         reporter.reportLogWithScreenshot("Verified the customer care popup content");
     }

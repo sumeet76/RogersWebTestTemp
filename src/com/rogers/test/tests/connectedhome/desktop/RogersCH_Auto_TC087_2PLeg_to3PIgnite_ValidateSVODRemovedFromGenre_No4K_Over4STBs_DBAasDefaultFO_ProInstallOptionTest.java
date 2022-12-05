@@ -55,11 +55,10 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
     public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().clkSkipIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
@@ -153,6 +152,10 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(), "Ignite page has Launched", "Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
+        reporter.reportLogWithScreenshot("clicked on generate Numbers");
+        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+        reporter.reportLogWithScreenshot("Phone number selected");
+
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
         //Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
@@ -203,7 +206,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
     @Parameters({"strBrowser", "strLanguage"})
     //IgniteLogin
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
-        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_ignitelogin, method);
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_legacylogin, method);
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
     }
 

@@ -343,6 +343,7 @@ public class RogersOrderConfirmationPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clickBackToAddonBtn(){
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(backToAddonBtn,10);
 	}
 

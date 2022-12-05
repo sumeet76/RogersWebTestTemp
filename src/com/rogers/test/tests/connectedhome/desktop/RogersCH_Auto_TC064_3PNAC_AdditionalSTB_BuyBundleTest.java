@@ -86,6 +86,8 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         reporter.reportLogWithScreenshot("Selected 2 STBs");
+        getRogersIgniteTVBuyPage().clkUpdateCart();
+        reporter.reportLogWithScreenshot("Updated Cart");
         getRogersIgniteTVBuyPage().clkCheckout();
 
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

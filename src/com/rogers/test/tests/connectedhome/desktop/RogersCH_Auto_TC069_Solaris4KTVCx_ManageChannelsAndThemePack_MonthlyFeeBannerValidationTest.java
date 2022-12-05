@@ -32,6 +32,7 @@ public class RogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_Monthl
 	public void rogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_MonthlyFeeBannerValidation() {
 		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getUsername());
+		 getRogersLoginPage().clkContinueInBrowser();
 		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getPassword());
 		 reporter.reportLogWithScreenshot("Enter the account credentails");
 		 getRogersLoginPage().clkSignInIFrame();

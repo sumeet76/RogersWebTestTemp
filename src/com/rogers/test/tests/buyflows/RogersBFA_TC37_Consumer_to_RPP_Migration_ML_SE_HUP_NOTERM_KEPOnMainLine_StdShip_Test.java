@@ -71,7 +71,7 @@ public class RogersBFA_TC37_Consumer_to_RPP_Migration_ML_SE_HUP_NOTERM_KEPOnMain
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+            getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
             reporter.reportLogPass("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();

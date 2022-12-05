@@ -35,9 +35,8 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Login Successful");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc45_sHMSignedInInternetBuy.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -56,7 +55,7 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         reporter.reportLogWithScreenshot("Use the address on file");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
-
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");

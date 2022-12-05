@@ -40,13 +40,12 @@ public class RogersCH_Auto_TC058_SolarisTVCx_SwapChannelExperienceSwapMultipleTi
    public void rogersCH_Auto_TC058_SolarisTVCx_SwapChannelExperienceSwapMultipleTimes() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.accountDetails.getBan());
+     //   getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
@@ -68,17 +67,15 @@ public class RogersCH_Auto_TC058_SolarisTVCx_SwapChannelExperienceSwapMultipleTi
         reporter.reportLogWithScreenshot("Tv Dashboard has launched");
         getDriver().get(System.getProperty("QaUrl"));
         getRogersHomePage().waitBeforeSwapSecondRun();
-        getRogersHomePage().clkEasyLogin();
+      //  getRogersHomePage().clkEasyLogin();
+         getDriver().get(System.getProperty("QaUrl") + "consumer/easyloginriverpage?setLanguage=en");
         reporter.reportLogWithScreenshot("Launched the SignIn popup for second try");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.getUsername());
+      //  getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.accountDetails.getBan());
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc58_IgniteTVAccountMultipleSwap.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();

@@ -27,6 +27,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -792,6 +793,8 @@ public class BaseTestClass {
             case "redesignrogers":
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl+"/phones");
+                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
                     getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
@@ -1373,6 +1376,11 @@ public class BaseTestClass {
             authCookieMap.put("Cookie", "AuthN="+authHeaderMap.get("AuthN")+"; AuthZ="+authHeaderMap.get("AuthZ"));
         }
         return authCookieMap;
+    }
+
+    public void setCookie(String strUrl) {
+        Cookie cookie = new Cookie("QSI_SI_eOGekr50Kdqo3dQ_intercept", "true", ".rogers.com", "/phones", null);
+        getDriver().manage().addCookie(cookie);
     }
 
 }

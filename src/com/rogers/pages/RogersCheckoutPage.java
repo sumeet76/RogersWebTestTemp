@@ -1110,7 +1110,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void setExistingPortInNumber(String eligiblePortInNumber){
 	getReusableActionsInstance().clickWhenReady(existingNumberField);
 	getReusableActionsInstance().executeJavaScriptClick(inputPortInNumber);
-	inputPortInNumber.clear();
+//	inputPortInNumber.clear();
 	inputPortInNumber.sendKeys(eligiblePortInNumber);
 	}
 

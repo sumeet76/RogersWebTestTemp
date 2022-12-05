@@ -30,11 +30,12 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16AALFinPlanPotgShipping.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16AALFinPlanPotgShipping.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16AALFinPlanBopisShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16AALFinPlanBopisShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?province=on");
@@ -55,7 +56,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         getRogersDeviceCataloguePage().clickContinueBtn();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyeligiblePostalCodeinBanner().contains(TestDataHandler.tc16AALFinPlanPotgShipping.getPostalCode()),
                 "RPOTG Banner has the eligible postal code displayed", "RPOTG Banner not displayed in banner");*/
-        String deviceName = TestDataHandler.tc16AALFinPlanPotgShipping.getNewDevice();
+        String deviceName = TestDataHandler.tc16AALFinPlanBopisShipping.getNewDevice();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
                 "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
         reporter.reportLogWithScreenshot("Device Catalog Page");
@@ -73,7 +74,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(),
                 "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
-        String aalSharingType = TestDataHandler.tc16AALFinPlanPotgShipping.getSharingType();
+        String aalSharingType = TestDataHandler.tc16AALFinPlanBopisShipping.getSharingType();
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
@@ -99,12 +100,13 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         //getRogersPlanConfigPage().clickViewMoreOptions();
         //getRogersPlanConfigPage().clkDownPaymentChkBox();
-        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc16AALFinPlanPotgShipping.getDeviceCostIndex()));
+        getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc16AALFinPlanBopisShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc16AALFinPlanPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc16AALFinPlanBopisShipping.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc16AALFinPlanPotgShipping.getTalkOptionIndex())),
+        //getRogersPlanConfigPage().differentPlanSelectionModal();
+        reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc16AALFinPlanBopisShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
@@ -119,7 +121,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().clkNoThanks();
-        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc16AALFinPlanPotgShipping.getCtnCity());
+        getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc16AALFinPlanBopisShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();

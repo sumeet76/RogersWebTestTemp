@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC075_DST_ISS_NAC_ValidateDSTdisplayofRecommendedBann
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC075_DST_ISS_NAC_ValidateDSTdisplayofRecommendedBanner_PostQuiz_InternetOffersPage() {
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
