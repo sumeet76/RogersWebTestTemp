@@ -54,12 +54,6 @@ public class RogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenC
     	getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
     	getRogersHomePage().clkServiceability();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Checked the Home Phone");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-        reporter.reportLogWithScreenshot("Selected Starter package Order Online");
-
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -68,6 +62,8 @@ public class RogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenC
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
+        getRogersIgniteTVBuyPage().clkHomephone();
+        reporter.reportLogWithScreenshot("Checked the Home Phone");
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();

@@ -46,6 +46,7 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
         }
 
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

@@ -63,7 +63,7 @@ public class RogersCH_Auto_TC097_SHM_NAC_AutomatePage_SubnavTest extends BaseTes
         reporter.reportLogWithScreenshot("Launched the security package Home Page");
         getRogersSecurityPackagesPage().clkProducts();
         reporter.reportLogWithScreenshot("SHM Products");
-        getRogersSecurityPackagesPage().ViewHardwarePackages();
+        getRogersSecurityPackagesPage().clkHardwarePackage();
         getRogersSecurityPackagesPage().switchTabsUsingPartOfUrl("hardware");
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyHardwarePage(), "View Hardware Page is displayed", "View Hardware page is not displayed");
         getRogersSecurityPackagesPage().ViewHardwarePackages();

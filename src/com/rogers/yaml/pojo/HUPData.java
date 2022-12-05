@@ -11,6 +11,7 @@ public class HUPData {
 	private String banNo;
 	private String postalCode;
 	private String deviceName;
+	private String deviceCostIndex;
 	private String creditCardDetails;
 	private String expiryDate;
 	private String dataOptionIndex;
@@ -21,6 +22,7 @@ public class HUPData {
 	private String ccNumberOTP;
 	private String expiryDateOTP;
 	private String passcode;
+	private String promoCode;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -46,6 +48,18 @@ public class HUPData {
 		this.deviceName = deviceName;
 	}
 
+	/**
+	 * @return the deviceCostIndex
+	 */
+	public String getDeviceCostIndex() {
+		return deviceCostIndex;
+	}
+	/**
+	 * @param deviceCostIndex the deviceCostIndex to set
+	 */
+	public void setDeviceCostIndex(String deviceCostIndex) {
+		this.deviceCostIndex = deviceCostIndex;
+	}
 	
 	/**
 	 * @return the postalCode
@@ -239,6 +253,16 @@ public class HUPData {
 	 */
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
+	}
+	/**
+	 * @return the Promo Code
+	 */
+	public String getPromoCode() {return promoCode;}
+	/**
+	 * @param promoCode Promocode to set
+	 */
+	public void setPromoCode(String promoCode){
+		this.promoCode = promoCode;
 	}
 
 }

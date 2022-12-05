@@ -42,13 +42,13 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
         getRogersIgniteBundlesPage().goToPageBottom();
-        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.reportLogWithScreenshot("contine from terms");
-        getRogersIgniteBundlesPage().scrollToContinue();
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("bottom to continue");
-        getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clickShowPriceBreakdown();
         reporter.reportLogWithScreenshot("Clicked on Show price breakdown Button");

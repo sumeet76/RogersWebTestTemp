@@ -55,7 +55,7 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
+		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 

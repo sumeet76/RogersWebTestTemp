@@ -118,6 +118,9 @@ public class RogersCH_Auto_TC077_3P_NAC_ValidatePSEFpromotionGWP_CartSummary_Rev
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPhoneNumberPage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
+        reporter.reportLogWithScreenshot("clicked on generate Numbers");
+        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+        reporter.reportLogWithScreenshot("Phone number selected");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");

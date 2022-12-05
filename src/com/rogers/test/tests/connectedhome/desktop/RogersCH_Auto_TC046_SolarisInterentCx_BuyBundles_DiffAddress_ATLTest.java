@@ -39,24 +39,19 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
     public void rogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+      //  getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.accountDetails.getBan());
+    	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        //getRogersHomePage().clkIgniteTVExistingCustomer();
-        getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getAccountDetails().getAddress().get("line2");
@@ -69,8 +64,8 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
-        getRogersIgniteTVBuyPage().set4KTV();
-        reporter.reportLogWithScreenshot("4k TV selected");
+        getRogersIgniteTVBuyPage().set4KTVNo();
+        reporter.reportLogWithScreenshot("4k TV selected as NO");
         getRogersIgniteTVBuyPage().clkCheckout();
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
@@ -113,7 +108,7 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 	}
 
 	@AfterMethod(alwaysRun = true)

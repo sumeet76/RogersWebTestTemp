@@ -32,6 +32,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
     public void rogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDF() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

@@ -28,29 +28,35 @@ import java.util.Map;
 public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-        public void rogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddress() {
+    public void rogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddress() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.reportLogWithScreenshot("Login Successful");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc45_sHMSignedInInternetBuy.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkExistingCustomerInternet();
+        // getRogersHomePage().clkExistingCustomerInternet();
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkUseThisAddress();
+        getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("Selected Address on file");
+        getRogersHomePage().clkUseAddress();
+        reporter.reportLogWithScreenshot("Use the address on file");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -58,15 +64,11 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
@@ -77,16 +79,16 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-            String ban = getRogersOrderConfirmationPage().getBAN();
-            System.out.println("BAN from the portal : " + ban);
-            String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-            System.out.println("SCHEMA : " + DbSchema);
-            /**
-             * DB Validations in the subscriber table
-             */
-            Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-            reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-            reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+        String ban = getRogersOrderConfirmationPage().getBAN();
+        System.out.println("BAN from the portal : " + ban);
+        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
+        System.out.println("SCHEMA : " + DbSchema);
+        /**
+         * DB Validations in the subscriber table
+         */
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
+        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
     }
 
     @BeforeMethod(alwaysRun = true)   @Parameters({ "strBrowser", "strLanguage"})

@@ -46,6 +46,7 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
 	public void rogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummary_No4K_ProInstall() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc89_2PMigrationGPON.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc89_2PMigrationGPON.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
@@ -130,13 +131,13 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 
-	/*@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
-	}*/
+	}
 
 }

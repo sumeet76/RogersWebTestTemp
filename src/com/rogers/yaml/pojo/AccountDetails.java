@@ -569,7 +569,7 @@ public class AccountDetails {
 	/**
 	 * @param addressOnFile the address to set
 	 */
-	public void setAddressOnFile(Map<String, String> address) {
+	public void setAddressOnFile(Map<String, String> addressOnFile) {
 		this.addressOnFile = addressOnFile;
 	}
     

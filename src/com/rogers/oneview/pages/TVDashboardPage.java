@@ -206,10 +206,10 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.tv.manageChannelsAndThemePacks.buttonName']")
 	WebElement manageChannelsAndThemeparks;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//button[@class='a-tablet']")
+	@FindBy(xpath = "(//span[@translate='global.cta.tabs.themePacks'])[1]")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +218,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add'][normalize-space()='Add'])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -226,6 +226,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Cancel' or text()='Annuler']/ancestor::button | //button[@title='close']")
 	WebElement cancel;
+
+	@FindBy(xpath = "//span[contains(text(),'Yes, Continue')]")
+	WebElement duplicateYes;
 
 	@FindBy(xpath = "//span[@translate='global.label.reviewAddons']")
 	WebElement reviewAddOns;
@@ -307,7 +310,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
 	WebElement resetPurchasePin;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add'][normalize-space()='Add'])[45]")
+	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
 	WebElement addThemepackFromBundle;
 
 
@@ -373,7 +376,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='$15 off Ignite']")
 	WebElement campaign;
 
-	@FindBy(xpath="//span[@translate='global.cta.remove']")
+	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink']")
 	WebElement reviewTerms;
 
 	@FindBy(xpath="//span[@translate='global.cta.remove']")
@@ -462,7 +465,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickThemepacksTab() {
 
-//		if (getReusableActionsInstance().isElementVisible(cancel)) {
+		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
+			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
+		}
 //			clickCancel();
 //		}
 		getReusableActionsInstance().waitForElementVisibility(themesTab, 45);
@@ -514,10 +519,9 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 80);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(addChannel, 80).click();
-		getReusableActionsInstance().executeJavaScriptClick(addChannel);
+		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -528,7 +532,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public void clickYourChanges() {
-		getReusableActionsInstance().waitForElementVisibility(yourChanges,80);
+		getReusableActionsInstance().waitForElementVisibility(yourChanges);
 		getReusableActionsInstance().executeJavaScriptClick(yourChanges);
 	}
 
@@ -962,9 +966,11 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clickRestartSetupbox() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(btnRestartSetupbox,120);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(btn);
-		getReusableActionsInstance().executeJavaScriptClick(btn);
+		getReusableActionsInstance().waitForElementVisibility(btnRestartSetupbox, 240);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(btnRestartSetupbox);
+		//getReusableActionsInstance().clickWhenReady(btnRestartSetupbox, 120);
+		getReusableActionsInstance().executeJavaScriptClick(btnRestartSetupbox);
+
 	}
 
 	/**
@@ -1174,6 +1180,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickResetPurchasePin() {
 		getReusableActionsInstance().waitForElementVisibility(resetPurchasePin, 30);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(resetPurchasePin);
 		getReusableActionsInstance().getWhenReady(resetPurchasePin, 30).click();
 	}
 
@@ -1310,7 +1317,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickAddChannelBtn() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 75);
+		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
 		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);

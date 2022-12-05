@@ -52,12 +52,12 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void rogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_installFee() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
@@ -72,7 +72,8 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
         getRogersIgniteTVBuyPage().clkChevronDownYourCart();
         reporter.reportLogWithScreenshot("Launched the mini cart Chevron");
         getRogersIgniteTVBuyPage().clkChevronUpYourCart();
-        getRogersIgniteTVBuyPage().set4KTV();
+
+        getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
 

@@ -113,7 +113,7 @@ public class OneViewCH_Auto_1437_TC02_E2E_NAC_3P_ChannelAndThemepack_PaymentMeth
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

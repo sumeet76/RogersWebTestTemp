@@ -115,6 +115,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//ds-step[@id='stepper-addons']//div[contains(@class,'d-flex flex-row-reverse')]//button")
     WebElement preCartSummaryContinueButtonAddOns;
 
+    @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
+    WebElement byodDPContinue;
+
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
@@ -180,6 +183,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//ds-modal//button[contains(@title,'Continue')]")
     WebElement btnContinueOnModalToDoWithOldPhone;
+
+    @FindBy(xpath = "//input[@value='payUpfrontEdgeAmount']/parent::label[@class='dsa-radio']")
+    WebElement keepMyCurrentPhone;
 
     @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
     List<WebElement> checkBoxAdditionalLineOPtion;
@@ -283,16 +289,28 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
     WebElement btnCheckPromo;
 
-    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to cart') or contains(text(),' ajouté au panier')]")
+    @FindAll({
+            @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to cart') or contains(text(),' ajouté au panier')]"),
+            @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to your cart') or contains(text(),' ajoutée à votre panier')]")
+    })
     WebElement promoCodeSuccessMsg;
 
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
+    @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'credit on device') or contains(text(),'Comprend un crédit')]")
+    WebElement promoCreditInfo;
+
+    @FindBy(xpath = "//span[@data-test='promo-detail-info']/following::span[3]")
+    WebElement regularPromoDetail;
+
     @FindBy(xpath = "//span[contains(text(),'Plan discount') or contains(text(),'Rabais sur le forfait')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement promoCartLineItem;
 
-    @FindBy(xpath = "//span[@data-test='delete-promo-detail-info']")
+    @FindAll({
+            @FindBy(xpath = "//span[@data-test='delete-promo-detail-info']"),
+            @FindBy(xpath = "//span[@data-test='delete-promo']")
+    })
     WebElement deletePromo;
 
     @FindBy(xpath = "//button[contains(@class,'ds-tablet')]//p[contains(text(),'Device Protection') or contains(text(),'Protection de l’appareil')]")
@@ -313,7 +331,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@formcontrolname='imei']")
     WebElement inputDPIMEI;
 
-    @FindBy(xpath = "//div[@class='d-flex flex-row-reverse']//span[contains(text(),'Continue')]")
+    @FindAll({
+            @FindBy(xpath = "//div[@class='d-flex flex-row-reverse']//span[contains(text(),'Continue')]"),
+            @FindBy(xpath = "//button[@data-test='continue-btn']//span[contains(text(),'Continue')]")
+    })
     WebElement dpIMEIContinue;
 
     @FindBy(xpath = "//select[@data-test='byod-equipment-storage']")
@@ -374,7 +395,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void clkRadioButtonNoTerm() {
         getReusableActionsInstance().waitForElementVisibility(txtFinancingOptions, 30);
         getReusableActionsInstance().scrollToElement(txtFinancingOptions);
-        getReusableActionsInstance().clickWhenVisible(noTermRadioBtn);
+        getReusableActionsInstance().clickWhenReady(noTermRadioBtn);
     }
 
     /**
@@ -725,6 +746,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * This method selects the Keep My CUrrent Phone and pay my Upfront edge amount option and clicks Continue the Modal
+     * @author subash.nedunchezhian
+     */
+    public void clickContinueOnModalToKeepMyCurrentPhone() {
+        if (getReusableActionsInstance().isElementVisible(modalToDoWithOldPhone, 10))
+            getReusableActionsInstance().clickWhenReady(keepMyCurrentPhone,5);
+            getReusableActionsInstance().clickWhenReady(btnContinueOnModalToDoWithOldPhone, 5);
+    }
+    /**
      * Click continue on Plan config page before cart summary
      *
      * @author saurav.goyal
@@ -773,7 +803,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author karthic.hasan
      */
     public void clickPreCartTalkOptionContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton, 10);
+        getReusableActionsInstance().clickIfAvailable(preCartTalkOptionContinueButton, 5);
     }
 
     /**
@@ -818,6 +848,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clickPreCartSummaryContinueButtonAddOns() {
         getReusableActionsInstance().clickIfAvailable(preCartSummaryContinueButtonAddOns, 5);
+    }
+
+    /**
+     * Click continue on BYOD Plan config page before cart summary
+     * @author subash.nedunchezhian
+     */
+    public void clickByodDPContinueButton() {
+        getReusableActionsInstance().clickIfAvailable(byodDPContinue, 5);
     }
 
     /**
@@ -1445,7 +1483,7 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     /**
      * Validates the Line Item of the Promotion in cart summary
-     * @return true if the Promo code and discount amount line item displayed; else false
+     * @return true if the Promo discount amount line item displayed; else false
      * @author Subash.Nedunchezhian
      */
     public boolean verifyCartLineItem() {
@@ -1463,11 +1501,21 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Validates the Device Credit of the Promotion
+     * @return true if the 'Device Credit' message displayed; else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyPromoCreditInfo() {
+        return getReusableActionsInstance().isElementVisible(promoCreditInfo);
+    }
+
+    /**
      * Clicks on the 'Delete' button to remove the applied Promo code
      * @author Subash.Nedunchezhian
      */
     public void clickDeletePromo(){
-        getReusableActionsInstance().clickIfAvailable(deletePromo);
+        getReusableActionsInstance().isElementVisible(deletePromo);
+        getReusableActionsInstance().clickWhenReady(deletePromo);
     }
     /**
      * This method clicks on Device Protection Tab in Add-ons stepper
@@ -1602,5 +1650,14 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     public void clickContinueWithSelectedPlanButton() {
         getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+    }
+
+    /**
+     * This method gets Regular Promo Discount value and Promo Duration text on Device Config page
+     * @return Regular Promo Discount value and Promo Duration text
+     * @author subash.nedunchezhian
+     */
+    public String getRegularPromoName(){
+        return regularPromoDetail.getText().replaceAll("\\n", "");
     }
 }
