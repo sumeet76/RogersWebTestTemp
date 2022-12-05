@@ -209,7 +209,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")
+	@FindBy(xpath = "//button[@class='a-tablet']")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +218,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add'][normalize-space()='Add'])[2]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -307,7 +307,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Reset purchase PIN') or contains(text(),'Réinitialisez le NIP d’achat')]/ancestor::button")
 	WebElement resetPurchasePin;
 
-	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
+	@FindBy(xpath = "(//span[@translate='global.cta.add'][normalize-space()='Add'])[45]")
 	WebElement addThemepackFromBundle;
 
 
@@ -514,9 +514,10 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
+		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 80);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().getWhenReady(addChannel, 80).click();
+		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -527,7 +528,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public void clickYourChanges() {
-		getReusableActionsInstance().waitForElementVisibility(yourChanges);
+		getReusableActionsInstance().waitForElementVisibility(yourChanges,80);
 		getReusableActionsInstance().executeJavaScriptClick(yourChanges);
 	}
 
@@ -1309,7 +1310,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickAddChannelBtn() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 30);
+		WebElement btn = getReusableActionsInstance().getWhenReady(addChannelBtn, 75);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
 		getReusableActionsInstance().waitForElementVisibility(addChannelBtn, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addChannelBtn);

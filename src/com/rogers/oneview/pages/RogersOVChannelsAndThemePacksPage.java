@@ -18,7 +18,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
 	WebElement customerAddonReveiwLink;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement continueButton;
 
 	@FindBy(xpath = "//span[text()='Passer à la caisse' or text()='Checkout']/ancestor::button")
@@ -96,7 +96,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	public void clkContinue() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().staticWait(40000);
-		getReusableActionsInstance().clickWhenReady(continueButton,120);
+		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
 
 	/**

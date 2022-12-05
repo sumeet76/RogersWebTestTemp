@@ -13,46 +13,31 @@ import java.lang.reflect.Method;
 public class OneViewCH_REG_Auto_TC003_1544_Add_Channels_Themepack_Immediate_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV"})
 	public void oneViewCH_1544_TC01_AddThemepackImmediate(){
-		getEnvironmentSelectionPage().launchOneView(TestDataHandler.addThemepackImmediate.getAccountNo(), TestDataHandler.addThemepackImmediate.getContactID());
+		getEnvironmentSelectionPage().launchOneView(TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getBan(),TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.getContactID());
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-//		getAccountOverViewPage().enterDealerCodeDialogue();
-		reporter.reportLogWithScreenshot("Enter dealer code if present");
-/*
-		getAccountOverViewPage().clickAccountOverview();
-		reporter.reportLogWithScreenshot("clicked on account overview arrow-down to see the customer address");
-		reporter.hardAssert(getAccountOverViewPage().verifyProvince(),"ON address displayed","ON address doesn't displayed");
-		getAccountOverViewPage().goToPageBottom();
-*/
-		getAccountOverViewPage().selectTVBadage();
-		reporter.reportLogWithScreenshot("TV Ignite Badge");
-		reporter.hardAssert(getTVDashboardPage().verifyManageChannelsAndThemepacks(),"Manage Channel and Theme pack Displayed","Manage channel and theme pack doesn't displayed");
-		reporter.reportLogWithScreenshot("Click on Manage Channel and Theme Packs");
-		getTVDashboardPage().clickManageChannelsAndThemepacks();
-		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
-		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
-	//	getTVDashboardPage().clickChannelTab();
+		getAccountOverViewPage().enterDealerCodeDialogue();
+		reporter.reportLogWithScreenshot("deal code");
+		getAccountOverViewPage().clickIgniteTVBadge();
+		reporter.reportLogWithScreenshot("TV Batch");
+		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
-		getTVDashboardPage().clickAddChannel();
-		reporter.reportLogWithScreenshot("add channel");
-		getTVDashboardPage().clickYourChanges();
-		getTVDashboardPage().clickThemepacksTab();
-		reporter.reportLogWithScreenshot("Themepack tab");
-		getTVDashboardPage().clickThemepackTabFromBundle();
-		reporter.reportLogWithScreenshot("themepack added");
-		getTVDashboardPage().addThemepack();
-		getTVDashboardPage().clickYourChanges();
-		reporter.reportLogWithScreenshot("Theme pack added and click on continue");
-	//	getRogersIgniteBundlesPage().fourKTVPopup();
-	//	reporter.reportLogWithScreenshot("4k continue");
-	//	getRogersIgniteBundlesPage().fourKContinue();
-		getTVDashboardPage().clickYesContinueIfPresent();
-		reporter.reportLogWithScreenshot("continue for package");
-		getTVDashboardPage().clickContinueForPackage();
-		reporter.reportLogWithScreenshot("immediate date");
-		getTVDashboardPage().immediateDateChangeOption();
-//		reporter.reportLogWithScreenshot("Collapse");
+		getTVDashboardPage().clickChangePackage();
+		reporter.reportLogWithScreenshot("change package button selected");
+		getInternetDashboardPage().clickSelectbutton();
+//		getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getDowngradeTvPlanEn(),TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getDowngradeInternetPlanEn());
+		reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+		getInternetDashboardPage().clickContinueChangeInternetPackage();
+		reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+		getTVDashboardPage().clickExchangeLater();
+		getCustomerProfilePage().clkContinue();
+		getRogersIgniteBundlesPage().fourKTVPopup();
+		getRogersIgniteBundlesPage().fourKContinue();
+		getInternetDashboardPage().clickImmediateBill();
+		reporter.reportLogWithScreenshot("Immediate date");
 		getTVDashboardPage().continueFromChangeDate();
-//		getRogersOVOrderReviewPage().clkSubmit();
+		reporter.reportLogWithScreenshot("Continue");
+
+//		getRogersOVOrderReviewPage().clickSubmitOrder();
 		reporter.reportLogWithScreenshot("Order Confirmation page");
 	}
 
