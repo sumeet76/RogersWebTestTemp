@@ -39,6 +39,7 @@ public class RogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternet
     public void rogersCH_Auto_TC022_SolarisInternetCx_OldConstructor_ChangeInternetPackage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc22_SolarisInternetOldConstructor.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

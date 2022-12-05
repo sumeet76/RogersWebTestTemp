@@ -23,10 +23,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Remove Prime Time Pack from cart']")
 	WebElement btnRemovePrimePack;
 
-	@FindBy(xpath ="//button[@aria-label='Continue']/span")
+	@FindBy(xpath ="//button[@aria-label='Continue']/span | //button[@aria-label='Continuer']/span")
 	WebElement btnMiniCartContinue;
 
-	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span")
+	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span | //a[@aria-label='Non, il n’a pas de téléviseur 4K']/span")
 	WebElement btnNoIDontHave4K;
 
 	@FindBy(xpath="//span[text()='Continue']")

@@ -32,6 +32,7 @@ public class RogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboard
 	public void rogersCH_Auto_TC005_SolarisTVCx_4Plus1_AddThemepacksfromTVDashboardPage() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc05_IgniteTV4Plus1Account.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();

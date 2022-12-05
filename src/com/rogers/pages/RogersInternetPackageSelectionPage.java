@@ -145,7 +145,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
 	WebElement txtPackageDetails;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
+	@FindBy(xpath = "//label[@for='ds-checkbox-id-2']//div[@class='ds-checkbox__box my-12']")
 	WebElement chkbox150IgniteStreaming;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
@@ -391,6 +391,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(chkbox1GbpsSmartStream, 10);
 		if(!(chkbox1GbpsSmartStream.isSelected())) {
 			getReusableActionsInstance().clickIfAvailable(chkbox1GbpsSmartStream);
+		}
+	}
+
+	public void selectIgniteSmartStream150MbpsCheckBox() {
+		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 15);
+		if(!(chkbox150IgniteStreaming.isSelected())) {
+			getReusableActionsInstance().clickIfAvailable(chkbox150IgniteStreaming);
 		}
 	}
 

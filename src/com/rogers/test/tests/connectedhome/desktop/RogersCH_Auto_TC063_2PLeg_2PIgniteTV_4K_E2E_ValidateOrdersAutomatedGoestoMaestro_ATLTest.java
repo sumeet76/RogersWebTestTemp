@@ -54,6 +54,7 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 	public void rogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomatedGoestoMaestro_ATL() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
@@ -78,6 +79,7 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
+		getRogersIgniteTVBuyPage().clkIUnderstand();
        /* reporter.reportLogWithScreenshot("Flex20+ Order online");
         getRogersIgniteTVBuyPage().selectFlex20Package(); */
 		reporter.reportLogWithScreenshot("Flex20+ Added to cart");

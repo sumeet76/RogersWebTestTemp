@@ -37,6 +37,7 @@ public class RogersCH_Auto_TC076_SolarisTVCx_NewConstruct_NewStarter_PrimeTimeTh
 	public void rogersCH_Auto_TC076_SolarisTVCx_NewConstruct_NewStarter_PrimeTimeThemepack_ChangeTVflow() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();

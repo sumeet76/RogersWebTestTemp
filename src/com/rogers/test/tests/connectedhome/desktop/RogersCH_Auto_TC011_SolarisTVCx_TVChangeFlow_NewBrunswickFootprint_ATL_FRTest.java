@@ -38,6 +38,7 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 	    public void rogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_ATL_FR() {
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getUsername());
+		 	getRogersLoginPage().clkContinueInBrowser();
 	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
 	        getRogersLoginPage().clkSignInIFrame();

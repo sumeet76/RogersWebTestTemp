@@ -39,6 +39,7 @@ public class RogersCH_Auto_TC020_SolarisInternetCx_InternetPackageUpgradeTest ex
     public void rogersCH_Auto_TC020_SolarisInternetCx_InternetPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

@@ -42,6 +42,7 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
@@ -66,9 +67,9 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");

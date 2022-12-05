@@ -39,6 +39,7 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
     public void rogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
@@ -50,11 +51,12 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersHomePage().clkNBProvinceLnk();
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         //getRogersHomePage().clkIgniteTVExistingCustomer();
         getDriver().get(System.getProperty("QaUrl")+"/web/consumer/ignite-bundles/tv-internet");
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+//        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
