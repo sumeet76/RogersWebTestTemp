@@ -18,6 +18,10 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
 //        getRogersIgniteBundlesPage().clkUsethisAddress();
         getAccountOverViewPage().clickContinue();
@@ -39,10 +43,10 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-//        getRogersIgniteBundlesPage().reviewAllTerms();
-//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-//        reporter.reportLogWithScreenshot("Points to mention");
-//        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        reporter.reportLogWithScreenshot("Points to mention");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
         /*To Add the chargeable Pods*/
         reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet header addon displayed", "Internet header not displayed");

@@ -19,6 +19,10 @@ public class OneviewCH_Auto_TC082_Migration_TMP_2P_To_SAI_ISS_Courier_ON_EN_Test
         getAccountOverViewPage().enterDealerCodeDialogue();
 
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");

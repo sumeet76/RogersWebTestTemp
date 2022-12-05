@@ -19,12 +19,17 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         reporter.reportLogWithScreenshot("Use this address");
 //        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Service Availability");
-        getRogersIgniteBundlesPage().refreshContinue();
-        getRogersIgniteBundlesPage().clkContinue();
+//        getRogersIgniteBundlesPage().refreshContinue();
+//        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
@@ -35,16 +40,17 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
+        getRogersIgniteBundlesPage().noPortInPopup();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
 
-        reporter.reportLogWithScreenshot("review terms and condition");
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
-        reporter.reportLogWithScreenshot("Points to mention");
-        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+//        reporter.reportLogWithScreenshot("review terms and condition");
+//        getRogersIgniteBundlesPage().reviewAllTerms();
+//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        reporter.reportLogWithScreenshot("Points to mention");
+//        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");

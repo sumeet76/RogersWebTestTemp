@@ -51,6 +51,11 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='sub']")
 	WebElement inputEmpName;
 
+	@FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
+	WebElement envProduction;
+
+	@FindBy(xpath = "//div[@class='proceed-button']/button")
+	WebElement btnProceed;
 
 	/**
 	 * Enter user roles
@@ -136,6 +141,7 @@ public class EnvironmentSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnGo, 30).click();
 		
 		}
+
 	
 	/**
 	 * Enter the dealer code on capture dealer code page
@@ -186,6 +192,16 @@ public class EnvironmentSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(inputEmpName, 10).click();
 		getReusableActionsInstance().getWhenReady(inputEmpName).sendKeys(empName);
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
+	}
+
+	public void selectProduction(){
+		getReusableActionsInstance().waitForElementVisibility(envProduction, 30);
+		getReusableActionsInstance().clickWhenReady(envProduction);
+	}
+
+	public void clickProceed(){
+		getReusableActionsInstance().waitForElementVisibility(btnProceed, 20);
+		getReusableActionsInstance().clickWhenReady(btnProceed);
 	}
 
 }

@@ -1033,8 +1033,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void contiueToCartSummary() {
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(continueFromPort, 10);
+		getReusableActionsInstance().scrollToElement(continueFromPort);
+		getReusableActionsInstance().executeJavaScriptClick(continueFromPort);
 	}
 
 	/**

@@ -191,6 +191,12 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
     WebElement migrateToIgnite;
 
+    @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
+    WebElement envProduction;
+
+    @FindBy(xpath = "//div[@class='proceed-button']/button")
+    WebElement btnProceed;
+
     @FindBy(xpath = "//span[contains(text(),'OK')]")
     WebElement OK;
 
@@ -365,6 +371,23 @@ public class AccountOverViewPage extends BasePageClass {
        if (getReusableActionsInstance().isElementVisible(OK, 30)) {
             getReusableActionsInstance().executeJavaScriptClick(OK);
         }
+    }
+
+    /**
+     * Select the environment as Production
+     * @author Jarmanjeet.Batth
+     */
+    public void selectProduction(){
+        getReusableActionsInstance().clickWhenReady(envProduction);
+    }
+
+    /**
+     * Select the environment as Production
+     * @author Jarmanjeet.Batth
+     */
+    public void clickProceed(){
+        getReusableActionsInstance().waitForElementVisibility(btnProceed, 20);
+        getReusableActionsInstance().clickWhenReady(btnProceed);
     }
 
     /**

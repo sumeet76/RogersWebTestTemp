@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
     public void oneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -42,13 +46,13 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("load promo offers");
-		getRogersIgniteCampaignPage().enterCoupon("PCR6");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		getRogersIgniteCampaignPage().closeCouponAlert();
+//		getRogersIgniteCampaignPage().clickCampaignTab();
+//		reporter.reportLogWithScreenshot("load promo offers");
+//		getRogersIgniteCampaignPage().enterCoupon("PCR6");
+//		getRogersIgniteCampaignPage().clickApplyCoupon();
+//		reporter.reportLogWithScreenshot("apply coupon");
+//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+//		getRogersIgniteCampaignPage().closeCouponAlert();
 
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("cart summary checkout");
@@ -84,7 +88,7 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("PC6");
+		getRogersIgniteCampaignPage().enterCoupon("KLE");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.reportLogWithScreenshot("apply coupon");
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");

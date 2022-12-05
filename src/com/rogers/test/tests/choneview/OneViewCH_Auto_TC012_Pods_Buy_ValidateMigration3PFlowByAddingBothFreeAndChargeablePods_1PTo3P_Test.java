@@ -18,7 +18,11 @@ public class OneViewCH_Auto_TC012_Pods_Buy_ValidateMigration3PFlowByAddingBothFr
 
        reporter.reportLogWithScreenshot("OneView Interface has Launched");
        getAccountOverViewPage().clickIgnite();
-       reporter.reportLogWithScreenshot("use this address");
+       reporter.reportLogWithScreenshot("clicked Ignite option");
+       getAccountOverViewPage().selectProduction();
+       reporter.reportLogWithScreenshot("Select Environment as Production");
+       getAccountOverViewPage().clickProceed();
+       reporter.reportLogWithScreenshot("Click proceed button");
    //    getRogersIgniteBundlesPage().clkUsethisAddress();
        reporter.reportLogWithScreenshot("Service Availability");
        getRogersIgniteBundlesPage().clkContinue();

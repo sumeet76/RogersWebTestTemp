@@ -21,6 +21,10 @@ public class OneViewCH_Auto__TC068_1568_TargetedMigration_3P_to_3P_change_number
         getAccountOverViewPage().enterDealerCodeDialogue();
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
 //        getAccountOverViewPage().selectAddress();
 
 //       Rogers Ignite page.
