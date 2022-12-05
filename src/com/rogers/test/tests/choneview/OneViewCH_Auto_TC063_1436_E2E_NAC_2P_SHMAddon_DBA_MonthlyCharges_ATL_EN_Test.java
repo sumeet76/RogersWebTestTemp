@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
     public void oneViewCH_Auto_TC092_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_ATL_EN_Test(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Click proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddressATL());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddressATL()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -37,14 +41,14 @@ public class OneViewCH_Auto_TC063_1436_E2E_NAC_2P_SHMAddon_DBA_MonthlyCharges_AT
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
-
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
+		reporter.reportLogWithScreenshot("click continue after selecting the package");
 		getRogersIgniteBundlesPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
+		reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
 		reporter.softAssert(getCustomerProfilePage().verifySHMAddonsHeader(),"Customer Profile","Failed");

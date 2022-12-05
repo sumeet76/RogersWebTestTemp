@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC092_Validate_SwitchingServiceability_CheckTechhub_
             /* serviceability check to Techhub for MDU_Address */
             reporter.reportLogWithScreenshot("OneView env");
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+            getEnvironmentSelectionPage().selectProduction();
+            reporter.reportLogWithScreenshot("Selected Production");
+            getEnvironmentSelectionPage().clickProceed();
+            reporter.reportLogWithScreenshot("Clicked proceed button");
             reporter.reportLogWithScreenshot("address");
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_MDU_NAC());
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyBulkAddress(),TestDataHandler.anonymousData.contactDetails.getAddress_MDU_NAC()+" MDU Address",TestDataHandler.anonymousData.contactDetails.getAddress_MDU_NAC()+" not MDU Address");

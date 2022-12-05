@@ -31,6 +31,7 @@ public class ContactDetails {
 	private String contactIDSAIPayMonthlyCharges;
 	private String contactIDSAIISSPayMonthlyCharges;
 	private String contactID2PExchangeNow;
+	private String contactID_SATV;
 	private String contactIDISSPortIn;
 	private String contactID_STB_3P;
 	private String email;
@@ -475,6 +476,16 @@ public class ContactDetails {
 		return contactID2PExchangeNow;
 	}
 
+	/**
+	 * @param contactID_SATV
+	 */
+	public void setContactID_SATV(String contactID_SATV) {
+		this.contactID_SATV = contactID_SATV;
+	}
+
+	public String getContactID_SATV() {
+		return contactID_SATV;
+	}
 
 
 	/**

@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
     public void oneViewCH_Auto_1411_TC01_E2E_NAC_SmartStream_STBs_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Click proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -34,9 +38,10 @@ public class OneViewCH_Auto_TC018_1411_E2E_NAC_SmartStream_STBs_Monthly_Charges_
 		reporter.reportLogWithScreenshot("no port-in");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.reportLogWithScreenshot("Product Added");
-//		getRogersIgniteBundlesPage().clkCheckOut();
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+//		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("Checkout Cart Summary");
