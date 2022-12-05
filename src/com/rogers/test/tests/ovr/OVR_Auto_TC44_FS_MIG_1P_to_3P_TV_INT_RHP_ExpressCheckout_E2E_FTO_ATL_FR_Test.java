@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extends BaseTestClass {
+public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_ATL_FR_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -19,7 +19,7 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extend
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FT_ATL_FR_Test() {
@@ -110,10 +110,8 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_E2E_FTO_ATL_FR_Test extend
 
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

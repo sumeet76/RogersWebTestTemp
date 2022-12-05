@@ -9,7 +9,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test extends BaseTestClass {
+public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_ExpressCheckout_IntID_E2E_SFU_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -18,14 +18,13 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
-    public void ovr_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_E2E_TSR_FR_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_TSR_username"), System.getenv("FS_password"));
+    public void ovr_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_SFU_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getChampLoginPage().changeChampToFR();
-        reporter.reportLogWithScreenshot("Changed Champ page to French");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
@@ -34,7 +33,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("876-43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -47,40 +46,22 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
         reporter.reportLogWithScreenshot("Internet Selected");
         getRogersIgniteBundlesPage().clkTVCheckbox();
         reporter.reportLogWithScreenshot("TV Check box selected");
-        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-        reporter.reportLogWithScreenshot("Home Phone Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
-        reporter.reportLogWithScreenshot("No to port in popup");
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
-        reporter.reportLogWithScreenshot("Product in cart");
+        reporter.reportLogWithScreenshot("No to PortIn Popup");
+
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-        reporter.reportLogWithScreenshot("Continue from Bundles page with 3p bundle");
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().clkExpressCheckout();
 
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k tv popup");
         getRogersIgniteBundlesPage().contiue4KContent();
-        reporter.reportLogWithScreenshot("4k Content popup");
 
-        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Home phone Add ons page");
-
-        getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
-        reporter.reportLogWithScreenshot("Addons selected for addition");
-        getHomePhoneAddonsPage().clkContinue();
-
+        reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
@@ -105,27 +86,12 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
                 FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
-        reporter.reportLogWithScreenshot("Credit Check Authorized");
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-
-        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
-        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
-        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.reportLogWithScreenshot("Generate Phone Number");
-        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-//        reporter.reportLogWithScreenshot("continue from generate phone number");
-//        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-//        reporter.reportLogWithScreenshot("continue from call display");
-//        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-//        reporter.reportLogWithScreenshot("continue from directory listing");
-//        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
-
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectDeliveryByAppointmentInstall();
+        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");
@@ -134,7 +100,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_IntID_E2E_TSR_FR_ATL_Test
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Frais mensuels");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
         reporter.reportLogWithScreenshot("Monthly billing selected");
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
