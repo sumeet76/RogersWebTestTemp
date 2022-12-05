@@ -30,6 +30,7 @@ public class OneViewCH_REG_Auto_TC0091_Validate_SwitchingServiceability_CheckTec
             getRogersIgniteBundlesPage().clickNo();
             reporter.reportLogWithScreenshot("click no");
             getRogersIgniteBundlesPage().clickCheckAnotherAddress();
+            getRogersIgniteBundlesPage().clickOtherAddress();
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.migrationData.getAddress());
             reporter.reportLogWithScreenshot("NewAddress");
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");
@@ -38,12 +39,7 @@ public class OneViewCH_REG_Auto_TC0091_Validate_SwitchingServiceability_CheckTec
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigrationNotSupported(),"Move Migration not supported","Move Migration ");
             getRogersIgniteBundlesPage().clickOkButton();
             reporter.reportLogWithScreenshot("click ok");
-
-
-
-
-
-
+            
         }
     }
 

@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
 6. Discounts - Apply any Product Campaigns."
  */
 
-public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
 	public void oneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN(){
 		reporter.reportLogWithScreenshot("OneView env");
@@ -84,8 +84,7 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("Installation options");
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+//		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("go To Page Bottom");
 		getCreditCheckPage().goToPageBottom();
@@ -111,17 +110,17 @@ public class OneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
-
+		reporter.reportLogWithScreenshot("Campaign code");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("K17");
+		getRogersIgniteCampaignPage().enterCoupon("KDT");
+		reporter.reportLogWithScreenshot("Campaign code entered");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		reporter.reportLogWithScreenshot("Campaign code applied");
+	//	reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
 		getRogersIgniteCampaignPage().closeCouponAlert();
-
+		reporter.reportLogWithScreenshot("close Coupon Alert");
 		reporter.reportLogWithScreenshot("Order Review Page");
-		getRogersOVCheckoutPage().clkSubmit();
+	//	getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Placed");
 	}
 

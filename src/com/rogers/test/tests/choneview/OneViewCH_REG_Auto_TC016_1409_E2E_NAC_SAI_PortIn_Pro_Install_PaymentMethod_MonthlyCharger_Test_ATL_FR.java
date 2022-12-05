@@ -26,13 +26,13 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_Pro_Install_Paymen
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
-		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT());
+		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
 		reporter.reportLogWithScreenshot("Select Services Customer Wants");
-		getRogersIgniteBundlesPage().setLanguageFrench();
+	//	getRogersIgniteBundlesPage().setLanguageFrench();
 	//	getRogersIgniteBundlesPage().clickCheckAnotherAddress();
 	//	getRogersIgniteBundlesPage().refreshCheckAvailability();
 	//	getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT());
@@ -54,9 +54,9 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_Pro_Install_Paymen
 		reporter.reportLogWithScreenshot("Product Added");
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().validateInternetAddOnsHeader();
-		reporter.reportLogWithScreenshot("Internet Addon page");
-		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+	//	getRogersIgniteBundlesPage().validateInternetAddOnsHeader();
+	//	reporter.reportLogWithScreenshot("Internet Addon page");
+	//	getRogersIgniteBundlesPage().clkContinueInternetAddon();
 	//	reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
@@ -65,6 +65,7 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_Pro_Install_Paymen
 		getRogersIgniteBundlesPage().contiueFromPortIn();
 		reporter.reportLogWithScreenshot("CART SUMMARY");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
+		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 //		getRogersIgniteBundlesPage().oneTimeCredit();
@@ -77,7 +78,6 @@ public class OneViewCH_REG_Auto_TC016_1409_E2E_NAC_SAI_PortIn_Pro_Install_Paymen
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "coupon successfully applied", "coupon not applied successfully");
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close Coupon Alert");
-
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
