@@ -49,13 +49,14 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentPage() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
+//        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+//        getRogersHomePage().clkTVBundle();
+//        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
-        getRogersIgniteTVBuyPage().clkHomephone();
-        getRogersIgniteTVBuyPage().selectSolarisPremierPackage();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
@@ -64,6 +65,7 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
 
+        getRogersIgniteTVBuyPage().clkHomephone();
         getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisPremier();

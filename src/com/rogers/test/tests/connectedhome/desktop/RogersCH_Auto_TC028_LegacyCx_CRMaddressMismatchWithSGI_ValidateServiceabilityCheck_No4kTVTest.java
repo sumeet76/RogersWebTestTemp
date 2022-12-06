@@ -36,6 +36,7 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
     public void rogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServiceabilityCheck_No4kTV() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
