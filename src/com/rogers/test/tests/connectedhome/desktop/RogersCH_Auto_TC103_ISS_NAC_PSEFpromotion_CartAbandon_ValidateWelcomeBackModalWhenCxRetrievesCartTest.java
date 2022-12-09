@@ -1,5 +1,4 @@
 package com.rogers.test.tests.connectedhome.desktop;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -10,35 +9,47 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 /**
- * This class contains the test method to test SAI Offer Buy flow with GWP and PSEF promotion for Rogers.com
- *
+ * This class contains the test method to test the SAI+ISS cart abandon flow for Rogers.com
+ * TC027_CH-12141_CH-17639_Anonymous Cx_Ignite SAI+ISS_M2M_Validate PSEF is configured for the package_
+ * Abandon Cart from Profile page_In the SAME tab without clearing Cache_WelcomeBack modal displayed_Click Continue E2E_FF_ON_FR
  * @author manpreet.kaur3
- *
+ * 
  * Test steps:
- * 1.Launch Rogers Easy Interent and click on check availability
- * 2. Enter serviceable address and check address
- * 3. Choose Internet, SmartStream checkbox and click on Add to cart
- * 4. Validate PSEF promotion and GSEF on cart summary page
- * 5. Click on Continue
- * 6. Click on Checkout
- * 7. Click on Yes, continue
- * 8. Click on Continue
- * 9. Enter DOB, valid ID details and click on continue
- * 10. Choose Installation type as enhanced self install and click on continue
- * 11. Click on Continue
- * 12. Click on Submit
+ *
+ *1. Launch Rogers.com
+ *2. Browse to Shop menu and select Internet option
+ *3. click on Check Availability and enter home address to validate the serviceability
+ *4. Select SS and select one of available packages, click Add to Cart
+ *4. Validate PSEF on cart summary page
+ *5. Click MyRogers to abandon cart
+ *6. Verify email modal and enter required details
+ *7. Verify Confirmation modal and click okay
+ *8. Re-execute the flow to validate welcome back modal
+ *9. Click continue on Welcome back modal to navigate directly to cart summary page.
+ *10. Validate minicart
+ *11. Click continue to Profile page and Enter all personal information on user profile creation page - 1) Profile step
+ *12. Click on Continue
+ *13. In 2) Credit Evaluation page, enter the required info on Credit Check:
+ *14. Click Submit
+ *15. Verify Tech Install Page
+ *16. Choose NO professiobal installation and continue
+ *17. Select Pre-Authorized credit card option from type of payment dropdown
+ *18. Enter valid Credit Card number details in Credit Card related fields
+ *19. Click on Continue
+ *20. Validate appropriate information is displayed in Review order page
+ *21. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox
+ *22. Click on Submit
+ *23. Validate order confirmation page
  *
  **/
 
-public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_Review_ConfirmPagesTest extends BaseTestClass {
+public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCartTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH"})
-    public void rogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_Review_ConfirmPages() {
+	@Test
+    public void rogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCart() {
         reporter.reportLogWithScreenshot("Launched the main QA page");
-        //getRogersHomePage().clkEasyInternet();
-        getDriver().get(System.getProperty("QaUrl")+"/internet");
+        getDriver().get(System.getProperty("QaUrl")+"internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -54,13 +65,38 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.reportLogWithScreenshot("Click SS Availability");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        String pkgPrice = getRogersInternetPackageSelectionPage().get150SSPkgPrice();
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyIgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
+        getRogersIgniteTVBuyPage().clickMyRogers();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyEmailModal(),"Email Modal is available","EmailModal is not available");
+        getRogersIgniteTVBuyPage().setFirstname();
+        getRogersIgniteTVBuyPage().setLastName();
+        getRogersIgniteTVBuyPage().setEmail();
+        getRogersIgniteTVBuyPage().setPhone();
+        getRogersIgniteTVBuyPage().clickEmailCheckbox();
+        reporter.reportLogWithScreenshot("Entered the details on Email Modal");
+        getRogersIgniteTVBuyPage().clickSubmit();
+        reporter.reportLogWithScreenshot("Submit the details on Email Modal");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Confirmation Modal is available","Confirmation Modal is not available");
+        getRogersIgniteTVBuyPage().clickOkay();
+        reporter.reportLogWithScreenshot("Restart the flow without clearing cache, to validate Welcome Modal");
+        getDriver().get(System.getProperty("QaUrl")+"internet");
+        reporter.reportLogWithScreenshot("Launched the Internet Page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Welcome Modal has Launched","Welcome Modal has not Launched");
+        getRogersIgniteTVBuyPage().clickContinue();
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
+        getRogersIgniteTVBuyPage().clkChevronDownYourCart();
+        reporter.reportLogWithScreenshot("Launched the mini cart Chevron");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().isPriceCorrectMiniCart(pkgPrice), "Price match with selected package price at offers page","Price mismatch with selected package price at offers page");
+        getRogersIgniteTVBuyPage().clkChevronUpYourCart();
+
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+        reporter.reportLogWithScreenshot("Continue to profile page");
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmail();
@@ -69,8 +105,7 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         getRogersInternetProfilePage().setPhone();
         getRogersInternetProfilePage().clkSubmitProfile();
 
-        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evaluation page has Launched","Credit Evaluation page has not Launched");
         getRogersInternetCreditCheckPage().selectDOBYear();
         getRogersInternetCreditCheckPage().selectDOBMonth();
         getRogersInternetCreditCheckPage().selectDOBDay();
@@ -98,7 +133,6 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
@@ -113,7 +147,6 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -121,23 +154,18 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-
     }
-
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-    //legacyAnonymous
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-        startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-    }
+	//IgniteAnonymous
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+	}
 
-
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        closeSession();
-    }
+	@AfterMethod(alwaysRun = true)
+	public void afterTest() {
+		closeSession();
+	}
 
 
 
