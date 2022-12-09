@@ -148,6 +148,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[@rchapiexposer='internetOffersLabels.igniteSmartStream']/parent::div[@class='vertical-tile__section__container']/descendant::label/input")
 	WebElement chkbox150IgniteStreaming;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
+	WebElement div150pkgCost;
+
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
 	WebElement lnkProvinceNL;
 
@@ -709,5 +712,16 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(txtPackageDetails);
 	}
 
+	/**
+	 * Gets the selected Bundles cost
+	 * @return price as String
+	 * @author manpreet.kaur3
+	 */
 
+	public String get150SSPkgPrice() {
+		String pkgCostText = getReusableActionsInstance().getWhenReady(div150pkgCost, 40).getAttribute("aria-label");
+		String[] subs= pkgCostText.split("\\$");
+		String[] pkgCost = subs[1].split(" ");
+		return pkgCost[0];
+	}
 }
