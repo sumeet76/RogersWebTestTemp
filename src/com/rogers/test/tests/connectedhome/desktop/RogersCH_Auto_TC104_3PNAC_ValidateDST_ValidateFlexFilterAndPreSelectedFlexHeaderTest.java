@@ -30,9 +30,9 @@ import java.lang.reflect.Method;
  * 9. Click Add to cart
  * 10. Click Skip new number
  * 11. Click on Continue in Home phone add ons page
- * 8. Validate the total channels and flex channles count are unified(with offers page) on cart summary page
- * 9. Click Total channnels and hover 4K channels, close popup
- * 10. Click Flex channnels and hover Pre-selected channels, close popup
+ * 12. Validate the total channels and flex channles count are unified(with offers page) on cart summary page
+ * 13. Click Total channnels and hover 4K channels, close popup
+ * 14. Click Flex channnels and hover Pre-selected channels, close popup
  **/
 
 public class RogersCH_Auto_TC104_3PNAC_ValidateDST_ValidateFlexFilterAndPreSelectedFlexHeaderTest extends BaseTestClass {
