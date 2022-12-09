@@ -29,7 +29,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 	@FindBy(xpath = "//input[@name='email']/..")
 	WebElement txtContainerEmail;
 	
-	@FindBy(xpath = "(//div[@class='ds-formField__inputContainer d-flex ds-corners position-relative ds-borders ds-brcolor-slate ds-bgcolor-white'])[2]")
+	@FindBy(xpath = "//input[@name='confirmEmail']/..")
 	WebElement txtContainerConfirmEmail;
 	
 	@FindBy(xpath = "//input[@name='email']")
@@ -129,7 +129,7 @@ public class RogersInternetProfilePage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(txtContainerEmail);
 		getReusableActionsInstance().getWhenReady(txtEmail, 30).clear();
 		getReusableActionsInstance().getWhenReady(txtEmail,10).sendKeys(strEmail);
-		getReusableActionsInstance().executeJavaScriptClick(txtConfirmEmail);
+		getReusableActionsInstance().executeJavaScriptClick(txtContainerConfirmEmail);
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail, 10).clear();
 		getReusableActionsInstance().getWhenReady(txtConfirmEmail,3).sendKeys(strEmail);
 	}

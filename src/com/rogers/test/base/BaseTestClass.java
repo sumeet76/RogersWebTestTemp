@@ -755,7 +755,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 getDriver().get(strUrl + "?setLanguage=" + language);
-                getDriver().manage().deleteAllCookies();
+               // getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_shm":
@@ -780,7 +780,6 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_login":
