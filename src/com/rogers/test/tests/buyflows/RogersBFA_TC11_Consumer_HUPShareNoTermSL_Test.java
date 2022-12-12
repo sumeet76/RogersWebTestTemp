@@ -49,7 +49,7 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-            //getRogersPlanConfigPage().clickCartSummaryContinueButton();
+            getRogersPlanConfigPage().clickCartSummaryContinueButton();
             getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("standard");
             reporter.reportLogPass("Standard Delivery selected");
