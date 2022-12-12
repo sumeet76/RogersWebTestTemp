@@ -118,7 +118,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
                 "Down payment info dislayed in modal", "Down payment info not dislayed in modal");
         reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
         String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
-        reporter.reportLog("Expected DownPayment" +expectedDownPayment);
+        reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
         reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
                "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
         //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
