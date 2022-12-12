@@ -61,7 +61,11 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 				"Eligible postal code verified in Device Catalog page Banner is carried on to Device Config Page Banner as expected",
 				"Postal Code not matching");*/
 		String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-		String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+		//String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+		String financeProgramCredit = "0.0";
+		financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+		String upfrontEdgeAmt = "0.0";
+		upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
 		getRogersDeviceConfigPage().selectDeviceProtectionAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon is selected in Device Config Page");
 		getRogersDeviceConfigPage().clickContinueButton();
@@ -142,7 +146,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
 				"Down payment info dislayed in modal", "Down payment info not dislayed in modal");
 		reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-		String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getRiskClass(),deviceCost,upfrontEdgeAmt);
+		String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
 		reporter.reportLog("Expected DownPayment" +expectedDownPayment);
 		//reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
 				//"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");

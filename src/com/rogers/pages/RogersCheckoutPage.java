@@ -1464,9 +1464,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clickSkipAutopay(){
-		getReusableActionsInstance().clickIfAvailable(skipAutoPay);
+		/*getReusableActionsInstance().clickIfAvailable(skipAutoPay);
 		getReusableActionsInstance().clickIfAvailable(paymentContinueButton,10);
-		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn,10);
+		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn,10);*/
+		if(getReusableActionsInstance().isElementVisible(skipAutoPay, 20)) {
+			getReusableActionsInstance().getWhenReady(skipAutoPay, 10).click();
+			getReusableActionsInstance().getWhenReady(paymentContinueButton,10).click();
+			getReusableActionsInstance().getWhenReady(autoPayRemovalCtnBtn,10).click();
+		}
 	}
 	/**
 	 * This method opts out AutoPay payment method and clicks Continue in AutoPay Removal Modal in NAC flow

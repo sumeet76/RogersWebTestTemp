@@ -71,9 +71,13 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
         String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
         reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
-        String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        //String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
+        String financeProgramCredit = "0.0";
+        financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+        String upfrontEdgeAmt = "0.0";
+        upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
        // reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
                // "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();

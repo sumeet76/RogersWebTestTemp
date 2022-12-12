@@ -49,6 +49,12 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
 
             reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                     "Continue button on the device config page is present", "Continue button on the device config page is not present");
+            String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+            String financeProgramCredit = "0.0";
+            financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+            String upfrontEdgeAmt = "0.0";
+            upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
             getRogersDeviceConfigPage().clickContinueButton();
 
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
