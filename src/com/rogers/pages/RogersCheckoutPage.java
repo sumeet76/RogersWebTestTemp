@@ -991,11 +991,34 @@ public class RogersCheckoutPage extends BasePageClass {
 		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt)) - (Double.parseDouble(financeProgramCredit) * 24);
 		if (riskClass.toUpperCase().contains("HIGH")) {
 			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 40.0;
-			return String.valueOf(expectedDownPayment);
+			//return String.valueOf(expectedDownPayment);
+			return modifyMandatoryDownPayment(expectedDownPayment);
 		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
 			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
-			return String.valueOf(expectedDownPayment);
+			//return String.valueOf(expectedDownPayment);
+			return modifyMandatoryDownPayment(expectedDownPayment);
 		} else return "0";
+	}
+
+	/**
+	 * Method substring decimal value of down Payment to two digit
+	 * @param downPay
+	 * @return Expected down payment
+	 * @author Vedachalam.Vasudevan
+	 */
+	public String modifyMandatoryDownPayment(Double downPay) {
+		String downPayment = String.valueOf(downPay);
+		int decimal=0;
+		String[] modify = downPayment.split("\\.");
+		char secondDecimal = modify[1].charAt(1);
+		char thirdDecimal = modify[1].charAt(2);
+		if(Integer.parseInt(String.valueOf(thirdDecimal)) >= 5){
+			decimal = Integer.parseInt(String.valueOf(secondDecimal))+1;
+		} else {
+			decimal = Integer.parseInt(String.valueOf(secondDecimal));
+		}
+		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
+		return modifiedDownPayment;
 	}
 
 	/**
