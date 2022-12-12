@@ -21,6 +21,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
     public void afterTest() {
         closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
@@ -34,7 +35,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("876-43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR. ST. JOHN'S, NL A1A 4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -62,6 +63,16 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Continue from Bundles page with 3p bundle");
         getRogersIgniteBundlesPage().clkContinue();
 
+        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+        reporter.reportLogWithScreenshot("Port In Service");
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
+        reporter.reportLogWithScreenshot("Port In form completed");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue from port in");
+
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
@@ -80,20 +91,8 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PATL.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for addition");
         getHomePhoneAddonsPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to port in page");
+        reporter.reportLogWithScreenshot("Continue to cart summary");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
-        reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
-        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
-        reporter.reportLogWithScreenshot("Port In form completed");
-        getRogersIgniteBundlesPage().contiueFromPortIn();
-        reporter.reportLogWithScreenshot("Continue from port in");
-
-        reporter.reportLogWithScreenshot("Port In completed");
-        getRogersIgniteBundlesPage().contiueToCartSummary();
 
 
 //        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
@@ -146,8 +145,6 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

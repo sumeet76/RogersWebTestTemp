@@ -51,12 +51,13 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
     public void rogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
        // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+//        reporter.reportLogWithScreenshot("Skip popup");
+//        getRogersLoginPage().clkSkipIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
@@ -66,9 +67,6 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Selected the NL Province");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
-       // getRogersHomePage().clkSmartInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
@@ -97,7 +95,7 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
         getRogersInternetPackageSelectionPage().clkAddSmartStream();
         reporter.reportLogWithScreenshot("Add smart stream add on");
         getRogersInternetPackageSelectionPage().clkDSTContinue();
-        getRogersInternetPackageSelectionPage().VerifyBestFit();
+//        getRogersInternetPackageSelectionPage().VerifyBestFit();
         reporter.reportLogWithScreenshot("Best Fit package for the selected");
         getRogersInternetPackageSelectionPage().clkBackToPackagesPage();
         reporter.reportLogWithScreenshot("Clicked on back to packages");
@@ -115,6 +113,12 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(), "Profile page has Launched", "Profile page has not Launched");
+
+        // continue button remains disabled until phone number is populated
+        if(getRogersInternetProfilePage().chkIfPhoneNumberExists())
+        {
+            getRogersInternetProfilePage().setPhone();
+        }
         getRogersInternetProfilePage().clkSubmitProfile();
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");

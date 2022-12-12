@@ -18,11 +18,11 @@ public class OVR_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_De
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_Dealer_EN_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_Dealer_EN_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.

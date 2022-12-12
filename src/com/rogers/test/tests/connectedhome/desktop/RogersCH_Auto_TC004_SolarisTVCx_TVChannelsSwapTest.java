@@ -37,7 +37,7 @@ import java.util.List;
 public class RogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwapTest extends BaseTestClass {
 
 
-    @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH"})
+    @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void rogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwap() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
@@ -46,8 +46,6 @@ public class RogersCH_Auto_TC004_SolarisTVCx_TVChannelsSwapTest extends BaseTest
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

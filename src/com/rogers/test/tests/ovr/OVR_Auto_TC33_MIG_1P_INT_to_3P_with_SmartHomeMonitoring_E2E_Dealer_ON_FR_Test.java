@@ -21,6 +21,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
     public void afterTest() {
         closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_ON_FR_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
@@ -34,8 +35,6 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM.getBanNumber(), TestDataHandler.tc_33_Ovr_Mig_Data_1pINT_to_3p_with_SHM.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
 
         reporter.reportLogWithScreenshot("search for account and select environment ");
-
-        reporter.reportLogWithScreenshot("Dashboard language Changed to French");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getCheckAvailabilityPage().useThisAddress();
@@ -62,7 +61,8 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        //getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
@@ -117,14 +117,10 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
 
         reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
-
-
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

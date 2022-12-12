@@ -21,7 +21,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
 	WebElement customerAddonReveiwLink;
 	
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement continueButton;
 
 	@FindBy(xpath = "(//span[@translate='global.cta.continue' and text()='Continue'])[2]/ancestor:: button")

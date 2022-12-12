@@ -30,6 +30,7 @@ public class OVR_Auto_TC47_MIG_Validate_Downgrade_Migration_Not_Supported_Dealer
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         //Mig flow from RHP to ISS.
+        //Use homephone only legacy sgi account
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP.getBanNumber(), TestDataHandler.tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();

@@ -39,6 +39,7 @@ public class RogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgradeTest extends BaseTe
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
@@ -51,8 +52,6 @@ public class RogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgradeTest extends BaseTe
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopUp(),"Displayed the Change TV Package popup","Download package has failed");
-        reporter.reportLogWithScreenshot("Launched the ChangeTV Package popup");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
        // reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContent(),"Verified the Change Package modal content", "Change Package Modal content is not matching");

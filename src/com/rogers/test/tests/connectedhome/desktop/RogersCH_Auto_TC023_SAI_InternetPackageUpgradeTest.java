@@ -38,31 +38,31 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
     public void rogersCH_Auto_TC023_SAI_InternetPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        getRogersLoginPage().clkSkipIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
-        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
-        reporter.reportLogWithScreenshot("Launched the agreement page");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetDashboardPage().clkSmartstreamPack();
         reporter.reportLogWithScreenshot("Launched the Smart stream Pack");
-        getRogersInternetDashboardPage().clkInternetChangeOK();
+        getRogersInternetDashboardPage().selectStandAloneInternetPackage(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getUpgradePlanFr());
+        reporter.reportLogWithScreenshot("Launched the agreement page");
+
+       // getRogersInternetDashboardPage().clkInternetChangeOK();
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        //getRogersOrderReviewPage().clkverifyAgeCheckbox();
-        //reporter.reportLogWithScreenshot("Verified the age");
+        getRogersOrderReviewPage().clkverifyAgeCheckbox();
+        reporter.reportLogWithScreenshot("Verified the age");
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details");
 

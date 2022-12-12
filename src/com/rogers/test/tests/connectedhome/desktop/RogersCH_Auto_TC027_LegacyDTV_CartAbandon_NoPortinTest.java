@@ -55,17 +55,17 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 	public void rogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortin() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		getRogersLoginPage().clkSkipIFrame();
-		reporter.reportLogWithScreenshot(" Click Skip");
-		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+
+		/*if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
-		}
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		}*/
+		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
@@ -80,7 +80,7 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Launched the Bundles Page");
 		getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-		getRogersHomePage().clkNoThnx();
+		//getRogersHomePage().clkNoThnx();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
 		reporter.reportLogWithScreenshot("Added to cart");
 		getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -89,15 +89,15 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersHomePage().clkSignOut();
 		reporter.reportLogWithScreenshot("Signed Out");
-		getRogersHomePage().clkEasyLogin();
+		//getRogersHomePage().clkEasyLogin();
+		getDriver().get(System.getProperty("QaUrl") + "consumer/easyloginriverpage?setLanguage=en");
 		reporter.reportLogWithScreenshot("Launched the SignIn popup 2");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
+		//getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
+		//getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		getRogersLoginPage().clkSkipIFrame();
-		reporter.reportLogWithScreenshot(" Click Skip");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -119,7 +119,7 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

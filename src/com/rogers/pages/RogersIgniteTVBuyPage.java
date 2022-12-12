@@ -101,7 +101,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement txtFlex10PackageCost;
 
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
 	WebElement txtFlex20PackageCost;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
@@ -132,6 +132,12 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span")
 	WebElement btnFlex20Package;
 
+	@FindBy(xpath = "//td[contains(@class,'second-child')]//div[@class='ds-price -inline']")
+	WebElement divBundleCostInline;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 5 Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
+	WebElement divBundleCost;
+
 	@FindBy(id = "addressLookup-modal")
 	WebElement txaIgniteAddressLookup;
 
@@ -158,6 +164,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='alert-box__copy']")
 	WebElement bnrAlertCopy;
+
+	@FindBy(xpath="//h2[@translate='global.modals.flexChannelsModal.preSelectedFlexChannelsHeader']")
+	WebElement txtPreselectedFlexChannels;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyThemepacksLater']")
 	WebElement bnrPriceIncreaseThemeCopy;
@@ -303,7 +312,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='See all channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
 	WebElement txtTotalChannelsRateCardHead;
 
-
 	@FindBy(xpath = "//button[@aria-label='See all flex channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
 	WebElement txtFlexChannelsRateCardHead;
 
@@ -327,13 +335,19 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Enter your address to check package prices and offers now.']/span")
 	WebElement btnEnterAddress;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]//span[@class='price-details__label']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]//span[@class='price-details__label']")
 	WebElement btnTotalChannelsFlex20;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all channels')]//span[@class='price-details__label']")
+	WebElement btnTotalChannelsPremier;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']")
+	WebElement btnFlexChannelsPremier;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']")
 	WebElement btnFlexChannelsFlex20;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 + Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
 	WebElement btnViewMoreDetailsFlex20;
 
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
@@ -589,6 +603,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
@@ -709,9 +724,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
+getReusableActionsInstance().staticWait(3000);
 		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
 		}
+		getReusableActionsInstance().waitForElementTobeClickable(buttonUpdateCart, 60);
 		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
 	
@@ -934,6 +951,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public void clkCheckoutCancel() {
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		getReusableActionsInstance().waitForElementTobeClickable(btnCheckoutCancel, 60);
 		getReusableActionsInstance().getWhenReady(btnCheckoutCancel, 20).click();
 	}
 
@@ -986,6 +1004,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnSolarisPremierPackage, 60).click();
 		//getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 30);
 		//getReusableActionsInstance().executeJavaScriptClick(btnSolarisPremierPackage);
+	}
+
+	public void selectIgniteBundle(){
+		//a[contains(@aria-label,'Ignite Starter')]/ancestor::div[@class='vertical-tile-component']//button[contains(@aria-label,'See all channels')]
 	}
 
 	/**
@@ -1688,6 +1710,22 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * Click Total Channels on Premier pkg
+	 * @author manpreet.kaur3
+	 */
+	public void clkTotalChannelsPremier() {
+		getReusableActionsInstance().getWhenReady(btnTotalChannelsPremier, 30).click();
+	}
+
+	/**
+	 * Click Flex Channels on Premier
+	 * @author manpreet.kaur3
+	 */
+	public void clkFlexChannelsPremier() {
+		getReusableActionsInstance().getWhenReady(btnFlexChannelsPremier, 30).click();
+	}
+
+	/**
 	 * verify Total Channels popup
 	 * @return true if displayed, else false
 	 * @author manpreet.kaur3
@@ -1733,6 +1771,25 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
+	 * verify Flex Channels filter is present in the dropdown
+	 * @return true if available in the list, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyFlexChannelsPresentInGenre() {
+		getReusableActionsInstance().waitForElementVisibility(drpdwnGenre, 90);
+		getReusableActionsInstance().getWhenReady(drpdwnGenre, 30).click();
+		Select DrpDwnGenreSel = new Select(drpdwnGenre);
+		List<WebElement> DrpDwnGenreList = DrpDwnGenreSel.getOptions();
+		for (WebElement indElem : DrpDwnGenreList) {
+			if (indElem.getText().contains("Flex Channels")) {
+				DrpDwnGenreSel.selectByVisibleText("Flex Channels");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Click on enter address button on offers page
 	 * @author manpreet.kaur3
 	 */
@@ -1761,4 +1818,105 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		return isBannerAvailable;
 	}
 
+	/**
+	 * Gets the Flex Channels header copy - Preselected
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyFlexChannelsHeader() {
+		//h2[@translate='global.modals.flexChannelsModal.preSelectedFlexChannelsHeader']
+		String flexChannelsHeaderDesired = "Pre-selected Flex channels";
+		String flexChannelsHeaderActual = getReusableActionsInstance().getWhenReady(txtPreselectedFlexChannels, 20).getText();
+		if(flexChannelsHeaderActual.equals(flexChannelsHeaderDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the bundles price in mini cart
+	 * @param bundleCost from offers page
+	 * @return true if price is matching with the bundles cost at offers page, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean isPriceCorrectMiniCart(String bundleCost) {
+		String bundleCostText = getReusableActionsInstance().getWhenReady(divBundleCostInline, 40).getAttribute("aria-label");
+		String[] subs= bundleCostText.split("\\$");
+		String[] bundleCostInline = subs[1].split(" ");
+		if(bundleCostInline[0].equals(bundleCost)){
+		return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Gets the selected Bundles cost
+	 * @return cost as String
+	 * @author manpreet.kaur3
+	 */
+	public String getBundlePrice() {
+		String bundleCostText = getReusableActionsInstance().getWhenReady(divBundleCost, 40).getAttribute("aria-label");
+		String[] subs= bundleCostText.split("\\$");
+		String[] bundleCost = subs[1].split(" ");
+		return bundleCost[0];
+	}
+
+	/**
+	 * To get Total Channel
+	 * @param bundleName from yaml file
+	 * @return total channels count on the offers page
+	 * @author manpreet.kaur3
+	 */
+	public String getTotalChannelCount(String bundleName) {
+
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisStarterPackage, 10);
+		String xpathBundlePackage = "//a[contains(@aria-label,'"+ bundleName +"')]/ancestor::div[@class='vertical-tile-component']//button[contains(@aria-label,'See all channels')]//span[@class ='price-details__count']";
+		String strChannels=getReusableActionsInstance().getWhenReady(By.xpath(xpathBundlePackage), 60).getText();
+		String channels = strChannels.trim();
+		return channels;
+	}
+
+	/**
+	 * To get Flex Channel for particular bundle
+	 * @param bundleName
+	 * @return flex channels count on the offers page
+	 * @author manpreet.kaur3
+	 */
+	public String getFlexChannelCount(String bundleName) {
+		By txtFlexChannelsRateCardHead= By.xpath("//button[@aria-label='See all flex channels included in the "+ bundleName +" Bundle']//span[@class ='price-details__count']");
+		String strFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardHead, 50).getText();
+		String flexChannels = strFlexChannels.trim();
+		return flexChannels;
+	}
+
+	/**
+	 * Click Total Channels for particular bundle
+	 * @param bundleName
+	 * @author manpreet.kaur3
+	 */
+	public void clkTotalChannels(String bundleName) {
+		By btnTotalChannels= By.xpath("//a[contains(@aria-label,'"+ bundleName +"')]/ancestor::div[@class='vertical-tile-component']//button[contains(@aria-label,'See all channels')]");
+		getReusableActionsInstance().getWhenReady(btnTotalChannels, 30).click();
+	}
+
+	/**
+	 * Click Flex Channels for particular bundle
+	 * @param bundleName
+	 * @author manpreet.kaur3
+	 */
+	public void clkFlexChannels(String bundleName) {
+		By btnFlexChannels = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::button[contains(@aria-label,'See all flex channels')]//span[@class='price-details__label']");
+		getReusableActionsInstance().getWhenReady(btnFlexChannels, 30).click();
+	}
+
+	/**
+	 * Click Add to cart for particular bundle
+	 * @param bundleName
+	 * @author manpreet.kaur3
+	 */
+	public void selectSolarisPackage(String bundleName) {
+		By btnSolarisPackage = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']//span[text()='Add to cart']");
+		getReusableActionsInstance().getWhenReady(btnSolarisPackage, 60).click();
+	}
 }

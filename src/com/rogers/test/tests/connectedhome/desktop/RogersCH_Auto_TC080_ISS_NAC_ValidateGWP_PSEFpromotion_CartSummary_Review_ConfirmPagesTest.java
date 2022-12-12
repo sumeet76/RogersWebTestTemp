@@ -36,12 +36,11 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
 
     @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_Review_ConfirmPages() {
-        reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkEasyInternet();
+        reporter.reportLogWithScreenshot("Launched the main QA page");
+        //getRogersHomePage().clkEasyInternet();
+        getDriver().get(System.getProperty("QaUrl")+"/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");

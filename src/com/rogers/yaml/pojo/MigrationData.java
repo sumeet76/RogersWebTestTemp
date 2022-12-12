@@ -22,6 +22,8 @@ public class MigrationData {
 	public String contactID2PToSAIISSTMP;
 	public String accountNo1PTo3pINTLID;
 	public String contactID1PTo3pINTLID;
+	public String accountNoLegacyToSATV;
+	public String contactIDLegacyToSATV;
 
 
 
@@ -329,6 +331,38 @@ public class MigrationData {
 	 */
 	public void setContactID1PTo3pINTLID(String contactID1PTo3pINTLID) {
 		this.contactID1PTo3pINTLID = contactID1PTo3pINTLID;
+	}
+
+	/**
+	 *
+	 * @return accountNoLegacyToSATV
+	 */
+	public String getAccountNoLegacyToSATV() {
+		return accountNoLegacyToSATV;
+	}
+
+	/**
+	 *
+	 * @param accountNoLegacyToSATV
+	 */
+	public void setAccountNoLegacyToSATV(String accountNoLegacyToSATV) {
+		this.accountNoLegacyToSATV = accountNoLegacyToSATV;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public String getContactIDLegacyToSATV() {
+		return contactIDLegacyToSATV;
+	}
+
+	/**
+	 *
+	 * @param contactIDLegacyToSATV
+	 */
+	public void setContactIDLegacyToSATV(String contactIDLegacyToSATV) {
+		this.contactIDLegacyToSATV = contactIDLegacyToSATV;
 	}
 
 }

@@ -52,21 +52,21 @@ public class OVR_Auto_TC23_Validate_CheckAvailability_Modal_NAC_and_ExistingCx_D
     public void ovr_Auto_TC23_Validate_CheckAvailability_Modal_ExistingCx_Dealer_EN_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-//        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
-//        reporter.reportLogWithScreenshot("Searching with dealer code");
-//        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
-//        reporter.reportLogWithScreenshot("Select SSP environment");
-//        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrMigrationData1pINTtoISSATL.getBanNumber(), TestDataHandler.ovrMigrationData1pINTtoISSATL.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
-//        reporter.reportLogWithScreenshot("search for account and select environment ");
-
-        //Use OSRCP as dealer code for ExistingIgniteAccounts.
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
-        reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.ovrMigrationData1pINTtoISSATL.getBanNumber(), TestDataHandler.ovrMigrationData1pINTtoISSATL.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        reporter.reportLogWithScreenshot("search for account and select environment ");
+
+        //Use OSRCP as dealer code for ExistingIgniteAccounts.
+//        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
+//        reporter.reportLogWithScreenshot("Searching with dealer code");
+//        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+//        reporter.reportLogWithScreenshot("Select SSP environment");
+//        reporter.reportLogWithScreenshot("Account Search Page");
+//        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+//        reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");

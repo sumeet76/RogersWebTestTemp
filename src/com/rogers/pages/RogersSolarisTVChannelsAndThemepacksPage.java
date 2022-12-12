@@ -23,10 +23,10 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='Remove Prime Time Pack from cart']")
 	WebElement btnRemovePrimePack;
 
-	@FindBy(xpath ="//button[@aria-label='Continue']/span")
+	@FindBy(xpath ="//button[@aria-label='Continue']/span | //button[@aria-label='Continuer']/span")
 	WebElement btnMiniCartContinue;
 
-	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span")
+	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span | //a[@aria-label='Non, il n’a pas de téléviseur 4K']/span")
 	WebElement btnNoIDontHave4K;
 
 	@FindBy(xpath="//span[text()='Continue']")
@@ -46,6 +46,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	WebElement btn4KContent;
 	//ds-icon[@name='chevron-right']/ancestor::button
 	//button[contains(@class,'continue-btn-4k')]//ins[@translate='global.cta.continue']
+
+	@FindBy(xpath = "//button[@aria-label='Add 4K Channel Pack to your Ignite TV package']/span")
+	WebElement btnAdd4kContent;
 
 	@FindBy(xpath = "//span[@translate='global.cta.bysSwapLaterContinue']")
 	WebElement btnExchangeLater;
@@ -332,8 +335,9 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clk4KContent() {
-		getReusableActionsInstance().waitForElementVisibility(btn4KContent, 120);
-		getReusableActionsInstance().getWhenReady(btn4KContent, 90).click();
+		getReusableActionsInstance().waitForElementVisibility(btnAdd4kContent, 120);
+		getReusableActionsInstance().waitForElementVisibility(btn4KContent, 30);
+		getReusableActionsInstance().getWhenReady(btn4KContent, 30).click();
 	}
 
 
