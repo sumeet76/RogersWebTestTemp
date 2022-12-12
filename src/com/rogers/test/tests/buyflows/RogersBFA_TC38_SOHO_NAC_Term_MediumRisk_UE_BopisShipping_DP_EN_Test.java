@@ -24,7 +24,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityBFA"})
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityNACBFA"})
 	public void tc38_sohoNACTermMediumRiskBopisTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		/*reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),
@@ -128,7 +128,6 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthYear());
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthMonth());
-		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
 		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc38_SOHO_NACTermMediumRiskUEOptionBOPIS.getCreditCardDetails());
@@ -161,8 +160,8 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
-				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+//		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
+//				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
@@ -195,7 +194,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		getRogersReviewOrderPage().clkFinancingConsentCheckbox();
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
-		getRogersReviewOrderPage().clkBopisConsentCheckbox();
+		//getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkEmailConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");

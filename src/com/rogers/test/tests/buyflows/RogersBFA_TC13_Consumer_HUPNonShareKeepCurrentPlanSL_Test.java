@@ -22,12 +22,10 @@ public class RogersBFA_TC13_Consumer_HUPNonShareKeepCurrentPlanSL_Test extends B
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc13HUPNonShareKeepCurrentPlanSL.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc13HUPNonShareKeepCurrentPlanSL.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
-            reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-            getRogersLoginPage().clkSkipIFrame();
-            getRogersLoginPage().switchOutOfSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
             getDriver().get(System.getProperty("AWSUrl"));

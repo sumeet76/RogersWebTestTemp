@@ -467,6 +467,15 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-test='continue-btn' and contains(.,'Continue')]")
 	WebElement dpAddonContinue;
 
+	@FindBy(xpath = "//p[contains(text(),'Please try another number')]/parent::div")
+	WebElement phoneNumReservedAlert;
+
+	@FindBy(xpath = "//button[@data-test='reserve-another-number']")
+	WebElement closeBtnReservedAlert;
+
+	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[4]")
+	WebElement selectAnotherPhoneNumber;
+
 	/**
 	 * To get the Title of post checkout page
 	 * @return checkoutTitle
@@ -1104,15 +1113,30 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
-		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 80).click();
+		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 30).click();
 	}
-
+	/**
+	 * This method verify Phone Number Reserved Alert Modal after Phone Number selection in the Choose a Number stepper
+	 * @return True if Alert Displayed else false
+	 * @author Subash.Nedunchezhian
+	 */
+	public boolean isReservedAlertDisplayed(){
+		 return getReusableActionsInstance().isElementVisible(phoneNumReservedAlert,10);
+	}
+	/**
+	 * This method select the another Available Phone number Radio button in the Choose a Number stepper
+	 * @author Subash.Nedunchezhian
+	 */
+	public void selectAnotherPhoneNumber(){
+			getReusableActionsInstance().clickWhenReady(closeBtnReservedAlert);
+			getReusableActionsInstance().getWhenReady(selectAnotherPhoneNumber, 30).click();
+			clkChooseNumberbutton();
+	}
 	/**
 	 * To verify Find More Avaialble Number Button in the Choose a Number stepper
 	 * @return True or false
 	 * @author karthic.hasan
 	 */
-
 	public boolean isFindMoreAvlNumberButtonPresent() {
 		return getReusableActionsInstance().isElementVisible(btnFindMoreAvlNumber);
 	}
@@ -1124,7 +1148,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkChooseNumberbutton() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(cityDropdown);
-		getReusableActionsInstance().getWhenReady(btnChooseNumberContinue, 60).click();
+		getReusableActionsInstance().getWhenReady(btnChooseNumberContinue, 30).click();
 	}
 
 	/**
@@ -1464,9 +1488,6 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clickSkipAutopay(){
-		/*getReusableActionsInstance().clickIfAvailable(skipAutoPay);
-		getReusableActionsInstance().clickIfAvailable(paymentContinueButton,10);
-		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn,10);*/
 		if(getReusableActionsInstance().isElementVisible(skipAutoPay, 20)) {
 			getReusableActionsInstance().getWhenReady(skipAutoPay, 10).click();
 			getReusableActionsInstance().getWhenReady(paymentContinueButton,10).click();

@@ -23,7 +23,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","SanityBFA"})
+	@Test(groups = {"RegressionBFA","NACBFA","SanityNACBFA"})
 	public void tc04_rogersNACTermBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
@@ -84,7 +84,6 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthYear());
-		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc04NACTermBopis.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -101,11 +100,9 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		// ***************Choose a Number Stepper*************//
 		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc04NACTermBopis.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
-		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-		//getRogersCheckoutPage().clkNoThanks();
 		// ***************Billing & Payment Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
 		getRogersCheckoutPage().enterBankDetails();

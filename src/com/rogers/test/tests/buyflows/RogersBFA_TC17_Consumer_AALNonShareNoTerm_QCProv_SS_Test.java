@@ -25,10 +25,10 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal&province=qc");
@@ -60,7 +60,7 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc17AALNoTermStandardShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectNonShareDataAndClkContinue(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALNoTermStandardShipping.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALNoTermStandardShipping.getTalkOptionIndex())),

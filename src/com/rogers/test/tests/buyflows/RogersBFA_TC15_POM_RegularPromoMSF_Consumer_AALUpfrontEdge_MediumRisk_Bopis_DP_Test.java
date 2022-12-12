@@ -121,11 +121,14 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
         //getRogersCheckoutPage().clkNoThanks();
         //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        if(getRogersCheckoutPage().isReservedAlertDisplayed()){
+            getRogersCheckoutPage().selectAnotherPhoneNumber();
+        }
         //reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 //"Billing Address is not selected");
         getRogersCheckoutPage().clickSkipAutopay();

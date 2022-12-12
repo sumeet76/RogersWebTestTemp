@@ -55,7 +55,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         reporter.hardAssert(getRogersPlanConfigPage().verifyByodSelectedDeviceSection(), "Plan Config loaded", "Plan config page not loaded");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc19AALBYODBopisShipping.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc19AALBYODBopisShipping.getTalkOptionIndex())),
@@ -82,8 +82,10 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
        //reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
-        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
+        if(getRogersCheckoutPage().isReservedAlertDisplayed()){
+            getRogersCheckoutPage().selectAnotherPhoneNumber();
+        }
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
@@ -97,7 +99,6 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

@@ -31,10 +31,11 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_MLNonShare_BasicPlan_StdShipping_C
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc20AALTermMLNonSEBasicPlanStdShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc20AALTermMLNonSEBasicPlanStdShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");

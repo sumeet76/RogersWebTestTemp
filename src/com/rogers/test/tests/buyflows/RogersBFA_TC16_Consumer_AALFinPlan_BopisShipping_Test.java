@@ -27,7 +27,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
     public void tc16_rogersAalFinPlanBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         String deviceName = TestDataHandler.tc16AALFinPlanBopisShipping.getNewDevice();
-        getDriver().get(System.getProperty("AWSUrl")+"/iphone-13");
+        getDriver().get(System.getProperty("AWSUrl")+"/iphone-13?colour=blue");
         reporter.reportLogWithScreenshot("Deeplinking to Device Config Page");
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
@@ -41,8 +41,8 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16AALFinPlanBopisShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(),
-                "Credit Evaluation Popup Displayed", "Credit Evaluation popup not displayed");
+//        reporter.softAssert(getRogersDeviceCataloguePage().verifyCreditEvaluationPopupPresent(),
+//                "Credit Evaluation Popup Displayed", "Credit Evaluation popup not displayed");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(),
                 "Shared/Nonshared modal displayed", "Shared/Non-shared modal not displayed");
         String aalSharingType = TestDataHandler.tc16AALFinPlanBopisShipping.getSharingType();
@@ -74,10 +74,8 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc16AALFinPlanBopisShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
-        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");

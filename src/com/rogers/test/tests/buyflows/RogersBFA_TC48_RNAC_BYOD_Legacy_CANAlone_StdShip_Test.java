@@ -24,7 +24,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA"})
+    @Test(groups = {"RegressionBFA","CONNACBFA"})
     public void tc48_rnacByod_Legacy_StdShipTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
 
@@ -35,15 +35,15 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
 //        getRogersLoginPage().switchOutOfSignInIFrame();
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.BFA_ProdTest_tc03_AALBYOD_StdShipping.getBan());
         //############################Plan config page###############################
-        getDriver().get(System.getProperty("QaUrl")+"phones/bring-your-own-device");
-        Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
+        getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device");
+        //Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_Legacy_NACByod.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_Legacy_NACByod.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+        //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         //getRogersLoginPage().clkSkipIFrame();
         //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
@@ -55,33 +55,33 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //***************Create Profile Stepper*************//
-        if(!(custInfoMap.size()==0)) {
-            if (custInfoMap.containsKey("emailAddress")) {
-                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
-                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
-                reporter.reportLogWithScreenshot("Email address entered successfullly");
-            }
-            if (custInfoMap.containsKey("firstName")) {
-                getRogersCheckoutPage().setFirstNameCreateProfile();
-            }
-            if (custInfoMap.containsKey("lastName")) {
-                getRogersCheckoutPage().setLastNameCreateProfile();
-            }
-            if (custInfoMap.containsKey("homePhone")) {
-                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
-            }
-            if (custInfoMap.containsKey("billingProvince")) {
-                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
-                reporter.reportLogWithScreenshot("Address entered successfullly");
-            }
-            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
-            reporter.reportLogPassWithScreenshot("Language Selected");
-            getRogersCheckoutPage().switchToRecaptchaIFrame();
-            getRogersCheckoutPage().clkImNotRombotCheckbox();
-            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
-            getRogersCheckoutPage().switchOutOfGoogleIFrame();
-            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
-        }
+//        if(!(custInfoMap.size()==0)) {
+//            if (custInfoMap.containsKey("emailAddress")) {
+//                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+//                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+//                reporter.reportLogWithScreenshot("Email address entered successfullly");
+//            }
+//            if (custInfoMap.containsKey("firstName")) {
+//                getRogersCheckoutPage().setFirstNameCreateProfile();
+//            }
+//            if (custInfoMap.containsKey("lastName")) {
+//                getRogersCheckoutPage().setLastNameCreateProfile();
+//            }
+//            if (custInfoMap.containsKey("homePhone")) {
+//                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
+//            }
+//            if (custInfoMap.containsKey("billingProvince")) {
+//                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
+//                reporter.reportLogWithScreenshot("Address entered successfullly");
+//            }
+//            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
+//            reporter.reportLogPassWithScreenshot("Language Selected");
+//            getRogersCheckoutPage().switchToRecaptchaIFrame();
+//            getRogersCheckoutPage().clkImNotRombotCheckbox();
+//            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
+//            getRogersCheckoutPage().switchOutOfGoogleIFrame();
+//            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
+//        }
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
                 "CreditEvaluation Title not present");
