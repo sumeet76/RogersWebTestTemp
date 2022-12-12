@@ -96,7 +96,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
+		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
