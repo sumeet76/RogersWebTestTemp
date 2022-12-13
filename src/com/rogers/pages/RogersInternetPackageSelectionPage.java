@@ -150,22 +150,22 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement txtGWP;
 	//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']
 
-	@FindBy(xpath="//span[contains(text(), 'Powerful WiFi 6')]")
+	@FindBy(xpath="//span[contains(text(), 'Powerful WiFi 6') or contains(text(), 'Technologie WiFi 6')]")
 	WebElement txtWiFi6;
 
 	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
 	WebElement txtPackageDetails;
 
-	@FindBy(xpath = "// a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
 	WebElement chkbox150IgniteStreaming;
 
-	@FindBy(xpath = "// a[@aria-label='Ignite 500 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	@FindBy(xpath = "// a[@aria-label='Ignite 500 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
 	WebElement chkbox500IgniteStreaming;
 
-	@FindBy(xpath = "// a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	@FindBy(xpath = "// a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
 	WebElement chkbox1GbpsSmartStream;
 
-	@FindBy(xpath = "// a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::div[@class='ds-checkbox__box my-12 rds-icon-check']")
+	@FindBy(xpath = "// a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
 	WebElement chkbox2500IgniteStreaming;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
