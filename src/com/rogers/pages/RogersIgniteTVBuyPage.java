@@ -542,9 +542,21 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		}
 		getReusableActionsInstance().getWhenReady(upChevronCartSummary, 20).click();
 	}
-	
+
+	/**
+	 * Validates the bundleName in mini cart
+	 *
+	 * @param bundleName from offers page
+	 * @return true if bundle name is matching, else false
+	 * @author nandan.master
+	 */
+	public boolean verifyBundleNameMiniCart(String bundleName) {
+		return getReusableActionsInstance().isElementVisible(By.xpath("//td[normalize-space()='"+bundleName+"']"));
+	}
+
 	/**
 	 * To verify gwp promotion in the cart summary
+	 *
 	 * @return true if the promotion is available else return false
 	 * @author Saurav.Goyal
 	 */

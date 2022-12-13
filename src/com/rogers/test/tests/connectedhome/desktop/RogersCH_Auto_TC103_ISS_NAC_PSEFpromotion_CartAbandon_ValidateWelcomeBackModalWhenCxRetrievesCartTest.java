@@ -59,14 +59,14 @@ public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelco
         reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPacakesPage(),"Packages page has Launched","Packages page has not Launched");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPackagesPage(),"Packages page has Launched","Packages page has not Launched");
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Click SS Availability");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         String pkgPrice = getRogersInternetPackageSelectionPage().get150SSPkgPrice();
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyIgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify150IgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
