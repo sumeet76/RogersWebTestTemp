@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test 8gbps offer banner and cart summary for 2.5gbps package selection with GPON address - (SAI + ISS) NAC flow
- *
+ * TC048_CH-17286_8 Gigabit shop page enhancement_SAI+ISS NAC_GPON_Term Contract_Launch 8 gigabit Url_Validate the shop page is displayed as per mocks_ON_CH_EN
  * @author nandan.master
  *
  * Test steps:
