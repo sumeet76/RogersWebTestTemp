@@ -113,7 +113,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");

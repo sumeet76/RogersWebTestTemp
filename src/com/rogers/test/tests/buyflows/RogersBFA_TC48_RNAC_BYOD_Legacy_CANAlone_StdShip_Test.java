@@ -102,7 +102,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");

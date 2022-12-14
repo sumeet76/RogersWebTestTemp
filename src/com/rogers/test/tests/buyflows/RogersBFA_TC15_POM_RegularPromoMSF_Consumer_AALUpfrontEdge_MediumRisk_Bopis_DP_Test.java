@@ -139,7 +139,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------
