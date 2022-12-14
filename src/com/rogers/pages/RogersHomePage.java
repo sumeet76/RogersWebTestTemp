@@ -1143,7 +1143,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 60);
+		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,60);
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 20);
 	}
 
 	/**
