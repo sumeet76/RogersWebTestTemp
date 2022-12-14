@@ -19,12 +19,11 @@ import java.lang.reflect.Method;
  *2. Login with valid credentails for 1 profile 1 account.
  *3. Cx should get serviceability modal to launch Internet Offers Page
  *
- *
  **/
 
 public class RogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCxRedirectsToOffersPageTest extends BaseTestClass {
 	
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
+	@Test
 	public void rogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCxRedirectsToOffersPage() {
 		reporter.reportLogWithScreenshot("Launched the Deeplink");
 		getDriver().get(System.getProperty("QaUrl")+"home/hto-eop");
