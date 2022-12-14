@@ -40,6 +40,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath= "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]")
 	WebElement headerIgnitePremier;
 
+	@FindBy(xpath="//button//ds-icon[@name='right']")
+	WebElement scrollHorizontalToChoosePlan;
+
 	@FindBy(xpath="//h3[text()='Ignite Starter']")
 	WebElement headerIgniteStarter;
 
@@ -1527,6 +1530,11 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 
+	public void scrollHorizontalToPremier() {
+		getReusableActionsInstance().waitForElementTobeClickable(scrollHorizontalToChoosePlan,10);
+		getReusableActionsInstance().scrollToElementAndClick(scrollHorizontalToChoosePlan);
+	}
+
 	/**
 	 * To scroll to Ignite Starter at offers page
 	 * @author Manpreet.Kaur3
@@ -1805,6 +1813,11 @@ getReusableActionsInstance().staticWait(3000);
 
 	public void clkRecommendedPkgViewMoreDetails() {
 		getReusableActionsInstance().getWhenReady(lnkRecommendedPkgViewMoreDetails, 30).click();
+	}
+
+	public void clkViewMoreDetails(String packageName){
+		getReusableActionsInstance().clickIfAvailable(By.xpath("//a[@aria-label='"+packageName
+				+" View more details']//span[text()='View more details']"));
 	}
 
 	public boolean verifyMoreDetailsPopup() {

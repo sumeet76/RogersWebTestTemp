@@ -146,6 +146,8 @@ public class TestDataHandler {
 	public static AccountData tupeloUpgradeTest;
 	public static AccountData TC032_SAI_AddingSmartStream;
 	public static AccountData TC030_Internet_PackageUpgrade;
+
+	public static AccountData tc106StandaloneInternetAccount;
 	public static RedesignRpotgData tc01NACTermHighRiskStdShipping;
 	public static RedesignRpotgData tc02NACNoTermStandardShipping;
 	public static RedesignRpotgData tc03POMNACTermBOPISShipping;
@@ -544,7 +546,8 @@ public class TestDataHandler {
 		tc74_SaiBaseLineHomeAddress= YamlHandler.getCableAccountData("TC74_SaiBaseLineHomeAddress");
 		tc75_IgniteTVBaseLineHomeAddress= YamlHandler.getCableAccountData("TC75_IgniteTVBaseLineHomeAddress");
 		tc76_Legact2Pto3PIgniteBasementHousePortinHot= YamlHandler.getCableAccountData("TC76_Legact2Pto3PIgniteBasementHousePortinHot");
-		}
+		tc106StandaloneInternetAccount = YamlHandler.getCableAccountData("TC106_StandaloneInternetAccount");
+	}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
 		bdConnection = YamlHandler.getDBConnection();
