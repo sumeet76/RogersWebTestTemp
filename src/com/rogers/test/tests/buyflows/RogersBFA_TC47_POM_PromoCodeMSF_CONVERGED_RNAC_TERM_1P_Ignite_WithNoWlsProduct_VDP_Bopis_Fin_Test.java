@@ -32,7 +32,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         reporter.reportLogWithScreenshot("New or existing customer modal Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineBtnForIgniteCustomer(),
                 "Add a line button is verified successfully for Internet,TV or SHM customer","Add a line button is not displayed for Internet,TV or SHM customer");
-        //Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername(), TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
+        Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername(), TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername());
         getRogersLoginPage().clkContinueSignIn();
@@ -71,32 +71,33 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
                 "Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //***************Create Profile Stepper*************//
-//        if(!(custInfoMap.size()==0)) {
-//            if (custInfoMap.containsKey("emailAddress")) {
-//                getRogersCheckoutPage().setEmailCreateProfile();
-//                reporter.reportLogWithScreenshot("Email address entered successfully");
-//            }
-//            if (custInfoMap.containsKey("firstName")) {
-//                getRogersCheckoutPage().setFirstNameCreateProfile();
-//            }
-//            if (custInfoMap.containsKey("lastName")) {
-//                getRogersCheckoutPage().setLastNameCreateProfile();
-//            }
-//            if (custInfoMap.containsKey("homePhone")) {
-//                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
-//            }
-//            if (custInfoMap.containsKey("billingProvince")) {
-//                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
-//                reporter.reportLogWithScreenshot("Address entered successfullly");
-//            }
-//            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
-//            reporter.reportLogPassWithScreenshot("Language Selected");
-//            getRogersCheckoutPage().switchToRecaptchaIFrame();
-//            getRogersCheckoutPage().clkImNotRombotCheckbox();
-//            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
-//            getRogersCheckoutPage().switchOutOfGoogleIFrame();
-//            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
-//        }
+        if(!(custInfoMap.size()==0)) {
+            if (custInfoMap.containsKey("emailAddress")) {
+                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+                reporter.reportLogWithScreenshot("Email address entered successfullly");
+            }
+            if (custInfoMap.containsKey("firstName")) {
+                getRogersCheckoutPage().setFirstNameCreateProfile();
+            }
+            if (custInfoMap.containsKey("lastName")) {
+                getRogersCheckoutPage().setLastNameCreateProfile();
+            }
+            if (custInfoMap.containsKey("homePhone")) {
+                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
+            }
+            if (custInfoMap.containsKey("billingProvince")) {
+                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
+                reporter.reportLogWithScreenshot("Address entered successfullly");
+            }
+            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
+            reporter.reportLogPassWithScreenshot("Language Selected");
+            getRogersCheckoutPage().switchToRecaptchaIFrame();
+            getRogersCheckoutPage().clkImNotRombotCheckbox();
+            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
+            getRogersCheckoutPage().switchOutOfGoogleIFrame();
+            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
+        }
         //***************Credit Evaluation Stepper*************//
         getRogersCheckoutPage().switchToCreditCardIFrame();
         getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetails());
