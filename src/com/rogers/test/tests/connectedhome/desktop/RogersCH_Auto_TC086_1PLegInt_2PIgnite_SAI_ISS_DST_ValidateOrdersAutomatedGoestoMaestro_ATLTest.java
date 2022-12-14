@@ -104,7 +104,7 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
         //reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
         //getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();
         //reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
-        getRogersInternetPackageSelectionPage().clkInternet1GbpsPackage();
+        getRogersInternetPackageSelectionPage().clkSmartStream1GbpsPackage();
         reporter.reportLogWithScreenshot("Selected Add to Cart");
         getRogersInternetPackageSelectionPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Selected Yes I understand button");
