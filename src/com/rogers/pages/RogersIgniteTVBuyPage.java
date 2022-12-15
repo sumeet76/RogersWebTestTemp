@@ -1852,7 +1852,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @return true if price is matching with the bundles cost at offers page, else false
 	 * @author manpreet.kaur3
 	 */
-	public boolean isPriceCorrectMiniCart(String bundleCost) {
+	public Boolean isPriceCorrectMiniCart(String bundleCost) {
 		String bundleCostText = getReusableActionsInstance().getWhenReady(divBundleCostInline, 40).getAttribute("aria-label");
 		String[] subs= bundleCostText.split("\\$");
 		String[] bundleCostInline = subs[1].split(" ");
@@ -1900,6 +1900,28 @@ getReusableActionsInstance().staticWait(3000);
 		String strFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardHead, 50).getText();
 		String flexChannels = strFlexChannels.trim();
 		return flexChannels;
+	}
+
+	public Boolean validateOTBCForBundle(String bundleName) {
+		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(text(), 'CREDIT')]");
+		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 50);
+	}
+
+	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
+		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//span[@class='-ml4']");
+		String otbcText = getReusableActionsInstance().getWhenReady(divOTBCRateCardHead, 40).getText();
+		String[] subs= otbcText.split("\\$");
+		String[] otbcCostInLine = subs[1].split(" ");
+		String[] splitter = otbcCostInLine.toString().split("\\.");
+		int decimalLength = splitter[1].length();  // After Decimal Count
+
+		if (decimalLength == 2) {
+			return true;
+		}
+		else {
+			return false;
+		}
+
 	}
 
 	/**
