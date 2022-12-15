@@ -786,7 +786,7 @@ public class BaseTestClass {
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                getDriver().manage().deleteAllCookies();
+                //getDriver().manage().deleteAllCookies();
                 break;
 
             case "redesignrogers":

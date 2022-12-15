@@ -53,13 +53,11 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
     public void rogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCable() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101_2P_HTO_HotCableAccount.getAccountDetails().getBan());
@@ -110,8 +108,8 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
-        reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
-        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
+      //  reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
+       // reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");
 
         getRogersOrderReviewPage().clkShowPriceBreakdown();
         reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
