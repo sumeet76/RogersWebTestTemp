@@ -16,6 +16,10 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
     public void oneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("address");
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
         reporter.reportLogWithScreenshot("Service Availability");
@@ -49,6 +53,7 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         reporter.reportLogWithScreenshot("4k tv pop up");
     //    getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("4k tv pop up continue clicked");
+        reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn01(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr01());
         reporter.reportLogWithScreenshot("Home Phone Add on selected");
@@ -115,6 +120,5 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
     public void afterTest() {
         closeSession();
     }
-
 }
 

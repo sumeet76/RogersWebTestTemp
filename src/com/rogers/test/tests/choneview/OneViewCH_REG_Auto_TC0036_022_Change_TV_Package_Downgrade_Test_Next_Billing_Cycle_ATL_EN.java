@@ -19,7 +19,8 @@ public class OneViewCH_REG_Auto_TC0036_022_Change_TV_Package_Downgrade_Test_Next
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
 		getTVDashboardPage().clickChangePackage();
 		reporter.reportLogWithScreenshot("Changed TV Package clicked");
-		getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
+		getInternetDashboardPage().clickSelectbutton();
+//		getTVDashboardPage().selectTVPackage(TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanEn(),TestDataHandler.TC023_TVPackageDowngrade.getAccountDetails().getDowngradePlanFr());
 		reporter.reportLogWithScreenshot("Lowest TV Package selected");
 
 		//For Flex Channels - Exchange Later
@@ -35,7 +36,7 @@ public class OneViewCH_REG_Auto_TC0036_022_Change_TV_Package_Downgrade_Test_Next
 		reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
 		getTVDashboardPage().clickContinueOnSelectDateChange();
 		reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-	//	getRogersOVOrderReviewPage().clkSubmit();
+		getRogersOVOrderReviewPage().clkSubmit();
 	//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 	}

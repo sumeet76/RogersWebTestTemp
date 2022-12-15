@@ -24,7 +24,7 @@ public class OneViewCH_Auto_TC053_2557_AccountOverviewPage_View_Bill_ON_EN_Test 
         getAccountOverViewPage().moveToiframe();
         reporter.hardAssert(getAccountOverViewPage().verifyRequiredMessage(),"Header displayed","Header not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyBillAmount(),"Bill amount is displayed","Bill amount is not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displayed","Welcome text is not displayed");
+//        reporter.hardAssert(getAccountOverViewPage().verifyWelcomeText(),"Welcome text is displayed","Welcome text is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyBillMessage(),"Bill message is displayed","Bill message is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyProductDisplayed(),"Product is displayed","Product is not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyAccountMessages(),"Account message is displayed","Account message is not displayed");

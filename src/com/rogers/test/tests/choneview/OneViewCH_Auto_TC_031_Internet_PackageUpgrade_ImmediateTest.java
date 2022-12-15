@@ -44,10 +44,10 @@ public class OneViewCH_Auto_TC_031_Internet_PackageUpgrade_ImmediateTest extends
     }
 
 
-    @AfterMethod(alwaysRun = true)
-    public void afterTest() {
-        closeSession();
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterTest() {
+//        closeSession();
+//    }
 
 }
 

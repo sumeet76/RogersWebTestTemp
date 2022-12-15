@@ -81,7 +81,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
-        getRogersIgniteBundlesPage().addAdditionalPods(5);
+        //getRogersIgniteBundlesPage().addAdditionalPods(5);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
         reporter.reportLogWithScreenshot("Continue to Home phone Add ons page");
@@ -122,7 +122,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
         reporter.reportLogWithScreenshot("Credit Evaluation Page");
-        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
+        getCreditCheckPage().setDriversLicense("British Columbia",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("BC"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
         reporter.reportLogWithScreenshot("credit form completed");
         getCreditCheckPage().clkAuthorize();
@@ -135,6 +135,8 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

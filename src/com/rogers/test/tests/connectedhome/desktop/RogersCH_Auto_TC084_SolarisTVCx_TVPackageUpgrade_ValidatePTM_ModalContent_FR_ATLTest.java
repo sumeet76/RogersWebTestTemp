@@ -36,6 +36,7 @@ public class RogersCH_Auto_TC084_SolarisTVCx_TVPackageUpgrade_ValidatePTM_ModalC
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

@@ -38,10 +38,9 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Added to Cart");
-
-		getRogersIgniteBundlesPage().clkKeepNumberbtn();
-		reporter.reportLogWithScreenshot("keep number");
 		getRogersIgniteBundlesPage().noPortInPopup();
+//		getRogersIgniteBundlesPage().clkKeepNumberbtn();
+//		reporter.reportLogWithScreenshot("keep number");
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
@@ -54,25 +53,13 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 /* getRogersIgniteBundlesPage().fourKTVPopup();
    getRogersIgniteBundlesPage().contiue4KContent();*/
 		getRogersIgniteBundlesPage().clickExchangeLater();
-//		reporter.reportLogWithScreenshot("customer add review link");
-//		getRogersOVChannelsAndThemePacksPage().clkCustomerAddonReview();
-		reporter.reportLogWithScreenshot("click standalone channels tab");
-		getTVDashboardPage().selectStandaloneChannelsTab();
-		getTVDashboardPage().clickAddChannel();
-		reporter.reportLogWithScreenshot("add channel");
-		getTVDashboardPage().clickThemepacksTab();
-		getTVDashboardPage().addThemepack();
-		reporter.reportLogWithScreenshot("add themepack");
-		getTVDashboardPage().verifyRemoveButton();
-		reporter.reportLogWithScreenshot("verify theme pack");
-		getTVDashboardPage().clickContinueForPackage();
-		reporter.reportLogWithScreenshot("continue to calling package");
+		//getRogersIgniteBundlesPage().clickReviewAddons();
+		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("Internet Addons");
 		getRogersIgniteBundlesPage().validateInternetAddOnsHeader();
 		getCustomerProfilePage().clkContinue();
-
 		reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Home Phone Header Display", "Home Phone Header not Displayed");
 		reporter.reportLogWithScreenshot("Home Phone Add on page displayed");
 		getHomePhoneAddonsPage().clkContinue();
@@ -95,10 +82,10 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		getCreditCheckPage().clkContinue();
 
 		reporter.reportLogWithScreenshot("Home Phone selection page");
-//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+		reporter.reportLogWithScreenshot("Phone Number Selected");
 		getCreditCheckPage().goToPageBottom();
 		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("installation options");
 		reporter.reportLogWithScreenshot("Delivery by Appointment installation");
@@ -114,11 +101,11 @@ public class OneViewCH_REG_Auto_TC0005_1624_Migration_1P_To_3P_Test_ATL_EN exten
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();
-		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
+		//	reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("Submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+	//	reporter.reportLogWithScreenshot("Submit order");
+	//	getRogersOVCheckoutPage().clkSubmit();
+	//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }

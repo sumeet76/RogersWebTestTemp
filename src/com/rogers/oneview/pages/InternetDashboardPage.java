@@ -23,7 +23,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.select']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']/ancestor::button)[3]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -374,7 +374,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickContinueChangeInternetPackage() {
 		//getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
-		getReusableActionsInstance().waitForElementTobeClickable(btnContnueReset, 30);
+		getReusableActionsInstance().waitForElementTobeClickable(btnContnueReset, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnContnueReset);
 	}
 	/*
@@ -626,7 +626,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickSelectbutton() {
 //		getReusableActionsInstance().getWhenReady(packageName,60).click();
-		getReusableActionsInstance().waitForElementVisibility(packageName, 30);
+		getReusableActionsInstance().waitForElementVisibility(packageName, 60);
 		getReusableActionsInstance().executeJavaScriptClick(packageName);
 	}
 

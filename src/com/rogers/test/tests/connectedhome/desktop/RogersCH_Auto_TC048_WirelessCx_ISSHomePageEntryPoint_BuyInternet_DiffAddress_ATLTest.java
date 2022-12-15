@@ -43,6 +43,7 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

@@ -21,6 +21,7 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_and_
     public void afterTest() {
         closeSession();
     }
+
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_FR_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
@@ -64,8 +65,8 @@ public class OVR_Auto_TC29_MIG_1P_INT_to_2P_TV_INT_with_SmartHomeMonitoring_and_
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
-//        getRogersIgniteBundlesPage().clickReviewAddons();
-//        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
+        getRogersIgniteBundlesPage().clickReviewAddons();
+        reporter.reportLogWithScreenshot("Reviewed customer's add ons");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();

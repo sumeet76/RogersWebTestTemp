@@ -19,7 +19,7 @@ public class OVR_Auto_TC06_Buyflow_Anonymous_NAC_SAI_E2E_Dealer_ON_EN_Test exten
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity","ReleaseSanity"})
     public void ovr_Auto_TC06_Anonymous_NAC_SAI_E2E_Dealer_ON_EN_Test() {

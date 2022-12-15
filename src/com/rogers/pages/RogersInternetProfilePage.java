@@ -167,6 +167,10 @@ public class RogersInternetProfilePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnPhone, 3).clear();
 		getReusableActionsInstance().getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);
 	}
+
+	public boolean chkIfPhoneNumberExists() {
+		return btnPhone.getAttribute("value").isEmpty();
+	}
 	
 	/**
 	 * Click the Submit button on the profile page

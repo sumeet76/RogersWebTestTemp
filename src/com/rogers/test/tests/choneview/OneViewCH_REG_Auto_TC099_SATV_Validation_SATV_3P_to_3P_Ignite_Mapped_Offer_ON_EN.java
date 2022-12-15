@@ -15,7 +15,7 @@ public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mappe
     public void oneViewCH_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mapped_Offer_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc099_SATV3P_To_SATV3P_Mapped_Offers.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().clickIgniteTVBadge();
+        getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("launch the Tv Dashboard page");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
@@ -30,17 +30,18 @@ public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mappe
         reporter.reportLogWithScreenshot("Exchange later is selected");
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
         reporter.reportLogWithScreenshot("click continue at channels and themepack");
-        getTVDashboardPage().clickContinueOn4kTv();
+//        getTVDashboardPage().clickContinueOn4kTv();
+        getTVDashboardPage().clickNoOn4KTvModal();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
-        getTVDashboardPage().clickContinue4kChannelPack();
-        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
-        getInternetDashboardPage().clickImmediateBill();
+//        getTVDashboardPage().clickContinue4kChannelPack();
+//        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
+        getTVDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
         getTVDashboardPage().continueFromChangeDate();
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -50,7 +51,7 @@ public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mappe
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-//        closeSession();
+        closeSession();
     }
 
 }

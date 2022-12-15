@@ -50,11 +50,18 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundle() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+        // changes in contentful page - no longer displayed.
+        /* reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();
         reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkServiceability(); */
+
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
 
        /* reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
@@ -87,7 +94,7 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         reporter.reportLogWithScreenshot("Selected 2 STBs");
         getRogersIgniteTVBuyPage().clkUpdateCart();
-        reporter.reportLogWithScreenshot("Updated Cart");
+        reporter.reportLogWithScreenshot("Cart updated with additional STBs");
         getRogersIgniteTVBuyPage().clkCheckout();
 
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

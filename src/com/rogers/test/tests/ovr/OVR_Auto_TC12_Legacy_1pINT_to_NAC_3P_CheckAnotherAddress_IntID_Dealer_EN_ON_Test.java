@@ -23,7 +23,7 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Dealer_EN_ON_Test() throws InterruptedException {
+    public void ovr_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Dealer_EN_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -107,7 +107,6 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
