@@ -77,28 +77,17 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         reporter.reportLogWithScreenshot("Selected Address on file");
         getRogersHomePage().clkUseAddress();
         reporter.reportLogWithScreenshot("Use the address on file");
+        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Home phone selected");
-       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-       // getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-       // reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        getRogersIgniteTVBuyPage().clkTotalChannelsFlex20();
 
-       reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewTotalChannelsPopupModal(), "View Total Channels Popup Modal has launched", "View Total Channels Popup Modal has not launched");
-       reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
-        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
-        reporter.reportLogWithScreenshot("Clicked on Close Total Channels popup Modal");
-       getRogersIgniteTVBuyPage().clkFlexChannelsFlex20();
-        reporter.reportLogWithScreenshot("Clicked on Flex channels link");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewFlexChannelsPopupModal(), "View Flex Channels Popup Modal has launched", "View Flex Channels Popup Modal has not launched");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
-        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
-        reporter.reportLogWithScreenshot("Clicked on Close Flex Channels popup Modal");
-         getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
+        getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
         reporter.reportLogWithScreenshot("Clicked on View More Details");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyMoreDetailsPopup(), "View More Details Modal has launched", "View More Details Popup Modal has not launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCartDetails(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
+
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();

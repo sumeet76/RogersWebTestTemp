@@ -356,6 +356,17 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement iconCloseModal;
 
+	@FindBy(xpath = "//div[@class='section__pricing']//span[@class='-ml4']")
+	WebElement txtOTBCCartDetails;
+
+	@FindAll({
+			@FindBy(xpath="//div[@class='ds-tile h-100 ds-bgcolor-white ds-shadow ds-no-overflow ds-corners']//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
+			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
+			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit appears in')]"),
+			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']")
+	})
+	WebElement txtOTBCCartSummary;
+
 	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageMobile;	
 	
@@ -1902,9 +1913,17 @@ getReusableActionsInstance().staticWait(3000);
 		return flexChannels;
 	}
 
-	public Boolean validateOTBCForBundle(String bundleName) {
+	public Boolean validateOTBCBundleOffers(String bundleName) {
 		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(text(), 'CREDIT')]");
 		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 50);
+	}
+
+	public Boolean validateOTBCCartDetails() {
+		return getReusableActionsInstance().isElementVisible(txtOTBCCartDetails, 40);
+	}
+
+	public Boolean validateOTBCCartSummary() {
+		return getReusableActionsInstance().isElementVisible(txtOTBCCartSummary, 40);
 	}
 
 	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
