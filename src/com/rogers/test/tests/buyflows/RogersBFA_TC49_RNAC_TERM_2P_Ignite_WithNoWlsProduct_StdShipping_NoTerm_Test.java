@@ -23,8 +23,8 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdShipping_NoT
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","CONNACBFA"})
-    public void tc49_RNAC_2p_Ignite_StdShippingTest() throws InterruptedException, IOException {
+    @Test(groups = {"RegressionBFA","CovergeBFA"})
+    public void tc49_RNAC_2p_Ignite_StdShippingNoTermTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc49_2P_Ignite_NACNoTermTermSS.getDeviceName());

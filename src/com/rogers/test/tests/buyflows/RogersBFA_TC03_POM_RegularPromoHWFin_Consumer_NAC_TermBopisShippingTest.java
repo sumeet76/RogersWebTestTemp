@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC03 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with POTG Shipping(Finance plan with POTG)_E2E
  */
 
-public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTest extends BaseTestClass {
+public class RogersBFA_TC03_POM_RegularPromoHWFin_Consumer_NAC_TermBopisShippingTest extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -60,7 +60,7 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 //				"Postal Code not matching");
 		//reporter.hardAssert(getRogersDeviceConfigPage().verifyBreadCrumb(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
 		reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
-				"Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+				"Regular Promo - HW Fin Displayed","Regular Promo - HW Fin not Displayed");
 		String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
 		reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
 		getRogersDeviceConfigPage().clickContinueButton();
@@ -89,8 +89,6 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
 		reporter.reportLogPassWithScreenshot(
 				"Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
-		reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
-				"Promo Discount amount Line Item displayed","Promo line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
@@ -178,8 +176,6 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		// ***************Order Review Page****************************************************
 		reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
-		reporter.hardAssert(getRogersReviewOrderPage().verifyCartLineItem(),
-				"Promo Discount amount Line Item displayed","Promo line item not displayed");
 		String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
 		reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();

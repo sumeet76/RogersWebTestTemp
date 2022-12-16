@@ -25,7 +25,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc02_rogersNACNoTermStandardShippingTest() throws InterruptedException {
+	public void tc02_rogersNACNoTermPortInStdShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
@@ -168,6 +168,10 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//***********Onetime payment page***************
+		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+				"One Time Payment Page displayed","One Time Payment Page Not displayed");
+		String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+		reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
 		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
 				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
 		getRogersOneTimePaymentPage().setNameonCard();

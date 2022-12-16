@@ -24,7 +24,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","SanityNACBFA"})
-	public void tc04_rogersNACTermBopisTest() throws InterruptedException {
+	public void tc04_rogersNACTermAutoPayBopisTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 		//getRogersDeviceCataloguePage().setProvince("Ontario");

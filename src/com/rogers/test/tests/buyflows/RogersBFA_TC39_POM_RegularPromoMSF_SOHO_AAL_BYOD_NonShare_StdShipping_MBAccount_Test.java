@@ -24,7 +24,7 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
     }
 
     @Test(groups = {"RegressionBFA","SOHOAAL","POM"})
-    public void tc39_sohoAalByodNonShareStdShippingMBTest() {
+    public void tc39_pomsohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

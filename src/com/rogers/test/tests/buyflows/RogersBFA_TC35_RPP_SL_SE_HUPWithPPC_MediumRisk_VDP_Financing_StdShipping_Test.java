@@ -46,8 +46,8 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
 
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-            getRogersPlanConfigPage().clkDownPaymentChkBox();
-            reporter.reportLogPassWithScreenshot("VDP checkbox is selected");
+//            getRogersPlanConfigPage().clkDownPaymentChkBox();
+//            reporter.reportLogPassWithScreenshot("VDP checkbox is selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
