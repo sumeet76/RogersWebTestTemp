@@ -36,7 +36,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.BFA_ProdTest_tc03_AALBYOD_StdShipping.getBan());
         //############################Plan config page###############################
         getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device");
-        //Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
+        Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_Legacy_NACByod.getUsername());
         getRogersLoginPage().clkContinueSignIn();
@@ -55,33 +55,33 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //***************Create Profile Stepper*************//
-//        if(!(custInfoMap.size()==0)) {
-//            if (custInfoMap.containsKey("emailAddress")) {
-//                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
-//                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
-//                reporter.reportLogWithScreenshot("Email address entered successfullly");
-//            }
-//            if (custInfoMap.containsKey("firstName")) {
-//                getRogersCheckoutPage().setFirstNameCreateProfile();
-//            }
-//            if (custInfoMap.containsKey("lastName")) {
-//                getRogersCheckoutPage().setLastNameCreateProfile();
-//            }
-//            if (custInfoMap.containsKey("homePhone")) {
-//                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
-//            }
-//            if (custInfoMap.containsKey("billingProvince")) {
-//                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
-//                reporter.reportLogWithScreenshot("Address entered successfullly");
-//            }
-//            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
-//            reporter.reportLogPassWithScreenshot("Language Selected");
-//            getRogersCheckoutPage().switchToRecaptchaIFrame();
-//            getRogersCheckoutPage().clkImNotRombotCheckbox();
-//            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
-//            getRogersCheckoutPage().switchOutOfGoogleIFrame();
-//            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
-//        }
+        if(!(custInfoMap.size()==0)) {
+            if (custInfoMap.containsKey("emailAddress")) {
+                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+                reporter.reportLogWithScreenshot("Email address entered successfullly");
+            }
+            if (custInfoMap.containsKey("firstName")) {
+                getRogersCheckoutPage().setFirstNameCreateProfile();
+            }
+            if (custInfoMap.containsKey("lastName")) {
+                getRogersCheckoutPage().setLastNameCreateProfile();
+            }
+            if (custInfoMap.containsKey("homePhone")) {
+                getRogersCheckoutPage().setContactNumberCreateProfile(TestDataHandler.tc04NACTermBopis.getContactNumber());
+            }
+            if (custInfoMap.containsKey("billingProvince")) {
+                getRogersCheckoutPage().setBillingAddressCreateProfile(TestDataHandler.tc04NACTermBopis.getBillingAddress());
+                reporter.reportLogWithScreenshot("Address entered successfullly");
+            }
+            getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
+            reporter.reportLogPassWithScreenshot("Language Selected");
+            getRogersCheckoutPage().switchToRecaptchaIFrame();
+            getRogersCheckoutPage().clkImNotRombotCheckbox();
+            reporter.reportLogPassWithScreenshot("I'm not Robot Checked");
+            getRogersCheckoutPage().switchOutOfGoogleIFrame();
+            getRogersCheckoutPage().clkBtnGotoCreditEvalStepper();
+        }
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
                 "CreditEvaluation Title not present");
@@ -102,7 +102,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");

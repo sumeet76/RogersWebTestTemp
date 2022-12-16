@@ -935,7 +935,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
         JSONObject jsonObject= null;
         Map<String,String> customerInfoMap = new HashMap<>();
-        HttpGet httpGet = new HttpGet(System.getProperty("QaUrl")+"api/subscriptions/v1/accounts");
+        HttpGet httpGet = new HttpGet(System.getProperty("QaUrl")+"/api/subscriptions/v1/accounts");
         httpGet.addHeader("content-type", "application/json");
         httpGet.addHeader("province","ON");
         httpGet.addHeader("lang","en");
