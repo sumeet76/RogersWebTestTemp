@@ -45,7 +45,7 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
             String strTestingTab = getDriver().getWindowHandle();
             //Will open a new tab for ENS, to get verification code from ENS
             reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc68_FWACappedPlan.getAccountDetails().getRecoveryNumber();
+            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
             String strEnsUrl = System.getProperty("EnsUrl");
             String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
             getDriver().switchTo().window(strTestingTab);
