@@ -360,12 +360,14 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement txtOTBCCartDetails;
 
 	@FindAll({
-			@FindBy(xpath="//div[@class='ds-tile h-100 ds-bgcolor-white ds-shadow ds-no-overflow ds-corners']//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
-			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
-			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit appears in')]"),
-			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']")
+			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
+			@FindBy(xpath = "//div[@class='section__pricing']//span[@class='-ml4']"),
+			@FindBy(xpath = "//span[@class='text-overline mb-0 mw-100']")
+//			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']"),
+//			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
+//			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit appears in')]")
 	})
-	WebElement txtOTBCCartSummary;
+	WebElement txtOtbcCampaign;
 
 	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageMobile;	
@@ -1918,12 +1920,8 @@ getReusableActionsInstance().staticWait(3000);
 		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 50);
 	}
 
-	public Boolean validateOTBCCartDetails() {
-		return getReusableActionsInstance().isElementVisible(txtOTBCCartDetails, 40);
-	}
-
-	public Boolean validateOTBCCartSummary() {
-		return getReusableActionsInstance().isElementVisible(txtOTBCCartSummary, 40);
+	public Boolean validateOTBCCampaign() {
+		return getReusableActionsInstance().isElementVisible(txtOtbcCampaign, 40);
 	}
 
 	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
@@ -1931,7 +1929,7 @@ getReusableActionsInstance().staticWait(3000);
 		String otbcText = getReusableActionsInstance().getWhenReady(divOTBCRateCardHead, 40).getText();
 		String[] subs= otbcText.split("\\$");
 		String[] otbcCostInLine = subs[1].split(" ");
-		String[] splitter = otbcCostInLine.toString().split("\\.");
+		String[] splitter = otbcCostInLine[0].split("\\.");
 		int decimalLength = splitter[1].length();  // After Decimal Count
 
 		if (decimalLength == 2) {
@@ -1940,7 +1938,6 @@ getReusableActionsInstance().staticWait(3000);
 		else {
 			return false;
 		}
-
 	}
 
 	/**

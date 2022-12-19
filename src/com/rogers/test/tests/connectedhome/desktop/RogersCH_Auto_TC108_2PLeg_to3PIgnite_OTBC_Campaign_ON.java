@@ -11,42 +11,42 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * This class contains the test method to validate OTBC campaign for 2p legacy to 3p ignite signed in flow
+ * This class contains the test method to validate OTBC campaign on Offers, cart details / cart summary, order summary and order confirmaiton pages and whether the otbc presentment is two decimals.
+ * TC038_CH-10026_OTBC_Migration_Validate Legacy 2P Cx migrating to Ignite 3P with OTBC campaign_ON_CH_EN
+ * CH-17983_Update OTBC presentment with two decimal point(.00) instead of (.0)
  * @author nandan.master
- * <p>
+ *
  * Test steps:
- * <p>
- * 1. Launch the Rogers.com url.
- * 2. Login with valid credentials.
+ *
+ * 1. Launch the Rogers.com url
+ * 2. Login with valid credentials
  * 3. Click on the TV badge
  * 4. Click on Ignite TV under shop drowndown
  * 5. View Bundles and click on Home Phone
- * 6. Select the Bundles package and Click on Order online
- * 6. Select the address on file and use the address
- * 7. Select the month-to-month type of contract and Click on Add to cart
- * 8. Click on 'Yes I understood' button.
- * 9. Select the skip for new number
- * 10. Click on Continue.
- * 11. Select No for 'Do you have a 4K TV'.
- * 13. Add Additional Ignite Tv Boxes - 5 and click on update cart
- * 14. Click checkout button on cart summary page.
- * 15. All the personal information is auto populated.
- * 16. Click on continue button.
- * 17. In Credit Evaluation page, enter the required info on Credit Check:
- * 18. Click Submit.
- * 19. Enter 1 or 2 numbers in Choose a phone Number textbox and click on Generate numbers.
- * 20. Select any one phone number.
- * 21. Make sure Caller ID and Directory listing fields are populated.
- * 22. Click on Continue.
- * 23. Select a time in Choose your Date and Time.
- * 24. Enter any valid Mobile number and email address.
- * 25. Click on Confirm.
- * 26. Select Pre-Authorized credit card option from type of payment dropdown.
- * 27. Enter valid Credit Card number details in Credit Card related fields.
- * 28. Click on Continue.
- * 29. Validate appropriate information is displayed in Review order page.
- * 30. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox.
- * 31. Order confirmation page will be displayed with the order number and validate the order details.
+ * 6. Validate One Time Bill Credit (OTBC) on Ignite 20 bundle on Offers Page
+ * 7. Validate OTBC presentment is in two decimals (e.g. $200.00 and not $200.0)
+ * 8. Expand bundle details and validate OTBC campaign
+ * 9. Select the Bundles package and Click on Order online
+ * 10. Select the address on file and use the address
+ * 11. Select the month-to-month type of contract and Click on Add to cart
+ * 12. Click on 'Yes I understood' button
+ * 13. On port in page, expand Mini Cart (using chevron down button)
+ * 14. Validate OTBC on mini-cart and collapse back the cart followed by Skip Selection button
+ * 15. Click Continue on home phone add-ons page
+ * 16. Validate OTBC on Cart Summary Page
+ * 17. Click checkout button on cart summary page
+ * 18. All the personal information is autopopulated
+ * 19. Click on continue button
+ * 20. In Credit Evaluation page, enter the required info on Credit Check:
+ * 21. Click Submit
+ * 22. Enter 1 or 2 numbers in Choose a phone Number textbox and click on Generate numbers
+ * 23. Select any one phone number
+ * 24. Continue without Pro installation
+ * 25. Continue with pre-selected payment method
+ * 26. Validate OTBC on Order Reivew page
+ * 27. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox
+ * 28. Order confirmation page will be displayed with the order number and validate the order details
+ * 29. Validate OTBC on Order Confirmation page.
  **/
 
 public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseTestClass {
@@ -59,19 +59,11 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getBan());
-            reporter.reportLogWithScreenshot("Account Selected");
-        }
-
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-
+        getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
+        reporter.reportLogWithScreenshot("Launched the TV Bundles Page");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched serviceability model");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("Selected Address on file");
@@ -82,9 +74,10 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         reporter.reportLogWithScreenshot("Home phone selected");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().isOTBCPresentmentTwoDecimal(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC presentment with two decimal point(.00)", "OTBC presentment NOT with two decimal point(.00)");
         getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
         reporter.reportLogWithScreenshot("Clicked on View More Details");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCartDetails(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
 
@@ -92,34 +85,27 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Clicked yes on the information popup");
+        getRogersIgniteTVBuyPage().clkChevronDownYourCart();
+        reporter.reportLogWithScreenshot("Opened the Mini cart");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
+        getRogersIgniteTVBuyPage().clkChevronUpYourCart();
+        reporter.reportLogWithScreenshot("Closed the cart");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
         getRogersIgniteTVBuyPage().clkHomePhone();
-
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
         getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("No, I don't have a 4k TV selected");
-
-        getRogersIgniteTVBuyPage().clkChevronDownYourCart();
-        reporter.reportLogWithScreenshot("Opened the Mini cart");
-
-        getRogersIgniteTVBuyPage().clkPlusAddOverFourIgniteTVBoxes();
-        reporter.reportLogWithScreenshot("Added 5 TV boxes");
-
-        getRogersIgniteTVBuyPage().clkUpdateCart();
-        reporter.reportLogWithScreenshot("Clicked Update Cart");
-
-        getRogersIgniteTVBuyPage().clkChevronUpYourCart();
-        reporter.reportLogWithScreenshot("Closed the cart");
         getRogersIgniteTVBuyPage().clkCheckout();
-
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getDate());
+        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getYear());
+        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getMonth());
+        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getDate());
         reporter.reportLogWithScreenshot("Entered the DOB details");
         getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
         getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
@@ -143,33 +129,22 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
         getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
-
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
-        //Validate flowType="AUTL" from continueBuy call, will be adding with selenium4
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        getRogersTechInstallPage().clkProInstallUpgradeYes();
-        reporter.reportLogWithScreenshot("Click on ProInstallUpgradeYes");
-        getRogersTechInstallPage().clkTechContinue();
-
-        reporter.reportLogWithScreenshot("Launched the Schedule Appointment Page");
-        getRogersTechInstallPage().selectPrefferedDate();
-        getRogersTechInstallPage().selectPreferredTimeSlot();
-        getRogersTechInstallPage().setContactNumber();
-        getRogersTechInstallPage().clkTechInstalConsent();
-        reporter.reportLogWithScreenshot("Scheduled Appointment");
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        reporter.reportLogWithScreenshot("Click on ProInstallUpgradeNo");
+        getRogersTechInstallPage().clkTechInstallContinueSelf();
+        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-
         reporter.reportLogWithScreenshot("Launched the payment options page");
         getRogersPaymentOptionsPage().clkPaymentConfirm();
-
-        getRogersOrderReviewPage().clkShowPriceBreakdown();
-        reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on Order Review", "OTBC NOT validated on Order Review");
 
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
@@ -177,17 +152,7 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-        System.out.println("SCHEMA : " + DbSchema);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on Order Confirmation", "OTBC NOT validated on Order Confirmation");
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -202,5 +167,4 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseT
     public void afterTest() {
         closeSession();
     }
-
 }
