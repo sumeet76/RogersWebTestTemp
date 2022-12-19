@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * This class contains the test method to validate OTBC campaign on Offers, cart details / cart summary, order summary and order confirmaiton pages and whether the otbc presentment is two decimals.
@@ -49,10 +48,10 @@ import java.util.Map;
  * 29. Validate OTBC on Order Confirmation page.
  **/
 
-public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON extends BaseTestClass {
+public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ON extends BaseTestClass {
 
     @Test
-    public void rogersCH_Auto_TC108_2PLeg_to3PIgnite_OTBC_Campaign_ON() {
+    public void RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ON() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getUsername());
         getRogersLoginPage().clkContinueInBrowser();

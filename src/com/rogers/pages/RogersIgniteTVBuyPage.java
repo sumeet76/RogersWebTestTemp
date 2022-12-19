@@ -1924,18 +1924,22 @@ getReusableActionsInstance().staticWait(3000);
 		return getReusableActionsInstance().isElementVisible(txtOtbcCampaign, 40);
 	}
 
+	/**
+	 * Validates whether OTBC credit amount is presentable in two decimal points.
+	 * @param bundleName
+	 * @return true if amount is 2 decimal places
+	 * @author nandan.master
+	 */
 	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
-		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//span[@class='-ml4']");
+		By divOTBCRateCardHead = By.xpath("//a[@aria-label='" + bundleName + " Add to cart']/ancestor::div[@class='vertical-tile-component']//span[@class='-ml4']");
 		String otbcText = getReusableActionsInstance().getWhenReady(divOTBCRateCardHead, 40).getText();
-		String[] subs= otbcText.split("\\$");
-		String[] otbcCostInLine = subs[1].split(" ");
-		String[] splitter = otbcCostInLine[0].split("\\.");
-		int decimalLength = splitter[1].length();  // After Decimal Count
-
+		String[] subs = otbcText.split("\\$");
+		String[] otbcAmountInLine = subs[1].split(" ");
+		String[] otbcDecimalSplit = otbcAmountInLine[0].split("\\.");
+		int decimalLength = otbcDecimalSplit[1].length();
 		if (decimalLength == 2) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
