@@ -211,7 +211,7 @@ public class TestDataHandler {
 	public static HUPData tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip;
 	public static HUPData tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS;
 	public static HUPData tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS;
-	public static HUPData tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip;
+	public static HUPData tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip;
 	public static HUPData BFA_ProdTest_tc05_HUPWithPPC_StdShipping;
 	public static AALData tc15POMAALShareTermBopis;
 	public static AALData tc16AALFinPlanBopisShipping;
@@ -664,7 +664,7 @@ public class TestDataHandler {
 		tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine = YamlHandler.getPPCdata("tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine");
 		tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS = YamlHandler.getHUPdata("tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS");
 		tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS = YamlHandler.getHUPdata("tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS");
-		tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip = YamlHandler.getHUPdata("tc37_RPP_HUP_ML_HUP_NOTERM_KEPOnMainLine_StdShip");
+		tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip = YamlHandler.getHUPdata("tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip");
 		tc38_SOHO_NACTermMediumRiskUEOptionBOPIS = YamlHandler.getRedesignNACData("tc38_SOHO_NACTermMediumRiskUEOptionBOPIS");
 		tc39_POMSOHO_AALBYODStandardShipping = YamlHandler.getAALdata("tc39_POMSOHO_AALBYODStandardShipping");
 		tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis = YamlHandler.getHUPdata("tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis");
