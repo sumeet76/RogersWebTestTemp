@@ -38,9 +38,24 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc68_FWACappedPlan.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
+
+        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+            reporter.reportLogWithScreenshot("Click on Text as recovery option");
+            getRogersLoginPage().clkTextToAsRecoveryOption();
+            String strTestingTab = getDriver().getWindowHandle();
+            //Will open a new tab for ENS, to get verification code from ENS
+            reporter.reportLogWithScreenshot("ENS");
+            String strPhoneNum = TestDataHandler.tc68_FWACappedPlan.getAccountDetails().getRecoveryNumber();
+            String strEnsUrl = System.getProperty("EnsUrl");
+            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
+            getDriver().switchTo().window(strTestingTab);
+            reporter.reportLogWithScreenshot("Close the Overlay");
+            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+            getRegisterOrAccountRecoveryPage().clkBtnContinue();
+            reporter.reportLogWithScreenshot("Continue to Account Overview");
+        }
+
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc68_FWACappedPlan.accountDetails.getBan());
         //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

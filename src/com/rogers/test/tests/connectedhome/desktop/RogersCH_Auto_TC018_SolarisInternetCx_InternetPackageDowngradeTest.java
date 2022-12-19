@@ -37,7 +37,21 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+            reporter.reportLogWithScreenshot("Click on Text as recovery option");
+            getRogersLoginPage().clkTextToAsRecoveryOption();
+            String strTestingTab = getDriver().getWindowHandle();
+            //Will open a new tab for ENS, to get verification code from ENS
+            reporter.reportLogWithScreenshot("ENS");
+            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
+            String strEnsUrl = System.getProperty("EnsUrl");
+            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
+            getDriver().switchTo().window(strTestingTab);
+            reporter.reportLogWithScreenshot("Close the Overlay");
+            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+            getRegisterOrAccountRecoveryPage().clkBtnContinue();
+            reporter.reportLogWithScreenshot("Continue to Account Overview");
+        }
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.accountDetails.getBan());
