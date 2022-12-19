@@ -171,6 +171,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
 	WebElement div150pkgCost;
 
+	@FindBy(xpath = "//div[contains(@class,'serviceability-component')]//span[text()='Good news!' or text()= 'Bonne nouvelle!']")
+	WebElement txtGoodNewsInternetOffers;
+
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
 	WebElement lnkProvinceNL;
 
@@ -788,4 +791,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		String[] pkgCost = subs[1].split(" ");
 		return pkgCost[0];
 	}
+
+	/**
+	 * verifies the Good news serviceability content for Internet Offers page
+	 * @return true if serviceability passed, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyGoodNewsServiceabilityContent() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		return getReusableActionsInstance().isElementVisible(txtGoodNewsInternetOffers, 60);
+    }
 }
