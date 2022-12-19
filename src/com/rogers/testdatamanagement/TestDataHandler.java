@@ -203,7 +203,7 @@ public class TestDataHandler {
 	public static HUPData tc10HUPNonShareNoTermSL;
 	public static HUPData tc11HUPShareNoTermSL;
 	public static HUPData tc12HUPWithPPC_MultipleFinAccessoriesML;
-	public static HUPData tc13HUPNonShareKeepCurrentPlanSL;
+	public static HUPData tc13TabletHUPFinMLSEStandardShipping;
 	public static HUPData tc14HUPShareTermBopisML;
 	public static HUPData tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis;
 	public static HUPData tc41_SOHO_HUP_ML_SE_HUPWithPPCOnMainLine_VDP_BOPIS;
@@ -640,7 +640,7 @@ public class TestDataHandler {
 		tc10HUPNonShareNoTermSL = YamlHandler.getHUPdata("tc10HUPNonShareNoTermSL");
 		tc11HUPShareNoTermSL = YamlHandler.getHUPdata("tc11HUPShareNoTermSL");
 		tc12HUPWithPPC_MultipleFinAccessoriesML = YamlHandler.getHUPdata("tc12HUPWithPPC_MultipleFinAccessoriesML");
-		tc13HUPNonShareKeepCurrentPlanSL = YamlHandler.getHUPdata("tc13HUPNonShareKeepCurrentPlanSL");
+		tc13TabletHUPFinMLSEStandardShipping = YamlHandler.getHUPdata("tc13TabletHUPFinMLSEStandardShipping");
 		tc14HUPShareTermBopisML = YamlHandler.getHUPdata("tc14HUPShareTermBopisML");
 		tc15POMAALShareTermBopis = YamlHandler.getAALdata("tc15POMAALShareTermBopis");
 		tc16AALFinPlanBopisShipping = YamlHandler.getAALdata("tc16AALFinPlanBopisShipping");
