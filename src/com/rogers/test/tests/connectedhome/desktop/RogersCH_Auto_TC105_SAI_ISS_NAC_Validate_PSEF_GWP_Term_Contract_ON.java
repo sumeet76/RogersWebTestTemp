@@ -1,4 +1,5 @@
 package com.rogers.test.tests.connectedhome.desktop;
+
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
@@ -8,55 +9,64 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 
 /**
- * This class contains the test method to test Legacy Internet Offer Buy flow for Rogers.com
+ * This class contains the test method to validate PSEF and GWP campaigns on Cart Summary, Order Review and Confirmation pages - SAI+ISS NAC flow with 24 months term contract.
+ * TC053_CH-17639_SAI+ISS_NAC_Ignite internet_500u_Validate for 24m term contracts PSEF&GWP is configured for the package_ON_FF
  *
- * @author chinnarao.vattam
+ * @author nandan.master
  *
  * Test steps:
- * 1.Launch Rogers SAI Tupelo URL in QA Env and click on get it now and enter address and click on continue
- * 2. Click on continue
- * 3. Choose Internet, SmartStream checkbox and click on Load offers
- * 4. Add 1 STB and click on Add to cart
- * 5. Click on Continue
+ * 1. Launch Rogers.com
+ * 2. Browse to Shop menu and select Internet option
+ * 3. click on Check Availability and enter home address to validate the serviceability
+ * 4. Select SS and select one of available packages, click Add to Cart
+ * 5. Validate PSEF promotion and GWP on cart summary page
  * 6. Click on Checkout
- * 7. Click on Yes, continue
+ * 7. Click continue to Profile page and Enter all personal information on user profile creation page - 1) Profile step
  * 8. Click on Continue
- * 9. Enter DOB, valid ID details and click on continue
- * 10. Choose Installation type as enhanced self install and click on continue
- * 11. Click on Continue
- * 12. Click on Submit
- *
+ * 9. In 2) Credit Evaluation page, enter the required info on Credit Check:
+ *10. Click Submit
+ *11. Verify Tech Install Page
+ *12. Choose NO professiobal installation and continue
+ *13. Select Pre-Authorized credit card option from type of payment dropdown
+ *14. Enter valid Credit Card number details in Credit Card related fields
+ *15. Click on Continue
+ *16. Validate PSEF and GWP / WiFi6 on Order Review page
+ *17. Scroll down all the way down in Agreement field and select "I have read understood….." checkbox
+ *18. Click on Submit
+ *19. Validate PSEF and GWP / WiFi6 on order confirmation page
  **/
 
-public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_ConfirmPagesTest extends BaseTestClass {
+public class RogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH"})
-    public void rogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_ConfirmPages() {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
-        getRogersHomePage().clkEasyInternet();
+    @Test
+    public void rogersCH_Auto_TC103_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON() {
+        getDriver().get(System.getProperty("QaUrl") + "internet/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        getRogersHomePage().clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered for serviceability");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        getRogersHomePage().clkIgniteAddressLookupSubmitSS();
+
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPackagesPage(),"Packages page has Launched","Packages page has not Launched");
-        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        // 24 months term contract is selected
+//        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify500IgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
+        getRogersInternetPackageSelectionPage().clkSmartStream500uPackage();
+        reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
-        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+
+        // validating  PSEF, GWP and WiFi6 tags in cart summary
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyWiFi6Text(), "WiFi6 verified", "WiFi6 not verified");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");
         getRogersInternetProfilePage().setEmail();
@@ -66,7 +76,7 @@ public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_Conf
         getRogersInternetProfilePage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        reporter.reportLogWithScreenshot("Launched the credit evaluation page");
         getRogersInternetCreditCheckPage().selectDOBYear();
         getRogersInternetCreditCheckPage().selectDOBMonth();
         getRogersInternetCreditCheckPage().selectDOBDay();
@@ -108,27 +118,25 @@ public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_Conf
         getRogersPaymentOptionsPage().clkPaymentConfirm();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        reporter.hardAssert(!(getRogersInternetPackageSelectionPage().verifyDisneyImage()), "No PSEF promotion", "PSEF promotion should not be there");
+
+        // validating PSEF, GWP and WiFi6 tags on Order Review Page
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
-        reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyWiFi6Text(), "WiFi6 verified", "WiFi6 not verified");
+
+        reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmit();
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-        System.out.println("SCHEMA : " + DbSchema);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-    }
 
+        // validating PSEF, GWP and WiFi6 tags on Order Confirmation Page
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyWiFi6Text(), "WiFi6 verified", "WiFi6 not verified");
+    }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //legacyAnonymous
@@ -137,14 +145,8 @@ public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_Conf
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
     }
-
-
-
 }
-
-

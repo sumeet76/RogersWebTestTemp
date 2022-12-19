@@ -69,12 +69,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath="//h1[contains(@class,'dsa-hero-billboard__heading')]")
 	WebElement headerInternet;
 
-
 	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnTypeOfContract;
-
-	@FindBy(xpath = "//a[@aria-label='Add Ignite Internet Gigabit to your cart']/ancestor::div[@class='internet-bundle-tile__main']/descendant::div[@class='internet-bundle-tile__content__checkbox']/descendant::label")
-	WebElement chkbox1GbpsSmartStream;
 
 	@FindBy(xpath = "//a[contains(@aria-label,'View internet bundles available to you')]/span")
 	WebElement btnSmartStream;
@@ -97,9 +93,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
 	WebElement headerIgniteInternet150;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + SmartStream Add to cart']//span[@role='text']")
-	WebElement btnInternet1GbpsPackage;
-
 	@FindBy(xpath = "//span[contains(text(),'Yes')]")
 	WebElement btnUnderstand;
 
@@ -108,11 +101,26 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
 	WebElement btnInternet500uPackage;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']//span[@role='text']")
-	WebElement btnSmartStreamPackage;
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart' or @aria-label='Élan Internet 150 illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
+	WebElement btnSmartStream150uPackage;
 
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::span[@role='text']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 500 Ultd + Streaming Add to cart' or @aria-label='Élan Internet 500 illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
 	WebElement btnSmartStream500uPackage;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart' or @aria-label='Élan Internet gigabit illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
+	WebElement btnSmartStream1GbpsPackage;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart' or @aria-label='Élan Internet gigabit 2,5  illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
+	WebElement btnSmartStream2GbpsPackage;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'How to get it Learn how to get Ignite Internet 8 Gigabit')]//span[contains(text(),'How to get it')]")
+	WebElement btn8gbHowToGetIt;
+
+	@FindBy(xpath = "//span[text()='Sign up for Canada’s fastest internet speeds' or text()='Abonnez-vous au service Internet le plus rapide au pays']")
+	WebElement header8gbpsMiniBanner;
+
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	WebElement btnClose8gbSignUpPopup;
 
 	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
 	WebElement chkSmartStream;
@@ -142,14 +150,29 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	WebElement txtGWP;
 	//div[@class='promo-banner-cms__copy-mixed']//span[text()='Choose professional installation on us!']
 
+	@FindBy(xpath="//span[contains(text(), 'Powerful WiFi 6') or contains(text(), 'Technologie WiFi 6')]")
+	WebElement txtWiFi6;
+
 	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
 	WebElement txtPackageDetails;
 
-	@FindBy(xpath = "//label[@for='ds-checkbox-id-2']//div[@class='ds-checkbox__box my-12']")
+	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
 	WebElement chkbox150IgniteStreaming;
+
+	@FindBy(xpath = "// a[@aria-label='Ignite 500 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
+	WebElement chkbox500IgniteStreaming;
+
+	@FindBy(xpath = "// a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
+	WebElement chkbox1GbpsSmartStream;
+
+	@FindBy(xpath = "// a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
+	WebElement chkbox2500IgniteStreaming;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
 	WebElement div150pkgCost;
+
+	@FindBy(xpath = "//div[contains(@class,'serviceability-component')]//span[text()='Good news!' or text()= 'Bonne nouvelle!']")
+	WebElement txtGoodNewsInternetOffers;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
 	WebElement lnkProvinceNL;
@@ -256,12 +279,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 				+ "') and contains(normalize-space(.) ,'" + part[1].trim() + "')]"));
 	}
 
-	public boolean verifyInternetPacakesPage() {
+	public boolean verifyInternetPackagesPage() {
 		return getReusableActionsInstance().isElementVisible(btnInternetPackage,90);
 	}
 	/**
-	 * Verify the  down grade Ways To Buy Box when we do on the Internet down grade process
-	 * @return true if the Down grade Ways popup displayed  else false
+	 * Verify the  downgrade Ways To Buy Box when we do on the Internet downgrade process
+	 * @return true if the Downgrade Ways popup displayed  else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyDowngradeWaysToBuyBox() {
@@ -272,20 +295,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		//getReusableActionsInstance().waitForElementVisibility(btnUpgradeContinue, 90);
 		getReusableActionsInstance().getWhenReady(btnUpgradeContinue, 90).click();
 	}
-	
+
+	public void clkHowToGetItMiniBanner() {
+		getReusableActionsInstance().getWhenReady(btn8gbHowToGetIt, 40).click();
+	}
+
 	public void clkInternetPackage() {
-		
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
 	}
 
-	/**
-	 * To select Ignite Internet Gigabit Package
-	 * @author Manpreet.Kaur3
-	 */
-	public void clkInternet1GbpsPackage() {
-
-		getReusableActionsInstance().getWhenReady(btnInternet1GbpsPackage, 90).click();
-	}
 
 	/**
 	 * Click the I understand button on the important information popup
@@ -297,7 +315,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 
 	public void clkInternet500uPackage() {
-
 		getReusableActionsInstance().getWhenReady(btnInternet500uPackage, 90).click();
 	}
 
@@ -535,11 +552,23 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkSmartStreamPackage() {
-		getReusableActionsInstance().getWhenReady(btnSmartStreamPackage, 90).click();
+		getReusableActionsInstance().getWhenReady(btnSmartStream150uPackage, 90).click();
 	}
 
 	public void clkSmartStream500uPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStream500uPackage, 90).click();
+	}
+
+	/**
+	 * To select Ignite Internet Gigabit Package
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkSmartStream1GbpsPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream1GbpsPackage, 90).click();
+	}
+
+	public void clkSmartStream2GbpsPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream2GbpsPackage, 90).click();
 	}
 
 	public void clkSmartStreamCheckBox() {
@@ -701,9 +730,27 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * To verify the Ignite SmartSteam 150 Package checkbox is selected
 	 * @author Manpreet.Kaur3
 	 */
-	public boolean verifyIgniteStreamingIsChecked() {
+	public boolean verify150IgniteStreamingIsChecked() {
 		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 5);
 		return chkbox150IgniteStreaming.isSelected();
+	}
+
+	/**
+	 * To verify the Ignite SmartSteam 500 Package checkbox is selected
+	 * @author nandan.master
+	 */
+	public boolean verify500IgniteStreamingIsChecked() {
+		getReusableActionsInstance().waitForElementVisibility(chkbox500IgniteStreaming, 15);
+		return chkbox500IgniteStreaming.isSelected();
+	}
+
+	/**
+	 * To verify the Ignite SmartSteam 2.5gbps Package checkbox is selected
+	 * @author nandan.master
+	 */
+	public boolean verify2500mbpsIgniteStreamingIsChecked() {
+		getReusableActionsInstance().waitForElementVisibility(chkbox2500IgniteStreaming, 40);
+		return chkbox2500IgniteStreaming.isSelected();
 	}
 
 	/**
@@ -714,6 +761,19 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
     public boolean verifyGWPTag() {
 		return getReusableActionsInstance().isElementVisible(txtGWP, 20);
     }
+
+	public boolean verifyWiFi6Text() {
+		return getReusableActionsInstance().isElementVisible(txtWiFi6, 20);
+	}
+
+	public boolean verifyHowToGetIt8gbPopupHeader() {
+		return getReusableActionsInstance().isElementVisible(header8gbpsMiniBanner, 20);
+	}
+
+	public void clkCloseButton8gbPopup() {
+		getReusableActionsInstance().waitForElementVisibility(btnClose8gbSignUpPopup, 60);
+		getReusableActionsInstance().getWhenReady(btnClose8gbSignUpPopup, 30).click();
+	}
 
 	public void scrollToPackageDetails(){
 		getReusableActionsInstance().javascriptScrollByVisibleElement(txtPackageDetails);
@@ -731,4 +791,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		String[] pkgCost = subs[1].split(" ");
 		return pkgCost[0];
 	}
+
+	/**
+	 * verifies the Good news serviceability content for Internet Offers page
+	 * @return true if serviceability passed, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyGoodNewsServiceabilityContent() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		return getReusableActionsInstance().isElementVisible(txtGoodNewsInternetOffers, 60);
+    }
 }
