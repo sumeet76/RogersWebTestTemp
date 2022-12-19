@@ -31,7 +31,7 @@ public class RogersBFA_TC37_Consumer_to_RPP_Migration_SL_SE_HUP_NOTERM_KEPOnMain
             getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip.getUsername());
             getRogersLoginPage().clkContinueSignIn();
-            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip.getCcNumberOTP());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
             //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
