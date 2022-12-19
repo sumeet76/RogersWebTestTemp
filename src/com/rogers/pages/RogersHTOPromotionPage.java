@@ -35,7 +35,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay nsm-overlay-open']")
 	WebElement overlayPromoPage;
 
-	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
+	@FindBy(xpath = "//a[contains(@aria-label,'Upgrade')]/span")
 	WebElement btnReviewYourUpgrade;
 
 	@FindBy(xpath = "//div[contains(@class,'progress-loader')]")
