@@ -24,7 +24,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA"})
+    @Test(groups = {"RegressionBFA","CONNACBFA"})
     public void tc47_RNACTerm_1P_Ignite_VDP_BopisTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -35,11 +35,12 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername(), TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().switchOutOfSignInIFrame();
+//        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+//        getRogersLoginPage().switchOutOfSignInIFrame();
         // ***************************Device config page************************************
         reporter.reportLogWithScreenshot("Device config page");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -72,8 +73,9 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         //***************Create Profile Stepper*************//
         if(!(custInfoMap.size()==0)) {
             if (custInfoMap.containsKey("emailAddress")) {
-                getRogersCheckoutPage().setEmailCreateProfile();
-                reporter.reportLogWithScreenshot("Email address entered successfully");
+                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+                reporter.reportLogWithScreenshot("Email address entered successfullly");
             }
             if (custInfoMap.containsKey("firstName")) {
                 getRogersCheckoutPage().setFirstNameCreateProfile();
@@ -111,7 +113,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
