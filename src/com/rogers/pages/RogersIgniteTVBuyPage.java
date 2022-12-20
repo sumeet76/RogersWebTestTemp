@@ -356,12 +356,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement iconCloseModal;
 
-	@FindBy(xpath = "//div[@class='section__pricing']//span[@class='-ml4']")
-	WebElement txtOTBCCartDetails;
-
 	@FindAll({
 			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
-			@FindBy(xpath = "//div[@class='section__pricing']//span[@class='-ml4']"),
+			@FindBy(xpath = "//rch-tile-see-full-detials-modal//div[@class='price-legal__OTBC ng-star-inserted']/span"),
 			@FindBy(xpath = "//span[@class='text-overline mb-0 mw-100']")
 //			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']"),
 //			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
@@ -1931,7 +1928,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author nandan.master
 	 */
 	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
-		By divOTBCRateCardHead = By.xpath("//a[@aria-label='" + bundleName + " Add to cart']/ancestor::div[@class='vertical-tile-component']//span[@class='-ml4']");
+		By divOTBCRateCardHead = By.xpath("//a[@aria-label='" + bundleName + " Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='price-legal__OTBC ng-star-inserted']/span");
 		String otbcText = getReusableActionsInstance().getWhenReady(divOTBCRateCardHead, 40).getText();
 		String[] subs = otbcText.split("\\$");
 		String[] otbcAmountInLine = subs[1].split(" ");
