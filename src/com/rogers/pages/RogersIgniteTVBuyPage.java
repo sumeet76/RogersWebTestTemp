@@ -356,6 +356,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement iconCloseModal;
 
+	@FindAll({
+			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
+			@FindBy(xpath = "//rch-tile-see-full-detials-modal//div[@class='price-legal__OTBC ng-star-inserted']/span"),
+			@FindBy(xpath = "//span[@class='text-overline mb-0 mw-100']")
+//			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']"),
+//			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
+//			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit appears in')]")
+	})
+	WebElement txtOtbcCampaign;
+
 	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
 	WebElement btnSolarisStarterPackageMobile;	
 	
@@ -1852,7 +1862,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @return true if price is matching with the bundles cost at offers page, else false
 	 * @author manpreet.kaur3
 	 */
-	public boolean isPriceCorrectMiniCart(String bundleCost) {
+	public Boolean isPriceCorrectMiniCart(String bundleCost) {
 		String bundleCostText = getReusableActionsInstance().getWhenReady(divBundleCostInline, 40).getAttribute("aria-label");
 		String[] subs= bundleCostText.split("\\$");
 		String[] bundleCostInline = subs[1].split(" ");
@@ -1900,6 +1910,35 @@ getReusableActionsInstance().staticWait(3000);
 		String strFlexChannels=getReusableActionsInstance().getWhenReady(txtFlexChannelsRateCardHead, 50).getText();
 		String flexChannels = strFlexChannels.trim();
 		return flexChannels;
+	}
+
+	public Boolean validateOTBCBundleOffers(String bundleName) {
+		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(text(), 'CREDIT')]");
+		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 50);
+	}
+
+	public Boolean validateOTBCCampaign() {
+		return getReusableActionsInstance().isElementVisible(txtOtbcCampaign, 40);
+	}
+
+	/**
+	 * Validates whether OTBC credit amount is presentable in two decimal points.
+	 * @param bundleName
+	 * @return true if amount is 2 decimal places
+	 * @author nandan.master
+	 */
+	public Boolean isOTBCPresentmentTwoDecimal(String bundleName) {
+		By divOTBCRateCardHead = By.xpath("//a[@aria-label='" + bundleName + " Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='price-legal__OTBC ng-star-inserted']/span");
+		String otbcText = getReusableActionsInstance().getWhenReady(divOTBCRateCardHead, 40).getText();
+		String[] subs = otbcText.split("\\$");
+		String[] otbcAmountInLine = subs[1].split(" ");
+		String[] otbcDecimalSplit = otbcAmountInLine[0].split("\\.");
+		int decimalLength = otbcDecimalSplit[1].length();
+		if (decimalLength == 2) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
