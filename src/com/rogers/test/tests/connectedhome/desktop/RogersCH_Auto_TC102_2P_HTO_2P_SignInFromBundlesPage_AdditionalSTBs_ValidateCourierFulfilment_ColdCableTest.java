@@ -54,7 +54,6 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
 
     @Test
     public void rogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_ValidateCourierFulfilment_ColdCable() {
-
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
         getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
@@ -81,10 +80,8 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
 
         getRogersIgniteTVBuyPage().VerifyYourBestFit();
         reporter.reportLogWithScreenshot("Recommended pack is displayed");
-
        // getRogersIgniteTVBuyPage().selectRecommendedPkg1GbpsInternetSpeed();
         getRogersIgniteTVBuyPage().clkRecommendedPkgViewMoreDetails();
-
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");
@@ -92,10 +89,7 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.reportLogWithScreenshot("Verified Old bundle Details");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified New bundle Details");
-
         String offerPrice = getRogersOrderReviewPage().getOfferPrice();
-        System.out.println(offerPrice);
-
         getRogersHTOPRomotionPage().clickLearnMore();
         reporter.reportLogWithScreenshot("Clicked on Learn More Link");
         getRogersHTOPRomotionPage().clickViewNextFeature();
@@ -114,11 +108,8 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.hardAssert(getRogersOrderReviewPage().verifyAdditionalSTBs(), "Additional STBs verified","Additional STBs not verified");
 
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
-       // reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
 
         String customPrice = getRogersOrderReviewPage().getCustomPrice();
-        System.out.println(customPrice);
-
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
 
