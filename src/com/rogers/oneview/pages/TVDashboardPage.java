@@ -209,7 +209,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.tabs.themePacks'])[1]")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +218,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[3]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -246,7 +246,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
+	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[1]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -382,6 +382,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.cta.remove']")
 	WebElement removeButton;
 
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-chevron-down']/ancestor::button")
+	WebElement collapseIcon;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -498,6 +501,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(channelsTab);
 //		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	public void clickstandaloneAndSeasonalTab() {
@@ -521,7 +525,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForPageLoad();
 		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
-		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -1389,6 +1393,14 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public boolean verifyRemoveButton(){
 			return getReusableActionsInstance().isElementVisible(removeButton, 60);
+	}
+
+	public void clkCollapseButton(){
+		getReusableActionsInstance().clickWhenReady(collapseIcon,20);
+	}
+
+	public void scrollToMiddle(){
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 	}
 
 }
