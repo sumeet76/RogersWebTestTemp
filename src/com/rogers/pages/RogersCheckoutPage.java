@@ -298,6 +298,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-test='payment-method-continue']")
 	WebElement btnBillingContinueButton;
 
+	@FindBy(xpath = "//button[@data-test='continue-btn']")
+	WebElement continueButtoncheckOut;
+
 	//*****Shipping stepper******
 
 	@FindBy(xpath="//ds-radio-button[@data-test='from-value-same-shipping']/label")
@@ -436,9 +439,6 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[contains(text(),'Not now')]/parent::label")
 	WebElement skipAutoPay;
-
-	@FindBy(xpath = "//button[@data-test='payment-method-continue']")
-	WebElement paymentContinueButton;
 
 	@FindBy(xpath = "//button[@data-test='auto-pay-removal-modal-button']//span[contains(text(),'Continue')]")
 	WebElement autoPayRemovalCtnBtn;
@@ -1366,6 +1366,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * To click Continue Button on Checkout
+	 * @author subash.nedunchezhian
+	 */
+	public void clkContinueCheckOutBtn(){
+		getReusableActionsInstance().clickWhenReady(continueButtoncheckOut,10);
+	}
+
+	/**
 	 * To click on the Billing Address radio button in the Shipping stepper
 	 * @return true if selected, else false.
 	 * @author nimmy.george
@@ -1490,7 +1498,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clickSkipAutopay(){
 		if(getReusableActionsInstance().isElementVisible(skipAutoPay, 20)) {
 			getReusableActionsInstance().getWhenReady(skipAutoPay, 10).click();
-			getReusableActionsInstance().getWhenReady(paymentContinueButton,10).click();
+			getReusableActionsInstance().getWhenReady(btnBillingContinueButton,10).click();
 			getReusableActionsInstance().getWhenReady(autoPayRemovalCtnBtn,10).click();
 		}
 	}
