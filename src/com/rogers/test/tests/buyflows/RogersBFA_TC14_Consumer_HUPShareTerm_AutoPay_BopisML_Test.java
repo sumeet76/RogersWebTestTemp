@@ -95,6 +95,10 @@ class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTest
                     TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
                     TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
             reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             getRogersPaymentPage().clkSubmit();
         } else {
             getRogersOrderReviewPage().clkSubmitOrder();

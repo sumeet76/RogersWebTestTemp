@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * TC13 - Regression - HUP-E2E-SL Non Shared-Validate the HUP by selecting Keep current plan(Fin) and VDP _Chrome_EN_ON
+ * TC13 - Regression - Tablet HUP-E2E-ML Shared-Validate the HUP by selecting Fin plan_Chrome_EN_ON
  */
 public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test extends BaseTestClass{
 
@@ -85,6 +85,10 @@ public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test exten
             if(getRogersOrderReviewPage().isPaymentRequired()) {
                 getRogersOrderReviewPage().clkContinue();
             reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                        "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
             getRogersOneTimePaymentPage().setNameonCard();
             getRogersOneTimePaymentPage().switchToCreditCardIFrame();

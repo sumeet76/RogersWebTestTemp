@@ -87,7 +87,10 @@ public class RogersBFA_TC37_Consumer_to_RPP_Migration_SL_SE_HUP_NOTERM_KEPOnMain
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             getRogersOrderReviewPage().clkSubmitOrder();
-
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                     "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
             getRogersOneTimePaymentPage().setNameonCard();

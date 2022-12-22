@@ -221,7 +221,7 @@ public class TestDataHandler {
 	public static AALData tc18AALTermTablet;
 	public static AALData tc19AALBYODBopisShipping;
 	public static AALData tc39_POMSOHO_AALBYODStandardShipping;
-	public static AALData tc20AALTermMLNonSEBasicPlanStdShipping;
+	public static AALData tc20AALTermSLNonSEBasicPlanStdShipping;
 	public static AALData tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS;
 	public static AALData tc31_RPP_AALBYODStdShipping;
 	public static AALData BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg;
@@ -650,7 +650,7 @@ public class TestDataHandler {
 		tc17AALNoTermStandardShipping = YamlHandler.getAALdata("tc17AALNoTermStandardShipping");
 		tc18AALTermTablet = YamlHandler.getAALdata("tc18AALTermTablet");
 		tc19AALBYODBopisShipping = YamlHandler.getAALdata("tc19AALBYODBopisShipping");
-		tc20AALTermMLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc20AALTermMLNonSEBasicPlanStdShipping");
+		tc20AALTermSLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc20AALTermSLNonSEBasicPlanStdShipping");
 		tc21PPCSLNonSEDTTPlan = YamlHandler.getPPCdata("tc21PPCSLNonSEDTTPlan");
 		tc22PPCMLNonSESubsidyPlan = YamlHandler.getPPCdata("tc22PPCMLNonSESubsidyPlan");
 		tc23PPCMLNonSESharedGroupDTTPlan = YamlHandler.getPPCdata("tc23PPCMLNonSESharedGroupDTTPlan");

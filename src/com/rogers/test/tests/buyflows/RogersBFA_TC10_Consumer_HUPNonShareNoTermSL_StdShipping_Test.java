@@ -9,15 +9,14 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * TC10 - Regression - HUP-E2E-SL Nonshared(Noterm)-Validate the HUP flow selecting the Noterm_Chrome_EN_ON
  */
-public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_DBValidation_Test extends BaseTestClass{
+public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_StdShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
-        public void tc10_rogersHUPNonShareNoTermSLTest() {
+        public void tc10_rogersHUPNonShareNoTermSLStdShipTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
@@ -85,6 +84,10 @@ public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_DBValidation_Test exten
             } else {
                 getRogersOrderReviewPage().clkSubmitOrder();
             }
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                     "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
             getRogersOneTimePaymentPage().setNameonCard();
