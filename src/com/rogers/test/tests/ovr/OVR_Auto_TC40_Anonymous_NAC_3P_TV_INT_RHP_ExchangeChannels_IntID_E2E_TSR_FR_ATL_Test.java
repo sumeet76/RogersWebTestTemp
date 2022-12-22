@@ -124,6 +124,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
