@@ -70,27 +70,25 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("Customer Profile Page");
         getBundleBuilderPage().scrollAndClickContinue();
 
-        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
-        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("Credit Evaluation Page");
-//        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
-//                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-//        reporter.reportLogWithScreenshot("credit form completed");
-        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
-        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
-        getCreditCheckPage().clkAuthorize();
-        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-        reporter.reportLogWithScreenshot("Credit Check Information");
-        getCreditCheckPage().clkContinue();
-
-        reporter.reportLogWithScreenshot("Continue to install options  page");
-        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        reporter.reportLogWithScreenshot("Install Options page");
-        getBundleBuilderPage().selectExpressProInstall();
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
+//        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
+//        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+//        reporter.reportLogWithScreenshot("Credit Evaluation Page");
+//
+//        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
+//        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
+//        getCreditCheckPage().clkAuthorize();
+//        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+//        reporter.reportLogWithScreenshot("Credit Check Information");
+//        getCreditCheckPage().clkContinue();
+//
+//        reporter.reportLogWithScreenshot("Continue to install options  page");
+//        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
+//        reporter.reportLogWithScreenshot("Install Options page");
+//        getBundleBuilderPage().selectExpressProInstall();
+//        getBundleBuilderPage().clkTechInstallSlot();
+//        reporter.reportLogWithScreenshot("Time Slot selected");
+//        getBundleBuilderPage().setMobileNumber();
+//        reporter.reportLogWithScreenshot("tech install details");
         //getBundleBuilderPage().clkContinueInstallation();
 
         //reporter.reportLogWithScreenshot("Billing and Payment page");

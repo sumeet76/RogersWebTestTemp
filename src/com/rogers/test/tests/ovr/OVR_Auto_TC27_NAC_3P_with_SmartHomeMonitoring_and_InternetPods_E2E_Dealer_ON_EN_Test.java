@@ -78,10 +78,8 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         //Internet Add-Ons page.
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        /*To Add the chargeable Pods*/
         getRogersIgniteBundlesPage().addPods(5);
         reporter.reportLogWithScreenshot("Chargeable internet add on Pod is added to the cart");
-        //getRogersIgniteBundlesPage().addAdditionalPods(5);
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
 
         reporter.reportLogWithScreenshot("Continue to Home phone Add ons page");
@@ -98,8 +96,6 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
 
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        //Validation for SHM Addon
-        //not seeing one time charges for shm
         //reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMOnetimeChargesInCartSummary(),"One time SHM charges present", "One time SHM charges not Present");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
         //validation for pods
@@ -137,6 +133,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
