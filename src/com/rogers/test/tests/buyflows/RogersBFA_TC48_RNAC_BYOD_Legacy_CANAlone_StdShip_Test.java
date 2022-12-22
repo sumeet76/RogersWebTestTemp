@@ -127,17 +127,6 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
-        //---------------------One Time Payment page------------------------------//
-//        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-//                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
-//        getRogersOneTimePaymentPage().setNameonCard();
-//        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-//        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetailsOTP());
-//        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-//        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc48_Legacy_NACByod.getExpiryDateOTP());
-//        getRogersOneTimePaymentPage().setCVV();
-//        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-//        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");

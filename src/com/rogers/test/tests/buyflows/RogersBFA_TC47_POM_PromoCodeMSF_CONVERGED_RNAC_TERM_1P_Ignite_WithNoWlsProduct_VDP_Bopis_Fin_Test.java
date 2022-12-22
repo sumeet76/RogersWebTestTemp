@@ -140,18 +140,27 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        getRogersReviewOrderPage().clkSubmitOrderBtn();
+        //getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
-        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
-        getRogersOneTimePaymentPage().setNameonCard();
-        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetailsOTP());
-        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getExpiryDateOTP());
-        getRogersOneTimePaymentPage().setCVV();
-        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        if(getRogersOrderReviewPage().isPaymentRequired()) {
+            getRogersOrderReviewPage().clkContinue();
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+            getRogersOneTimePaymentPage().setNameonCard();
+            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetailsOTP());
+            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getExpiryDateOTP());
+            getRogersOneTimePaymentPage().setCVV();
+            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        } else {
+            getRogersOrderReviewPage().clkSubmitOrder();
+        }
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");
