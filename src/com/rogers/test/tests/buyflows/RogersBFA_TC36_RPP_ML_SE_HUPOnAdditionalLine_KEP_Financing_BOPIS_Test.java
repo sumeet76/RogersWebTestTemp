@@ -23,13 +23,18 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getUsername());
+       /* getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();*/
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_RPP_HUP_ML_SE_HUPOnAdditionalLineByKEP_BOPIS.getPassword());
+        reporter.reportLogWithScreenshot("Login Page");
+        getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));
@@ -67,7 +72,7 @@ public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Te
         getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
         getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
-        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        reporter.reportLogPassWithScreenshot("EXPRESS Delivery selected");
         reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Appointment time is available",
                 "Appointment time is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();

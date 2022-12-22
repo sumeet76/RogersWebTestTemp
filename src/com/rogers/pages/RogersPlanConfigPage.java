@@ -746,7 +746,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This method selects the Keep My CUrrent Phone and pay my Upfront edge amount option and clicks Continue the Modal
+     * This method selects the Keep My Current Phone and pay my Upfront edge amount option and clicks Continue the Modal
      * @author subash.nedunchezhian
      */
     public void clickContinueOnModalToKeepMyCurrentPhone() {

@@ -22,7 +22,12 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
+            /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getUsername());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getPassword());
+            reporter.reportLogWithScreenshot("Login Page");
+            getRogersLoginPage().clkSignInIFrame();*/
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();

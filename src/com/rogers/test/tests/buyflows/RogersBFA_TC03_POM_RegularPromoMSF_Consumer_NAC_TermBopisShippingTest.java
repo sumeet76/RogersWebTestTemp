@@ -49,7 +49,7 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(),
 				"Get started button on the modal is present", "Get started button on the modal is not present");
 		reporter.reportLogWithScreenshot("Modal window Popup");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(), "Clicked Get Started Button",
+		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
 				"Get Started button not able to click");
 
 		// ***************************Device config page************************************
@@ -131,7 +131,6 @@ public class RogersBFA_TC03_POM_RegularPromoMSF_Consumer_NAC_TermBopisShippingTe
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc03POMNACTermBOPISShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc03POMNACTermBOPISShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc03POMNACTermBOPISShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();

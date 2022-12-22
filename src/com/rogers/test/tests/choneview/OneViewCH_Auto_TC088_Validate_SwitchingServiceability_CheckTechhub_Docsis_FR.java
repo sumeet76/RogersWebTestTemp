@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC088_Validate_SwitchingServiceability_CheckTechhub_
             /* serviceability check to Techhub for Docsis 3P+SHA_NAC_FR*/
             reporter.reportLogWithScreenshot("OneView env");
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+            getEnvironmentSelectionPage().selectProduction();
+            reporter.reportLogWithScreenshot("Selected Production");
+            getEnvironmentSelectionPage().clickProceed();
+            reporter.reportLogWithScreenshot("Clicked proceed button");
             reporter.reportLogWithScreenshot("address");
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC());
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_docsis_3P_SHA_NAC()+" not serviceable");

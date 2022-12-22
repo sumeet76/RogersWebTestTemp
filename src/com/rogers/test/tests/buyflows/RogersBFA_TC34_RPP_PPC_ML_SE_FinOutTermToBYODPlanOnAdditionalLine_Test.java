@@ -30,11 +30,16 @@ public class RogersBFA_TC34_RPP_PPC_ML_SE_FinOutTermToBYODPlanOnAdditionalLine_T
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getUsername());
+        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();*/
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_RPP_PPC_ML_SE_BYODToBYODPlanOnAdditionalLine.getPassword());
+        reporter.reportLogWithScreenshot("Login Page");
+        getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
