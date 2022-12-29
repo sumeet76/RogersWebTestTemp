@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC106_SAINAC_No_RogersIgniteBundles_Popup_LoggedIn_Cx_after_twenty_mins extends BaseTestClass {
-
-
     @Test
     public void RogersCH_Auto_TC106_SAINAC_No_RogersIgniteBundles_Popup_LoggedIn_Cx_after_twenty_mins(){
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
