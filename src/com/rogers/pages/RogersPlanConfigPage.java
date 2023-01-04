@@ -355,7 +355,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
 
-    @FindBy(xpath = "//button[.=' Continue with selected plan ']")
+    @FindBy(xpath = "//button[@data-test='modal-pom-continue']")
     WebElement continueWithSelectedPlanButton;
 
 
@@ -1649,7 +1649,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     public void clickContinueWithSelectedPlanButton() {
-        getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+        if(getReusableActionsInstance().isElementVisible(continueWithSelectedPlanButton,5)) {
+            getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+        }
     }
 
     /**
