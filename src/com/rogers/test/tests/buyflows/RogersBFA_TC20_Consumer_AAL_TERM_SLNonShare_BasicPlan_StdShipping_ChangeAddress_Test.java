@@ -103,6 +103,10 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
+        String totalMonthlyFeesCheckout = getRogersCheckoutPage().getMonthlyFeeAfterTax();
+        String oneTimeFeeCheckout = getRogersCheckoutPage().getOneTimeFeeAfterTax();
+        reporter.reportLog("CheckoutpageCartSummaryInfo"+"1.TotalMonthlyFees"+totalMonthlyFeesCheckout
+                +"2.oneTimeFee"+oneTimeFeeCheckout);
         //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
@@ -132,13 +136,13 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
         getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
-        //String totalMonthlyFeesConfirmationPage = getRogersOrderConfirmationPage().getMonthlyFeeAfterTax();
+        String totalMonthlyFeesConfirmationPage = getRogersOrderConfirmationPage().getMonthlyFeeAfterTax();
         reporter.reportLogWithScreenshot("Cart summary of Order confirmation page");
-        //reporter.hardAssert(monthlyFeesAmountWithTax.equals(totalMonthlyFeesConfirmationPage),
-               // "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
+        reporter.hardAssert(totalMonthlyFeesCheckout.equals(totalMonthlyFeesConfirmationPage),
+                "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
         String oneTimeFeesConfirmationPage = getRogersOrderConfirmationPage().getOneTimeFeeAfterTax();
         reporter.reportLogWithScreenshot("Order confirmation page - Cart summary One Time fee section");
-        reporter.softAssert(oneTimeFeesAmountWithTax.equals(oneTimeFeesConfirmationPage),
+        reporter.softAssert(oneTimeFeeCheckout.equals(oneTimeFeesConfirmationPage),
                 "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
 
     }

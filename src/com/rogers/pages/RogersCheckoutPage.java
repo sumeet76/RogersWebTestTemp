@@ -495,7 +495,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getMonthlyFeeAfterTax() { 
-		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
+		getReusableActionsInstance().waitForElementVisibility(deliveryMethodHeader, 50);
 		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }

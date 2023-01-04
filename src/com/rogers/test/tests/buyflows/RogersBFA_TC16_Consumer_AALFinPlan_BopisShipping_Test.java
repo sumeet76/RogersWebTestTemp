@@ -89,6 +89,11 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
+        String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
+        String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
+        String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
+        reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
+                + " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------
@@ -117,10 +122,10 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");
         String totalMonthlyFeesConfirmationPage = getRogersOrderConfirmationPage().getMonthlyFeeAfterTax();
         reporter.reportLogWithScreenshot("Cart summary of Order confirmation page");
-        /*reporter.softAssert(monthlyFeesAmountWithTax.equals(totalMonthlyFeesConfirmationPage),
-                "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");*/
+        reporter.softAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
+                "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
         String oneTimeFeesConfirmationPage = getRogersOrderConfirmationPage().getOneTimeFeeAfterTax();
-        reporter.softAssert(oneTimeFeesAmountWithTax.equals(oneTimeFeesConfirmationPage),
+        reporter.softAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
                 "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
     }
 

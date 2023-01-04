@@ -63,10 +63,16 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
     WebElement modalContinueButton;
 
-    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]")
-    WebElement byodDeviceTile;
+    @FindAll({
+            @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]"),
+            @FindBy(xpath = "(//div[contains(@class,'dsa-tile-teaser')]//a[contains(@aria-label,'SHOP PLANS SHOP PLANS')])[1]")
+    })
+     WebElement byodDeviceTile;
 
-    @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a")
+    @FindAll({
+            @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a"),
+            @FindBy(xpath = "(//div[contains(@class,'dsa-tile-teaser')]//a[contains(@aria-label,'SHOP PLANS SHOP PLANS')])[1]")
+    })
     WebElement byodTileContinueButton;
 
     @FindBy(xpath = "//span[contains(text(),'postal')]/ancestor::span[contains(@class,'ds-button__copy text-button text')]")
