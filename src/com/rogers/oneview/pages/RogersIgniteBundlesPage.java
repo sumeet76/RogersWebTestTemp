@@ -1,11 +1,11 @@
 package com.rogers.oneview.pages;
 
 //import com.rogers.test.listeners.TestListener;
+
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 import java.util.List;
 
@@ -443,6 +443,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
 
+	@FindBy(xpath = "//div[@rchapiexposer='customerDetails.serviceAddress']//ds-radio-button//input")
+	WebElement rdoBtnSelectExisitingAddress;
 
 	/**
 	 * Click Load Offers button
@@ -1537,6 +1539,11 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+	}
+
+	public void clickExistingAddressRadioButton(){
+		getReusableActionsInstance().waitForElementTobeClickable(rdoBtnSelectExisitingAddress,60);
+		getReusableActionsInstance().executeJavaScriptClick(rdoBtnSelectExisitingAddress);
 	}
 
 }

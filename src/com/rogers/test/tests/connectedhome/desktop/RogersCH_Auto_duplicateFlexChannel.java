@@ -16,10 +16,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Load Rogers.com Url
+ * Click on Sign in button and login with valid login details.
+ * Select TV badge
+ * Click on exchange flex channels
+ * Remove any flex channel and choose another flex channel that is already available in the standalone package
+ * Click on exchange button --> Delete duplicate channel pop-up is displayed
+ * Click on continue or close button --> Duplicate channels should be deleted successfully as requested
+ */
+
 public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
 
     @Test
-    public void duplicateChannelCheck() throws InterruptedException {
+    public void duplicateChannelCheck()  {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
@@ -76,7 +86,6 @@ public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
 
         System.out.println("//div[@class='cl-button' and @id='"+flexChannels.stream().findFirst().get()+"']");
         //uncheck Existing flex channel to select the duplicate channel
-        //getDriver().findElement(By.xpath("//div[@class='cl-button' and @id='"+flexChannels.stream().findFirst().get()+"']")).click();
         getRogersSolarisChannelsExchangePage().selectOrUnselectChannel(flexChannels.stream().findFirst().get());
         reporter.reportLogWithScreenshot("removed the flex channel");
         //getDriver().findElement(By.xpath("//div[@class='cl-button' and @id='"+duplicateChannels.stream().findFirst().get()+"']")).click();

@@ -122,25 +122,27 @@ task "localTest"(type: Test) {
 
 
 repositories {
-//	mavenLocal()
-	maven {
+	mavenLocal()
+	/*maven {
 		url = "${artifactory_url}/${artifactory_repoKey}"
 		credentials {
 			username "${artifactory_username}"
 			password "${artifactory_password}"
 		}
-	}
+	}*/
 	mavenCentral()
 }
 
 dependencies {
-	api 'automation-utils:common-utils:latest.release'
+	api 'automation-utils:common-utils:1.74'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+	testImplementation 'org.testng:testng:7.1.0'
+	testImplementation 'org.testng:testng:7.1.0'
 
 }
 
