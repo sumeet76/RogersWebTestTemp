@@ -50,13 +50,14 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","ReleaseSanity"})
     public void rogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATL() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkNBProvinceLnk();
+        reporter.reportLogWithScreenshot("select NB region");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkTVBundlesForNB();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
@@ -65,14 +66,8 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 
-        // getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
-        // reporter.reportLogWithScreenshot("Starter package selected selected");
-        // getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-        //getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         getRogersIgniteTVBuyPage().selectFlex20Package();
-       /* reporter.reportLogWithScreenshot("Flex20+ Order online");
-        getRogersIgniteTVBuyPage().selectFlex20Package(); */
-        reporter.reportLogWithScreenshot("Flex20+ Added to cart");
+        reporter.reportLogWithScreenshot("Added to cart");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
 
@@ -81,6 +76,7 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         reporter.reportLogWithScreenshot("Selected 2 STBs");
+        getRogersIgniteTVBuyPage().clkUpdateCart();
         getRogersIgniteTVBuyPage().clkCheckout();
 
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

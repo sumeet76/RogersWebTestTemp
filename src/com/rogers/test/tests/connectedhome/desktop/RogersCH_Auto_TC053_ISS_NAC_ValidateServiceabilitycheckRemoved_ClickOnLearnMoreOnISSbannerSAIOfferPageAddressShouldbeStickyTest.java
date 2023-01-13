@@ -37,8 +37,10 @@ public class RogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_Clic
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeSticky() {
         reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkEasyInternet();
-
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
+        // getRogersHomePage().clkExistingCustomerInternet();
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
