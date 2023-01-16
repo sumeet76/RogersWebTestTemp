@@ -24,8 +24,8 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA"})
-    public void tc47_RNACTerm_1P_Ignite_VDP_BopisTest() throws InterruptedException, IOException {
+    @Test(groups = {"RegressionBFA","CovergeBFA","POM"})
+    public void tc47_pomRNACTerm_1P_Ignite_VDP_BopisTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getDeviceName());
@@ -35,11 +35,12 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername(), TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-        getRogersLoginPage().switchOutOfSignInIFrame();
+//        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+//        getRogersLoginPage().switchOutOfSignInIFrame();
         // ***************************Device config page************************************
         reporter.reportLogWithScreenshot("Device config page");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -72,8 +73,9 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         //***************Create Profile Stepper*************//
         if(!(custInfoMap.size()==0)) {
             if (custInfoMap.containsKey("emailAddress")) {
-                getRogersCheckoutPage().setEmailCreateProfile();
-                reporter.reportLogWithScreenshot("Email address entered successfully");
+                String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
+                getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
+                reporter.reportLogWithScreenshot("Email address entered successfullly");
             }
             if (custInfoMap.containsKey("firstName")) {
                 getRogersCheckoutPage().setFirstNameCreateProfile();
@@ -111,7 +113,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
@@ -138,18 +140,27 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        getRogersReviewOrderPage().clkSubmitOrderBtn();
+        //getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
-        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
-        getRogersOneTimePaymentPage().setNameonCard();
-        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetailsOTP());
-        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getExpiryDateOTP());
-        getRogersOneTimePaymentPage().setCVV();
-        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        if(getRogersOrderReviewPage().isPaymentRequired()) {
+            getRogersOrderReviewPage().clkContinue();
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+            getRogersOneTimePaymentPage().setNameonCard();
+            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetailsOTP());
+            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getExpiryDateOTP());
+            getRogersOneTimePaymentPage().setCVV();
+            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+        } else {
+            getRogersOrderReviewPage().clkSubmitOrder();
+        }
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");

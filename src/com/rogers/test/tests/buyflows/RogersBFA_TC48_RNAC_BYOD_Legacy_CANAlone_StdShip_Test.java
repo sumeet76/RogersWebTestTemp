@@ -24,7 +24,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","NACBFA"})
+    @Test(groups = {"RegressionBFA","CovergeBFA"})
     public void tc48_rnacByod_Legacy_StdShipTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
 
@@ -35,7 +35,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
 //        getRogersLoginPage().switchOutOfSignInIFrame();
         //getRogersAccountOverviewPage().selectAccount(TestDataHandler.BFA_ProdTest_tc03_AALBYOD_StdShipping.getBan());
         //############################Plan config page###############################
-        getDriver().get(System.getProperty("QaUrl")+"phones/bring-your-own-device");
+        getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device");
         Map<String,String> custInfoMap = getRogersDeviceCataloguePage().getCustomerInfoMap(TestDataHandler.tc48_Legacy_NACByod.getUsername(), TestDataHandler.tc48_Legacy_NACByod.getPassword());
         getRogersDeviceCataloguePage().clkAddALineBtnForIgniteCustomer();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_Legacy_NACByod.getUsername());
@@ -43,7 +43,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_Legacy_NACByod.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+        //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         //getRogersLoginPage().clkSkipIFrame();
         //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
@@ -102,7 +102,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         // ***************Choose a Number Stepper*************//
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
@@ -127,17 +127,6 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
-        //---------------------One Time Payment page------------------------------//
-//        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
-//                "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
-//        getRogersOneTimePaymentPage().setNameonCard();
-//        getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-//        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetailsOTP());
-//        getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-//        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc48_Legacy_NACByod.getExpiryDateOTP());
-//        getRogersOneTimePaymentPage().setCVV();
-//        reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-//        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");

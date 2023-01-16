@@ -47,6 +47,15 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
 	WebElement divOfferBundleContainer;
 
+	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[contains(@class, 'ds-price__amountDollars')]")
+	WebElement divOfferPrice;
+
+	@FindBy(xpath = "//div[contains(@class, 'promotion-banner')]//h3")
+	WebElement divBundleCredit;
+
+	@FindBy(xpath = "//div[@class='bundle-offer-details__tile']//span[@class='text-body-sm']")
+	WebElement divCurrentBundlePrice;
+
 	@FindBy(xpath = "//button[contains(@class,'bundle-promo-dtl-link-')]/span")
 	WebElement lnkLearnMore;
 
@@ -128,6 +137,36 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(txtOfferBundle);
 		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 60);
 	}
+
+	public String getOfferBundlePrice() {
+		getReusableActionsInstance().waitForElementVisibility(divOfferPrice, 30);
+		String bundleOfferPrice = getReusableActionsInstance().getWhenReady(divOfferPrice, 60).getText();
+		return bundleOfferPrice;
+	};
+
+	/**
+	 * Gets the monthly promotional credit amount from 'Promotions and discounts' section. (e.g. Get $x.xx off per month)
+	 * @author nandan.master
+	 */
+	public String getPromoCreditPerMonth(){
+		getReusableActionsInstance().waitForElementVisibility(divBundleCredit, 30);
+		String promoCreditTxt = getReusableActionsInstance().getWhenReady(divBundleCredit, 60).getText();
+		String[] subs = promoCreditTxt.split("\\$");
+		String[] promoCreditInLine = subs[1].split(" ");
+		return promoCreditInLine[0];
+	};
+
+	/**
+	 * Gets the monthly promotional credit amount from 'Promotions and discounts' section. (e.g. Get $x.xx off per month)
+	 * @author nandan.master
+	 */
+	public String getCurrentBundlePrice(){
+		getReusableActionsInstance().waitForElementVisibility(divCurrentBundlePrice, 30);
+		String promoCreditTxt = getReusableActionsInstance().getWhenReady(divCurrentBundlePrice, 60).getText();
+		String[] subs = promoCreditTxt.split("\\$");
+		String[] promoCreditInLine = subs[1].split(" ");
+		return promoCreditInLine[0];
+	};
 
 	/**
 	 * To Click on Upgrade checkbox
