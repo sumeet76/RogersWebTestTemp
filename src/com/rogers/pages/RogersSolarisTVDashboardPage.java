@@ -516,7 +516,6 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
-		getReusableActionsInstance().staticWait(5000);
 		 }
 	   else
 		{

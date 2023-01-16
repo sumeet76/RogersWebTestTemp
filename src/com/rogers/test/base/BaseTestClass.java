@@ -783,9 +783,7 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_login":
-
                 setImplicitWait(getDriver(), 10);
-                getDriver().manage().deleteAllCookies();
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
