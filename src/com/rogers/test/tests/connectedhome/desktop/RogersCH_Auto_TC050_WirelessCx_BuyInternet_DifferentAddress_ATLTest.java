@@ -42,8 +42,6 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		reporter.reportLogWithScreenshot("Skip popup");
-		getRogersLoginPage().clkSkipIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc50_wirelessSignedInInternetBuy.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();

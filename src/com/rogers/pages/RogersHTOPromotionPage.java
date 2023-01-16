@@ -35,7 +35,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay nsm-overlay-open']")
 	WebElement overlayPromoPage;
 
-	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
+	@FindBy(xpath = "//a[contains(@aria-label,'upgrade') or contains(@aria-label,'Upgrade')]/span")
 	WebElement btnReviewYourUpgrade;
 
 	@FindBy(xpath = "//div[contains(@class,'progress-loader')]")
@@ -134,8 +134,8 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyOfferBundle() {
-		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
-		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 30);
+		getReusableActionsInstance().scrollToElement(txtOfferBundle);
+		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 60);
 	}
 
 	public String getOfferBundlePrice() {
@@ -183,7 +183,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickReviewYourUpgrade() {
-		getReusableActionsInstance().waitForElementVisibility(btnReviewYourUpgrade, 30);
+		getReusableActionsInstance().waitForElementTobeClickable(btnReviewYourUpgrade, 30);
 		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
 	}
 

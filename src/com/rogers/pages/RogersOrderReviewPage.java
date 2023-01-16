@@ -266,8 +266,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageBuy, 120);
-		return	getReusableActionsInstance().isElementVisible(txtAgreementPageBuy, 60);
+		return	getReusableActionsInstance().isElementVisible(txtAgreementPageBuy, 120);
 	}
 
 	public boolean verifyAgreementPageTVMobile() {
@@ -281,8 +280,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 
 	public boolean verifyAgreementPageInternet() {
-		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageInternet, 90);
-	return	getReusableActionsInstance().isElementVisible(txtAgreementPageInternet, 60);
+	return	getReusableActionsInstance().isElementVisible(txtAgreementPageInternet, 90);
 	}
 	/**
 	 * Verify the agreement block on the order review page
@@ -549,6 +547,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean isPaymentRequired() {
+
 		return getReusableActionsInstance().isElementVisible(lblPaymentStep, 30);
 	}
 
@@ -558,8 +557,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 200);
-		return getReusableActionsInstance().isElementVisible(lblOrderReview);
+		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
 	}
 
 
@@ -636,6 +634,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
 	}
 
+	/**
+	 * Verifies if there is more than 1 STB at HTO Review page
+	 * @returns true if more than 1, else false
+	 * @author Manpreet.kaur3
+	 */
 	public boolean verifyAdditionalSTBs() {
 		By tvFeaturesList = By.xpath("//rch-bundle-promo-tv-details//div[@class='bundle-offer-details__content']//li/span");
 		List<WebElement> myElements = getDriver().findElements(tvFeaturesList);

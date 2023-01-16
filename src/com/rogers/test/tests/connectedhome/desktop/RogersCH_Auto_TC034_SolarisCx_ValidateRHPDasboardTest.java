@@ -36,8 +36,22 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_igniteRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-		reporter.reportLogWithScreenshot("Skip popup");
+
+		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+			reporter.reportLogWithScreenshot("Click on Text as recovery option");
+			getRogersLoginPage().clkTextToAsRecoveryOption();
+			String strTestingTab = getDriver().getWindowHandle();
+			//Will open a new tab for ENS, to get verification code from ENS
+			reporter.reportLogWithScreenshot("ENS");
+			String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
+			String strEnsUrl = System.getProperty("EnsUrl");
+			String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
+			getDriver().switchTo().window(strTestingTab);
+			reporter.reportLogWithScreenshot("Close the Overlay");
+			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			reporter.reportLogWithScreenshot("Continue to Account Overview");
+		}
 
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_igniteRHP.accountDetails.getBan());

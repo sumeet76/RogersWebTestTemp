@@ -47,12 +47,8 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

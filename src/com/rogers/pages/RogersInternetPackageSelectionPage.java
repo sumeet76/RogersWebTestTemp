@@ -650,10 +650,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		} */
+		getReusableActionsInstance().staticWait(3000);
 		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
-		getReusableActionsInstance().staticWait(3000);
+
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(btnInternetBuyContinue, 60);
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();

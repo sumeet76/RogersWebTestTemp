@@ -307,7 +307,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
+		//getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
 	}
 
 	/**
@@ -509,7 +510,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']/button[contains(@aria-label, '" + strPackageNameEn + "')]/span");
+		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']/button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label, '" + strPackageNameFr + "')]/span");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);

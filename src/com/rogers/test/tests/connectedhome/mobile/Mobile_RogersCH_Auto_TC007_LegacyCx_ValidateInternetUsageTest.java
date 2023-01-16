@@ -42,8 +42,6 @@ public class Mobile_RogersCH_Auto_TC007_LegacyCx_ValidateInternetUsageTest exten
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36_legacyInternetAccount.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     	reporter.reportLogWithScreenshot("Launched the Account Page");
