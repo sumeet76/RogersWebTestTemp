@@ -73,8 +73,8 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         reporter.reportLogWithScreenshot("Bundles Page has launched");
 
        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
-        getRogersIgniteTVBuyPage().scrollToFlex20();
-        getRogersIgniteTVBuyPage().selectFlex20PackageMobile();
+      //  getRogersIgniteTVBuyPage().scrollToFlex20();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");

@@ -685,6 +685,15 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkMyRogersfromAccount, 30).click();
 	}
 
+	/**
+	 * Verify My Rogers button is present in the main QA page or not
+	 * @author Manpreet.kaur3
+	 * @return
+	 */
+	public boolean verifyMyRogers() {
+		return getReusableActionsInstance().isElementVisible(lnkMyRogersfromAccount, 90);
+	}
+
 
 	/**
 	 * Click the MyRogers link from Home page
