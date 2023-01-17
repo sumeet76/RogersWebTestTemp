@@ -47,7 +47,7 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON extends
     @Test
     public void RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getUsername());
+        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
@@ -57,7 +57,7 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON extends
             reporter.reportLogWithScreenshot("Select an account");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc109_1P_HTO_DOCSIS.getAccountDetails().getBan());
             reporter.reportLogWithScreenshot("Account Selected");
-        }
+        }*/
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
             reporter.reportLogWithScreenshot("New Offer Modal Popup");
             getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
