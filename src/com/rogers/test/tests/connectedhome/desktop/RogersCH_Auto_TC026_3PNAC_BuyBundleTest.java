@@ -50,16 +50,9 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
-       // getRogersHomePage().clkTVBundle();
-        //getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
-        reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("select NB region");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
@@ -70,8 +63,6 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Clicked Home Phone");
-       /* getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");*/
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");
