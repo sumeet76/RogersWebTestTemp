@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * This class contains the test method to test the HTO 2P flow for Rogers.com
- * CH-8309_CH-9786_2P-2p HTO_Regular_HOT_Sign in MyRogers_Validate the legal text_bundle discount_Add channels_theme pack_One-time fee_saving section discount detail displayed only for campaign applied products_Review_confirmation_ON_CH_EN
+ * This class contains the test method to test the HTO 3P flow for Rogers.com
+ * TC011_CH-7078_CH-9784_CH-10334_CH-16905_Starter Pack_3P HTO_Cx with Recommended Offer_validate the HTO offer on the new Account Overview Page in a banner_ no discounts_E2E_AUTL_NB_CH_EN
  * @author Manpreet.Kaur3
  *
  * Test steps:
@@ -24,26 +24,27 @@ import java.lang.reflect.Method;
  * 6. Verify and click on special recommendation yellow badge
  * 7. Verify Special Offer text
  * 8. Verify old and new package text
- * 9. Click on Learn More link
- * 10. Click View Next Feature button
- * 10. Click Close button
- * 11. Click on I want this Upgrade checkbox
- * 12. Click on review your upgrade
- * 13. Verify Order Review header
- * 14. Verify PSEF promotion
- * 15. Verify GWP
- * 16. Verify One-Time charges and credits be $0
- * 17. Verify Installation details - Ignite Express Setup Header, fulfilment type: courier delivery, tech install for 3p
- * 18. Click on Learn more about Courier Delivery link
- * 19. Click close Ignite Express Setup popup
- * 20. Use Service Address
- * 21. Click I understand checkbox under Activation
- * 22. Click Email radio button to recieve order summary and agreement
- * 23. Verify Agreement Details block
- * 24. Click Acceptable Use Policy checkbox
- * 25. Click I understand checkbox
- * 26. Click on Submit button
- * 27. Verify Order Confirmation Page
+ * 9. Verify Srtike through price not available
+ * 10. Click on Learn More link
+ * 11. Click View Next Feature button
+ * 12. Click Close button
+ * 13. Click Total Channels
+ * 14. Hover 4k channels and close popup
+ * 15. Click Flex Channels
+ * 16. Hover preselected channles and close popup
+ * 17. Click on I want this Upgrade checkbox
+ * 18. Click on review your upgrade
+ * 19. Verify Order Review header
+ * 20. Verify PSEF promotion
+ * 21. Verify Installation details - Ignite Express Setup Header, fulfilment type: courier delivery, tech install for 3p
+ * 22. Click on Learn more about Courier Delivery link
+ * 23. Click close Ignite Express Setup popup
+ * 24. Click I understand checkbox under Activation
+ * 25. Verify Agreement Details block
+ * 26. Click Acceptable Use Policy checkbox
+ * 27. Click I understand checkbox
+ * 28. Click on Submit button
+ * 29. Verify Order Confirmation Page
  *
  **/
 
@@ -52,15 +53,15 @@ public class RogersCH_Auto_TC112_3P_HTO_Starter_RecommendedOffer_NoDiscountsTest
     @Test
     public void rogersCH_Auto_TC112_3P_HTO_Starter_RecommendedOffer_NoDiscounts() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101_2P_HTO_HotCableAccount.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
