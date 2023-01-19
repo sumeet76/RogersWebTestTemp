@@ -56,6 +56,7 @@ public class TestDataHandler {
 	public static AccountData tc102_2P_HTO_ColdCableAccount;
 	public static AccountData tc108_2PLeg_3PIgnite_otbc;
 	//public static AccountData tc109_1P_HTO_DOCSIS;
+	public static AccountData tc112_3P_HTO_RecommendedOffer;
 	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
 	public static AccountData tc05_IgniteTV4Plus1Account;
@@ -488,6 +489,7 @@ public class TestDataHandler {
 		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
 		tc108_2PLeg_3PIgnite_otbc = YamlHandler.getCableAccountData("TC108_2PLeg_3PIgnite_OTBC");
 	//	tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
+		tc112_3P_HTO_RecommendedOffer = YamlHandler.getCableAccountData("TC112_3P_HTO_Recommended");
 		tc63_Legacy2PtoIgnite2P = YamlHandler.getCableAccountData("TC63_Legacy2PtoIgnite2P");
 		tc82_Legacy2PtoIgnite2PMigration = YamlHandler.getCableAccountData("TC82_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");

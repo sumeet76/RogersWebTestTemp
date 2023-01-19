@@ -107,6 +107,18 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Call 1 833 32-FIBRE to continue your order']")
 	WebElement lnkCall;
 
+	@FindBy(xpath = "//button[contains(@aria-label,'Flex Channels')]/span")
+	WebElement btnViewFlexChannels;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'total channels')]/span")
+	WebElement btnViewTotalChannels;
+
+	@FindBy(xpath = "//div[@class='price-strikethrough copy-red']/div")
+	WebElement txtStrikeThrough;
+
+	@FindBy(xpath = "//div[@class='-mr16']")
+	WebElement imgPromoDiscounts;
+
 
 	/**
 	 * To verify the Home page
@@ -183,6 +195,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickReviewYourUpgrade() {
+		//getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementTobeClickable(btnReviewYourUpgrade, 30);
 		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
 	}
@@ -355,5 +368,41 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	public boolean verifyContactUsLink() {
 		return getReusableActionsInstance().isElementVisible(lnkContactUS,30);
 	}
+
+	/**
+	 * Click the View Total Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickViewTotalChannels() {
+		getReusableActionsInstance().getWhenReady(btnViewTotalChannels, 30).click();
+    }
+
+	/**
+	 * Verify Strike through price is present
+	 * @return true is strike through price available, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPriceStrikeThrough() {
+		return getReusableActionsInstance().isElementVisible(txtStrikeThrough, 30);
+	}
+
+	/**
+	 * Verify Promo Discounts is present
+	 * @return true if promo discount available, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPromoDiscounts() {
+		return getReusableActionsInstance().isElementVisible(imgPromoDiscounts, 30);
+	}
+
+	/**
+	 * Click the View Flex Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickViewFlexChannels() {
+		getReusableActionsInstance().getWhenReady(btnViewFlexChannels, 30).click();
+	}
 }
+
+
 

@@ -176,6 +176,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//div[@class='d-flex align-items-center']/div[contains(text(),'Courier Delivery')]")
 	WebElement lblFulfillmentType;
 
+	@FindBy(xpath = "//button[@aria-label='Learn more about Courier Delivery']/span")
+	WebElement lnkLearnMoreCourierDelivery;
+
 	@FindBy(xpath = "//h2[@class='identity-install ng-star-inserted']")
 	WebElement lblInstallationDetails;
 
@@ -557,6 +560,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
+		//getReusableActionsInstance().staticWait(5000);
 		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
 	}
 
@@ -656,4 +660,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return true;
 		}
 
+	/**
+	 * Click on Learn More about courier delivery
+	 * @author Manpreet.kaur3
+	 */
+	public void clkLearnMoreCourierDelivery() {
+		getReusableActionsInstance().getWhenReady(lnkLearnMoreCourierDelivery, 30).click();
 	}
+}
