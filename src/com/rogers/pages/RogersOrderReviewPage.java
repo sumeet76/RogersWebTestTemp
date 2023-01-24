@@ -166,11 +166,13 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.targetedOffer.label.orderReview']")
 	WebElement lblOrderReview;
 
+	@FindBy(xpath = "//h1[@class='-text-semi']")
+	WebElement lblIgniteOrderReview;
 
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//ds-price[@class='custom-price ng-star-inserted']/div[@aria-label='$0.00']")
 	WebElement lblZeroOneTimeCharge;
 
-	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//button[@aria-label='Show breakdown for One-time charges']")
+	@FindBy(xpath = "//section[contains(@class,'review__section')]//button[@aria-label='Show breakdown for One-time charges']")
 	WebElement btnShowPriceBreakdown;
 
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//div[@class='d-flex align-items-center']/div[contains(text(),'Courier Delivery')]")
@@ -191,12 +193,27 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox[@formcontrolname='agreeCondition']/label")
 	WebElement chkAgreement;
 
+	@FindBy(xpath = "//ds-checkbox[@id='agreementDetailsCheck1-host']/label")
+	WebElement chkIgniteHTOTerms;
+
+	@FindBy(xpath = "//ds-checkbox[@id='I2IagreementDetailsCheck3-host']/label")
+	WebElement chkHTOUpgradeCondition;
+
 	@FindBy(xpath = "//div[@class= 'row custom-note']//ds-price[@class='custom-price']//div[contains(@class,'ds-price__amountDollars')]")
 	WebElement lblCustomPrice;
 
+	@FindBy(xpath = "//div[@class= 'package-details__subtotal']//div[contains(@class,'ds-price__amountDollars')]")
+	WebElement lblIgniteCustomPrice;
+
+	@FindBy(xpath= "//div[@class= 'package-details__subtotal']//div[@class='price-section']/parent::div/following-sibling::div/p")
+	WebElement txtOneSTB;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
 	WebElement lblOfferPrice;
+
+	@FindBy(xpath="//div[@class='promo__pricing__price ng-star-inserted']/ds-price//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	WebElement lblIgniteOfferPrice;
+
 
 
 
@@ -419,8 +436,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmit() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().getWhenReady(clkSubmit, 30).click();
-		getReusableActionsInstance().clickIfAvailable(clkSubmit, 30);
+		getReusableActionsInstance().getWhenReady(clkSubmit, 30);
+		getReusableActionsInstance().executeJavaScriptClick(clkSubmit);
+
 	}
 	/**
 	 * Click on the Submit button on the order review page
@@ -564,6 +582,15 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
 	}
 
+	/**
+	 * To verify the Rogers Targeted Offer order review Page load
+	 * @return true if Order Review label is there, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgniteTargetedOfferOrderReviewPage() {
+		return getReusableActionsInstance().isElementVisible(lblIgniteOrderReview, 200);
+	}
+
 
 	/**
 	 * To verify the Rogers Targeted Offer One-Time Charge is $0.00
@@ -617,9 +644,21 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-
 		getReusableActionsInstance().getWhenReady(chkTerms, 60).click();
 		getReusableActionsInstance().getWhenReady(chkAgreement, 60).click();
+	}
+
+	/**
+	 * Click on the Terms & Agreement check box on the order review page
+	 * @author Manpreet.kaur3
+	 */
+	public void clkIgniteHTOAgreementCheckbox() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+		getReusableActionsInstance().getWhenReady(chkIgniteHTOTerms, 60).click();
+		getReusableActionsInstance().getWhenReady(chkHTOUpgradeCondition, 60).click();
 	}
 
 	/**
@@ -631,11 +670,43 @@ public class RogersOrderReviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Get the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getIgniteCustomPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteCustomPrice, 30).getText();
+	}
+
+	/**
+	 * Scroll to the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public void scrollToCustomPrice() {
+		getReusableActionsInstance().scrollToElement(lblIgniteCustomPrice);
+	}
+
+	/**
+	 * Scroll to the offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String scrollToOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteOfferPrice, 30).getText();
+	}
+
+	/**
 	 * Get the bundle offer price for HTO offer
 	 * @author Manpreet.kaur3
 	 */
 	public String getOfferPrice() {
 		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
+	}
+
+	/**
+	 * Get the bundle offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getIgniteOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteOfferPrice, 30).getText();
 	}
 
 	/**
@@ -659,6 +730,21 @@ public class RogersOrderReviewPage extends BasePageClass {
 			}
 		return true;
 		}
+
+	/**
+	 * Gets the One TV Box for Ignite HTO Mote content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyOneTVBoxHTOText() {
+		String contentDesired = "Note: This price includes the cost of one TV Box. Your additional TV Boxes will continue to appear on your monthly bill at their current rate.";
+		String contentActual = getReusableActionsInstance().getWhenReady(txtOneSTB, 20).getText();
+		if(contentActual.equals(contentDesired)){
+			return true;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Click on Learn More about courier delivery
