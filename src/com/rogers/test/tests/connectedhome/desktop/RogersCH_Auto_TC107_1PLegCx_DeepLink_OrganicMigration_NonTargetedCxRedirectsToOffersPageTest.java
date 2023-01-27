@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * This class contains the test method to verify the Legacy Internet usage for Rogers.com   
- * 
+ * This class contains the test method to verify the Legacy Internet HTO cx login with deeplink flow for Rogers.com
+ * TC033_CH-16493- SAI Cx - Organic migration - Non targetted cx redirected to shop page_offers page_ON_EN_CH
  * @author manpreet.kaur3
  * Test steps:
  *

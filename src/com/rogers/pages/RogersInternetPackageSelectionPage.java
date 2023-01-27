@@ -144,7 +144,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]")
 	WebElement btnTakeAquiz;
 
-	@FindBy(xpath = "//img[@alt='Image of Disney+']")
+	@FindBy(xpath = "//img[@alt='Image of Disney+' or @alt='Image du Disney+']")
 	WebElement imgDisneyBanner;
 
 	@FindBy(xpath="//span[text()='Choose professional installation on us!']")

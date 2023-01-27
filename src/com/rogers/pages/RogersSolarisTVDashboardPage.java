@@ -89,6 +89,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	//ins[@usertype-translate='global.dashboard.tv.viewMyFlexChannels']
 	//span[@translate='global.dashboard.tv.viewLineup']
 
+	@FindBy(xpath ="//a[contains(@aria-label,'View Offer') or contains(@aria-label,'View offer')]/span | //a[contains(@aria-label,'personnalisée')]/span")
+	WebElement btnPersonalizedOffer;
+
 	@FindBy(xpath = "//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]")
 	WebElement btnChangeTVPackage;
 	//ins[@translate='global.cta.changeTVPackage']
@@ -425,6 +428,25 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(20000);
 		By btnChangeTVPkg = By.xpath("//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]");
 		getReusableActionsInstance().getWhenReady(btnChangeTVPkg, 120).click();
+	}
+
+	/**
+	 * Scroll to View Personalized Offer.
+	 * @author Manpreet.kaur3
+	 */
+	public void scrollToViewPersonalizedOffer() {
+		//WebElement btnChangeTVPkg = getDriver().findElement(By.xpath("//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]"));
+		getReusableActionsInstance().getWhenReady(btnPersonalizedOffer, 60);
+		getReusableActionsInstance().scrollToElement(btnPersonalizedOffer);
+		getReusableActionsInstance().staticWait(5000);
+	}
+
+	/**
+	 * Clicks on the view personalized offer button.
+	 * @author Manpreet.kaur3
+	 */
+	public void clkViewOfferBadge() {
+		getReusableActionsInstance().getWhenReady(btnPersonalizedOffer, 10).click();
 	}
 
 	/**

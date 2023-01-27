@@ -20,14 +20,24 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//p[contains(@class,'dsa-billboard__overline')]")
 	WebElement txtSpecialOffer;
 
+	@FindBy(xpath = "//p[contains(@class,'dsa-hero-billboard__overline')]")
+	WebElement txtPersonalizedOffer;
+
 	@FindBy(xpath = "//div[@class='current-bundle-details']")
 	WebElement divCurrentBundleContainer;
+
+	@FindBy(xpath = "//div[@class='ignite-hto-promo-tiles-component']")
+	WebElement divIgniteBundleContainer;
 
 	@FindBy(xpath = "//h2[contains(text(),'old')]")
 	WebElement txtCurrentBundle;
 
-	@FindBy(xpath = "//h2[contains(text(),'new')]")
+	@FindBy(xpath = "//h2[contains(text(),'new') or contains(text(),'nouvelle')]")
 	WebElement txtOfferBundle;
+
+	@FindBy(xpath = "//h2[contains(text(),'current') or contains(text(),'actuelle')]")
+	WebElement txtIgniteCurrentBundle;
+
 
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkUpgrade;
@@ -58,6 +68,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[contains(@class,'bundle-promo-dtl-link-')]/span")
 	WebElement lnkLearnMore;
+
+	@FindBy(xpath = "//button[contains(@aria-label ,'Learn more') or contains(@aria-label ,'Détails')]/span")
+	WebElement lnkIgniteLearnMore;
 
 	@FindBy(xpath = "//button[@aria-label='View next Ignite feature']/span")
 	WebElement btnViewNextFeature;
@@ -110,14 +123,21 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'Flex Channels')]/span")
 	WebElement btnViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'total channels')]/span")
+		@FindBy(xpath = "//button[contains(@aria-label,'flex channels in this bundle') or contains(@aria-label,'chaînes flexibles comprises dans cette offre groupée')]/span")
+	WebElement btnIgniteViewFlexChannels;
+
+		@FindBy(xpath = "//button[contains(@aria-label,'total channels') or contains(@aria-label,'chaînes comprises dans cette offre groupée')]/span")
 	WebElement btnViewTotalChannels;
 
 	@FindBy(xpath = "//div[@class='price-strikethrough copy-red']/div")
 	WebElement txtStrikeThrough;
 
-	@FindBy(xpath = "//div[@class='-mr16']")
+	@FindBy(xpath = "//div[@class='-mr16'] | //span[@class='ds-icon d-inline-flex rds-icon-check']")
 	WebElement imgPromoDiscounts;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Change to the') or contains(@aria-label,'maintenant')]/span[@role='text']")
+	WebElement lnkGetItNowPromoPage;
+
 
 
 	/**
@@ -130,6 +150,15 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify the Home page
+	 * @return true if the special offer text is available on promotion page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgnitePromotionPage() {
+		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 60);
+	}
+
+	/**
 	 * To verify the Current Bundle Container
 	 * @return true if the old bundle details is available on promotion page, else false
 	 * @author Manpreet.Kaur3
@@ -138,6 +167,17 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(divCurrentBundleContainer, 60);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		return getReusableActionsInstance().isElementVisible(txtCurrentBundle, 30);
+	}
+
+	/**
+	 * To verify the Ignite Current Bundle Container
+	 * @return true if the old bundle details is available on promotion page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgniteCurrentBundle() {
+		getReusableActionsInstance().waitForElementVisibility(divIgniteBundleContainer, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		return getReusableActionsInstance().isElementVisible(txtIgniteCurrentBundle, 30);
 	}
 
 	/**
@@ -209,6 +249,14 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public void clickLearnMore() {
 		getReusableActionsInstance().clickIfAvailable(lnkLearnMore, 30);
+	}
+
+	/**
+	 * To Click on Learn More link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clickIgniteLearnMore() {
+		getReusableActionsInstance().clickIfAvailable(lnkIgniteLearnMore, 30);
 	}
 
 	/**
@@ -396,11 +444,29 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	}
 
 	/**
+	 * Click Get it Now button on TV & Streaming page
+	 * @author manpreet.kaur3
+	 */
+	public void clkGetItNow(){
+		getReusableActionsInstance().waitForElementVisibility(lnkGetItNowPromoPage, 60);
+		getReusableActionsInstance().getWhenReady(lnkGetItNowPromoPage,30).click();
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
+	/**
 	 * Click the View Flex Channels button
 	 * @author manpreet.kaur3
 	 */
 	public void clickViewFlexChannels() {
 		getReusableActionsInstance().getWhenReady(btnViewFlexChannels, 30).click();
+	}
+
+	/**
+	 * Click the View Flex Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickIgniteViewFlexChannels() {
+		getReusableActionsInstance().getWhenReady(btnIgniteViewFlexChannels, 30).click();
 	}
 }
 

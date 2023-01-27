@@ -225,7 +225,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]/ancestor::li//div//button")
 	WebElement btnViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected')]//span")
+	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected') or contains(@aria-label,'présélectionnée')]//span")
 	WebElement hvrPreSelectedChannels;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'available')]//span[@class='ds-icon rds-icon-info']")
