@@ -43,7 +43,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEndExistingCustomer;	
 	
-	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
+	@FindBy(xpath = "//li[contains(text(),'819 994 6591')] | //a[contains(@aria-label,'priv.gc.ca/fr')]")
 	WebElement lnkAgreementToEnd;	
 	
 	@FindBy(xpath = "//div[@class='agreement-container']")
@@ -64,8 +64,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxMigration;
 
-	@FindBy(xpath = "//span[text()='Submit']")
+	@FindBy(xpath = "//span[text()='Submit' or text()= 'Soumettre']")
 	WebElement clkSubmit;
+	//a[contains(@aria-label,'Envoyer cette commande')]/span
 	
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxUpdate;
@@ -172,7 +173,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//ds-price[@class='custom-price ng-star-inserted']/div[@aria-label='$0.00']")
 	WebElement lblZeroOneTimeCharge;
 
-	@FindBy(xpath = "//section[contains(@class,'review__section')]//button[@aria-label='Show breakdown for One-time charges']")
+	@FindBy(xpath = "//section[contains(@class,'review__section')]//button[@aria-label='Show breakdown for One-time charges' or @aria-label='Afficher la répartition des Frais uniques']")
 	WebElement btnShowPriceBreakdown;
 
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//div[@class='d-flex align-items-center']/div[contains(text(),'Courier Delivery')]")
@@ -207,6 +208,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 
 	@FindBy(xpath= "//div[@class= 'package-details__subtotal']//div[@class='price-section']/parent::div/following-sibling::div/p")
 	WebElement txtOneSTB;
+
+	@FindBy(xpath ="//p[@class='dsa-hero-billboard__copy mb-0 text-body-lg ng-star-inserted']")
+	WebElement txtExpiredOffer;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
 	WebElement lblOfferPrice;
@@ -740,6 +744,22 @@ public class RogersOrderReviewPage extends BasePageClass {
 		String contentDesired = "Note: This price includes the cost of one TV Box. Your additional TV Boxes will continue to appear on your monthly bill at their current rate.";
 		String contentActual = getReusableActionsInstance().getWhenReady(txtOneSTB, 20).getText();
 		if(contentActual.equals(contentDesired)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the One TV Box for Ignite HTO Mote content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyCurrentOfferEndedText() {
+		//String contentDesiredEn = "Your current offer has ended, but don’t worry – we have a new, personalized offer we think you’ll love! Check it out below.";
+		String contentDesiredFR = "Votre offre a pris fin, mais ne vous en faites pas, nous avons une nouvelle offre personnalisée que vous adorerez! Jetez-y un coup d’œil ci-dessous.";
+		String contentActual = getReusableActionsInstance().getWhenReady(txtExpiredOffer, 20).getText();
+		if(contentActual.equals(contentDesiredFR)){
 			return true;
 		}
 

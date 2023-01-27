@@ -32,10 +32,10 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'old')]")
 	WebElement txtCurrentBundle;
 
-	@FindBy(xpath = "//h2[contains(text(),'new')]")
+	@FindBy(xpath = "//h2[contains(text(),'new') or contains(text(),'nouvelle')]")
 	WebElement txtOfferBundle;
 
-	@FindBy(xpath = "//h2[contains(text(),'current')]")
+	@FindBy(xpath = "//h2[contains(text(),'current') or contains(text(),'actuelle')]")
 	WebElement txtIgniteCurrentBundle;
 
 
@@ -69,7 +69,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'bundle-promo-dtl-link-')]/span")
 	WebElement lnkLearnMore;
 
-	@FindBy(xpath = "//button[contains(@aria-label ,'Learn more')]/span")
+	@FindBy(xpath = "//button[contains(@aria-label ,'Learn more') or contains(@aria-label ,'Détails')]/span")
 	WebElement lnkIgniteLearnMore;
 
 	@FindBy(xpath = "//button[@aria-label='View next Ignite feature']/span")
@@ -123,10 +123,10 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'Flex Channels')]/span")
 	WebElement btnViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'flex channels in this bundle')]/span")
+		@FindBy(xpath = "//button[contains(@aria-label,'flex channels in this bundle') or contains(@aria-label,'chaînes flexibles comprises dans cette offre groupée')]/span")
 	WebElement btnIgniteViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'total channels')]/span")
+		@FindBy(xpath = "//button[contains(@aria-label,'total channels') or contains(@aria-label,'chaînes comprises dans cette offre groupée')]/span")
 	WebElement btnViewTotalChannels;
 
 	@FindBy(xpath = "//div[@class='price-strikethrough copy-red']/div")
@@ -135,7 +135,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='-mr16'] | //span[@class='ds-icon d-inline-flex rds-icon-check']")
 	WebElement imgPromoDiscounts;
 
-	@FindBy(xpath = "//a[contains(@aria-label,'Change to the')]/span[@role='text']")
+	@FindBy(xpath = "//a[contains(@aria-label,'Change to the') or contains(@aria-label,'maintenant')]/span[@role='text']")
 	WebElement lnkGetItNowPromoPage;
 
 

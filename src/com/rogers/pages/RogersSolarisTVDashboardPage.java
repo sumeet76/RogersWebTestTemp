@@ -89,7 +89,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	//ins[@usertype-translate='global.dashboard.tv.viewMyFlexChannels']
 	//span[@translate='global.dashboard.tv.viewLineup']
 
-	@FindBy(xpath ="//a[contains(@aria-label,'View Offer')]/span")
+	@FindBy(xpath ="//a[contains(@aria-label,'View Offer') or contains(@aria-label,'View offer')]/span | //a[contains(@aria-label,'personnalisée')]/span")
 	WebElement btnPersonalizedOffer;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'Change TV package') or  contains(@aria-label,'Modifier le forfait Télé')]")
