@@ -131,11 +131,11 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//t[contains(text(),'Make a payment')]")
     WebElement MakePaymentbtn;
 
-    @FindBy(xpath = "//span[@class='icon rui-icon-internet-v2']")
+    @FindBy(xpath = "//t[contains(text(),'Internet')]/following::span[text()='Plan and Usage details']")
     WebElement btnInternetBadge;
 
     @FindAll({
-            @FindBy(xpath = "//t[text()='Ignite Home Phone']"),
+            @FindBy(xpath = "//t[text()='Home Phone']/following::span[text()=' Plan Details ']"),
             @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']")})
     WebElement btnHomePhoneBadge;
 
@@ -143,7 +143,7 @@ public class AccountOverViewPage extends BasePageClass {
 //	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
 //	@FindAll({
 
-    @FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='IPTV active-ind service-badge tv'] | //div[@class='service-badge tv active-ind DigitalTV']")
+    @FindBy(xpath = "//t[text()='TV']/following::span[text()='Plan Details']")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
@@ -348,7 +348,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
         if (getReusableActionsInstance().isElementVisible(btnGetIgniteTVBadge, 60)) {
-            getReusableActionsInstance().scrollToElementAndClick(btnGetIgniteTVBadge);
+            getReusableActionsInstance().javascriptScrollToBottomOfPage();
             getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge);
         }
     }

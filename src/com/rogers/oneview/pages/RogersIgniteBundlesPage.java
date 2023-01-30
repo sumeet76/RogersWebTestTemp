@@ -49,7 +49,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']")
+	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']/preceding-sibling::div")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
@@ -114,7 +114,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems' or text()='Batterie de secours']")
 	WebElement pointsToMentionBatteryBackup;
 
-	@FindBy(xpath = "//label[text()='I have reviewed all the Points to Mention with the customer.' or text()='J’ai passé en revue tous les points à mentionner avec le client.']")
+	@FindBy(xpath = "//span[text()='I have reviewed all the Points to Mention with the customer.' or text()='J’ai passé en revue tous les points à mentionner avec le client.']")
 	WebElement chkboxpointsToMentionReview;
 
 	@FindBy(xpath = "//span[text()='Use this address'  or text()='Utiliser cette adresse']/ancestor::button")
@@ -239,7 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
 	WebElement recommendedOffer;
 
-	@FindBy(xpath="//span[text()='BEST' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
+	@FindBy(xpath="(//span[text()='Exclusive Offer Available' or 'MEILLEUR' or translate='global.label.exclusiveOffer']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart'])[1]")
 	WebElement clickBstOffer;
 
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
@@ -437,7 +437,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-2']")
+	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'])[1]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -786,8 +786,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		//getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -806,13 +807,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().staticWait(4000);
-//		getReusableActionsInstance().scrollToElement(internetCheckbox);
-		getReusableActionsInstance().waitForElementVisibility(internetCheckbox, 60);
+		getReusableActionsInstance().scrollToElement(internetCheckbox);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 
 	public void goToPageBottom() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
 	/**
@@ -1002,6 +1002,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Aditi.Jain
 	 */
 	public void setProvider(String providerName) {
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, provider.getLocation().y - 300);
+		getReusableActionsInstance().clickWhenReady(provider);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(provider, providerName);
 	}
 
@@ -1040,8 +1042,8 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkContinueFor3PPortIn() {
 		getReusableActionsInstance().waitForElementVisibility(clickContinue3PPortIn);
-		getReusableActionsInstance().scrollToElement(clickContinue3PPortIn);
-		getReusableActionsInstance().executeJavaScriptClick(clickContinue3PPortIn);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().clickWhenReady(clickContinue3PPortIn);
 	}
 	/*
 	* To Verify the display of targeted offer for the customer
@@ -1176,7 +1178,7 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkExpressCheckOut() {
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
 		//getReusableActionsInstance().clickWhenReady(expressCheckout);
 	    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
@@ -1243,7 +1245,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().getWhenReady(podsLocator, 30);
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
-		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().staticWait(10000);
 	}
 	/**
 	 * Adds Additional pods after the first pods is added to cart.
@@ -1477,6 +1479,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean verifyNoServiceAvailabilityMessage() {
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(addressNotServiceable,60);
 	}
 

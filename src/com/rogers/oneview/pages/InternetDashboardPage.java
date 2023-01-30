@@ -157,7 +157,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.select' and contains(text(),'Select')])[4]/ancestor::button")
 	WebElement btnSelectSmartStream;
 
-	@FindBy(xpath = "//span[text()='Ignite 50 Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
 	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
@@ -578,7 +578,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	public void selectTupeloDowngradeInternet(String intPackage){
-		By downgradePackage = By.xpath("//div[text()='Ignite Internet "+intPackage+"']//parent::div//following-sibling::div//child::div[contains(text(),'Streaming')]//following::button");
+		By downgradePackage = By.xpath("//span[text()='"+intPackage+"']/ancestor::div[@class='-w84 smartStream-tile__table']/following-sibling::div/child::rch-bundle-price/descendant::span[3]/descendant::span[text()='Select']");
 		getReusableActionsInstance().getWhenReady(downgradePackage, 60);
 		WebElement button = getDriver().findElement(downgradePackage);
 		getReusableActionsInstance().executeJavaScriptClick(button);
@@ -606,8 +606,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickViewDetails() {
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewDetails, 60);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().clickWhenReady(btnViewDetails,60); }
+		getReusableActionsInstance().scrollToElement(btnViewDetails);
+		getReusableActionsInstance().getWhenReady(btnViewDetails,60).click(); }
 
 	public void clickPackageDetails(){
 		getReusableActionsInstance().waitForElementVisibility(expandPackageDetails, 60);
@@ -840,11 +840,11 @@ public class InternetDashboardPage  extends BasePageClass {
 //		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
 		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
 		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
-		String[] d1 = download.split(":");
-		System.out.println(d1[1]);
-		String[] u1 = upload.split(":");
-		System.out.println(u1[1]);
-		Boolean areEqual = d1[1].equals(u1[1]);
+		String[] d1 = download.split(" ");
+		System.out.println(d1[4]);
+		String[] u1 = upload.split(" ");
+		System.out.println(u1[4]);
+		Boolean areEqual = d1[4].equals(u1[4]);
 		if (areEqual) {
 			System.out.println("Download and Upload speed Symmetrical");
 			return true;

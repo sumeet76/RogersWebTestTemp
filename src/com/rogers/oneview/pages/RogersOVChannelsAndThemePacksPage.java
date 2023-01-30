@@ -42,7 +42,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@name='tab-themepack']")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add'])[2]")
+	@FindBy(xpath = "(//button[contains(@class,'btn-themepack ds-button ds-corners ds-pointer text-center')])[1]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "//*[text()='Yes, they do' or text()='Oui, ils le font']")
@@ -129,7 +129,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 
 	public void clickAddChannel() {
 		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 120);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 200);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
 	}
@@ -147,7 +147,8 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 
 	public void addThemepack() {
 		getReusableActionsInstance().waitForElementVisibility(addThemepack, 300);
-		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, addThemepack.getLocation().y - 200);
+		getReusableActionsInstance().clickWhenReady(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
 			getReusableActionsInstance().clickWhenReady(yesToContinue);
 		}*/
