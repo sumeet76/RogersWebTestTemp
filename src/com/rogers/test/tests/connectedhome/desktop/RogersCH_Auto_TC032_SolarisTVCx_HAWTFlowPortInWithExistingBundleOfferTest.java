@@ -15,30 +15,18 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
     public void rogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOffer() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
    		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc32_SolarisPortinFlows.getUsername());
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_SolarisPortinFlows.getPassword());
+		getRogersLoginPage().clkContinueInBrowser();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_SolarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-
-	//	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-     //   getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-
-       // getRogersHomePage().clkIgniteTVExistingCustomer();
-        getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkNoThnx();
-        getRogersHomePage().clkServiceability();
-
-      /*  getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Clicked Home Phone");
-        getRogersIgniteTVBuyPage().selectFlex20Package();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");*/
-
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
@@ -130,7 +118,7 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	

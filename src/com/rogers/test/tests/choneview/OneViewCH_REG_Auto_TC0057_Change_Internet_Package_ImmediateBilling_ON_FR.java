@@ -33,6 +33,9 @@ public class OneViewCH_REG_Auto_TC0057_Change_Internet_Package_ImmediateBilling_
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+        getRogersIgniteBundlesPage().clickExchangeLater();
+        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().noTo4KTVPopup();
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("select immediate bill");
         getInternetDashboardPage().clickContinueOnSelectDateChange();

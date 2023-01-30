@@ -30,10 +30,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "saiCH", "SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC024_SAI_NACFlow() throws InterruptedException {
-
-        reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkEasyInternet();
-
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();

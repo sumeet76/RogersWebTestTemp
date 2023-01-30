@@ -40,12 +40,11 @@ public class Mobile_RogersCH_Auto_TC003_SolarisInternetCx_ValidateInternetDashbo
             reporter.reportLogWithScreenshot("Continue in Browser Selected");
         }
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
-        getRogersLoginPage().setPasswordMobile(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
+        getRogersLoginPage().clkContinueInBrowser();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_SolarisInternetAccountWithUsage.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

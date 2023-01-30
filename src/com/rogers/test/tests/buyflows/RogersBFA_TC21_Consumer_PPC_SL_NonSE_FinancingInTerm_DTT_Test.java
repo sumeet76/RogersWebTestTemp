@@ -26,18 +26,12 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
     @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
     public void tc21_rogersPPC_SLNonSE_FINInTerm_DTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        reporter.reportLogWithScreenshot("Home Page");
-        //getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+        getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
-        reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
         //--------------------------------------------Plan Config page----------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();

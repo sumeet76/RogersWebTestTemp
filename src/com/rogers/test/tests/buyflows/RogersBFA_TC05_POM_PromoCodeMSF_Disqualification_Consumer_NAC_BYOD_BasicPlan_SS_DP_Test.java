@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC05 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Standard Shipping_E2E
  */
 
-public class RogersBFA_TC05_POM_PromoCode_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
+public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_BasicPlan_SS_DP_Test extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun = true) @Parameters({"strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("isIdentificationLabelen") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
@@ -28,7 +28,7 @@ public class RogersBFA_TC05_POM_PromoCode_Disqualification_Consumer_NAC_BYOD_Bas
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","DPBYOD"})
-	public void tc05_rogersNacByodSSTest() throws InterruptedException {
+	public void tc05_pomrogersNacByodDPStdShippingTest() throws InterruptedException {
 		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		// ***************************Promo Section************************************
@@ -113,7 +113,6 @@ public class RogersBFA_TC05_POM_PromoCode_Disqualification_Consumer_NAC_BYOD_Bas
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		//reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
-		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		//reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
@@ -122,12 +121,10 @@ public class RogersBFA_TC05_POM_PromoCode_Disqualification_Consumer_NAC_BYOD_Bas
 		reporter.hardAssert(getRogersCheckoutPage().verifyLocationDisQualifierMsg(),"Location DisQualifier Messages is displayed","Location DisQualifier Messages is not displayed");
 		getRogersCheckoutPage().clkContinueWithoutPromo();
 		// ***************Billing & Payment Stepper*************//
-		//getRogersCheckoutPage().clkNoThanks();
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().verifyPromoRemovedFrmCart(),"PromoCode removed from Cart","PromoCode not removed from Cart");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		//getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc05NACByodSS.getPaymentMethod());
-		//getRogersCheckoutPage().clkNoThanks();
 		//getRogersCheckoutPage().clkBillingContinueButton();
 		getRogersCheckoutPage().clickSkipAutopay();
 		//***************Shipping Options Stepper*************//

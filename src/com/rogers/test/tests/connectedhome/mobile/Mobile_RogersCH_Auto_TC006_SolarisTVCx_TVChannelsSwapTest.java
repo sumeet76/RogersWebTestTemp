@@ -43,12 +43,11 @@ public class Mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwapTest extends B
       reporter.reportLogWithScreenshot("Continue in Browser Selected");
      }
      getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
+     getRogersLoginPage().clkContinueInBrowser();
      getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
      reporter.reportLogWithScreenshot("Enter the account credentails");
      getRogersLoginPage().clkSignInIFrame();
      reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-     getRogersLoginPage().clkSkipIFrame();
-     reporter.reportLogWithScreenshot("Skip popup");
      // reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
      reporter.reportLogWithScreenshot("Launched the Account Page");
      getRogersSolarisTVDashboardPage().clkTVBadgeMobile();

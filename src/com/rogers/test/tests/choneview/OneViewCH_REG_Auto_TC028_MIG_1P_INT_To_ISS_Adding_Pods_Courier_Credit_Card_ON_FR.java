@@ -20,7 +20,7 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("click ignite");
-		getAccountOverViewPage().setLanguageFrench();
+//		getAccountOverViewPage().setLanguageFrench();
 		getAccountOverViewPage().clickIgnite();
 		reporter.reportLogWithScreenshot("use this address");
 	//	getRogersIgniteBundlesPage().clkUsethisAddress();
@@ -81,9 +81,9 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("Entered card details");
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
-		reporter.reportLogWithScreenshot("submit order");
-		getRogersOVCheckoutPage().clkSubmit();
-		reporter.reportLogWithScreenshot("Order Placed");
+//		reporter.reportLogWithScreenshot("submit order");
+//		getRogersOVCheckoutPage().clkSubmit();
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

@@ -22,7 +22,12 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
+            /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getUsername());
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getPassword());
+            reporter.reportLogWithScreenshot("Login Page");
+            getRogersLoginPage().clkSignInIFrame();*/
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc43_SOHO_HUP_SL_HUP_NOTERM_KEP_StdShip.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
@@ -73,7 +78,11 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             getRogersOrderReviewPage().clkSubmitOrder();
-
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                     "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
             getRogersOneTimePaymentPage().setNameonCard();

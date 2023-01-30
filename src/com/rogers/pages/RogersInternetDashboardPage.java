@@ -15,7 +15,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//section[@class='internet-my-usage']")
+	@FindBy(xpath = "//section[@class='internet-my-usage'] | //h1[text()= ' Internet ']")
 	WebElement txtInternetUsage;
 
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
@@ -64,7 +64,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath="//a[contains(@aria-label,'AddSmartStream')]/following::span[contains(text(),'Add')]")
+	@FindBy(xpath="//a[contains(@aria-label, '1 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
@@ -209,7 +209,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,40).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
+		//getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,40).click();
 	}
 
 	/**
@@ -314,10 +315,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {
-		getReusableActionsInstance().staticWait(10000);
-
-		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
-		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
+		getReusableActionsInstance().staticWait(5000);
+		By btnSolChangeInternetPackage = By.xpath("//div[contains(@class,'change-internet-button')]//button");
+		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 90);
+		WebElement changePkg = getDriver().findElement(btnSolChangeInternetPackage);
+		getReusableActionsInstance().getWhenReady(changePkg,60).click();
+		//getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
+		//getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
 	/**
 	 * verify the Change Internet Package button on Solaris Internet dash board is present or not
@@ -350,7 +354,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSmartstreamPack() {
-		getReusableActionsInstance().clickIfAvailable(btnSmartstreamPack, 30);
+		getReusableActionsInstance().getWhenReady(btnSmartstreamPack, 90).click();
 	}
 
 	/**
@@ -532,9 +536,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(5000);
-
-		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-bundle-tile__row']//button[contains(@aria-label,'" + strPackageNameEn+ "') or contains(@aria-label, '" + strPackageNameEn+ "')]/span");
-		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "') or contains(@aria-label,'" + strPackageNameFr +"')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().getWhenReady(pkg,60).click();
@@ -565,7 +567,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
 		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
+		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}

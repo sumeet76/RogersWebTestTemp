@@ -39,6 +39,7 @@ public class RogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyError
     public void rogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyErrorPopup() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
@@ -57,6 +58,7 @@ public class RogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyError
         reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available");
         getRogersAccountOverviewPage().clkSpecialOfferBadge();
         reporter.reportLogWithScreenshot("Clicked on the Special Offer Recommendation Bagde");
+
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");

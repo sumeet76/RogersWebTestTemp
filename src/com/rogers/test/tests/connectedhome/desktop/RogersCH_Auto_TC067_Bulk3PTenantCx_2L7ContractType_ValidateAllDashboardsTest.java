@@ -33,6 +33,7 @@ public class RogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashb
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

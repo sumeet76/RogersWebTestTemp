@@ -17,6 +17,10 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
     public void oneViewCH_Auto_TC017_1410_TC01_E2E_NAC_3P_PortIn_Monthly_Charges_Delivery_By_Appointment_Test (){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Click proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -37,9 +41,6 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-		//getRogersIgniteBundlesPage().clkExpressCheckOut();
-		//getRogersIgniteBundlesPage().fourKTVPopup();
-		//getRogersIgniteBundlesPage().contiue4KContent();
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("portin");
@@ -51,11 +52,10 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.reportLogWithScreenshot("portin details");
 		//getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
 		reporter.reportLogWithScreenshot("portin continue");
-		//getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().contiueToCartSummary();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-		//getRogersIgniteBundlesPage().contiueToCartSummary();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("cart summary");

@@ -30,14 +30,23 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getUsername());
+        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();*/
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_RPP_AALBYODStdShipping.getPassword());
+        reporter.reportLogWithScreenshot("Login Page");
+        getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
+        getDriver().get(System.getProperty("AWSUrl"));
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        reporter.reportLogWithScreenshot("Device Catalog Page");
+        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
+        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
@@ -45,9 +54,6 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
@@ -82,7 +88,7 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc31_RPP_AALBYODStdShipping.getCtnCity());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
@@ -99,7 +105,7 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

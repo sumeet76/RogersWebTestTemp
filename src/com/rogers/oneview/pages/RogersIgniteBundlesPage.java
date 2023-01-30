@@ -224,7 +224,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//rch-service-provider-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
 	WebElement portInContinue;
 
-	@FindBy(xpath = "//span[@translate='global.cta.cancel']//ancestor::button/following-sibling::button")
+	@FindBy(xpath = "//div[@class='button-set']//span[@translate='global.cta.continue'][normalize-space()='Continue']")
 	WebElement continueFromPort;
 
 	@FindBy(xpath = "//rch-port-in-service-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
@@ -239,7 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
 	WebElement recommendedOffer;
 
-	@FindBy(xpath="(//span[text()='Exclusive Offer Available' or 'MEILLEUR' or translate='global.label.exclusiveOffer']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart'])[1]")
+	@FindBy(xpath="//span[text()='Exclusive Offer Available' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
 	WebElement clickBstOffer;
 
 	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
@@ -321,7 +321,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -345,10 +345,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options de la Sécurité résidentielle Élan') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
-	@FindBy(xpath = "(//span[text()='Smoke & Fire Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
 	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
@@ -357,7 +357,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
-	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Ignite Self Protect' or text()='Autosurveillance Élan']")
 	WebElement smartHomeMonitoringMonthlyCharges;
 
 	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -434,7 +434,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement termoffer;
 
 
-	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$25 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
 	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'])[1]")
@@ -479,19 +479,19 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	public void reviewAllTerms(){
-			/*if(getReusableActionsInstance().isElementVisible(reviewTV,5)){
-				getReusableActionsInstance().waitForElementVisibility(reviewTV,10);
+			if(getReusableActionsInstance().isElementVisible(reviewTV,10)){
+				getReusableActionsInstance().waitForElementVisibility(reviewTV,5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewTV);
-			}*/
+			}
 			if(getReusableActionsInstance().isElementVisible(reviewInternet,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 10);
+				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
 			}
-			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,2)){
+			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,10)){
 				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
 			}
-			if(getReusableActionsInstance().isElementVisible(reviewBattery,2)) {
+			if(getReusableActionsInstance().isElementVisible(reviewBattery,10)) {
 				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
 				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
 			}
@@ -786,9 +786,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author Aditi.Jain
 	 */
 	public void clickExchangeLater() {
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		//getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1033,7 +1033,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void contiueToCartSummary() {
-		getReusableActionsInstance().clickWhenReady(continueFromPort, 10);
+		getReusableActionsInstance().scrollToElement(continueFromPort);
+		getReusableActionsInstance().executeJavaScriptClick(continueFromPort);
 	}
 
 	/**
@@ -1196,7 +1197,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clkContinueInternetAddon()
 	{
-		getReusableActionsInstance().waitForPageLoad();
+//		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().getWhenReady(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
@@ -1333,7 +1334,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){
@@ -1343,8 +1344,7 @@ public void activateHomePhoneltrPopUp() {
 	public boolean validateSmartHomeAddOnsHeader() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
-		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn,120);
-		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringAddOn);
+		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1);
 	}
 
 	public void addSHMAddOn(){
@@ -1504,7 +1504,7 @@ public void activateHomePhoneltrPopUp() {
 
 	public void clickOkButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(clickOk,30);
-		getReusableActionsInstance().clickWhenReady(clickOk);
+		getReusableActionsInstance().executeJavaScriptClick(clickOk);
 	}
 
 	public boolean verifyBulkAddress() {
@@ -1537,7 +1537,6 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
-
 	}
 
 }

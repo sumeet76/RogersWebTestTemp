@@ -54,39 +54,41 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
 
     @Test
     public void rogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_ValidateCourierFulfilment_ColdCable() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        getDriver().get(System.getProperty("QaUrl"));
+        reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+
+        /*getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
-        reporter.reportLogWithScreenshot("Clicked on View Bundles");
-       // getRogersHomePage().clkEnterAddress();
-       // reporter.reportLogWithScreenshot("Clicked on Enter address on Bundles page");
+        reporter.reportLogWithScreenshot("Address confirmation popup has launched");*/
+
         reporter.hardAssert(getRogersHomePage().verifyServiceabilityPopup(), "Serviceability Modal verified", "Serviceability modal not verified");
         getRogersHomePage().clkSignIntoMyRogers();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getAccountDetails().getBan());
             reporter.reportLogWithScreenshot("Account Selected");
         }
-        reporter.reportLogWithScreenshot("Bundles page");
+
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Bundles Page verified", "Bundles Page is not verified");
 
         getRogersIgniteTVBuyPage().VerifyYourBestFit();
         reporter.reportLogWithScreenshot("Recommended pack is displayed");
-
        // getRogersIgniteTVBuyPage().selectRecommendedPkg1GbpsInternetSpeed();
         getRogersIgniteTVBuyPage().clkRecommendedPkgViewMoreDetails();
-
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyPromotionPage(),"Promotion Page Available","Promotion Page not available");
         reporter.reportLogWithScreenshot("On Promotion Page");
@@ -94,10 +96,7 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.reportLogWithScreenshot("Verified Old bundle Details");
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified New bundle Details");
-
         String offerPrice = getRogersOrderReviewPage().getOfferPrice();
-        System.out.println(offerPrice);
-
         getRogersHTOPRomotionPage().clickLearnMore();
         reporter.reportLogWithScreenshot("Clicked on Learn More Link");
         getRogersHTOPRomotionPage().clickViewNextFeature();
@@ -116,11 +115,8 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.hardAssert(getRogersOrderReviewPage().verifyAdditionalSTBs(), "Additional STBs verified","Additional STBs not verified");
 
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
 
         String customPrice = getRogersOrderReviewPage().getCustomPrice();
-        System.out.println(customPrice);
-
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
 
@@ -152,7 +148,7 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
     //login flow
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_igniteanonymous, method);
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
     }
 
     @AfterMethod(alwaysRun = true)

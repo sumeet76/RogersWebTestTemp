@@ -32,8 +32,7 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_44_Ovr_Mig_Data_1p_to_3p.getBanNumber(), TestDataHandler.tc_44_Ovr_Mig_Data_1p_to_3p.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_52_Ovr_Mig_Data_1p_to_3p.getBanNumber(), TestDataHandler.tc_52_Ovr_Mig_Data_1p_to_3p.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
@@ -60,7 +59,8 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        //getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
@@ -107,13 +107,11 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
 
         reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
-
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

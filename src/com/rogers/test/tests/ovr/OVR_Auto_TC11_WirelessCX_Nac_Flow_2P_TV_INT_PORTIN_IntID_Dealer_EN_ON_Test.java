@@ -55,6 +55,18 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
+
+        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+        reporter.reportLogWithScreenshot("Port In Service");
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.reportLogWithScreenshot("Internet Selected for Port IN");
+        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
+        reporter.reportLogWithScreenshot("Port In form filled out");
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Port In completed");
+
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
@@ -68,20 +80,10 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.reportLogWithScreenshot("Continue to Internet Add ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to port in page");
+        reporter.reportLogWithScreenshot("Continue cart summary");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
-        reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet Selected for Port IN");
-        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
-        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
-        reporter.reportLogWithScreenshot("Port In form filled out");
-        getRogersIgniteBundlesPage().contiueFromPortIn();
-        reporter.reportLogWithScreenshot("Port In completed");
-        getRogersIgniteBundlesPage().contiueToCartSummary();
-        reporter.reportLogWithScreenshot("Cart Summary");
+        //getRogersIgniteBundlesPage().contiueToCartSummary();
+        //reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
@@ -104,9 +106,10 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
+        getBundleBuilderPage().selectDeliveryByCourier();
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in-person deliver");
-        getCreditCheckPage().clickInPersonDelivery();
+        //getCreditCheckPage().clickInPersonDelivery();
         reporter.reportLogWithScreenshot("install details");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Continue to Billing and Payment page");
@@ -130,10 +133,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-//        getOVROrderConfirmationPage().clkBackToOverview();
-//        reporter.reportLogWithScreenshot("Back to Overview page");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOverviewPage(), "Overview Page displayed", "Overview page error");
-//        reporter.reportLogWithScreenshot("Overview Page");
+
     }
 
 }

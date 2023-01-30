@@ -63,10 +63,16 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
     WebElement modalContinueButton;
 
-    @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]")
-    WebElement byodDeviceTile;
+    @FindAll({
+            @FindBy(xpath = "//div[contains(@class,'dsa-tile-teaser')]//p[contains(text(),'Bring') or contains(text(),'Apportez')]"),
+            @FindBy(xpath = "(//div[contains(@class,'dsa-tile-teaser')]//a[contains(@aria-label,'SHOP PLANS SHOP PLANS')])[1]")
+    })
+     WebElement byodDeviceTile;
 
-    @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a")
+    @FindAll({
+            @FindBy(xpath = "//p[contains(text(),'Bring') or contains(text(),'Apportez')]/parent::div[contains(@class,'dsa-tile-teaser')]//a"),
+            @FindBy(xpath = "(//div[contains(@class,'dsa-tile-teaser')]//a[contains(@aria-label,'SHOP PLANS SHOP PLANS')])[1]")
+    })
     WebElement byodTileContinueButton;
 
     @FindBy(xpath = "//span[contains(text(),'postal')]/ancestor::span[contains(@class,'ds-button__copy text-button text')]")
@@ -93,19 +99,13 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//div[@class='tippy-content']")
     WebElement comingSoonTextTitle;
 
-    @FindAll({
-            @FindBy(xpath = "//ds-modal-container//*[@id='trident-cta10']"),
-            @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")    //upgrade
-    })
+    @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerDeviceUpgradebutton;
 
-    @FindBy(xpath = "//button[@id='trident-cta-nac']")
+    @FindBy(xpath = "//button[@id='trident-cta-nac']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerGetStartedbutton;
 
-    @FindAll({
-            @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]"),
-            @FindBy(xpath = "//ds-modal-container//*[@id=\"trident-cta11\"]")
-    })
+    @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerAddALinebutton;
 
     @FindBy(xpath = "(//button[contains(@variant,'icon')])[2]")
@@ -176,6 +176,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='trident-cta-cnac']")
     WebElement btnAddALineForIgniteCustomer;
+
+    @FindBy(xpath = "//a[contains(@aria-label,'Sign in')]/span[contains(.,'Sign in')]")
+    WebElement bannerSignIn;
 
     /**
      * To verify the Home page
@@ -938,7 +941,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
         CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
         JSONObject jsonObject= null;
         Map<String,String> customerInfoMap = new HashMap<>();
-        HttpGet httpGet = new HttpGet(System.getProperty("QaUrl")+"api/subscriptions/v1/accounts");
+        HttpGet httpGet = new HttpGet(System.getProperty("QaUrl")+"/api/subscriptions/v1/accounts");
         httpGet.addHeader("content-type", "application/json");
         httpGet.addHeader("province","ON");
         httpGet.addHeader("lang","en");
@@ -989,6 +992,14 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void clkAddALineBtnForIgniteCustomer() {
         getReusableActionsInstance().clickWhenVisible(btnAddALineForIgniteCustomer);
+    }
+
+    /**
+     * This method clicks on Sign In on the Sign In Banner in Device Catalog
+     * @author Subash.Nedunchezhian
+     */
+    public void clickBannerSignIn() {
+        getReusableActionsInstance().clickWhenReady(bannerSignIn, 10);
     }
 
 }

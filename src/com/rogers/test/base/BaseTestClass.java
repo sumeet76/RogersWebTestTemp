@@ -27,6 +27,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -754,7 +755,7 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 getDriver().get(strUrl + "?setLanguage=" + language);
-                getDriver().manage().deleteAllCookies();
+               // getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_shm":
@@ -779,19 +780,19 @@ public class BaseTestClass {
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                getDriver().manage().deleteAllCookies();
                 break;
 
             case "connectedhome_login":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                getDriver().manage().deleteAllCookies();
                 break;
 
             case "redesignrogers":
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
+                getDriver().get(strUrl+"/phones");
+                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
                     getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
@@ -1104,6 +1105,10 @@ public class BaseTestClass {
 
             case "connectedhome_login":
 
+                RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
+                EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
+                EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
+                ensVerificationsThreadLocal.set(new VerifyInEns(this));
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
@@ -1266,6 +1271,7 @@ public class BaseTestClass {
                 InternetDashboardPageThreadLocal.set(new InternetDashboardPage(getDriver()));
                 TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
                 HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
+                RogersIgniteExchangePageThreadLocal.set(new RogersIgniteExchangePage(getDriver()));
                 break;
 
 
@@ -1373,6 +1379,11 @@ public class BaseTestClass {
             authCookieMap.put("Cookie", "AuthN="+authHeaderMap.get("AuthN")+"; AuthZ="+authHeaderMap.get("AuthZ"));
         }
         return authCookieMap;
+    }
+
+    public void setCookie(String strUrl) {
+        Cookie cookie = new Cookie("QSI_SI_eOGekr50Kdqo3dQ_intercept", "true", ".rogers.com", "/phones", null);
+        getDriver().manage().addCookie(cookie);
     }
 
 }

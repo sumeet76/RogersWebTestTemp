@@ -30,8 +30,8 @@ public class Mobile_RogersCH_Auto_TC002_SAI_NACFlowTest extends BaseTestClass {
 
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC002_SAI_NACFlow() throws InterruptedException {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkEasyInternet() ;
+        reporter.reportLogWithScreenshot("Launched the main QA page");
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailabilityMobile();
@@ -41,9 +41,9 @@ public class Mobile_RogersCH_Auto_TC002_SAI_NACFlowTest extends BaseTestClass {
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        getRogersInternetPackageSelectionPage().scrollToIgniteInternet150();
-        getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContractMobile();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+       // getRogersInternetPackageSelectionPage().scrollToIgniteInternet150();
+       /* getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContractMobile();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");*/
         getRogersInternetPackageSelectionPage().clkInternetPackageMobile();
         reporter.reportLogWithScreenshot("Selected Add to Cart");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");

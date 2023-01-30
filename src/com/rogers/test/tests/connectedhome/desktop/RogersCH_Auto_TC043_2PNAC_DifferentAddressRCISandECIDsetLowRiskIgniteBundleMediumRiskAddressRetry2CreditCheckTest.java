@@ -37,11 +37,14 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgniteBundleMediumRiskAddressRetry2CreditCheck() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-		getRogersHomePage().clkTVBundle();
-		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the Main QA Page");
+		getRogersHomePage().clkNBProvinceLnk();
+		reporter.reportLogWithScreenshot("select NB region");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkServiceability();
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		//getRogersHomePage().clkAddressCheck();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -55,7 +58,7 @@ public class RogersCH_Auto_TC043_2PNAC_DifferentAddressRCISandECIDsetLowRiskIgni
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
+		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 

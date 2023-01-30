@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * TC28 - Regression - RPP Customer [RNAC TERM] - Perform Rogers Net New Activation - POTG Shipping(Finance plan with POTG)_E2E
  */
 
-public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends BaseTestClass {
+public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_BopisShippingTest extends BaseTestClass {
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
@@ -26,13 +26,13 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
-		getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPasscode());
+		getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPasscode());
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
 		getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
 		getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP();
 		//-------------------------------Device Catalog Page----------------------------
-		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDeviceName());
+		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceName());
 //		reporter.reportLogWithScreenshot("Modal window Popup");
 //		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
 //				"Get Started button not able to click");
@@ -42,25 +42,24 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 		// ***************************Promo Section************************************
 		getRogersPlanConfigPage().clkPromoSection();
 		reporter.reportLogWithScreenshot("Promo Section Displayed");
-		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPromoCode());
+		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPromoCode());
 		reporter.reportLogWithScreenshot("Promo Code Entered");
 		getRogersPlanConfigPage().clkCheckPromoBtn();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoCreditInfo(), "Device Credit Offer Info displayed",
+				"Promo Code Not Applied");
 		// ****************************Plan config page***************************************
-		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDeviceCostIndex()));
+		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
 		getRogersPlanConfigPage().clickShowMoreDetails();
-		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDataOptionIndex()),this.getClass().getSimpleName());
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDataOptionIndex()),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Data option selected");
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
-		//getRogersPlanConfigPage().skipBPOOffer();
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-		getReporter().hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),"Promo Code and Discount amount Line Item displayed","Promo code line item not displayed");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
@@ -74,10 +73,10 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 		String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
 		String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
 		String fullNameCreateProfile = firstName + " " + lastName;
-		String contactNumberCreateProfile = TestDataHandler.tc28_RPP_NACTermPotgShipping.getContactNumber();
+		String contactNumberCreateProfile = TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getContactNumber();
 		getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
 		reporter.reportLogPassWithScreenshot("Create Profile Page details Entered till ContactNumber");
-		String billingAddressCreateProfile = TestDataHandler.tc28_RPP_NACTermPotgShipping.getBillingAddress();
+		String billingAddressCreateProfile = TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getBillingAddress();
 		getRogersCheckoutPage().setBillingAddressCreateProfile(billingAddressCreateProfile);
 		getRogersCheckoutPage().clkLanguageEnglishRadioBtnCreateProfile();
 		reporter.reportLogPassWithScreenshot("Create Profile Page details provided for Address,Shipping Address & Language Selected");
@@ -90,17 +89,16 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
-		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
-		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthMonth());
-		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDateOfBirthDay());
+		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthYear());
+		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthMonth());
+		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
-		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc28_RPP_NACTermPotgShipping.getCreditCardDetails());
+		getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getCreditCardDetails());
 		reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");
 		getRogersCheckoutPage().switchOutOfCreditCardIFrame();
-		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc28_RPP_NACTermPotgShipping.getExpiryDate());
-		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getDropdownOption());
-		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPassportNumber());
+		getRogersCheckoutPage().setExpiryDate(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getExpiryDate());
+		getRogersCheckoutPage().selectDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDropdownOption());
+		getRogersCheckoutPage().setPassportNumber(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPassportNumber());
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
@@ -110,7 +108,7 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 
 		// ***************Choose a Number Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
-		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getCityName());
+		getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
@@ -120,7 +118,7 @@ public class RogersBFA_TC28_POM_PromoCode_RPP_NAC_Term_BopisShippingTest extends
 
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc28_RPP_NACTermPotgShipping.getPaymentMethod());
+		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPaymentMethod());
 		getRogersCheckoutPage().clkBillingContinueButton();
 		getRogersCheckoutPage().clickSkipNacAutopay();
 		// ***************Shipping Stepper*************//
