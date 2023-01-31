@@ -437,7 +437,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'])[1]")
+	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'] or text()='Crédit de facture unique - 200 $ (PCR4)')[1]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -1179,7 +1179,7 @@ public void activateHomePhoneltrPopUp() {
 	 */
 	public void clkExpressCheckOut() {
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(4000);
 		getReusableActionsInstance().waitForElementTobeClickable(expressCheckout, 45);
 		//getReusableActionsInstance().clickWhenReady(expressCheckout);
 	    getReusableActionsInstance().getWhenReady(expressCheckout,30).sendKeys(Keys.ENTER);
@@ -1246,7 +1246,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().getWhenReady(podsLocator, 30);
 		WebElement addToCart = getDriver().findElement(podsLocator);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(5000);
 	}
 	/**
 	 * Adds Additional pods after the first pods is added to cart.
@@ -1479,7 +1479,6 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean verifyNoServiceAvailabilityMessage() {
-		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(addressNotServiceable,60);
 	}
 
