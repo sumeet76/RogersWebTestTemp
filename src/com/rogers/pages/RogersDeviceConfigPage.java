@@ -488,7 +488,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
             return deviceFullPriceFR.substring(0, deviceFullPriceFR.indexOf(","));
         } else {
             String deviceFullPriceEN = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
-            return deviceFullPriceEN.substring(1, deviceFullPriceEN.indexOf(".")).replace(",", "");
+            return deviceFullPriceEN.replaceAll("[^0-9.]","");
         }
     }
 
@@ -518,7 +518,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
         String upfrontEdgeAmt = "0.0";
         if(getReusableActionsInstance().isElementVisible(upfrontEdgeAmount)) {
             upfrontEdgeAmt = getReusableActionsInstance().getWhenReady(upfrontEdgeAmount).getText().trim();
-            return upfrontEdgeAmt.substring(upfrontEdgeAmt.indexOf("$")+1,upfrontEdgeAmt.indexOf(" "));
+            return upfrontEdgeAmt.substring(upfrontEdgeAmt.indexOf("$")+1,upfrontEdgeAmt.indexOf("U")-1);
         } else {
             return upfrontEdgeAmt;
         }
