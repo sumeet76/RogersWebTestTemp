@@ -131,11 +131,11 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//t[contains(text(),'Make a payment')]")
     WebElement MakePaymentbtn;
 
-    @FindBy(xpath = "//t[contains(text(),'Internet')]/following::span[text()='Plan and Usage details']")
+    @FindBy(xpath = "//t[contains(text(),'Internet') or contains(text(),'l'Internet')]/following::span[text()='Plan and Usage details' or text()='Plan et détails d'utilisation']")
     WebElement btnInternetBadge;
 
     @FindAll({
-            @FindBy(xpath = "//t[text()='Home Phone']/following::span[text()=' Plan Details ']"),
+            @FindBy(xpath = "//t[text()='Home Phone' or text()='Téléphone fixe']/following::span[text()=' Plan Details ' or text()=' Détails du forfait ']"),
             @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']")})
     WebElement btnHomePhoneBadge;
 
@@ -143,7 +143,7 @@ public class AccountOverViewPage extends BasePageClass {
 //	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
 //	@FindAll({
 
-    @FindBy(xpath = "//t[text()='TV']/following::span[text()='Plan Details']")
+    @FindBy(xpath = "//t[text()='TV' or text()='la télé']/following::span[text()='Plan Details'] or text()=' Détails du forfait ']")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
