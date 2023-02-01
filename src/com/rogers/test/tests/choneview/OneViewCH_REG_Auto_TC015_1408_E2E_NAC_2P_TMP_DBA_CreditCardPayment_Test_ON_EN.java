@@ -41,6 +41,7 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("Load Offers");
 //		getRogersIgniteBundlesPage().termOffer();
+		getRogersIgniteBundlesPage().oneTimeCredit();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add To Cart");
 		getRogersIgniteBundlesPage().noPortInPopup();

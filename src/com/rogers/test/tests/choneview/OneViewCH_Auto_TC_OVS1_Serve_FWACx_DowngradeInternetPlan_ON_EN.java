@@ -20,6 +20,8 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_DowngradeInternetPlan_ON_EN exte
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
+        getInternetDashboardPage().clickLoadOffers();
+        reporter.reportLogWithScreenshot("Click on Load Offers");
         getInternetDashboardPage().clickSelectButtonAsPerPackageName(TestDataHandler.Serve_FWACx_DowngradeInternetPlan.accountDetails.getInternetBundle());
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
