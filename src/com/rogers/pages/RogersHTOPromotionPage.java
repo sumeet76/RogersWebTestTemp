@@ -2,13 +2,11 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RogersHTOPromotionPage extends BasePageClass {
 
@@ -47,7 +45,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='bundle-offer-details']")
 	WebElement divOfferBundleContainer;
 
-	@FindBy(xpath = "//button[contains(@class,'bundle-promo-dtl-link-')]/span")
+	@FindBy(xpath = "//h3[contains(text(),' New Ignite features')]//following-sibling::button//span[text()='Learn more']")
 	WebElement lnkLearnMore;
 
 	@FindBy(xpath = "//button[@aria-label='View next Ignite feature']/span")
@@ -97,6 +95,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Call 1 833 32-FIBRE to continue your order']")
 	WebElement lnkCall;
+
+	@FindBy(xpath = "//ds-modal[@hasclosebutton='false']")
+	WebElement loadingPopupModel;
 
 
 	/**
@@ -180,7 +181,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickClosePopup() {
-		getReusableActionsInstance().clickWhenReady(btnCloseThisPopup, 30);
+		getReusableActionsInstance().clickIfAvailable(btnCloseThisPopup, 60);
 	}
 
 	/**
@@ -315,6 +316,21 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public boolean verifyContactUsLink() {
 		return getReusableActionsInstance().isElementVisible(lnkContactUS,30);
+	}
+
+	/**
+	 * Wait for the loading popup to be closed
+	 * @return void
+	 * @author Karthick.Murugiah
+	 */
+
+	public void waitForPopupToDisappear(){
+		System.out.println("wait for popup to disappear");
+		boolean elementVisible = getReusableActionsInstance().isElementVisible(loadingPopupModel, 45);
+		if(elementVisible){
+			WebDriverWait wait = new WebDriverWait(getDriver(),240);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//ds-modal[@hasclosebutton='false']")));
+		}
 	}
 }
 

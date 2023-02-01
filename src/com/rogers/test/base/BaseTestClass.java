@@ -1074,9 +1074,13 @@ public class BaseTestClass {
                 RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
                 RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
+                RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
+                RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
             case "connectedhome_ignitelogin":
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
+                RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
+                RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
