@@ -12,6 +12,7 @@ sauceconnect {
 	options = "-i myTunnel --no-remove-colliding-tunnels"
 }
 
+
 def sauce = [
 		username: sauceconnect.username,
 		key     : sauceconnect.key,
@@ -37,6 +38,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'DbEnvUrl', test_DbEnvUrl
+	systemProperty 'EnsUrl', test_ensURL
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'OneViewEnv',  test_oneViewEnv
 	systemProperty 'URIautoRegister', test_URIautoRegister
@@ -87,6 +89,7 @@ task "localTest"(type: Test) {
 	systemProperty 'Browser', test_browser
 	systemProperty 'Language', test_language
 	systemProperty 'DbEnvUrl', test_DbEnvUrl
+	systemProperty 'EnsUrl', test_ensURL
 	systemProperty 'OneViewEnv',  test_oneViewEnv
 	systemProperty 'SearchUrl', test_searchURL
 	systemProperty 'URIautoRegister', test_URIautoRegister

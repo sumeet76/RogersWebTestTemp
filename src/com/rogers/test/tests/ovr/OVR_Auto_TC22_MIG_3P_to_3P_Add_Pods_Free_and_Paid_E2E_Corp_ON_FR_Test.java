@@ -24,7 +24,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Test() {
-        getChampLoginPage().logIntoCorpChamp("ChampTest18.User18@trci.trogers.ca", "Rogers@487");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
@@ -115,6 +115,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 

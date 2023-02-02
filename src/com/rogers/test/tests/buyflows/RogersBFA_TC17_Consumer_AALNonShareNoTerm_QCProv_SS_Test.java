@@ -25,10 +25,10 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal&province=qc");
@@ -60,7 +60,7 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc17AALNoTermStandardShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
-        getRogersPlanConfigPage().clickShowMoreDetails();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectNonShareDataAndClkContinue(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc17AALNoTermStandardShipping.getDataOptionIndex()));
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc17AALNoTermStandardShipping.getTalkOptionIndex())),
@@ -87,12 +87,12 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
-        //getRogersCheckoutPage().clickSkipAutopay();
+        getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("standard");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------
@@ -105,6 +105,10 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersOrderReviewPage().clkSubmitOrder();
         reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
         getRogersOneTimePaymentPage().setNameonCard();
         getRogersOneTimePaymentPage().switchToCreditCardIFrame();

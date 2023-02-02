@@ -39,8 +39,10 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		getRogersIgniteBundlesPage().clkContinue();
 	//	getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("review terms and condition");
+		getRogersIgniteBundlesPage().reviewAllTerms();
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
-		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+		reporter.reportLogWithScreenshot("Reviewed terms anc conditions");
+		getRogersIgniteBundlesPage().clkReviewContinue();
 		getRogersIgniteBundlesPage().refreshContinue();
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 	//	getRogersIgniteBundlesPage().clkContinue();

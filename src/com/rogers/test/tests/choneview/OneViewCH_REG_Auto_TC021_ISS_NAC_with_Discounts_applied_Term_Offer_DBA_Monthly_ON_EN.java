@@ -49,9 +49,9 @@ public class OneViewCH_REG_Auto_TC021_ISS_NAC_with_Discounts_applied_Term_Offer_
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().clkExpressCheckOut();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("campaign");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("Campaign tab");

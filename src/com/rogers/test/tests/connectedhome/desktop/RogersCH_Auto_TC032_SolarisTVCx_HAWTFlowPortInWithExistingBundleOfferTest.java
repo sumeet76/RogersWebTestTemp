@@ -22,15 +22,11 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-      /*  getRogersHomePage().clkExistingCustomerShop();
+        getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();*/
-        getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkNoThnx();
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
@@ -122,7 +118,7 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 	

@@ -28,7 +28,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		closeSession();
 	}
 
-	@Test(groups = {"RegressionBFA","RPPTEST","SanityBFA"})
+	@Test(groups = {"RegressionBFA","RPPTEST","SanityNACBFA"})
 	public void tc29_RPP_NACBYOD_QCProvinceTest() throws InterruptedException {
 		//############################Plan config page###############################
 
@@ -97,8 +97,9 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
-		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPaymentMethod());
-		getRogersCheckoutPage().clkBillingContinueButton();
+//		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPaymentMethod());
+//		getRogersCheckoutPage().clkBillingContinueButton();
+		getRogersCheckoutPage().clickSkipAutopay();
 		//***************Shipping Options Stepper*************//
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPassWithScreenshot("Standard Delivery selected");

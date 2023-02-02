@@ -2,11 +2,13 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class RogersHTOPromotionPage extends BasePageClass {
 
@@ -27,13 +29,17 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'new')]")
 	WebElement txtOfferBundle;
 
+	@FindBy(xpath = "//h2[contains(text(),'current') or contains(text(),'actuelle')]")
+	WebElement txtIgniteCurrentBundle;
+
+
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement chkUpgrade;
 
 	@FindBy(xpath ="//div[@class='ng-star-inserted overlay nsm-overlay-open']")
 	WebElement overlayPromoPage;
 
-	@FindBy(xpath = "//a[contains(@class,'upgrade-today')]/span")
+	@FindBy(xpath = "//a[contains(@aria-label,'upgrade') or contains(@aria-label,'Upgrade')]/span")
 	WebElement btnReviewYourUpgrade;
 
 	@FindBy(xpath = "//div[contains(@class,'progress-loader')]")
@@ -47,6 +53,19 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//h3[contains(text(),' New Ignite features')]//following-sibling::button//span[text()='Learn more']")
 	WebElement lnkLearnMore;
+
+	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[contains(@class, 'ds-price__amountDollars')]")
+	WebElement divOfferPrice;
+
+	@FindBy(xpath = "//div[contains(@class, 'promotion-banner')]//h3")
+	WebElement divBundleCredit;
+
+	@FindBy(xpath = "//div[@class='bundle-offer-details__tile']//span[@class='text-body-sm']")
+	WebElement divCurrentBundlePrice;
+
+
+	@FindBy(xpath = "//button[contains(@aria-label ,'Learn more') or contains(@aria-label ,'Détails')]/span")
+	WebElement lnkIgniteLearnMore;
 
 	@FindBy(xpath = "//button[@aria-label='View next Ignite feature']/span")
 	WebElement btnViewNextFeature;
@@ -96,6 +115,24 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Call 1 833 32-FIBRE to continue your order']")
 	WebElement lnkCall;
 
+	@FindBy(xpath = "//button[contains(@aria-label,'Flex Channels')]/span")
+	WebElement btnViewFlexChannels;
+
+		@FindBy(xpath = "//button[contains(@aria-label,'flex channels in this bundle') or contains(@aria-label,'chaînes flexibles comprises dans cette offre groupée')]/span")
+	WebElement btnIgniteViewFlexChannels;
+
+		@FindBy(xpath = "//button[contains(@aria-label,'total channels') or contains(@aria-label,'chaînes comprises dans cette offre groupée')]/span")
+	WebElement btnViewTotalChannels;
+
+	@FindBy(xpath = "//div[@class='price-strikethrough copy-red']/div")
+	WebElement txtStrikeThrough;
+
+	@FindBy(xpath = "//div[@class='-mr16'] | //span[@class='ds-icon d-inline-flex rds-icon-check']")
+	WebElement imgPromoDiscounts;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Change to the') or contains(@aria-label,'maintenant')]/span[@role='text']")
+	WebElement lnkGetItNowPromoPage;
+
 	@FindBy(xpath = "//ds-modal[@hasclosebutton='false']")
 	WebElement loadingPopupModel;
 
@@ -110,6 +147,15 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify the Home page
+	 * @return true if the special offer text is available on promotion page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgnitePromotionPage() {
+		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 60);
+	}
+
+	/**
 	 * To verify the Current Bundle Container
 	 * @return true if the old bundle details is available on promotion page, else false
 	 * @author Manpreet.Kaur3
@@ -121,6 +167,17 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	}
 
 	/**
+	 * To verify the Ignite Current Bundle Container
+	 * @return true if the old bundle details is available on promotion page, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgniteCurrentBundle() {
+		getReusableActionsInstance().waitForElementVisibility(divIgniteBundleContainer, 60);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		return getReusableActionsInstance().isElementVisible(txtIgniteCurrentBundle, 30);
+	}
+
+	/**
 	 * To verify the Offer Bundle Container
 	 * @return true if the new bundle details is available on promotion page, else false
 	 * @author Manpreet.Kaur3
@@ -129,6 +186,36 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
 		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 30);
 	}
+
+	public String getOfferBundlePrice() {
+		getReusableActionsInstance().waitForElementVisibility(divOfferPrice, 30);
+		String bundleOfferPrice = getReusableActionsInstance().getWhenReady(divOfferPrice, 60).getText();
+		return bundleOfferPrice;
+	};
+
+	/**
+	 * Gets the monthly promotional credit amount from 'Promotions and discounts' section. (e.g. Get $x.xx off per month)
+	 * @author nandan.master
+	 */
+	public String getPromoCreditPerMonth(){
+		getReusableActionsInstance().waitForElementVisibility(divBundleCredit, 30);
+		String promoCreditTxt = getReusableActionsInstance().getWhenReady(divBundleCredit, 60).getText();
+		String[] subs = promoCreditTxt.split("\\$");
+		String[] promoCreditInLine = subs[1].split(" ");
+		return promoCreditInLine[0];
+	};
+
+	/**
+	 * Gets the monthly promotional credit amount from 'Promotions and discounts' section. (e.g. Get $x.xx off per month)
+	 * @author nandan.master
+	 */
+	public String getCurrentBundlePrice(){
+		getReusableActionsInstance().waitForElementVisibility(divCurrentBundlePrice, 30);
+		String promoCreditTxt = getReusableActionsInstance().getWhenReady(divCurrentBundlePrice, 60).getText();
+		String[] subs = promoCreditTxt.split("\\$");
+		String[] promoCreditInLine = subs[1].split(" ");
+		return promoCreditInLine[0];
+	};
 
 	/**
 	 * To Click on Upgrade checkbox
@@ -161,6 +248,14 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	}
 
 	/**
+	 * To Click on Learn More link
+	 * @author Manpreet.Kaur3
+	 */
+	public void clickIgniteLearnMore() {
+		getReusableActionsInstance().clickIfAvailable(lnkIgniteLearnMore, 30);
+	}
+
+	/**
 	 * To Click on View Next Feature Button
 	 * @author Manpreet.Kaur3
 	 */
@@ -181,7 +276,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickClosePopup() {
-		getReusableActionsInstance().clickIfAvailable(btnCloseThisPopup, 60);
+		getReusableActionsInstance().clickWhenReady(btnCloseThisPopup, 30);
 	}
 
 	/**
@@ -316,6 +411,58 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public boolean verifyContactUsLink() {
 		return getReusableActionsInstance().isElementVisible(lnkContactUS,30);
+	}
+
+	/**
+	 * Click the View Total Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickViewTotalChannels() {
+		getReusableActionsInstance().getWhenReady(btnViewTotalChannels, 30).click();
+    }
+
+	/**
+	 * Verify Strike through price is present
+	 * @return true is strike through price available, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPriceStrikeThrough() {
+		return getReusableActionsInstance().isElementVisible(txtStrikeThrough, 30);
+	}
+
+	/**
+	 * Verify Promo Discounts is present
+	 * @return true if promo discount available, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyPromoDiscounts() {
+		return getReusableActionsInstance().isElementVisible(imgPromoDiscounts, 30);
+	}
+
+	/**
+	 * Click Get it Now button on TV & Streaming page
+	 * @author manpreet.kaur3
+	 */
+	public void clkGetItNow(){
+		getReusableActionsInstance().waitForElementVisibility(lnkGetItNowPromoPage, 60);
+		getReusableActionsInstance().getWhenReady(lnkGetItNowPromoPage,30).click();
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
+	/**
+	 * Click the View Flex Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickViewFlexChannels() {
+		getReusableActionsInstance().getWhenReady(btnViewFlexChannels, 30).click();
+	}
+
+	/**
+	 * Click the View Flex Channels button
+	 * @author manpreet.kaur3
+	 */
+	public void clickIgniteViewFlexChannels() {
+		getReusableActionsInstance().getWhenReady(btnIgniteViewFlexChannels, 30).click();
 	}
 
 	/**

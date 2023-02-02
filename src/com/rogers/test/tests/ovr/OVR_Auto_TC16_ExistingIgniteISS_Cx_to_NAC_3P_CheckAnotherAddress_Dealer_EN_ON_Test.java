@@ -93,13 +93,8 @@ public class OVR_Auto_TC16_ExistingIgniteISS_Cx_to_NAC_3P_CheckAnotherAddress_De
         reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
-        getHomePhoneSelectionPage().clickOnContinueCallDisplay();
-        reporter.reportLogWithScreenshot("continue from call display");
-        getHomePhoneSelectionPage().clickContinueDirectoryListing();
-        reporter.reportLogWithScreenshot("continue from directory listing");
-        getHomePhoneSelectionPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

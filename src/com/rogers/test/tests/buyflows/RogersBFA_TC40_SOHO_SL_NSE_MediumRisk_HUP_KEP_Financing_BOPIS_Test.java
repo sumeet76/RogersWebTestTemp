@@ -23,13 +23,18 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
-            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getUsername());
+            /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getUsername());
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
             reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
             getRogersLoginPage().clkSkipIFrame();
-            getRogersLoginPage().switchOutOfSignInIFrame();
+            getRogersLoginPage().switchOutOfSignInIFrame();*/
+            getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
+            getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getPassword());
+            reporter.reportLogWithScreenshot("Login Page");
+            getRogersLoginPage().clkSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
             getDriver().get(System.getProperty("AWSUrl"));
@@ -44,6 +49,12 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
 
             reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                     "Continue button on the device config page is present", "Continue button on the device config page is not present");
+            String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+            String financeProgramCredit = "0.0";
+            financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+            String upfrontEdgeAmt = "0.0";
+            upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
             getRogersDeviceConfigPage().clickContinueButton();
 
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
@@ -81,19 +92,27 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             getRogersReviewOrderPage().clkBopisConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-            getRogersOrderReviewPage().clkSubmitOrder();
+            //getRogersOrderReviewPage().clkSubmitOrder();
 
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
-            getRogersOneTimePaymentPage().setNameonCard();
-            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getCcNumberOTP());
-            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getExpiryDateOTP());
-            getRogersOneTimePaymentPage().setCVV();
-            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
-
+            if(getRogersOrderReviewPage().isPaymentRequired()) {
+                getRogersOrderReviewPage().clkContinue();
+                reporter.reportLogWithScreenshot("Rogers Payment Page");
+                reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                        "One Time Payment Page displayed","One Time Payment Page Not displayed");
+                String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+                reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
+                reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+                getRogersOneTimePaymentPage().setNameonCard();
+                getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+                getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getCcNumberOTP());
+                getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+                getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getExpiryDateOTP());
+                getRogersOneTimePaymentPage().setCVV();
+                reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+                getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+            } else {
+                getRogersOrderReviewPage().clkSubmitOrder();
+            }
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

@@ -61,11 +61,11 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
-		/*if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
+		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
-		}*/
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		}
+
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
@@ -80,7 +80,6 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Launched the Bundles Page");
 		getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-		//getRogersHomePage().clkNoThnx();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
 		reporter.reportLogWithScreenshot("Added to cart");
 		getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -89,8 +88,9 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersHomePage().clkSignOut();
 		reporter.reportLogWithScreenshot("Signed Out");
-		//getRogersHomePage().clkEasyLogin();
-		getDriver().get(System.getProperty("QaUrl") + "consumer/easyloginriverpage?setLanguage=en");
+		reporter.hardAssert(getRogersHomePage().verifyMyRogers(), "Launched the QA rogers main page", "Main QA page has not loaded");
+		getRogersHomePage().clkMyRogers();
+		//getDriver().get(System.getProperty("QaUrl") + "consumer/easyloginriverpage?setLanguage=en");
 		reporter.reportLogWithScreenshot("Launched the SignIn popup 2");
 		//getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
 		//getRogersLoginPage().clkContinueInBrowser();

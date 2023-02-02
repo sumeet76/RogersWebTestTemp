@@ -21,6 +21,12 @@ public class RogersOneTimePaymentPage extends BasePageClass {
     @FindBy(xpath = "//*[@class='ds-formField__wrapper']//iframe")
     WebElement fraSemaphone;
 
+    @FindBy(xpath = "//h1[@id='bfa-page-title' and contains(text(),'One-time payment')]")
+    WebElement otpPage;
+
+    @FindBy(xpath = "//h1[@id='bfa-page-title' and contains(text(),'One-time payment')]/following::div[@class='ds-price'][1]")
+    WebElement otpAmount;
+
     @FindBy(xpath = "//input[@id='pan']")
     WebElement txtCardNumber;
 
@@ -40,6 +46,26 @@ public class RogersOneTimePaymentPage extends BasePageClass {
 
     @FindBy(xpath = "//ds-form-field[@data-test='name']//input")
     WebElement inputNameOnCard;
+
+    /**
+     * Verify the onetime payment page is getting displayed
+     * @return true if onetime payment page displayed else false
+     * @author Subash.Nedunchezhian
+     */
+    public boolean verifyOneTimePaymentTitle() {
+        getReusableActionsInstance().waitForElementVisibility(otpPage,60);
+        return getReusableActionsInstance().isElementVisible(otpPage, 30);
+    }
+
+    /**
+     * This method gets One Time Payment Amount in OTP page
+     * @return One Time Payment Amount in OTP page
+     * @author subash.nedunchezhian
+     */
+    public String getOneTimePaymentAmount(){
+        getReusableActionsInstance().scrollToElement(otpAmount);
+        return otpAmount.getText().replaceAll("\\n", "");
+    }
 
     /**
      * Verify the onetime payment page is getting displayed

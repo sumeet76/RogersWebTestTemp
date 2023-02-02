@@ -71,9 +71,13 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
         String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
         reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
-        String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        //String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
+        String financeProgramCredit = "0.0";
+        financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+        String upfrontEdgeAmt = "0.0";
+        upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
        // reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
                // "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -117,11 +121,14 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
         //getRogersCheckoutPage().clkNoThanks();
         //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        if(getRogersCheckoutPage().isReservedAlertDisplayed()){
+            getRogersCheckoutPage().selectAnotherPhoneNumber();
+        }
         //reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 //"Billing Address is not selected");
         getRogersCheckoutPage().clickSkipAutopay();
@@ -132,7 +139,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------
@@ -149,6 +156,10 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                 "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
         getRogersOneTimePaymentPage().setNameonCard();

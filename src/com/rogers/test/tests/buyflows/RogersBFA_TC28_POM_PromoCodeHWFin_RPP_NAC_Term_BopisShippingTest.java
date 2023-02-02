@@ -90,7 +90,6 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_BopisShippingTest ex
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
 				"CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
