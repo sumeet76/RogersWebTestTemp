@@ -39,10 +39,10 @@ import java.lang.reflect.Method;
  *19. Validate PSEF and GWP / WiFi6 on order confirmation page
  **/
 
-public class RogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON extends BaseTestClass {
+public class RogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ONTest extends BaseTestClass {
 
     @Test
-    public void rogersCH_Auto_TC103_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON() {
+    public void rogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON() {
         getDriver().get(System.getProperty("QaUrl") + "internet/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

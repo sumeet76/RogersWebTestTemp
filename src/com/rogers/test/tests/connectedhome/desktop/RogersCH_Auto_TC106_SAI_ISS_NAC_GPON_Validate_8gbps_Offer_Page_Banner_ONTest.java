@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
  * 9. Validate the package on Mini cart
  **/
 
-public class RogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Banner_ON extends BaseTestClass {
+public class RogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Banner_ONTest extends BaseTestClass {
 
     @Test
     public void rogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Banner_ON() throws InterruptedException {
