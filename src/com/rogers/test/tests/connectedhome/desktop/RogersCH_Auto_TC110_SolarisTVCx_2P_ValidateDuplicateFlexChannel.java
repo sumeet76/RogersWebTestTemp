@@ -3,7 +3,6 @@ package com.rogers.test.tests.connectedhome.desktop;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
-import org.apache.http.client.ClientProtocolException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -26,10 +25,10 @@ import java.util.Set;
  * Click on continue or close button --> Duplicate channels should be deleted successfully as requested
  */
 
-public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
+public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel extends BaseTestClass {
 
-    @Test
-    public void duplicateChannelCheck()  {
+    @Test(groups = {"Regression"})
+    public void RogersCH_Auto_TC010_SolarisTVCx_2P_ValidateDuplicateFlexChannel()  {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
@@ -44,9 +43,9 @@ public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkViewfelxChannels();
-
         List<WebElement> elements = getDriver().findElements(By.xpath("//div[@class='channel-component']//button"));
         Set<String> flexChannels = new HashSet<>();
+
         for (WebElement ele:elements) {
             try {
                 flexChannels.add(ele.getAttribute("id"));System.out.println(ele.getText());
@@ -59,7 +58,7 @@ public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
         Set<String> myChannelLineup = new HashSet<>();
         for (WebElement ele:elements1) {
             try {
-                myChannelLineup.add(ele.getAttribute("id"));System.out.println(ele.getAttribute("id"));
+                myChannelLineup.add(ele.getAttribute("id"));
             }catch (StaleElementReferenceException exception){
                 break;
             }
@@ -67,28 +66,21 @@ public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
 
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
         getRogersSolarisTVDashboardPage().clkChangeFlexChannels();
-        System.out.println("*************************************");
-        reporter.reportLogWithScreenshot("");
-        //Thread.sleep(10000);
+
+        reporter.reportLogWithScreenshot("Verify Exchange channel page");
         getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
         Set<String> availableChannels = getRogersSolarisChannelsExchangePage().getFlexChannelsListFromExchangeFlexChannels();
-        System.out.println("******");
-        System.out.println("Before removal " + availableChannels.size());
         availableChannels.removeAll(flexChannels);
-        System.out.println("After removal " + availableChannels.size());
         Set<String> duplicateChannels = new HashSet();
         for (String name : availableChannels ) {
             if(myChannelLineup.contains(name)){
                 duplicateChannels.add(name);
             }
         }
-        System.out.println(duplicateChannels);
 
-        System.out.println("//div[@class='cl-button' and @id='"+flexChannels.stream().findFirst().get()+"']");
         //uncheck Existing flex channel to select the duplicate channel
         getRogersSolarisChannelsExchangePage().selectOrUnselectChannel(flexChannels.stream().findFirst().get());
         reporter.reportLogWithScreenshot("removed the flex channel");
-        //getDriver().findElement(By.xpath("//div[@class='cl-button' and @id='"+duplicateChannels.stream().findFirst().get()+"']")).click();
         getRogersSolarisChannelsExchangePage().selectOrUnselectChannel(duplicateChannels.stream().findFirst().get());
         reporter.reportLogWithScreenshot("Clicked on the duplicate channel");
         getRogersSolarisChannelsExchangePage().clkConfirmExchange();
@@ -100,8 +92,7 @@ public class RogersCH_Auto_duplicateFlexChannel extends BaseTestClass {
 
     @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //login flow
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws  IOException {
         startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_login, method);
     }
 

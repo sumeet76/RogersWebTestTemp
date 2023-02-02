@@ -10,10 +10,10 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersCH_Auto_GPONNAC_3P extends BaseTestClass {
+public class RogersCH_Auto_TC111_Migration_3P_GPON_Validate2GBInternetPlan extends BaseTestClass {
 
-    @Test
-    public void gpon_nac(){
+    @Test(groups = {"Regression"})
+    public void RogersCH_Auto_TC111_Migration_3P_GPON_Validate2GBInternetPlan(){
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
