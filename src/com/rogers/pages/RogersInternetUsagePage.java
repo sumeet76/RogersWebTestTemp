@@ -20,7 +20,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	@FindBy(xpath = "//table[@class='table  table-centred ng-table']")
 	WebElement tblDailyBreakdownMobile;
 		
-	@FindBy(xpath = "//h2[@id='internetUsage-monthly-tab']")
+	@FindBy(xpath = "//button[@id='internetUsage-monthly-tab']")
 	WebElement lnkMonthlyUsage;
 
 	@FindBy(xpath = "//x-chartist[@class='monthlyUsage']")
@@ -32,7 +32,7 @@ public class RogersInternetUsagePage extends BasePageClass {
 	@FindBy(xpath = "//table[@class='table  table-centred table-no-filter ng-table']")
 	WebElement tblMonthlyBreakdownMobile;
 
-	@FindBy(xpath = "//h2[@id='internetUsage-alerts-tab']")
+	@FindBy(xpath = "//button[@id='internetUsage-alerts-tab']")
 	WebElement btnUsageAlerts;
 
 	@FindBy(xpath = "//div[@class='rch-tabs__dropdown']/select")
