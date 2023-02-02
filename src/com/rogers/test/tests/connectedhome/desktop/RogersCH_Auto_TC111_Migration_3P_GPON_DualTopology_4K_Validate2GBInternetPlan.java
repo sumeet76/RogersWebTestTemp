@@ -3,17 +3,16 @@ package com.rogers.test.tests.connectedhome.desktop;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
-import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class RogersCH_Auto_TC111_Migration_3P_GPON_Validate2GBInternetPlan extends BaseTestClass {
+public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBInternetPlan extends BaseTestClass {
 
     @Test(groups = {"Regression"})
-    public void RogersCH_Auto_TC111_Migration_3P_GPON_Validate2GBInternetPlan(){
+    public void RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBInternetPlan(){
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
@@ -117,7 +116,7 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_Validate2GBInternetPlan exten
     }
     @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
     //login flow
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws  IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_login, method);
     }
