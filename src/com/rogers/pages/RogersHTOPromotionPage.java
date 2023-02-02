@@ -2,13 +2,9 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class RogersHTOPromotionPage extends BasePageClass {
 
@@ -136,6 +132,11 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal[@hasclosebutton='false']")
 	WebElement loadingPopupModel;
 
+	@FindBy(xpath="")
+	WebElement txtPersonalizedOffer;
+
+	@FindBy(xpath = "")
+	WebElement divIgniteBundleContainer;
 
 	/**
 	 * To verify the Home page
@@ -475,8 +476,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 		System.out.println("wait for popup to disappear");
 		boolean elementVisible = getReusableActionsInstance().isElementVisible(loadingPopupModel, 45);
 		if(elementVisible){
-			WebDriverWait wait = new WebDriverWait(getDriver(),240);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//ds-modal[@hasclosebutton='false']")));
+			getReusableActionsInstance().waitForElementInvisibility(By.xpath("//ds-modal[@hasclosebutton='false']"),240);
 		}
 	}
 }
