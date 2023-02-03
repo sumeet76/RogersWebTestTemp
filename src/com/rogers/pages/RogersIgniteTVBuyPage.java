@@ -153,10 +153,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rhp-section']/descendant::label")
 	WebElement checkboxHomephone;
 
-	@FindBy(xpath = "//h2[@id='channels-tab']")
+	@FindBy(xpath = "//button[@id='channels-tab']")
 	WebElement btnChannelsTab;
 
-	@FindBy(xpath = "//h2[@id='themepacks-tab']")
+	@FindBy(xpath = "//button[@id='themepacks-tab']")
 	WebElement btnThemepacksTab;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
@@ -507,6 +507,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChannelsTab() {
+		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnChannelsTab);
 		//getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
 	}
