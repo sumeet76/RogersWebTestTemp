@@ -79,7 +79,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath="//input[@aria-label='Yes, add Ignite Home Phone for an additional $10/mo']/parent::label/span")
 	WebElement btnAddHomePhoneDST;
 
-	@FindBy(xpath= "//button[@aria-label='BEST FITRogers Ignite Flex 10 Bundle']")
+	@FindBy(xpath= "//span[contains(text(),'BEST FIT')]")
 	WebElement txtBestFit;
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
