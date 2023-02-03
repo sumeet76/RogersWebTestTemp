@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
-public class OneViewCH_Auto_TC_017_TV_ResetParentalControlsAndRestartBoxTest extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC033_TV_Dashboard_Reset_Parental_Controls_And_RestartBox_ON_EN extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void checkIgniteTVResetPINandResetParentalControlsTest() {
+    public void oneviewCH_REG_Auto_TC033_TV_Dashboard_Reset_ParentalControls_And_RestartBox_ON_EN() {
 		//getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.igniteTVParentalcontrols.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
