@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC081_1554_TargetedMigration_2P_InternetAndTV_to_ISS_TargetedOfferType_Regular_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC059_MIG_Targeted_Offer_REGULAR_2P_TV_INT_To_ISS_ON_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void TargetedMigrationFlow_2P_InternetAndTV_to_SAIISSTest(){
+    public void oneviewCH_REG_Auto_TC059_MIG_TargetedOffer_REGULAR_2P_TV_INT_To_ISS_ON_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVToSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
