@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * This class contains the test method to test the HTO SAI flow for Rogers.com
- *
+ * This class contains the test method to test the HTO 3P flow for Rogers.com
+ * TC011_CH-7078_CH-9784_CH-10334_CH-16905_Starter Pack_3P HTO_Cx with Recommended Offer_validate the HTO offer on the new Account Overview Page in a banner_ no discounts_E2E_AUTL_NB_CH_EN
  * @author Manpreet.Kaur3
  *
  * Test steps:
@@ -24,44 +24,44 @@ import java.lang.reflect.Method;
  * 6. Verify and click on special recommendation yellow badge
  * 7. Verify Special Offer text
  * 8. Verify old and new package text
- * 9. Click on Learn More link
- * 10. Click View Next Feature button
- * 10. Click Close button
- * 11. Click on I want this Upgrade checkbox
- * 12. Click on review your upgrade
- * 13. Verify Order Review header
- * 14. Verify One-Time charges and credits be $0
- * 15. Verify Installation details - Ignite Express Setup Header, fulfilment type: courier delivery, tech install for 3p
- * 16. Click on Learn more about Courier Delivery link
- * 17. Click close Ignite Express Setup popup
- * 18. Use Service Address
- * 19. Click I understand checkbox under Activation
- * 20. Click Email radio button to recieve order summary and agreement
- * 21. Verify Agreement Details block
- * 22. Click Acceptable Use Policy checkbox
- * 23. Click I understand checkbox
- * 24. Click on Submit button
- * 25. Verify Order Confirmation Page
- * 26. Get Ban
+ * 9. Verify Srtike through price not available
+ * 10. Click on Learn More link
+ * 11. Click View Next Feature button
+ * 12. Click Close button
+ * 13. Click Total Channels
+ * 14. Hover 4k channels and close popup
+ * 15. Click Flex Channels
+ * 16. Hover preselected channles and close popup
+ * 17. Click on I want this Upgrade checkbox
+ * 18. Click on review your upgrade
+ * 19. Verify Order Review header
+ * 20. Verify PSEF promotion
+ * 21. Verify Installation details - Ignite Express Setup Header, fulfilment type: courier delivery, tech install for 3p
+ * 22. Click on Learn more about Courier Delivery link
+ * 23. Click close Ignite Express Setup popup
+ * 24. Click I understand checkbox under Activation
+ * 25. Verify Agreement Details block
+ * 26. Click Acceptable Use Policy checkbox
+ * 27. Click I understand checkbox
+ * 28. Click on Submit button
+ * 29. Verify Order Confirmation Page
  *
  **/
 
-public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCableTest extends BaseTestClass {
+public class RogersCH_Auto_TC112_3P_HTO_Starter_RecommendedOffer_NoDiscountsTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH",""})
-    public void rogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilment_HotCable() {
+    @Test
+    public void rogersCH_Auto_TC112_3P_HTO_Starter_RecommendedOffer_NoDiscounts() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-
-
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc81_StandaloneInternetAccount.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
@@ -81,7 +81,8 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         reporter.reportLogWithScreenshot("Verified New bundle Details");
 
         String offerPrice = getRogersOrderReviewPage().getOfferPrice();
-        System.out.println(offerPrice);
+
+        reporter.hardAssert(!(getRogersHTOPRomotionPage().verifyPriceStrikeThrough()),"Strike through price not present","Strike through price should not be present");
 
         getRogersHTOPRomotionPage().clickLearnMore();
         reporter.reportLogWithScreenshot("Clicked on Learn More Link");
@@ -91,6 +92,20 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
         getRogersHTOPRomotionPage().clickClosePopup();
         reporter.reportLogWithScreenshot("Clicked on Close Button");
+
+        getRogersHTOPRomotionPage().clickViewTotalChannels();
+        getRogersIgniteTVBuyPage().clkHover4kChannels();
+        reporter.reportLogWithScreenshot("what are flex channels Hover message ");
+        getRogersIgniteTVBuyPage().clkHoverClose();
+        reporter.reportLogWithScreenshot("Close Total Channels popup");
+        getRogersHTOPRomotionPage().clickViewFlexChannels();
+        reporter.reportLogWithScreenshot("View Flex Channels");
+        getRogersIgniteTVBuyPage().clkHoverPreSelectedChannels();
+        reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
+        getRogersIgniteTVBuyPage().clkHoverClose();
+        reporter.reportLogWithScreenshot("Close Flex Channels popup");
+
+        reporter.hardAssert(!(getRogersHTOPRomotionPage().verifyPromoDiscounts()),"Promo discount not available","Promo Discount should not be present");
         getRogersHTOPRomotionPage().clickIWantThisUpgrade();
         reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
         getRogersHTOPRomotionPage().clickReviewYourUpgrade();
@@ -99,13 +114,12 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         reporter.hardAssert(getRogersOrderReviewPage().verifyTargetedOfferOrderReviewPage(),"Order Review Page has launched","Order Review Page has not launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
+
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
         String customPrice = getRogersOrderReviewPage().getCustomPrice();
-        System.out.println(customPrice);
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
         reporter.reportLogWithScreenshot("Price match on Order review page with promo page");
-        /*reporter.hardAssert(getRogersOrderReviewPage().verifyOneTimeChargeToBeZero(),"One-Time charge is $0.00","One-Time charge is not $0.00");
-        reporter.reportLogWithScreenshot("reviewed One-Time charge to be $0.00");*/
 
         getRogersOrderReviewPage().clkShowPriceBreakdown();
         reporter.reportLogWithScreenshot("Expand the Show Price Breakdown button under One-Time Charges block");
@@ -114,6 +128,13 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
 
         reporter.hardAssert(getRogersOrderReviewPage().verifyInstallationDetailsHeader(),"Installation Details is present","Installation Details not present");
         reporter.reportLogWithScreenshot(" Verified installation details header");
+
+        getRogersOrderReviewPage().clkLearnMoreCourierDelivery();
+        reporter.reportLogWithScreenshot(" Clicked on Learn More about courier Delivery");
+
+        reporter.hardAssert(getRogersAccountOverviewPage().isNewOfferModalDisplayed(),"Courier Delivery Popup","Courier Deliver popup not present");
+        getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
+        reporter.reportLogWithScreenshot(" Close Courier Delivery popup");
 
         getRogersOrderReviewPage().clkActivationCheckbox();
         reporter.reportLogWithScreenshot(" Clicked on Activation Checkbox");
@@ -128,9 +149,6 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
 
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        
     }
 
 

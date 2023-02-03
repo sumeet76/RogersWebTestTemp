@@ -78,6 +78,7 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinInTerm_CreatingSharedGroup_
         getRogersCheckoutPage().enterBankDetails();
         getRogersCheckoutPage().clkAutoPayConsentCheckBox();
         getRogersCheckoutPage().clkBillingContinueButton();
+        getRogersCheckoutPage().clkContinueCheckOutBtn();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");

@@ -54,8 +54,9 @@ public class TestDataHandler {
 	public static AccountData tc100_SAIonlyAccount;
 	public static AccountData tc101_2P_HTO_HotCableAccount;
 	public static AccountData tc102_2P_HTO_ColdCableAccount;
-
 	public static AccountData tc108_2PLeg_3PIgnite_otbc;
+	//public static AccountData tc109_1P_HTO_DOCSIS;
+	public static AccountData tc112_3P_HTO_RecommendedOffer;
 	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
 	public static AccountData tc05_IgniteTV4Plus1Account;
@@ -221,7 +222,7 @@ public class TestDataHandler {
 	public static AALData tc18AALTermTablet;
 	public static AALData tc19AALBYODBopisShipping;
 	public static AALData tc39_POMSOHO_AALBYODStandardShipping;
-	public static AALData tc20AALTermMLNonSEBasicPlanStdShipping;
+	public static AALData tc20AALTermSLNonSEBasicPlanStdShipping;
 	public static AALData tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS;
 	public static AALData tc31_RPP_AALBYODStdShipping;
 	public static AALData BFA_ProdTest_tc02_AALTERM_FinancingPlanPotg;
@@ -487,6 +488,8 @@ public class TestDataHandler {
 		tc101_2P_HTO_HotCableAccount = YamlHandler.getCableAccountData("TC101_2P_HTO_HotCable");
 		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
 		tc108_2PLeg_3PIgnite_otbc = YamlHandler.getCableAccountData("TC108_2PLeg_3PIgnite_OTBC");
+	//	tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
+		tc112_3P_HTO_RecommendedOffer = YamlHandler.getCableAccountData("TC112_3P_HTO_Recommended");
 		tc63_Legacy2PtoIgnite2P = YamlHandler.getCableAccountData("TC63_Legacy2PtoIgnite2P");
 		tc82_Legacy2PtoIgnite2PMigration = YamlHandler.getCableAccountData("TC82_Legacy2PtoIgnite2PMigration");
 		tc87_NativeTNcourierFulfilmentHot= YamlHandler.getCableAccountData("TC87_NativeTNcourierFulfilmentHot");
@@ -650,7 +653,7 @@ public class TestDataHandler {
 		tc17AALNoTermStandardShipping = YamlHandler.getAALdata("tc17AALNoTermStandardShipping");
 		tc18AALTermTablet = YamlHandler.getAALdata("tc18AALTermTablet");
 		tc19AALBYODBopisShipping = YamlHandler.getAALdata("tc19AALBYODBopisShipping");
-		tc20AALTermMLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc20AALTermMLNonSEBasicPlanStdShipping");
+		tc20AALTermSLNonSEBasicPlanStdShipping = YamlHandler.getAALdata("tc20AALTermSLNonSEBasicPlanStdShipping");
 		tc21PPCSLNonSEDTTPlan = YamlHandler.getPPCdata("tc21PPCSLNonSEDTTPlan");
 		tc22PPCMLNonSESubsidyPlan = YamlHandler.getPPCdata("tc22PPCMLNonSESubsidyPlan");
 		tc23PPCMLNonSESharedGroupDTTPlan = YamlHandler.getPPCdata("tc23PPCMLNonSESharedGroupDTTPlan");

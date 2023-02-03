@@ -42,7 +42,11 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
-        getDriver().get(System.getProperty("AWSUrl")+"?flowType=aal");
+        getDriver().get(System.getProperty("AWSUrl"));
+        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
+        reporter.reportLogWithScreenshot("Device Catalog Page");
+        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
+        getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         //------------------------------------Device Catalog page--------------------------------------------
         reporter.hardAssert(getRogersDeviceCataloguePage().verifySharedNonSharedModalPresent(), "Shared/Nonshared modal displayed", "Shared/Nonshared modal not displayed");
         reporter.reportLogWithScreenshot("Shared/Nonshared modal popup");
@@ -50,9 +54,6 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
         getRogersDeviceCataloguePage().selectAALSharingType(aalSharingType);
         reporter.reportLogPassWithScreenshot(aalSharingType+ " option selected successfully");
         getRogersDeviceCataloguePage().clickContinueButtonOnModal();
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyByodDeviceTile(), "phone catalogue Page appeared Successful", "phone catalogue Page did not appear");
-        reporter.reportLogWithScreenshot("Device Catalog Page");
-        getRogersDeviceCataloguePage().clkByodDeviceTileContinueBtn();
         //-------------------------------------Plan config page---------------------------------------------
         reporter.softAssert(getRogersPlanConfigPage().verifyAalByodBreadCrumb(),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");

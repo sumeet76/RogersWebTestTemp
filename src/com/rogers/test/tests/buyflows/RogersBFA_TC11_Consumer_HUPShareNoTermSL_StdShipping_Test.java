@@ -13,10 +13,10 @@ import java.lang.reflect.Method;
 /**
  * TC11 - Regression - HUP-E2E-SL Shared(Noterm)-Validate the HUP flow selecting the Noterm_Chrome_EN_ON
  */
-public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass{
+public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_StdShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-        public void tc11_rogersHUPShareKeepCurrentPlanNoTermSLTest() {
+        public void tc11_rogersHUPShareKEPNoTermSLStdShipTest() {
             getDriver().get(System.getProperty("AWSUrl"));
             reporter.reportLogWithScreenshot("Device Catalog Page");
             getRogersDeviceCataloguePage().clickBannerSignIn();
@@ -74,6 +74,10 @@ public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_Test extends BaseTestClass
             } else {
                 getRogersOrderReviewPage().clkSubmitOrder();
             }
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                     "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
             getRogersOneTimePaymentPage().setNameonCard();

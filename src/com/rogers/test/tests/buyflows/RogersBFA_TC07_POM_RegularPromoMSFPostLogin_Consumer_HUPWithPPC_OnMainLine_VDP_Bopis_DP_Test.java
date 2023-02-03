@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnMainLine_VDP_Bopis_DP_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","POMHUPBFA"})
-    public void tc07_rogersHupPpcBopisMLTest() {
+    public void tc07_pomrogersHupPpcVdpBopisMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -61,7 +61,7 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
                 "Promotion Successfully", "Promotion Not Applied");
         String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
         getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
-        //getRogersPlanConfigPage().clkDownPaymentChkBox();
+        getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -111,17 +111,31 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_OnM
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
-        getRogersOrderReviewPage().clkSubmitOrder();
-        /*reporter.reportLogWithScreenshot("Rogers Payment Page");
+        if(getRogersOrderReviewPage().isPaymentRequired()) {
+            getRogersOrderReviewPage().clkContinue();
+            getRogersPaymentPage().setCreditCardDetails(TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getNumber(),
+                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryMonth(),
+                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getExpiryYear(),
+                    TestDataHandler.bfaPaymentInfo.getCreditCardDetails().getCVV());
+            reporter.reportLogWithScreenshot("Rogers Payment Page");
+            getRogersPaymentPage().clkSubmit();
+        } else {
+            getRogersOrderReviewPage().clkSubmitOrder();
+        }
+        reporter.reportLogWithScreenshot("Rogers Payment Page");
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
         getRogersOneTimePaymentPage().setNameonCard();
         getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc17AALNoTermStandardShipping.getCcNumberOTP());
+        getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc07POMHupPpcBopisSharedML.getCcNumberOTP());
         getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc17AALNoTermStandardShipping.getExpiryDateOTP());
+        getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc07POMHupPpcBopisSharedML.getExpiryDateOTP());
         getRogersOneTimePaymentPage().setCVV();
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-        getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
+        getRogersOneTimePaymentPage().clkSubmitOrderBtn();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

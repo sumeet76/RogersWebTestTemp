@@ -35,7 +35,7 @@ import java.util.Map;
 public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
-    public void checkSaiTupeloBuyflowAddAdditionalSTB() {
+    public void rogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTB() {
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();

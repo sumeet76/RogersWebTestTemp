@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.support.ui.Select;
 
+
 public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public RogersInternetPackageSelectionPage(WebDriver driver) {
@@ -143,7 +144,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]")
 	WebElement btnTakeAquiz;
 
-	@FindBy(xpath = "//img[@alt='Image of Disney+']")
+	@FindBy(xpath = "//img[@alt='Image of Disney+' or @alt='Image du Disney+']")
 	WebElement imgDisneyBanner;
 
 	@FindBy(xpath="//span[text()='Choose professional installation on us!']")
@@ -152,6 +153,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath="//span[contains(text(), 'Powerful WiFi 6') or contains(text(), 'Technologie WiFi 6')]")
 	WebElement txtWiFi6;
+
+	@FindBy(xpath = "//span[contains(text(),'View my offer')]")
+	WebElement btnViewMyOffer;
+
+	@FindBy(xpath = "//div[@class='special-offer__banner']")
+	WebElement lblYourPersonalizedOffer;
 
 	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
 	WebElement txtPackageDetails;
@@ -643,10 +650,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		} */
+		getReusableActionsInstance().staticWait(3000);
 		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
-		getReusableActionsInstance().staticWait(3000);
+
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().waitForElementTobeClickable(btnInternetBuyContinue, 60);
 		getReusableActionsInstance().getWhenReady(btnInternetBuyContinue, 60).click();
@@ -766,6 +774,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(txtWiFi6, 20);
 	}
 
+	public boolean verifyPersonalizedOfferBanner() {
+		return getReusableActionsInstance().isElementVisible(lblYourPersonalizedOffer, 30);
+	}
+
+	public void clkPersonalizedOffer() {
+		getReusableActionsInstance().waitForElementVisibility(btnViewMyOffer, 60);
+		getReusableActionsInstance().getWhenReady(btnViewMyOffer, 30).click();
+	}
+
 	public boolean verifyHowToGetIt8gbPopupHeader() {
 		return getReusableActionsInstance().isElementVisible(header8gbpsMiniBanner, 20);
 	}
@@ -787,6 +804,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public String get150SSPkgPrice() {
 		String pkgCostText = getReusableActionsInstance().getWhenReady(div150pkgCost, 40).getAttribute("aria-label");
+		String[] subs= pkgCostText.split("\\$");
+		String[] pkgCost = subs[1].split(" ");
+		return pkgCost[0];
+	}
+
+	public String getInternetPkgPrice(String bundleName) {
+		By divInternetPkgCost= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']");
+		String pkgCostText = getReusableActionsInstance().getWhenReady(divInternetPkgCost, 40).getAttribute("aria-label");
 		String[] subs= pkgCostText.split("\\$");
 		String[] pkgCost = subs[1].split(" ");
 		return pkgCost[0];

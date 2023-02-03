@@ -92,19 +92,27 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             getRogersReviewOrderPage().clkBopisConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-            getRogersOrderReviewPage().clkSubmitOrder();
+            //getRogersOrderReviewPage().clkSubmitOrder();
 
-            /*reporter.reportLogWithScreenshot("Rogers Payment Page");
-            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
-            getRogersOneTimePaymentPage().setNameonCard();
-            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getCcNumberOTP());
-            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getExpiryDateOTP());
-            getRogersOneTimePaymentPage().setCVV();
-            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-            getRogersOneTimePaymentPage().clkSubmitOrderBtn();*/
-
+            if(getRogersOrderReviewPage().isPaymentRequired()) {
+                getRogersOrderReviewPage().clkContinue();
+                reporter.reportLogWithScreenshot("Rogers Payment Page");
+                reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                        "One Time Payment Page displayed","One Time Payment Page Not displayed");
+                String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+                reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
+                reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
+                getRogersOneTimePaymentPage().setNameonCard();
+                getRogersOneTimePaymentPage().switchToCreditCardIFrame();
+                getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getCcNumberOTP());
+                getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
+                getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getExpiryDateOTP());
+                getRogersOneTimePaymentPage().setCVV();
+                reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
+                getRogersOneTimePaymentPage().clkSubmitOrderBtn();
+            } else {
+                getRogersOrderReviewPage().clkSubmitOrder();
+            }
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
             reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
             reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

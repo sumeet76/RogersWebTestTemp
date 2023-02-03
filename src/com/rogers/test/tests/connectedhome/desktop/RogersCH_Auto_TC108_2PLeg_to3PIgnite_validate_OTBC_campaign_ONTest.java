@@ -48,10 +48,10 @@ import java.lang.reflect.Method;
  * 29. Validate OTBC on Order Confirmation page.
  **/
 
-public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ON extends BaseTestClass {
+public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest extends BaseTestClass {
 
     @Test
-    public void RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ON() {
+    public void rogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ON() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getUsername());
         getRogersLoginPage().clkContinueInBrowser();

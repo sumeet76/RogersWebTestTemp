@@ -24,7 +24,7 @@ public class RogersBFA_TC38_SOHO_NAC_Term_MediumRisk_UE_BopisShipping_DP_EN_Test
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","SOHONACBFA","SOHOBFA","DP","SanityNACBFA"})
+	@Test(groups = {"RegressionBFA","SOHONACBFA","SanityNACBFA"})
 	public void tc38_sohoNACTermMediumRiskBopisTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		/*reporter.softAssert(getRogersDeviceCataloguePage().isRpotgBannerPresent(),

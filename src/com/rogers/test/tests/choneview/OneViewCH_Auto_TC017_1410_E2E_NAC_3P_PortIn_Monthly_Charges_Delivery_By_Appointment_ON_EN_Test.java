@@ -32,6 +32,7 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 		reporter.reportLogWithScreenshot("Triple Play Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+		getRogersIgniteBundlesPage().selectAdditionalIgniteTVBoxes();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().yesPortInPopup();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
@@ -40,7 +41,6 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-
 		reporter.reportLogWithScreenshot("Port In Service");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("portin");
@@ -50,14 +50,12 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.reportLogWithScreenshot("provider");
 		getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
 		reporter.reportLogWithScreenshot("portin details");
-		getRogersIgniteBundlesPage().contiueFromPortIn();
+		//getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
 		reporter.reportLogWithScreenshot("portin continue");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
-
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-
 		reporter.reportLogWithScreenshot("Cart Summary");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("cart summary");
@@ -112,6 +110,6 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 }

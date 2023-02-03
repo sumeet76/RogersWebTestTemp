@@ -59,19 +59,20 @@ public class RogersCH_Auto_TC082_2P_LegMig_2P_ValidateFulfillmentoption_Courier_
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    //getRogersLoginPage().clkSkipIFrame();
+
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.accountDetails.getBan());
 		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page"); 
-		 getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-		 //getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+        reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.reportLogWithScreenshot("Launched the Main QA Page");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+		//getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkNoThnx();
-    	getRogersHomePage().clkServiceability();
+    	//getRogersHomePage().clkNoThnx();
+    	//getRogersHomePage().clkServiceability();
 
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();

@@ -62,7 +62,7 @@ public class DBValidation extends BaseTestClass{
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526/V21QA6_SN.rci.rogers.com", "qa6sel", "qa6sel");
                     break;
                 case "sft02":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526:V21QA2_SN.rci.rogers.com", "qa2sel", "qa2sel");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526/V21QA2_SN.rci.rogers.com", "qa2sel", "qa2sel");
                     break;
             }
             connect.setAutoCommit(false);
