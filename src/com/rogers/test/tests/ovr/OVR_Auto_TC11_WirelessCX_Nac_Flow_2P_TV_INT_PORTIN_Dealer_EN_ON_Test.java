@@ -54,7 +54,20 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Tes
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
+        reporter.reportLogWithScreenshot("Continue to port in");
+
+        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
+        reporter.reportLogWithScreenshot("Port In Service");
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.reportLogWithScreenshot("Internet Selected for Port IN");
+        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
+        reporter.reportLogWithScreenshot("Port In form filled out");
+        getRogersIgniteBundlesPage().contiueFromPortIn();
+        reporter.reportLogWithScreenshot("Port In completed");
+        getRogersIgniteBundlesPage().contiueToCartSummary();
+
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
@@ -68,17 +81,6 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Tes
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to port in page");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
-        reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet Selected for Port IN");
-        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
-        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
-        reporter.reportLogWithScreenshot("Port In form filled out");
-        getRogersIgniteBundlesPage().contiueFromPortIn();
-        reporter.reportLogWithScreenshot("Port In completed");
-        getRogersIgniteBundlesPage().contiueToCartSummary();
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

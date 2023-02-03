@@ -13,7 +13,8 @@ public class OvrDashboardPage extends BasePageClass {
     }
 
 
-    @FindBy(xpath = "//t[text()='Get Ignite' or text()='Obtenir Élan']/ancestor::a")
+    //@FindBy(xpath = "//t[text()='Get Ignite' or text()='Obtenir Élan']/ancestor::a")
+    @FindBy(xpath = "//t[text()='Add Ignite TV' or text()='Ajouter Télé Élan']/ancestor::a")
     WebElement lnkIgnite;
 
     @FindBy(xpath = "//a[contains(text(),'Français') and @id='language-changed']")

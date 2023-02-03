@@ -321,7 +321,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -345,7 +345,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options de la Sécurité résidentielle Élan') or contains(text(),'Ignite Home Security Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
@@ -357,7 +357,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
-	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Ignite Self Protect' or text()='Autosurveillance Élan']")
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
 	WebElement smartHomeMonitoringMonthlyCharges;
 
 	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -1370,7 +1370,7 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
 			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		}
-		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
+		getReusableActionsInstance().scrollToElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
 	/**
