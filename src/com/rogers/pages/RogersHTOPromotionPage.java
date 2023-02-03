@@ -22,7 +22,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//h2[contains(text(),'old')]")
 	WebElement txtCurrentBundle;
 
-	@FindBy(xpath = "//h2[contains(text(),'new')]")
+	@FindBy(xpath = "//h2[contains(text(),'new') or contains(text(),'nouvelle')]")
 	WebElement txtOfferBundle;
 
 	@FindBy(xpath = "//h2[contains(text(),'current') or contains(text(),'actuelle')]")
@@ -132,10 +132,10 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//ds-modal[@hasclosebutton='false']")
 	WebElement loadingPopupModel;
 
-	@FindBy(xpath="")
+	@FindBy(xpath= "//p[contains(@class,'dsa-hero-billboard__overline')]")
 	WebElement txtPersonalizedOffer;
 
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//div[@class='ignite-hto-promo-tiles-component']")
 	WebElement divIgniteBundleContainer;
 
 	/**
