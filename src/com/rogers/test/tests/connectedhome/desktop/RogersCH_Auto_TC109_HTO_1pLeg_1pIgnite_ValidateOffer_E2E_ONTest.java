@@ -1,7 +1,6 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
-import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -43,9 +42,9 @@ import java.lang.reflect.Method;
  * 25. Verify Order Confirmation Page
  *
  **/
-public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON extends BaseTestClass {
+public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ONTest extends BaseTestClass {
     @Test
-    public void RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON() {
+    public void rogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
