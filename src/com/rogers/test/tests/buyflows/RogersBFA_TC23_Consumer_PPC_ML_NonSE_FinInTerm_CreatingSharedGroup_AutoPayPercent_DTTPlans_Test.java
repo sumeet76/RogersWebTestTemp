@@ -59,7 +59,7 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinInTerm_CreatingSharedGroup_
         reporter.reportLogWithScreenshot("Clicked on Change Plan");
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
-        //getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().clickShowMoreDetails();
         reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayPlanSelection(getRogersPlanConfigPage().getAutoPayPlanIndex("MSF"),this.getClass().getSimpleName()),
                 "Autopay plan is selected successfully","Autopay plan is not selected");
         reporter.reportLogPassWithScreenshot("Data option selected");

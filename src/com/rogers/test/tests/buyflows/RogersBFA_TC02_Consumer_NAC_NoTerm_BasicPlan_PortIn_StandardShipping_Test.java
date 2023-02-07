@@ -63,12 +63,12 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 
 		// *****************************Create Profile Page*****************************************
-		/*String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
+		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
 		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
 				+ " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
-	*/	reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
+		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
 				"Create profile Title not present");
 		String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
 		getRogersCheckoutPage().confirmEmailCreateProfile(emailCreateProfile);
@@ -140,15 +140,16 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		//System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
 		//reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
+		reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+				"Shipping Page not displayed");
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
-		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
-		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
-		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
-		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
-				+ " 2. oneTimeFee" + oneTimeFee + "\n3. Purchase Include" + purchaseIncludes);
+		String totalMonthlyFeesCheckOut = getRogersCheckoutPage().getMonthlyFeeAfterTax();
+		String oneTimeFeeCheckOut = getRogersCheckoutPage().getOneTimeFeeAfterTax();
+		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFeesCheckOut
+				+ " 2. oneTimeFee" + oneTimeFeeCheckOut);
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		// ***************Order Review Page****************************************************
@@ -193,11 +194,11 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 				"Order Confrimation Page Title Present", "Order Confrimation Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
 		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
-		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
+		reporter.hardAssert(totalMonthlyFeesCheckOut.equals(totalMonthlyFeesConfirmationPage),
 				"Total Monthly Fee after tax matches with checkout page",
 				"Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesConfirmationPage = getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-		reporter.softAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
+		reporter.softAssert(oneTimeFeeCheckOut.equals(oneTimeFeesConfirmationPage),
 				"Total One time fee after tax matches with checkout page",
 				"Total One time fee after tax not matches with checkout page");
 //		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();

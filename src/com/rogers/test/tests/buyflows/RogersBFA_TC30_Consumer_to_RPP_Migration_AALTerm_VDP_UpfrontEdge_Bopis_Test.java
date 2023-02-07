@@ -107,11 +107,11 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
         getRogersCheckoutPage().clickSkipAutopay();
-        getRogersCheckoutPage().clkDeliveryMethod("Standard");
-//        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
-//        getRogersCheckoutPage().setEmailShippingPage();
-//        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
-//                "Express pickup location map is not available");
+        getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        getRogersCheckoutPage().setEmailShippingPage();
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express pickup location map is present",
+                "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();

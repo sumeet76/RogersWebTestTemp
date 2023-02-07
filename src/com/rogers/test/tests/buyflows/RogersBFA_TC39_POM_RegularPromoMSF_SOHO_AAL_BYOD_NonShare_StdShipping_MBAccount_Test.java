@@ -65,7 +65,9 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
         getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
 		//getRogersPlanConfigPage().clkBasicTab();
         //getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
-        getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+        //getRogersPlanConfigPage().clickShowMoreDetails();
+        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(TestDataHandler.tc39_POMSOHO_AALBYODStandardShipping.getDataOptionIndex(),this.getClass().getSimpleName());
+        //getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc39_POMSOHO_AALBYODStandardShipping.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
@@ -93,6 +95,8 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
         getRogersCheckoutPage().clickSkipAutopay();
+        reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+                "Shipping Page not displayed");
         getRogersCheckoutPage().clkDeliveryMethod("standard");
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();

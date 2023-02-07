@@ -82,6 +82,8 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         getRogersCheckoutPage().clickSkipAutopay();
+        reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+                "Shipping Page not displayed");
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
         getRogersCheckoutPage().setEmailShippingPage();

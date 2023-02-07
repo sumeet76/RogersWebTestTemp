@@ -495,7 +495,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getMonthlyFeeAfterTax() { 
-		getReusableActionsInstance().waitForElementVisibility(deliveryMethodHeader, 50);
+		//getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
 		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
@@ -1419,8 +1419,21 @@ public class RogersCheckoutPage extends BasePageClass {
     public String getEmailId() {
     	getReusableActionsInstance().javascriptScrollToTopOfPage();
         return getReusableActionsInstance().getWhenReady(prepopulatedEmailId).getText();
-    }  
-    
+    }
+
+	/**
+	 * To Verify if Shipping Page title is displayed
+	 * @return true if Shipping Page Title is displayed else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyShippingPageTitle() {
+		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,10))
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 	/**
 	 * To click on Standard Delivery Method in the shipping stepper
 	 * @author nimmy.george

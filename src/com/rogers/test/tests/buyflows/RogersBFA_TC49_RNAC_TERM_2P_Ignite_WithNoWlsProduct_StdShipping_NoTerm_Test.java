@@ -38,9 +38,6 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdShipping_NoT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc49_2P_Ignite_NACNoTermTermSS.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-//        getRogersLoginPage().clkSkipIFrame();
-//        getRogersLoginPage().switchOutOfSignInIFrame();
         // ***************************Device config page************************************
         reporter.reportLogWithScreenshot("Device config page");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -48,6 +45,7 @@ public class RogersBFA_TC49_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdShipping_NoT
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
         getRogersPlanConfigPage().clkRadioButtonNoTerm();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        getRogersPlanConfigPage().clickContinueWithSelectedPlanButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc49_2P_Ignite_NACNoTermTermSS.getDataOptionIndex()),this.getClass().getSimpleName());
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
