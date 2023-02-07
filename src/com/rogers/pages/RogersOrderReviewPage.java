@@ -43,7 +43,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
 	WebElement lnkAgreementToEndExistingCustomer;	
 	
-	@FindBy(xpath = "//li[contains(text(),'819 994 6591')]")
+	@FindBy(xpath = "//li[contains(text(),'819 994 6591')] | //a[contains(@aria-label,'priv.gc.ca/fr')]")
 	WebElement lnkAgreementToEnd;	
 	
 	@FindBy(xpath = "//div[@class='agreement-container']")
@@ -64,8 +64,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxMigration;
 
-	@FindBy(xpath = "//span[text()='Submit']")
+	@FindBy(xpath = "//span[text()='Submit' or text()= 'Soumettre']")
 	WebElement clkSubmit;
+	//a[contains(@aria-label,'Envoyer cette commande')]/span
 	
 	@FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]")
 	WebElement clkChangeAcceptCheckboxUpdate;
@@ -166,15 +167,20 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.targetedOffer.label.orderReview']")
 	WebElement lblOrderReview;
 
+	@FindBy(xpath = "//h1[@class='-text-semi']")
+	WebElement lblIgniteOrderReview;
 
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//ds-price[@class='custom-price ng-star-inserted']/div[@aria-label='$0.00']")
 	WebElement lblZeroOneTimeCharge;
 
-	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//button[@aria-label='Show breakdown for One-time charges']")
+	@FindBy(xpath = "//section[contains(@class,'review__section')]//button[@aria-label='Show breakdown for One-time charges' or @aria-label='Afficher la répartition des Frais uniques']")
 	WebElement btnShowPriceBreakdown;
 
 	@FindBy(xpath = "//section[@class='review__section -pt28 apply-tile']//div[@class='d-flex align-items-center']/div[contains(text(),'Courier Delivery')]")
 	WebElement lblFulfillmentType;
+
+	@FindBy(xpath = "//button[@aria-label='Learn more about Courier Delivery']/span")
+	WebElement lnkLearnMoreCourierDelivery;
 
 	@FindBy(xpath = "//h2[@class='identity-install ng-star-inserted']")
 	WebElement lblInstallationDetails;
@@ -188,12 +194,30 @@ public class RogersOrderReviewPage extends BasePageClass {
 	@FindBy(xpath = "//ds-checkbox[@formcontrolname='agreeCondition']/label")
 	WebElement chkAgreement;
 
+	@FindBy(xpath = "//ds-checkbox[@id='agreementDetailsCheck1-host']/label")
+	WebElement chkIgniteHTOTerms;
+
+	@FindBy(xpath = "//ds-checkbox[@id='I2IagreementDetailsCheck3-host']/label")
+	WebElement chkHTOUpgradeCondition;
+
 	@FindBy(xpath = "//div[@class= 'row custom-note']//ds-price[@class='custom-price']//div[contains(@class,'ds-price__amountDollars')]")
 	WebElement lblCustomPrice;
 
+	@FindBy(xpath = "//div[@class= 'package-details__subtotal']//div[contains(@class,'ds-price__amountDollars')]")
+	WebElement lblIgniteCustomPrice;
+
+	@FindBy(xpath= "//div[@class= 'package-details__subtotal']//div[@class='price-section']/parent::div/following-sibling::div/p")
+	WebElement txtOneSTB;
+
+	@FindBy(xpath ="//p[@class='dsa-hero-billboard__copy mb-0 text-body-lg ng-star-inserted']")
+	WebElement txtExpiredOffer;
 
 	@FindBy(xpath = "//div[@class='bundle-offer-details__content__price']//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
 	WebElement lblOfferPrice;
+
+	@FindBy(xpath="//div[@class='promo__pricing__price ng-star-inserted']/ds-price//div[@class='ds-price__amountDollars text-semi ng-star-inserted']")
+	WebElement lblIgniteOfferPrice;
+
 
 
 
@@ -266,8 +290,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyAgreementPage() {
-		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageBuy, 120);
-		return	getReusableActionsInstance().isElementVisible(txtAgreementPageBuy, 60);
+		return	getReusableActionsInstance().isElementVisible(txtAgreementPageBuy, 120);
 	}
 
 	public boolean verifyAgreementPageTVMobile() {
@@ -281,8 +304,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 
 	public boolean verifyAgreementPageInternet() {
-		getReusableActionsInstance().waitForElementVisibility(txtAgreementPageInternet, 90);
-	return	getReusableActionsInstance().isElementVisible(txtAgreementPageInternet, 60);
+	return	getReusableActionsInstance().isElementVisible(txtAgreementPageInternet, 90);
 	}
 	/**
 	 * Verify the agreement block on the order review page
@@ -418,8 +440,9 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkSubmit() {
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().getWhenReady(clkSubmit, 30).click();
-		getReusableActionsInstance().clickIfAvailable(clkSubmit, 30);
+		getReusableActionsInstance().getWhenReady(clkSubmit, 30);
+		getReusableActionsInstance().executeJavaScriptClick(clkSubmit);
+
 	}
 	/**
 	 * Click on the Submit button on the order review page
@@ -549,6 +572,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public boolean isPaymentRequired() {
+
 		return getReusableActionsInstance().isElementVisible(lblPaymentStep, 30);
 	}
 
@@ -558,8 +582,17 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		getReusableActionsInstance().waitForElementVisibility(lblOrderReview, 200);
-		return getReusableActionsInstance().isElementVisible(lblOrderReview);
+		//getReusableActionsInstance().staticWait(5000);
+		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
+	}
+
+	/**
+	 * To verify the Rogers Targeted Offer order review Page load
+	 * @return true if Order Review label is there, else false
+	 * @author Manpreet.Kaur3
+	 */
+	public boolean verifyIgniteTargetedOfferOrderReviewPage() {
+		return getReusableActionsInstance().isElementVisible(lblIgniteOrderReview, 200);
 	}
 
 
@@ -615,9 +648,21 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-
 		getReusableActionsInstance().getWhenReady(chkTerms, 60).click();
 		getReusableActionsInstance().getWhenReady(chkAgreement, 60).click();
+	}
+
+	/**
+	 * Click on the Terms & Agreement check box on the order review page
+	 * @author Manpreet.kaur3
+	 */
+	public void clkIgniteHTOAgreementCheckbox() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+		getReusableActionsInstance().getWhenReady(chkIgniteHTOTerms, 60).click();
+		getReusableActionsInstance().getWhenReady(chkHTOUpgradeCondition, 60).click();
 	}
 
 	/**
@@ -629,6 +674,30 @@ public class RogersOrderReviewPage extends BasePageClass {
 	}
 
 	/**
+	 * Get the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getIgniteCustomPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteCustomPrice, 30).getText();
+	}
+
+	/**
+	 * Scroll to the custom price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public void scrollToCustomPrice() {
+		getReusableActionsInstance().scrollToElement(lblIgniteCustomPrice);
+	}
+
+	/**
+	 * Scroll to the offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String scrollToOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteOfferPrice, 30).getText();
+	}
+
+	/**
 	 * Get the bundle offer price for HTO offer
 	 * @author Manpreet.kaur3
 	 */
@@ -636,6 +705,19 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
 	}
 
+	/**
+	 * Get the bundle offer price for HTO offer
+	 * @author Manpreet.kaur3
+	 */
+	public String getIgniteOfferPrice() {
+		return getReusableActionsInstance().getWhenVisible(lblIgniteOfferPrice, 30).getText();
+	}
+
+	/**
+	 * Verifies if there is more than 1 STB at HTO Review page
+	 * @returns true if more than 1, else false
+	 * @author Manpreet.kaur3
+	 */
 	public boolean verifyAdditionalSTBs() {
 		By tvFeaturesList = By.xpath("//rch-bundle-promo-tv-details//div[@class='bundle-offer-details__content']//li/span");
 		List<WebElement> myElements = getDriver().findElements(tvFeaturesList);
@@ -653,4 +735,42 @@ public class RogersOrderReviewPage extends BasePageClass {
 		return true;
 		}
 
+	/**
+	 * Gets the One TV Box for Ignite HTO Mote content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyOneTVBoxHTOText() {
+		String contentDesired = "Note: This price includes the cost of one TV Box. Your additional TV Boxes will continue to appear on your monthly bill at their current rate.";
+		String contentActual = getReusableActionsInstance().getWhenReady(txtOneSTB, 20).getText();
+		if(contentActual.equals(contentDesired)){
+			return true;
+		}
+
+		return false;
 	}
+
+	/**
+	 * Gets the One TV Box for Ignite HTO Mote content
+	 * @return true if Actual copy is matching the desired copy, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyCurrentOfferEndedText() {
+		//String contentDesiredEn = "Your current offer has ended, but don’t worry – we have a new, personalized offer we think you’ll love! Check it out below.";
+		String contentDesiredFR = "Votre offre a pris fin, mais ne vous en faites pas, nous avons une nouvelle offre personnalisée que vous adorerez! Jetez-y un coup d’œil ci-dessous.";
+		String contentActual = getReusableActionsInstance().getWhenReady(txtExpiredOffer, 20).getText();
+		if(contentActual.equals(contentDesiredFR)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Click on Learn More about courier delivery
+	 * @author Manpreet.kaur3
+	 */
+	public void clkLearnMoreCourierDelivery() {
+		getReusableActionsInstance().getWhenReady(lnkLearnMoreCourierDelivery, 30).click();
+	}
+}

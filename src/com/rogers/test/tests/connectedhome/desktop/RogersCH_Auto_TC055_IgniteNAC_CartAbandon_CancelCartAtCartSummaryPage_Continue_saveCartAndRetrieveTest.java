@@ -35,11 +35,12 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
 
     @Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void rogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPage_Continue_saveCartAndRetrieve() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-        getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
 
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");

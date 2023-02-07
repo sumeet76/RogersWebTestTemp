@@ -79,7 +79,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath="//input[@aria-label='Yes, add Ignite Home Phone for an additional $10/mo']/parent::label/span")
 	WebElement btnAddHomePhoneDST;
 
-	@FindBy(xpath= "//button[@aria-label='BEST FITRogers Ignite Flex 10 Bundle']")
+	@FindBy(xpath= "//span[contains(text(),'BEST FIT')]")
 	WebElement txtBestFit;
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
@@ -153,10 +153,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rhp-section']/descendant::label")
 	WebElement checkboxHomephone;
 
-	@FindBy(xpath = "//h2[@id='channels-tab']")
+	@FindBy(xpath = "//button[@id='channels-tab']")
 	WebElement btnChannelsTab;
 
-	@FindBy(xpath = "//h2[@id='themepacks-tab']")
+	@FindBy(xpath = "//button[@id='themepacks-tab']")
 	WebElement btnThemepacksTab;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
@@ -225,7 +225,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]/ancestor::li//div//button")
 	WebElement btnViewFlexChannels;
 
-	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected')]//span")
+	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected') or contains(@aria-label,'présélectionnée')]//span")
 	WebElement hvrPreSelectedChannels;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'available')]//span[@class='ds-icon rds-icon-info']")
@@ -507,6 +507,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChannelsTab() {
+		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnChannelsTab);
 		//getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
 	}

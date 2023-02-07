@@ -520,7 +520,7 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
 		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 200);
 		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
 		getReusableActionsInstance().staticWait(3000);
 	}

@@ -47,18 +47,17 @@ public class RogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATLTest extends 
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATL() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkTVBundle();
-        reporter.reportLogWithScreenshot("clicked on TV bundles");
+		reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -119,8 +118,8 @@ public class RogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATLTest extends 
 
        reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
        reporter.reportLogWithScreenshot("Launched the tech install page");
-       getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
+        getRogersTechInstallPage().clkProInstallUpgradeNo();
+        reporter.reportLogWithScreenshot("tech install details");
        getRogersTechInstallPage().clkTechInstallContinue();
        
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");

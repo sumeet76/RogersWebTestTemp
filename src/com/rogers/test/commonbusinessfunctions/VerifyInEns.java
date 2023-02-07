@@ -24,7 +24,7 @@ public class VerifyInEns{
 		BaseTestClass.getEnsHomePage().openNewTabForEns(TestDataHandler.ssConfig.getEnsURL());
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Window");
 	}
-	
+
 	/**
 	 * To login to ENS using operator name and password.
 	 * @author ning.xue
@@ -98,6 +98,26 @@ public class VerifyInEns{
 		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
 		return strVerifyCode;
 	}
-	
+
+
+	private void startVerify(String strEnsUrl) {
+
+		BaseTestClass.getEnsHomePage().openNewTabForEns(strEnsUrl);
+		baseTestClass.reporter.reportLogWithScreenshot("Ens Window");
+	}
+
+	public String getTextVerificationCode(String strPhoneNum, String strEnsUrl) {
+		this.startVerify(strEnsUrl);
+		this.loginToEns();
+
+		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
+		BaseTestClass.getEnsNotificationViewPage().clkLnkPdfForSmsVerify(strPhoneNum);
+		String strVerifyCode = BaseTestClass.getEnsNotificationViewPage().getUserName();
+		baseTestClass.reporter.reportLogWithScreenshot("Got message notification code.");
+		BaseTestClass.getEnsNotificationViewPage().clkBtnOk();
+		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
+		return strVerifyCode;
+	}
 }
 

@@ -57,8 +57,8 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
     	getRogersHomePage().clkServiceability(); */
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -96,7 +96,7 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().set4KTV();
+        getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
         
@@ -141,7 +141,7 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
 /*       getRogersTechInstallPage().selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        getRogersTechInstallPage().setMobielNumber();*/
-       getRogersTechInstallPage().clkTechInstalConsent();
+       getRogersTechInstallPage().clkProInstallUpgradeNo();
        reporter.reportLogWithScreenshot("tech install details");
        getRogersTechInstallPage().clkTechInstallContinue();
        

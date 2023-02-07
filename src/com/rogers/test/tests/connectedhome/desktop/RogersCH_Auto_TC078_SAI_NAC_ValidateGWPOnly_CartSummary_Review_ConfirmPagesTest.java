@@ -36,8 +36,11 @@ public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_Conf
 
     @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_ConfirmPages() {
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
-        getRogersHomePage().clkEasyInternet();
+        reporter.reportLogWithScreenshot("clicked on Easy Internet");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
+        // getRogersHomePage().clkExistingCustomerInternet();
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
