@@ -166,6 +166,8 @@ public class RogersBFA_TC03_POM_RegularPromoHWFin_Consumer_NAC_TermBopisShipping
 //		getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //		reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel() ,"Appointment label available", "Appointment label not available");
 //		getRogersCheckoutPage().clkContinueBtnShipping();
+		reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+				"Shipping Page not displayed");
 		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
 		reporter.reportLogPass("Express Delivery selected");
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
