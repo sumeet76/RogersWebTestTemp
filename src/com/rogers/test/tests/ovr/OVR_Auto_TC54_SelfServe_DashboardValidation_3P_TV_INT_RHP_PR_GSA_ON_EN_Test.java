@@ -32,7 +32,6 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
-        reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 

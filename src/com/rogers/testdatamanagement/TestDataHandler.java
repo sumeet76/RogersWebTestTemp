@@ -391,6 +391,9 @@ public class TestDataHandler {
 	public static OvrReusableData tc_52_Ovr_Mig_Data_1p_to_3p;
 	public static OvrReusableData tc_18_Ovr_Existing_Ignite_SHA_to_NacISS;
 	public static OvrReusableData tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS;
+	public static OvrReusableData tc_57_Ovr_SelfServe_IgniteISS_AddSTB;
+	public static OvrReusableData tc_58_Ovr_SelfServe_IgniteTV_AddSTB;
+	public static OvrReusableData tc_59_Ovr_SelfServe_IgniteTV_AddSTB;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
@@ -858,5 +861,8 @@ public class TestDataHandler {
 		tc_50_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC50_Mig_Data_1p_to_ISS");
 		tc_52_Ovr_Mig_Data_1p_to_3p = YamlHandler.getOvrReusableData("TC52_Mig_Data_1p_to_3p");
 		tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC56_Targeted_Mig_Data_1p_to_ISS");
+		tc_57_Ovr_SelfServe_IgniteISS_AddSTB = YamlHandler.getOvrReusableData("TC57_SelfServe_IgniteISS_AddSTB");
+		tc_58_Ovr_SelfServe_IgniteTV_AddSTB = YamlHandler.getOvrReusableData("TC58_SelfServe_IgniteTV_AddSTB");
+		tc_59_Ovr_SelfServe_IgniteTV_AddSTB = YamlHandler.getOvrReusableData("TC59_SelfServe_IgniteTV_AddSTB");
 	}
 }
