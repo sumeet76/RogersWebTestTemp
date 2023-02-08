@@ -97,6 +97,8 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         /*reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 "Billing Address is not selected");*/
         getRogersCheckoutPage().clickSkipAutopay();
+        reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+                "Shipping Page not displayed");
         getRogersCheckoutPage().selectNewShippingAddress(TestDataHandler.tc20AALTermSLNonSEBasicPlanStdShipping.getNewShippingAddress());
         reporter.reportLogPassWithScreenshot("Entered new Shipping Address");
         getRogersCheckoutPage().clkDeliveryMethod("standard");

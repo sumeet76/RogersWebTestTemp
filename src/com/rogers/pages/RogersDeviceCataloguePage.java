@@ -925,7 +925,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public void clkContinueBtnMigrationFeeRpp() {
-        getReusableActionsInstance().clickIfAvailable(btnContinuemigrationRpp);
+        if(getReusableActionsInstance().isElementVisible(btnContinuemigrationRpp,10)) {
+            getReusableActionsInstance().clickWhenReady(btnContinuemigrationRpp);
+        }
     }
 
     /**

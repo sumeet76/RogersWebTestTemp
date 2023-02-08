@@ -46,7 +46,7 @@ public class RogersBFA_TC27_Consumer_PPC_SL_NonSE_FinancingOutTerm_TTPlan_Test e
         getRogersPlanConfigPage().selectPlanType(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getNewPlanType(),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan Type is selected successfully");
         //getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
+        //getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         reporter.hardAssert(getRogersPlanConfigPage().verifyTalkOptionSelectionAndAddonsContinueButton(getRogersPlanConfigPage().getupdatedTalkOptionIndex(TestDataHandler.tc27PPCSLNonSEFinToTTPlan.getTalkOptionIndex())),
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
