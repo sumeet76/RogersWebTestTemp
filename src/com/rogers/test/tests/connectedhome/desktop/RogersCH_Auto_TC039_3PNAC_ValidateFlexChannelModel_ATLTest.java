@@ -41,19 +41,24 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATL() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkTVBundle();
-        reporter.reportLogWithScreenshot("clicked on TV bundles");
+        // changes in contentful page - no longer displayed.
+        /* reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+    	getRogersHomePage().clkTVBundle(); */
         getRogersHomePage().clkNBProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        reporter.reportLogWithScreenshot("clicked on Get TV bundles");
+        /* reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+    	getRogersHomePage().clkServiceability(); */
     	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -91,7 +96,7 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
         reporter.reportLogWithScreenshot("Pre Selected Channels Hover message");
         getRogersIgniteTVBuyPage().clkHoverClose();
 
-        getRogersIgniteTVBuyPage().set4KTV();
+        getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
         
@@ -136,7 +141,7 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
 /*       getRogersTechInstallPage().selSelffinstallDateAndTime();
        reporter.reportLogWithScreenshot("Launched the tech install page");
        getRogersTechInstallPage().setMobielNumber();*/
-       getRogersTechInstallPage().clkTechInstalConsent();
+       getRogersTechInstallPage().clkProInstallUpgradeNo();
        reporter.reportLogWithScreenshot("tech install details");
        getRogersTechInstallPage().clkTechInstallContinue();
        

@@ -385,6 +385,21 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-chevron-down']/ancestor::button")
 	WebElement collapseIcon;
 
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.addBoxes']//ancestor::button")
+	WebElement addBoxesBtn;
+
+	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
+	WebElement tvAddOnsPageHeader;
+
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	WebElement addSTBToCart;
+
+	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
+	WebElement addAdditionalSTBToCart;
+
+	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
+	WebElement maximumLimitReached;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -1395,12 +1410,42 @@ public class TVDashboardPage  extends BasePageClass {
 			return getReusableActionsInstance().isElementVisible(removeButton, 60);
 	}
 
+
 	public void clkCollapseButton(){
 		getReusableActionsInstance().clickWhenReady(collapseIcon,20);
 	}
 
-	public void scrollToMiddle(){
+	public void scrollToMiddle() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
+
+	public void addTVBoxes(){
+		getReusableActionsInstance().isElementVisible(addBoxesBtn,90);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(addBoxesBtn,10);
+		getReusableActionsInstance().executeJavaScriptClick(addBoxesBtn);
+	}
+
+	public boolean verifyTvAddOnsHeader(){
+		getReusableActionsInstance().waitForPageLoad();
+		return getReusableActionsInstance().isElementVisible(tvAddOnsPageHeader,90);
+	}
+
+	public void clickAddToCartForSTB() {
+		getReusableActionsInstance().scrollToElement(addSTBToCart);
+		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
+	}
+
+	public void clickPlusToAddSTB() {
+		getReusableActionsInstance().isElementVisible(addAdditionalSTBToCart,60);
+		getReusableActionsInstance().scrollToElement(addAdditionalSTBToCart);
+
+		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
+			getReusableActionsInstance().waitForElementVisibility(addAdditionalSTBToCart, 45);
+			getReusableActionsInstance().executeJavaScriptClick(addAdditionalSTBToCart);
+			getReusableActionsInstance().waitForPageLoad();
+		}
 	}
 
 }

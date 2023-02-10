@@ -25,13 +25,18 @@ public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test exten
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getUsername());
+        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();*/
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_SOHO_HUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip.getPassword());
+        reporter.reportLogWithScreenshot("Login Page");
+        getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");
         getDriver().get(System.getProperty("AWSUrl"));

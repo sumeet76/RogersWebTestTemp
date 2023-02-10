@@ -50,15 +50,15 @@ public class RogersCH_Auto_TC070_3PNAC_ChannelsAndThemePack_MonthlyFeeBannerVali
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void rogersCH_Auto_TC070_3PNAC_ChannelsAndThemePack_MonthlyFeeBannerValidation_ATL() {
-	getRogersHomePage().clkTVBundle();
-	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-
-	getRogersHomePage().clkTVBundlesForNL();
-	reporter.reportLogWithScreenshot("Selected NL province");
-
-	reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-	getRogersHomePage().clkServiceability();
-	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		reporter.reportLogWithScreenshot("Launched the Main QA Page");
+		getRogersHomePage().clkExistingCustomerShop();
+		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		getRogersHomePage().clkSubnavIgniteSmartStream();
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkTVBundlesForNL();
+		reporter.reportLogWithScreenshot("Selected NL province");
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 	String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
 	String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
 	getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);

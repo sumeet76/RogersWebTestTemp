@@ -187,6 +187,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
+			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
 		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
 		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
@@ -296,6 +297,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@data-test='payment-method-continue']")
 	WebElement btnBillingContinueButton;
+
+	@FindBy(xpath = "//button[@data-test='continue-btn']")
+	WebElement continueButtoncheckOut;
 
 	//*****Shipping stepper******
 
@@ -436,9 +440,6 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Not now')]/parent::label")
 	WebElement skipAutoPay;
 
-	@FindBy(xpath = "//button[@data-test='payment-method-continue']")
-	WebElement paymentContinueButton;
-
 	@FindBy(xpath = "//button[@data-test='auto-pay-removal-modal-button']//span[contains(text(),'Continue')]")
 	WebElement autoPayRemovalCtnBtn;
 
@@ -466,6 +467,15 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//button[@data-test='continue-btn' and contains(.,'Continue')]")
 	WebElement dpAddonContinue;
 
+	@FindBy(xpath = "//p[contains(text(),'Please try another number')]/parent::div")
+	WebElement phoneNumReservedAlert;
+
+	@FindBy(xpath = "//button[@data-test='reserve-another-number']")
+	WebElement closeBtnReservedAlert;
+
+	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[4]")
+	WebElement selectAnotherPhoneNumber;
+
 	/**
 	 * To get the Title of post checkout page
 	 * @return checkoutTitle
@@ -485,7 +495,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String getMonthlyFeeAfterTax() { 
-		getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
+		//getReusableActionsInstance().waitForElementVisibility(createProfileTitle, 50);
 		getReusableActionsInstance().waitForElementVisibility(monthlyFeeAfterTax, 50);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
 		return monthlyFeeAfterTax.getText().replaceAll("\\n",""); }
@@ -843,7 +853,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void selectMonthDropdownOption(String strMonth) {
-			clkNoThanks();
+			//clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputMonthDOB);
 			getReusableActionsInstance().selectWhenReady(inputMonthDOB, strMonth);
@@ -856,7 +866,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void selectDayDropdownOption(String strDay) {
 			getReusableActionsInstance().staticWait(5000);
-			clkNoThanks();
+			//clkNoThanks();
 			getReusableActionsInstance().javascriptScrollByVisibleElement(creditEvaluationTitle);
 			getReusableActionsInstance().clickWhenReady(inputDayDOB);
 			getReusableActionsInstance().selectWhenReady(inputDayDOB, strDay);
@@ -979,6 +989,48 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * This method calculates expected mandatory down payment amount(deviceCost-upfrontEdgeAmt) based on Risk
+	 * @param upfrontEdgeAmt upfrontEdge Offer for the device
+	 * @param financeProgramCredit finance program credit for the device
+	 * @param deviceCost full price of the device
+	 * @param riskClass HIGH/MEDIUM risk
+	 * @author Vedachalam.Vasudevan
+	 */
+	public String setDownPaymentUpfrontEdge(String riskClass, String deviceCost,String upfrontEdgeAmt,String financeProgramCredit) {
+		double mandatoryDownPayment = (Double.parseDouble(deviceCost)) - (Double.parseDouble(upfrontEdgeAmt)) - (Double.parseDouble(financeProgramCredit) * 24);
+		if (riskClass.toUpperCase().contains("HIGH")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 40.0;
+			//return String.valueOf(expectedDownPayment);
+			return modifyMandatoryDownPayment(expectedDownPayment);
+		} else if (riskClass.toUpperCase().contains("MEDIUM")) {
+			double expectedDownPayment = (mandatoryDownPayment / 100.0) * 20.0;
+			//return String.valueOf(expectedDownPayment);
+			return modifyMandatoryDownPayment(expectedDownPayment);
+		} else return "0";
+	}
+
+	/**
+	 * Method substring decimal value of down Payment to two digit
+	 * @param downPay
+	 * @return Expected down payment
+	 * @author Vedachalam.Vasudevan
+	 */
+	public String modifyMandatoryDownPayment(Double downPay) {
+		String downPayment = String.valueOf(downPay);
+		int decimal=0;
+		String[] modify = downPayment.split("\\.");
+		char secondDecimal = modify[1].charAt(1);
+		char thirdDecimal = modify[1].charAt(2);
+		if(Integer.parseInt(String.valueOf(thirdDecimal)) >= 5){
+			decimal = Integer.parseInt(String.valueOf(secondDecimal))+1;
+		} else {
+			decimal = Integer.parseInt(String.valueOf(secondDecimal));
+		}
+		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
+		return modifiedDownPayment;
+	}
+
+	/**
 	 * This method verifies if CLA text is displayed properly
 	 * @return true if CLA text is displayed correctly, else false
 	 * @author praveen.kumar7
@@ -1061,15 +1113,30 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
-		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 80).click();
+		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 30).click();
 	}
-
+	/**
+	 * This method verify Phone Number Reserved Alert Modal after Phone Number selection in the Choose a Number stepper
+	 * @return True if Alert Displayed else false
+	 * @author Subash.Nedunchezhian
+	 */
+	public boolean isReservedAlertDisplayed(){
+		 return getReusableActionsInstance().isElementVisible(phoneNumReservedAlert,10);
+	}
+	/**
+	 * This method select the another Available Phone number Radio button in the Choose a Number stepper
+	 * @author Subash.Nedunchezhian
+	 */
+	public void selectAnotherPhoneNumber(){
+			getReusableActionsInstance().clickWhenReady(closeBtnReservedAlert);
+			getReusableActionsInstance().getWhenReady(selectAnotherPhoneNumber, 30).click();
+			clkChooseNumberbutton();
+	}
 	/**
 	 * To verify Find More Avaialble Number Button in the Choose a Number stepper
 	 * @return True or false
 	 * @author karthic.hasan
 	 */
-
 	public boolean isFindMoreAvlNumberButtonPresent() {
 		return getReusableActionsInstance().isElementVisible(btnFindMoreAvlNumber);
 	}
@@ -1081,7 +1148,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkChooseNumberbutton() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(cityDropdown);
-		getReusableActionsInstance().getWhenReady(btnChooseNumberContinue, 60).click();
+		getReusableActionsInstance().getWhenReady(btnChooseNumberContinue, 30).click();
 	}
 
 	/**
@@ -1299,6 +1366,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	/**
+	 * To click Continue Button on Checkout
+	 * @author subash.nedunchezhian
+	 */
+	public void clkContinueCheckOutBtn(){
+		getReusableActionsInstance().clickWhenReady(continueButtoncheckOut,10);
+	}
+
+	/**
 	 * To click on the Billing Address radio button in the Shipping stepper
 	 * @return true if selected, else false.
 	 * @author nimmy.george
@@ -1344,8 +1419,21 @@ public class RogersCheckoutPage extends BasePageClass {
     public String getEmailId() {
     	getReusableActionsInstance().javascriptScrollToTopOfPage();
         return getReusableActionsInstance().getWhenReady(prepopulatedEmailId).getText();
-    }  
-    
+    }
+
+	/**
+	 * To Verify if Shipping Page title is displayed
+	 * @return true if Shipping Page Title is displayed else false
+	 * @author subash.nedunchezhian
+	 */
+	public boolean verifyShippingPageTitle() {
+		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,10))
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 	/**
 	 * To click on Standard Delivery Method in the shipping stepper
 	 * @author nimmy.george
@@ -1421,9 +1509,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clickSkipAutopay(){
-		getReusableActionsInstance().clickIfAvailable(skipAutoPay);
-		getReusableActionsInstance().clickIfAvailable(paymentContinueButton,10);
-		getReusableActionsInstance().clickIfAvailable(autoPayRemovalCtnBtn,10);
+		if(getReusableActionsInstance().isElementVisible(skipAutoPay, 20)) {
+			getReusableActionsInstance().getWhenReady(skipAutoPay, 10).click();
+			getReusableActionsInstance().getWhenReady(btnBillingContinueButton,10).click();
+			getReusableActionsInstance().getWhenReady(autoPayRemovalCtnBtn,10).click();
+		}
 	}
 	/**
 	 * This method opts out AutoPay payment method and clicks Continue in AutoPay Removal Modal in NAC flow

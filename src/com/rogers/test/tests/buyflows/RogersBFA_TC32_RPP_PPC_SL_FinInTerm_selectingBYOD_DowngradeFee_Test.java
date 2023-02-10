@@ -30,11 +30,16 @@ public class RogersBFA_TC32_RPP_PPC_SL_FinInTerm_selectingBYOD_DowngradeFee_Test
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
         //getRogersLoginPage().switchToSignInIFrame();
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc32_RPP_PPC_SL_FinToBYOD_DowngradeFee.getUsername());
+        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc32_RPP_PPC_SL_FinToBYOD_DowngradeFee.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_RPP_PPC_SL_FinToBYOD_DowngradeFee.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        getRogersLoginPage().switchOutOfSignInIFrame();*/
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc32_RPP_PPC_SL_FinToBYOD_DowngradeFee.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_RPP_PPC_SL_FinToBYOD_DowngradeFee.getPassword());
+        reporter.reportLogWithScreenshot("Login Page");
+        getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");

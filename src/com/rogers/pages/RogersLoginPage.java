@@ -1,11 +1,12 @@
 package com.rogers.pages;
 
+import com.rogers.test.base.BaseTestClass;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
 import com.rogers.pages.base.BasePageClass;
 
 
@@ -15,7 +16,7 @@ public class RogersLoginPage extends BasePageClass {
 	public RogersLoginPage(WebDriver driver) {
 		super(driver);
 	}
-	
+
 
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
@@ -73,6 +74,13 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
+
+	//button[contains(@title,'registered email')]/span
+	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
+	WebElement btnTextToAsRecoveryOption;
+
+	@FindBy(xpath="//h1[text()='Receive verification code']")
+	WebElement lblMFAwindow;
 
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
@@ -351,5 +359,23 @@ public class RogersLoginPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkForgotPassword).click();
 		
 	}
-	
+
+	/**
+	 * Click on Text button as a recovery option fpr MFA
+	 * @author manpreet.kaur3
+	 */
+    public void clkTextToAsRecoveryOption() {
+		getReusableActionsInstance().getWhenReady(btnTextToAsRecoveryOption,60).click();
+    }
+
+	/**
+	 * verifies the MFA screen
+	 * @return true if MFA screen is vissible, else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyMFAScreenIsVisible() {
+		return getReusableActionsInstance().isElementVisible(lblMFAwindow,30);
+	}
+
+
 }

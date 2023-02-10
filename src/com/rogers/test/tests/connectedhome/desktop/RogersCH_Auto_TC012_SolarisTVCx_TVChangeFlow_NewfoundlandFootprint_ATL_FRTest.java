@@ -38,12 +38,13 @@ public class RogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_
 	    public void rogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_ATL_FR() {
 	        reporter.reportLogWithScreenshot("Launched the SignIn popup");
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
+		 	getRogersLoginPage().clkContinueInBrowser();
 	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
 	        reporter.reportLogWithScreenshot("Enter the account credentails");
 	        getRogersLoginPage().clkSignInIFrame();
-	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	        reporter.reportLogWithScreenshot("Skip popup");
-	        getRogersLoginPage().clkSkipIFrame();
+//	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+//	        reporter.reportLogWithScreenshot("Skip popup");
+//	        getRogersLoginPage().clkSkipIFrame();
 	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");

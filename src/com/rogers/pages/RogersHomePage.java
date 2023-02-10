@@ -40,7 +40,7 @@ public class RogersHomePage extends BasePageClass {
 			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
 	WebElement lnkSignOut;
 
-	@FindBy(xpath = "//input[@formcontrolname='username' or @id='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//input[@formcontrolname='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement formLogin;
 	
 	@FindAll({
@@ -48,8 +48,11 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rcl-navmain']//li[@class='o-navLinkList__item nav-list-active']//a[@class='m-navLink']//Span[@class='m-navLink__caption']"),
 	@FindBy(xpath = "//a[@class='m-navLink']//span[@class='m-navLink__chevron rds-icon-expand']")})
 	WebElement btnShop;
-	
-	@FindBy(xpath = "//li[@id='Shop-mobileDropdown']")
+
+	@FindBy(xpath = "//button[@aria-label='Navigation']")
+	WebElement btnBurgerMenuMobile;
+
+	@FindBy(xpath = "//li[@class='o-mobileNavLinkList__item']/a[@title='Shop']")
 	WebElement btnShopMobile;	
 	
 	@FindBy(xpath="//a[@class='dds-header-mobilenav']")
@@ -205,6 +208,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
 	WebElement lnkProvinceON;
 
+	@FindBy(xpath = "//li[@class='o-mobileNavLinkList__item']/a[@aria-label='Ontario']")
+	WebElement lnkOptedONMobile;
+
+
+
+	@FindBy(xpath = "//li[@class='o-mobileNavDropdown__item']/a[@title='New Brunswick']")
+	WebElement lnkProvinceNBMobile;
+
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']")
 	WebElement lnkProvinceNB;
 
@@ -284,6 +295,8 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'Ignite Internet Information Pages')]")
 	WebElement subnavIgniteInternet;
 
+	@FindBy(xpath = "//a[@class='m-mobileNavLink -dropdownItem' and contains(text(),'TV & Streaming')]")
+	WebElement subnavIgniteSmartStreamMobile;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdown' and contains(text(),'TV & Streaming')]")
 	WebElement subnavIgniteSmartStream;
@@ -449,9 +462,32 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().waitForPageLoad();
 	}
 
+	/**
+	 * Click the Ignite Internet from the sub navigator
+	 * @author chinnarao.vattam
+	 */
+	public void clkSubnavIgniteSmartStreamMobile() {
+		getReusableActionsInstance().getWhenVisible(subnavIgniteSmartStreamMobile, 30).click();
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
+	/**
+	 * Click Get it Now button on TV & Streaming page
+	 * @author manpreet.kaur3
+	 */
 	public void clkGetIgniteTvWithIgniteInternet(){
 		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
 		getReusableActionsInstance().getWhenReady(lnkGetItNow,30).click();
+		getReusableActionsInstance().waitForPageLoad();
+	}
+
+	/**
+	 * Click Get it Now button on TV & Streaming page
+	 * @author manpreet.kaur3
+	 */
+	public void clkGetIgniteTvWithIgniteInternetMobile(){
+		getReusableActionsInstance().waitForElementVisibility(lnkGetItNow, 60);
+		getReusableActionsInstance().executeJavaScriptClick(lnkGetItNow);
 		getReusableActionsInstance().waitForPageLoad();
 	}
 	/**
@@ -589,6 +625,7 @@ public class RogersHomePage extends BasePageClass {
 	public void clkSignOut() {
 		getReusableActionsInstance().getWhenVisible(btnIconAvatar,30).click();
 		getReusableActionsInstance().getWhenReady(lnkSignOut, 10).click();
+		getReusableActionsInstance().waitForPageLoad();
 	}
 	
 	/**
@@ -621,6 +658,14 @@ public class RogersHomePage extends BasePageClass {
 	public void clkShopMobile() {
 		getReusableActionsInstance().getWhenReady(btnShopMobile, 30).click();
 	}
+
+	/**
+	 * Click the Burger Menu from the top tile bar on Home page
+	 * @author manpreet.kaur3
+	 */
+	public void clkBurgerMenuMobile() {
+		getReusableActionsInstance().getWhenReady(btnBurgerMenuMobile, 30).click();
+	}
 	
 
 	/**
@@ -638,6 +683,15 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkMyRogers() {
 		getReusableActionsInstance().getWhenReady(lnkMyRogersfromAccount, 30).click();
+	}
+
+	/**
+	 * Verify My Rogers button is present in the main QA page or not
+	 * @author Manpreet.kaur3
+	 * @return
+	 */
+	public boolean verifyMyRogers() {
+		return getReusableActionsInstance().isElementVisible(lnkMyRogersfromAccount, 90);
 	}
 
 
@@ -784,6 +838,18 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
 		getReusableActionsInstance().getWhenReady(lnkProvinceNB, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNB);
+		getReusableActionsInstance().staticWait(4000);
+	}
+
+	/**
+	 * Click the NB Province link from the top tile bar
+	 * @author Manpreet.Kaur3
+	 */
+	public void clkNBProvinceLnkMobile() {
+		getReusableActionsInstance().getWhenReady(lnkOptedONMobile, 20).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNBMobile, 30);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNBMobile);
+		getReusableActionsInstance().staticWait(4000);
 	}
 
 	/**
@@ -905,8 +971,16 @@ public class RogersHomePage extends BasePageClass {
 	}
 
 	public void setIgniteAddressLookup(String strAddress) {
+		/*getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
+
+		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().staticWait(3000);*/
 		getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
-		//getReusableActionsInstance().waitForElementVisibility(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
@@ -949,6 +1023,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmit() {
+		//getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().waitForElementTobeClickable(btnIgniteAddressLookupSubmit, 30);
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
 		//getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(15000);
@@ -1143,7 +1219,8 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 60);
+		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,60);
+		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 20);
 	}
 
 	/**
@@ -1210,9 +1287,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyLoginPage() {
-
-		getReusableActionsInstance().waitForElementVisibility(formLogin, 30);
-		return getReusableActionsInstance().isElementVisible(formLogin);
+		return getReusableActionsInstance().isElementVisible(formLogin, 30);
 	}
 
 	/**

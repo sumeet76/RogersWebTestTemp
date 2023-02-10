@@ -24,12 +24,10 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
             //getRogersHomePage().clkSignIn();
             //getRogersLoginPage().switchToSignInIFrame();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getUsername());
+            getRogersLoginPage().clkContinueSignIn();
             getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getPassword());
             reporter.reportLogWithScreenshot("Login Page");
             getRogersLoginPage().clkSignInIFrame();
-            reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
-            getRogersLoginPage().clkSkipIFrame();
-            getRogersLoginPage().switchOutOfSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
             getDriver().get(System.getProperty("AWSUrl"));
@@ -48,8 +46,8 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
 
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                     "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-            getRogersPlanConfigPage().clkDownPaymentChkBox();
-            reporter.reportLogPassWithScreenshot("VDP checkbox is selected");
+//            getRogersPlanConfigPage().clkDownPaymentChkBox();
+//            reporter.reportLogPassWithScreenshot("VDP checkbox is selected");
             getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
@@ -86,6 +84,10 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
             getRogersOrderReviewPage().clkSubmitOrder();
 
             reporter.reportLogWithScreenshot("Rogers Payment Page");
+            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
+            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
             reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
             getRogersOneTimePaymentPage().setNameonCard();
             getRogersOneTimePaymentPage().switchToCreditCardIFrame();

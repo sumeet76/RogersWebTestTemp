@@ -146,14 +146,8 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Plan and Usage details')]")
     WebElement btnInternetBadge;
 
-//    @FindAll({
-//            @FindBy(xpath = "//span[contains(text(),'Plan and Usage details') or contains(text(),'Détails du plan et de l'utilisation')]"),
-//            @FindBy(xpath = "//span[@class='icon rui-icon-internet-v2']")
-//    })
-//    WebElement btnInternetBadge;
-
     @FindAll({
-            @FindBy(xpath = "//t[text()='Ignite Home Phone']"),
+            @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']"),
             @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']"),
             @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border d-flex flex-column']/descendant::span[@class='ds-link__copy']/parent::span")
     })
@@ -163,7 +157,7 @@ public class AccountOverViewPage extends BasePageClass {
 //	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
 //	@FindAll({
 
-    @FindBy(xpath = "//app-service-badge-tv-care/descendant::div[@class='service-detail service-address'] | //div[@class='IPTV active-ind service-badge tv'] | //div[@class='service-badge tv active-ind DigitalTV']")
+    @FindBy(xpath = "//t[text()='TV' or text()='la télé']/following::span[text()='Plan Details'] or text()=' Détails du forfait ']")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
@@ -370,7 +364,7 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
         if (getReusableActionsInstance().isElementVisible(btnGetIgniteTVBadge, 60)) {
-            getReusableActionsInstance().scrollToElementAndClick(btnGetIgniteTVBadge);
+            getReusableActionsInstance().javascriptScrollToBottomOfPage();
             getReusableActionsInstance().clickWhenReady(btnGetIgniteTVBadge);
         }
     }

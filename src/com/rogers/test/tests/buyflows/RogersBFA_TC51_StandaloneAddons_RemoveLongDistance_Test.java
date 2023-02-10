@@ -21,10 +21,11 @@ public class RogersBFA_TC51_StandaloneAddons_RemoveLongDistance_Test extends Bas
     @Test(groups = {"RegressionBFA","SAABFA"})
     public void tc51_rogersSAARemoveLongDistanceTest() {
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51SAA_RemoveLongDistance.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51SAA_RemoveLongDistance.getPassword());
         reporter.reportLogWithScreenshot("Login Popup");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Error");
         reporter.reportLogWithScreenshot("Account Overview page");
         getRogersAccountOverviewPage().clickManageButton();

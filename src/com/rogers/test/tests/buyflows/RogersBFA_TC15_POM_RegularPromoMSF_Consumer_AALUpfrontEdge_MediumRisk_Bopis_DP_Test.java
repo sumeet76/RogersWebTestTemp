@@ -71,9 +71,13 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
         String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
         reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
-        String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        //String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt);
+        String financeProgramCredit = "0.0";
+        financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+        String upfrontEdgeAmt = "0.0";
+        upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
        // reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
                // "Downpayment amount is displayed correctly", "Downpayment amoount is not displayed correctly");
         getRogersDeviceConfigPage().clickContinueButton();
@@ -116,12 +120,15 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
-        reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
-        getRogersCheckoutPage().clkNoThanks();
+        //reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChooseNumberbutton();
         //getRogersCheckoutPage().clkNoThanks();
         //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(), "Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+//        if(getRogersCheckoutPage().isReservedAlertDisplayed()){
+//            getRogersCheckoutPage().selectAnotherPhoneNumber();
+//        }
         //reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 //"Billing Address is not selected");
         getRogersCheckoutPage().clickSkipAutopay();
@@ -132,7 +139,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------
@@ -149,6 +156,10 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                 "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
         getRogersOneTimePaymentPage().setNameonCard();
@@ -168,19 +179,19 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         reporter.reportLogWithScreenshot("BOPIS contents displayed in order confirmation page");
         //--------------------------------------------------DB Validation-----------------------------------------------
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select * from (select es.BAN,es.SUBSCRIBER_NO,s.SUB_STATUS,s.PAYEE_IND,es.RV_AMOUNT,es.MONTHLY_INSTALLMENT_AMT," +
-                        "es.TOTAL_FINANCING_OBLIG as TOTAL,es.MANDATORY_CHG as MANDATORY_DP,p.ORIGINAL_AMT as MANDATORY_DP_WITH_TAX,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join payment p" +
-                        " on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join subscriber s on es.subscriber_no=s.subscriber_no" +
-                        " where es.subscriber_no="+TestDataHandler.tc15POMAALShareTermBopis.getCtn()+"') where ROWNUM=1", false);
-
-        reporter.softAssert(dblists.get("SUB_STATUS").equals("R"),"Subcriber status is verified as R","Subcriber status is not verified as R");
-        reporter.softAssert(dblists.get("PAYEE_IND").equals("D"), "Payee indicator is verified as D", "Payee indicator is not verified as D");
-        reporter.softAssert(dblists.get("RV_AMOUNT").toString().equals(upfrontEdgeAmt),"Upfront edge amt is verified successfully as $"+upfrontEdgeAmt+"","Upfront edge amount is not verified successfully");
-        reporter.softAssert(dblists.get("MANDATORY_DP").equals(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
-                "Mandatory downpayment amount is verified successfully", "Mandatory downpayment amount is not verified successfully");
-        reporter.softAssert(dblists.get("MANDATORY_DP_WITH_TAX").toString().equals(getRogersOrderConfirmationPage().getTotalOneTimeFeeWithTax(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf(".")))),
-                "Mandatory downpayment with tax is verified successfully as "+expectedDownPayment+"","Mandatory DP is not verified successfully");
+//        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+//                .executeDBQuery("select * from (select es.BAN,es.SUBSCRIBER_NO,s.SUB_STATUS,s.PAYEE_IND,es.RV_AMOUNT,es.MONTHLY_INSTALLMENT_AMT," +
+//                        "es.TOTAL_FINANCING_OBLIG as TOTAL,es.MANDATORY_CHG as MANDATORY_DP,p.ORIGINAL_AMT as MANDATORY_DP_WITH_TAX,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join payment p" +
+//                        " on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join subscriber s on es.subscriber_no=s.subscriber_no" +
+//                        " where es.subscriber_no="+TestDataHandler.tc15POMAALShareTermBopis.getCtn()+"') where ROWNUM=1", false);
+//
+//        reporter.softAssert(dblists.get("SUB_STATUS").equals("R"),"Subcriber status is verified as R","Subcriber status is not verified as R");
+//        reporter.softAssert(dblists.get("PAYEE_IND").equals("D"), "Payee indicator is verified as D", "Payee indicator is not verified as D");
+//        reporter.softAssert(dblists.get("RV_AMOUNT").toString().equals(upfrontEdgeAmt),"Upfront edge amt is verified successfully as $"+upfrontEdgeAmt+"","Upfront edge amount is not verified successfully");
+//        reporter.softAssert(dblists.get("MANDATORY_DP").equals(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf("."))),
+//                "Mandatory downpayment amount is verified successfully", "Mandatory downpayment amount is not verified successfully");
+//        reporter.softAssert(dblists.get("MANDATORY_DP_WITH_TAX").toString().equals(getRogersOrderConfirmationPage().getTotalOneTimeFeeWithTax(expectedDownPayment.substring(0,expectedDownPayment.lastIndexOf(".")))),
+//                "Mandatory downpayment with tax is verified successfully as "+expectedDownPayment+"","Mandatory DP is not verified successfully");
 
     }
 

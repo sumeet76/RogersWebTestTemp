@@ -355,7 +355,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
     WebElement imeiNotEligibleMsg;
 
-    @FindBy(xpath = "//button[.=' Continue with selected plan ']")
+    @FindBy(xpath = "//button[@data-test='modal-pom-continue']")
     WebElement continueWithSelectedPlanButton;
 
 
@@ -746,7 +746,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * This method selects the Keep My CUrrent Phone and pay my Upfront edge amount option and clicks Continue the Modal
+     * This method selects the Keep My Current Phone and pay my Upfront edge amount option and clicks Continue the Modal
      * @author subash.nedunchezhian
      */
     public void clickContinueOnModalToKeepMyCurrentPhone() {
@@ -1649,7 +1649,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     public void clickContinueWithSelectedPlanButton() {
-        getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+        if(getReusableActionsInstance().isElementVisible(continueWithSelectedPlanButton,5)) {
+            getReusableActionsInstance().clickWhenReady(continueWithSelectedPlanButton);
+        }
     }
 
     /**

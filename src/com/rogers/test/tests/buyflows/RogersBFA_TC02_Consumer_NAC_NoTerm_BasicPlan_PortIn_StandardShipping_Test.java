@@ -25,7 +25,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc02_rogersNACNoTermStandardShippingTest() throws InterruptedException {
+	public void tc02_rogersNACNoTermPortInStdShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
@@ -35,7 +35,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");
 		reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(), "Get started button on the modal is present" ,"Get started button on the modal is not present");
 		reporter.reportLogWithScreenshot("Modal window Popup");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(),"Clicked Get Started Button","Get Started button not able to click");
+		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(),"Clicked Get Started Button","Get Started button not able to click");
 
 		// ***************************Device config page************************************
 		reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
@@ -45,6 +45,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
 		getRogersPlanConfigPage().clkRadioButtonNoTerm();
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+		getRogersPlanConfigPage().clickContinueWithSelectedPlanButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		//getRogersPlanConfigPage().clkBasicTab();
 		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
@@ -64,9 +65,9 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		// *****************************Create Profile Page*****************************************
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
-		//String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
-		//reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
-				//+ "2. oneTimeFee" + oneTimeFee + "3. Purchase Include" + purchaseIncludes);
+		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
+		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
+				+ " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
 				"Create profile Title not present");
 		String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
@@ -93,7 +94,6 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		// ***************Credit Evaluation Stepper***********//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified", "CreditEvaluation Title not present");
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getDateOfBirthDay());
 		getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -118,7 +118,6 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(), "Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not displayed");
 		/*getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc02NACNoTermStandardShipping.getCityName());
 		reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully");
-		getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
@@ -141,19 +140,25 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		//System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
 		//reporter.softAssert(billingAddressCreateProfile.equals(addressShippingStepper), "Address in Shipping Stepper matches as entered in Create Profile stepper", "Address in Shipping Stepper not matches as entered in Create Profile stepper");
+		reporter.hardAssert(getRogersCheckoutPage().verifyShippingPageTitle(),"Shipping Page Displayed",
+				"Shipping Page not displayed");
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
+		String totalMonthlyFeesCheckOut = getRogersCheckoutPage().getMonthlyFeeAfterTax();
+		String oneTimeFeeCheckOut = getRogersCheckoutPage().getOneTimeFeeAfterTax();
+		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFeesCheckOut
+				+ " 2. oneTimeFee" + oneTimeFeeCheckOut);
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		// ***************Order Review Page****************************************************
 		reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
 		reporter.reportLogPass("Order Review Page");
-//		String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
+		//String totalMonthlyFeesReviewPage = getRogersReviewOrderPage().getMonthlyFeeAfterTax();
 //		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesReviewPage), "Total Monthly Fee after tax matches with checkout page", "Total Monthly Fee after tax not matches with checkout page");
-		String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
-		reporter.softAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
+		//String oneTimeFeesReviewPage = getRogersReviewOrderPage().getOneTimeFeeAfterTax();
+//		reporter.softAssert(oneTimeFee.equals(oneTimeFeesReviewPage), "Total One time fee after tax matches with checkout page", "Total One time fee after tax not matches with checkout page");
 //		String puchaseIncludeReviewPage = getRogersReviewOrderPage().getPurchaseIncludesText();
 //		reporter.reportLogPassWithScreenshot("Order Review Page" + "1.Monthly Fees" + totalMonthlyFeesReviewPage + "2. OnetimeFees:" + oneTimeFeesReviewPage);
 		String contactNameReviewPage = getRogersReviewOrderPage().getContactName();
@@ -169,6 +174,10 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 		//***********Onetime payment page***************
+		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+				"One Time Payment Page displayed","One Time Payment Page Not displayed");
+		String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+		reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
 		reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
 				"Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
 		getRogersOneTimePaymentPage().setNameonCard();
@@ -184,12 +193,12 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),
 				"Order Confrimation Page Title Present", "Order Confrimation Page Title is not Present");
 		reporter.reportLogPassWithScreenshot("Order Confirmation Page");
-//		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
-//		reporter.hardAssert(totalMonthlyFees.equals(totalMonthlyFeesConfirmationPage),
-//				"Total Monthly Fee after tax matches with checkout page",
-//				"Total Monthly Fee after tax not matches with checkout page");
+		String totalMonthlyFeesConfirmationPage = getRogersNACOrderConfirmationPage().getMonthlyFeeAfterTax();
+		reporter.hardAssert(totalMonthlyFeesCheckOut.equals(totalMonthlyFeesConfirmationPage),
+				"Total Monthly Fee after tax matches with checkout page",
+				"Total Monthly Fee after tax not matches with checkout page");
 		String oneTimeFeesConfirmationPage = getRogersNACOrderConfirmationPage().getOneTimeFeeAfterTax();
-		reporter.softAssert(oneTimeFee.equals(oneTimeFeesConfirmationPage),
+		reporter.softAssert(oneTimeFeeCheckOut.equals(oneTimeFeesConfirmationPage),
 				"Total One time fee after tax matches with checkout page",
 				"Total One time fee after tax not matches with checkout page");
 //		String purchaseIncludesConfrimation = getRogersNACOrderConfirmationPage().getPurchaseIncludesText();

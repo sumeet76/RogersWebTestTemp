@@ -21,10 +21,11 @@ public class RogersBFA_TC52_StandaloneAddons_AddDeviceProtection_Test extends Ba
     @Test(groups = {"RegressionBFA","SAABFA"})
     public void tc52_rogersSAAAddDeviceProtectionTest() {
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getUsername());
+        getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getPassword());
         reporter.reportLogWithScreenshot("Login Popup");
         getRogersLoginPage().clkSignInIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
+        //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Error");
         reporter.reportLogWithScreenshot("Account Overview page");
         getRogersAccountOverviewPage().clickManageButton();

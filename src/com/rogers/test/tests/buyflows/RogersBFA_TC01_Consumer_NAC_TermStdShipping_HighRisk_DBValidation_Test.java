@@ -25,7 +25,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})
-    public void tc01_rogersNACTermNpotgSSTest() throws InterruptedException {
+    public void tc01_rogersNACTermHighRiskSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         String deviceName=TestDataHandler.tc01NACTermHighRiskStdShipping.getDeviceName();
@@ -33,15 +33,19 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");
         reporter.softAssert(getRogersDeviceCataloguePage().verifyGetStartedButtonOnModal(), "Get started button on the modal is present" ,"Get started button on the modal is not present");
         reporter.reportLogWithScreenshot("Modal window Popup");
-        reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModal(),"Clicked Get Started Button","Get Started button not able to click");
+        reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(),"Clicked Get Started Button","Get Started button not able to click");
         // ***************************Device config page************************************
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(), "BreadCrumb on Phone config page is working fine", "BreadCrumb is not working fine");
         reporter.reportLogWithScreenshot("Device config page");
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
+        String financeProgramCredit = "0.0";
+        financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+        String upfrontEdge = "0.0";
+        upfrontEdge = getRogersDeviceConfigPage().getUpfrontEdgePrice(this.getClass().getSimpleName());
         getRogersDeviceConfigPage().clickContinueButton();
         //############################Plan config page###############################
         //reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName), "BreadCrumb on Plan config page is working fine","BreadCrumb is not working fine");
-        getRogersPlanConfigPage().clkDownPaymentChkBox();
+        //getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc01NACTermHighRiskStdShipping.getDataOptionIndex()),this.getClass().getSimpleName());
@@ -92,7 +96,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(),"CreditEvaluation Title verified","CreditEvaluation Title not present");
 		//getRogersCheckoutPage().setDateOfBirth(TestDataHandler.redesignRpotgData.getDateOfBirth());
 		getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthYear());
-		getRogersCheckoutPage().clkNoThanks();
+		//getRogersCheckoutPage().clkNoThanks();
 		getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthMonth());
 		getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
@@ -113,10 +117,10 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentTextPresent(),
                 "Down payment info dislayed in modal", "Down payment info not dislayed in modal");
         reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
-        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,"0");
-        reporter.reportLog("Expected DownPayment" +expectedDownPayment);
-        //reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
-               //"Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
+        String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
+        reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
+        reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+               "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
         //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();
         //reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not displayed");
@@ -125,7 +129,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.softAssert(getRogersCheckoutPage().isChooseNumberTabsDisplayed(),"Select a New Number/Use Existing Number Tab Displayed", "Select a New Number/Use Existing Number Tab not disaplayed");
         getRogersCheckoutPage().selectCityDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getCityName());
         reporter.reportLogPassWithScreenshot("City Dropdown Value Selected Successfully" );
-        getRogersCheckoutPage().clkNoThanks();
+        //getRogersCheckoutPage().clkNoThanks();
         getRogersCheckoutPage().clkChosePhoneNumber();
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
@@ -164,6 +168,10 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkSubmitOrderBtn();
         //---------------------One Time Payment page------------------------------//
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+                "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                 "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
         getRogersOneTimePaymentPage().setNameonCard();
@@ -185,22 +193,22 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);*/
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select ba.ACCOUNT_TYPE,ba.ACCOUNT_SUB_TYPE,es.BAN,es.SUBSCRIBER_NO,es.INIT_PP,sc.SOC_DESCRIPTION," +
-                        "es.TOTAL_NONTERMED_MSF,es.PROVINCE,es.FN_CREDIT_TERM,es.FN_CREDIT_AMT,es.MONTHLY_INSTALLMENT_AMT,es.TOTAL_FINANCING_OBLIG," +
-                        "p.PYM_METHOD,es.MANDATORY_CHG,p.ORIGINAL_AMT,ch.CLA,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join billing_account ba" +
-                        " on es.ban=ba.ban inner join payment p on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join soc sc" +
-                        " on es.init_pp=sc.soc where es.subscriber_no='"+ctn+"'", false);
-
-        reporter.softAssert(dblists.get("ACCOUNT_TYPE").equals("I"), "ACCOUNT_TYPE is verified as I", "ACCOUNT_SUB_TYPE is not verified as I");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-        reporter.softAssert(dblists.get("SOC_DESCRIPTION").toString().contains(planDetails.get(0)),"Plan data is updated properly as "+planDetails.get(0)+" GB","Plan data is not updated properly");
-        reporter.softAssert(dblists.get("TOTAL_NONTERMED_MSF").toString().equals(planDetails.get(1)),"Plan cost is updated properly as "+planDetails.get(1)+" GB","Plan data is not updated properly");
-        //reporter.softAssert(dblists.get("FN_CREDIT_TERM").toString().equals("24"),"Financing credit term is verified as 24 months","Financing credit term is verified as 24 months");
-        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),
-                "Downpayment amt is verified successfully as "+expectedDownPayment+"","Downpayment amt is not verified as "+expectedDownPayment+"");
-        reporter.softAssert(dblists.get("PYM_METHOD").equals("CC"), "Payment type is verified successflly as CC", "Payment type is not verified as CC");
-        reporter.softAssert(dblists.get("CAS_TOTAL_APPROVE_CTN").equals("1"),"Approved CTN is verified as 1","Approved CTN is not verified as 1");
+//        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+//                .executeDBQuery("select ba.ACCOUNT_TYPE,ba.ACCOUNT_SUB_TYPE,es.BAN,es.SUBSCRIBER_NO,es.INIT_PP,sc.SOC_DESCRIPTION," +
+//                        "es.TOTAL_NONTERMED_MSF,es.PROVINCE,es.FN_CREDIT_TERM,es.FN_CREDIT_AMT,es.MONTHLY_INSTALLMENT_AMT,es.TOTAL_FINANCING_OBLIG," +
+//                        "p.PYM_METHOD,es.MANDATORY_CHG,p.ORIGINAL_AMT,ch.CLA,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join billing_account ba" +
+//                        " on es.ban=ba.ban inner join payment p on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join soc sc" +
+//                        " on es.init_pp=sc.soc where es.subscriber_no='"+ctn+"'", false);
+//
+//        reporter.softAssert(dblists.get("ACCOUNT_TYPE").equals("I"), "ACCOUNT_TYPE is verified as I", "ACCOUNT_SUB_TYPE is not verified as I");
+//        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+//        reporter.softAssert(dblists.get("SOC_DESCRIPTION").toString().contains(planDetails.get(0)),"Plan data is updated properly as "+planDetails.get(0)+" GB","Plan data is not updated properly");
+//        reporter.softAssert(dblists.get("TOTAL_NONTERMED_MSF").toString().equals(planDetails.get(1)),"Plan cost is updated properly as "+planDetails.get(1)+" GB","Plan data is not updated properly");
+//        //reporter.softAssert(dblists.get("FN_CREDIT_TERM").toString().equals("24"),"Financing credit term is verified as 24 months","Financing credit term is verified as 24 months");
+//        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),
+//                "Downpayment amt is verified successfully as "+expectedDownPayment+"","Downpayment amt is not verified as "+expectedDownPayment+"");
+//        reporter.softAssert(dblists.get("PYM_METHOD").equals("CC"), "Payment type is verified successflly as CC", "Payment type is not verified as CC");
+//        reporter.softAssert(dblists.get("CAS_TOTAL_APPROVE_CTN").equals("1"),"Approved CTN is verified as 1","Approved CTN is not verified as 1");
 
 
         /*

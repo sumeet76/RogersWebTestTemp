@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Financing_SS_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc09_rogersHUPNpotgMLTest() {
+    public void tc09_rogersHUPCLMMLTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();
@@ -72,6 +72,8 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
+                "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
@@ -86,6 +88,7 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
+        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         //getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
@@ -99,6 +102,10 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         } else {
             getRogersOrderReviewPage().clkSubmitOrder();
         }
+        reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
+        "One Time Payment Page displayed","One Time Payment Page Not displayed");
+        String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
+        reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),
                 "Pay with Credit card details are present on OneTime payment page", "Pay with Credit card details are not present on OneTime payment page");
         getRogersOneTimePaymentPage().setNameonCard();

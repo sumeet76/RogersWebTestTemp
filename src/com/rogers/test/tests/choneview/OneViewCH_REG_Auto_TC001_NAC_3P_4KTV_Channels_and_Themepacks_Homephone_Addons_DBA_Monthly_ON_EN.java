@@ -57,6 +57,8 @@ public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homeph
 		reporter.reportLogWithScreenshot("click continue");
 		getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
 		reporter.reportLogWithScreenshot("click no they don't");
+		getRogersIgniteBundlesPage().addPods(5);
+		getRogersIgniteBundlesPage().addPods(0);
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("click continue");
 		reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Homephone add ons page available","Home phone add ons page not available");

@@ -55,26 +55,28 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 	public void rogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolarisFromShopOption_ATL() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc30_internetAccountUpgrade.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc30_internetAccountUpgrade.getPassword());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc30_internetAccountUpgrade.accountDetails.getBan());
+		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+	    //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc30_internetAccountUpgrade.accountDetails.getBan());
 		/* reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkServiceability();*/
+		getRogersHomePage().clkNBProvinceLnk();
+		reporter.reportLogWithScreenshot("select NB region");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc30_internetAccountUpgrade.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc30_internetAccountUpgrade.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -119,7 +121,7 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

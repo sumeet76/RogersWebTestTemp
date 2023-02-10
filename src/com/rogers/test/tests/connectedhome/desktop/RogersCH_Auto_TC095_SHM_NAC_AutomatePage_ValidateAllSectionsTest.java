@@ -81,7 +81,7 @@ public class RogersCH_Auto_TC095_SHM_NAC_AutomatePage_ValidateAllSectionsTest ex
         getRogersSecurityPackagesPage().clkAddressFoundCloseModal();
         reporter.reportLogWithScreenshot("Modal Closed");
     }
-    @Test
+
     public void checkShmAutomatePackageTest(){
         String actualTitle = getDriver().getTitle();
         getReporter().hardAssert(getRogersSecurityPackagesPage().verifyAutomationPackagesPageTitle(actualTitle, strLanguage), "Title is Verified", "Title Verification is failed");

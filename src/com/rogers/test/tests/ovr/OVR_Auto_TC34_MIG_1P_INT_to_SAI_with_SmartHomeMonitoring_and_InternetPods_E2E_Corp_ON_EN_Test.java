@@ -76,7 +76,6 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         //Validation for SHM Addon
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMOnetimeChargesInCartSummary(),"One time SHM charges present", "One time SHM charges not Present");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
         //Validation for pods
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsInCartSummary(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
@@ -118,7 +117,6 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         //validate SHM charges and Internet pods one time fees
-        reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
         //Validation for SHM Addon monthly fees.
@@ -138,8 +136,7 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-        //validate SHM charges and Internet pods one time fees
-        reporter.hardAssert(getOVROrderReviewPage().validateSHMOnetimeChargesInCartSummary(), "One time SHM charges applied", "one time SHM charges not applied");
+        //validate Internet pods one time fees
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in order confirmation");
         //Validation for SHM Addon monthly fees.

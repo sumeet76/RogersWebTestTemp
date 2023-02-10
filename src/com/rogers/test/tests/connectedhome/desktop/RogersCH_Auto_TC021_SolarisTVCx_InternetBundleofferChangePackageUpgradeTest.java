@@ -35,6 +35,7 @@ public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpg
     public void rogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21_SolarisInternetAccountForUpgrade.getUsername());
+        getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc21_SolarisInternetAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();

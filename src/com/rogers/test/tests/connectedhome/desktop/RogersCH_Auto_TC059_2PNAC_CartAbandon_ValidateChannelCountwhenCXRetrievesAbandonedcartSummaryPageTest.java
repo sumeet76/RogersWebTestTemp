@@ -50,11 +50,12 @@ public class RogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRet
 
 	@Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void rogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRetrievesAbandonedcartSummaryPage() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkExistingCustomerShop();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");

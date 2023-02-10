@@ -29,12 +29,9 @@ public class RogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTabTest extend
 
 	@Test(groups = {"RegressionCH"})
 	public void rogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTab() {
-		getRogersHomePage().clkTVBundle();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+		getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
 		getRogersHomePage().clkServiceability();
-		//reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-		//getRogersIgniteTVBuyPage().clkEnterAddress();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
 		String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
