@@ -42,9 +42,10 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
         reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
-//        getAccountOverViewPage().clickSubmit();
-//        reporter.reportLogWithScreenshot("click Submit");
-		reporter.reportLogWithScreenshot("Order Confirmation page");
+        getAccountOverViewPage().clickSubmit();
+        reporter.reportLogWithScreenshot("click Submit");
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -55,8 +56,8 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
             startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
         }
 
-        @AfterMethod(alwaysRun=true)
-        public void afterTest(){
-            closeSession();
-    }
+//        @AfterMethod(alwaysRun=true)
+//        public void afterTest(){
+//            closeSession();
+//    }
 }

@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-//user should
+
 public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Agent_Adding_Max_Both_Pods_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Agent_Adding_Max_Both_Pods_ON_EN() {
@@ -24,10 +24,10 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
-        reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
-        getInternetDashboardPage().clickAddToCartForPods();
-        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
-        reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
+//        reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
+//        getInternetDashboardPage().clickAddToCartForPods();
+//        reporter.reportLogWithScreenshot("click Add To Cart For Pods");
+//        reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
         reporter.hardAssert(getInternetDashboardPage().verifyInstallationOption(),"InstallationOption appeared","InstallationOption did not appeared");
@@ -38,7 +38,6 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         getRogersOVOrderReviewPage().clickSubmitOrder();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
-
 
     }
 

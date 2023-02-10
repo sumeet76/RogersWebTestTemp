@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOfferType_Recommended_ATL_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void oneViewCH_1617_TC01_TargetedMigrationFlowTvToSAIISSTest(){
+    public void oneViewCH_1617_TC01_TargetedMigrationFlovToSAIISSTest(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PTvToSAIISS.getAccountNo(), TestDataHandler.targetedMigration1PTvToSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -87,7 +87,7 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 		getPaymentOptionsPage().clkContinue();
 //	    getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+//      reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -98,6 +98,6 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
 }

@@ -27,17 +27,17 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 
+//		getTVDashboardPage().clickChannelTab();
+//		reporter.reportLogWithScreenshot("Channal tab");
+//		getTVDashboardPage().clickAddChannel();
+//		reporter.reportLogWithScreenshot("Add channel");
+
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("themepack tab");
 		getTVDashboardPage().addThemepack();
 		reporter.reportLogWithScreenshot("add theampack");
 		getTVDashboardPage().clkCollapseButton();
 		reporter.reportLogWithScreenshot("collapse");
-//
-//		getTVDashboardPage().clickChannelTab();
-//		reporter.reportLogWithScreenshot("Channal tab");
-//		getTVDashboardPage().clickAddChannel();
-//		reporter.reportLogWithScreenshot("Add channel");
 
 		//reporter.reportLogWithScreenshot("4k popup");
 		//getRogersIgniteBundlesPage().fourKTVPopup();
@@ -68,7 +68,6 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 	public void afterTest() {
 	closeSession();
 	}
-
 }
 
 

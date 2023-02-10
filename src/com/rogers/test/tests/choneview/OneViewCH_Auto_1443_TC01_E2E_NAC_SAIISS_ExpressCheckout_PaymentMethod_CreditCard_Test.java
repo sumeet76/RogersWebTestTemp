@@ -17,6 +17,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getAccountOverViewPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");

@@ -49,7 +49,6 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","","", method);
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
