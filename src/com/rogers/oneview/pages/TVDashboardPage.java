@@ -1,16 +1,12 @@
 package com.rogers.oneview.pages;
 
 
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-
-import com.rogers.pages.base.BasePageClass;
-import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -209,7 +205,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.tabs.themePacks'])[1]")
+	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -246,7 +242,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
+	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[3]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -1264,7 +1260,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickExchangeNow() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 30);
+		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 50);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}

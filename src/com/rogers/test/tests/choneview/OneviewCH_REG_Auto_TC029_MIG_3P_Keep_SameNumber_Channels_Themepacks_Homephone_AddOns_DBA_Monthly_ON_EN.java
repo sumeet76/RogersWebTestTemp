@@ -41,13 +41,13 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		getRogersIgniteBundlesPage().reviewAllTerms();
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-		//getRogersIgniteBundlesPage().clickExchangeLater();
+		getRogersIgniteBundlesPage().clickExchangeLater();
 		getRogersIgniteBundlesPage().clickReviewAddons();
 		reporter.reportLogWithScreenshot("Add channel themepack view");
 		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-	//	getCustomerProfilePage().clkContinue();
+		//getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Internet addons page");
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		getRogersIgniteBundlesPage().clickReviewAddons();

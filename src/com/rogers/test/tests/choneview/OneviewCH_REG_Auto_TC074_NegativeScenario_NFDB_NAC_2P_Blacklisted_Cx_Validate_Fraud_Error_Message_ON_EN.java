@@ -81,6 +81,6 @@ public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_C
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

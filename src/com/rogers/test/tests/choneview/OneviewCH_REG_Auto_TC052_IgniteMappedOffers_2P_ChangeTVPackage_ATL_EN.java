@@ -15,10 +15,8 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
     public void oneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getBan(),TestDataHandler.Ignite_Mapped_Offers_2p.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
-        getAccountOverViewPage().selectTVBadage();
+        //getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched TV Dashboard Page");
-        getTVDashboardPage().clickManageChannelsAndThemepacks();
-        reporter.reportLogWithScreenshot("ManageChannels and Theme Packs button clicked");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
         reporter.hardAssert(getTVDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");

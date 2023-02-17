@@ -15,9 +15,9 @@ public class OneViewCH_REG_Auto_TC0081_IgniteMappedOffers_SAI_TO_ISS_Test extend
     public void oneViewCH_REG_Auto_TC0081_IgniteMappedOffers_SAI_TO_ISS_Test() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteOffers_SAI_Adding_ISS.getAccountNo(),TestDataHandler.IgniteOffers_SAI_Adding_ISS.getContactID());
-        getAccountOverViewPage().selectInternetBadage();
+        //getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-        getAccountOverViewPage().clickViewOffers();
+        getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("click View Offers");
         getAccountOverViewPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("select Recommended Offer");
@@ -34,7 +34,7 @@ public class OneViewCH_REG_Auto_TC0081_IgniteMappedOffers_SAI_TO_ISS_Test extend
 //        getAccountOverViewPage().IsOrderReviewPageTitlePresent();
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
         reporter.reportLogWithScreenshot("click Submit");
-//        getRogersOVOrderReviewPage().clkSubmit();
+        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }

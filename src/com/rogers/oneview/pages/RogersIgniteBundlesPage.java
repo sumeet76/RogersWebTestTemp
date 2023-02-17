@@ -1076,8 +1076,8 @@ public void activateHomePhoneltrPopUp() {
 
 	public void selectRecommendedOffer(){
 		getReusableActionsInstance().waitForElementTobeClickable(clickRecommendedOffer, 30);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
-		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickRecommendedOffer);
 	}
 
 	/*To click review addon link in channels and theme packs page

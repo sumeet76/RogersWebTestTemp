@@ -23,7 +23,7 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
-        getAccountOverViewPage().selectInternetBadage();
+        //getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");

@@ -102,7 +102,7 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("entered payment info");
         getPaymentOptionsPage().clkContinue();
-     //   getRogersOVCheckoutPage().clkSubmit();
+        getRogersOVCheckoutPage().clkSubmit();
         reporter.reportLogWithScreenshot("submit payment");
      //   reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
@@ -117,7 +117,7 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     }
 

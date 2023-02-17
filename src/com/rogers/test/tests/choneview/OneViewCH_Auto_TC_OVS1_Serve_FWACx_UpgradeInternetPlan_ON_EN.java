@@ -16,10 +16,11 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Serve_FWACx_UpgradeInternetPlan.accountDetails.getBan(),  TestDataHandler.Serve_FWACx_UpgradeInternetPlan.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().selectInternetBadage();
+        //getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
+        getRogersIgniteBundlesPage().clkLoadOffers();
         getInternetDashboardPage().clickSelectButtonAsPerPackageName(TestDataHandler.Serve_FWACx_UpgradeInternetPlan.accountDetails.getInternetBundle());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinue();
@@ -42,7 +43,7 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

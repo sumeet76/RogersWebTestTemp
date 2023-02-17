@@ -50,6 +50,6 @@ public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Servic
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
