@@ -1019,12 +1019,14 @@ public class RogersCheckoutPage extends BasePageClass {
 		String downPayment = String.valueOf(downPay);
 		int decimal=0;
 		String[] modify = downPayment.split("\\.");
-		char secondDecimal = modify[1].charAt(1);
-		char thirdDecimal = modify[1].charAt(2);
-		if(Integer.parseInt(String.valueOf(thirdDecimal)) >= 5){
-			decimal = Integer.parseInt(String.valueOf(secondDecimal))+1;
-		} else {
-			decimal = Integer.parseInt(String.valueOf(secondDecimal));
+		if(modify[1].length() >= 3) {
+			char secondDecimal = modify[1].charAt(1);
+			char thirdDecimal = modify[1].charAt(2);
+			if (Integer.parseInt(String.valueOf(thirdDecimal)) >= 5) {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal)) + 1;
+			} else {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal));
+			}
 		}
 		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
 		return modifiedDownPayment;
