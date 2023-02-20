@@ -485,7 +485,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String getDeviceFullPrice(String className) {
         if (className.toUpperCase().contains("_FR")) {
             String deviceFullPriceFR = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
-            return deviceFullPriceFR.substring(0, deviceFullPriceFR.indexOf(","));
+            return deviceFullPriceFR.replaceAll("[^0-9,]","").replace("\\,","\\.");
         } else {
             String deviceFullPriceEN = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
             return deviceFullPriceEN.replaceAll("[^0-9.]","");
