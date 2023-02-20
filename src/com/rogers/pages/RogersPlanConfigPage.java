@@ -358,6 +358,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='modal-pom-continue']")
     WebElement continueWithSelectedPlanButton;
 
+    @FindBy(xpath = "//dsa-order-table//span[contains(text(),'Down payment')]/parent::div//following-sibling::div/span")
+    WebElement downPaymentLineCart;
+
 
     /**
      * Select Device Protection Header on Plan config page
@@ -1661,5 +1664,21 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public String getRegularPromoName(){
         return regularPromoDetail.getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * get actual dow payment and compares with expected down payment
+     * @param expectedDownPayment
+     * @return true actual and expected down payment equal else false
+     * @author vedachalam.vasudevan
+     */
+    public boolean getDownPaymentLineCart(String expectedDownPayment) {
+        getReusableActionsInstance().waitForElementVisibility(downPaymentLineCart);
+        String actualDownPayment = getReusableActionsInstance().getElementText(downPaymentLineCart);
+        actualDownPayment = actualDownPayment.replaceAll("[^0-9.]","");
+        if(actualDownPayment.contains(expectedDownPayment)) {
+            return true;
+        }
+            return false;
     }
 }
