@@ -153,7 +153,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rhp-section']/descendant::label")
 	WebElement checkboxHomephone;
 
-	@FindBy(xpath = "//button[@id='channels-tab']")
+	@FindBy(xpath = "//h2[@id='channels-tab']")
 	WebElement btnChannelsTab;
 
 	@FindBy(xpath = "//button[@id='themepacks-tab']")
