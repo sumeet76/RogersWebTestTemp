@@ -151,6 +151,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     String deviceTextXpath = xpathDeviceName + "//following-sibling::dsa-price//span[contains(@class,'dsa-price__copyBottom')]";
 
     @FindAll({
+            @FindBy(xpath = "//*[@id='geLinkHeaderSignIn']"),
             @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
             @FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
     })
