@@ -189,8 +189,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindAll({
 			@FindBy(xpath = "//dsa-order-table//*[contains(text(),'Down payment')]/parent::div/following-sibling::div/span"),
 			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
-		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
-		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
+		    @FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
+		    @FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
 	WebElement downPaymentAmt;
 
@@ -955,7 +955,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
 		//if(riskClass.toUpperCase().contains("HIGH")) {
-			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().replace("$", "");
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 30).getText().trim().replace("$", "");
 			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
 				return true;
 			} else return false;
