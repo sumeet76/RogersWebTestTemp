@@ -44,13 +44,9 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc50_wirelessSignedInInternetBuy.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		//getRogersHomePage().clkExistingCustomerInternet();
-		getDriver().get(System.getProperty("QaUrl") + "internet");
+
+		getDriver().get(System.getProperty("QaUrl") + "/internet");
 		reporter.reportLogWithScreenshot("Launched the Internet page");
-		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		String  strAddressLine1=TestDataHandler.tc50_wirelessSignedInInternetBuy.getAccountDetails().getAddress().get("line1");

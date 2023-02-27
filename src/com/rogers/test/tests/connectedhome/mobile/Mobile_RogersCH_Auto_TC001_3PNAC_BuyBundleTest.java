@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import static com.rogers.testdatamanagement.TestDataHandler.tc25_IgniteServiceabilityAddressNB;
+
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
  * 
@@ -52,21 +54,24 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC001_3PNAC_BuyBundle() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkBurgerMenuMobile();
-        reporter.reportLogWithScreenshot("clicked menu on the top");
-        getRogersHomePage().clkNBProvinceLnkMobile();
-        reporter.reportLogWithScreenshot("select NB region");
-        getRogersHomePage().clkBurgerMenuMobile();
-        reporter.reportLogWithScreenshot("clicked menu on the top");
-        getRogersHomePage().clkShopMobile();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStreamMobile();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternetMobile();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+//        getRogersHomePage().clkBurgerMenuMobile();
+//        reporter.reportLogWithScreenshot("clicked menu on the top");
+//        getRogersHomePage().clkNBProvinceLnkMobile();
+//        reporter.reportLogWithScreenshot("select NB region");
+//        getRogersHomePage().clkBurgerMenuMobile();
+//        reporter.reportLogWithScreenshot("clicked menu on the top");
+//        getRogersHomePage().clkShopMobile();
+//        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
+//        getRogersHomePage().clkSubnavIgniteSmartStreamMobile();
+//        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//        getRogersHomePage().clkGetIgniteTvWithIgniteInternetMobile();
+//    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 
-        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+        getRogersHomePage().clkServiceabilityMobile();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Availability check button enabled");
         getRogersHomePage().clkIgniteAddressLookupSubmitMobile();

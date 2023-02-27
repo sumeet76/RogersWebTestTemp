@@ -48,14 +48,19 @@ public class RogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATLTest extends 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATL() {
 		reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkNLProvinceLnk();
-        reporter.reportLogWithScreenshot("ATL region selected");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+//        getRogersHomePage().clkExistingCustomerShop();
+//        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+//        getRogersHomePage().clkSubnavIgniteSmartStream();
+//        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//        getRogersHomePage().clkNLProvinceLnk();
+//        reporter.reportLogWithScreenshot("ATL region selected");
+//        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+//        getRogersHomePage().clkNBProvinceLnk();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers");
+        reporter.reportLogWithScreenshot("Launched TV Bundles Page");
+        getRogersHomePage().clkNBProvinceLnk();
+//        getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);

@@ -58,7 +58,7 @@ public class RogersCH_Auto_TC062_1PLegInt_2PIgniteTV_4K_E2E_ValidateOrdersAutoma
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc62_Legacy1PtoIgnite2P.accountDetails.getBan());
 		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");

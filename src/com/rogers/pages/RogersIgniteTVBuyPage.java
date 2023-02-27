@@ -350,6 +350,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
 	WebElement btnViewMoreDetailsFlex20;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
+	WebElement btnViewMoreDetailsFlex10;
+
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
 
@@ -1009,6 +1012,13 @@ getReusableActionsInstance().staticWait(3000);
 
 	}
 
+	public void selectFlex10Package() {
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(btnFlex10Package, 60);
+		getReusableActionsInstance().getWhenReady(btnFlex10Package, 30).click();
+
+	}
+
 	/**
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
@@ -1040,7 +1050,7 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public String getTotalChannelCount() {
 
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 10);
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 60);
 		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 50).getText();
 		String channels = strChannels.trim();
 		return channels;
@@ -1722,6 +1732,10 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public void clkViewMoreDetailsFlex20() {
 		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex20, 30).click();
+	}
+
+	public void clkViewMoreDetailsFlex10() {
+		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex10, 30).click();
 	}
 
 	/**

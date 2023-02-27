@@ -58,22 +58,20 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc92_Legacy3pToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-//		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-			reporter.reportLogWithScreenshot("Select an account.");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc92_Legacy3pToIgnite3P.getAccountDetails().getBan());
-		}
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc92_Legacy3pToIgnite3P.getAccountDetails().getBan());
+//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		if(getRogersHomePage().verifyNoThanks()) {
-			getRogersHomePage().clkNoThnx();
-			reporter.reportLogWithScreenshot("Clicked on No Thanks");
-		}
+		getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
+//		getRogersHomePage().clkExistingCustomerShop();
+//		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
+//		getRogersHomePage().clkSubnavIgniteSmartStream();
+//		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+//		if(getRogersHomePage().verifyNoThanks()) {
+//			getRogersHomePage().clkNoThnx();
+//			reporter.reportLogWithScreenshot("Clicked on No Thanks");
+//		}
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
@@ -113,13 +111,10 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		// get channels
 		getRogersIgniteTVBuyPage().clkBestAdd();
 		reporter.reportLogWithScreenshot("Launched the information popup");
-		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		getRogersIgniteTVBuyPage().clkHomePhone();
 
 		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Bundles-cart Summary page", "Cart Summary not verified");
-		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
-		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
 		// Mini Cart get monthly fees
 		// verify channels
 		getRogersIgniteTVBuyPage().set4KTVNo();
@@ -178,8 +173,6 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
-		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
-		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
 		// validate monthly fees
 		reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 

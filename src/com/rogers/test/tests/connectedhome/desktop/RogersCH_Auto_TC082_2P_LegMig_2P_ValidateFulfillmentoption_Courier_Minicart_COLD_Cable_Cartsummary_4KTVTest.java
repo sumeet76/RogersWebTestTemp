@@ -61,9 +61,9 @@ public class RogersCH_Auto_TC082_2P_LegMig_2P_ValidateFulfillmentoption_Courier_
 		getRogersLoginPage().clkSignInIFrame();
 
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.accountDetails.getBan());
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-		reporter.reportLogWithScreenshot("Launched the Main QA Page");
+//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		getRogersHomePage().clkSubnavIgniteSmartStream();

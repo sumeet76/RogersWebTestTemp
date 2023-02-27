@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * This class contains the test method to verify the upgarde flow for Legacy Internet to Ignite SAI+ISS for Rogers.com
+ * This class contains the test method to verify the upgrade flow for Legacy Internet to Ignite SAI+ISS for Rogers.com
  *
  * @author manpreet.kaur3
  * <p>
@@ -45,15 +45,15 @@ import java.util.Map;
  * 26. Validate the Ban ID in the DB
  **/
 
-public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATLTest extends BaseTestClass {
+public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATLTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH"})
-    public void rogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATL() {
+    public void rogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAutomatedGoestoMaestro_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
        // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 //        reporter.reportLogWithScreenshot("Skip popup");
@@ -63,11 +63,11 @@ public class RogersCH_Auto_TC086_1PLegInt_2PIgnite_SAI_ISS_DST_ValidateOrdersAut
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Selected the NL Province");
-        getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/offers?env=qa");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("selected address on file");

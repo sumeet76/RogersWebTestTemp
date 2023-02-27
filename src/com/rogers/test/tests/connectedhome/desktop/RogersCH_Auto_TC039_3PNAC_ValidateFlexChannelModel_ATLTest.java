@@ -44,18 +44,20 @@ public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends 
         // changes in contentful page - no longer displayed.
         /* reporter.reportLogWithScreenshot("Launched the Easy Login Page");
     	getRogersHomePage().clkTVBundle(); */
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("ATL region selected");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-        reporter.reportLogWithScreenshot("clicked on Get TV bundles");
+//        getRogersHomePage().clkExistingCustomerShop();
+//        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+//        getRogersHomePage().clkSubnavIgniteSmartStream();
+//        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+//        reporter.reportLogWithScreenshot("clicked on Get TV bundles");
         /* reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
     	getRogersHomePage().clkServiceability(); */
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
+        reporter.reportLogWithScreenshot("Launched TV Bundles Page");
+        getRogersHomePage().clkNBProvinceLnk();
+        reporter.reportLogWithScreenshot("ATL region selected");
+//        getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");

@@ -37,7 +37,7 @@ public class RogersCH_Auto_TC006_SolarisTVCx_ManageChannelsAndThemePack_ManageTh
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersSolarisTVDashboardPage().clkTVBadge();

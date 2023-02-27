@@ -74,13 +74,13 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().isOTBCPresentmentTwoDecimal(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC presentment with two decimal point(.00)", "OTBC presentment NOT with two decimal point(.00)");
-        getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
+        getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex10();
         reporter.reportLogWithScreenshot("Clicked on View More Details");
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
 
-        getRogersIgniteTVBuyPage().selectFlex20Package();
+        getRogersIgniteTVBuyPage().selectFlex10Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Clicked yes on the information popup");

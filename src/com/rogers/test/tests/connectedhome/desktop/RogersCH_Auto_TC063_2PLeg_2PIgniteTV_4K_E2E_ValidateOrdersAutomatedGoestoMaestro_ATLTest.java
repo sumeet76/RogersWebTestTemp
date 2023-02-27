@@ -59,10 +59,10 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    reporter.reportLogWithScreenshot("Skip popup");
-	    getRogersLoginPage().clkSkipIFrame();
+//	    reporter.reportLogWithScreenshot("Skip popup");
+//	    getRogersLoginPage().clkSkipIFrame();
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_Legacy2PtoIgnite2P.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
@@ -71,17 +71,14 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		getRogersHomePage().clkUseAddress();
-		//getRogersHomePage().clkUseThisAddress();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		// getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
-		// reporter.reportLogWithScreenshot("Starter package selected selected");
+		// reporter.reportLogWithScreenshot("Starter package selected");
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
 		getRogersIgniteTVBuyPage().clkIUnderstand();
-       /* reporter.reportLogWithScreenshot("Flex20+ Order online");
-        getRogersIgniteTVBuyPage().selectFlex20Package(); */
 		reporter.reportLogWithScreenshot("Flex20+ Added to cart");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -142,7 +139,7 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

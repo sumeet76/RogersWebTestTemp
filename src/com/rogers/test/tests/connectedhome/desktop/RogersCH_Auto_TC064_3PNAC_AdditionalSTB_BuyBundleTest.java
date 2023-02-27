@@ -57,12 +57,9 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability(); */
 
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-
+        getRogersHomePage().clkServiceability();
        /* reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Clicked Home Phone");

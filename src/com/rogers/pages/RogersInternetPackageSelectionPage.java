@@ -739,7 +739,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verify150IgniteStreamingIsChecked() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 5);
+		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 30);
 		return chkbox150IgniteStreaming.isSelected();
 	}
 

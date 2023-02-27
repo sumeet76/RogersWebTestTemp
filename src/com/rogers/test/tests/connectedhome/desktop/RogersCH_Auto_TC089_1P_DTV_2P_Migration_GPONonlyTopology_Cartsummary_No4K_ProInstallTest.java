@@ -59,7 +59,7 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
 		reporter.reportLogWithScreenshot("Account Selected");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		getRogersHomePage().clkServiceability();
 		//getRogersIgniteTVBuyPage().selectFlex20Package();
