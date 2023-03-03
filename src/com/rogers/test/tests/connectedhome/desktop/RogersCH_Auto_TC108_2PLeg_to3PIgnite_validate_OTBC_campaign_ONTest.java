@@ -58,7 +58,7 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the TV Bundles Page");

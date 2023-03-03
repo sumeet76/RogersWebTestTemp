@@ -65,9 +65,9 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+//        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
-        getRogersInternetPackageSelectionPage().clkInternetPackage();
+        getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");

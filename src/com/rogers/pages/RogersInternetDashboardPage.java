@@ -254,7 +254,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetPopup() {
-		getReusableActionsInstance().clickIfAvailable(popUpInternetPopup, 30);
+		getReusableActionsInstance().clickIfAvailable(popUpInternetPopup, 10);
 	}
 
 	/**

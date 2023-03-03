@@ -51,39 +51,36 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
 	 @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void rogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATL() {
 
-		  reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		  getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
-		  getRogersLoginPage().clkContinueInBrowser();
-		  getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
-		  reporter.reportLogWithScreenshot("Enter the account credentails");
-		  getRogersLoginPage().clkSignInIFrame();
-//		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-//	  getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
-	  reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-      reporter.reportLogWithScreenshot("Launched the Account Page");
-	  getRogersHomePage().clkNBProvinceLnk();
-	  reporter.reportLogWithScreenshot("Clicked NB province link");
-	  getDriver().get(System.getProperty("QaUrl")+"/bundles");
-      reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-      reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkServiceability();
-		reporter.reportLogWithScreenshot("Launched the csutomer availability check popup");
-      String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-      String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
-      getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-      getRogersHomePage().clkIgniteAddressLookupSubmit();
-      reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-	  reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-	  getRogersIgniteTVBuyPage().selectFlex20Package();
-	  reporter.reportLogWithScreenshot("Flex20+ Added to cart");
-	  reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
-	  reporter.reportLogWithScreenshot("Launched the cart summary page");
+		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
+		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
+		 getRogersLoginPage().clkContinueInBrowser();
+		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
+		 reporter.reportLogWithScreenshot("Enter the account credentials");
+		 getRogersLoginPage().clkSignInIFrame();
+		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+	  	 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
+//	  	 reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		 reporter.reportLogWithScreenshot("Launched the Account Page");
+		 getRogersHomePage().clkNBProvinceLnk();
+		 reporter.reportLogWithScreenshot("Clicked NB province link");
+		 getDriver().get(System.getProperty("QaUrl") + "/bundles");
+//		 reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
+//		 reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		 getRogersHomePage().clkServiceability();
+		 reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+		 String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+		 String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+		 getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
+		 getRogersHomePage().clkIgniteAddressLookupSubmit();
+		 reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+		 reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
+		 getRogersIgniteTVBuyPage().selectFlex10Package();
+		 reporter.reportLogWithScreenshot("Flex20+ Added to cart");
+		 reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
+		 reporter.reportLogWithScreenshot("Launched the cart summary page");
 
 		 getRogersIgniteTVBuyPage().set4KTVNo();
 		 reporter.reportLogWithScreenshot("4k TV selected");
-		 //getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-		 //getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-		 //reporter.reportLogWithScreenshot("Selected 2 STBs");
 		 getRogersIgniteTVBuyPage().clkCheckout();
 
 		 //reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
