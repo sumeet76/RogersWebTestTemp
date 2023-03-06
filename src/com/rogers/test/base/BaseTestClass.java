@@ -751,7 +751,7 @@ public class BaseTestClass {
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
                 captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
-                getDriver().get(strUrl + "?setLanguage=" + language);
+                getDriver().get(strUrl + "/internet?setLanguage=" + language);
                // getDriver().manage().deleteAllCookies();
                 break;
 
@@ -1104,6 +1104,7 @@ public class BaseTestClass {
                 RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
                 RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
+                RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
                 break;
 
             case "connectedhome_login":
@@ -1290,7 +1291,7 @@ public class BaseTestClass {
      * To close session, quit driver and close every associated windows.
      */
     public void closeSession() {
-        getDriver().quit();
+        //getDriver().quit();
     }
 
     /**

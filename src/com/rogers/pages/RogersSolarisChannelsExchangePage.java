@@ -362,12 +362,12 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	public Set<String> getFlexChannelsListFromExchangeFlexChannels() {
 		Set<String> result = new HashSet();
 		List<WebElement> elements3 = getDriver().findElements(By.xpath("//div[@class='cl-button']"));
-		getReusableActionsInstance().waitForAllElementsVisible(elements3,60);
+		getReusableActionsInstance().waitForAllElementsVisible(elements3,180);
 		for (WebElement ele : elements3
 		) {
 			try {
 				result.add(ele.getAttribute("id"));
-				System.out.println(ele.getAttribute("id"));
+				//System.out.println(ele.getAttribute("id"));
 			} catch (StaleElementReferenceException exception) {
 				break;
 			}

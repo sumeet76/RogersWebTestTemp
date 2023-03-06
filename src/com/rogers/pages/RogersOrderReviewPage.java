@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 import java.util.List;
 
@@ -406,6 +405,20 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
 
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
+	}
+
+	public void clkAcceptenceCheckboxHTO() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+
+		List<WebElement> checkboxAgreement = getDriver().findElements(By.xpath("//label[contains(@class,'ds-checkboxLabel')]/input"));
+		for (WebElement ele:checkboxAgreement ) {
+			if(!ele.isSelected()){
+				getReusableActionsInstance().executeJavaScriptClick(ele);
+			}
+		}
 	}
 
 	/**

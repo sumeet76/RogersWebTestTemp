@@ -38,7 +38,7 @@ public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel ext
         getRogersLoginPage().clkSignInIFrame();
         //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -86,8 +86,10 @@ public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel ext
         getRogersSolarisChannelsExchangePage().clkConfirmExchange();
         reporter.reportLogWithScreenshot("Clicked on the Confirm Exchange, Duplicate Popup");
         getRogersSolarisChannelsExchangePage().clkContinueToDeleteDuplicateChannel();
-        reporter.reportLogWithScreenshot("Verify success button");
         getRogersSolarisChannelsExchangePage().verifyExchangeSuccess();
+        reporter.reportLogWithScreenshot("Verify success button");
+        getRogersSolarisChannelsExchangePage().clkReturnToDashbaord();
+        reporter.reportLogWithScreenshot("Clicked on the return to dashboard");
     }
 
     @BeforeMethod(alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

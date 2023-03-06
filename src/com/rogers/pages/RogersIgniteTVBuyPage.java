@@ -132,7 +132,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnFlex10Package;
 
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span/span")
 	WebElement btnFlex20Package;
 
 	@FindBy(xpath = "//td[contains(@class,'second-child')]//div[@class='ds-price -inline']")
@@ -1008,10 +1008,9 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 60);
 		getReusableActionsInstance().getWhenReady(btnFlex20Package, 30).click();
-
 	}
 
-	/**
+	/**e
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
@@ -1982,5 +1981,12 @@ getReusableActionsInstance().staticWait(3000);
 	public void selectSolarisPackage(String bundleName) {
 		By btnSolarisPackage = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']//span[text()='Add to cart']");
 		getReusableActionsInstance().getWhenReady(btnSolarisPackage, 60).click();
+	}
+
+	public void selectInternetSpeeed(String planName,String speed){
+		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'speeds')]";
+		By element = By.xpath(str_element);
+		WebElement dropdownbox = getReusableActionsInstance().getWhenReady(element, 180);
+		getReusableActionsInstance().selectWhenReady(dropdownbox,4);
 	}
 }

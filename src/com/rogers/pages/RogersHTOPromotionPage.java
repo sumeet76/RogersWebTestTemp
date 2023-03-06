@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,7 +70,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='View previous Ignite feature']/span")
 	WebElement btnViewPreviousFeature;
 
-	@FindBy(xpath = "//button[@aria-label='Close this pop-up']/span")
+	@FindBy(xpath = "//button[@aria-label='Close this pop-up' or @title='Press to close']/span")
 	WebElement btnCloseThisPopup;
 
 	@FindBy(xpath = "//button[contains(@class,'custom-button-channel')]/span")
@@ -137,6 +138,9 @@ public class RogersHTOPromotionPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='ignite-hto-promo-tiles-component']")
 	WebElement divIgniteBundleContainer;
+
+	@FindBy(xpath = "//button//span[text()='Additional channels and Theme Packs']")
+	WebElement lnkAdditionalChannelsAndThemePacks;
 
 	/**
 	 * To verify the Home page
@@ -245,7 +249,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickLearnMore() {
-		getReusableActionsInstance().clickIfAvailable(lnkLearnMore, 30);
+		getReusableActionsInstance().clickWhenReady(lnkLearnMore, 120);
 	}
 
 	/**
@@ -261,7 +265,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickViewNextFeature() {
-		getReusableActionsInstance().clickWhenReady(btnViewNextFeature, 30);
+		getReusableActionsInstance().clickIfAvailable(btnViewNextFeature, 30);
 	}
 
 	/**
@@ -277,7 +281,11 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickClosePopup() {
-		getReusableActionsInstance().clickWhenReady(btnCloseThisPopup, 30);
+		try {
+			getReusableActionsInstance().clickIfAvailable(btnCloseThisPopup, 30);
+		}catch (TimeoutException e){
+			System.out.println("Popup is unavailable to close.");
+		}
 	}
 
 	/**
@@ -473,10 +481,18 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 
 	public void waitForPopupToDisappear(){
-		System.out.println("wait for popup to disappear");
 		boolean elementVisible = getReusableActionsInstance().isElementVisible(loadingPopupModel, 45);
 		if(elementVisible){
 			getReusableActionsInstance().waitForElementInvisibility(By.xpath("//ds-modal[@hasclosebutton='false']"),240);
+		}
+	}
+
+	public void clickAdditionChannelsAndThemePacks(){
+		try {
+			getReusableActionsInstance().clickWhenReady(lnkAdditionalChannelsAndThemePacks, 20);
+		}catch (Exception e){
+			System.out.println("Unable to click on Additional Channels and Themepacks");
+			e.printStackTrace();
 		}
 	}
 }

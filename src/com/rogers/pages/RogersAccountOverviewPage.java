@@ -2337,7 +2337,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	public void clkCloseNewOfferModalPopup() {
-		getReusableActionsInstance().clickIfAvailable(btnCloseOfferModal, 20);
+		getReusableActionsInstance().clickIfAvailable(btnCloseOfferModal, 30);
 	}
 
 	public boolean isNewOfferModalDisplayed() {
