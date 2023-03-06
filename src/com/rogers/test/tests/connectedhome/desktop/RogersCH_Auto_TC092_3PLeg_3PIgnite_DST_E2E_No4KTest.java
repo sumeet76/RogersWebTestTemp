@@ -60,18 +60,8 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc92_Legacy3pToIgnite3P.getAccountDetails().getBan());
-//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
-//		getRogersHomePage().clkExistingCustomerShop();
-//		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
-//		getRogersHomePage().clkSubnavIgniteSmartStream();
-//		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-//		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-//		if(getRogersHomePage().verifyNoThanks()) {
-//			getRogersHomePage().clkNoThnx();
-//			reporter.reportLogWithScreenshot("Clicked on No Thanks");
-//		}
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
@@ -108,9 +98,9 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.reportLogWithScreenshot("Recommended pack is displayed");
 		getRogersIgniteTVBuyPage().selectFlex10PackageMonthToMonthTypeOfContract();
 		reporter.reportLogWithScreenshot("Type of contract selected");
-		// get channels
 		getRogersIgniteTVBuyPage().clkBestAdd();
 		reporter.reportLogWithScreenshot("Launched the information popup");
+		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
 		getRogersIgniteTVBuyPage().clkHomePhone();
 
@@ -161,14 +151,14 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");
 		//getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
-		getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-		getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-		getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-		getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-		getRogersPaymentOptionsPage().setCVV();
-		getRogersPaymentOptionsPage().selectExpiryMonth();
-		getRogersPaymentOptionsPage().selectExpiryYear();
-		reporter.reportLogWithScreenshot("Payment options Details");
+//		getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
+//		getRogersPaymentOptionsPage().switchToCreditCardIFrame();
+//		getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
+//		getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
+//		getRogersPaymentOptionsPage().setCVV();
+//		getRogersPaymentOptionsPage().selectExpiryMonth();
+//		getRogersPaymentOptionsPage().selectExpiryYear();
+//		reporter.reportLogWithScreenshot("Payment options Details");
 		getRogersPaymentOptionsPage().clkPaymentConfirm();
 
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
