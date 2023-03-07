@@ -56,7 +56,7 @@ public class RogersCH_Auto_TC112_3P_HTO_Starter_RecommendedOffer_NoDiscountsTest
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc112_3P_HTO_RecommendedOffer.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {

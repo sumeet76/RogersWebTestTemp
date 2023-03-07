@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=ON");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

@@ -43,7 +43,7 @@ public class RogersCH_Auto_TC054_UC1_ButtontoManageWifiHubnetwork_IgniteInternet
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-//        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_17_18_19_SolarisInternetAccount.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_SolarisInternetAccountWithUsage.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard");

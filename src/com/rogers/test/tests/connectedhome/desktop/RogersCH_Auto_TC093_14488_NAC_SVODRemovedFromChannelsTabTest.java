@@ -29,18 +29,18 @@ public class RogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTabTest extend
 
 	@Test(groups = {"RegressionCH"})
 	public void rogersCH_Auto_TC093_14488_NAC_SVODRemovedFromChannelsTab() {
-		getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=ON");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+		String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+		String strAddressLine2 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		getRogersIgniteTVBuyPage().clkChannelsTab();
 		reporter.reportLogWithScreenshot("Launched the Channels");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown", "SVOD present under genre dropdown");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

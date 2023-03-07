@@ -57,7 +57,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
@@ -77,7 +77,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		// getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
-		// reporter.reportLogWithScreenshot("Starter package selected selected");
+		// reporter.reportLogWithScreenshot("Starter package selected");
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();

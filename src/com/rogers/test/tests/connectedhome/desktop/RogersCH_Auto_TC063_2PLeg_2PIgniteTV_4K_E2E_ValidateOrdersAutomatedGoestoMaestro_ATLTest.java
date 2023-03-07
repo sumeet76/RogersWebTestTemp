@@ -56,14 +56,11 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_Legacy2PtoIgnite2P.accountDetails.getBan());
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		//getRogersHomePage().clkNoThnx();

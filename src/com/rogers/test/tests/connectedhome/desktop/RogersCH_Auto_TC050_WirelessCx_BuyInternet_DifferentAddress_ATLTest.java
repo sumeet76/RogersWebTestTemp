@@ -39,7 +39,7 @@ public class RogersCH_Auto_TC050_WirelessCx_BuyInternet_DifferentAddress_ATLTest
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50_wirelessSignedInInternetBuy.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc50_wirelessSignedInInternetBuy.accountDetails.getBan());

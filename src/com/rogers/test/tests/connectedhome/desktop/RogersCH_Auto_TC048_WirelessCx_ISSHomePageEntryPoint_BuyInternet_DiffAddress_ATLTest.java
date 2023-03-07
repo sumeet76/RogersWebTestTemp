@@ -45,11 +45,10 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
-//        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkNBProvinceLnk();
         getDriver().get(System.getProperty("QaUrl")+"/internet");

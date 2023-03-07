@@ -41,7 +41,7 @@ public class RogersCH_Auto_TC047_SolarisInternetCx_BuyInterent_DiffAddressTest e
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc47_saiforIgniteBundle.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc47_saiforIgniteBundle.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc47_saiforIgniteBundle.accountDetails.getBan());

@@ -40,9 +40,6 @@ public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpg
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-//        reporter.reportLogWithScreenshot("Skip popup");
-//        getRogersLoginPage().clkSkipIFrame();
-//    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc21_SolarisInternetAccountForUpgrade.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
         getDriver().get(System.getProperty("QaUrl")+"/bundles");

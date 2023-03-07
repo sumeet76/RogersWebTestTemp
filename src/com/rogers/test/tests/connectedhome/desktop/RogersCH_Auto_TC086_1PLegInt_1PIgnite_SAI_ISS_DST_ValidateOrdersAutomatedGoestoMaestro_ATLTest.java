@@ -55,27 +55,21 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-       // reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-//        reporter.reportLogWithScreenshot("Skip popup");
-//        getRogersLoginPage().clkSkipIFrame();
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Selected the NL Province");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/offers?env=qa");
+        getDriver().get(System.getProperty("QaUrl") + "/internet/offers?env=qa");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("selected address on file");
         getRogersHomePage().clkUseAddress();
-
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
-
-
         getRogersInternetPackageSelectionPage().clkTakQuiz();
         reporter.reportLogWithScreenshot("Launched BEST PACKAGE FOR YOU page");
         getRogersInternetPackageSelectionPage().clkWebEmail();
@@ -99,7 +93,7 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Best Fit package for the selected");
         getRogersInternetPackageSelectionPage().clkBackToPackagesPage();
         reporter.reportLogWithScreenshot("Clicked on back to packages");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(),"Best Fit package displayed post quiz","Best Fit package displayed post quiz");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(), "Best Fit package displayed post quiz", "Best Fit package displayed post quiz");
         //getRogersInternetPackageSelectionPage().selectIgniteSmartStream1GbpsCheckBox();
         //reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
         //getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();
@@ -108,19 +102,16 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Selected Add to Cart");
         getRogersInternetPackageSelectionPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Selected Yes I understand button");
-
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(), "Profile page has Launched", "Profile page has not Launched");
-
         // continue button remains disabled until phone number is populated
-        if(getRogersInternetProfilePage().chkIfPhoneNumberExists())
-        {
+        if (getRogersInternetProfilePage().chkIfPhoneNumberExists()) {
             getRogersInternetProfilePage().setPhone();
         }
         getRogersInternetProfilePage().clkSubmitProfile();
-        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
+        reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evaluation page has not Launched");
         reporter.reportLogWithScreenshot("Launched the credit evalution page");
         getRogersInternetCreditCheckPage().selectDOBYear();
         getRogersInternetCreditCheckPage().selectDOBMonth();
@@ -172,9 +163,9 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         /**
          * DB Validations in the subscriber table
          */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
+        reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
+        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -189,5 +180,4 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
     public void afterTest() {
         closeSession();
     }
-
 }

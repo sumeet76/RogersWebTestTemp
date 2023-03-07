@@ -50,7 +50,6 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
 
 	 @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
     public void rogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATL() {
-
 		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
 		 getRogersLoginPage().clkContinueInBrowser();
@@ -59,7 +58,6 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
 		 getRogersLoginPage().clkSignInIFrame();
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 	  	 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
-//	  	 reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
 		 getRogersHomePage().clkNBProvinceLnk();
 		 reporter.reportLogWithScreenshot("Clicked NB province link");

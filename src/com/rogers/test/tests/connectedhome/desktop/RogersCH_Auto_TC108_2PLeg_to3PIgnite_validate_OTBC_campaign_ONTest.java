@@ -68,7 +68,6 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
         reporter.reportLogWithScreenshot("Selected Address on file");
         getRogersHomePage().clkUseAddress();
         reporter.reportLogWithScreenshot("Use the address on file");
-        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Home phone selected");
 

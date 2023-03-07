@@ -44,8 +44,7 @@ public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTest
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-//        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();

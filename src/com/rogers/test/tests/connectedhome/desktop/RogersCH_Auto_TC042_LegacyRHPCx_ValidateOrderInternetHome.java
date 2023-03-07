@@ -32,25 +32,24 @@ public class RogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternetHome extends B
 
 	@Test(groups = {"RegressionCH","IHP","saiCH"})
     public void rogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternet() {
-		String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
+		String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+		String strAddressLine2 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
- 		reporter.reportLogWithScreenshot("Enter the account credentails");
- 		getRogersLoginPage().clkSignInIFrame();
- 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
- 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
- 		reporter.reportLogWithScreenshot("Launched the Account Page");
-
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentails");
+		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl") + "/internet/");
-		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkInternetAvailability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();

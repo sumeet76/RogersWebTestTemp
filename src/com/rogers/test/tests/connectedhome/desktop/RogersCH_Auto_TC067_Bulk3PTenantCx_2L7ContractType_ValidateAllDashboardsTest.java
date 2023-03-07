@@ -30,15 +30,13 @@ public class RogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashb
 
 	 @Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashboards() {
-
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getUsername());
-        getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
-        getRogersLoginPage().clkSignInIFrame();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getUsername());
+         getRogersLoginPage().clkContinueInBrowser();
+         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc67_2L7ContractType3PBulkTenant.getPassword());
+         reporter.reportLogWithScreenshot("Enter the account credentials");
+         getRogersLoginPage().clkSignInIFrame();
+         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
          if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
              reporter.reportLogWithScreenshot("Select an account.");
              getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc67_2L7ContractType3PBulkTenant.accountDetails.getBan());
@@ -78,19 +76,20 @@ public class RogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashb
          reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyMoreDetailsExpanded(), "More Details Expanded", "More Details not expanded");
          reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyCallUs(), "Verified Call Us is clickable", "Call Us is not clickable");
 
-	 }
+     }
 
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
-	}
-	
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    //login flow
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }
 

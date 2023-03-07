@@ -53,7 +53,6 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 
     @Test(groups = {"RegressionCH",""})
 	public void rogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromoContentReviewConfirmPages() {
-
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
@@ -62,7 +61,6 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		getRogersLoginPage().clkSignInIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-//		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 
 		getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
@@ -151,7 +149,7 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		 */
 		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
 		reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
