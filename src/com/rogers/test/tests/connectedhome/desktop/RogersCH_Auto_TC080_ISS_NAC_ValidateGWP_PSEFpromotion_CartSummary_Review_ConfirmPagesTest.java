@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify150IgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
+        getRogersInternetPackageSelectionPage().verifyISSBoxChecked("Ignite 150 Ultd");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");

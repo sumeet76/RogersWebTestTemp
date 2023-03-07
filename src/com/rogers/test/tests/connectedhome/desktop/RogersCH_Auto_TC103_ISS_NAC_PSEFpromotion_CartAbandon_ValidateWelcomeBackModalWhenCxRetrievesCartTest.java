@@ -66,7 +66,7 @@ public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelco
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         String pkgPrice = getRogersInternetPackageSelectionPage().get150SSPkgPrice();
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify150IgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
+        getRogersInternetPackageSelectionPage().verifyISSBoxChecked("Ignite 150 Ultd");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
