@@ -30,7 +30,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 
-
+	//a[@aria-label='Ignite Flex 5 Add to cart']//span[text()='Add to cart']
 	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']")
 	WebElement btnSolarisStarterPackage;
 
@@ -153,10 +153,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rhp-section']/descendant::label")
 	WebElement checkboxHomephone;
 
-	@FindBy(xpath = "//h2[@id='channels-tab']")
+	@FindBy(xpath = "//h2[@id='channels-tab'] | //button[@id='channels-tab']")
 	WebElement btnChannelsTab;
 
-	@FindBy(xpath = "//button[@id='themepacks-tab']")
+	@FindBy(xpath = "//h2[@id='themepacks-tab'] | //button[@id='themepacks-tab']")
 	WebElement btnThemepacksTab;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
@@ -615,8 +615,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 30);
-		getReusableActionsInstance().getWhenReady(drpdwnPremierTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
+		getReusableActionsInstance().getWhenReady(drpdwnStarterPackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -973,10 +973,13 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckoutCancel() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		}
 		getReusableActionsInstance().waitForElementTobeClickable(btnCheckoutCancel, 60);
 		getReusableActionsInstance().getWhenReady(btnCheckoutCancel, 20).click();
 	}
+
 
 	/**
 	 * Click checkout button on Ignite-bundles/tv-internet page
@@ -1003,9 +1006,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author manpreet.kaur3
 	 */
 	public void selectFlex20Package() {
-		getReusableActionsInstance().staticWait(6000);
-		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 60);
-		getReusableActionsInstance().getWhenReady(btnFlex20Package, 30).click();
+		getReusableActionsInstance().getWhenReady(btnFlex20Package, 60).click();
 
 	}
 
@@ -1040,8 +1041,8 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public String getTotalChannelCount() {
 
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 10);
-		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 50).getText();
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 50);
+		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 20).getText();
 		String channels = strChannels.trim();
 		return channels;
 
@@ -1669,7 +1670,8 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkDSTClose() {
-		getReusableActionsInstance().getWhenReady(btnDSTClose, 90).click();
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenReady(btnDSTClose, 40).click();
 	}
 
 	/**

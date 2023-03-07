@@ -29,11 +29,11 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	@FindBy(xpath ="//a[@aria-label='No, I don’t have a 4K TV']/span | //a[@aria-label='Non, il n’a pas de téléviseur 4K']/span")
 	WebElement btnNoIDontHave4K;
 
-	@FindBy(xpath="//span[text()='Continue']")
+	@FindBy(xpath="//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContinueFromThemepacks;
 	//ins[@translate='global.cta.continue']
 
-	@FindBy(xpath = "//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'ai un téléviseur 4k')]")
+	@FindBy(xpath = "//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'Oui, il a un téléviseur 4K')]")
 	WebElement btnYesIHave4K;
 	//div[contains(@class,'ute-btn-group-set-accessibility')]//ins[@usertype-translate='global.cta.yesIHave4K']
 
@@ -42,12 +42,12 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	//span[contains(text(),'Yes, they do') or contains(text(),'Oui, ils le font')]
 	//span[contains(text(),'Yes, I have a 4k TV') or contains(text(),'ai un téléviseur 4k')]
 
-	@FindBy(xpath = "//a//span[@translate='global.cta.continue']")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']")
 	WebElement btn4KContent;
 	//ds-icon[@name='chevron-right']/ancestor::button
 	//button[contains(@class,'continue-btn-4k')]//ins[@translate='global.cta.continue']
 
-	@FindBy(xpath = "//button[@aria-label='Add 4K Channel Pack to your Ignite TV package']/span")
+	@FindBy(xpath = "//button[contains(@aria-label,'Add 4K') or contains(@aria-label,'4K')]/span")
 	WebElement btnAdd4kContent;
 
 	@FindBy(xpath = "//span[@translate='global.cta.bysSwapLaterContinue']")
@@ -241,8 +241,8 @@ public class RogersSolarisTVChannelsAndThemepacksPage extends BasePageClass {
 	public void clkThemePacks() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().waitForElementVisibility(btnThemepacksTab, 180);
-		getReusableActionsInstance().getWhenReady(btnThemepacksTab, 120).click();
+		getReusableActionsInstance().waitForElementTobeClickable(btnThemepacksTab, 180);
+		getReusableActionsInstance().executeJavaScriptClick(btnThemepacksTab);
 	}	
 	
 	/**

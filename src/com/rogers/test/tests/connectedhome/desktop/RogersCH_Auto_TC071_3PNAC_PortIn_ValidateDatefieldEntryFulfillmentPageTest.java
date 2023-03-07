@@ -49,14 +49,9 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentPage() {
-//        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-//        getRogersHomePage().clkTVBundle();
-//        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");

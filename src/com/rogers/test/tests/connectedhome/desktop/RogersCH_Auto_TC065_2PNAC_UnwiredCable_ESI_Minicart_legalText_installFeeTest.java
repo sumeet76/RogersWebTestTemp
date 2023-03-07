@@ -52,20 +52,18 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void rogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_installFee() {
-        reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1= TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         //Validate cableCondition="Unwired" from addressServices call, will be adding with selenium4
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -119,8 +117,10 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
         reporter.reportLogWithScreenshot("Launched the Schedule Appointment Page");
         getRogersTechInstallPage().selectPrefferedDate();
         getRogersTechInstallPage().selectPreferredTimeSlot();
+        reporter.reportLogWithScreenshot("Selected Preferred Date and timeslot");
         getRogersTechInstallPage().setContactNumber();
         getRogersTechInstallPage().clkTechInstalConsent();
+        reporter.reportLogWithScreenshot("Professional Installation content provided");
         getRogersTechInstallPage().clkTechInstallContinue();
 
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");

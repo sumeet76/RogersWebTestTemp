@@ -40,9 +40,9 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
 //        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
 //        getRogersHomePage().clkEasyInternet();
 //        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/offers?env=qa");
         reporter.reportLogWithScreenshot("Launched the Internet page");
-        getRogersHomePage().clkInternetAvailability();
+        //getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");

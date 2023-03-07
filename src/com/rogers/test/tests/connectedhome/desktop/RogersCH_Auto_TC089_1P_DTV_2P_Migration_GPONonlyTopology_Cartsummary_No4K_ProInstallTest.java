@@ -59,7 +59,7 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
 		reporter.reportLogWithScreenshot("Account Selected");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
 		getRogersHomePage().clkServiceability();
 		//getRogersIgniteTVBuyPage().selectFlex20Package();
@@ -69,9 +69,8 @@ public class RogersCH_Auto_TC089_1P_DTV_2P_Migration_GPONonlyTopology_Cartsummar
 		reporter.reportLogWithScreenshot("Selected the address on file");
 
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
-		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
-		reporter.reportLogWithScreenshot("Flex20+ selected");
-		getRogersIgniteTVBuyPage().selectFlex20Package();
+		getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		reporter.reportLogWithScreenshot("Launched the information popup");
 		getRogersIgniteTVBuyPage().clkIUnderstand();
 

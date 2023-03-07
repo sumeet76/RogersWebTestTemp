@@ -404,7 +404,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectSmartStreamPkgMonthToMonthTypeOfContact() {
-		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(drpdwnSSpkgTypeOfContract, 60);
+		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,10).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -650,7 +651,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		} */
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
@@ -738,9 +739,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * To verify the Ignite SmartSteam 150 Package checkbox is selected
 	 * @author Manpreet.Kaur3
 	 */
-	public boolean verify150IgniteStreamingIsChecked() {
+	public void verify150IgniteStreamingIsChecked() {
 		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 5);
-		return chkbox150IgniteStreaming.isSelected();
+		if(!chkbox150IgniteStreaming.isSelected()){
+			getReusableActionsInstance().getWhenReady(chkbox150IgniteStreaming).click();
+		}
 	}
 
 	/**

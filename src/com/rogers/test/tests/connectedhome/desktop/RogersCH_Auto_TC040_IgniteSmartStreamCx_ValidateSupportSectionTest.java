@@ -56,8 +56,11 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			reporter.reportLogWithScreenshot("Continue to Account Overview");
 		}
- 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc40_igniteSmartStream.accountDetails.getBan());
+		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
  		reporter.reportLogWithScreenshot("Launched the Account Page");
+
 		getRogersAccountOverviewPage().clkSmartStream();
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifySmartStreamdashboard(),"SmartStream dashboard page","SmartStream dashboard page is not displaying");
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),

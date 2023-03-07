@@ -692,7 +692,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
-		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 	}
 
 	/**
@@ -2183,7 +2183,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 * @author Manpreet.kaur3
 	 */
 	public boolean verifySpecialOfferBadge() {
-		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 20);
+		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 60);
 	}
 
 	/**

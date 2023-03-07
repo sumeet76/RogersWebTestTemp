@@ -65,12 +65,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
-        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
-        //getRogersHomePage().clkExistingCustomerShop();
-        //reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-        //getRogersHomePage().clkIgniteTVExistingCustomer();
-        //reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Clicked on View Bundles");

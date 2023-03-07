@@ -67,7 +67,7 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		 getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
 		 //getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
 
 
     	reporter.reportLogWithScreenshot("Launched the IgniteTV page");

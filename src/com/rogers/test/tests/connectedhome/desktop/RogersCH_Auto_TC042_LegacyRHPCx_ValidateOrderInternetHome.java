@@ -32,23 +32,23 @@ public class RogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternetHome extends B
 
 	@Test(groups = {"RegressionCH","IHP","saiCH"})
     public void rogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternet() {
-		String  strAddressLine1=TestDataHandler.tc42_iHPAccount.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc42_iHPAccount.getAccountDetails().getAddress().get("line2");
+		String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+		String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc42_iHPAccount.getUsername());
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc42_iHPAccount.getPassword());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
+		getRogersLoginPage().clkContinueInBrowser();
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
  		reporter.reportLogWithScreenshot("Enter the account credentails");
  		getRogersLoginPage().clkSignInIFrame();
  		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
  	    reporter.reportLogWithScreenshot("Skip popup");
- 	    getRogersLoginPage().clkSkipIFrame();
 
  		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
- 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc42_iHPAccount.accountDetails.getBan());
+ 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
  		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
+		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to selcet the IgniteTV");
        // getRogersHomePage().clkSmartInternet();
 		getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
@@ -60,9 +60,12 @@ public class RogersCH_Auto_TC042_LegacyRHPCx_ValidateOrderInternetHome extends B
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 		getRogersInternetPackageSelectionPage().clkInternetPackage();
 		reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
 		getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
-		//reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
-    	}
+		reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(), "Profile page has Launched", "Profile page has not Launched");
+		reporter.reportLogWithScreenshot("Launched the create profile page");
+
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow
