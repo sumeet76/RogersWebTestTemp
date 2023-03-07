@@ -1131,7 +1131,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteAddressLookupSubmitMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnIgniteAddressLookupSubmit,90);
+		getReusableActionsInstance().waitForElementTobeClickable(btnIgniteAddressLookupSubmit,90);
 		getReusableActionsInstance().executeJavaScriptClick(btnIgniteAddressLookupSubmit);
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(15000);
@@ -1259,9 +1259,8 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public boolean verifyInternetpage() {
 		//page is taking more time to load , temporary wait
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(txtInternetBuyPage,90);
-		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 30);
+		getReusableActionsInstance().staticWait(10000);
+		return getReusableActionsInstance().isElementVisible(txtInternetBuyPage, 120);
 	}
 	/**
 	 * Click the InternetAvailability link Internet on the page 

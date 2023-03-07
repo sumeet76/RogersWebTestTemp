@@ -268,8 +268,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyTechInstallPage() {
-		getReusableActionsInstance().waitForElementVisibility(txtTechInstalpage, 120);
-		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 20);
+		return	getReusableActionsInstance().isElementVisible(txtTechInstalpage, 120);
 	}
 
 	/**

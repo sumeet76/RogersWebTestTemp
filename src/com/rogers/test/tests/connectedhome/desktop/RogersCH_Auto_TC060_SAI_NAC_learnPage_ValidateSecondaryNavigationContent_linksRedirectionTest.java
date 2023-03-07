@@ -28,7 +28,7 @@ import java.util.Map;
  *7. Enter appropriate Contact details.
  *8. Pick a date time in step 2 - Most Convenient Time for us to call.
  *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit.
  *
  **/
@@ -37,9 +37,11 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirection() {
+
 //		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the Legacy Internet");
 //		getRogersHomePage().clkEasyInternet();
 		getDriver().get(System.getProperty("QaUrl")+"/internet/");
+
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 
@@ -54,10 +56,12 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		getRogersHomePage().clkSubnavHelpAndSupport();
 
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
+
 //		getDriver().get(System.getProperty("QaUrl"));
-//		getRogersHomePage().waitforURLNavigation();
 //		getRogersHomePage().clkEasyInternet();
 		getDriver().get(System.getProperty("QaUrl")+"/internet/");
+		getRogersHomePage().waitforURLNavigation();
+
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
@@ -67,20 +71,23 @@ public class RogersCH_Auto_TC060_SAI_NAC_learnPage_ValidateSecondaryNavigationCo
 		reporter.reportLogWithScreenshot("clicked Ignite wifi");
 
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
-//		getDriver().get(System.getProperty("QaUrl"));
-//		getRogersHomePage().waitforURLNavigation();
-		getDriver().get(System.getProperty("QaUrl")+"/internet/");
-//		getRogersHomePage().clkEasyInternet();
+
+		//getDriver().get(System.getProperty("QaUrl"));
+		getDriver().get(System.getProperty("QaUrl") + "/internet");
+		getRogersHomePage().waitforURLNavigation();
+		//getRogersHomePage().clkEasyInternet();
+
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
 		getRogersHomePage().clkSubnavIgniteInternet();
 		getRogersHomePage().clkIgniteWiFiHub();
 
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
-//		getDriver().get(System.getProperty("QaUrl"));
-//		getRogersHomePage().waitforURLNavigation();
-//		getRogersHomePage().clkEasyInternet();
-		getDriver().get(System.getProperty("QaUrl")+"/internet/");
+
+		//getDriver().get(System.getProperty("QaUrl"));
+		getDriver().get(System.getProperty("QaUrl") + "/internet");
+		getRogersHomePage().waitforURLNavigation();
+		//getRogersHomePage().clkEasyInternet();
 
 		reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");

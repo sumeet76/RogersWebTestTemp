@@ -389,7 +389,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectSmartStreamPkgMonthToMonthTypeOfContact() {
-		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(drpdwnSSpkgTypeOfContract, 60);
+		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,10).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -613,7 +614,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		} */
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
@@ -697,7 +698,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 20);
 	}
 
-	 // Ensure ISS box is checked for a given Internet Package
 	public void verifyISSBoxChecked(String packageName) {
 		WebElement divISSCheckBox = getDriver().findElement(By.xpath("//a[@aria-label='" + packageName + " + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]"));
 		getReusableActionsInstance().waitForElementVisibility(divISSCheckBox, 10);

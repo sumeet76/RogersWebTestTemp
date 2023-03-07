@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelco
 	@Test
     public void rogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCart() {
         reporter.reportLogWithScreenshot("Launched the main QA page");
-        getDriver().get(System.getProperty("QaUrl")+"internet");
+        getDriver().get(System.getProperty("QaUrl")+"/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -60,7 +60,7 @@ public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelco
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPackagesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Click SS Availability");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
@@ -84,7 +84,7 @@ public class RogersCH_Auto_TC103_ISS_NAC_PSEFpromotion_CartAbandon_ValidateWelco
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyConfirmation(),"Confirmation Modal is available","Confirmation Modal is not available");
         getRogersIgniteTVBuyPage().clickOkay();
         reporter.reportLogWithScreenshot("Restart the flow without clearing cache, to validate Welcome Modal");
-        getDriver().get(System.getProperty("QaUrl")+"internet");
+        getDriver().get(System.getProperty("QaUrl")+"/internet");
         reporter.reportLogWithScreenshot("Launched the Internet Page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyWelcomeBackPopup(),"Welcome Modal has Launched","Welcome Modal has not Launched");
         getRogersIgniteTVBuyPage().clickContinue();

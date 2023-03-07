@@ -41,11 +41,12 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
 //        getRogersHomePage().clkEasyInternet();
 //        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
 
-        getDriver().get(System.getProperty("QaUrl")+"/internet/");
+        getDriver().get(System.getProperty("QaUrl")+"/internet?env=qa");
         reporter.reportLogWithScreenshot("Launched the Internet page");
         getRogersHomePage().clkNBProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");
         getRogersHomePage().clkInternetAvailability();
+
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");

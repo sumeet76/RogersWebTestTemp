@@ -18,6 +18,12 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//section[@class='internet-my-usage'] | //h1[text()= ' Internet ']")
 	WebElement txtInternetUsage;
 
+	@FindBy(xpath= "//span[@translate='global.selfServe.legacyDashboard.internet.dailyUsage']")
+	WebElement txtDailyUsage;
+
+	@FindBy(xpath="//span[@translate='global.selfServe.legacyDashboard.internet.monthlyUsage']")
+	WebElement txtMonthlyUsage;
+
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
@@ -190,6 +196,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 */
 	public boolean verifyInternetUsage() {	
 		return getReusableActionsInstance().isElementVisible(txtInternetUsage,30);
+	}
+
+	public boolean verifyDailyUsage() {
+		return getReusableActionsInstance().isElementVisible(txtDailyUsage,30);
+	}
+
+	public boolean verifyMonthlyUsage() {
+		return getReusableActionsInstance().isElementVisible(txtMonthlyUsage,30);
 	}
 
 	public boolean verifyInternetUsageMobile() {

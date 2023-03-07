@@ -47,12 +47,14 @@ public class RogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternetTest
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Login Successful !");
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-       // getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.accountDetails.getBan());
+
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.accountDetails.getBan());
 //        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+
         reporter.reportLogWithScreenshot("Launched the Account Page");
 //        getRogersHomePage().clkExistingCustomerShop();
 //        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        //getRogersHomePage().clkExistingCustomerInternet();
+//        getRogersHomePage().clkExistingCustomerInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
 //        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");

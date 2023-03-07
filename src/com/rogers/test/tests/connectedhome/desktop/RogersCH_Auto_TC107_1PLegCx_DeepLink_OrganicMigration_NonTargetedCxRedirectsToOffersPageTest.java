@@ -26,7 +26,7 @@ public class RogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCx
 	@Test
 	public void rogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCxRedirectsToOffersPage() {
 		reporter.reportLogWithScreenshot("Launched the Deeplink");
-		getDriver().get(System.getProperty("QaUrl")+"home/hto-eop");
+		getDriver().get(System.getProperty("QaUrl")+"/home/hto-eop");
 		reporter.reportLogWithScreenshot("Launched the SignIn popup through deeplink");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();

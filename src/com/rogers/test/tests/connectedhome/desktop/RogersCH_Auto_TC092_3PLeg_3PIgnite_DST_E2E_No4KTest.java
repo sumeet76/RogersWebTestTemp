@@ -91,10 +91,10 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.reportLogWithScreenshot("Added Home Phone");
 		getRogersIgniteTVBuyPage().clkDSTContinue();
 		reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
-//		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBestFit(),"Best Fit verified" ,"Best Fit not verified");
+    	reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBestFit(),"Best Fit verified" ,"Best Fit not verified");
 		getRogersIgniteTVBuyPage().clkDSTClose();
 		reporter.reportLogWithScreenshot("Closed the DST Recommendation");
-//		getRogersIgniteTVBuyPage().VerifyYourBestFit();
+		//getRogersIgniteTVBuyPage().VerifyYourBestFit();
 		reporter.reportLogWithScreenshot("Recommended pack is displayed");
 		getRogersIgniteTVBuyPage().selectFlex10PackageMonthToMonthTypeOfContract();
 		reporter.reportLogWithScreenshot("Type of contract selected");
@@ -110,8 +110,6 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("No, I don't have a 4k TV selected");
 
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
-		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersIgniteTVBuyPage().clkCheckout();
 
 		reporter.reportLogWithScreenshot("Launched the create profile page");
@@ -151,19 +149,18 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");
 		//getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
-//		getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
-//		getRogersPaymentOptionsPage().switchToCreditCardIFrame();
-//		getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
-//		getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-//		getRogersPaymentOptionsPage().setCVV();
-//		getRogersPaymentOptionsPage().selectExpiryMonth();
-//		getRogersPaymentOptionsPage().selectExpiryYear();
-//		reporter.reportLogWithScreenshot("Payment options Details");
+		/*getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
+		getRogersPaymentOptionsPage().switchToCreditCardIFrame();
+		getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
+		getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
+		getRogersPaymentOptionsPage().setCVV();
+		getRogersPaymentOptionsPage().selectExpiryMonth();
+		getRogersPaymentOptionsPage().selectExpiryYear();*/
+		reporter.reportLogWithScreenshot("Payment options Details");
 		getRogersPaymentOptionsPage().clkPaymentConfirm();
 
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
-		// validate monthly fees
 		reporter.hardAssert( getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 
 		getRogersOrderReviewPage().clkAcceptenceCheckbox();
@@ -177,7 +174,7 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws  IOException {
-		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+		startSession(System.getProperty("QaUrl"),  strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

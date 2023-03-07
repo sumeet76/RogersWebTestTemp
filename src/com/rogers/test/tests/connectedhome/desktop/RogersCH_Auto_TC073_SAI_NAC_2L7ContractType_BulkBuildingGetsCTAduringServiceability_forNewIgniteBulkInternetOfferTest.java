@@ -32,8 +32,8 @@ public class RogersCH_Auto_TC073_SAI_NAC_2L7ContractType_BulkBuildingGetsCTAduri
     @Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC073_SAI_NAC_2L7ContractType_BulkBuildingGetsCTAduringServiceability_forNewIgniteBulkInternetOffer() {
         reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
+       // getRogersHomePage().clkExistingCustomerShop();
+      //  reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
         // getRogersHomePage().clkExistingCustomerInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet");
          reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");

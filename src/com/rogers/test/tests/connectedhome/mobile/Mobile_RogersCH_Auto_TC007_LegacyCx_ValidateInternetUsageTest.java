@@ -30,10 +30,10 @@ public class Mobile_RogersCH_Auto_TC007_LegacyCx_ValidateInternetUsageTest exten
 	public void mobile_RogersCH_Auto_TC007_LegacyCx_ValidateInternetUsage() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+		/*if (getRogersLoginPage().isOverlayContainerDisplayed()) {
 			reporter.reportLogWithScreenshot("Select Continue in browser.");
 			getRogersLoginPage().clkContinueInBrowser();
-		}
+		}*/
 		reporter.reportLogWithScreenshot("Continue in Browser Selected");
 		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc36_legacyInternetAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
@@ -49,6 +49,8 @@ public class Mobile_RogersCH_Auto_TC007_LegacyCx_ValidateInternetUsageTest exten
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		getRogersAccountOverviewPage().clkInternetPopup();
 		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetUsageMobile(),"Verified the Internet dashboard","Internet dashboard Verification has failed");
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyDailyUsage(),"Verified the Daily usage link","Daily Usage Verification has failed");
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyMonthlyUsage(),"Verified the monthly usage link","Monthly Verification has failed");
    	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

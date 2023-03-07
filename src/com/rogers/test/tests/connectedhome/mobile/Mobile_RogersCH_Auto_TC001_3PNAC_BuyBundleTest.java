@@ -53,32 +53,38 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
 
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC001_3PNAC_BuyBundle() {
-        reporter.reportLogWithScreenshot("Launched the Main QA Page");
-//        getRogersHomePage().clkBurgerMenuMobile();
-//        reporter.reportLogWithScreenshot("clicked menu on the top");
-//        getRogersHomePage().clkNBProvinceLnkMobile();
-//        reporter.reportLogWithScreenshot("select NB region");
-//        getRogersHomePage().clkBurgerMenuMobile();
-//        reporter.reportLogWithScreenshot("clicked menu on the top");
-//        getRogersHomePage().clkShopMobile();
-//        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
-//        getRogersHomePage().clkSubnavIgniteSmartStreamMobile();
-//        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-//        getRogersHomePage().clkGetIgniteTvWithIgniteInternetMobile();
-//    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+       /* reporter.reportLogWithScreenshot("Launched the Main QA Page");
+        getRogersHomePage().clkBurgerMenuMobile();
+        reporter.reportLogWithScreenshot("clicked menu on the top");
+        getRogersHomePage().clkNBProvinceLnkMobile();
+        reporter.reportLogWithScreenshot("select NB region");
+        getRogersHomePage().clkBurgerMenuMobile();
+        reporter.reportLogWithScreenshot("clicked menu on the top");
+        getRogersHomePage().clkShopMobile();
+        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
+        getRogersHomePage().clkSubnavIgniteSmartStreamMobile();
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternetMobile();
+    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+
+        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");*/
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkServiceabilityMobile();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Availability check button enabled");
         getRogersHomePage().clkIgniteAddressLookupSubmitMobile();
         reporter.reportLogWithScreenshot("Bundles Page has launched");
 
-       // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
-      //  getRogersIgniteTVBuyPage().scrollToFlex20();
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
+       /* getRogersIgniteTVBuyPage().clkHomephoneMobile();
+        reporter.reportLogWithScreenshot("Clicked Home Phone");
+*/
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
 
@@ -146,7 +152,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         getRogersOrderReviewPage().clkAcceptenceCheckboxMobile();
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitMobile();
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
+        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         String ban = getRogersOrderConfirmationPage().getBAN();
         System.out.println("BAN from the portal : " + ban);
