@@ -36,12 +36,12 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_igniteSmartStream.getPassword());
- 		reporter.reportLogWithScreenshot("Enter the account credentails");
- 		getRogersLoginPage().clkSignInIFrame();
-		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc40_igniteSmartStream.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentials");
+		getRogersLoginPage().clkSignInIFrame();
+		if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			reporter.reportLogWithScreenshot("Click on Text as recovery option");
 			getRogersLoginPage().clkTextToAsRecoveryOption();
 			String strTestingTab = getDriver().getWindowHandle();
@@ -58,22 +58,21 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 		}
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc40_igniteSmartStream.accountDetails.getBan());
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
- 		reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 
 		getRogersAccountOverviewPage().clkSmartStream();
-		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifySmartStreamdashboard(),"SmartStream dashboard page","SmartStream dashboard page is not displaying");
+		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifySmartStreamdashboard(), "SmartStream dashboard page", "SmartStream dashboard page is not displaying");
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),
 				"SmartStream Using Voice Commands Links displayed", "SmartStream Using Voice Commands Links not displayed correctly please investigate");
 		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyUsingAppsOnIgniteTvLinkdisplayed(),
 				"SmartStream Using Apps On Ignite Tv Links displayed", "SmartStream Using Apps On Ignite Tv Links not displayed correctly please investigate");
 		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyIgniteTvPowerSaverLinkdisplayed(),
 				"SmartStream Ignite Tv Power Saver Links displayed", "SmartStream Ignite Tv Power Saver Links not displayed correctly please investigate");
-		reporter.softAssert( getRogersSmartStreamDashboardPage().verifyIgniteTvErrorCodesLinkdisplayed(),
+		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyIgniteTvErrorCodesLinkdisplayed(),
 				"SmartStream Ignite Tv Error Codes Links displayed", "SmartStream Ignite Tv Error Codes Links not displayed correctly please investigate");
-		reporter.softAssert( getRogersSmartStreamDashboardPage().verifyGoToSupportSectionLinkdisplayed(),
+		reporter.softAssert(getRogersSmartStreamDashboardPage().verifyGoToSupportSectionLinkdisplayed(),
 				"SmartStream Go To Support Section Links displayed", "SmartStream Go To Support Section Links not displayed correctly please investigate");
-    	}
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

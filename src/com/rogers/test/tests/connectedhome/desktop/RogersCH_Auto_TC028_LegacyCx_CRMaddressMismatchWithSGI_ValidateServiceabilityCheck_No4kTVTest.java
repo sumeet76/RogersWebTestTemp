@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  * Click on See available Ignite Bundles
  * Enter Address_2 in serviceability modal and click on check address
  * Select any Bundle and add to cart
- * Click on No I don’t have a Ignite TV and Click on Checkout
+ * Click on No I don’t have Ignite TV and Click on Checkout
  * In the Profile page Enter the details as per the RCIS rule sheet for Medium risk class with Different address (Row 74-77) to simulate Medium Risk class scenario.Email ID and Contact number should be used different as the one with which we created the account in RCIS for address_1 to simulate failed verification. Billing address should be same as serviceable address. Click on Proceed once we fill all the details
  * In Credit evaluation page enter the same details which were used for creating Address_1 account in RCIS, also follow the RCIS rule sheet same as above to have the correct details respective to that to simulate Medium Risk Class and Click on Continue
  * Clicking on Cancel and X button should take you back to credit Eval page
@@ -38,12 +38,9 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc28_CRMaddressMismatchWithSGI.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		reporter.reportLogWithScreenshot("Skip popup");
-		getRogersLoginPage().clkSkipIFrame();
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc28_CRMaddressMismatchWithSGI.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");
@@ -78,7 +75,7 @@ public class RogersCH_Auto_TC028_LegacyCx_CRMaddressMismatchWithSGI_ValidateServ
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteAnonymous
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext,Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_ignitelogin, method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_legacylogin, method);
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
 	}
 

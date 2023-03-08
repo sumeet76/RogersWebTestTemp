@@ -719,8 +719,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 30);
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[@class='account-number-txt']//span[text()='" + strAccountNumber + "']")), 30);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 15);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[@class='account-number-txt']//span[text()='" + strAccountNumber + "']")), 15);
 	}
 
 
@@ -2340,7 +2340,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	public boolean isNewOfferModalDisplayed() {
-		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 20);
 	}
 
 	/**

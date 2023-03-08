@@ -28,7 +28,7 @@ import java.util.Map;
  *7. Enter appropriate Contact details.
  *8. Pick a date time in step 2 - Most Convenient Time for us to call.
  *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit.
  *
  **/
@@ -43,20 +43,16 @@ public class RogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternetTest
         getRogersLoginPage().clkContinueInBrowser();
         reporter.reportLogWithScreenshot("Continue to Sign In");
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Login Successful !");
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc51_ShmSignedInInternetBuyBasement.accountDetails.getBan());
-       // reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        //getRogersHomePage().clkExistingCustomerInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
-        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+//        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
+//        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");

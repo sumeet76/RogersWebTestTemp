@@ -52,6 +52,7 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
         getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkServiceability();
+
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");

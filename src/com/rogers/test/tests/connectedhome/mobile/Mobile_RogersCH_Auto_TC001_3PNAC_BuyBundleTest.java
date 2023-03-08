@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import static com.rogers.testdatamanagement.TestDataHandler.tc25_IgniteServiceabilityAddressNB;
+
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
  * 
@@ -51,6 +53,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
 
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC001_3PNAC_BuyBundle() {
+
        /* reporter.reportLogWithScreenshot("Launched the Main QA Page");
         getRogersHomePage().clkBurgerMenuMobile();
         reporter.reportLogWithScreenshot("clicked menu on the top");

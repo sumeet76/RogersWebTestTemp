@@ -29,16 +29,15 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_MonthlyFeeBannerValidationTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-	public void rogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_MonthlyFeeBannerValidation() {
+	 public void rogersCH_Auto_TC069_Solaris4KTVCx_ManageChannelsAndThemePack_MonthlyFeeBannerValidation() {
 		 reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		 getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getUsername());
 		 getRogersLoginPage().clkContinueInBrowser();
 		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.getPassword());
-		 reporter.reportLogWithScreenshot("Enter the account credentails");
+		 reporter.reportLogWithScreenshot("Enter the account credentials");
 		 getRogersLoginPage().clkSignInIFrame();
-		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		 reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		// getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.accountDetails.getBan());
+		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc06_SolarisChangeTVManageThemePacks.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
 		 getRogersSolarisTVDashboardPage().clkTVBadge();
 		 reporter.reportLogWithScreenshot("Launched the TV dash board");

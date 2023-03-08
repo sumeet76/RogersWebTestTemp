@@ -52,9 +52,7 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
 	public void rogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_installFee() {
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
-        getRogersHomePage().clkServiceability();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");

@@ -45,12 +45,10 @@ public class RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextV
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
-		reporter.reportLogWithScreenshot("Entered the account credentails");
+		reporter.reportLogWithScreenshot("Entered the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Sign-in");
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-
-
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getBan());

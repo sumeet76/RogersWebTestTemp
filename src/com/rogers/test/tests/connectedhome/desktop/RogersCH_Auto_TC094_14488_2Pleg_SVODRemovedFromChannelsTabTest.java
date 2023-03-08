@@ -35,7 +35,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
@@ -52,7 +52,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 			reporter.reportLogWithScreenshot("Clicked on No Thanks");
 			getRogersHomePage().clkServiceability();
 		}*/
-		getDriver().get(System.getProperty("QaUrl")+"/bundles");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -62,7 +62,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		reporter.reportLogWithScreenshot("Launched the Bundles Page");
 		getRogersIgniteTVBuyPage().clkChannelsTab();
 		reporter.reportLogWithScreenshot("Launched the Channels");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD not present in the genre dropdown","SVOD present under genre dropdown");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD not present in the genre dropdown", "SVOD present under genre dropdown");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

@@ -41,6 +41,7 @@ public class RogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreati
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + ", " + strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();

@@ -34,7 +34,7 @@ public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTe
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc35_digitalTVAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_digitalTVAccount.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			reporter.reportLogWithScreenshot("Click on Text as recovery option");

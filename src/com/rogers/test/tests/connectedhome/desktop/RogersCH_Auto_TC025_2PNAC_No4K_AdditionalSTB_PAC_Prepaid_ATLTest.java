@@ -51,7 +51,7 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","ReleaseSanity"})
     public void rogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATL() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=NB");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

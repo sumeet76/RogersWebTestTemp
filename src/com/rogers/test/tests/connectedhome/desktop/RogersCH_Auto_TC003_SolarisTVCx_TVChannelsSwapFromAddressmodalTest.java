@@ -45,10 +45,7 @@ public class RogersCH_Auto_TC003_SolarisTVCx_TVChannelsSwapFromAddressmodalTest 
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
-       // reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        //getRogersHomePage().clkIgniteTVExistingCustomer();
         getDriver().get(System.getProperty("QaUrl") + "/web/consumer/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceabilityMigration();

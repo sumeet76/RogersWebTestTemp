@@ -34,26 +34,26 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheck() {
-		getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=ON");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 
-		String  strAddressLine1=TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
-		String  strAddressLine2=TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
-		getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+		String strAddressLine1 = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line1");
+		String strAddressLine2 = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddress().get("line2");
+		getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
 		reporter.reportLogWithScreenshot("Exact Address entered as on fido account");
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		reporter.reportLogWithScreenshot("Add to cart");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 
-		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(),"Profile page has Launched","Profile page has not Launched");
+		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().setEmail(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getUsername());
 		getRogersIgniteTVProfileCreationPage().setFirstname(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getFirstName());
@@ -62,7 +62,7 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		reporter.reportLogWithScreenshot("Fido wireless account details entered");
 		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
 
-		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
+		reporter.hardAssert(getRogersIgniteTVCreditCheckPage().verifyCreditEvalutionPage(), "Credit Evalution page has Launched", "Credit Evalution page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the credit evaluation page");
 		getRogersIgniteTVCreditCheckPage().selectDOBYear();
 		getRogersIgniteTVCreditCheckPage().selectDOBMonth();
@@ -95,14 +95,14 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 			reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check Address on file");
 			//getRogersIgniteTVCreditCheckPage().clkIgniteAddressLookupSecondSubmit();
 		}*/
-		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
 		getRogersTechInstallPage().clkProInstallUpgradeNo();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinueSelf();
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
 		getRogersTechInstallPage().clkTechInstallContinue();
-		reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
+		reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the payment options page");
 		getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
 		getRogersPaymentOptionsPage().switchToCreditCardIFrame();
@@ -114,15 +114,15 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		reporter.reportLogWithScreenshot("Payment options Details");
 		getRogersPaymentOptionsPage().clkPaymentConfirm();
 
-		reporter.hardAssert( getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
 
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
 		getRogersOrderReviewPage().clkAcceptenceCheckbox();
 		reporter.reportLogWithScreenshot("Agreement details");
 		getRogersOrderReviewPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
-		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
+		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
 		reporter.reportLogWithScreenshot("Launched the Confirmation page");
 		String ban = getRogersOrderConfirmationPage().getBAN();
 		System.out.println("BAN from the portal : " + ban);
@@ -131,9 +131,9 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		/**
 		 * DB Validations in the subscriber table
 		 */
-		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-		reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
+		reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
+		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

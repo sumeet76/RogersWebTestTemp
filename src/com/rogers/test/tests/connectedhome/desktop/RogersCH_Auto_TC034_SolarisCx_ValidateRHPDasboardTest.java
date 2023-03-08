@@ -34,7 +34,7 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc34_igniteRHP.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc34_igniteRHP.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 
 		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
@@ -53,7 +53,7 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 			reporter.reportLogWithScreenshot("Continue to Account Overview");
 		}
 
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Launched the Account Page", "Account Page hasn't launched");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc34_igniteRHP.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadge();

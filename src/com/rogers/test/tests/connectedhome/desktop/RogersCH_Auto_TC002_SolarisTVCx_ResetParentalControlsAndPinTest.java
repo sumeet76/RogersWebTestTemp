@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * Test steps:
  *
  *1. Launch Rogers.com
- *2. Login with valid user name and password
+ *2. Login with valid username and password
  *3. Click on TV badge
  *4. Click on Reset Parental controls and pin
  *5. Click Continue on the pop up window
@@ -29,37 +29,36 @@ public class RogersCH_Auto_TC002_SolarisTVCx_ResetParentalControlsAndPinTest ext
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
     public void rogersCH_Auto_TC002_SolarisTVCx_ResetParentalControlsAndPin() {
-        reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
-        getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
-        getRogersLoginPage().clkSignInIFrame();
-    	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersSolarisTVDashboardPage().clkTVBadge();
-        reporter.reportLogWithScreenshot("Launched the TV dash board");
+         reporter.reportLogWithScreenshot("Launched the SignIn popup");
+         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
+         getRogersLoginPage().clkContinueInBrowser();
+         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
+         reporter.reportLogWithScreenshot("Enter the account credentials");
+         getRogersLoginPage().clkSignInIFrame();
+         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
+         reporter.reportLogWithScreenshot("Launched the Account Page");
+         getRogersSolarisTVDashboardPage().clkTVBadge();
+         reporter.reportLogWithScreenshot("Launched the TV dash board");
          getRogersSolarisTVDashboardPage().clkResetParentalConrolsAndPin();
          reporter.reportLogWithScreenshot("Alert window with Reset your Controls and Pin will appear");
          getRogersSolarisTVDashboardPage().clkContinueParentalControlAndPinReset();
          reporter.reportLogWithScreenshot("Success message verified");
-         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfull","Parental Controls And Pin reset failed");
+         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyResetParentalControlsAndPinSuccess(), "Parental Controls And Pin reset successfully", "Parental Controls And Pin reset failed");
          getRogersSolarisTVDashboardPage().clkOkContinue();
          getRogersSolarisTVDashboardPage().clkRefreshYourIgniteTVBox();
          reporter.reportLogWithScreenshot("Refresh your Ignite TV Box(es)");
          getRogersSolarisTVDashboardPage().clkRefreshYourIgniteTVBoxContinue();
          reporter.reportLogWithScreenshot("Success message verified");
-         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifysuccessRefreshYourIgniteTVBox() , "Refresh Your Ignite TV Box successfull","Refresh Your Ignite TV Box failed");
+         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifysuccessRefreshYourIgniteTVBox(), "Refresh Your Ignite TV Box successfully", "Refresh Your Ignite TV Box failed");
          getRogersSolarisTVDashboardPage().clkOkContinue();
          getRogersSolarisTVDashboardPage().clkResetPurchasePIN();
          reporter.reportLogWithScreenshot("Reset Purchase PIN");
-         getRogersSolarisTVDashboardPage().clkResetPurchasePINContinue() ;
+         getRogersSolarisTVDashboardPage().clkResetPurchasePINContinue();
          reporter.reportLogWithScreenshot("Success message verified");
-         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifysuccessResetPurchasePIN() , "Reset Purchase PIN successfull","Reset Purchase PIN  reset failed");
+         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifysuccessResetPurchasePIN(), "Reset Purchase PIN successfully", "Reset Purchase PIN reset failed");
          getRogersSolarisTVDashboardPage().clkOkContinue();
-    	}
+     }
 
     @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
