@@ -50,23 +50,10 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundle() {
-        // changes in contentful page - no longer displayed.
-        /* reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkServiceability(); */
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
 
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-
-       /* reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Clicked Home Phone");
-        getRogersIgniteTVBuyPage().selectFlex20Package(); */
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");

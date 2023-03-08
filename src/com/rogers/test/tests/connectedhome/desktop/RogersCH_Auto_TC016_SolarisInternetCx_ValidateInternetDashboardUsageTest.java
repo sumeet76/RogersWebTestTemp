@@ -37,9 +37,9 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+        if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
             String strTestingTab = getDriver().getWindowHandle();
@@ -55,10 +55,9 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
             reporter.reportLogWithScreenshot("Continue to Account Overview");
         }
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_SolarisInternetAccountWithUsage.accountDetails.getBan());
-        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkInternetPopup();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyInternet(), "Verified the Internet page", "Internet page verification failed");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link present on the internet dash page", "Usage and Alerts link is not present on the internet page");
@@ -68,11 +67,11 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
         reporter.reportLogWithScreenshot("Daily Breakdown details");
         reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
         getRogersInternetUsagePage().clkMonthlyUsage();
-        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(), "Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
         reporter.reportLogWithScreenshot("Monthly Breakdown details");
-        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(), "Verified the monthly usage", "Monthly usage deatils are not present");
         getRogersInternetUsagePage().clkUsageAlerts();
-        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(), "Verified the Usage Alerts", "Usage Alerts are not present");
         reporter.reportLogWithScreenshot("Usage and Alerts details");
     }
 

@@ -36,10 +36,6 @@ public class RogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_Clic
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_ClickOnLearnMoreOnISSbannerSAIOfferPageAddressShouldbeSticky() {
-        reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
-        // getRogersHomePage().clkExistingCustomerInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
@@ -54,11 +50,11 @@ public class RogersCH_Auto_TC053_ISS_NAC_ValidateServiceabilitycheckRemoved_Clic
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Launched the offers page to select package");
-        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+       // getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
+       // reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
-        
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
         //getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;

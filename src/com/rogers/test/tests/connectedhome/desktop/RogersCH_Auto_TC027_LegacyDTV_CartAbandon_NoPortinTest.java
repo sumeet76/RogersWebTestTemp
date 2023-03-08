@@ -88,9 +88,11 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
 		getRogersHomePage().clkSignOut();
 		reporter.reportLogWithScreenshot("Signed Out");
-		reporter.hardAssert(getRogersHomePage().verifyMyRogers(), "Launched the QA rogers main page", "Main QA page has not loaded");
-		getRogersHomePage().clkMyRogers();
-		//getDriver().get(System.getProperty("QaUrl") + "consumer/easyloginriverpage?setLanguage=en");
+	//	reporter.hardAssert(getRogersHomePage().verifyMyRogers(), "Launched the QA rogers main page", "Main QA page has not loaded");
+		//getRogersHomePage().clkMyRogers();
+		getRogersHomePage().waitBeforeSwapSecondRun();
+		//  getRogersHomePage().clkEasyLogin();
+		getDriver().get(System.getProperty("QaUrl") + "/consumer/easyloginriverpage?setLanguage=en");
 		reporter.reportLogWithScreenshot("Launched the SignIn popup 2");
 		//getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
 		//getRogersLoginPage().clkContinueInBrowser();

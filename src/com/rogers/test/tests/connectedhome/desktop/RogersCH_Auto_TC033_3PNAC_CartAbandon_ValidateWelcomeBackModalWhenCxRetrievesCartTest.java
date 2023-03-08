@@ -50,13 +50,12 @@ public class RogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenC
 
 	@Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void rogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenCxRetrievesCart() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-    	getRogersHomePage().clkServiceability();
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
@@ -64,9 +63,16 @@ public class RogersCH_Auto_TC033_3PNAC_CartAbandon_ValidateWelcomeBackModalWhenC
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Checked the Home Phone");
-        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Added to cart");
+        /*getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
+        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();*/
+
+
+
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();

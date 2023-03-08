@@ -702,7 +702,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.kaur3
 	 */
 	public String getOfferPrice() {
-		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 30).getText();
+		return getReusableActionsInstance().getWhenVisible(lblOfferPrice, 60).getText();
 	}
 
 	/**

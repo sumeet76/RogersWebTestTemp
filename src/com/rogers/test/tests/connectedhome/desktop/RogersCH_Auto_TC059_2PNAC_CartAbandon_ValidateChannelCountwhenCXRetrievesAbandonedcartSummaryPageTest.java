@@ -51,20 +51,18 @@ public class RogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRet
 	@Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void rogersCH_Auto_TC059_2PNAC_CartAbandon_ValidateChannelCountwhenCXRetrievesAbandonedcartSummaryPage() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        getRogersIgniteTVBuyPage().scrollToSolarisPremier();
-        reporter.reportLogWithScreenshot("Scrolled to Premier package");
+       // getRogersIgniteTVBuyPage().scrollToSolarisPremier();
+       // reporter.reportLogWithScreenshot("Scrolled to Premier package");
         getRogersIgniteTVBuyPage().selectPremierMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         String totalChannels  = getRogersIgniteTVBuyPage().getTotalChannelCount();

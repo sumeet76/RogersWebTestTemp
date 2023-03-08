@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  *
  *1. Launch the Rogers.com url.
  *2. Log into rogers.com url with valid credentials.
- *3. Click on a Internet badge
+ *3. Click on Internet badge
  *4. Click on change package button
  *5. Choose a tv package whose price is lower than the current package and click on Select
  *6. Verify the Contact Us Popup
@@ -38,7 +38,7 @@ public class RogersCH_Auto_TC083_SolarisInternetCx_InternetPackageDowngrade_FRTe
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {

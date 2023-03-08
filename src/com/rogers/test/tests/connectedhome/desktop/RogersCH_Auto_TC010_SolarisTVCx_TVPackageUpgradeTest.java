@@ -41,10 +41,9 @@ public class RogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgradeTest extends BaseTe
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();

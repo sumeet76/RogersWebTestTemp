@@ -31,23 +31,19 @@ public class RogersCH_Auto_TC073_SAI_NAC_2L7ContractType_BulkBuildingGetsCTAduri
 
     @Test(groups = {"RegressionCH","RogersInternetCH"})
     public void rogersCH_Auto_TC073_SAI_NAC_2L7ContractType_BulkBuildingGetsCTAduringServiceability_forNewIgniteBulkInternetOffer() {
-        reporter.reportLogWithScreenshot("clicked on Easy Internet");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Internet");
-        // getRogersHomePage().clkExistingCustomerInternet();
         getDriver().get(System.getProperty("QaUrl") + "/internet");
-         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-         reporter.reportLogWithScreenshot("Launched the Internet packages page");
-         getRogersHomePage().clkInternetAvailability();
-         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-         String  strAddressLine1=TestDataHandler.tc67_2L7ContractType3PBulkTenant.getAccountDetails().getAddress().get("line1");
-         String  strAddressLine2=TestDataHandler.tc67_2L7ContractType3PBulkTenant.getAccountDetails().getAddress().get("line2");
-         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-         getRogersHomePage().clkIgniteAddressLookupSubmit();
-         reporter.hardAssert(getRogersHomePage().verifyIgniteAddressFoundModal(),"Serviceability success model is displayed","Serviceability success model is not displayed");
-         reporter.reportLogWithScreenshot("Serviceability success model");
-	 }
+        reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersHomePage().clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc67_2L7ContractType3PBulkTenant.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc67_2L7ContractType3PBulkTenant.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.hardAssert(getRogersHomePage().verifyIgniteAddressFoundModal(), "Serviceability success model is displayed", "Serviceability success model is not displayed");
+        reporter.reportLogWithScreenshot("Serviceability success model");
+    }
 
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

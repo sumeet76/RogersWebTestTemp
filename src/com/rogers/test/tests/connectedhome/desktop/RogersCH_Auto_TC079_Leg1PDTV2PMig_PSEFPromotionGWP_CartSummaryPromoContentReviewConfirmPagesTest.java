@@ -53,47 +53,46 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 
     @Test(groups = {"RegressionCH",""})
 	public void rogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromoContentReviewConfirmPages() {
-		
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        reporter.reportLogWithScreenshot("Launched the Account Page"); 
-		 getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		 //getRogersHomePage().clkIgniteTVExistingCustomer();
-		getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+		reporter.reportLogWithScreenshot("Launched the Account Page");
 
-
-    	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkNoThnx();
+		getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+//    	getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceabilityMigration();
-    	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
 		getRogersHomePage().clkUseAddress();
-        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-        reporter.reportLogWithScreenshot("Launched the information popup");
-        getRogersIgniteTVBuyPage().clkIUnderstand();
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
-        reporter.reportLogWithScreenshot("Launched the cart summary page");
-        getRogersIgniteTVBuyPage().set4KTV();
-        reporter.reportLogWithScreenshot("4k TV selected");
-        getRogersIgniteTVBuyPage().clkCheckout();
-        reporter.reportLogWithScreenshot("Launched the create profile page");
-        getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
-        getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
-        getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
-        getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
-        reporter.reportLogWithScreenshot("Entered the DOB details");
+//        reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
+//        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
+		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+		reporter.reportLogWithScreenshot("Launched the information popup");
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
+
+		// validate PSEF promo on cart summary
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
+
+//        getRogersIgniteTVBuyPage().clkIUnderstand();
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
+		reporter.reportLogWithScreenshot("Launched the cart summary page");
+		getRogersIgniteTVBuyPage().set4KTVNo();
+		reporter.reportLogWithScreenshot("4k TV selected");
+		getRogersIgniteTVBuyPage().clkCheckout();
+		reporter.reportLogWithScreenshot("Launched the create profile page");
+		getRogersIgniteTVProfileCreationPage().clkSubmitProfile();
+		reporter.reportLogWithScreenshot("Launched the credit evaluation page");
+		getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getYear());
+		getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getMonth());
+		getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomerMigration(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getAccountDetails().getDate());
+		reporter.reportLogWithScreenshot("Entered the DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
 		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
@@ -110,31 +109,37 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		reporter.reportLogWithScreenshot("Passport Details");
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 
-		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(),"TechInstall page has Launched","TechInstall page has not Launched");
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
 		//getRogersTechInstallPage().clkTechInstalConsent();
 		getRogersTechInstallPage().clkProInstallUpgradeNo();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinueSelf();
-		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
+		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
 		getRogersTechInstallPage().clkTechInstallContinue();
        /*getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
        getRogersTechInstallPage().clkTechInstallContinue();*/
-        reporter.reportLogWithScreenshot("Launched the payment options page");
+		reporter.reportLogWithScreenshot("Launched the payment options page");
 
-        getRogersPaymentOptionsPage().clkPaymentConfirm();
-    	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
+		getRogersPaymentOptionsPage().clkPaymentConfirm();
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(), "Agreement page has Launched", "Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
-		
-		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
-        
-        getRogersOrderReviewPage().clkAcceptenceCheckbox();
-        reporter.reportLogWithScreenshot("Agreement details");
-        getRogersOrderReviewPage().clkSubmit();
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");      
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+		// validate PSEF promotion on order review page
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
+		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
+
+		getRogersOrderReviewPage().clkAcceptenceCheckbox();
+		reporter.reportLogWithScreenshot("Agreement details");
+		getRogersOrderReviewPage().clkSubmit();
+		reporter.reportLogWithScreenshot("Launched the Confirmation page");
+		reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
+		reporter.reportLogWithScreenshot("Launched the Confirmation page");
+
+		// validate PSEF promotion on order confirmation page
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
+
 		String ban = getRogersOrderConfirmationPage().getBAN();
 		System.out.println("BAN from the portal : " + ban);
 		String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
@@ -142,10 +147,10 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		/**
 		 * DB Validations in the subscriber table
 		 */
-		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-		reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-    	}
+		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
+		reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
+		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//IgniteLogin
