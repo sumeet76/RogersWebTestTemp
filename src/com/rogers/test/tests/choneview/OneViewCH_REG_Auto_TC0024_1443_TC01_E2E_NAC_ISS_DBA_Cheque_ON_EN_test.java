@@ -17,6 +17,10 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_ISS_DBA_Cheque_ON_EN_te
 	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_DeliveryByAppointment_PaymentMethod_CreditCard_test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -82,8 +86,8 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_ISS_DBA_Cheque_ON_EN_te
 		reporter.reportLogWithScreenshot("payment details entered");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 
 	}
 

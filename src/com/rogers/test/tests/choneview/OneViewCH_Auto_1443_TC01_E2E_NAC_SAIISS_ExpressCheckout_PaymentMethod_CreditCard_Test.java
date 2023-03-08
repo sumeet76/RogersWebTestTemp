@@ -79,7 +79,6 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 //		reporter.reportLogWithScreenshot("sumbit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-
 	}
 
 	@BeforeMethod (alwaysRun=true)
@@ -92,7 +91,5 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 	public void afterTest() {
 		closeSession();
 	}
-
 }
-
 

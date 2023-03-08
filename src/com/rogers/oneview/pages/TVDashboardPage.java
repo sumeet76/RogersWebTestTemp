@@ -632,7 +632,7 @@ public class TVDashboardPage  extends BasePageClass {
 		//getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
-		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "') or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[@class='bundle-tile__main']//following-sibling::div/rch-bundle-price/child::div/child::div[4]/child::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
@@ -1255,7 +1255,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div/child::button");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[@class='bundle-tile__main']//following-sibling::div/rch-bundle-price/child::div/child::div[4]/child::button/parent::div/following-sibling::div/child::button");
 		WebElement btn = getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
