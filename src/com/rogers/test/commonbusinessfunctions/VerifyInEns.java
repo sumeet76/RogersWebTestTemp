@@ -36,6 +36,8 @@ public class VerifyInEns{
 		BaseTestClass.getEnsHomePage().clkBtnNext();
 		BaseTestClass.getEnsHomePage().setPassword(System.getenv("ENS_PASSWORD"));
 		BaseTestClass.getEnsHomePage().clkBtnSignIn();
+		BaseTestClass.getEnsHomePage().clkSafeToProceed();
+
 	}
 
 	/**

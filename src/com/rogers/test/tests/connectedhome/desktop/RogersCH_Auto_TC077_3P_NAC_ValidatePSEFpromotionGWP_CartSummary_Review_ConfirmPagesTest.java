@@ -82,6 +82,8 @@ public class RogersCH_Auto_TC077_3P_NAC_ValidatePSEFpromotionGWP_CartSummary_Rev
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is available","4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion should not be there","No PSEF promotion");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         getRogersIgniteTVBuyPage().set4KTV();
         reporter.reportLogWithScreenshot("4k TV selected");
         getRogersIgniteTVBuyPage().clkCheckout();
@@ -150,7 +152,10 @@ public class RogersCH_Auto_TC077_3P_NAC_ValidatePSEFpromotionGWP_CartSummary_Rev
        
         reporter.hardAssert( getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
-        
+
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion should not be there","No PSEF promotion");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
+
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
         getRogersOrderReviewPage().clkAcceptenceCheckbox();
         reporter.reportLogWithScreenshot("Agreement details");

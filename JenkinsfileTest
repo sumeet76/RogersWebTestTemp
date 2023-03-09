@@ -57,10 +57,10 @@ pipeline {
     }
 
     triggers {
-        parameterizedCron(env.BRANCH_NAME == 'master' ?'''
+        parameterizedCron(env.BRANCH_NAME == 'RogersCHRegression' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-
+                    50 15 * * * %Browser=saucechrome;Language=en;IndividualTests=RogersCH_TC_001_IginteTV_ValidateTVDashboardTest;ThreadCount=2;TestProfile=ConnectedHome
                 ''':'')
     }
 
