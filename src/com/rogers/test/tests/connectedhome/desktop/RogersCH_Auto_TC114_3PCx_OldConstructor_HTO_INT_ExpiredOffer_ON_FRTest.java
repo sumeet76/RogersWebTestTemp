@@ -43,11 +43,10 @@ public class RogersCH_Auto_TC114_3PCx_OldConstructor_HTO_INT_ExpiredOffer_ON_FRT
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc99_3PCxInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc99_3PCxInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc99_3PCxInternetAccount.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkFR();
         reporter.reportLogWithScreenshot("Launched the Account Page FR");

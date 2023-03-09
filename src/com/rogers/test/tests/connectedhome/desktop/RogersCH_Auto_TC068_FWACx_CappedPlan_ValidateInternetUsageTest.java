@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc68_FWACappedPlan.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc68_FWACappedPlan.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
 
         if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
@@ -57,7 +57,6 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
 
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc68_FWACappedPlan.accountDetails.getBan());
-        //reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");

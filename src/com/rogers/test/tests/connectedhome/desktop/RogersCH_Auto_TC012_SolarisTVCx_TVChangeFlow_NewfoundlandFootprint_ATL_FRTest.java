@@ -40,12 +40,9 @@ public class RogersCH_Auto_TC012_SolarisTVCx_TVChangeFlow_NewfoundlandFootprint_
 	        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getUsername());
 		 	getRogersLoginPage().clkContinueInBrowser();
 	        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.getPassword());
-	        reporter.reportLogWithScreenshot("Enter the account credentails");
+	        reporter.reportLogWithScreenshot("Enter the account credentials");
 	        getRogersLoginPage().clkSignInIFrame();
-//	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-//	        reporter.reportLogWithScreenshot("Skip popup");
-//	        getRogersLoginPage().clkSkipIFrame();
-	    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+	    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc12_SolarisTVAccountForUpgradeNL.accountDetails.getBan());
 	    	reporter.reportLogWithScreenshot("Launched the Account Page");
 	        getRogersSolarisTVDashboardPage().clkTVBadge();

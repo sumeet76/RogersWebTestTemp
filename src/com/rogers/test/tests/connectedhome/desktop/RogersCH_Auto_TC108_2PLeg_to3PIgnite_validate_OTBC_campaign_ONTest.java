@@ -58,7 +58,7 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
         reporter.reportLogWithScreenshot("Launched the TV Bundles Page");
@@ -68,19 +68,18 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
         reporter.reportLogWithScreenshot("Selected Address on file");
         getRogersHomePage().clkUseAddress();
         reporter.reportLogWithScreenshot("Use the address on file");
-        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Home phone selected");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().isOTBCPresentmentTwoDecimal(TestDataHandler.tc108_2PLeg_3PIgnite_otbc.getAccountDetails().getUpgradeBundle()), "OTBC presentment with two decimal point(.00)", "OTBC presentment NOT with two decimal point(.00)");
-        getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
+        getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex10();
         reporter.reportLogWithScreenshot("Clicked on View More Details");
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCCampaign(), "OTBC validated on cart details page", "OTBC NOT validated on cart details page");
         getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
         reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
 
-        getRogersIgniteTVBuyPage().selectFlex20Package();
+        getRogersIgniteTVBuyPage().selectFlex10Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Clicked yes on the information popup");

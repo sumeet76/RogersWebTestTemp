@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * Test steps:
  *
  *1. Launch deeplink 'Rogers.com/home/hto-eop'
- *2. Login with valid credentails
+ *2. Login with valid credentails -  sigle profile with multiple accounts
  *3. Select the account linked with profile
  *4. Click on Tv Badge to land on TV dashboard page
  *5. Click on View Offer to view the personalized offer and land on Promo Page
@@ -45,12 +45,10 @@ public class RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextV
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
-		reporter.reportLogWithScreenshot("Entered the account credentails");
+		reporter.reportLogWithScreenshot("Entered the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Sign-in");
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-
-
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getBan());

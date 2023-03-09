@@ -27,14 +27,14 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATLTest extends BaseTestClass {
 
 	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH"})
-        public void rogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATL() {
+    public void rogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc72_RogersSHM_NB.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc72_RogersSHM_NB.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+        if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
             String strTestingTab = getDriver().getWindowHandle();
@@ -49,13 +49,13 @@ public class RogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATLTest extends 
             getRegisterOrAccountRecoveryPage().clkBtnContinue();
             reporter.reportLogWithScreenshot("Continue to Account Overview");
         }
-        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Logged in successfully", "Login failed");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersSolarisTVDashboardPage().clkSHMBadge();
         reporter.reportLogWithScreenshot("SHM dashboard page");
         //  reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),"Launched SHM dashboard successfully", "SHM dashboard failed");
         reporter.softAssert(getRogersSHMDashboardPage().verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
                 "SHM Learn About Smart Home Monitoring displayed", "SHM Learn About SmartHome Monitoring not displayed correctly please investigate");
-        reporter.softAssert( getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),
+        reporter.softAssert(getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),
                 "SHM Rogers SHM Dashboard page displayed", "SHM Rogers SHM Dashboard page not displayed correctly please investigate");
         reporter.softAssert(getRogersSHMDashboardPage().verifyNewToSmartHomeLinkdisplayed(),
                 "New To SmartHome Link displayed", "New To SmartHome Link not displayed correctly please investigate");

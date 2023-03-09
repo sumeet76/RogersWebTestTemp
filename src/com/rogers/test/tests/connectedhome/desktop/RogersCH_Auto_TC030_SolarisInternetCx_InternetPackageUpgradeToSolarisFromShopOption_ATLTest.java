@@ -60,7 +60,7 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
-		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc30_internetAccountUpgrade.accountDetails.getBan());
 		/* reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getDriver().get(System.getProperty("QaUrl")+"/bundles");

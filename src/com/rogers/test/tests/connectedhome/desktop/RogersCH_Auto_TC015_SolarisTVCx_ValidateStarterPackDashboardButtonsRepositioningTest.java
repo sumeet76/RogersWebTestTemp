@@ -35,16 +35,15 @@ public class RogersCH_Auto_TC015_SolarisTVCx_ValidateStarterPackDashboardButtons
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc15_solarisTVAccountStarterPackage.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-    	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-    	//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc15_solarisTVAccountStarterPackage.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc15_solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()),"FlexChannel are Zero","FlexChannel are not Zero");
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyFlexChannelcount(TestDataHandler.tc15_solarisTVAccountStarterPackage.accountDetails.getFlexChannelsCount()), "FlexChannel are Zero", "FlexChannel are not Zero");
         reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
-        reporter.hardAssert(!getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(),"Exchange FlexChannel Link is not available","Exchange FlexChannel Link is available");
+        reporter.hardAssert(!getRogersSolarisTVDashboardPage().verifyExchangeFlexChannelLink(), "Exchange FlexChannel Link is not available", "Exchange FlexChannel Link is available");
     }       
 
 

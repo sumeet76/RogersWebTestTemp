@@ -43,7 +43,7 @@ public class RogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ONT
 
     @Test
     public void rogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON() {
-        getDriver().get(System.getProperty("QaUrl") + "internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl") + "/internet/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();

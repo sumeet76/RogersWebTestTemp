@@ -40,7 +40,7 @@ public class RogersCH_Auto_TC088_2P_HTO_2P_StarterPack_GPON_DualTopology_VerifyE
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc88_GPON_DualTopology.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc88_GPON_DualTopology.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 

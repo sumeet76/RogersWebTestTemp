@@ -123,9 +123,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement btnClose8gbSignUpPopup;
 
-	@FindBy(xpath = "//span[@id='ariaHowToGetIt_Ignite Internet 500u']/ancestor::div[@class='internet-bundle-tile']//div[@class='ds-checkbox__box my-12 rds-icon-check']")
-	WebElement chkSmartStream;
-
 	@FindBy(xpath = "//p[text()='Have a promo code?']")
 	WebElement btnPromoCode;
 
@@ -162,18 +159,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='internet-sai-ss-package-details']")
 	WebElement txtPackageDetails;
-
-	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
-	WebElement chkbox150IgniteStreaming;
-
-	@FindBy(xpath = "// a[@aria-label='Ignite 500 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
-	WebElement chkbox500IgniteStreaming;
-
-	@FindBy(xpath = "// a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
-	WebElement chkbox1GbpsSmartStream;
-
-	@FindBy(xpath = "// a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]")
-	WebElement chkbox2500IgniteStreaming;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']//div[@class='ds-price']")
 	WebElement div150pkgCost;
@@ -404,29 +389,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectSmartStreamPkgMonthToMonthTypeOfContact() {
-		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(drpdwnSSpkgTypeOfContract, 60);
+		getReusableActionsInstance().getWhenReady(drpdwnSSpkgTypeOfContract,10).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite 150 Ultd + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
-
-	/**
-	 * To select the Ignite SmartSteam 1Gbps Package
-	 * @author Manpreet.Kaur3
-	 */
-	public void selectIgniteSmartStream1GbpsCheckBox() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox1GbpsSmartStream, 10);
-		if(!(chkbox1GbpsSmartStream.isSelected())) {
-			getReusableActionsInstance().clickIfAvailable(chkbox1GbpsSmartStream);
-		}
-	}
-
-	public void selectIgniteSmartStream150MbpsCheckBox() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 15);
-		if(!(chkbox150IgniteStreaming.isSelected())) {
-			getReusableActionsInstance().clickIfAvailable(chkbox150IgniteStreaming);
-		}
-	}
 
 	public void clkBackToPackagesPage()
 	{
@@ -449,7 +417,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	/**
-	 * To select the WeB Email- Internet Usage activity of household
+	 * To select the Web Email- Internet Usage activity of household
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkWebEmail() {
@@ -578,10 +546,6 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnSmartStream2GbpsPackage, 90).click();
 	}
 
-	public void clkSmartStreamCheckBox() {
-		getReusableActionsInstance().getWhenReady(chkSmartStream, 90).click();
-	}
-
 	public void clkSmartStreamAvailability() {
 		getReusableActionsInstance().staticWait(8000);
 		getReusableActionsInstance().waitForElementVisibility(btnSmartStream, 90);
@@ -650,7 +614,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		/* if(!getReusableActionsInstance().isElementVisible(btnInternetBuyContinue, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		} */
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		if(getReusableActionsInstance().isElementVisible(popUpLoading, 20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popUpLoading, 90);
 		}
@@ -734,31 +698,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(imgDisneyBanner, 20);
 	}
 
-	/**
-	 * To verify the Ignite SmartSteam 150 Package checkbox is selected
-	 * @author Manpreet.Kaur3
-	 */
-	public boolean verify150IgniteStreamingIsChecked() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox150IgniteStreaming, 5);
-		return chkbox150IgniteStreaming.isSelected();
-	}
-
-	/**
-	 * To verify the Ignite SmartSteam 500 Package checkbox is selected
-	 * @author nandan.master
-	 */
-	public boolean verify500IgniteStreamingIsChecked() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox500IgniteStreaming, 15);
-		return chkbox500IgniteStreaming.isSelected();
-	}
-
-	/**
-	 * To verify the Ignite SmartSteam 2.5gbps Package checkbox is selected
-	 * @author nandan.master
-	 */
-	public boolean verify2500mbpsIgniteStreamingIsChecked() {
-		getReusableActionsInstance().waitForElementVisibility(chkbox2500IgniteStreaming, 40);
-		return chkbox2500IgniteStreaming.isSelected();
+	public void verifyISSBoxChecked(String packageName) {
+		WebElement divISSCheckBox = getDriver().findElement(By.xpath("//a[@aria-label='" + packageName + " + Streaming Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(@aria-label,'added')]/parent::div/preceding-sibling::div[contains(@class,'checkbox')]"));
+		getReusableActionsInstance().waitForElementVisibility(divISSCheckBox, 10);
+		if (!divISSCheckBox.isSelected()) {
+			getReusableActionsInstance().getWhenReady(divISSCheckBox).click();
+		}
 	}
 
 	/**
