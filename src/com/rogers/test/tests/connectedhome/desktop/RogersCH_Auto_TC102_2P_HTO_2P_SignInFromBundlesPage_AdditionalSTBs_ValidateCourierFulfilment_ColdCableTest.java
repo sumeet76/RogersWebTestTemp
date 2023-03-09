@@ -54,26 +54,18 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
 
     @Test
     public void rogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_ValidateCourierFulfilment_ColdCable() {
-        getDriver().get(System.getProperty("QaUrl"));
-        reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
 
-        /*getDriver().get(System.getProperty("QaUrl")+"/bundles");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
-        reporter.reportLogWithScreenshot("Address confirmation popup has launched");*/
-
+        reporter.reportLogWithScreenshot("Address confirmation popup has launched");
         reporter.hardAssert(getRogersHomePage().verifyServiceabilityPopup(), "Serviceability Modal verified", "Serviceability modal not verified");
         getRogersHomePage().clkSignIntoMyRogers();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 

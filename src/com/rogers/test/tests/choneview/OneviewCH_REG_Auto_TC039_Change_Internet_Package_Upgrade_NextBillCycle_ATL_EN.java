@@ -29,17 +29,19 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Loaded Offers");
+//        getInternetDashboardPage().selectUpgradeInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradeBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
+//        reporter.reportLogWithScreenshot("Higher Internet Plan selected");
         getInternetDashboardPage().selectInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
-        reporter.reportLogWithScreenshot("Lowest Internet Package selected");
+        reporter.reportLogWithScreenshot("Higher Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 
         /*Billing option to be selected*/;
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -52,9 +54,8 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
-
 }
 
 

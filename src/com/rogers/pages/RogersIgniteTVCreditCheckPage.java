@@ -165,16 +165,19 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void setIgniteAddressLookupSecond(String strAddress) {
-		getReusableActionsInstance().waitForElementTobeClickable(TxtAddressContainer, 60);
-		getReusableActionsInstance().getWhenReady(TxtAddressContainer, 3).click();
-		getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 3).clear();
-		for (int i = 0; i < strAddress.length(); i++){
-			char c = strAddress.charAt(i);
-			String charAddress = new StringBuilder().append(c).toString();
-			TxtReskRuleaddress.sendKeys(charAddress);
+		if(getReusableActionsInstance().isElementVisible(TxtAddressContainer,60)) {
+			getReusableActionsInstance().waitForElementTobeClickable(TxtAddressContainer, 60);
+			getReusableActionsInstance().getWhenReady(TxtAddressContainer, 3).click();
+			getReusableActionsInstance().getWhenReady(TxtReskRuleaddress, 3).clear();
+			for (int i = 0; i < strAddress.length(); i++) {
+				char c = strAddress.charAt(i);
+				String charAddress = new StringBuilder().append(c).toString();
+				TxtReskRuleaddress.sendKeys(charAddress);
+			}
+			getReusableActionsInstance().staticWait(3000);
+			getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.ENTER);
+			clkIgniteAddressLookupSecondSubmit();
 		}
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().getWhenVisible(TxtReskRuleaddress).sendKeys(Keys.ENTER);
 	}
 
 	/**
@@ -269,7 +272,7 @@ public class RogersIgniteTVCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectDOBDayExistingCustomer(String strDOBDay) {
-		getReusableActionsInstance().selectWhenReady(ddlCreditCheckDay, strDOBDay);
+		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlCreditCheckDay, strDOBDay);
 	}
 
 	/**

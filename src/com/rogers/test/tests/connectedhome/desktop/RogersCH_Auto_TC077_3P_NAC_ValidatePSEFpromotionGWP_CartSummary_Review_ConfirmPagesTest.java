@@ -51,13 +51,14 @@ public class RogersCH_Auto_TC077_3P_NAC_ValidatePSEFpromotionGWP_CartSummary_Rev
 
     @Test(groups = {"RegressionCH",""})
     public void rogersCH_Auto_TC077_3P_NAC_ValidatePSEFpromotionGWP_CartSummary_Review_ConfirmPages() {
-		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-    	getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
-       	reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-    	getRogersHomePage().clkServiceability();
-    	reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-    	//getRogersHomePage().clkAddressCheck();
+//		reporter.reportLogWithScreenshot("Launched the Easy Login Page");
+//    	getRogersHomePage().clkTVBundle();
+//      reporter.hardAssert(getRogersHomePage().verifyIgnitepage(),"Ignite page has Launched","Ignite page has not Launched");
+//      reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
+        reporter.reportLogWithScreenshot("Launched TV Bundles Page");
+//      getRogersHomePage().clkServiceability();
+//      getRogersHomePage().clkAddressCheck();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");

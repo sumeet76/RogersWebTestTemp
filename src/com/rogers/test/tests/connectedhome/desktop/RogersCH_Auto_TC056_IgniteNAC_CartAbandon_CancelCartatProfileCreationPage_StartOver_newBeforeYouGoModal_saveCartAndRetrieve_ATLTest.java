@@ -35,15 +35,13 @@ public class RogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreati
 
     @Test(groups = {"RegressionCH", "RogersCartAbandon"})
     public void rogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_saveCartAndRetrieve_ATL() {
-        reporter.reportLogWithScreenshot("Launched the Easy Login Page");
-        getRogersHomePage().clkTVBundle();
-        reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
         getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
 
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + ", " + strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
@@ -51,8 +49,8 @@ public class RogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreati
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(), "Offers Page has launched", "Offers Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
 
-        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
-        reporter.reportLogWithScreenshot("Selected month-to-month term contract");
+       // getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+       // reporter.reportLogWithScreenshot("Selected month-to-month term contract");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");

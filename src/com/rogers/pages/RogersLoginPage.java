@@ -27,7 +27,7 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath="//input[@formcontrolname='input_password' or @id = 'password']")
 	WebElement txtPasswordMobile;
 
-	@FindBy(xpath = "//input[@type='password']")
+	@FindBy(xpath = "//input[@formcontrolname='input_password' or @id = 'password']")
 	WebElement txtPassword;
 
 	@FindBy(xpath = "//button[@title='Sign in' or @title='Select to sign in to MyRogers']")
@@ -121,6 +121,7 @@ public class RogersLoginPage extends BasePageClass {
 	public Boolean isOverlayContainerDisplayed() {
 		return getReusableActionsInstance().isElementVisible(overlayContainer);
 	}
+
 	/**
 	 * To Click Continue in browser button on login page
 	 * @author manpreet.kaur3
