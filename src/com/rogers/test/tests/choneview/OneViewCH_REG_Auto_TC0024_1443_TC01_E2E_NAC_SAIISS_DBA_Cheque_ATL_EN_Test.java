@@ -17,6 +17,10 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_SAIISS_DBA_Cheque_ATL_E
     public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddressATL());
 		//reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -32,7 +36,7 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_SAIISS_DBA_Cheque_ATL_E
 		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-		getRogersIgniteBundlesPage().clkContinue();
+//		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("Cart Summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -75,7 +79,7 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_SAIISS_DBA_Cheque_ATL_E
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
 
@@ -89,7 +93,6 @@ public class OneViewCH_REG_Auto_TC0024_1443_TC01_E2E_NAC_SAIISS_DBA_Cheque_ATL_E
 	public void afterTest() {
 		closeSession();
 	}
-
 }
 
 
