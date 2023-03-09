@@ -35,6 +35,9 @@ public class OVR_Auto_TC12_Legacy_1pINT_to_NAC_3P_CheckAnotherAddress_IntID_Deal
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
 
         reporter.reportLogWithScreenshot("Address Availability popup");
         //Check Availability at other address

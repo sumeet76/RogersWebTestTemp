@@ -56,7 +56,7 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
@@ -73,11 +73,11 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("Customer Profile Page");
         getBundleBuilderPage().scrollAndClickContinue();
 
-//        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
 //        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
 //        reporter.reportLogWithScreenshot("Credit Evaluation Page");
 //
-//        getCreditCheckPage().setDriversLicense("Ontario",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ON"));
+//        getCreditCheckPage().setDriversLicense("British Columbia",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("BC"));
 //        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
 //        getCreditCheckPage().clkAuthorize();
 //        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
@@ -92,12 +92,12 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
 //        reporter.reportLogWithScreenshot("Time Slot selected");
 //        getBundleBuilderPage().setMobileNumber();
 //        reporter.reportLogWithScreenshot("tech install details");
-        //getBundleBuilderPage().clkContinueInstallation();
-
-        //reporter.reportLogWithScreenshot("Billing and Payment page");
-        //reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-//        reporter.hardAssert(getBundleBuilderPage().verifyStoredPaymentCardPresent(), "Stored Payment Card present", "Stored Payment card not present");
-        //reporter.reportLogWithScreenshot("Continue billing with stored payment method");
+//        getBundleBuilderPage().clkContinueInstallation();
+//
+//        reporter.reportLogWithScreenshot("Billing and Payment page");
+//        reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
+//        //reporter.hardAssert(getBundleBuilderPage().verifyStoredPaymentCardPresent(), "Stored Payment Card present", "Stored Payment card not present");
+//        //reporter.reportLogWithScreenshot("Continue billing with stored payment method");
 //        getBundleBuilderPage().clkContinueBillingAndPayment();
 //        reporter.reportLogWithScreenshot("Order Review Page");
 //        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(),"Order review page loaded","Order review page not loaded");
