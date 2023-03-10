@@ -30,9 +30,9 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 	public void rogersCH_Auto_TC036_LegacyCx_ValidateInternetUsage() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_legacyInternetAccount.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_legacyInternetAccount.getPassword());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			reporter.reportLogWithScreenshot("Continue to Account Overview");
 		}
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36_legacyInternetAccount.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkLegacyInternetBadge();

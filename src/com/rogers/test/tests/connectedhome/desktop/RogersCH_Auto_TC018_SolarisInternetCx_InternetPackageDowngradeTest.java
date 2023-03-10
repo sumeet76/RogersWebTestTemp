@@ -31,9 +31,9 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
     public void rogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
@@ -53,7 +53,7 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
         }
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.accountDetails.getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
         }
         reporter.reportLogWithScreenshot("Account Selected");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
