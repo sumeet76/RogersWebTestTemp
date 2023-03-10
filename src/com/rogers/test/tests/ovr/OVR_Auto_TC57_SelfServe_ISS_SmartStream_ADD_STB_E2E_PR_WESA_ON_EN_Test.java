@@ -70,12 +70,12 @@ public class OVR_Auto_TC57_SelfServe_ISS_SmartStream_ADD_STB_E2E_PR_WESA_ON_EN_T
         reporter.reportLogWithScreenshot("Back to Agreement Page");
         getOVRAgreementPage().clkAgreementCheckbox();
         reporter.reportLogWithScreenshot("Agreement checkbox clicked");
-//        getOVRAgreementPage().clkCompleteOrder();
-//        reporter.reportLogWithScreenshot("Order Confirmation Page");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        getOVRAgreementPage().clkCompleteOrder();
+        reporter.reportLogWithScreenshot("Order Confirmation Page");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
 
     }
 }
