@@ -30,7 +30,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "saiCH", "SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC024_SAI_NACFlow() throws InterruptedException {
-        reporter.reportLogWithScreenshot("Testing the xray integration and cron jobs settings for sanity");
+
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
@@ -42,7 +42,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        /*getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
@@ -112,7 +112,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         getRogersOrderReviewPage().clkSubmit();
 
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");*/
+        reporter.reportLogWithScreenshot("Launched the Confirmation page");
     }
 
     @BeforeMethod(alwaysRun = true)
