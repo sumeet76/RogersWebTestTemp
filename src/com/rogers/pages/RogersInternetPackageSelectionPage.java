@@ -141,6 +141,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code has expired')]")
 	WebElement imgExpiredPromoCodeError;
 
+	@FindBy(xpath="//h2[text()='Invalid promo code']")
+	WebElement txtInvalidPromoCode;
+
+	@FindBy(xpath="//h2[text()='Expired promo code']")
+	WebElement txtExpiredPromoCode;
+
 	@FindBy(xpath = "//button[contains(@aria-label,'Take the quiz')]")
 	WebElement btnTakeAquiz;
 
@@ -694,6 +700,25 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 */
 	public boolean verifyExpiredPromoCodeError() {
 		return getReusableActionsInstance().isElementVisible(imgExpiredPromoCodeError,35);
+	}
+
+
+	/**
+	 * Verify the Invalid Promo Code popup
+	 * @return true if the Invalid Promo Code popup displayed  else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyInvalidPromoCodePopup() {
+		return getReusableActionsInstance().isElementVisible(txtInvalidPromoCode,60);
+	}
+
+	/**
+	 * Verify the Expired Promo Code popup
+	 * @return true if the expired Promo Code popup displayed  else false
+	 * @author manpreet.kaur3
+	 */
+	public boolean verifyExpiredPromoCodePopup() {
+		return getReusableActionsInstance().isElementVisible(txtExpiredPromoCode,60);
 	}
 
 	/**
