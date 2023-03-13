@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 /**
  * This class contains a negative test scenario to validate expired promo code (SAI + NAC) on Offers page
- * 
+ * TC046_Negative Scenerio_Expired Promocode_Organic flow via SAI page_Validate error message_ON_Edge_EN
  * @author nandan.master
  * 
  * Test steps:
