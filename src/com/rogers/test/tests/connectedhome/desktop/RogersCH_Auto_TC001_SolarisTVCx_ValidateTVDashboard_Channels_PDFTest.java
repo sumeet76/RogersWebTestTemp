@@ -44,7 +44,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
             reporter.reportLogWithScreenshot("ENS");
             String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
             String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCodeCH(strPhoneNum, strEnsUrl);
+            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
             getDriver().switchTo().window(strTestingTab);
             reporter.reportLogWithScreenshot("Close the Overlay");
             getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
