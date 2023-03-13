@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTest extends BaseTestClass {
     @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH","ReleaseSanity"}, description = "Rogers Ignite TV Dashboard")
-    public void rogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDF() {
+    public void rogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDF() throws IOException {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
@@ -44,7 +44,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
             reporter.reportLogWithScreenshot("ENS");
             String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
             String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
+            String recoveryCode = getEnsVerifications().getTextVerificationCodeCH(strPhoneNum, strEnsUrl);
             getDriver().switchTo().window(strTestingTab);
             reporter.reportLogWithScreenshot("Close the Overlay");
             getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
