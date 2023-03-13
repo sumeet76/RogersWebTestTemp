@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC118_SAI_NAC_ExpiredPromoCode_OrganicFlow_ValidateErrorMessageTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-    public void RogersCH_Auto_TC118_SAI_NAC_ExpiredPromoCode_OrganicFlow_ValidateErrorMessageTest() throws InterruptedException {
+    public void rogersCH_Auto_TC118_SAI_NAC_ExpiredPromoCode_OrganicFlow_ValidateErrorMessage() throws InterruptedException {
         String expiredPromoCode = "PCEXPIRED";
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched Internet Page");

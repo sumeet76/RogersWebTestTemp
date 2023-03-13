@@ -683,16 +683,17 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	/**
 	 * Verify the Promo Code Error message
 	 * @return true if the Promo Code Error message displayed  else false
-	 * @author chinnarao.vattam
 	 */
 	public boolean verifyInvalidPromoCodeError() {
-		getReusableActionsInstance().waitForElementVisibility(imgInvalidPromoCodeError, 60);
-		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,10);
+		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,35);
 	}
 
+	/**
+	 * Verify the Expired Promo Code Error message
+	 * @return true if the Promo Code Error message displayed else false
+	 */
 	public boolean verifyExpiredPromoCodeError() {
-		getReusableActionsInstance().waitForElementVisibility(imgExpiredPromoCodeError, 60);
-		return getReusableActionsInstance().isElementVisible(imgExpiredPromoCodeError,10);
+		return getReusableActionsInstance().isElementVisible(imgExpiredPromoCodeError,35);
 	}
 
 	/**
