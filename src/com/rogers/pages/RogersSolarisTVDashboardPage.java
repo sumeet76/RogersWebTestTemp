@@ -733,8 +733,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Clicks on SHM Badge
 	 * @author Mirza.Kamran
 	 */
-	public void clkSHMBadge() {		
-		getReusableActionsInstance().getWhenReady(btnSHMBadge,60).click();
+	public void clkSHMBadge() {
+		getReusableActionsInstance().executeJavaScriptClick(btnSHMBadge);
 	}
 
 	
