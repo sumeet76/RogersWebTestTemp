@@ -346,7 +346,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='View my channel lineup' or text()='Voir ma liste de chaînes']")
 	WebElement viewMyChannelLineUpLink;
 
-	@FindBy(xpath = "//button[@id='cl-60645']")
+	@FindBy(xpath = "(//span[@role='img']/parent::ds-icon[@name='close-circle'])[1]")
 	WebElement removeChannel;
 
 	@FindBy(xpath = "//button[@id='cl-80173']")
@@ -382,6 +382,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.cta.remove']")
 	WebElement removeButton;
 
+	@FindBy(xpath="(//span[text()='Remove'])[3]")
+	WebElement remTehempk;
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -613,7 +615,7 @@ public class TVDashboardPage  extends BasePageClass {
 		//getReusableActionsInstance().staticWait(5000);
 		//getReusableActionsInstance().waitForElementVisibility(btnSelectChannel, 90);
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/parent::div/following-sibling::div[@class='internet-tile__body']//span[text()='Select'or text()='Sélectionner']/ancestor::button");
-		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[4]/child::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
@@ -625,6 +627,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueChangeTVPackage() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
 	}
 
@@ -1093,6 +1096,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void clickContinueChannelsAndThemePacks() {
+		getReusableActionsInstance().staticWait(30000);
 		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
 	}
 
@@ -1126,7 +1130,7 @@ public class TVDashboardPage  extends BasePageClass {
 	/*To remove the specifed themepack
 	 * @suganya p*/
 	public void removeThemepack(String themepackNameEn, String themepackNameFr) {
-		By removeThemepack = By.xpath("//div[contains(text(),'" + themepackNameEn + "') or contains(text(),'" + themepackNameFr + "')]/parent::div//button/span");
+		By removeThemepack = By.xpath("//h4[contains(text(),'Arabic Elite Package') or contains(text(),'Arabic Elite Package')]/parent::div/following-sibling::div/child::div/child::div");
 		//getReusableActionsInstance().clickWhenReady(removeThemepack,120);
 
 		WebElement btn = getReusableActionsInstance().getWhenReady(removeThemepack, 60);
@@ -1391,6 +1395,14 @@ public class TVDashboardPage  extends BasePageClass {
 			return getReusableActionsInstance().isElementVisible(removeButton, 60);
 	}
 
+
+
+	public void clickRemoveThemePk() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(remTehempk, 30);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 100);
+		getReusableActionsInstance().waitForElementVisibility(remTehempk, 30);
+		getReusableActionsInstance().executeJavaScriptClick(remTehempk);
+	}
 }
 
 

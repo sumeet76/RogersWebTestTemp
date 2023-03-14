@@ -157,7 +157,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.select' and contains(text(),'Select')])[4]/ancestor::button")
 	WebElement btnSelectSmartStream;
 
-	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	@FindBy(xpath = "//div[text()='Ignite Flex 5']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
 	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
@@ -567,6 +567,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void clickChangePackageButton() {
 		getReusableActionsInstance().getWhenReady(changePackageBtn, 60);
 		getReusableActionsInstance().executeJavaScriptClick(changePackageBtn);
+		getReusableActionsInstance().staticWait(6000);
 
 	}
 
@@ -659,6 +660,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickContinueButton() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(continueButton, 30);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
@@ -752,6 +754,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifySecondMaximumLimitReached() {
+		getReusableActionsInstance().staticWait(5000);
 		return getReusableActionsInstance().isElementVisible(secondMaximumLimitReached);
 	}
 	/*

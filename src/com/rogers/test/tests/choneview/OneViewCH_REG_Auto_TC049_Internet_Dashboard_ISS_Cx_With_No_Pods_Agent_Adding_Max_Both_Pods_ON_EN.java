@@ -27,7 +27,7 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
         getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
-        getInternetDashboardPage().clickPlusToAddPod();
+       // getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
         reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();

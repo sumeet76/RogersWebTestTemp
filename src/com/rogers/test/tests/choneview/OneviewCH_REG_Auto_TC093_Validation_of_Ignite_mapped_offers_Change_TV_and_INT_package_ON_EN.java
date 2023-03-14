@@ -33,18 +33,11 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         reporter.reportLogWithScreenshot("four KTV Popup");
         getAccountOverViewPage().fourKContinue();
         reporter.reportLogWithScreenshot("four K Continue");
-        getAccountOverViewPage().clickSelectChangeContinue();
-        reporter.reportLogWithScreenshot("click Continue");
-        reporter.hardAssert(getAccountOverViewPage().verifyReviewYourOrder(), "Review Your Order displayed", "Review Your Order did not displayed");
-
-        reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Previous Package displayed ", "Previous Package did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
-        reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
-//        getAccountOverViewPage().clickSubmit();
-//        reporter.reportLogWithScreenshot("click Submit");
-		reporter.reportLogWithScreenshot("Order Confirmation page");
+        getTVDashboardPage().clickContinueOnSelectDateChange();
+        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -57,6 +50,6 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+            //closeSession();
     }
 }

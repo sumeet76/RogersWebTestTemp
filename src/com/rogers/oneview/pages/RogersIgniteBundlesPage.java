@@ -191,7 +191,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	String collapsible = "(//rch-collapsible)";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
-	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//button[contains(@class,'w-2 ds-button')]")
 	WebElement continueFromPointsToMention;
 
    	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
@@ -321,7 +321,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -437,13 +437,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'] or text()='Crédit de facture unique - 200 $ (PCR4)')[1]")
+	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $100 (PCR6)'])[1]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
 
+	@FindBy(xpath ="//span[text()='Exclusive Offer Available']")
+	WebElement exclusiveOffers;
 
+	@FindBy(xpath = "(//span[text()='$50 off Wireless Home Internet'])[1]")
+	WebElement wirelessHomeInternetCred;
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -459,14 +463,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void reviewTermsAndCondition() {
 
-		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
-		for (int i=1; i<=allCollapsible.size(); i++) {
-			getReusableActionsInstance().staticWait(5000);
-			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
-			getReusableActionsInstance().scrollToElement(currentCollapisble);
-			getReusableActionsInstance().clickWhenReady(currentCollapisble);
-		}
-
+//		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
+//		for (int i=1; i<=allCollapsible.size(); i++) {
+//			getReusableActionsInstance().staticWait(5000);
+//			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
+//			getReusableActionsInstance().scrollToElement(currentCollapisble);
+//			getReusableActionsInstance().clickWhenReady(currentCollapisble);
+//		}
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
@@ -581,7 +585,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 			getReusableActionsInstance().staticWait(3000);
 			}
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		//getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
@@ -941,6 +945,7 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyAvailableServicesCheckboxes() {
+		getReusableActionsInstance().staticWait(30000);
 		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
 	}
 
@@ -1536,6 +1541,16 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+	}
+
+	public boolean verifyExclusiveOffersAvailable(){
+		return getReusableActionsInstance().isElementVisible(exclusiveOffers);
+	}
+
+	public void wirelessHomeInternetCredit(){
+		getReusableActionsInstance().waitForElementVisibility(wirelessHomeInternetCred,60);
+		getReusableActionsInstance().scrollToElement(wirelessHomeInternetCred);
+		getReusableActionsInstance().executeJavaScriptClick(wirelessHomeInternetCred);
 	}
 
 }
