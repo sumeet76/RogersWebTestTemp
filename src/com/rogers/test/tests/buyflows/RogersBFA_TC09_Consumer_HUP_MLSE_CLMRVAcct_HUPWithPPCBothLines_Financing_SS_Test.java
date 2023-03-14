@@ -72,6 +72,8 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Clicked on Proceed to checkout button in plan builder");
+        reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
+                "Additional line option page is displayed", "Additional line option page is not disaplayed");
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
         reporter.reportLogPassWithScreenshot("On Checkout page");
@@ -86,7 +88,8 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         reporter.reportLogPassWithScreenshot("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+        //getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();

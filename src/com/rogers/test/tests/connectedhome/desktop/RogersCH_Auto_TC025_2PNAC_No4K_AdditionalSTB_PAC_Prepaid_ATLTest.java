@@ -51,13 +51,9 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","ReleaseSanity"})
     public void rogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATL() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("select NB region");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=NB");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
+        getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");

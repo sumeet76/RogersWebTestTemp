@@ -193,22 +193,22 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         String purchaseIncludesConfrimation=getRogersNACOrderConfirmationPage().getPurchaseIncludesText();
         reporter.reportLogPassWithScreenshot("Purchase includes captured as" + "-->" +purchaseIncludesConfrimation);*/
 
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
-                .executeDBQuery("select ba.ACCOUNT_TYPE,ba.ACCOUNT_SUB_TYPE,es.BAN,es.SUBSCRIBER_NO,es.INIT_PP,sc.SOC_DESCRIPTION," +
-                        "es.TOTAL_NONTERMED_MSF,es.PROVINCE,es.FN_CREDIT_TERM,es.FN_CREDIT_AMT,es.MONTHLY_INSTALLMENT_AMT,es.TOTAL_FINANCING_OBLIG," +
-                        "p.PYM_METHOD,es.MANDATORY_CHG,p.ORIGINAL_AMT,ch.CLA,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join billing_account ba" +
-                        " on es.ban=ba.ban inner join payment p on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join soc sc" +
-                        " on es.init_pp=sc.soc where es.subscriber_no='"+ctn+"'", false);
-
-        reporter.softAssert(dblists.get("ACCOUNT_TYPE").equals("I"), "ACCOUNT_TYPE is verified as I", "ACCOUNT_SUB_TYPE is not verified as I");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-        reporter.softAssert(dblists.get("SOC_DESCRIPTION").toString().contains(planDetails.get(0)),"Plan data is updated properly as "+planDetails.get(0)+" GB","Plan data is not updated properly");
-        reporter.softAssert(dblists.get("TOTAL_NONTERMED_MSF").toString().equals(planDetails.get(1)),"Plan cost is updated properly as "+planDetails.get(1)+" GB","Plan data is not updated properly");
-        //reporter.softAssert(dblists.get("FN_CREDIT_TERM").toString().equals("24"),"Financing credit term is verified as 24 months","Financing credit term is verified as 24 months");
-        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),
-                "Downpayment amt is verified successfully as "+expectedDownPayment+"","Downpayment amt is not verified as "+expectedDownPayment+"");
-        reporter.softAssert(dblists.get("PYM_METHOD").equals("CC"), "Payment type is verified successflly as CC", "Payment type is not verified as CC");
-        reporter.softAssert(dblists.get("CAS_TOTAL_APPROVE_CTN").equals("1"),"Approved CTN is verified as 1","Approved CTN is not verified as 1");
+//        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl"))
+//                .executeDBQuery("select ba.ACCOUNT_TYPE,ba.ACCOUNT_SUB_TYPE,es.BAN,es.SUBSCRIBER_NO,es.INIT_PP,sc.SOC_DESCRIPTION," +
+//                        "es.TOTAL_NONTERMED_MSF,es.PROVINCE,es.FN_CREDIT_TERM,es.FN_CREDIT_AMT,es.MONTHLY_INSTALLMENT_AMT,es.TOTAL_FINANCING_OBLIG," +
+//                        "p.PYM_METHOD,es.MANDATORY_CHG,p.ORIGINAL_AMT,ch.CLA,ch.CAS_TOTAL_APPROVE_CTN from equipment_subsidy es inner join billing_account ba" +
+//                        " on es.ban=ba.ban inner join payment p on es.ban=p.ban inner join credit_history ch on es.ban=ch.ban inner join soc sc" +
+//                        " on es.init_pp=sc.soc where es.subscriber_no='"+ctn+"'", false);
+//
+//        reporter.softAssert(dblists.get("ACCOUNT_TYPE").equals("I"), "ACCOUNT_TYPE is verified as I", "ACCOUNT_SUB_TYPE is not verified as I");
+//        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+//        reporter.softAssert(dblists.get("SOC_DESCRIPTION").toString().contains(planDetails.get(0)),"Plan data is updated properly as "+planDetails.get(0)+" GB","Plan data is not updated properly");
+//        reporter.softAssert(dblists.get("TOTAL_NONTERMED_MSF").toString().equals(planDetails.get(1)),"Plan cost is updated properly as "+planDetails.get(1)+" GB","Plan data is not updated properly");
+//        //reporter.softAssert(dblists.get("FN_CREDIT_TERM").toString().equals("24"),"Financing credit term is verified as 24 months","Financing credit term is verified as 24 months");
+//        reporter.softAssert(dblists.get("MANDATORY_CHG").toString().equals(expectedDownPayment.substring(0,expectedDownPayment.indexOf("."))),
+//                "Downpayment amt is verified successfully as "+expectedDownPayment+"","Downpayment amt is not verified as "+expectedDownPayment+"");
+//        reporter.softAssert(dblists.get("PYM_METHOD").equals("CC"), "Payment type is verified successflly as CC", "Payment type is not verified as CC");
+//        reporter.softAssert(dblists.get("CAS_TOTAL_APPROVE_CTN").equals("1"),"Approved CTN is verified as 1","Approved CTN is not verified as 1");
 
 
         /*

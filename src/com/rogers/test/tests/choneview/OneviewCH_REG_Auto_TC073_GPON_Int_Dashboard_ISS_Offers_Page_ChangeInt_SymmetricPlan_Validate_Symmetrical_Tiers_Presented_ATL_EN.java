@@ -37,7 +37,7 @@ public class OneviewCH_REG_Auto_TC073_GPON_Int_Dashboard_ISS_Offers_Page_ChangeI
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

@@ -26,21 +26,22 @@ public class RogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCx
 	@Test
 	public void rogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCxRedirectsToOffersPage() {
 		reporter.reportLogWithScreenshot("Launched the Deeplink");
-		getDriver().get(System.getProperty("QaUrl")+"home/hto-eop");
+		getDriver().get(System.getProperty("QaUrl") + "/home/hto-eop");
 		reporter.reportLogWithScreenshot("Launched the SignIn popup through deeplink");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Entered the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Sign-in");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("cx navigates directly to Internet/offers");
 		getRogersHomePage().clkUseAddress();
 		reporter.reportLogWithScreenshot("selected address on file and clicked on use this address");
-		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGoodNewsServiceabilityContent(),"Good News ! serviceability content verified on Offers page","Good News ! serviceability content not verified on Offers page");
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGoodNewsServiceabilityContent(), "Good News ! serviceability content verified on Offers page", "Good News ! serviceability content not verified on Offers page");
 		reporter.reportLogWithScreenshot("Launched the Internet packages page");
-    	}
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {

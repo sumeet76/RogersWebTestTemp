@@ -50,7 +50,7 @@ public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test exten
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
             getRogersPlanConfigPage().clickContinueOnModalToDoWithOldPhone();
-            getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
+            //getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page data option selected");
             /*getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
             reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -77,8 +77,8 @@ public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test exten
             reporter.reportLogPass("Order Review Page");
             getRogersReviewOrderPage().clkFinancingConsentCheckbox();
             getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-            getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
-            getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+            //getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+            //getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
             getRogersReviewOrderPage().clkEmailConsentCheckbox();
             reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
             //getRogersOrderReviewPage().clkSubmitOrder();

@@ -32,7 +32,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
     WebElement authorizecheckbox;
 
-    @FindBy(xpath = "//h2[@translate='global.label.reviewYourOrder']")
+    @FindBy(xpath = "//h1[@translate='global.label.reviewYourOrder']/parent::div")
     WebElement ReviewYourOrder;
 
     @FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")
@@ -50,13 +50,13 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
     WebElement ExchangeLaterBtn;
 
-    @FindBy(xpath = "//div[@translate='global.selfServe.reviewConfirm.previousPackage']")
+    @FindBy(xpath = "//h4[@translate='global.selfServe.reviewConfirm.previousPackage']")
     WebElement previousPackage;
 
     @FindBy(xpath = "(//span[@translate='global.selfServe.reviewConfirm.tvDetails'])[1]")
     WebElement tvDetails;
 
-    @FindBy(xpath = "//div[@translate='global.selfServe.reviewConfirm.newPackage']")
+    @FindBy(xpath = "//h4[@translate='global.selfServe.reviewConfirm.newPackage']")
     WebElement newPackage;
 
     @FindBy(xpath = "(//span[@translate='global.selfServe.reviewConfirm.tvDetails'])[2]")
@@ -135,8 +135,10 @@ public class AccountOverViewPage extends BasePageClass {
     WebElement btnInternetBadge;
 
     @FindAll({
-            @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']/following::span[text()='Plan Details' or text()='Détails du forfait']"),
-            @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']")})
+            @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']"),
+            @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']"),
+            @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border d-flex flex-column']/descendant::span[@class='ds-link__copy']/parent::span")
+    })
     WebElement btnHomePhoneBadge;
 
     //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
@@ -188,7 +190,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
     WebElement changeTVBundle;
 
-    @FindBy(xpath = "//t[text()='Ignite' or text()='Élan']")
+    @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
     WebElement migrateToIgnite;
 
     @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
@@ -295,7 +297,6 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().staticWait(2000);
         getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath("//t[contains(.,'Wireless') or contains(.,'Sans-fil')]/ancestor::a[contains(@class,'nac-link')]"), 20));
-
     }
 
     /**
@@ -308,7 +309,6 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 20).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 10);
         }
-
     }
 
     public void clickAccountOverview(){
@@ -340,8 +340,6 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().isElementVisible(secondAddress,10);
             getReusableActionsInstance().clickIfAvailable(secondAddress);
         }
-
-
     }
     /**
      * Selects the Get Ignite TV Badge on the account dashbaord
@@ -892,7 +890,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Aditi.jain
      */
     public boolean verifyReviewYourOrder() {
-        return getReusableActionsInstance().isElementVisible(ReviewYourOrder, 60);
+        return getReusableActionsInstance().isElementVisible(ReviewYourOrder, 70);
     }
 
     /**

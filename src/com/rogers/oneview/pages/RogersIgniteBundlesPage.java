@@ -170,16 +170,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
+	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
+	WebElement scrollToLastPoint;
 
-
-	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label/input")
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
 	WebElement reviewTermsAndCondition;
 
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
 	//@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
-	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Internet')]")
+	@FindBy(xpath="//div[@class='text-bold text-body ng-star-inserted']//div[contains(text(),'Internet') or contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
 	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
@@ -247,6 +248,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
 	WebElement clickRecommendedOffer;
+
+	@FindBy(xpath = "(//span[text()='Select' or text()='Sélectionner']/ancestor::button)[1]")
+	WebElement clickSixMappedRecommendedOffer;
 
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
@@ -345,7 +349,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options de la Sécurité résidentielle Élan') or contains(text(),'Ignite Home Security Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
@@ -357,7 +361,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
-	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Ignite Self Protect' or text()='Autosurveillance Élan']")
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
 	WebElement smartHomeMonitoringMonthlyCharges;
 
 	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -437,7 +441,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $100 (PCR6)'])[1]")
+	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $150 (PCR3)' or text()='Crédit de facture unique - 150 $ (PCR3)'])[1]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -477,8 +481,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	public void clickTermsAndConditionsCheckbox(){
+		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
-		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
 
@@ -1085,6 +1090,12 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
 	}
 
+	public void selectSixMappedRecommendedOffer(){
+		getReusableActionsInstance().waitForElementTobeClickable(clickSixMappedRecommendedOffer, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickSixMappedRecommendedOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickSixMappedRecommendedOffer);
+	}
+
 	/*To click review addon link in channels and theme packs page
 	* @author suganya p
 	*
@@ -1375,7 +1386,7 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
 			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		}
-		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
+		getReusableActionsInstance().scrollToElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
 	/**

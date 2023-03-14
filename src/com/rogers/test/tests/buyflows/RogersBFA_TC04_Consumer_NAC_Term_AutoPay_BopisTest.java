@@ -111,9 +111,9 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		// ***************Shipping Stepper*************//
 		//String addressShippingStepper = getRogersCheckoutPage().getShippingAddress();
 		//System.out.println(billingAddressCreateProfile+"and"+addressShippingStepper);
-		getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
-//		reporter.reportLogPass("Express Delivery selected");
-//		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
+		getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+		reporter.reportLogPass("Express Delivery selected");
+		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
@@ -139,7 +139,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		getRogersReviewOrderPage().clkAgreementConsentCheckbox();
 		getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
 		reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-//		getRogersReviewOrderPage().clkBopisConsentCheckbox();
+		getRogersReviewOrderPage().clkBopisConsentCheckbox();
 		reporter.reportLogPass("Email Communication consent box checked");
 		getRogersReviewOrderPage().clkSubmitOrderBtn();
 

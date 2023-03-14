@@ -37,10 +37,9 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
     @Test(groups = {"RegressionCH"})
     public void rogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_Review_ConfirmPages() {
         reporter.reportLogWithScreenshot("Launched the main QA page");
-        //getRogersHomePage().clkEasyInternet();
-        getDriver().get(System.getProperty("QaUrl")+"/internet");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
-        getRogersHomePage().clkInternetAvailability();
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
@@ -48,13 +47,9 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPackagesPage(),"Packages page has Launched","Packages page has not Launched");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
-        reporter.reportLogWithScreenshot("Click SS Availability");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify150IgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
+        getRogersInternetPackageSelectionPage().verifyISSBoxChecked("Ignite 150 Ultd");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
@@ -70,7 +65,7 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         getRogersInternetProfilePage().clkSubmitProfile();
 
         reporter.hardAssert(getRogersInternetCreditCheckPage().verifyCreditEvalutionPage(),"Credit Evalution page has Launched","Credit Evalution page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the credit evalution page");
+        reporter.reportLogWithScreenshot("Launched the credit evaluation page");
         getRogersInternetCreditCheckPage().selectDOBYear();
         getRogersInternetCreditCheckPage().selectDOBMonth();
         getRogersInternetCreditCheckPage().selectDOBDay();

@@ -1,6 +1,7 @@
 package com.rogers.test.tests.connectedhome.desktop;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -46,17 +47,17 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ONTest ext
     @Test
     public void rogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ON() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        /*getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc109_1P_HTO_DOCSIS.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc109_1P_HTO_DOCSIS.getAccountDetails().getBan());
             reporter.reportLogWithScreenshot("Account Selected");
-        }*/
+        }
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
             reporter.reportLogWithScreenshot("New Offer Modal Popup");
             getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
@@ -125,7 +126,7 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ONTest ext
     //login flow
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
     }
 
     @AfterMethod(alwaysRun = true)

@@ -57,7 +57,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
@@ -77,7 +77,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		// getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContact();
-		// reporter.reportLogWithScreenshot("Starter package selected selected");
+		// reporter.reportLogWithScreenshot("Starter package selected");
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
@@ -86,7 +86,7 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
+		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

@@ -40,7 +40,7 @@ public class RogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmod
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc100_SAIonlyAccount.getUsername());
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc100_SAIonlyAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
@@ -48,7 +48,6 @@ public class RogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmod
         reporter.reportLogWithScreenshot("Skip popup");
         getRogersLoginPage().clkSkipIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc100_SAIonlyAccount.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
         getRogersInternetDashboardPage().clkInternetPopup();

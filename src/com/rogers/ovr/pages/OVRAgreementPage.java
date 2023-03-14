@@ -48,6 +48,7 @@ public class OVRAgreementPage extends BasePageClass {
         getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().javascriptScrollToMiddleOfPage();
         getReusableActionsInstance().javascriptScrollByVisibleElement(additionalAgreementsH3);
+        getReusableActionsInstance().scrollToElement(agreementCheckbox);
         getReusableActionsInstance().clickWhenReady(agreementCheckbox);
     }
 

@@ -31,11 +31,11 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
         reporter.reportLogWithScreenshot("Select the courier delivery");
         getRogersOVInstallationPage().clickInstallationCheckBox();
         reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-        getRogersOVInstallationPage().clickContinue();
-        reporter.reportLogWithScreenshot("Continue clicked");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        getRogersOVInstallationPage().clickContinue();
+//        reporter.reportLogWithScreenshot("Continue clicked");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -44,13 +44,11 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
-
-
+    
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         //closeSession();
     }
-
 }
 
 

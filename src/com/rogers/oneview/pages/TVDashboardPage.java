@@ -209,7 +209,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.tabs.themePacks'])[1]")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +218,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[3]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -246,7 +246,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
-	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[2]")
+	@FindBy(xpath = "(//div[@class='channels-container themepack-detail']/descendant::span[@translate='global.cta.add'])[1]")
 	WebElement addThemepack;
 
 	@FindBy(xpath = "(//div[@class='with-question']/descendant::button)[1]")
@@ -385,6 +385,25 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="(//span[text()='Remove'])[3]")
 	WebElement remTehempk;
 
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-chevron-down']/ancestor::button")
+	WebElement collapseIcon;
+
+	@FindBy(xpath = "//span[@translate='global.dashboard.tv.addBoxes']//ancestor::button")
+	WebElement addBoxesBtn;
+
+	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
+	WebElement tvAddOnsPageHeader;
+
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	WebElement addSTBToCart;
+
+	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
+	WebElement addAdditionalSTBToCart;
+
+	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
+	WebElement maximumLimitReached;
+
+
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
 	 *
@@ -500,6 +519,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().scrollToElement(channelsTab);
 //		getReusableActionsInstance().getWhenReady(channelsTab, 30).click();
 		getReusableActionsInstance().executeJavaScriptClick(channelsTab);
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	public void clickstandaloneAndSeasonalTab() {
@@ -522,8 +542,8 @@ public class TVDashboardPage  extends BasePageClass {
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
 		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 200);
-		getReusableActionsInstance().getWhenReady(addChannel, 60).click();
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -1240,7 +1260,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickViewDetails(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button/parent::div/following-sibling::div/child::button");
+		By packageNameLocator = By.xpath("//div[contains(text(),'" + strPackageNameEn + "')or contains(text(),'" + strPackageNameFr + "')]/ancestor::div[@class='bundle-tile__main']//following-sibling::div/rch-bundle-price/child::div/child::div[4]/child::button/parent::div/following-sibling::div/child::button");
 		WebElement btn = getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
@@ -1396,6 +1416,42 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 
+	public void clkCollapseButton(){
+		getReusableActionsInstance().clickWhenReady(collapseIcon,20);
+	}
+
+	public void scrollToMiddle() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
+
+	public void addTVBoxes(){
+		getReusableActionsInstance().isElementVisible(addBoxesBtn,90);
+		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		getReusableActionsInstance().waitForElementTobeClickable(addBoxesBtn,10);
+		getReusableActionsInstance().executeJavaScriptClick(addBoxesBtn);
+	}
+
+	public boolean verifyTvAddOnsHeader(){
+		getReusableActionsInstance().waitForPageLoad();
+		return getReusableActionsInstance().isElementVisible(tvAddOnsPageHeader,90);
+	}
+
+	public void clickAddToCartForSTB() {
+		getReusableActionsInstance().scrollToElement(addSTBToCart);
+		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
+	}
+
+	public void clickPlusToAddSTB() {
+		getReusableActionsInstance().isElementVisible(addAdditionalSTBToCart,60);
+		getReusableActionsInstance().scrollToElement(addAdditionalSTBToCart);
+
+		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
+			getReusableActionsInstance().waitForElementVisibility(addAdditionalSTBToCart, 45);
+			getReusableActionsInstance().executeJavaScriptClick(addAdditionalSTBToCart);
+			getReusableActionsInstance().waitForPageLoad();
+		}
+	}
 
 	public void clickRemoveThemePk() {
 		WebElement btn = getReusableActionsInstance().getWhenReady(remTehempk, 30);
@@ -1403,6 +1459,7 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(remTehempk, 30);
 		getReusableActionsInstance().executeJavaScriptClick(remTehempk);
 	}
+
 }
 
 

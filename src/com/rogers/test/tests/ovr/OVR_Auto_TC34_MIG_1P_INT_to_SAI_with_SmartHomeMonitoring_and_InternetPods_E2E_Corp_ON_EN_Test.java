@@ -34,6 +34,9 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Address Availability popup");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability Page");
@@ -56,7 +59,7 @@ public class OVR_Auto_TC34_MIG_1P_INT_to_SAI_with_SmartHomeMonitoring_and_Intern
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         //Internet Add-Ons page.
