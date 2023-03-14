@@ -137,7 +137,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@aria-label, 'Contact')]")
 	WebElement lnkContactUs;
 
-	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
+	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 

@@ -53,7 +53,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;
 	
-	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
 	WebElement popupContatUSInternetDowngarde;
 	
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
