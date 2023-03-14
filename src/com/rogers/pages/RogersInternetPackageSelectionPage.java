@@ -138,6 +138,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'promo code is invalid')]")
 	WebElement imgInvalidPromoCodeError;
 
+	@FindBy(xpath = "//span[contains(text(),'promo code has expired')]")
+	WebElement imgExpiredPromoCodeError;
+
 	@FindBy(xpath="//h2[text()='Invalid promo code']")
 	WebElement txtInvalidPromoCode;
 
@@ -686,13 +689,17 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	/**
 	 * Verify the Promo Code Error message
 	 * @return true if the Promo Code Error message displayed  else false
-	 * @author chinnarao.vattam
 	 */
-	public boolean verifyPromoCodeError() {
-		getReusableActionsInstance().waitForElementVisibility(imgInvalidPromoCodeError, 60);
-		Boolean isPromoCodeInvalid = getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,10);
-		getReusableActionsInstance().scrollToElement(btnTakeAquiz);
-		return isPromoCodeInvalid;
+	public boolean verifyInvalidPromoCodeError() {
+		return getReusableActionsInstance().isElementVisible(imgInvalidPromoCodeError,35);
+	}
+
+	/**
+	 * Verify the Expired Promo Code Error message
+	 * @return true if the Promo Code Error message displayed else false
+	 */
+	public boolean verifyExpiredPromoCodeError() {
+		return getReusableActionsInstance().isElementVisible(imgExpiredPromoCodeError,35);
 	}
 
 
