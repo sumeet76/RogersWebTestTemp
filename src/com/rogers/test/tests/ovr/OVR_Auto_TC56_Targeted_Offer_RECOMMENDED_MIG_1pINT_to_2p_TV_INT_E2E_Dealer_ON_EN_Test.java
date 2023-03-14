@@ -22,7 +22,7 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
         closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity"})
+    @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E_Dealer_ON_EN_Test()  {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
@@ -35,6 +35,9 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
@@ -54,7 +57,7 @@ public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E
         getRogersIgniteBundlesPage().clkExpressCheckout();
         getReporter().reportLogWithScreenshot("Express Checkout");
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 

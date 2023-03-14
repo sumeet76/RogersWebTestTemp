@@ -26,6 +26,10 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 	public void oneViewCH_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_Test_ON_EN(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
@@ -121,7 +125,7 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		getRogersIgniteCampaignPage().closeCouponAlert();
 		reporter.reportLogWithScreenshot("close Coupon Alert");
 		reporter.reportLogWithScreenshot("Order Review Page");
-	//	getRogersOVCheckoutPage().clkSubmit();
+		getRogersOVCheckoutPage().clkSubmit();
 		reporter.reportLogWithScreenshot("Order Placed");
 	}
 
@@ -136,5 +140,4 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 	public void afterTest() {
 		closeSession();
 	}
-
 }

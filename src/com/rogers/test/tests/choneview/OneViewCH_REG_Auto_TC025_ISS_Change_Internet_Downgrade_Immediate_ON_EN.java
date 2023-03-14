@@ -20,27 +20,26 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-//      getInternetDashboardPage().clickLoadOffers();
+        getInternetDashboardPage().clickLoadOffers();
         getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Clicked Continue");
-        getInternetDashboardPage().clickExchangeLaterButton();
-        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-        getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        getRogersIgniteBundlesPage().fourKContinue();
-        //reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-        //getRogersOVInstallationPage().clickContinue();
-        // reporter.reportLogWithScreenshot("Continue clicked");
-//        getInternetDashboardPage().clickImmediateBill();
+//        getInternetDashboardPage().clickExchangeLaterButton();
+//        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+//        getRogersIgniteBundlesPage().clkContinue();
+//        getRogersIgniteBundlesPage().fourKTVPopup();
+//        getRogersIgniteBundlesPage().fourKContinue();
+//        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
+//        getRogersOVInstallationPage().clickContinue();
+         reporter.reportLogWithScreenshot("Continue clicked");
+        getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
-//        getInternetDashboardPage().clickContinueOnSelectDateChange();
+        getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
-
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -49,7 +48,6 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","","", method);
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {

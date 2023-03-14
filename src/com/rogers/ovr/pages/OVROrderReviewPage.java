@@ -30,7 +30,7 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//span[@translate='global.cta.continue']")
     WebElement continueBtn;
 
-    @FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
+    @FindBy(xpath = "//*[@translate='global.label.OrderReview']")
     WebElement orderReviewPageHeader;
 
     @FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")

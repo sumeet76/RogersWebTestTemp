@@ -311,7 +311,7 @@ public class TestDataHandler {
 	public static AccountData tc112;
 	public static AccountData tc01FinanceNotPaidOff_ON;
 	public static AccountData tc37_NoBills;
-	public static  AccountData tc118;
+	public static AccountData tc118;
 	public static AccountData tc124;
 	public static AccountData tc126;
     public static AccountData tc123;
