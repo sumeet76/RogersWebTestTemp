@@ -26,7 +26,7 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         getAccountOverViewPage().setSkipNotification();*/
 
-//        getAccountOverViewPage().setLanguageFrench();
+        getAccountOverViewPage().setLanguageFrench();
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
@@ -42,11 +42,12 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
         reporter.reportLogWithScreenshot("click continue at channels and themepack");
-        getRogersIgniteBundlesPage().noTo4KTVPopup();
+        getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
 //        getTVDashboardPage().clickContinue4kChannelPack();
 //        reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
+
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
         getTVDashboardPage().continueFromChangeDate();

@@ -37,7 +37,7 @@ public class OVR_Auto_TC25_SelfServe_DashboardValidation_3P_TV_INT_RHP_FTO_ON_EN
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         //Internet Dashboard Validation
-        getAccountOverViewPage().selectInternetBadage();
+        getOvrDashboardPage().clkInternetDashboard();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
@@ -52,7 +52,7 @@ public class OVR_Auto_TC25_SelfServe_DashboardValidation_3P_TV_INT_RHP_FTO_ON_EN
         getInternetDashboardPage().clickContinue();
 
         //TV Dashboard
-        getAccountOverViewPage().selectTVBadage();
+        getOvrDashboardPage().clkTVDashboard();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
@@ -64,7 +64,7 @@ public class OVR_Auto_TC25_SelfServe_DashboardValidation_3P_TV_INT_RHP_FTO_ON_EN
         getInternetDashboardPage().clickContinue();
 
         //RHP Dashboard
-        getAccountOverViewPage().selectHomePhoneBadge();
+        getOvrDashboardPage().clkHomePhoneDashboard();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
 

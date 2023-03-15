@@ -20,8 +20,10 @@ public class OneViewCH_Auto_TC_031_Internet_PackageUpgrade_ImmediateTest extends
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-//        getInternetDashboardPage().selectInternetPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
-        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
+        getRogersIgniteBundlesPage().clkLoadOffers();
+        reporter.reportLogWithScreenshot("Load offers button clicked");
+        getInternetDashboardPage().selectInternetPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
+//        getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getInternetBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
@@ -33,7 +35,6 @@ public class OneViewCH_Auto_TC_031_Internet_PackageUpgrade_ImmediateTest extends
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //        reporter.reportLogWithScreenshot("Order Placed");
-
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -43,12 +44,10 @@ public class OneViewCH_Auto_TC_031_Internet_PackageUpgrade_ImmediateTest extends
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "", "", "", method);
     }
 
-
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }
 
 
