@@ -115,7 +115,7 @@ public class VerifyInEns{
 		baseTestClass.reporter.reportLogWithScreenshot("Ens Window");
 	}
 
-	public String getTextVerificationCodeCH(String strPhoneNum, String strEnsUrl) throws IOException {
+	public String getTextVerificationCodeCH(String strPhoneNum, String strEnsUrl)  {
 		this.startVerifyCH(strEnsUrl);
 		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
 		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
