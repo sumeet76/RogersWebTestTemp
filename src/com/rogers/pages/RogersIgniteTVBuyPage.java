@@ -309,10 +309,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
 	WebElement btnSolarisStarterPackageServiceability;	
 
-	@FindBy(xpath = "//button[@aria-label='See all channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
+	@FindBy(xpath = "//button[@aria-label='See all channels included in the Ignite Premier Bundle']//span[@class ='channel-count__count']")
 	WebElement txtTotalChannelsRateCardHead;
 
-	@FindBy(xpath = "//button[@aria-label='See all flex channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
+	@FindBy(xpath = "//button[@aria-label='See all flex channels included in the Ignite Premier Bundle']//span[@class ='channel-count__count']")
 	WebElement txtFlexChannelsRateCardHead;
 
 	/*@FindAll({
