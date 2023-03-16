@@ -441,17 +441,26 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $150 (PCR3)' or text()='Crédit de facture unique - 150 $ (PCR3)'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
 
-	@FindBy(xpath ="//span[text()='Exclusive Offer Available']")
+	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
 	WebElement exclusiveOffers;
 
-	@FindBy(xpath = "(//span[text()='$50 off Wireless Home Internet'])[1]")
+	@FindBy(xpath = "//span[contains(text(),'Rabais de 10 $')]")
 	WebElement wirelessHomeInternetCred;
+
+	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
+	WebElement exclusiveOfferPopOver;
+
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
+	WebElement secondOptionToCart;
+
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -474,7 +483,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 //			getReusableActionsInstance().scrollToElement(currentCollapisble);
 //			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 //		}
-		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
@@ -590,7 +598,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 			getReusableActionsInstance().staticWait(3000);
 			}
 		getReusableActionsInstance().clickAndHoldFor(searchResult, 333);//.clickWhenReady(searchResult);
-		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().clickWhenReady(checkAvailabilitybtn);
 		//getReusableActionsInstance().clickIfAvailable(continueButton);
 	}
@@ -950,7 +958,6 @@ public void activateHomePhoneltrPopUp() {
 	 * @author Aditi.jain
 	 */
 	public boolean verifyAvailableServicesCheckboxes() {
-		getReusableActionsInstance().staticWait(30000);
 		return getReusableActionsInstance().isElementVisible(selectServiceCustomerWant,45);
 	}
 
@@ -1562,6 +1569,24 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(wirelessHomeInternetCred,60);
 		getReusableActionsInstance().scrollToElement(wirelessHomeInternetCred);
 		getReusableActionsInstance().executeJavaScriptClick(wirelessHomeInternetCred);
+	}
+
+	public void clickExclusiveOfferPopOver(){
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferPopOver,60);
+		getReusableActionsInstance().scrollToElement(exclusiveOfferPopOver);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferPopOver);
+	}
+
+	public void clickSecondOptionToCart() {
+		getReusableActionsInstance().waitForElementVisibility(secondOptionToCart,90);
+		getReusableActionsInstance().scrollToElement(secondOptionToCart);
+		getReusableActionsInstance().executeJavaScriptClick(secondOptionToCart);
+	}
+
+	public void clickPromoModule(){
+		getReusableActionsInstance().waitForElementVisibility(promoModule,90);
+		getReusableActionsInstance().scrollToElement(promoModule);
+		getReusableActionsInstance().executeJavaScriptClick(promoModule);
 	}
 
 }

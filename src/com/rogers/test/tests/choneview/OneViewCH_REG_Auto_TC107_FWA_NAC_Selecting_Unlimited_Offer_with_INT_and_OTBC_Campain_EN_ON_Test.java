@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_FWA_NAC_Selecting_Unlimited_Offer_with_INT_and_OTBC_Campain_EN_ON_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC107_FWA_NAC_Selecting_Unlimited_Offer_with_INT_and_OTBC_Campain_EN_ON_Test extends BaseTestClass {
 	@Test (groups = {"RegressionCHOV","SanityCHOV"})
-    public void OneViewCH_Auto_FWA_NAC_Selecting_Unlimited_Offer_with_INT_and_OTBC_Campain_EN_ON_Test(){
+    public void oneViewCH_REG_Auto_TC107_FWA_NAC_Selecting_Unlimited_Offer_with_INT_and_OTBC_Campain_EN_ON_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			getEnvironmentSelectionPage().selectProduction();

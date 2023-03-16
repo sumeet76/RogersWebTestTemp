@@ -567,7 +567,6 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void clickChangePackageButton() {
 		getReusableActionsInstance().getWhenReady(changePackageBtn, 60);
 		getReusableActionsInstance().executeJavaScriptClick(changePackageBtn);
-		getReusableActionsInstance().staticWait(6000);
 
 	}
 
@@ -658,7 +657,6 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickAddToCartForPods() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(addPodToCart);
 		getReusableActionsInstance().waitForElementVisibility(addPodToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addPodToCart);
@@ -763,7 +761,6 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public boolean verifySecondMaximumLimitReached() {
-		getReusableActionsInstance().staticWait(5000);
 		return getReusableActionsInstance().isElementVisible(secondMaximumLimitReached);
 	}
 	/*

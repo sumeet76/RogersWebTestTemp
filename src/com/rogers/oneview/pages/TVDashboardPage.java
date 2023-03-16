@@ -647,7 +647,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinueChangeTVPackage() {
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(btnContnueReset, 90).click();
 	}
 
@@ -1116,7 +1115,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author suganya P
 	 * */
 	public void clickContinueChannelsAndThemePacks() {
-		getReusableActionsInstance().staticWait(30000);
 		getReusableActionsInstance().getWhenReady(continueChannlesAndThemePacks, 60).click();
 	}
 
