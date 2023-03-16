@@ -35,6 +35,7 @@ public class AccountDetails {
 	private String payment;
 	private Map<String, String> address;
 	private Map<String, String> addressOnFile;
+	private Map<String, String> unwiredAddress;
 	private String internetBundle;
 	private String phoneNumber;
 	private String swapInChannelOne;
@@ -558,6 +559,14 @@ public class AccountDetails {
     public void setAddress(Map<String, String> address) {
         this.address = address;
     }
+
+	public Map<String, String> getUnwiredAddress() {
+		return unwiredAddress;
+	}
+
+	public void setUnwiredAddress(Map<String, String> unwiredAddress) {
+		this.unwiredAddress = unwiredAddress;
+	}
 
 	/**
 	 * @return the addressOnFile
