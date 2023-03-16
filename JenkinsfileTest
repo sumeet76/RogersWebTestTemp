@@ -60,7 +60,7 @@ pipeline {
         parameterizedCron(env.BRANCH_NAME == 'RogersCHRegression' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-                    17 3 * * * %Browser=saucechrome;Language=en;%Groups=SanityCH;ThreadCount=1;TestProfile=ConnectedHome
+                    10 17 * * * %Browser=saucechrome;Language=en;%Groups=SanityCH;ThreadCount=1;TestProfile=ConnectedHome
                 ''':'')
     }
 
