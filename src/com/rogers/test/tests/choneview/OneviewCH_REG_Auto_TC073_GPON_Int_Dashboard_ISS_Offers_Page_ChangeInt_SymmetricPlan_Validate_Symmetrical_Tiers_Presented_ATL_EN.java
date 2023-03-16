@@ -19,7 +19,7 @@ public class OneviewCH_REG_Auto_TC073_GPON_Int_Dashboard_ISS_Offers_Page_ChangeI
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        //getInternetDashboardPage().clickViewDetails();
+        getInternetDashboardPage().clickViewDetails();
         reporter.reportLogWithScreenshot("View Details Clicked");
         getInternetDashboardPage().clickPricingDetails();
         reporter.reportLogWithScreenshot("Collapse Price details");
