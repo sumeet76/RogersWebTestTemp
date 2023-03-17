@@ -204,10 +204,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//ds-radio-button[@aria-label='Select No']//div[contains(@id,'ds-radio-input')]")
 	WebElement rdo4KTVNo;
 
-	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]")
+	@FindBy(xpath = "//div[@class='cart-tv-details-component']/descendant::button[contains(@aria-label, 'total')]//span[@class='channel-count__count']")
 	WebElement txtTotalChannels;
 
-	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Total')]/ancestor::li//div//button")
+	@FindBy(xpath = "//span[normalize-space()='Total Channels']")
 	WebElement btnViewTotalChannels;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon d-inline-flex rds-icon-info']")
@@ -219,10 +219,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span")
 	WebElement hvrFelxChannels;
 
-	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]")
+	@FindBy(xpath = "//div[@class='cart-tv-details-component']/descendant::button[contains(@aria-label, 'Flex')]//span[@class='channel-count__count']")
 	WebElement txtFlexChannels;
 
-	@FindBy(xpath = "//div[@class='mr-8 d-inline-block' and contains(text(),'Flex')]/ancestor::li//div//button")
+	@FindBy(xpath = "//span[normalize-space()='Flex Channels']")
 	WebElement btnViewFlexChannels;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'pre-selected') or contains(@aria-label,'présélectionnée')]//span")
@@ -1401,8 +1401,7 @@ getReusableActionsInstance().staticWait(3000);
 	public boolean verifyFlexChannelCount(String strFlexChannels) {
 		// 0, 5, 44 channels
 		String strChannels=getReusableActionsInstance().getWhenReady(txtFlexChannels, 50).getText();
-		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals(strFlexChannels);
+		return strChannels.equals(strFlexChannels);
 	}
 
 
@@ -1414,8 +1413,7 @@ getReusableActionsInstance().staticWait(3000);
 	public boolean verifyTotalChannelCount(String strTotalChannels) {
 		// 0, 5, 44 channels
 		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannels, 50).getText();
-		String[] channels = strChannels.split("\\s+");
-		return channels[0].equals(strTotalChannels);
+		return strChannels.equals(strTotalChannels);
 	}
 
 	/**

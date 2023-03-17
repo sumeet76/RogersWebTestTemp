@@ -147,6 +147,24 @@ public class VerifyInEns{
 		}
 	}
 
+	public void setVerificationCodeMac() {
+		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+			baseTestClass.reporter.reportLogWithScreenshot("Click on Text as recovery option");
+			getRogersLoginPage().clkTextToAsRecoveryOption();
+			String strTestingTab = baseTestClass.getDriver().getWindowHandle();
+			//Will open a new tab for ENS, to get verification code from ENS
+			baseTestClass.reporter.reportLogWithScreenshot("ENS");
+			String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
+			String strEnsUrl = System.getProperty("EnsUrl");
+			String recoveryCode = getTextVerificationCode(strPhoneNum, strEnsUrl);
+			baseTestClass.getDriver().switchTo().window(strTestingTab);
+			baseTestClass.reporter.reportLogWithScreenshot("Close the Overlay");
+			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			baseTestClass.reporter.reportLogWithScreenshot("Continue to Account Overview");
+		}
+	}
+
 	public String getTextVerificationCode(String strPhoneNum, String strEnsUrl) {
 		this.startVerify(strEnsUrl);
 		this.loginToEns();
