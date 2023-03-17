@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 /*
 "1. Language - EN
 2. Province - ON
-3. Add-Ons - Exchange Later, with 4K TV and Add any Channels and Themepacks and Homephone add-ons.
+3. Add-Ons - Exchange Later, with 4K TV and Add any Channels and Themepacks and Homephone add-ons, Free and Chargeable Pods_Reco Engine.
 4. Installation Page - DBA
 5. Payment Details - Monthly Charges
 6. Discounts - NA"
@@ -24,6 +24,8 @@ public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homeph
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
+		getAccountOverViewPage().selectProduction();
+		getAccountOverViewPage().clickProceed();
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();

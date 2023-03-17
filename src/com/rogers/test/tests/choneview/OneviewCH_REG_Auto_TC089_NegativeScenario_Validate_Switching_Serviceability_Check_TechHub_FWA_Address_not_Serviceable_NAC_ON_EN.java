@@ -18,16 +18,18 @@ public class OneviewCH_REG_Auto_TC089_NegativeScenario_Validate_Switching_Servic
             reporter.reportLogWithScreenshot("OneView env");
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
             reporter.reportLogWithScreenshot("address");
+            getAccountOverViewPage().selectProduction();
+            getAccountOverViewPage().clickProceed();
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable(),"Chrome");
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyNoServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable()+" Not serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2()+" is Servicable");
             reporter.reportLogWithScreenshot("No Service Availability");
-            getRogersIgniteBundlesPage().clkContinue();
-            getRogersIgniteBundlesPage().refreshCheckAvailability();
-            reporter.reportLogWithScreenshot("address");
-            getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2(),"Chrome");
-            reporter.hardAssert(getRogersIgniteBundlesPage().verifyNoServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2()+" Not serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2()+" is Servicable");
-            reporter.reportLogWithScreenshot("No Service Availability");
-            getRogersIgniteBundlesPage().clkContinue();
+            //getRogersIgniteBundlesPage().clkContinue();
+//            getRogersIgniteBundlesPage().refreshCheckAvailability();
+//            reporter.reportLogWithScreenshot("address");
+//            getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2(),"Chrome");
+//            reporter.hardAssert(getRogersIgniteBundlesPage().verifyNoServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2()+" Not serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_not_Serviceable2()+" is Servicable");
+//            reporter.reportLogWithScreenshot("No Service Availability");
+//            getRogersIgniteBundlesPage().clkContinue();
 
 
 

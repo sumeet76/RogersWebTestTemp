@@ -25,14 +25,6 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Clicked Continue");
-//        getInternetDashboardPage().clickExchangeLaterButton();
-//        reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
-//        getRogersIgniteBundlesPage().clkContinue();
-//        getRogersIgniteBundlesPage().fourKTVPopup();
-//        getRogersIgniteBundlesPage().fourKContinue();
-//        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-//        getRogersOVInstallationPage().clickContinue();
-         reporter.reportLogWithScreenshot("Continue clicked");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
@@ -40,6 +32,7 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //        reporter.reportLogWithScreenshot("Order Placed");
+
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -51,7 +44,7 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }
