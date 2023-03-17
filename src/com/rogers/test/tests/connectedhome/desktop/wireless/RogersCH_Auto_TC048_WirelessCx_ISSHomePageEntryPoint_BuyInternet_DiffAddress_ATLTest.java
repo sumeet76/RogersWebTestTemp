@@ -40,13 +40,13 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched Smart Stream login Page");
         getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCode();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

@@ -8,6 +8,9 @@ import org.apache.http.client.ClientProtocolException;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
 
+import static com.rogers.test.base.BaseTestClass.getRegisterOrAccountRecoveryPage;
+import static com.rogers.test.base.BaseTestClass.getRogersLoginPage;
+
 public class VerifyInEns{
 
 	BaseTestClass baseTestClass; 
@@ -126,6 +129,24 @@ public class VerifyInEns{
 		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
 		return strVerifyCode;
 	}
+	public void setVerificationCode() {
+		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+			baseTestClass.reporter.reportLogWithScreenshot("Click on Text as recovery option");
+			getRogersLoginPage().clkTextToAsRecoveryOption();
+			String strTestingTab = baseTestClass.getDriver().getWindowHandle();
+			//Will open a new tab for ENS, to get verification code from ENS
+			baseTestClass.reporter.reportLogWithScreenshot("ENS");
+			String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
+			String strEnsUrl = System.getProperty("EnsUrl");
+			String recoveryCode = getTextVerificationCodeCH(strPhoneNum, strEnsUrl);
+			baseTestClass.getDriver().switchTo().window(strTestingTab);
+			baseTestClass.reporter.reportLogWithScreenshot("Close the Overlay");
+			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			baseTestClass.reporter.reportLogWithScreenshot("Continue to Account Overview");
+		}
+	}
+
 	public String getTextVerificationCode(String strPhoneNum, String strEnsUrl) {
 		this.startVerify(strEnsUrl);
 		this.loginToEns();
