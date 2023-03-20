@@ -764,7 +764,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkBtnGotoCreditEvalStepper() {
 //		WebDriverWait wait = new WebDriverWait(driver, 10);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
-		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 40);
+		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 60);
 	}
 
 	/**
@@ -1029,7 +1029,7 @@ public class RogersCheckoutPage extends BasePageClass {
 				decimal = Integer.parseInt(String.valueOf(secondDecimal));
 			}
 		}
-		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
+		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1);
 		return modifiedDownPayment;
 	}
 
