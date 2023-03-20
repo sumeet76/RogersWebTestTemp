@@ -169,7 +169,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='ds-stepper-id-1-editButtonId-1']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
     WebElement editButtonDeviceCost;
 
-    @FindBy(xpath = "//span[contains(text(),'Plans') or contains(text(),'Forfaits')]")
+    @FindBy(xpath = "//span[contains(text(),' Plans') or contains(text(),'Forfaits')]")
     WebElement plansInBreadCrumb;
 
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
@@ -280,10 +280,13 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Have a promo code') or contains(text(),'code promotionnel')]")
     WebElement promoSection;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field")
+    @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']")
     WebElement promoCodeField;
 
-    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+    @FindAll({
+            @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']//input"),
+            @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+    })
     WebElement txtPromoCode;
 
     @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
@@ -979,7 +982,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyAdditionalLinePageDisplayed() {
-        return getReusableActionsInstance().isElementVisible(titleAdditionalLinePage, 30);
+        return getReusableActionsInstance().isElementVisible(titleAdditionalLinePage, 60);
     }
 
     /**
@@ -991,9 +994,9 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void changePlanForAdditionalLine(String planType, String additionalLineDataIndex) {
         getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(@class,'dsa-cartSummary')]")));
-        getReusableActionsInstance().clickWhenVisible(planTypeDropDown, 10);
+        getReusableActionsInstance().clickWhenVisible(planTypeDropDown, 30);
         getReusableActionsInstance().selectWhenReady(planTypeDropDown, planType);
-        getReusableActionsInstance().clickWhenVisible(dataDropDown, 10);
+        getReusableActionsInstance().clickWhenVisible(dataDropDown, 30);
         if (getReusableActionsInstance().isElementVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[" + additionalLineDataIndex + "]"))) {
             getReusableActionsInstance().clickWhenVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[" + additionalLineDataIndex + "]"));
         } else {
@@ -1010,13 +1013,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAddToCartAndProceedToCheckout(String className, String newPlanType) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@id,'ds-accordion-panel')]"));
-        getReusableActionsInstance().clickWhenReady(btnAddToCart);
+        getReusableActionsInstance().staticWait(30000);
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//button[@data-test='add-to-cart-btn']"));
+        //getReusableActionsInstance().clickWhenReady(btnAddToCart);
         if (className.toUpperCase().contains("SUBSIDY") && newPlanType.equalsIgnoreCase("FINANCING")) {
             getReusableActionsInstance().staticWait(15000);
         }
-        getReusableActionsInstance().waitForElementTobeClickable(btnProceedToCheckout, 30);
-        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
+        //getReusableActionsInstance().waitForElementTobeClickable(btnProceedToCheckout, 30);
+        getReusableActionsInstance().getWhenReady(btnProceedToCheckout, 30).click();
     }
 
     /**
@@ -1129,7 +1133,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb() {
-        if (getReusableActionsInstance().isElementVisible(plansInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb))
+        if (getReusableActionsInstance().isElementVisible(plansInBreadCrumb,20) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb,20) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb,20))
             return true;
         return false;
     }
