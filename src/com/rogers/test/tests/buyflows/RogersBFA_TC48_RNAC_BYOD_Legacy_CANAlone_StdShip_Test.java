@@ -47,6 +47,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //getRogersLoginPage().clkSkipIFrame();
         //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
+        getRogersPlanConfigPage().clickDeletePromo();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc48_Legacy_NACByod.getDataOptionIndex()),this.getClass().getSimpleName());
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
@@ -85,9 +86,9 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         //***************Credit Evaluation Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().verifyCreditEvaluationTitle(), "CreditEvaluation Title verified",
                 "CreditEvaluation Title not present");
-        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthYear());
-        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthMonth());
-        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthDay());
+//        getRogersCheckoutPage().selectYearDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthYear());
+//        getRogersCheckoutPage().selectMonthDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthMonth());
+//        getRogersCheckoutPage().selectDayDropdownOption(TestDataHandler.tc48_Legacy_NACByod.getDateOfBirthDay());
         getRogersCheckoutPage().switchToCreditCardIFrame();
         getRogersCheckoutPage().setCreditCardNumberIFrame(TestDataHandler.tc48_Legacy_NACByod.getCreditCardDetails());
         reporter.reportLogPassWithScreenshot("DOB & Credit Card Details Entered Successfully");

@@ -70,17 +70,19 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_BOPIS_Test exten
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
-        reporter.reportLogPassWithScreenshot("On Checkout page");
 //        getRogersCheckoutPage().clkDeliveryMethod("PRO");
 //        reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
 //        reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
-        getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
-        reporter.reportLogPassWithScreenshot("Standard Delivery selected");
+        reporter.reportLogPassWithScreenshot("On Checkout page");
+        getRogersCheckoutPage().clkDeliveryMethod("EXPRESS");
+        reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
+        reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent(), "Express Location Map is available",
+                "Express Location Map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
-        reporter.reportLogPass("Clicked submit button below cart summary");
-        getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
+        reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
+        //getRogersPlanConfigPage().clkContinueOnExistingAddonModal();
 
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
@@ -89,11 +91,11 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_BOPIS_Test exten
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+        getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         getRogersReviewOrderPage().clkEmailConsentCheckbox();
-        //getRogersOrderReviewPage().clkSubmitOrder();
-        if(getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
+        getRogersOrderReviewPage().clkSubmitOrder();
+
         reporter.reportLogWithScreenshot("Rogers Payment Page");
         reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
                 "One Time Payment Page displayed","One Time Payment Page Not displayed");
@@ -108,9 +110,6 @@ public class RogersBFA_TC41_SOHO_ML_SE_HUPWithPPCOnMainLine_VDP_BOPIS_Test exten
         getRogersOneTimePaymentPage().setCVV();
         reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
         getRogersOneTimePaymentPage().clkSubmitOrderBtn();
-        } else {
-            getRogersOrderReviewPage().clkSubmitOrder();
-        }
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationPageLoad(), "Order Confirmation page loaded", "Order Confirmation Error");
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyThankYouDisplayed(), "Thank You message displayed", "Thank You message not displayed");
         reporter.reportLogWithScreenshot("Rogers Order Confirmation Page");

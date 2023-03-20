@@ -794,10 +794,10 @@ public class BaseTestClass {
                 getDriver().get(strUrl+"/phones");
                 setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
-                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") && !(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO"))){
-                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&province=" + "ON");
                     captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
                     getDriver().get(strUrl + "/phones/" + "?type=soho");

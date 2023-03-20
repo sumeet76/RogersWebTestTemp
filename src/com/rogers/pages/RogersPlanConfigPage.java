@@ -280,7 +280,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Have a promo code') or contains(text(),'code promotionnel')]")
     WebElement promoSection;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field")
+    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/ancestor::ds-form-field")
     WebElement promoCodeField;
 
     @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")

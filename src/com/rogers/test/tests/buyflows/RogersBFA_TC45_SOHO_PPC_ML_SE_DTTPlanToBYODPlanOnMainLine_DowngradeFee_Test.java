@@ -39,10 +39,10 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview Page");
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
-        //reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
-        //reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-        //getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee.getCtn());
-        //getRogersDeviceCataloguePage().clkContinueBtnPPCShareNonShareModal();
+        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+        reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc45_SOHO_PPC_ML_SE_DTTPlanToBYODOnMainLine_DownGradeFee.getCtn());
+        getRogersDeviceCataloguePage().clkContinueBtnPPCShareNonShareModal();
         //--------------------------------------------Plan Config page----------------------------------------------
         reporter.hardAssert(getRogersPlanConfigPage().verifyPPCPlanConfigPage(),"PPC Build plan page is loaded successfully","PPC build plan page is not loaded");
         getRogersPlanConfigPage().clkChangePlan();
@@ -59,7 +59,7 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.reportLogWithScreenshot("Additional options page is displayed");
-        //getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
+        getRogersPlanConfigPage().selectAdditionalLinePlanOptions();
         getRogersCheckoutPage().clickSkipAutopay();
         //--------------------------------------Review Order Page-------------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",

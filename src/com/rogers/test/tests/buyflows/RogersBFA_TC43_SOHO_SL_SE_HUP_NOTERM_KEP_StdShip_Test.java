@@ -63,7 +63,7 @@ public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseT
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
-            //getRogersCheckoutPage().clickSkipAutopay();
+            getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
             reporter.reportLogPass("Standard Delivery selected");
             getRogersCheckoutPage().clkContinueBtnShipping();
