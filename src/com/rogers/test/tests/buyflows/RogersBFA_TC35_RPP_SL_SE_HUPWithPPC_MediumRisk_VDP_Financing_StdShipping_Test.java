@@ -30,6 +30,7 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
             getRogersLoginPage().clkSignInIFrame();
             reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
             reporter.reportLogWithScreenshot("Account Overview page");
+
             getDriver().get(System.getProperty("AWSUrl"));
             String deviceName = TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getDeviceName();
             reporter.hardAssert(getRogersDeviceCataloguePage().verifyDeviceTileCTAButton(deviceName),
@@ -63,6 +64,7 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+            financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
             String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
             reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
             reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
