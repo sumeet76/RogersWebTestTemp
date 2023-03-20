@@ -138,7 +138,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     })
     WebElement continueBtn;
 
-    @FindBy(xpath = "(//button[contains(@class,'ds-button ds-corners ds-pointer')])[3]")
+    @FindBy(xpath = "//ds-modal//button[@data-id='continue']")
     WebElement continueBtnHupCtnSelectionModal;
 
     @FindBy(xpath = "//button[@data-id='continue']")
@@ -209,7 +209,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
     public String createXpathWithDeviceName(String deviceName) {
-        xpathDeviceName="//p[contains(@class,'text-title-5 ')][.='"+deviceName+"']";
+        xpathDeviceName="//p[contains(@class,'text-title-5 ')][contains(text(),'"+deviceName+"')]";
         return xpathDeviceName;
     }
 
@@ -330,7 +330,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDeviceTileCTAButton(String deviceName) {
-        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
     }
 
     /**
@@ -926,7 +926,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public void clkContinueBtnMigrationFeeRpp() {
-        if(getReusableActionsInstance().isElementVisible(btnContinuemigrationRpp,10)) {
+        if(getReusableActionsInstance().isElementVisible(btnContinuemigrationRpp,30)) {
             getReusableActionsInstance().clickWhenReady(btnContinuemigrationRpp);
         }
     }
