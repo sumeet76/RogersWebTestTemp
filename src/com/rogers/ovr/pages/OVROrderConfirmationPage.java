@@ -60,6 +60,7 @@ public class OVROrderConfirmationPage extends BasePageClass {
     public boolean verifyMonthlyCharges() {
         getReusableActionsInstance().waitForElementVisibility(monthlyCharges, 60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyCharges);
+        getReusableActionsInstance().javascriptScrollToBottomOfPage();
         return getReusableActionsInstance().isElementVisible(monthlyCharges);
     }
 

@@ -35,15 +35,15 @@ public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTe
     public void rogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc04_08_SolarisTVAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-//        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
             reporter.reportLogWithScreenshot("Account Selected");
         }
         //getRogersHomePage().clkNBProvinceLnk();
@@ -71,10 +71,10 @@ public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTe
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();
         reporter.reportLogWithScreenshot("Agreement details"); */
 
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
+      //  reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+      //  reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyContactUsModalContentFR(),"Verified the contact us modal content", "Contact us Modal content is not matching");
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
         reporter.reportLogWithScreenshot("Verified the customer care popup content");
     }

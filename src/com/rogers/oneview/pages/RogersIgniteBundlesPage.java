@@ -170,16 +170,17 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
+	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
+	WebElement scrollToLastPoint;
 
-
-	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label/input")
+	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
 	WebElement reviewTermsAndCondition;
 
 	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
 	//@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
-	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Internet')]")
+	@FindBy(xpath="//div[@class='text-bold text-body ng-star-inserted']//div[contains(text(),'Internet') or contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
 	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
@@ -191,7 +192,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	String collapsible = "(//rch-collapsible)";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
-	@FindBy(xpath = "//div[@class='serviceability-ptm-modal-footer']/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//button[contains(@class,'w-2 ds-button')]")
 	WebElement continueFromPointsToMention;
 
    	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
@@ -247,6 +248,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
 	WebElement clickRecommendedOffer;
+
+	@FindBy(xpath = "(//span[text()='Select' or text()='Sélectionner']/ancestor::button)[1]")
+	WebElement clickSixMappedRecommendedOffer;
 
 	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
 	WebElement additionalIgniteTVBoxes;
@@ -321,7 +325,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -345,7 +349,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options de la Sécurité résidentielle Élan') or contains(text(),'Ignite Home Security Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
@@ -357,7 +361,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
-	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Ignite Self Protect' or text()='Autosurveillance Élan']")
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
 	WebElement smartHomeMonitoringMonthlyCharges;
 
 	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -437,11 +441,24 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $200 (PCR4)'] or text()='Crédit de facture unique - 200 $ (PCR4)')[1]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
+
+	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
+	WebElement exclusiveOffers;
+
+	@FindBy(xpath = "//span[contains(text(),'Rabais de 10 $')]")
+	WebElement wirelessHomeInternetCred;
+
+	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
+	WebElement exclusiveOfferPopOver;
+
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
+	WebElement secondOptionToCart;
+
 
 
 	/**
@@ -459,22 +476,22 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void reviewTermsAndCondition() {
 
-		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
-		for (int i=1; i<=allCollapsible.size(); i++) {
-			getReusableActionsInstance().staticWait(5000);
-			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
-			getReusableActionsInstance().scrollToElement(currentCollapisble);
-			getReusableActionsInstance().clickWhenReady(currentCollapisble);
-		}
-
+//		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
+//		for (int i=1; i<=allCollapsible.size(); i++) {
+//			getReusableActionsInstance().staticWait(5000);
+//			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
+//			getReusableActionsInstance().scrollToElement(currentCollapisble);
+//			getReusableActionsInstance().clickWhenReady(currentCollapisble);
+//		}
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
 
 	public void clickTermsAndConditionsCheckbox(){
+		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
-		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
 
@@ -1080,6 +1097,12 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
 	}
 
+	public void selectSixMappedRecommendedOffer(){
+		getReusableActionsInstance().waitForElementTobeClickable(clickSixMappedRecommendedOffer, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(clickSixMappedRecommendedOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickSixMappedRecommendedOffer);
+	}
+
 	/*To click review addon link in channels and theme packs page
 	* @author suganya p
 	*
@@ -1370,7 +1393,7 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
 			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		}
-		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
+		getReusableActionsInstance().scrollToElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
 	/**
@@ -1536,6 +1559,34 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+	}
+
+	public boolean verifyExclusiveOffersAvailable(){
+		return getReusableActionsInstance().isElementVisible(exclusiveOffers);
+	}
+
+	public void wirelessHomeInternetCredit(){
+		getReusableActionsInstance().waitForElementVisibility(wirelessHomeInternetCred,60);
+		getReusableActionsInstance().scrollToElement(wirelessHomeInternetCred);
+		getReusableActionsInstance().executeJavaScriptClick(wirelessHomeInternetCred);
+	}
+
+	public void clickExclusiveOfferPopOver(){
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferPopOver,60);
+		getReusableActionsInstance().scrollToElement(exclusiveOfferPopOver);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferPopOver);
+	}
+
+	public void clickSecondOptionToCart() {
+		getReusableActionsInstance().waitForElementVisibility(secondOptionToCart,90);
+		getReusableActionsInstance().scrollToElement(secondOptionToCart);
+		getReusableActionsInstance().executeJavaScriptClick(secondOptionToCart);
+	}
+
+	public void clickPromoModule(){
+		getReusableActionsInstance().waitForElementVisibility(promoModule,90);
+		getReusableActionsInstance().scrollToElement(promoModule);
+		getReusableActionsInstance().executeJavaScriptClick(promoModule);
 	}
 
 }

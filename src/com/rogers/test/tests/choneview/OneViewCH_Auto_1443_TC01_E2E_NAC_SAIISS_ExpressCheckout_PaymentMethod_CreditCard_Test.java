@@ -17,6 +17,9 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 	public void oneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getAccountOverViewPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -25,8 +28,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 		reporter.reportLogWithScreenshot("click Continue");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("click Internet Check box");
-		getRogersIgniteBundlesPage().clkSmartStream();
-		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
+		//getRogersIgniteBundlesPage().clkSmartStream();
+		//reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -72,11 +75,10 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 		getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("payment details entered");
-		getPaymentOptionsPage().clkContinue();
+//		getPaymentOptionsPage().clkContinue();
 //		reporter.reportLogWithScreenshot("sumbit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-
 	}
 
 	@BeforeMethod (alwaysRun=true)
@@ -87,9 +89,7 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
-
 }
-
 

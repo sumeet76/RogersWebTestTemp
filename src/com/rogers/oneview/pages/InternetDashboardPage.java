@@ -23,7 +23,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.select']/ancestor::button)[3]")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[3]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -157,7 +157,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.select' and contains(text(),'Select')])[4]/ancestor::button")
 	WebElement btnSelectSmartStream;
 
-	@FindBy(xpath = "//span[text()='Ignite 1Gbps Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	@FindBy(xpath = "//div[text()='Ignite Flex 5']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
 	WebElement btnViewDetails;
 
 	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
@@ -464,7 +464,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void selectInternetPackage(String strUpgradePlanEn, String strUpgradePlanFr) {
 
-		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__body']//span[contains(text(),'Select')]/ancestor::button");
+		By packageNameLocator = By.xpath("//p[contains(text(),'"+strUpgradePlanEn+"') or contains(text(),'"+strUpgradePlanFr+"')]/ancestor::div[@class='internet-tile__main']//span[contains(text(),'Select')]/ancestor::button");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 30);
 
 		WebElement pkg = getDriver().findElement(packageNameLocator);
@@ -570,8 +570,17 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	}
 
-	public void selectInternetPlan(String intPackage){
-		By changePlan= By.xpath("//p[contains(text(),'"+intPackage+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+	public void selectUpgradeInternetPlan(String upgradeBundle, String intPackage){
+		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::span[@translate='global.label.downloadSpeedValueUnit' and text()='"+intPackage+"']");
+		//By changePlan= By.xpath("//p[contains(text(),'"+intPackage+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+		WebElement changePlanElement= getDriver().findElement(changePlan);
+		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
+		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);
+	}
+
+	public void selectInternetPlan(String upgradeBundle){
+//		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::rch-bundle-price//span[@translate='global.cta.select']/ancestor::span[@role='text']");
+		By changePlan= By.xpath("//p[contains(text(),'"+upgradeBundle+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
 		WebElement changePlanElement= getDriver().findElement(changePlan);
 		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
 		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);
@@ -648,7 +657,6 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickAddToCartForPods() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(addPodToCart);
 		getReusableActionsInstance().waitForElementVisibility(addPodToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addPodToCart);
@@ -659,6 +667,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author aditi.jain
 	 * */
 	public void clickContinueButton() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().waitForElementVisibility(continueButton, 30);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);

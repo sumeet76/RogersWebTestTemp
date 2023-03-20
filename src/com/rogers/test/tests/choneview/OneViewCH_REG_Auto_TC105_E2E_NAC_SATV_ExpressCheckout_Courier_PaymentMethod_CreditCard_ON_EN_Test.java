@@ -17,6 +17,10 @@ public class OneViewCH_REG_Auto_TC105_E2E_NAC_SATV_ExpressCheckout_Courier_Payme
     public void oneViewCH_REG_Auto_TC105_E2E_NAC_SATV_ExpressCheckout_Courier_PaymentMethod_CreditCard_ON_EN(){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("address");
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");

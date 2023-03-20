@@ -14,21 +14,22 @@ public class OvrDashboardPage extends BasePageClass {
 
 
     @FindBy(xpath = "//t[text()='Get Ignite' or text()='Obtenir Élan']/ancestor::a")
+    //@FindBy(xpath = "//t[text()='Add Ignite TV' or text()='Ajouter Télé Élan']/ancestor::a")
     WebElement lnkIgnite;
 
     @FindBy(xpath = "//a[contains(text(),'Français') and @id='language-changed']")
     WebElement changeLangToFR;
 
-    @FindBy(xpath = "//t[text()='Internet']//following::span[text()=' Plan and Usage details ']")
+    @FindBy(xpath = "//t[contains(text(),'Internet')]//following::span[contains(text(),'Plan and Usage details')]")
     WebElement internetDashboard;
 
-    @FindBy(xpath = "(//t[text()='TV']//following::span[text()=' Plan Details '])[1]")
+    @FindBy(xpath = "//t[contains(text(),'TV')]//following::span[contains(text(),'Plan Details')]")
     WebElement tvDashboard;
 
-    @FindBy(xpath = "//t[text()='Home Phone']//following::span[text()=' Plan Details ']")
+    @FindBy(xpath = "//t[contains(text(),'Home Phone')]//following::span[contains(text(),'Plan Details')]")
     WebElement homePhoneDashboard;
 
-    @FindBy(xpath = "//t[text()='Ignite Streaming']//following::span[text()=' Plan Details ']")
+    @FindBy(xpath = "//t[contains(text(),'Ignite Streaming')]//following::span[contains(text(),'Plan Details')]")
     WebElement igniteStreamingDashboard;
 
     @FindBy(xpath = "//span[text()='Restart Box(es)' or text()='Redémarrer les terminaux numériques']//ancestor::button")

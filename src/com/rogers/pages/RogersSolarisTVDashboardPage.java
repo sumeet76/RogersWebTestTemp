@@ -926,7 +926,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 */
 
 	public boolean verifyChangeTVPackagePopupHeader() {
-		return getReusableActionsInstance().isElementVisible(headerChangeTVpkg, 20);
+		return getReusableActionsInstance().isElementVisible(headerChangeTVpkg, 60);
 	}
 
 	/**

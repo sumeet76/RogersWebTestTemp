@@ -55,7 +55,7 @@ public class TestDataHandler {
 	public static AccountData tc101_2P_HTO_HotCableAccount;
 	public static AccountData tc102_2P_HTO_ColdCableAccount;
 	public static AccountData tc108_2PLeg_3PIgnite_otbc;
-	//public static AccountData tc109_1P_HTO_DOCSIS;
+	public static AccountData tc109_1P_HTO_DOCSIS;
 	public static AccountData tc112_3P_HTO_RecommendedOffer;
 	public static AccountData tc122_2pInternetAccount;
 	public static AccountData tc01_02_03_IgniteTVAccount;
@@ -311,7 +311,7 @@ public class TestDataHandler {
 	public static AccountData tc112;
 	public static AccountData tc01FinanceNotPaidOff_ON;
 	public static AccountData tc37_NoBills;
-	public static  AccountData tc118;
+	public static AccountData tc118;
 	public static AccountData tc124;
 	public static AccountData tc126;
     public static AccountData tc123;
@@ -391,6 +391,9 @@ public class TestDataHandler {
 	public static OvrReusableData tc_52_Ovr_Mig_Data_1p_to_3p;
 	public static OvrReusableData tc_18_Ovr_Existing_Ignite_SHA_to_NacISS;
 	public static OvrReusableData tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS;
+	public static OvrReusableData tc_57_Ovr_SelfServe_IgniteISS_AddSTB;
+	public static OvrReusableData tc_58_Ovr_SelfServe_IgniteTV_AddSTB;
+	public static OvrReusableData tc_59_Ovr_SelfServe_IgniteTV_AddSTB;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
@@ -488,7 +491,7 @@ public class TestDataHandler {
 		tc101_2P_HTO_HotCableAccount = YamlHandler.getCableAccountData("TC101_2P_HTO_HotCable");
 		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
 		tc108_2PLeg_3PIgnite_otbc = YamlHandler.getCableAccountData("TC108_2PLeg_3PIgnite_OTBC");
-	//	tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
+		tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
 		tc112_3P_HTO_RecommendedOffer = YamlHandler.getCableAccountData("TC112_3P_HTO_Recommended");
 		tc63_Legacy2PtoIgnite2P = YamlHandler.getCableAccountData("TC63_Legacy2PtoIgnite2P");
 		tc82_Legacy2PtoIgnite2PMigration = YamlHandler.getCableAccountData("TC82_Legacy2PtoIgnite2PMigration");
@@ -858,5 +861,8 @@ public class TestDataHandler {
 		tc_50_Ovr_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC50_Mig_Data_1p_to_ISS");
 		tc_52_Ovr_Mig_Data_1p_to_3p = YamlHandler.getOvrReusableData("TC52_Mig_Data_1p_to_3p");
 		tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS = YamlHandler.getOvrReusableData("TC56_Targeted_Mig_Data_1p_to_ISS");
+		tc_57_Ovr_SelfServe_IgniteISS_AddSTB = YamlHandler.getOvrReusableData("TC57_SelfServe_IgniteISS_AddSTB");
+		tc_58_Ovr_SelfServe_IgniteTV_AddSTB = YamlHandler.getOvrReusableData("TC58_SelfServe_IgniteTV_AddSTB");
+		tc_59_Ovr_SelfServe_IgniteTV_AddSTB = YamlHandler.getOvrReusableData("TC59_SelfServe_IgniteTV_AddSTB");
 	}
 }

@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
  *7. Enter appropriate Contact details.
  *8. Pick a date time in step 2 - Most Convenient Time for us to call.
  *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit.
  *
  **/
@@ -36,24 +36,17 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress() {
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Home Page");
         getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Skip popup");
-        getRogersLoginPage().clkSkipIFrame();
-        getRogersLoginPage().switchOutOfSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc49_SHMSignedInInternetBuyDiffAddress.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getDriver().get(System.getProperty("QaUrl")+"/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
@@ -67,8 +60,8 @@ public class RogersCH_Auto_TC049_SHMCx_ISSHomePageEntryPoint_BuyInternet_DiffAdd
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+        //getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
+       // reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 

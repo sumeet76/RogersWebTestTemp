@@ -24,7 +24,7 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
         reporter.reportLogWithScreenshot("Addons selected for addition");
         getHomePhoneAddonsPage().removeAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getRemoveAddOnNameFr());
         reporter.reportLogWithScreenshot("Remove addon button is selected");
-        getTVDashboardPage().clickYourChanges();
+//        getTVDashboardPage().clickYourChanges();
         getHomePhoneAddonsPage().clickConfirmButton();
         reporter.reportLogWithScreenshot("Select the billing cycle");
         getHomePhoneAddonsPage().clickImmediateBill();
@@ -45,6 +45,6 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //closeSession();
+        closeSession();
     }
 }

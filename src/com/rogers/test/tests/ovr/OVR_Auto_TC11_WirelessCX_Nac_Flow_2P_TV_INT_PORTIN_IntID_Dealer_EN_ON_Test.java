@@ -35,6 +35,9 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         getCheckAvailabilityPage().addressIsServiceable();
@@ -64,9 +67,9 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
         getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
         reporter.reportLogWithScreenshot("Port In form filled out");
-        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().contiueFromPortIn();
         reporter.reportLogWithScreenshot("Port In completed");
-
+        getRogersIgniteBundlesPage().contiueToCartSummary();
         reporter.reportLogWithScreenshot("Channel Personalization page");
         getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");

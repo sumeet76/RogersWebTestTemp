@@ -35,26 +35,23 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
 
     @Test(groups = {"RegressionCH","RogersCartAbandon"})
     public void rogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPage_Continue_saveCartAndRetrieve() {
-        reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+", "+strAddressLine2);
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered");
         getRogersHomePage().clkIgniteAddressLookupSubmit();
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
-
-        getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();
+        reporter.reportLogWithScreenshot("Checked the Home Phone");
+        getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
+        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Added to cart");
 
         reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage() ,"Port-InOut page has Launched","Port-InOut page has not Launched");
         getRogersHomePhoneSelectionPage().clkSkipforNewNumber();

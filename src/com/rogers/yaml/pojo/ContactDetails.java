@@ -77,8 +77,6 @@ public class ContactDetails {
 
 
 
-
-
 	public ContactDetails() {
 		
 	}
@@ -854,6 +852,14 @@ public class ContactDetails {
 
 	public void setAddress_ALT(String address_ALT) {this.address_ALT = address_ALT;
 	}
+
+	public String getAddress_FWA() {return address_FWA;
+	}
+
+	public void setAddress_FWA(String address_FWA) {this.address_FWA = address_FWA;
+	}
+
+	private String address_FWA;
 
 
 

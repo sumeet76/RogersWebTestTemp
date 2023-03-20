@@ -55,7 +55,7 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {

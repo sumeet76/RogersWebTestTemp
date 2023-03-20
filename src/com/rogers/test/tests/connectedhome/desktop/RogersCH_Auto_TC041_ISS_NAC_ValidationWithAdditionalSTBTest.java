@@ -36,18 +36,23 @@ public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTB() {
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        reporter.reportLogWithScreenshot("Check Serviceable Address");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
+        reporter.reportLogWithScreenshot("Add to cart");
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
+        reporter.reportLogWithScreenshot("Add additional STBs");
         getRogersIgniteTVBuyPage().clkUpdateCart();
+        reporter.reportLogWithScreenshot("update cart");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
+        reporter.reportLogWithScreenshot("Continue to profile page");
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");
         reporter.reportLogWithScreenshot("Launched the create profile page");

@@ -30,14 +30,13 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
 
 	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
     public void rogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngrade() {
-
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+        if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
             String strTestingTab = getDriver().getWindowHandle();
@@ -61,16 +60,16 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
         reporter.reportLogWithScreenshot("Launched the Interent dashboard");
         getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");        
-        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
+        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(), TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         //getRogersInternetDashboardPage().clkInternetChangeOK();
-      //  reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
+        //  reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customercare popup");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
-      //  reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
-    	}
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(), "Verified the Change Package Popup Header", "Change Package Popup Header is not verified");
+        //  reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(), "Verified the Book a call back link", "Book a call back link not verified");
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(), "Verified the Live chat link", "Live Chat Link is not verified");
+    }
 	
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

@@ -35,20 +35,16 @@ public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
 
     @Test(groups = {"SanityCH","RegressionCH","SmartStreamCH","ReleaseSanity"})
     public void rogersCH_Auto_TC057_ISS_NAC_BuyFlow() {
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("Selected NB region");
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page for ON region");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered to check the Service availability");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Launched the offers page to select package");
-        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");

@@ -35,15 +35,13 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-		//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		reporter.reportLogWithScreenshot("Skip popup");
-		getRogersLoginPage().clkSkipIFrame();
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");
 			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
 		}
 		//reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		reporter.reportLogWithScreenshot("Launched the Account Page");
+		/*reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
 		getRogersHomePage().clkSubnavIgniteSmartStream();
@@ -53,7 +51,10 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 			getRogersHomePage().clkNoThnx();
 			reporter.reportLogWithScreenshot("Clicked on No Thanks");
 			getRogersHomePage().clkServiceability();
-		}
+		}*/
+		getDriver().get(System.getProperty("QaUrl") + "/bundles");
+		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
@@ -61,7 +62,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		reporter.reportLogWithScreenshot("Launched the Bundles Page");
 		getRogersIgniteTVBuyPage().clkChannelsTab();
 		reporter.reportLogWithScreenshot("Launched the Channels");
-		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD not present in the genre dropdown","SVOD present under genre dropdown");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD not present in the genre dropdown", "SVOD present under genre dropdown");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
