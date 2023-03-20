@@ -138,7 +138,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     })
     WebElement continueBtn;
 
-    @FindBy(xpath = "//button[@data-id='continue']")
+    @FindBy(xpath = "//ds-modal//button[@data-id='continue']")
     WebElement continueBtnHupCtnSelectionModal;
 
     @FindBy(xpath = "//button[@data-id='continue']")
@@ -151,6 +151,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     String deviceTextXpath = xpathDeviceName + "//following-sibling::dsa-price//span[contains(@class,'dsa-price__copyBottom')]";
 
     @FindAll({
+            @FindBy(xpath = "//*[@id='geLinkHeaderSignIn']"),
             @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
             @FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']")
     })
@@ -208,7 +209,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
     public String createXpathWithDeviceName(String deviceName) {
-        xpathDeviceName="//p[contains(@class,'text-title-5 ')][.='"+deviceName+"']";
+        xpathDeviceName="//p[contains(@class,'text-title-5 ')][contains(text(),'"+deviceName+"')]";
         return xpathDeviceName;
     }
 
@@ -329,7 +330,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyDeviceTileCTAButton(String deviceName) {
-        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 60);
+        return getReusableActionsInstance().isElementVisible(By.xpath(createXpathForCTAButton(deviceName)), 30);
     }
 
     /**
@@ -925,7 +926,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public void clkContinueBtnMigrationFeeRpp() {
-        if(getReusableActionsInstance().isElementVisible(btnContinuemigrationRpp,10)) {
+        if(getReusableActionsInstance().isElementVisible(btnContinuemigrationRpp,30)) {
             getReusableActionsInstance().clickWhenReady(btnContinuemigrationRpp);
         }
     }

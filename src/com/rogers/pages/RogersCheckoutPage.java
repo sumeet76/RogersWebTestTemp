@@ -187,9 +187,10 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
+			@FindBy(xpath = "//dsa-order-table//*[contains(text(),'Down payment')]/parent::div/following-sibling::div/span"),
 			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
-		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
-		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
+		    @FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
+		    @FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
 	WebElement downPaymentAmt;
 
@@ -763,7 +764,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkBtnGotoCreditEvalStepper() {
 //		WebDriverWait wait = new WebDriverWait(driver, 10);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
-		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 40);
+		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 60);
 	}
 
 	/**
@@ -954,7 +955,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
 		//if(riskClass.toUpperCase().contains("HIGH")) {
-			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().replace("$", "");
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 30).getText().trim().replace("$", "");
 			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
 				return true;
 			} else return false;
@@ -1019,14 +1020,16 @@ public class RogersCheckoutPage extends BasePageClass {
 		String downPayment = String.valueOf(downPay);
 		int decimal=0;
 		String[] modify = downPayment.split("\\.");
-		char secondDecimal = modify[1].charAt(1);
-		char thirdDecimal = modify[1].charAt(2);
-		if(Integer.parseInt(String.valueOf(thirdDecimal)) >= 5){
-			decimal = Integer.parseInt(String.valueOf(secondDecimal))+1;
-		} else {
-			decimal = Integer.parseInt(String.valueOf(secondDecimal));
+		if(modify[1].length() >= 3) {
+			char secondDecimal = modify[1].charAt(1);
+			char thirdDecimal = modify[1].charAt(2);
+			if (Integer.parseInt(String.valueOf(thirdDecimal)) >= 5) {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal)) + 1;
+			} else {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal));
+			}
 		}
-		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
+		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1);
 		return modifiedDownPayment;
 	}
 

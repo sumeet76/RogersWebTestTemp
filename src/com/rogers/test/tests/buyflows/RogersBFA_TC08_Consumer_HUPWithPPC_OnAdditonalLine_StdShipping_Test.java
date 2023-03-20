@@ -100,9 +100,9 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    /*@AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }*/
+    }
     
 }

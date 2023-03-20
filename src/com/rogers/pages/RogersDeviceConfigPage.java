@@ -20,7 +20,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     public String xpathDeviceName;
 
-    @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
+    @FindAll({
+    @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']"),
+            @FindBy(xpath = "//*[contains(@title,'Ship to home')]")
+    })
     WebElement continueButton;
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
@@ -485,7 +488,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String getDeviceFullPrice(String className) {
         if (className.toUpperCase().contains("_FR")) {
             String deviceFullPriceFR = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
-            return deviceFullPriceFR.substring(0, deviceFullPriceFR.indexOf(","));
+            return deviceFullPriceFR.replaceAll("[^0-9,]","").replace("\\,","\\.");
         } else {
             String deviceFullPriceEN = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
             return deviceFullPriceEN.replaceAll("[^0-9.]","");
