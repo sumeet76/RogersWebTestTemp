@@ -19,10 +19,10 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_AT
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
-    public void ovr_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FT_ATL_FR_Test() {
+    public void ovr_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_ATL_FR_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
@@ -56,12 +56,11 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_AT
         reporter.reportLogWithScreenshot("Add to cart 1st offer");
         getRogersIgniteBundlesPage().noPortInPopup();
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed adding product to cart");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 

@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOfferType_Recommended_ATL_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_TargetedOfferType_Recommended_ATL_EN extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
-    public void oneViewCH_1617_TC01_TargetedMigrationFlowTvToSAIISSTest(){
+    public void oneViewCH_1617_TC01_TargetedMigrationFlovToSAIISSTest(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PTvToSAIISS.getAccountNo(), TestDataHandler.targetedMigration1PTvToSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
@@ -26,8 +26,8 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 //        getRogersIgniteBundlesPage().clkUsethisAddress();
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-        getRogersIgniteBundlesPage().clickNo();
-//        getRogersIgniteBundlesPage().clkContinue();
+//        getRogersIgniteBundlesPage().clickNo();
+        getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().selectRecommendedOffer();
@@ -38,13 +38,15 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
 //        reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 //        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
-        getRogersIgniteBundlesPage().noPortInPopup();
+//        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        getRogersIgniteBundlesPage().reviewAllTerms();
+//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
@@ -80,14 +82,14 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_1P_TV_to_ISS_TargetedOf
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-        getCreditCheckPage().clickDigitalFrontline();
-        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//        getCreditCheckPage().clickDigitalFrontline();
+//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 	    getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+      reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
