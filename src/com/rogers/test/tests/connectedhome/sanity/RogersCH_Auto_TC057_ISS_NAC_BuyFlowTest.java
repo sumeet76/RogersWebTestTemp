@@ -35,10 +35,8 @@ public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
 
     @Test(groups = {"SanityCH","RegressionCH","SmartStreamNAC"})
     public void rogersCH_Auto_TC057_ISS_NAC_BuyFlow() {
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?setProvince=NL");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page for ON region");
-        getRogersHomePage().clkNLProvinceLnk();
-        reporter.reportLogWithScreenshot("NL region selected");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
