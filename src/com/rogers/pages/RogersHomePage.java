@@ -37,7 +37,8 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']"),
-			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
+			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]"),
+			@FindBy(xpath = "//div[contains(@class,'dropdown-items position-absolute ds-shadow-sober w-mx-content right-0 -active')]//span[contains(text(),'Sign out')]")})
 	WebElement lnkSignOut;
 
 	@FindBy(xpath = "//input[@formcontrolname='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
@@ -199,10 +200,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.targetedOffer.label.noContinueInternet']")
 	WebElement lnkOnlyInternet;
 
-	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
+	@FindAll({
+			@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]"),
+			@FindBy(xpath = "//span[contains(text(),'ON')]")
+	})
 	WebElement lnkOptedON;
 
-	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
+	@FindAll({@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']"),
+			@FindBy(xpath = "//a[contains(@aria-label,'Province')]//span[@role='img']")})
 	WebElement lnkProvince;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
@@ -211,15 +216,15 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='o-mobileNavLinkList__item']/a[@aria-label='Ontario']")
 	WebElement lnkOptedONMobile;
 
-
-
 	@FindBy(xpath = "//li[@class='o-mobileNavDropdown__item']/a[@title='New Brunswick']")
 	WebElement lnkProvinceNBMobile;
 
-	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']")
+	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']"),
+			@FindBy(xpath = "//span[contains(text(),'New Brunswick')]")})
 	WebElement lnkProvinceNB;
 
-	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']"),
+			@FindBy(xpath = "//span[contains(text(),'Newfoundland and Labrador')]")})
 	WebElement lnkProvinceNL;
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
@@ -289,7 +294,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
 
-	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
+	@FindAll({
+			@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']"),
+			@FindBy(xpath = "//div[@class='d-none d-lg-block']//ge-icon[@class='ge-dropdown-icon']//span[1]")
+	})
 	WebElement btnIconAvatar;
 
 	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'Ignite Internet Information Pages')]")
