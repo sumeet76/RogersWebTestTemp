@@ -1058,6 +1058,10 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_legacylogin":
+                EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
+                EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
+                ensVerificationsThreadLocal.set(new VerifyInEns(this));
+                RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));

@@ -579,7 +579,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetPackageMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnInternetPackage, 90);
+		getReusableActionsInstance().waitForElementVisibility(btnInternetPackage, 30);
 		getReusableActionsInstance().executeJavaScriptClick(btnInternetPackage);
 	}
 
@@ -592,8 +592,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void selectMonthToMonthTypeOfContractMobile(){
-		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 30);
-		getReusableActionsInstance().getWhenReady(drpdwn150pkgTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(drpdwn150pkgTypeOfContract, 30);
+		getReusableActionsInstance().executeJavaScriptClick(drpdwn150pkgTypeOfContract);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -780,7 +780,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 */
 
 	public String get150SSPkgPrice() {
-		String pkgCostText = getReusableActionsInstance().getWhenReady(div150pkgCost, 40).getAttribute("aria-label");
+		String pkgCostText = getReusableActionsInstance().getWhenReady(div150pkgCost, 60).getAttribute("aria-label");
 		String[] subs= pkgCostText.split("\\$");
 		String[] pkgCost = subs[1].split(" ");
 		return pkgCost[0];
