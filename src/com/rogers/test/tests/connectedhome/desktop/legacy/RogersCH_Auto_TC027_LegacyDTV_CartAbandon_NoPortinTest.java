@@ -60,20 +60,11 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-
-		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-			reporter.reportLogWithScreenshot("Select an account.");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
-		}
-
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		reporter.reportLogWithScreenshot("Clicked on Get it Now");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles");
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+		getRogersHomePage().clkServiceability();
 		getRogersHomePage().selectAddressOnFile();
 		reporter.reportLogWithScreenshot("Selected Address on file");
 		getRogersHomePage().clkUseAddress();
@@ -101,14 +92,8 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Ignite Stream");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		reporter.reportLogWithScreenshot("Clicked on Get it Now");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles");
 		reporter.hardAssert(getRogersHomePage().verifyWelcomeback(),"Welcome back popup has Launched","Welcome back popup has not Launched");
 		reporter.reportLogWithScreenshot("Launched the Welcome back popup");
 		getRogersHomePage().clkWelcomeback();
@@ -129,5 +114,4 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 	public void afterTest() {
 		closeSession();
 	}
-
 }

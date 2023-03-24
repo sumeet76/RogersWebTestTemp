@@ -632,7 +632,8 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSignOut() {
 		getReusableActionsInstance().getWhenVisible(btnIconAvatar,30).click();
-		getReusableActionsInstance().getWhenReady(lnkSignOut, 10).click();
+		getReusableActionsInstance().waitForElementVisibility(lnkSignOut, 10);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSignOut);
 		getReusableActionsInstance().waitForPageLoad();
 	}
 	
