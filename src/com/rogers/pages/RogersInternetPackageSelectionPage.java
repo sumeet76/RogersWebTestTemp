@@ -111,8 +111,11 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite 1Gbps Ultd + Streaming Add to cart' or @aria-label='Élan Internet gigabit illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
 	WebElement btnSmartStream1GbpsPackage;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet Gigabit 1.5 with Streaming Add to cart' or @aria-label='Élan Internet gigabit 1,5 avec Diffusion Élan Ajouter au panier']//span[@role='text']")
+	WebElement btnSmartStream1d5GbpsPackage;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite 2.5 Gbps Ultd + Streaming Add to cart' or @aria-label='Élan Internet gigabit 2,5  illimité + Diffusion Élan Ajouter au panier']//span[@role='text']")
-	WebElement btnSmartStream2GbpsPackage;
+	WebElement btnSmartStream2d5GbpsPackage;
 
 	@FindBy(xpath = "//a[contains(@aria-label,'How to get it Learn how to get Ignite Internet 8 Gigabit')]//span[contains(text(),'How to get it')]")
 	WebElement btn8gbHowToGetIt;
@@ -551,8 +554,12 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnSmartStream1GbpsPackage, 90).click();
 	}
 
-	public void clkSmartStream2GbpsPackage() {
-		getReusableActionsInstance().getWhenReady(btnSmartStream2GbpsPackage, 90).click();
+	public void clkSmartStream1d5GbpsPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream1d5GbpsPackage, 90).click();
+	}
+
+	public void clkSmartStream2d5GbpsPackage() {
+		getReusableActionsInstance().getWhenReady(btnSmartStream2d5GbpsPackage, 90).click();
 	}
 
 	public void clkSmartStreamAvailability() {
