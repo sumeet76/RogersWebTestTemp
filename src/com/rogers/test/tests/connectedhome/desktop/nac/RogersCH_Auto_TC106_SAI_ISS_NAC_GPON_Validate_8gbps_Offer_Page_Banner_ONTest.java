@@ -51,7 +51,7 @@ public class RogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Bann
 
         // 24 months term contract is selected by default
 //        reporter.hardAssert(getRogersInternetPackageSelectionPage().verify2500mbpsIgniteStreamingIsChecked(), "Ignite Streaming checkbox is selected", "Ignite Streaming checkbox is unchecked");
-        getRogersInternetPackageSelectionPage().clkSmartStream2GbpsPackage();
+        getRogersInternetPackageSelectionPage().clkSmartStream2d5GbpsPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");
 
