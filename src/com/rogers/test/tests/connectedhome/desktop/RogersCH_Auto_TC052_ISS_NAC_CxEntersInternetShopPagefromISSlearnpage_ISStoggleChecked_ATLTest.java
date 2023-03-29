@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpage_ISStoggleChecked_ATLTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","SmartStreamCH"})
+    @Test(groups = {"RegressionCH","SmartStreamCH","R223"})
     public void rogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpage_ISStoggleChecked_ATL() {
         getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");

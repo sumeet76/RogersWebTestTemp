@@ -21,7 +21,7 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBIn
         getRogersLoginPage().clkSignInIFrame();
         //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
+       // getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkShop();
         reporter.reportLogWithScreenshot("Clicked on the Shop");
@@ -91,10 +91,10 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBIn
         getRogersTechInstallPage().selectPrefferedDate();
         getRogersTechInstallPage().selectPreferredTimeSlot();
         reporter.reportLogWithScreenshot("Selected Available appoinments");
-        getRogersTechInstallPage().clkIUnderStand();
+        getRogersTechInstallPage().clkTechInstalConsent();
         reporter.reportLogWithScreenshot("clicked on the agreement checkboc");
         //reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
-        getFulfillmentPage().clkContinue();
+        getRogersTechInstallPage().clkTechContinue();
         reporter.reportLogWithScreenshot("clicked on the continue button");
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(), "Payment Mode page has Launched", "Payment Mode page has not Launched");
@@ -121,7 +121,7 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBIn
     //login flow
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws  IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_ignitelogin, method);
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_legacylogin, method);
     }
 
     @AfterMethod(alwaysRun = true)

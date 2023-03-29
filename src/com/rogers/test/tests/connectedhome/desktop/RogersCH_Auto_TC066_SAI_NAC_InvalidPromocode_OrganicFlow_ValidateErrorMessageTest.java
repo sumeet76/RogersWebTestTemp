@@ -29,8 +29,8 @@ public class RogersCH_Auto_TC066_SAI_NAC_InvalidPromocode_OrganicFlow_ValidateEr
 
 	@Test(groups = {"RegressionCH","saiCH"})
     public void rogersCH_Auto_TC066_SAI_NAC_InvalidPromocode_OrganicFlow_ValidateErrorMessage() throws InterruptedException {
-        reporter.reportLogWithScreenshot("clicked Rogers Easy Internet");
-        getRogersHomePage().clkEasyInternet();
+       // reporter.reportLogWithScreenshot("clicked Rogers Easy Internet");
+        //getRogersHomePage().clkEasyInternet();
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();

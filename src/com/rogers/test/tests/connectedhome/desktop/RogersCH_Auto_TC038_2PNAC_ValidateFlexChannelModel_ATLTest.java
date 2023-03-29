@@ -48,9 +48,9 @@ public class RogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATLTest extends 
     @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
     public void rogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATL() {
 		reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
+       getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
+       // getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");

@@ -1075,6 +1075,7 @@ public class BaseTestClass {
                 RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
                 RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
+                RogersTechInstallPageThreadLocal.set(new RogersTechInstallPage(getDriver()));
             case "connectedhome_ignitelogin":
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));

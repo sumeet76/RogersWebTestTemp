@@ -33,7 +33,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_saveCartAndRetrieve_ATLTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "RogersCartAbandon"})
+    @Test(groups = {"RegressionCH", "RogersCartAbandon","R223"})
     public void rogersCH_Auto_TC056_IgniteNAC_CartAbandon_CancelCartatProfileCreationPage_StartOver_newBeforeYouGoModal_saveCartAndRetrieve_ATL() {
         reporter.reportLogWithScreenshot("Launched the Easy Login Page");
         getRogersHomePage().clkTVBundle();

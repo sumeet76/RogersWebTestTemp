@@ -42,6 +42,8 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
 //        reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getDriver().get(System.getProperty("QaUrl")+"/internet/");
         reporter.reportLogWithScreenshot("Launched the Internet page");
+        getRogersHomePage().clkNBProvinceLnk();
+        reporter.reportLogWithScreenshot("Selected NB Province.");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
