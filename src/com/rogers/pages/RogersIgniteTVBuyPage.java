@@ -30,7 +30,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Popular']/ancestor::a")
 	WebElement btnSolarisPopularPackage;
 
-
+	//a[@aria-label='Ignite Flex 5 Add to cart']//span[text()='Add to cart']
 	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']//span[text()='Add to cart']")
 	WebElement btnSolarisStarterPackage;
 
@@ -82,7 +82,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath="//input[@aria-label='Yes, add Ignite Home Phone for an additional $10/mo']/parent::label/span")
 	WebElement btnAddHomePhoneDST;
 
-	@FindBy(xpath= "//button[@aria-label='BEST FITRogers Ignite Flex 10 Bundle']")
+	@FindBy(xpath= "//span[contains(text(),'BEST FIT')]")
 	WebElement txtBestFit;
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-close']")
@@ -132,7 +132,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnFlex10Package;
 
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span/span")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/span/span")
 	WebElement btnFlex20Package;
 
 	@FindBy(xpath = "//td[contains(@class,'second-child')]//div[@class='ds-price -inline']")
@@ -156,10 +156,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='rhp-section']/descendant::label")
 	WebElement checkboxHomephone;
 
-	@FindBy(xpath = "//h2[@id='channels-tab']")
+	@FindBy(xpath = "//h2[@id='channels-tab'] | //button[@id='channels-tab']")
 	WebElement btnChannelsTab;
 
-	@FindBy(xpath = "//h2[@id='themepacks-tab']")
+	@FindBy(xpath = "//h2[@id='themepacks-tab'] | //button[@id='themepacks-tab']")
 	WebElement btnThemepacksTab;
 
 	@FindBy(xpath = "//div[@translate='global.message.buyChannelsLater']")
@@ -353,6 +353,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
 	WebElement btnViewMoreDetailsFlex20;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::a[contains(@aria-label,'View more details')]//span[@role='text']")
+	WebElement btnViewMoreDetailsFlex10;
+
 	@FindBy(xpath = "//span[@translate ='global.label.totalFlexChannels']")
 	WebElement txtFlexChannelsRateCardDetails;
 
@@ -510,6 +513,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkChannelsTab() {
+		getReusableActionsInstance().getWhenReady(btnChannelsTab, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnChannelsTab);
 		//getReusableActionsInstance().getWhenReady(btnChannelsTab, 60).click();
 	}
@@ -617,8 +621,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 30);
-		getReusableActionsInstance().getWhenReady(drpdwnPremierTypeOfContract,30).click();
+		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
+		getReusableActionsInstance().getWhenReady(drpdwnStarterPackageTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -975,7 +979,9 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public void clkCheckoutCancel() {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)){
+			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam,90);
+		}
 		getReusableActionsInstance().waitForElementTobeClickable(btnCheckoutCancel, 60);
 		getReusableActionsInstance().getWhenReady(btnCheckoutCancel, 20).click();
 	}
@@ -1005,12 +1011,18 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author manpreet.kaur3
 	 */
 	public void selectFlex20Package() {
-		getReusableActionsInstance().staticWait(6000);
-		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 60);
-		getReusableActionsInstance().getWhenReady(btnFlex20Package, 30).click();
+		getReusableActionsInstance().getWhenReady(btnFlex20Package, 60).click();
+
 	}
 
-	/**e
+	public void selectFlex10Package() {
+		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().waitForElementVisibility(btnFlex10Package, 60);
+		getReusableActionsInstance().getWhenReady(btnFlex10Package, 30).click();
+
+	}
+
+	/**
 	 * Click Starter package button for anonymous customer
 	 * @author chinnarao.vattam
 	 */
@@ -1040,9 +1052,8 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author manpreet.kaur3
 	 */
 	public String getTotalChannelCount() {
-
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 10);
-		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 50).getText();
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisPremierPackage, 50);
+		String strChannels=getReusableActionsInstance().getWhenReady(txtTotalChannelsRateCardHead, 20).getText();
 		String channels = strChannels.trim();
 		return channels;
 
@@ -1551,11 +1562,6 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(headerIgnitePremier);
 	}
 
-	public void scrollHorizontalToPremier() {
-		getReusableActionsInstance().waitForElementTobeClickable(scrollHorizontalToChoosePlan,10);
-		getReusableActionsInstance().scrollToElementAndClick(scrollHorizontalToChoosePlan);
-	}
-
 	/**
 	 * To scroll to Ignite Starter at offers page
 	 * @author Manpreet.Kaur3
@@ -1675,7 +1681,8 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkDSTClose() {
-		getReusableActionsInstance().getWhenReady(btnDSTClose, 90).click();
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenReady(btnDSTClose, 40).click();
 	}
 
 	/**
@@ -1728,6 +1735,10 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public void clkViewMoreDetailsFlex20() {
 		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex20, 30).click();
+	}
+
+	public void clkViewMoreDetailsFlex10() {
+		getReusableActionsInstance().getWhenReady(btnViewMoreDetailsFlex10, 30).click();
 	}
 
 	/**
@@ -1834,11 +1845,6 @@ getReusableActionsInstance().staticWait(3000);
 
 	public void clkRecommendedPkgViewMoreDetails() {
 		getReusableActionsInstance().getWhenReady(lnkRecommendedPkgViewMoreDetails, 30).click();
-	}
-
-	public void clkViewMoreDetails(String packageName){
-		getReusableActionsInstance().clickIfAvailable(By.xpath("//a[@aria-label='"+packageName
-				+" View more details']//span[text()='View more details']"));
 	}
 
 	public boolean verifyMoreDetailsPopup() {
@@ -1981,12 +1987,5 @@ getReusableActionsInstance().staticWait(3000);
 	public void selectSolarisPackage(String bundleName) {
 		By btnSolarisPackage = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']//span[text()='Add to cart']");
 		getReusableActionsInstance().getWhenReady(btnSolarisPackage, 60).click();
-	}
-
-	public void selectInternetSpeeed(String planName,String speed){
-		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'speeds')]";
-		By element = By.xpath(str_element);
-		WebElement dropdownbox = getReusableActionsInstance().getWhenReady(element, 180);
-		getReusableActionsInstance().selectWhenReady(dropdownbox,4);
 	}
 }

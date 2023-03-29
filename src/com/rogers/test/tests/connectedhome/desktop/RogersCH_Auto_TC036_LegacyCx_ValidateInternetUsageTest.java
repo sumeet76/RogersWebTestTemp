@@ -33,7 +33,7 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc36_legacyInternetAccount.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_legacyInternetAccount.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			reporter.reportLogWithScreenshot("Click on Text as recovery option");
@@ -50,16 +50,17 @@ public class RogersCH_Auto_TC036_LegacyCx_ValidateInternetUsageTest extends Base
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			reporter.reportLogWithScreenshot("Continue to Account Overview");
 		}
-
-		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36_legacyInternetAccount.accountDetails.getBan());
-		reporter.reportLogWithScreenshot("Launched the Account Page");
+		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkLegacyInternetBadge();
 		reporter.reportLogWithScreenshot("Launched the Internet Dashboard Page");
 		getRogersAccountOverviewPage().clkInternetPopup();
 		reporter.hardAssert(getRogersInternetDashboardPage().verifyInternetUsage(),"Verifed the Internet dashboard","Internet dashboard Verification has failed");
-    	}
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyDailyUsage(),"Verified the Daily usage link","Daily Usage Verification has failed");
+		reporter.hardAssert(getRogersInternetDashboardPage().verifyMonthlyUsage(),"Verified the monthly usage link","Monthly Verification has failed");
+
+	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

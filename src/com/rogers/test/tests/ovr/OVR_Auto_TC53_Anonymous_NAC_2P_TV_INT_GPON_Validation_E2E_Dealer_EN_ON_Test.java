@@ -34,7 +34,7 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use a GPON address valid for FIBER Service
-        getCheckAvailabilityPage().checkAvailability("11 AUSTRALIA DR. BRAMPTON, ON L6R 3E4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("34 MADRAS PL, BRAMPTON, ON, L6S2Z2", "chrome");
         reporter.hardAssert(getCheckAvailabilityPage().verifyFiberServiceAvailabilityMessage(),"Address is serviceable for FIBER","Address is not serviceable for FIBER");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

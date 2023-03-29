@@ -40,25 +40,47 @@ public class RogersCH_Auto_TC104_3PNAC_ValidateDST_ValidateFlexFilterAndPreSelec
     @Test
     public void rogersCH_Auto_TC104_3PNAC_ValidateDST_ValidateFlexFilterAndPreSelectedFlexHeader() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getRogersHomePage().clkExistingCustomerShop();
-        reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-        getRogersHomePage().clkSubnavIgniteSmartStream();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region with DST");
+       // getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Entered Serviceability address");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-       // Add DST code once the functionality is available in qa env
 
-        getRogersIgniteTVBuyPage().clkHomephone();
-        reporter.reportLogWithScreenshot("Clicked Home Phone");
-        // Add Best fit bundle code after DST and remove bundleName string from the code
-        String bundleName = "Ignite Flex 5";
+        getRogersIgniteTVBuyPage().clkTaketheQuiz();
+        reporter.reportLogWithScreenshot("Clicked on Take the Quiz");
+        getRogersIgniteTVBuyPage().clkLiveTVChannels();
+        getRogersIgniteTVBuyPage().clkLiveSports();
+        getRogersIgniteTVBuyPage().clkFlexibleChannels();
+        getRogersIgniteTVBuyPage().clkMobileApp();
+        reporter.reportLogWithScreenshot("Selected entertainment features");
+        getRogersIgniteTVBuyPage().clkDSTContinue();
+        reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
+        getRogersIgniteTVBuyPage().clkFourStarsNetworkCategory();
+        getRogersIgniteTVBuyPage().clkFourStarsNewsCategory();
+        getRogersIgniteTVBuyPage().clkFourStarsEntertainmentCategory();
+        getRogersIgniteTVBuyPage().clkFourStarsLifestyleCategory();
+        reporter.reportLogWithScreenshot("Rated channel categories according to preference");
+        getRogersIgniteTVBuyPage().clkDSTContinue();
+        reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
+        getRogersIgniteTVBuyPage().clkInternetDevices();
+        reporter.reportLogWithScreenshot("Selected Internet Devices");
+        getRogersIgniteTVBuyPage().clkDSTContinue();
+        reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
+        getRogersIgniteTVBuyPage().clkAddHomePhoneDST();
+        reporter.reportLogWithScreenshot("Added Home Phone");
+        getRogersIgniteTVBuyPage().clkDSTContinue();
+        reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
+		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBestFit(),"Best Fit verified" ,"Best Fit not verified");
+        getRogersIgniteTVBuyPage().clkDSTClose();
+        reporter.reportLogWithScreenshot("Closed the DST Recommendation");
+		getRogersIgniteTVBuyPage().VerifyYourBestFit();
+        reporter.reportLogWithScreenshot("Recommended pack is displayed");
+        String bundleName = "Ignite Flex 10";
         String totalChannels  = getRogersIgniteTVBuyPage().getTotalChannelCount(bundleName);
         String flexChannels = getRogersIgniteTVBuyPage().getFlexChannelCount(bundleName);
         getRogersIgniteTVBuyPage().clkTotalChannels(bundleName);

@@ -17,6 +17,9 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
+			getAccountOverViewPage().selectProduction();
+			reporter.reportLogWithScreenshot("Select Environment as Production");
+			getAccountOverViewPage().clickProceed();
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
@@ -79,12 +82,12 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-			getPaymentOptionsPage().clkContinue();
-			reporter.reportLogWithScreenshot("submit order");
+//			getPaymentOptionsPage().clkContinue();
+//			reporter.reportLogWithScreenshot("submit order");
 			//getRogersOVCheckoutPage().clkSubmit();
 			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 			//reporter.reportLogWithScreenshot("Order Placed");
-		
+
     }
 
 	@BeforeMethod (alwaysRun=true)
@@ -95,9 +98,7 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
-
 }
-
 

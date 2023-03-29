@@ -40,13 +40,13 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
                 "Modal element is not present on the screen");
         getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
         reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
-//        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
-//        reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
-//        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc08HUPAdditionalLineSS.getCtn());
-//        getRogersDeviceCataloguePage().clickContinueBtn();
-//        reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
-//                "Continue button on the device config page is present",
-//                "Continue button on the device config page is not present");
+        reporter.hardAssert(getRogersDeviceCataloguePage().isModalDisplayed() , "CTN selection Modal window displayed on the screen " ,"CTN selection Modal window not displayed on the screen");
+        reporter.reportLogWithScreenshot("CTN Modal window displayed on the screen");
+        getRogersDeviceCataloguePage().selectCTN(TestDataHandler.tc08HUPAdditionalLineSS.getCtn());
+        getRogersDeviceCataloguePage().clickContinueBtn();
+        reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
+                "Continue button on the device config page is present",
+                "Continue button on the device config page is not present");
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),

@@ -46,9 +46,9 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
 
-//        reporter.reportLogWithScreenshot("review terms and condition");
+        reporter.reportLogWithScreenshot("review terms and condition");
 //        getRogersIgniteBundlesPage().reviewAllTerms();
-//        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+//        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 //        reporter.reportLogWithScreenshot("Points to mention");
 //        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
@@ -89,10 +89,10 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
@@ -103,10 +103,9 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
-         getRogersOrderReviewPage().clkSubmit();
+        getRogersOVCheckoutPage().clkSubmit();
          reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
          reporter.reportLogWithScreenshot("Order Placed");
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser","strLanguage"})

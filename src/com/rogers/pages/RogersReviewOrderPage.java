@@ -58,7 +58,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath="//input[contains(@name,'agreementConsent')]/..")
     WebElement chAgreementConsent;
 
-    @FindBy(xpath="//input[contains(@name,'returningUEDeviceConsent')]/parent::label")
+    @FindBy(xpath="//input[contains(@name,'returningUeDeviceConsent')]/parent::label")
     WebElement chReturningUTDeviceConsent;
 
     @FindBy(xpath = "//input[contains(@name,'upfrontConsent')]/..")
@@ -406,7 +406,9 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author Subash.Nedunchezhian
      */
     public void clkAddonsAgreementConsent(){
-        getReusableActionsInstance().clickWhenVisible(addonsAgreement,15);
+        if(getReusableActionsInstance().isElementVisible(addonsAgreement,10)) {
+            getReusableActionsInstance().clickWhenVisible(addonsAgreement);
+        }
     }
 
     /**

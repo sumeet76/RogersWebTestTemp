@@ -1,11 +1,11 @@
 package com.rogers.oneview.pages;
 
 //import com.rogers.test.listeners.TestListener;
-
-import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+
+import com.rogers.pages.base.BasePageClass;
 
 import java.util.List;
 
@@ -443,8 +443,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
 
-	@FindBy(xpath = "//div[@rchapiexposer='customerDetails.serviceAddress']//ds-radio-button//input")
-	WebElement rdoBtnSelectExisitingAddress;
 
 	/**
 	 * Click Load Offers button
@@ -1543,6 +1541,34 @@ public void activateHomePhoneltrPopUp() {
 	public void clickExistingAddressRadioButton(){
 		getReusableActionsInstance().waitForElementTobeClickable(rdoBtnSelectExisitingAddress,60);
 		getReusableActionsInstance().executeJavaScriptClick(rdoBtnSelectExisitingAddress);
+	}
+
+	public boolean verifyExclusiveOffersAvailable(){
+		return getReusableActionsInstance().isElementVisible(exclusiveOffers);
+	}
+
+	public void wirelessHomeInternetCredit(){
+		getReusableActionsInstance().waitForElementVisibility(wirelessHomeInternetCred,60);
+		getReusableActionsInstance().scrollToElement(wirelessHomeInternetCred);
+		getReusableActionsInstance().executeJavaScriptClick(wirelessHomeInternetCred);
+	}
+
+	public void clickExclusiveOfferPopOver(){
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferPopOver,60);
+		getReusableActionsInstance().scrollToElement(exclusiveOfferPopOver);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferPopOver);
+	}
+
+	public void clickSecondOptionToCart() {
+		getReusableActionsInstance().waitForElementVisibility(secondOptionToCart,90);
+		getReusableActionsInstance().scrollToElement(secondOptionToCart);
+		getReusableActionsInstance().executeJavaScriptClick(secondOptionToCart);
+	}
+
+	public void clickPromoModule(){
+		getReusableActionsInstance().waitForElementVisibility(promoModule,90);
+		getReusableActionsInstance().scrollToElement(promoModule);
+		getReusableActionsInstance().executeJavaScriptClick(promoModule);
 	}
 
 }

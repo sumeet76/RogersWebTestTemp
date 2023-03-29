@@ -50,7 +50,7 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.reportLogWithScreenshot("provider");
 		getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
 		reporter.reportLogWithScreenshot("portin details");
-		//getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+		getRogersIgniteBundlesPage().contiueFromPortIn();
 		reporter.reportLogWithScreenshot("portin continue");
 		getRogersIgniteBundlesPage().contiueToCartSummary();
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
@@ -110,6 +110,6 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 }

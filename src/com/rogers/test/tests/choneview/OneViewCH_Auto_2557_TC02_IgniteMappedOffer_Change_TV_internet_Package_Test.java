@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Package_Test extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
-    public void oneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Package_Test() {
+    public void oneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteOffersChangeTV_INTpackage.getAccountNo(),TestDataHandler.IgniteOffersChangeTV_INTpackage.getContactID());
         getAccountOverViewPage().selectInternetBadage();
@@ -42,9 +42,11 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
         reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
-//        getAccountOverViewPage().clickSubmit();
-//        reporter.reportLogWithScreenshot("click Submit");
-		reporter.reportLogWithScreenshot("Order Confirmation page");
+        getAccountOverViewPage().clickSubmit();
+        reporter.reportLogWithScreenshot("click Submit");
+
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 
@@ -57,6 +59,7 @@ public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Packa
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+            //closeSession();
     }
+
 }

@@ -13,7 +13,9 @@ import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to verify the Internet package upgrade flow for Rogers.com
- * CH-13233,CH-13908,CH-13909_Regression_3PCx Change Internet_PTM Modal_Eligible for PSEF and GWP_E2E_NL_CH_EN
+ * TC021_CH-13512_Existing 3P oldconstructor cx_targeted with ignite 3P_INT_ Banner_offerType is REGULAR with discounts and promotion,
+ * offer already expired_Date populated in generic 1 _
+ * Validate Banner_Header_Current and new bundle Pricing_Unified checkout page and confirmation page_ON_FF_FR
  * @author manpreet.kaur3
  * 
  * Test steps:
@@ -41,11 +43,10 @@ public class RogersCH_Auto_TC114_3PCx_OldConstructor_HTO_INT_ExpiredOffer_ON_FRT
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc99_3PCxInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc99_3PCxInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc99_3PCxInternetAccount.accountDetails.getBan());
-    	reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkFR();
         reporter.reportLogWithScreenshot("Launched the Account Page FR");

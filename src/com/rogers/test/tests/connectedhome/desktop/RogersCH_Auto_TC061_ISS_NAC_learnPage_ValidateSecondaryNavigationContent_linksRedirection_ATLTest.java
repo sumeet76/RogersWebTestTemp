@@ -37,8 +37,11 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
 
 	@Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationContent_linksRedirection_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+       // getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
+        getRogersHomePage().clkNBProvinceLnk();
+        reporter.reportLogWithScreenshot("select NB region");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
         reporter.reportLogWithScreenshot("Ignite Internet Sub nav");
@@ -51,7 +54,7 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         reporter.reportLogWithScreenshot("Help And Support Sub nav");
         getRogersHomePage().clkSubnavHelpAndSupport();
         //reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the Legacy Internet");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         reporter.hardAssert(getRogersHomePage().isSubnavIgniteInternetPresent(),"Ignite Internet Sub nav is Present","Ignite Internet Sub nav is not Present");
         getRogersHomePage().clkSubnavIgniteInternet();
@@ -59,12 +62,12 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         //reporter.hardAssert(getRogersHomePage().isAboutIgniteInternetLinkPresent(),"About Ignite Internet Link is present","About Ignite Internet Link is not present");
         getRogersHomePage().clkIgniteWiFiPromise();
         reporter.reportLogWithScreenshot("clicked Ignite wifi");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersHomePage().clkSubnavIgniteInternet();
         getRogersHomePage().clkIgniteWiFiHub();
         reporter.reportLogWithScreenshot("clicked Ignite wifi hub");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
        // getRogersHomePage().clkSubnavIgniteInternet();
        // reporter.reportLogWithScreenshot("Launched the Internet packages page");
@@ -75,8 +78,8 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
        // reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         //getRogersHomePage().clkAboutIgniteInternetLink();
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
