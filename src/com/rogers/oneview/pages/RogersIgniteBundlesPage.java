@@ -192,7 +192,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	String collapsible = "(//rch-collapsible)";
 //	String collapsible = "(//rch-collapsible[@ng-reflect-is-open='false'])";
 
-	@FindBy(xpath = "//div[@class='ds-modal__footer mb-24 mb-sm-40']/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//button[contains(@class,'w-2 ds-button')]")
 	WebElement continueFromPointsToMention;
 
    	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
@@ -325,7 +325,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Système de domotique ']")
+	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -441,11 +441,24 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[text()='One Time Bill Credit - $150 (PCR3)' or text()='Crédit de facture unique - 150 $ (PCR3)'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
 	WebElement promoModule;
+
+	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
+	WebElement exclusiveOffers;
+
+	@FindBy(xpath = "//span[contains(text(),'Rabais de 10 $')]")
+	WebElement wirelessHomeInternetCred;
+
+	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
+	WebElement exclusiveOfferPopOver;
+
+	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
+	WebElement secondOptionToCart;
+
 
 
 	/**
@@ -463,14 +476,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 */
 	public void reviewTermsAndCondition() {
 
-		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
-		for (int i=1; i<=allCollapsible.size(); i++) {
-			getReusableActionsInstance().staticWait(5000);
-			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
-			getReusableActionsInstance().scrollToElement(currentCollapisble);
-			getReusableActionsInstance().clickWhenReady(currentCollapisble);
-		}
-
+//		List<WebElement> allCollapsible = getDriver().findElements(By.xpath(collapsible));
+//		for (int i=1; i<=allCollapsible.size(); i++) {
+//			getReusableActionsInstance().staticWait(5000);
+//			WebElement currentCollapisble = getReusableActionsInstance().getWhenReady(By.xpath(collapsible +"[1]"));
+//			getReusableActionsInstance().scrollToElement(currentCollapisble);
+//			getReusableActionsInstance().clickWhenReady(currentCollapisble);
+//		}
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
@@ -1547,6 +1559,34 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(oneTimeCredit,60);
 		getReusableActionsInstance().scrollToElement(oneTimeCredit);
 		getReusableActionsInstance().executeJavaScriptClick(oneTimeCredit);
+	}
+
+	public boolean verifyExclusiveOffersAvailable(){
+		return getReusableActionsInstance().isElementVisible(exclusiveOffers);
+	}
+
+	public void wirelessHomeInternetCredit(){
+		getReusableActionsInstance().waitForElementVisibility(wirelessHomeInternetCred,60);
+		getReusableActionsInstance().scrollToElement(wirelessHomeInternetCred);
+		getReusableActionsInstance().executeJavaScriptClick(wirelessHomeInternetCred);
+	}
+
+	public void clickExclusiveOfferPopOver(){
+		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferPopOver,60);
+		getReusableActionsInstance().scrollToElement(exclusiveOfferPopOver);
+		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferPopOver);
+	}
+
+	public void clickSecondOptionToCart() {
+		getReusableActionsInstance().waitForElementVisibility(secondOptionToCart,90);
+		getReusableActionsInstance().scrollToElement(secondOptionToCart);
+		getReusableActionsInstance().executeJavaScriptClick(secondOptionToCart);
+	}
+
+	public void clickPromoModule(){
+		getReusableActionsInstance().waitForElementVisibility(promoModule,90);
+		getReusableActionsInstance().scrollToElement(promoModule);
+		getReusableActionsInstance().executeJavaScriptClick(promoModule);
 	}
 
 }
