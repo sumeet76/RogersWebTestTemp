@@ -27,7 +27,7 @@ import java.util.Map;
  * In Credit evaluation page enter the different DOB and exact DL that was used at the time of account creation
  * Follow the RCIS rule sheet same as above to have the correct details respective to that to simulate Medium Risk Class and Click on Continue
  * Select the required details in Fulfillment page to complete the E2E flow
- *
+ * Same Address, same profile details, diff credit details
  **/
 
 public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest extends BaseTestClass {
@@ -46,8 +46,8 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
-		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
-		reporter.reportLogWithScreenshot("Add to cart");
+		getRogersIgniteTVBuyPage().selectFlex20Package();
+		reporter.reportLogWithScreenshot("Added to cart");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
@@ -57,6 +57,7 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().setEmail(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getUsername());
 		getRogersIgniteTVProfileCreationPage().setFirstname(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getFirstName());
+		reporter.reportLogWithScreenshot("Entered Fuzzy first name");
 		getRogersIgniteTVProfileCreationPage().setLastName(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getLastName());
 		getRogersIgniteTVProfileCreationPage().setPhone(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getPhoneNumber());
 		reporter.reportLogWithScreenshot("Fido wireless account details entered");
@@ -67,26 +68,38 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		getRogersIgniteTVCreditCheckPage().selectDOBYear();
 		getRogersIgniteTVCreditCheckPage().selectDOBMonth();
 		getRogersIgniteTVCreditCheckPage().selectDOBDay();
-		/*getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
-		getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getMonth());
-		getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDate());*/
-		reporter.reportLogWithScreenshot("Entered Different DOB details");
+		reporter.reportLogWithScreenshot("Entered diff DOB details");
 		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
 		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
-		/*getRogersIgniteTVCreditCheckPage().selectExpiryYear();
-		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
-		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
-		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");*/
-		getRogersIgniteTVCreditCheckPage().selectExpiryYear(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
+		/*getRogersIgniteTVCreditCheckPage().selectExpiryYear(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
 		getRogersIgniteTVCreditCheckPage().selectExpiryMonth(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getMonth());
 		getRogersIgniteTVCreditCheckPage().selectExpiryDay(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDate());
 		getRogersIgniteTVCreditCheckPage().setDrivingLicense(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDrivingLicence());
-		reporter.reportLogWithScreenshot("Entered Exact Driving License Details");
-		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Birth Certificate");
-		getRogersIgniteTVCreditCheckPage().setBirthCertificateNumber(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getBirthCertNumber());
+		reporter.reportLogWithScreenshot("Exact Driving License Details");*/
+
+		/*getRogersIgniteTVCreditCheckPage().selectDOBYearExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getYear());
+		getRogersIgniteTVCreditCheckPage().selectDOBMonthExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getMonth());
+		getRogersIgniteTVCreditCheckPage().selectDOBDayExistingCustomer(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getDate());
+		reporter.reportLogWithScreenshot("Entered Exact DOB details");*/
+		getRogersIgniteTVCreditCheckPage().selectFirstID("Driver's License");
+		getRogersIgniteTVCreditCheckPage().selectProvince("Ontario");
+		getRogersIgniteTVCreditCheckPage().selectExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectExpiryDay();
+		getRogersIgniteTVCreditCheckPage().setDrivingLicenseNumber("ONTARIO");
+		reporter.reportLogWithScreenshot("Diff Driving License Details");
+
+		/*getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Birth Certificate");
+		getRogersIgniteTVCreditCheckPage().setBirthCertificateNumber(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getBirthCertNumber());*/
+		getRogersIgniteTVCreditCheckPage().selectSecondIDOption("Passport");
+		getRogersIgniteTVCreditCheckPage().setPassportNumber();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryYear();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryMonth();
+		getRogersIgniteTVCreditCheckPage().selectPassportExpiryDay();
 		getRogersIgniteTVCreditCheckPage().clkCreditConsent();
-		reporter.reportLogWithScreenshot("Passport Details");
+		reporter.reportLogWithScreenshot("Second Id entered");
 		getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
+		reporter.reportLogWithScreenshot("Medium Risk details entered according to RCIS rule sheet");
 		/*if (getRogersIgniteTVCreditCheckPage().verifyAddressModal()) {
 			String strAddressLineOne = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddressOnFile().get("line1");
 			String strAddressLineTwo = TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getAddressOnFile().get("line2");

@@ -35,10 +35,11 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        //getEnsVerifications().setVerificationCode();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc45_sHMSignedInInternetBuy.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
+      //  getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
@@ -51,6 +52,10 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         getRogersHomePage().clkUseAddress();
         reporter.reportLogWithScreenshot("Use the address on file");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
+
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");

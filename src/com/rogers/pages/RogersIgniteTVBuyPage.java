@@ -303,7 +303,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='cdk-overlay-pane ds-modalWindow']")
 	WebElement popupEmailModal;
 
-	@FindBy(xpath = "//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']")
+	//a[@title='MyRogers' or @title='MonRogers' and @class='m-navLink ng-star-inserted']
+	@FindBy(xpath = "//a[@aria-label='Sign in']//span[@role='text']")
 	WebElement lnkMyRogers;
 
 	@FindBy(xpath = "//span[@translate='global.cta.cancel']/ancestor::span[@role='text']")
