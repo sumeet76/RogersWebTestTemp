@@ -61,7 +61,7 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_Legacy2PtoIgnite2P.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
-		getDriver().get(System.getProperty("QaUrl")+"/bundles");
+		getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 		//getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceability();

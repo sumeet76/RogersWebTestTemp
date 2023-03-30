@@ -91,9 +91,11 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.reportLogWithScreenshot("Added Home Phone");
 		getRogersIgniteTVBuyPage().clkDSTContinue();
 		reporter.reportLogWithScreenshot("Clicked on DST Continue to next question");
-    	reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBestFit(),"Best Fit verified" ,"Best Fit not verified");
 		getRogersIgniteTVBuyPage().clkDSTClose();
 		reporter.reportLogWithScreenshot("Closed the DST Recommendation");
+//		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBestFit(),"Best Fit verified" ,"Best Fit not verified");
+		reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(),"Best Fit package displayed post quiz","Best Fit package displayed post quiz");
+		reporter.reportLogWithScreenshot("Verify the recommended Banner");
 		//getRogersIgniteTVBuyPage().VerifyYourBestFit();
 		reporter.reportLogWithScreenshot("Recommended pack is displayed");
 		getRogersIgniteTVBuyPage().selectFlex10PackageMonthToMonthTypeOfContract();

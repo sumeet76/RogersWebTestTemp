@@ -41,12 +41,10 @@ public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTe
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
-            reporter.reportLogWithScreenshot("Account Selected");
-        }
-        //getRogersHomePage().clkNBProvinceLnk();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
+        reporter.reportLogWithScreenshot("Account Selected");
+        getRogersHomePage().clkNBProvinceLnk();
+        reporter.reportLogWithScreenshot("Clicked NB Province Link");
         getRogersSolarisTVDashboardPage().clkFR();
         reporter.reportLogWithScreenshot("Launched the Account Page FR");
         getRogersSolarisTVDashboardPage().clkTVBadge();

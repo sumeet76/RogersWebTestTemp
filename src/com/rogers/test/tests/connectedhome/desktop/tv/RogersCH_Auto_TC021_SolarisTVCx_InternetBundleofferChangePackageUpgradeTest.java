@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC021_SolarisTVCx_InternetBundleofferChangePackageUpg
         reporter.reportLogWithScreenshot("Address Selected");
         getRogersBuyPage().clkIgniteInternetSpeed();
         reporter.reportLogWithScreenshot("Launched the TV packge Page");
-        getRogersInternetDashboardPage().clkInternetPopup();
+//        getRogersInternetDashboardPage().clkInternetPopup();
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc21_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc21_SolarisInternetAccountForUpgrade.getAccountDetails().getUpgradePlanFr());
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");

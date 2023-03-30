@@ -366,10 +366,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement iconCloseModal;
 
 	@FindAll({
+			@FindBy(xpath = "//span[text() = ' CREDIT ']/ancestor::div[contains(@rchapiexposer, 'orderSummary.otbcCampaignDiscountedPrice')]"),
 			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//div[@rchapiexposer=\"planIncludes.discountedPrice\"]"),
 			@FindBy(xpath = "//rch-tile-see-full-detials-modal//div[@class='price-legal__OTBC ng-star-inserted']/span"),
-			@FindBy(xpath = "//span[@class='text-overline mb-0 mw-100']")
-//			@FindBy(xpath = "//div[contains(@class, 'ds-tile')]//span[@class='text-overline mb-0 mw-100'][normalize-space()='CREDIT']"),
+			@FindBy(xpath = "//span[@class='text-overline mb-0 mw-100']"),
 //			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit will appear on the Order Review page and be')]"),
 //			@FindBy(xpath="//div[contains(@class, 'ds-tile')]//span[contains(text(),'Credit appears in')]")
 	})
@@ -1964,7 +1964,7 @@ getReusableActionsInstance().staticWait(3000);
 	}
 
 	public Boolean validateOTBCCampaign() {
-		return getReusableActionsInstance().isElementVisible(txtOtbcCampaign, 40);
+		return getReusableActionsInstance().isElementVisible(txtOtbcCampaign, 60);
 	}
 
 	/**

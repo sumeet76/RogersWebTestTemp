@@ -223,8 +223,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
-		//getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,40).click();
+
 	}
 
 	/**

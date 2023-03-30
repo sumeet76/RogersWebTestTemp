@@ -37,10 +37,7 @@ public class RogersCH_Auto_TC067_Bulk3PTenantCx_2L7ContractType_ValidateAllDashb
          reporter.reportLogWithScreenshot("Enter the account credentials");
          getRogersLoginPage().clkSignInIFrame();
          reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-             reporter.reportLogWithScreenshot("Select an account.");
-             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc67_2L7ContractType3PBulkTenant.accountDetails.getBan());
-         }
+         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc67_2L7ContractType3PBulkTenant.accountDetails.getBan());
          reporter.reportLogWithScreenshot("Account Selected");
          getRogersInternetDashboardPage().clkSolarisInternetBadge();
          reporter.reportLogWithScreenshot("Launched the Internet dashboard");

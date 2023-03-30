@@ -177,8 +177,8 @@ public class RogersPaymentOptionsPage extends BasePageClass {
 		String strCVV = FormFiller.generateCVVNumber();
 		getReusableActionsInstance().waitForElementVisibility(txtContainerCVV,50);
 		getReusableActionsInstance().getWhenReady(txtContainerCVV,10).click();
-		getReusableActionsInstance().getWhenReady(txtCVV, 30).clear();
-		getReusableActionsInstance().getWhenReady(txtCVV,10).sendKeys(strCVV);
+		txtCVV.click();
+		getReusableActionsInstance().getWhenReady(txtCVV).sendKeys(strCVV);
 	}
 
 	/**

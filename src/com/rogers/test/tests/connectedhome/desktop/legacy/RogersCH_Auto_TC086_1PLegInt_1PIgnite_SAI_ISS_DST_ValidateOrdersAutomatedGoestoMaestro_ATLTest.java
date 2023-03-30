@@ -55,17 +55,15 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
-        }
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getAccountDetails().getBan());
         reporter.reportLogWithScreenshot("Account Selected");
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Selected the NL Province");
-        getDriver().get(System.getProperty("QaUrl") + "/internet/offers?env=qa");
+        getDriver().get(System.getProperty("QaUrl") + "/internet?env=qa");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        getRogersHomePage().clkServiceability();
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("selected address on file");
         getRogersHomePage().clkUseAddress();
@@ -90,10 +88,10 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Add smart stream add on");
         getRogersInternetPackageSelectionPage().clkDSTContinue();
 //        getRogersInternetPackageSelectionPage().VerifyBestFit();
-        reporter.reportLogWithScreenshot("Best Fit package for the selected");
         getRogersInternetPackageSelectionPage().clkBackToPackagesPage();
         reporter.reportLogWithScreenshot("Clicked on back to packages");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(), "Best Fit package displayed post quiz", "Best Fit package displayed post quiz");
+        reporter.reportLogWithScreenshot("Verify recommended banner");
         //getRogersInternetPackageSelectionPage().selectIgniteSmartStream1GbpsCheckBox();
         //reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
         //getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();

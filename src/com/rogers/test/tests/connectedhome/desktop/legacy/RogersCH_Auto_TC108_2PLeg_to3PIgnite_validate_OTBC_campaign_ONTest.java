@@ -60,7 +60,7 @@ public class RogersCH_Auto_TC108_2PLeg_to3PIgnite_validate_OTBC_campaign_ONTest 
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
-        getDriver().get(System.getProperty("QaUrl")+"/home/ignite-bundles/tv-internet");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setProvince=ON");
         reporter.reportLogWithScreenshot("Launched the TV Bundles Page");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Launched serviceability model");

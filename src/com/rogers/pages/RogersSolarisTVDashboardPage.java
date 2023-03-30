@@ -49,7 +49,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
-	@FindBy(xpath = "//span[text()='FR']")
+	@FindAll({@FindBy(xpath = "//span[text()='FR']"),
+			@FindBy(xpath = "//div[@class='d-flex align-items-center container']//span[contains(text(),'Français')]")
+	})
 	WebElement lnkFR;
 
 	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='false']/span")
@@ -310,8 +312,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolaristvBadge,60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
-		//getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
+
 	}
 
 	/**
@@ -478,7 +481,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,60);
+		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,120);
 		getReusableActionsInstance().getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 

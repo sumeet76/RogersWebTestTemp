@@ -59,11 +59,10 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 	  	 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
-		 getRogersHomePage().clkNBProvinceLnk();
-		 reporter.reportLogWithScreenshot("Clicked NB province link");
-		 getDriver().get(System.getProperty("QaUrl") + "/bundles");
+//		 getRogersHomePage().clkNBProvinceLnk();
+		 getDriver().get(System.getProperty("QaUrl") + "/bundles?setProvince=NB");
 //		 reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-//		 reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+		 reporter.reportLogWithScreenshot("Navigated to IgniteTV Page - NB province");
 		 getRogersHomePage().clkServiceability();
 		 reporter.reportLogWithScreenshot("Launched the customer availability check popup");
 		 String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
