@@ -94,10 +94,10 @@ public class HomePhonedashboard  extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement onlineManager;
 
-	@FindBy(xpath = "(//span [contains(text(),'Remove') or text()='Retirer'])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'Remove') or text()='Retirer'])[2]")
 	WebElement removeUnlistedNumberAddon;
 
-	@FindBy(xpath = "(//span [contains(text(),'Remove') or text()='Retirer'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'Remove') or text()='Retirer'])[1]")
 	WebElement removeCallDisplayAddon;
 
 	@FindBy(xpath = "//div[@class='ng-star-inserted']//h3[contains(text(),'Removed Items')]")
