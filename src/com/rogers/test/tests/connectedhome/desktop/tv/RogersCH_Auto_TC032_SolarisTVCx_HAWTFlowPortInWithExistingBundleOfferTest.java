@@ -19,14 +19,19 @@ public class RogersCH_Auto_TC032_SolarisTVCx_HAWTFlowPortInWithExistingBundleOff
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc32_SolarisPortinFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCode();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc32_SolarisPortinFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkExistingCustomerShop();
+       /* getRogersHomePage().clkExistingCustomerShop();
         reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
         getRogersHomePage().clkSubnavIgniteSmartStream();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+        getRogersHomePage().clkGetIgniteTvWithIgniteInternet();*/
+        getDriver().get(System.getProperty("QaUrl") + "/bundles");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page");
+        getRogersHomePage().clkServiceability();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String  strAddressLine1=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc32_SolarisPortinFlows.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);

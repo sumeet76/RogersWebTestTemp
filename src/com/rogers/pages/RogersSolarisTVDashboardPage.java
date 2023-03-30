@@ -49,7 +49,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
-	@FindBy(xpath = "//span[text()='FR']")
+	@FindBy(xpath = "//span[text()='FR']|//span[text()='Français']")
 	WebElement lnkFR;
 
 	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='false']/span")
@@ -499,10 +499,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		//getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
 		//Need ti to pull channels from ATG
 		getReusableActionsInstance().staticWait(10000);
-		WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannels);
+		/*WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
 		getReusableActionsInstance().waitForElementVisibility(lnkChangeFlexChannelsMobile, 60);
 		getReusableActionsInstance().waitForElementTobeClickable(lnkChangeFlexChannelsMobile, 60);
-		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);
+		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);*/
 	}
 	/**
 	 * To verify Exchange FlexChanne link
@@ -833,7 +835,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkFR() {
-		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+		getReusableActionsInstance().getWhenReady(lnkFR, 60).click();
 	}
 
 	/**
