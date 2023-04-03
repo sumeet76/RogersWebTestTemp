@@ -10,7 +10,7 @@ public class RogersTvStreamingPage extends BasePageClass {
         super(driver);
     }
 
-    @FindBy(xpath = "//a[@aria-label='Shop Ignite TV with Ignite Internet']//span[text()='Get it now']")
+    @FindBy(xpath = "//a[@aria-label='Shop Ignite TV with Ignite Internet' or 'Get it now Get it now']//span[text()='Get it now']")
     WebElement buttonIgniteTVGetItNow;
 
     public void clkGetItNowForIgniteTV(){

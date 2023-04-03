@@ -136,7 +136,7 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmExchange() {
-		getReusableActionsInstance().scrollToElement(lnkContactUs);
+		//getReusableActionsInstance().scrollToElement(lnkContactUs);
 		getReusableActionsInstance().clickWhenReady(btnConfirmExchange,20);
 	}
 

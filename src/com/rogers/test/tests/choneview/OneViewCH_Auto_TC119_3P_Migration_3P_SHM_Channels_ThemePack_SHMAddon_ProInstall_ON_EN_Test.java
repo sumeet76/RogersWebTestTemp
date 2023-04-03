@@ -11,7 +11,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM_AddOns_ProInstall_Monthly_ON_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC119_3P_Migration_3P_SHM_Channels_ThemePack_SHMAddon_ProInstall_ON_EN_Test extends BaseTestClass {
 
     @Test(groups="RegressionCHOV")
     public void oneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM_AddOns_ProInstall_Monthly_ON_EN() {

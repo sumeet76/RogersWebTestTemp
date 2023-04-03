@@ -1988,4 +1988,11 @@ getReusableActionsInstance().staticWait(3000);
 		By btnSolarisPackage = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']//span[text()='Add to cart']");
 		getReusableActionsInstance().getWhenReady(btnSolarisPackage, 60).click();
 	}
+
+	public void selectInternetSpeeed(String planName,String speed){
+		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'speeds')]";
+		By element = By.xpath(str_element);
+		WebElement dropdownbox = getReusableActionsInstance().getWhenReady(element, 180);
+		getReusableActionsInstance().selectWhenReady(dropdownbox,4);
+	}
 }

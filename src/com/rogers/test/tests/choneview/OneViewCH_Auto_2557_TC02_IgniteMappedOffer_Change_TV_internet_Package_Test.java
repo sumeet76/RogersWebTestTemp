@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN extends BaseTestClass {
+public class OneViewCH_Auto_2557_TC02_IgniteMappedOffer_Change_TV_internet_Package_Test extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN() {
         reporter.reportLogWithScreenshot("One view is launched");

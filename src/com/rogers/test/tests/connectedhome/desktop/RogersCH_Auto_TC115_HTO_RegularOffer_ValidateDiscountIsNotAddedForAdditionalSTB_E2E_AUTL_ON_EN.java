@@ -2,6 +2,7 @@ package com.rogers.test.tests.connectedhome.desktop;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
+import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -14,15 +15,16 @@ public class RogersCH_Auto_TC115_HTO_RegularOffer_ValidateDiscountIsNotAddedForA
     @Test(groups = {"Regression"})
     public void ValidateDiscountIsNotAddedForAdditionalSTB_E2E_AUTL_ON_EN(){
 
-        getRogersLoginPage().setUsernameIFrame("AutoDataR308CH82@yahoo.com");
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc115_3p_hto_regular.getUsername());
         reporter.reportLogWithScreenshot("Entered the username field successfully");
         getRogersLoginPage().clkContinueInBrowser();
         reporter.reportLogWithScreenshot("Clicked on the continue button");
-        getRogersLoginPage().setPasswordIFrame("DigiAuto@123");
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc115_3p_hto_regular.getPassword());
         reporter.reportLogWithScreenshot("Enter the password successufully");
         getRogersLoginPage().clkSignInIFrame();
         reporter.reportLogWithScreenshot("Clicked on the sign in button");
-        getRogersAccountOverviewPage().selectAccount("233760135908");
+       // getRogersAccountOverviewPage().selectAnAccountFromTheAccountDropDown();
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc115_3p_hto_regular.getAccountNo());
         reporter.reportLogWithScreenshot("Clicked on the account Number");
         getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
         reporter.reportLogWithScreenshot("Clicked on the close button in the offer model popup");

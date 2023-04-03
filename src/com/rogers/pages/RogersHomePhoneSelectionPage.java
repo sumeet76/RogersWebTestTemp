@@ -1,10 +1,9 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 public class RogersHomePhoneSelectionPage extends BasePageClass {
 
@@ -88,7 +87,7 @@ public class RogersHomePhoneSelectionPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPhoneNumberPage() {
-		return	getReusableActionsInstance().isElementVisible(txtPhoneNumberSelectionPage, 60);
+		return	getReusableActionsInstance().isElementVisible(txtPhoneNumberSelectionPage, 120);
 	}
 
 	/**

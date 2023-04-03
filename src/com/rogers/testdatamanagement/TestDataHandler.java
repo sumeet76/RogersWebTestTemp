@@ -48,6 +48,8 @@ public class TestDataHandler {
 	public static AccountData tc89_2PMigrationGPON;
 	public static AccountData tc90_1P_HTO_GPON_DualTopology;
 	public static AccountData tc111_Legacy1PtoIgnite2P;
+
+	public static AccountData tc111_3p_migration_gpon;
 	public static AccountData tc35_digitalTVAccount;
 	public static AccountData tc17_18_19_20_SolarisInternetAccount;
 	public static AccountData tc99_3PCxInternetAccount;
@@ -324,6 +326,8 @@ public class TestDataHandler {
 	public static AccountData tc136;
 	public static AccountData tc137;
 	public static AccountData tc138;
+
+	public static AccountData tc115_3p_hto_regular;
 	public static AccountData tc139;
 	public static AccountData RHPManage_AddOns;
 	public static AccountData SUS_15702_TC01_Validation_Of_CallerID;
@@ -556,6 +560,10 @@ public class TestDataHandler {
 		tc75_IgniteTVBaseLineHomeAddress= YamlHandler.getCableAccountData("TC75_IgniteTVBaseLineHomeAddress");
 		tc76_Legact2Pto3PIgniteBasementHousePortinHot= YamlHandler.getCableAccountData("TC76_Legact2Pto3PIgniteBasementHousePortinHot");
 		tc106StandaloneInternetAccount = YamlHandler.getCableAccountData("TC106_StandaloneInternetAccount");
+		tc111_3p_migration_gpon = YamlHandler.getCableAccountData("TC111_3P_Migration_GPON_DualTopology");
+		// hto flows testdata
+		tc115_3p_hto_regular = YamlHandler.getCableAccountData("TC115_3P_HTO_Regular");
+
 	}
 	
 	private static void selfserveDataInit() throws FileNotFoundException {
