@@ -50,6 +50,7 @@ public class RogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATLTest extends 
             reporter.reportLogWithScreenshot("Continue to Account Overview");
         }
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc72_RogersSHM_NB.accountDetails.getBan());
         getRogersSolarisTVDashboardPage().clkSHMBadge();
         reporter.reportLogWithScreenshot("SHM dashboard page");
         //  reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),"Launched SHM dashboard successfully", "SHM dashboard failed");
