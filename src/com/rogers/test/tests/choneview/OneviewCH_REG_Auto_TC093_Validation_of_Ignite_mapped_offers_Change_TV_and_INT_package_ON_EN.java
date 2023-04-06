@@ -44,6 +44,7 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
         getAccountOverViewPage().clickSubmit();
         reporter.reportLogWithScreenshot("click Submit");
+
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
@@ -56,8 +57,9 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
             startOVSession(System.getProperty("OVUrl"),strBrowser,strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","",method);
         }
 
-//        @AfterMethod(alwaysRun=true)
-//        public void afterTest(){
-//            closeSession();
-//    }
+        @AfterMethod(alwaysRun=true)
+        public void afterTest(){
+            //closeSession();
+    }
+
 }
