@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E_Dealer_ON_EN_Test extends BaseTestClass {
+public class OVR_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E_Dealer_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
