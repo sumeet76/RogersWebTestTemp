@@ -23,7 +23,7 @@ public class OVR_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E_Dealer_ON_EN_Test()  {
+    public void ovr_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E_Dealer_ON_EN_Test()  {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
@@ -51,20 +51,22 @@ public class OVR_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E
         reporter.reportLogWithScreenshot("Selected the recommended offer");
 
         getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().noPortInPopup();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-
-        getRogersIgniteBundlesPage().clkExpressCheckout();
-        getReporter().reportLogWithScreenshot("Express Checkout");
+        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        //Internet Add-Ons page.
-        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        getRogersIgniteBundlesPage().clkContinueInternetAddon();
+        getRogersIgniteBundlesPage().clkExpressCheckout();
+        getReporter().reportLogWithScreenshot("Express Checkout");
+
+        reporter.reportLogWithScreenshot("4k tv pop up");
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        reporter.reportLogWithScreenshot("4k Content Popup");
+        getRogersIgniteBundlesPage().contiue4KContent();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("Cart Summary Page");
