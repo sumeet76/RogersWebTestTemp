@@ -1047,7 +1047,6 @@ public class BaseTestClass {
                 RogersHomePhonePortInPageThreadLocal.set(new RogersHomePhonePortInPage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
-                RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
                 break;
 
             case "connectedhome_shm":
@@ -1072,7 +1071,6 @@ public class BaseTestClass {
                 RogersTechInstallPageThreadLocal.set(new RogersTechInstallPage(getDriver()));
                 RogersPaymentOptionsPageThreadLocal.set(new RogersPaymentOptionsPage(getDriver()));
                 RogersIgniteTVCreditCheckPageThreadLocal.set(new RogersIgniteTVCreditCheckPage(getDriver()));
-                RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
                 RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
                 RogersTechInstallPageThreadLocal.set(new RogersTechInstallPage(getDriver()));
@@ -1104,7 +1102,6 @@ public class BaseTestClass {
                 RogersSolarisTVChannelsAndThemepacksPageThreadLocal.set(new RogersSolarisTVChannelsAndThemepacksPage(getDriver()));
                 RogersSmartStreamDashboardPageThreadLocal.set(new RogersSmartStreamDashboardPage(getDriver()));
                 RogersSHMDashboardPageThreadLocal.set(new RogersSHMDashboardPage(getDriver()));
-                RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
                 RogersIgniteBundlesPageThreadLocal.set(new RogersIgniteBundlesPage(getDriver()));
                 break;
 
@@ -1144,7 +1141,6 @@ public class BaseTestClass {
                 RogersSolarisChannelsExchangePageThreadLocal.set(new RogersSolarisChannelsExchangePage(getDriver()));
                 RogersInternetProfilePageThreadLocal.set(new RogersInternetProfilePage(getDriver()));
                 RogersInternetCreditCheckPageThreadLocal.set(new RogersInternetCreditCheckPage(getDriver()));
-                RogersTvStreamingPageThreadLocal.set(new RogersTvStreamingPage(getDriver()));
                 break;
 
             case "buyflows":

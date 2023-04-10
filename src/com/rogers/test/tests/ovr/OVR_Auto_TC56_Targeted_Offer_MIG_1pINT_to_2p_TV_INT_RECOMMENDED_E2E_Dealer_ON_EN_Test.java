@@ -23,7 +23,7 @@ public class OVR_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC56_Targeted_Offer_RECOMMENDED_MIG_1pINT_to_2p_TV_INT_E2E_Dealer_ON_EN_Test()  {
+    public void ovr_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E_Dealer_ON_EN_Test()  {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
