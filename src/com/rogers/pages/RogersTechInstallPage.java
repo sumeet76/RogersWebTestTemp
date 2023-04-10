@@ -192,7 +192,7 @@ public class RogersTechInstallPage extends BasePageClass {
 	@FindBy(xpath ="//input[@id='backupDate']")
 	WebElement txtEndDateNew;
 
-	@FindBy(xpath="//a[@aria-describedby='ariaClickToContinue']//span[contains(text(),'Continue')]")
+		@FindBy(xpath="//a[@aria-describedby='ariaClickToContinue' or @aria-label='Click here to continue']//span[contains(text(),'Continue')]")
 	WebElement btnTechContinue;
 
 	@FindBy(xpath = "//button[@aria-label='Click to open calendar']/span")

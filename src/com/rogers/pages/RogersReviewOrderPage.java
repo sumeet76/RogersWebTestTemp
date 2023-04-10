@@ -125,7 +125,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      */
     public boolean isOrderReviewPageTitlePresent() {
         getReusableActionsInstance().staticWait(5000);
-       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 60);
+       return getReusableActionsInstance().isElementVisible(orderReviewPageTitle , 180);
     }
 
     /**

@@ -692,7 +692,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
-		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
+		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
 	}
 
 	/**
@@ -719,8 +719,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void selectAccount(String strAccountNumber) {		
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 15);
-	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[@class='account-number-txt']//span[text()='" + strAccountNumber + "']")), 15);
+	getReusableActionsInstance().clickIfAvailable((By.xpath("//span[contains(@class,'account')]/following-sibling::span[text()='" + strAccountNumber + "']")), 20);
+	//getReusableActionsInstance().clickIfAvailable((By.xpath("//span[@class='account-number-txt']//span[text()='" + strAccountNumber + "']")), 10);
 	}
 
 
@@ -2183,7 +2183,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 * @author Manpreet.kaur3
 	 */
 	public boolean verifySpecialOfferBadge() {
-		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 60);
+		return getReusableActionsInstance().isElementVisible(imgSpecialOfferBadge, 20);
 	}
 
 	/**
@@ -2191,7 +2191,8 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 * @author Manpreet.kaur3
 	 */
 	public void clkSpecialOfferBadge() {
-		getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge, 60).click();
+		getReusableActionsInstance().moveToElementAndClick(lblSpecialOfferBadge,60);
+		//getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge, 60).click();
 	}
 
 	/**
@@ -2336,11 +2337,11 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	public void clkCloseNewOfferModalPopup() {
-		getReusableActionsInstance().clickWhenReady(btnCloseOfferModal, 30);
+		getReusableActionsInstance().clickIfAvailable(btnCloseOfferModal, 30);
 	}
 
 	public boolean isNewOfferModalDisplayed() {
-		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 20);
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
 	}
 
 	/**
