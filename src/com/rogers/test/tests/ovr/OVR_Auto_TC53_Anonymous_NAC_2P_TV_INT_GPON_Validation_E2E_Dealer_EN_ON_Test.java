@@ -32,9 +32,12 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use a GPON address valid for FIBER Service
-        getCheckAvailabilityPage().checkAvailability("34 MADRAS PL, BRAMPTON, ON, L6S2Z2", "chrome");
+        getCheckAvailabilityPage().checkAvailability("1 AUSTRALIA DR, BRAMPTON, ON, L6R3E4", "chrome");
         reporter.hardAssert(getCheckAvailabilityPage().verifyFiberServiceAvailabilityMessage(),"Address is serviceable for FIBER","Address is not serviceable for FIBER");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -66,8 +69,8 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
 
-        reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //reporter.reportLogWithScreenshot("Channel Personalization page");
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");

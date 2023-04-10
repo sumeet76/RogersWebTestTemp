@@ -174,15 +174,14 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader, 45);
 	}
 
-		public boolean verifyHomePhonePersonalizationHeader () {
-			return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
+	public boolean verifyHomePhonePersonalizationHeader () {
+		return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
 
-		}
-
-		public void selectDiffNumb(){
+	}
+	public void selectDiffNumb(){
 		getReusableActionsInstance().getWhenReady(selectDifferentNumber,30);
 		getReusableActionsInstance().executeJavaScriptClick(selectDifferentNumber);
-		}
+	}
 
 
 }

@@ -68,7 +68,7 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
         reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkCustomerAddonReview();
         reporter.reportLogWithScreenshot("Reviewed the customer's add on");
