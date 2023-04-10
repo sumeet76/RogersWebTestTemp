@@ -135,7 +135,6 @@ public class BaseTestClass {
     protected static final ThreadLocal<InternetDashboardPage> InternetDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersInternetUsageOVPage> RogersInternetUsageOVPageThreadLocal = new ThreadLocal<>();
 
-    protected static final ThreadLocal<RogersTvStreamingPage> RogersTvStreamingPageThreadLocal= new ThreadLocal<>();
     protected static final ThreadLocal<HomePhonedashboard> HomePhonedashboardThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersIgniteBundlesPage> RogersIgniteBundlesPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersIgniteExchangePage> RogersIgniteExchangePageThreadLocal = new ThreadLocal<>();
@@ -243,9 +242,7 @@ public class BaseTestClass {
         return RogersSecurityPackagesPageThreadLocal.get();
     }
 
-    public static RogersTvStreamingPage getRogersTvStreamingPage(){
-        return RogersTvStreamingPageThreadLocal.get();
-    }
+
     public static RogersProfileAndSettingsPage getRogersProfileAndSettingsPage() {
         return RogersProfileAndSettingsPageThreadLocal.get();
     }
