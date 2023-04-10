@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC47_MIG_Validate_Downgrade_Migration_Not_Supported_Dealer_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_GSA_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -18,37 +18,28 @@ public class OVR_Auto_TC47_MIG_Validate_Downgrade_Migration_Not_Supported_Dealer
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
-
-    @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC47_MIG_Validate_Downgrade_Migration_Not_Supported_Dealer_EN_ON_Test()  {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    @Test(groups = {"OVR", "RegressionOVR","OVR_PR"})
+    public void ovr_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_GSA_ON_EN_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        //Mig flow from RHP to ISS.
-        //Use homephone only legacy sgi account
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP.getBanNumber(), TestDataHandler.tc_47_Ovr_Mig_Data_Downgrade_Mig_Not_Supported_RHP.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        reporter.reportLogWithScreenshot("Account Search Page");
+        //Map legacy 3p to REGULAR campaign offer.
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_63_Ovr_Targeted_Mig_Data_3p_to_3p.getBanNumber(), TestDataHandler.tc_63_Ovr_Targeted_Mig_Data_3p_to_3p.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
         reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
         reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
         reporter.reportLogWithScreenshot("Bundle Builder Page displayed");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("RHP to ISS Migration");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Load Offers");
-        reporter.hardAssert(getBundleBuilderPage().verifyDowngradeMigrationFlowErrorMessage(),"Non Valid Migration error message present","Non Valid Migration error message not present");
+        getRogersIgniteBundlesPage().verifyRecommendedOffers();
     }
 }

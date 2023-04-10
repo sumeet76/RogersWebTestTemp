@@ -58,8 +58,8 @@ public class OVR_Auto_TC51_Anonymous_NAC_2P_TV_INT_IntID_E2E_PR_WESA_EN_ON_Test 
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();

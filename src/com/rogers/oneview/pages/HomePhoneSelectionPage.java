@@ -1,9 +1,10 @@
 package com.rogers.oneview.pages;
+
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.rogers.pages.base.BasePageClass;
 
 public class HomePhoneSelectionPage  extends BasePageClass {
 
@@ -174,15 +175,14 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(callDisplayNameAndDiretoryListingHeader, 45);
 	}
 
-		public boolean verifyHomePhonePersonalizationHeader () {
-			return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
+	public boolean verifyHomePhonePersonalizationHeader () {
+		return getReusableActionsInstance().isElementVisible(homePhonePersonalizationHeader, 120);
 
-		}
-
-		public void selectDiffNumb(){
+	}
+	public void selectDiffNumb(){
 		getReusableActionsInstance().getWhenReady(selectDifferentNumber,30);
 		getReusableActionsInstance().executeJavaScriptClick(selectDifferentNumber);
-		}
+	}
 
 
 }

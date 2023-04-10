@@ -17,10 +17,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public RogersIgniteTVBuyPage(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	@FindBy(xpath ="//h4[contains(normalize-space(.),'Télé Élan Sélection') or contains(normalize-space(.),'Ignite TV Select')]/ancestor::div[@class='solaris-carousel-item']//ins[@translate='global.label.activateLater']")
 	WebElement chkActivateLater;
-	
+
 	@FindBy(xpath ="//button[@class='ute-btn-secondary']//ins[@translate='global.cta.yes']")
 	WebElement btnActivateLater;
 
@@ -94,15 +94,11 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/ancestor::div[@class='vertical-tile-component']/descendant::a[@aria-label='Ignite Flex 10 Add to cart']/span/span")
 	WebElement btnBestAdd;
 
-
-
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 5 Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
 	WebElement txtFlex5PackageCost;
 
-
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
 	WebElement txtFlex10PackageCost;
-
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='/mo*']")
 	WebElement txtFlex20PackageCost;
@@ -146,7 +142,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//ins[@translate='global.cta.check']")
 	WebElement btnIgniteAddressLookupSubmit;
-	
+
 	@FindBy(xpath = "//div[@class='check-availability-btn']//ins[@translate='global.cta.checkAvailability']")
 	WebElement btnIgniteCheckAvailability;
 
@@ -182,10 +178,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@class='buttons-block hidden-xs']//ins[@translate='global.common.buttons.noThanksContinue']")
 	WebElement btnNoThanksContinue;
-	
+
 	@FindBy(xpath = "//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement btnKeepMyNumber;
-	
+
 	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::a")
 	WebElement btnHomePhoneContinue;
 
@@ -216,7 +212,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'4')]//span[@class='ds-icon d-inline-flex rds-icon-info']")
 	WebElement hvr4kChannels;
 
-		@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon d-inline-flex rds-icon-close']")
+	@FindBy(xpath = "//div[@class='ds-modal__header d-flex align-items-start']//span[@class='ds-icon d-inline-flex rds-icon-close']")
 	WebElement hvrClose;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span")
@@ -310,7 +306,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	WebElement btnCheckout;
 
 	@FindBy(xpath ="//div[@class='mt-auto w-100']//button[@aria-label='Order Rogers Ignite Starter online now' or @aria-label='Commandez Élan Découverte maintenant'] ")
-	WebElement btnSolarisStarterPackageServiceability;	
+	WebElement btnSolarisStarterPackageServiceability;
 
 	@FindBy(xpath = "//button[@aria-label='See all channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
 	WebElement txtTotalChannelsRateCardHead;
@@ -318,10 +314,10 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[@aria-label='See all flex channels included in the Ignite Premier Bundle']//span[@class ='price-details__count']")
 	WebElement txtFlexChannelsRateCardHead;
 
-	/*@FindAll({
-			@FindBy(xpath = "//a[@aria-label='Ignite Premier View more details']//span[@role='text']"),
-			@FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier']")})
-	WebElement txtFlexChannelsRateCardExpansion; */
+    /* @FindAll({
+            @FindBy(xpath = "//a[@aria-label='Ignite Premier View more details']//span[@role='text']"),
+            @FindBy(xpath ="//button[@aria-label='Hide more details about the Rogers Ignite Premier']")})
+    WebElement txtFlexChannelsRateCardExpansion; */
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Premier View more details']//span[@role='text']")
 	WebElement txtFlexChannelsRateCardExpansion;
@@ -372,15 +368,21 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	})
 	WebElement txtOtbcCampaign;
 
+	@FindBy(xpath = "//h3[contains(text(),'pending work order on your ac')]")
+	WebElement headerPendingOrder;
+
+	@FindBy(xpath = "//div[@class='pending-order-modal-component']//span[@class = 'ds-icon d-inline-flex rds-icon-close']")
+	WebElement btnPendingOrderClose;
+
 	@FindBy(xpath ="//h3[contains(text(),'Ignite Starter') or contains(text(),'Élan Découverte')]/ancestor::div[@class='bundle-tile-row']//span[@translate='global.cta.addToCart']")
-	WebElement btnSolarisStarterPackageMobile;	
-	
+	WebElement btnSolarisStarterPackageMobile;
+
 	@FindBy(xpath = "(//div[@aria-label='$134.99 per m'])[2]")
-	WebElement txtPackageCost;	
-	
+	WebElement txtPackageCost;
+
 	@FindBy(xpath = "//p[@id='ds-modal-title-1']")
 	WebElement popImportantInformation;
-	   
+
 	@FindBy(xpath = "//span[contains(text(),' Yes, I understand') or contains(text(),'comprends')]/ancestor::span")
 	WebElement btnIUnderstand;
 
@@ -389,34 +391,34 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath ="//label[contains(@for,'global.modals.activateIgniteHomePhoneModal.messageForExistingNumber')]")
 	WebElement rdoOptNewPhoneEnable;
-	
+
 	@FindBy(xpath ="//button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")
 	WebElement btnOptPhone;
 
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Starter') or contains(normalize-space(.),'Élan Découverte')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmStarterRatecard;
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Select') or contains(normalize-space(.),'Élan Sélection')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmSelectRatecard;
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Premier') or contains(normalize-space(.),'Élan Premier')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmPremierRatecard;
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Popular') or contains(normalize-space(.),'Élan Populaire')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmPopularRatecard;
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Flex 10') or contains(normalize-space(.),'Élan Flex 10')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmFlex10Ratecard;
-	
+
 	@FindBy(xpath ="//h2[@ute-content-source='atg']//span[contains(normalize-space(.),'Ignite Flex 5') or contains(normalize-space(.),'Élan Flex 5')]/ancestor::div[@class='bundle-offer__tile']")
 	WebElement elmFlex5Ratecard;
-	
+
 	@FindBy(xpath ="//ins[@translate='global.label.themePacksTab']/ancestor::h2[@class='solaris-tab-list-header']")
 	WebElement tabThemePacksTab;
-	
+
 	@FindBy(xpath ="//ins[@translate='global.label.channelsTab']/ancestor::h2[@class='solaris-tab-list-header']")
 	WebElement tabChannelsTab;
-	
+
 	@FindBy(xpath ="//ins[@translate='global.label.bundles']/ancestor::h2[@class='solaris-tab-list-header']")
 	WebElement tabBundles;
 
@@ -428,60 +430,60 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath ="//h3[contains(normalize-space(.),'Rogers Ignite Starter Bundle') or contains(normalize-space(.),'Offre groupée Élan Découverte')]/ancestor::bundle-mini-component[@class='bundle-mini-component channel-column']//ins[@translate='global.label.tvChannelsCount']")
 	WebElement txtStarterChannels;
-	
+
 	@FindBy(xpath ="//h3[contains(normalize-space(.),'Rogers Ignite Select Bundle') or contains(normalize-space(.),'Offre groupée Élan Sélection')]/ancestor::bundle-mini-component[@class='bundle-mini-component channel-column']//ins[@translate='global.label.tvChannelsCount']")
 	WebElement txtSelectChannels;
-	
+
 	@FindBy(xpath ="//h3[contains(normalize-space(.),'Rogers Ignite Premier Bundle') or contains(normalize-space(.),'Offre groupée Élan Premier')]/ancestor::bundle-mini-component[@class='bundle-mini-component channel-column']//ins[@translate='global.label.tvChannelsCount']")
 	WebElement txtPremierChannels;
-	
+
 	@FindBy(xpath ="//h3[contains(normalize-space(.),'Rogers Ignite Popular Bundle') or contains(normalize-space(.),'Offre groupée Élan Populaire')]/ancestor::bundle-mini-component[@class='bundle-mini-component channel-column']//ins[@translate='global.label.tvChannelsCount']")
-	WebElement txtPopularChannels;	
-	
+	WebElement txtPopularChannels;
+
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
-	
+
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
-	
+
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -tertiary -large -hasDsIcon']//following-sibling::button")
 	WebElement buttonUpgradeNow;
-	
+
 	@FindBy(xpath = "//button[contains(@class,'stb-button increment')]//span[@class='ds-button__wrapper d-flex justify-content-center align-items-center']")
 	WebElement buttonAddIgniteTVBoxes;
 
 	@FindBy(xpath = "//span[@translate='global.cta.updateCart']/ancestor::span[@role='text']")
 	WebElement buttonUpdateCart;
-	
+
 	@FindBy(xpath = "//ds-modal-container[contains(@id,'ds-modal-container')]")
 	WebElement modalUpgradingToIgnitebundels;
-	
+
 	@FindBy(xpath = "//button[@class='ds-button ds-focus ds-active -primary -large']//span[@class='ds-button__copy w-100']")
 	WebElement okayUpgradingToIgnitebundelsModal;
-	
+
 	@FindBy(xpath = "//button[@aria-label='Hide your full cart']//span[contains(@class,'rds-icon-chevron-up')]")
 	WebElement upChevronCartSummary;
-	
+
 	@FindBy(xpath = "//button[@aria-label='View your full cart']//span[contains(@class,'rds-icon-chevron-down')]")
 	WebElement downChevronCartSummary;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'mini-cart-ss__body')]//tr[contains(@class,'cms-promotions-gwp ng-tns-c')]")
 	WebElement gwpYourCart;
-	
+
 	@FindBy(xpath ="//input[contains(@id,'messageForExistingNumber')]//following-sibling::label")
 	WebElement rdoKeepExistingPhoneNumber;
 
 
 	/**
 	 * Click Starter package button for anonymous customer
-	 * @param	bundleName : name of the bundle package
+	 * @param    bundleName : name of the bundle package
 	 * @author Saurav.Goyal
 	 */
 	public void selectSolarisBundlePackage(String bundleName) {
 		String xpathBundlePackage="//div[@class='mt-auto w-100']//button[contains(@aria-label,'"+ bundleName +"')]//span[@translate='global.cta.addToCart']";
 		getReusableActionsInstance().clickWhenReady(By.xpath(xpathBundlePackage), 120);
 	}
-	
+
 	/**
 	 * To click on the chevron of your cart
 	 * @author chinnarao.vattam
@@ -499,6 +501,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkHomephone() {
 		getReusableActionsInstance().getWhenReady(checkboxHomephone, 60).click();
 	}
+
 	/**
 	 * To click on  Home phone checkbox
 	 * @author chinnarao.vattam
@@ -526,6 +529,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(btnThemepacksTab);
 		//getReusableActionsInstance().getWhenReady(btnThemepacksTab, 60).click();
 	}
+
 	/**
 	 * To verify Price Increase Channel Copy banner
 	 * @return true if the Price Increase Channel Copy banner is available else return false
@@ -537,6 +541,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(bnrPriceIncreaseChannelCopy);
 		return isBannerAvailable;
 	}
+
 	/**
 	 * To verify Price Increase Theme Copy banner
 	 * @return true if the Price Increase Theme Copy banner is available else return false
@@ -549,6 +554,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 		//getReusableActionsInstance().javascriptScrollByVisibleElement(headerBundlesChannelsAndThemepacks);
 		return isBannerAvailable;
 	}
+
 	/**
 	 * To click on the chevron of your cart
 	 * @author Chinnarao.vattam
@@ -578,8 +584,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPYourCartPromotion() {
-			getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
-			return	getReusableActionsInstance().isElementVisible(gwpYourCart);
+		getReusableActionsInstance().waitForElementVisibility(gwpYourCart, 120);
+		return getReusableActionsInstance().isElementVisible(gwpYourCart);
 	}
 
 	/**
@@ -589,7 +595,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifyBundlesPage() {
 		getReusableActionsInstance().waitForElementVisibility(txtBundlesPage, 120);
-		return	getReusableActionsInstance().isElementVisible(txtBundlesPage);
+		return getReusableActionsInstance().isElementVisible(txtBundlesPage);
 	}
 
 	/**
@@ -600,7 +606,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public boolean verifyOffersPage() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(txtOffersPage, 60);
-		return	getReusableActionsInstance().isElementVisible(txtOffersPage);
+		return getReusableActionsInstance().isElementVisible(txtOffersPage);
 	}
 
 
@@ -609,7 +615,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectPremierMonthToMonthTypeOfContract() {
-	//	getReusableActionsInstance().javascriptScrollByVisibleElement(drpdwnPremierTypeOfContract);
+		//	getReusableActionsInstance().javascriptScrollByVisibleElement(drpdwnPremierTypeOfContract);
 		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierTypeOfContract, 30);
 		getReusableActionsInstance().getWhenReady(drpdwnPremierTypeOfContract,30).click();
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
@@ -647,17 +653,18 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 */
 	public boolean verifyBundlesPageMobile() {
 		getReusableActionsInstance().waitForElementVisibility(txtBundlesPage, 120);
-		return	getReusableActionsInstance().isElementVisible(txtBundlesPage);
+		return getReusableActionsInstance().isElementVisible(txtBundlesPage);
 	}
+
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
-	 * @param	bundleName : name of the bundle package
+	 * @param    bundleName : name of the bundle package
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyGWPForStarterPackage(String bundleName) {
 		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[contains(@class,'d-flex')]/preceding-sibling::section//p";
-		return	getReusableActionsInstance().isElementVisible(By.xpath(xpathBundlePackage), 120);
+		return getReusableActionsInstance().isElementVisible(By.xpath(xpathBundlePackage), 120);
 	}
 
 	/**
@@ -681,34 +688,34 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	/**
 	 * To click on the chevron of the starter bundel package
-	 * @param	bundleName : name of the bundle package
+	 * @param    bundleName : name of the bundle package
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronSolarisStarterPackageNew(String bundleName) {
 		String xpathBundlePackage = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
 		getReusableActionsInstance().getWhenReady(By.xpath(xpathBundlePackage), 120).click();
 	}
-	
+
 	/**
 	 * To click on the chevron of any given bundle package
-	 * @param	bundleName : give the name of the bundle as parameter
+	 * @param    bundleName : give the name of the bundle as parameter
 	 * @author Saurav.Goyal
 	 */
 	public void clkChevronForBundle(String bundleName) {
 		String bundleXpath = "//button[contains(@aria-label,'"+ bundleName +"')]//ancestor::div[@class='row']//following-sibling::div[contains(@class,'dsa-rate-card__detail')]//span[@class='ds-icon rds-icon-chevron-down']";
 		getReusableActionsInstance().getWhenReady(By.xpath(bundleXpath), 120).click();
 	}
-	
+
 	/**
 	 * To verify Upgrading To Ignite bundels Modal
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyUpgradingToIgnitebundelsModal() {
-			getReusableActionsInstance().waitForElementVisibility(modalUpgradingToIgnitebundels, 120);
-			return	getReusableActionsInstance().isElementVisible(modalUpgradingToIgnitebundels);
+		getReusableActionsInstance().waitForElementVisibility(modalUpgradingToIgnitebundels, 120);
+		return getReusableActionsInstance().isElementVisible(modalUpgradingToIgnitebundels);
 	}
-	
+
 	/**
 	 * To click okay on the modal Upgrading To Ignite bundels
 	 * @author Saurav.Goyal
@@ -716,8 +723,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkOkayUpgradingToIgnitebundelsModal() {
 		getReusableActionsInstance().getWhenReady(okayUpgradingToIgnitebundelsModal, 120).click();
 	}
-	
-	
+
+
 	/**
 	 * Click keep my existing phone number radio button
 	 * @author Saurav.Goyal
@@ -725,7 +732,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void clkRadioOptKeepMyExistingPhoneNumber() {
 		getReusableActionsInstance().getWhenReady(rdoKeepExistingPhoneNumber, 60).click();
 	}
-	
+
 	/**
 	 * Click + to add STB ignite TV boxes
 	 * @author Saurav.Goyal
@@ -747,7 +754,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 			//getReusableActionsInstance().executeJavaScriptClick(buttonAddIgniteTVBoxes);
 		}
 	}
-	
+
 	/**
 	 * To Click Update cart button
 	 * @author Saurav.Goyal
@@ -760,28 +767,28 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementTobeClickable(buttonUpdateCart, 60);
 		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
 	}
-	
+
 	/**
 	 * Verify visibility of upgrade now button
-	 * @return	boolean true if the element is present else false
-	 * @author Saurav.Goyal 
+	 * @return boolean true if the element is present else false
+	 * @author Saurav.Goyal
 	 */
-	public boolean verifyButtonUpgradeNow() {		
+	public boolean verifyButtonUpgradeNow() {
 		getReusableActionsInstance().waitForElementVisibility(buttonUpgradeNow, 120);
-		return	getReusableActionsInstance().isElementVisible(buttonUpgradeNow);
+		return getReusableActionsInstance().isElementVisible(buttonUpgradeNow);
 	}
-	
+
 	/**
 	 * click upgrade now button
-	 * @author Saurav.Goyal 
+	 * @author Saurav.Goyal
 	 */
-	public void clkButtonUpgradeNow() {		
+	public void clkButtonUpgradeNow() {
 		getReusableActionsInstance().getWhenReady(buttonUpgradeNow, 120).click();
 	}
 
 	/**
 	 * To set the Lookup address on the service availability  Lookup popup
-	 * @param strAddress address to check the service availability 
+	 * @param strAddress address to check the service availability
 	 * @author chinnarao.vattam
 	 */
 	public void setIgniteAddressLookup(String strAddress) {
@@ -800,7 +807,7 @@ getReusableActionsInstance().staticWait(3000);
 	public void clkIgniteAddressLookupSubmit() {
 		getReusableActionsInstance().getWhenReady(btnIgniteAddressLookupSubmit, 30).click();
 	}
-	
+
 	/**
 	 * Click Continue button on Good news popup
 	 * @author chinnarao.vattam
@@ -808,7 +815,7 @@ getReusableActionsInstance().staticWait(3000);
 	public void clkIgniteAvailability() {
 		getReusableActionsInstance().getWhenReady(btnIgniteCheckAvailability, 30).click();
 	}
-	
+
 	/**
 	 * Click Activate Later button
 	 * @author chinnarao.vattam
@@ -823,17 +830,18 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public void clkConfirmActivateLater() {
 		getReusableActionsInstance().clickWhenReady(btnActivateLater, 30);
-		
+
 	}
+
 	/**
-	 * To select the  Ignite TV Select package 
+	 * To select the  Ignite TV Select package
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisSelectPackage() {
 		//getReusableActionsInstance().scrollToElementAndClick(btnSolarisSelectPackage);
 		getReusableActionsInstance().getWhenReady(btnSolarisSelectPackage, 60).click();
 	}
-	
+
 	/**
 	 * Click Continue on the  Good news popup
 	 * @author chinnarao.vattam
@@ -841,7 +849,7 @@ getReusableActionsInstance().staticWait(3000);
 	public void clkContinue() {
 		getReusableActionsInstance().clickWhenReady(btnContinue, 60);
 	}
-	
+
 	/**
 	 * Click Continue on the  Good news popup
 	 * @author chinnarao.vattam
@@ -849,7 +857,7 @@ getReusableActionsInstance().staticWait(3000);
 	public void clkGoodNewsContinue() {
 		getReusableActionsInstance().clickWhenReady(btnGoodNewsContinue, 30);
 	}
-	
+
 	/**
 	 * Click No thanks, continue button on Ignite Home Phone popup
 	 * @author chinnarao.vattam
@@ -860,24 +868,24 @@ getReusableActionsInstance().staticWait(3000);
 
 	/**
 	 * To verify the home phone options
-	 * @return true if the phone popup has launched, else false 
+	 * @return true if the phone popup has launched, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyHomePhone() {
 		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 60);
-		return	getReusableActionsInstance().isElementVisible(btnHomePhoneContinue);
+		return getReusableActionsInstance().isElementVisible(btnHomePhoneContinue);
 	}
-	
+
 	/**
 	 * To verify the important information popup
-	 * @return true if the information popup has launched, else false 
+	 * @return true if the information popup has launched, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyImportantInformation() {
 		getReusableActionsInstance().waitForElementVisibility(popImportantInformation, 60);
-		return	getReusableActionsInstance().isElementVisible(popImportantInformation);
+		return getReusableActionsInstance().isElementVisible(popImportantInformation);
 	}
-	
+
 	/**
 	 * Click the I understand button on the important information popup
 	 * @author chinnarao.vattam
@@ -886,7 +894,7 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenReady(btnIUnderstand, 60).click();
 		getReusableActionsInstance().waitForPageLoad();
 	}
-		
+
 	/**
 	 * Click Home phone button on Ignite Home Phone popup
 	 * @author chinnarao.vattam
@@ -913,6 +921,7 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementVisibility(btnHomePhoneContinue, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnHomePhoneContinue);
 	}
+
 	/**
 	 * Click Keep My Number button on port-in page
 	 * @author chinnarao.vattam
@@ -920,17 +929,18 @@ getReusableActionsInstance().staticWait(3000);
 	public void clkKeepMyNumber() {
 		getReusableActionsInstance().getWhenReady(btnKeepMyNumber, 90).click();
 	}
-	
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
 	 * @author chinnarao.vattam
 	 */
-	public void set4KTV() {	
+	public void set4KTV() {
 		getReusableActionsInstance().getWhenReady(rdo4KTV, 120);
 		getReusableActionsInstance().scrollToElement(rdo4KTV);
 		getReusableActionsInstance().getWhenReady(rdo4KTV,30).click();
 		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
 	 * @author dharani.up
@@ -941,26 +951,26 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenReady(rdo4KTVNo,30).click();
 		//getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
-	
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
 	 * @author chinnarao.vattam
 	 */
-	public void set4KTVMobile() {		
+	public void set4KTVMobile() {
 		getReusableActionsInstance().executeJavaScriptClick(rdo4KTV);
 	}
-	
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
-	 * @return true if the 4K TV ratio has available, else false 
+	 * @return true if the 4K TV ratio has available, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTV() {
 		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(txtCartSummary,120);
-		return	getReusableActionsInstance().isElementVisible(txtCartSummary,90);
+		return getReusableActionsInstance().isElementVisible(txtCartSummary,90);
 	}
-	
+
 	/**
 	 * Click checkout button on Ignite-bundles/tv-internet page
 	 * @author chinnarao.vattam
@@ -1087,6 +1097,7 @@ getReusableActionsInstance().staticWait(3000);
 		return flexChannels;
 
 	}
+
 	/**
 	 * To verify Flex Channel
 	 *@return true if the ExchangeFlex Channel link is displayed; else false
@@ -1117,26 +1128,26 @@ getReusableActionsInstance().staticWait(3000);
 	public void selectSolarisStarterPackageServiceability() {
 		getReusableActionsInstance().clickWhenReady(btnSolarisStarterPackageServiceability, 90);
 	}
-	
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
-	 * @return true if the 4K TV ratio has available, else false 
+	 * @return true if the 4K TV ratio has available, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verify4KTVSelection() {
-		return	getReusableActionsInstance().isElementVisible(rdo4KTV);
+		return getReusableActionsInstance().isElementVisible(rdo4KTV);
 	}
-	
+
 	/**
 	 * Click 4K TV radio button on Ignite-bundles/tv-internet page
-	 * @return true if the 4K TV ratio has available, else false 
+	 * @return true if the 4K TV ratio has available, else false
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyOptNewPhone() {
 		getReusableActionsInstance().waitForElementVisibility(rdoOptNewPhone, 120);
-		return	getReusableActionsInstance().isElementVisible(rdoOptNewPhone);
+		return getReusableActionsInstance().isElementVisible(rdoOptNewPhone);
 	}
-	
+
 	/**
 	 * Select the New Phone radio button
 	 * @author chinnarao.vattam
@@ -1147,7 +1158,7 @@ getReusableActionsInstance().staticWait(3000);
 	}
 
 	/**
-	 * Click the OptPhone button 
+	 * Click the OptPhone button
 	 * @author chinnarao.vattam
 	 */
 	public void clickOptPhone() {
@@ -1199,6 +1210,7 @@ getReusableActionsInstance().staticWait(3000);
 		txtLastName.clear();
 		txtLastName.sendKeys(strName);
 	}
+
 	/**
 	 * To set the Lookup address on the service availability  Lookup popup
 	 * @author chinnarao.vattam
@@ -1303,96 +1315,97 @@ getReusableActionsInstance().staticWait(3000);
 	public void clickMyRogers() {
 		getReusableActionsInstance().clickWhenReady(lnkMyRogers, 20);
 	}
+
 	/**
 	 * Verify the Ignite TV Starter Package on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Starter Package, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyStarterPackageRatecard() {		
+	public boolean verifyStarterPackageRatecard() {
 		return getReusableActionsInstance().isElementVisible(elmStarterRatecard);
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Popular Package on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Popular Package, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyPopularPackageRatecard() {		
+	public boolean verifyPopularPackageRatecard() {
 		return getReusableActionsInstance().isElementVisible(elmPopularRatecard);
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Select Package on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Select Package, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifySelectPackageRatecard() {		
+	public boolean verifySelectPackageRatecard() {
 		return getReusableActionsInstance().isElementVisible(elmSelectRatecard);
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Premier Package on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Premier Package, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyPremierPackageRatecard() {		
+	public boolean verifyPremierPackageRatecard() {
 		return getReusableActionsInstance().isElementVisible(elmPremierRatecard);
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Starter Package Channels on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Starter Package Channels, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyStarterPackageChannels() {		
+	public boolean verifyStarterPackageChannels() {
 		getReusableActionsInstance().isElementVisible(txtStarterChannels);
 		String strChannels = txtStarterChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("37 chaînes") || strChannels.equalsIgnoreCase("37 Channels"))
-		return true;
-		else 
-	    return false;
+			return true;
+		else
+			return false;
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Popular Package Channels on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Popular Package Channels, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyPopularPackageChannels() {		
+	public boolean verifyPopularPackageChannels() {
 		getReusableActionsInstance().isElementVisible(txtPopularChannels);
 		String strChannels = txtPopularChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("151 chaînes") || strChannels.equalsIgnoreCase("151 Channels"))
-		return true;
-		else 
-	    return false;
+			return true;
+		else
+			return false;
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Select Package Channels on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Select Package Channels, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifySelectPackageChannels() {		
+	public boolean verifySelectPackageChannels() {
 		getReusableActionsInstance().isElementVisible(txtSelectChannels);
 		String strChannels = txtSelectChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("119 chaînes") || strChannels.equalsIgnoreCase("119 Channels"))
-		return true;
-		else 
-	    return false;
+			return true;
+		else
+			return false;
 	}
-	
+
 	/**
 	 * Verify the Ignite TV Premier Package Channels on Solaris TV dashboard page
 	 * @return true if the Solaris TV dashboard page display the Ignite TV Premier Package Channels, else false
 	 * @author chinnarao.vattam
 	 */
-	public boolean verifyPremierPackageChannels() {		
+	public boolean verifyPremierPackageChannels() {
 		getReusableActionsInstance().isElementVisible(txtPremierChannels);
 		String strChannels = txtPremierChannels.getText().trim();
 		if (strChannels.equalsIgnoreCase("192 chaînes") || strChannels.equalsIgnoreCase("192 Channels"))
-		return true;
-		else 
-	    return false;
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -1484,7 +1497,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifySelectPackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtSelectPackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtSelectPackageCost,10);
 	}
 
 	/**
@@ -1493,7 +1506,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPopularPackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtPopularPackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtPopularPackageCost,10);
 	}
 
 	/**
@@ -1502,7 +1515,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyPremierPackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtPremierPackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtPremierPackageCost,10);
 	}
 
 	/**
@@ -1511,7 +1524,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyPremierPackage() {
-		return	getReusableActionsInstance().isElementVisible(txtPremierPackage,10);
+		return getReusableActionsInstance().isElementVisible(txtPremierPackage,10);
 	}
 
 	/**
@@ -1520,7 +1533,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyStarterPackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtStarterPackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtStarterPackageCost,10);
 	}
 
 	/**
@@ -1529,7 +1542,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyFlex20PackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtFlex20PackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtFlex20PackageCost,10);
 	}
 
 	/**
@@ -1538,7 +1551,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyFlex10PackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtFlex10PackageCost,10);
+		return getReusableActionsInstance().isElementVisible(txtFlex10PackageCost,10);
 	}
 
 	/**
@@ -1547,7 +1560,7 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author chinnarao.vattam
 	 */
 	public boolean verifyFlex5PackageCost() {
-		return	getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
+		return getReusableActionsInstance().isElementVisible(txtFlex5PackageCost,30);
 	}
 
 	public boolean verifyHomePhoneAddOnPage() {
@@ -1575,8 +1588,8 @@ getReusableActionsInstance().staticWait(3000);
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkTaketheQuiz() {
-			getReusableActionsInstance().waitForElementVisibility(btnTakeQuiz, 90);
-			getReusableActionsInstance().executeJavaScriptClick(btnTakeQuiz);
+		getReusableActionsInstance().waitForElementVisibility(btnTakeQuiz, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnTakeQuiz);
 	}
 
 	/**
@@ -1885,7 +1898,7 @@ getReusableActionsInstance().staticWait(3000);
 		String[] subs= bundleCostText.split("\\$");
 		String[] bundleCostInline = subs[1].split(" ");
 		if(bundleCostInline[0].equals(bundleCost)){
-		return true;
+			return true;
 		}
 		return false;
 	}
@@ -1957,6 +1970,14 @@ getReusableActionsInstance().staticWait(3000);
 		} else {
 			return false;
 		}
+	}
+
+	public boolean verifyPendingOrderHeader() {
+		return getReusableActionsInstance().isElementVisible(headerPendingOrder, 20);
+	}
+
+	public void clkCloseButtonPendingOrder() {
+		getReusableActionsInstance().getWhenReady(btnPendingOrderClose, 30).click();
 	}
 
 	/**

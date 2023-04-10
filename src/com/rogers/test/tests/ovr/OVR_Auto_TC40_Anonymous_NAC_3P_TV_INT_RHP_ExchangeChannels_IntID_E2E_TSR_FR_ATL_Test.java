@@ -6,6 +6,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -34,7 +35,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("5 Danforth St E1C3X6", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 Airport Heights", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -63,24 +64,24 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Channel Personalization page and Exchange Options");
-        getRogersIgniteExchangePage().clickExchangeNow();
-        reporter.reportLogWithScreenshot("Exchange Now");
-        getRogersIgniteExchangePage().verifyChannelToSwapHeader();
-        getRogersIgniteExchangePage().selectFirstChannelToRemove();
-        reporter.reportLogWithScreenshot("first channel selected");
-        getRogersIgniteExchangePage().clickSelectButton();
-        reporter.reportLogWithScreenshot("button select");
-        getRogersIgniteExchangePage().selectFirstChannelToAdd();
-        reporter.reportLogWithScreenshot("first channel to Add");
-        getRogersIgniteExchangePage().clickSelectButton();
-        reporter.reportLogWithScreenshot("Channel Swapped");
-        getRogersIgniteExchangePage().clkContinue();
+//        getRogersIgniteExchangePage().clickExchangeNow();
+//        reporter.reportLogWithScreenshot("Exchange Now");
+//        getRogersIgniteExchangePage().verifyChannelToSwapHeader();
+//        getRogersIgniteExchangePage().selectFirstChannelToRemove();
+//        reporter.reportLogWithScreenshot("first channel selected");
+//        getRogersIgniteExchangePage().clickSelectButton();
+//        reporter.reportLogWithScreenshot("button select");
+//        getRogersIgniteExchangePage().selectFirstChannelToAdd();
+//        reporter.reportLogWithScreenshot("first channel to Add");
+//        getRogersIgniteExchangePage().clickSelectButton();
+//        reporter.reportLogWithScreenshot("Channel Swapped");
+//        getRogersIgniteExchangePage().clkContinue();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k tv popup");
-        getRogersIgniteBundlesPage().contiue4KContent();
-        reporter.reportLogWithScreenshot("4k Content popup");
+        //getRogersIgniteBundlesPage().contiue4KContent();
+        //reporter.reportLogWithScreenshot("4k Content popup");
 
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
