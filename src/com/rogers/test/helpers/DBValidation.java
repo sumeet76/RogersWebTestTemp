@@ -57,7 +57,7 @@ public class DBValidation extends BaseTestClass{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             switch (dbEnv.toLowerCase()) {
                 case "sft04":
-                    connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526/V21QA4_SN.rci.rogers.com","qa4sel","qa4sel");
+                    connect = DriverManager.getConnection("jdbc:oracle:thin:@exa010ldcs-npe.rci.rogers.com:1526/V21QA4_SN.rci.rogers.com","qa4sel","qa4sel");
                     break;
                 case "sft06":
                     connect = DriverManager.getConnection("jdbc:oracle:thin:@ex010ldcnp:1526/V21QA6_SN.rci.rogers.com", "qa6sel", "qa6sel");

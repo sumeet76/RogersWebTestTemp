@@ -1292,7 +1292,7 @@ public class BaseTestClass {
      * To close session, quit driver and close every associated windows.
      */
     public void closeSession() {
-        //getDriver().quit();
+        getDriver().quit();
     }
 
     /**

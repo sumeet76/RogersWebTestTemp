@@ -407,20 +407,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 
-	public void clkAcceptenceCheckboxHTO() {
-		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
-		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
-		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-
-		List<WebElement> checkboxAgreement = getDriver().findElements(By.xpath("//label[contains(@class,'ds-checkboxLabel')]/input"));
-		for (WebElement ele:checkboxAgreement ) {
-			if(!ele.isSelected()){
-				getReusableActionsInstance().executeJavaScriptClick(ele);
-			}
-		}
-	}
-
 	/**
 	 * Click on the Consent check box on the order review page
 	 * @author chinnarao.vattam
