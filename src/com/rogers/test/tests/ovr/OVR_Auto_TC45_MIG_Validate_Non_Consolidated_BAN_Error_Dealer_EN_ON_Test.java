@@ -35,6 +35,9 @@ public class OVR_Auto_TC45_MIG_Validate_Non_Consolidated_BAN_Error_Dealer_EN_ON_
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyNonConsolidatedBanErrorMessage(),"Non consolidated ban error message present","Non consolidated ban error message not present");
 
     }

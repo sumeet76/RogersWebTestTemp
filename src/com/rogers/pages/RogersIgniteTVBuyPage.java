@@ -40,6 +40,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath= "//h3[contains(text(),'Ignite Premier') or contains(text(),'Élan Premier')]")
 	WebElement headerIgnitePremier;
 
+	@FindBy(xpath="//button//ds-icon[@name='right']")
+	WebElement scrollHorizontalToChoosePlan;
+
 	@FindBy(xpath="//h3[text()='Ignite Starter']")
 	WebElement headerIgniteStarter;
 
@@ -1025,7 +1028,6 @@ getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementTobeClickable(btnCheckoutCancel, 60);
 		getReusableActionsInstance().getWhenReady(btnCheckoutCancel, 20).click();
 	}
-
 
 	/**
 	 * Click checkout button on Ignite-bundles/tv-internet page
@@ -2037,5 +2039,12 @@ getReusableActionsInstance().staticWait(3000);
 	public void selectSolarisPackage(String bundleName) {
 		By btnSolarisPackage = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']//span[text()='Add to cart']");
 		getReusableActionsInstance().getWhenReady(btnSolarisPackage, 60).click();
+	}
+
+	public void selectInternetSpeeed(String planName,String speed){
+		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'speeds')]";
+		By element = By.xpath(str_element);
+		WebElement dropdownbox = getReusableActionsInstance().getWhenReady(element, 180);
+		getReusableActionsInstance().selectWhenReady(dropdownbox,4);
 	}
 }

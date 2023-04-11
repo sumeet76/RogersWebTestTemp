@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC61_Anonymous_NAC_FWA_E2E_PR_GSA_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,12 +22,12 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_Dealer_EN_ON_Test() {
+    public void ovr_Auto_TC61_Anonymous_NAC_FWA_E2E_PR_GSA_EN_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
-        getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
+        getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
@@ -36,60 +36,27 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        //Use a GPON address valid for FIBER Service
-        getCheckAvailabilityPage().checkAvailability("1 AUSTRALIA DR, BRAMPTON, ON, L6R3E4", "chrome");
-        reporter.hardAssert(getCheckAvailabilityPage().verifyFiberServiceAvailabilityMessage(),"Address is serviceable for FIBER","Address is not serviceable for FIBER");
+        //Use a FWA address
+        getCheckAvailabilityPage().checkAvailability("281-1211 BARTON ST HAMILTON ON L8H2V4", "chrome");
+        reporter.hardAssert(getCheckAvailabilityPage().verifyFWAServiceAvailabilityMessage(),"Address is serviceable for FWA","Address is not serviceable for FWA");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
-        reporter.reportLogWithScreenshot("Select Services Customer Wants");
-        reporter.hardAssert(getBundleBuilderPage().verifyOvrSessionTimer(), "Ovr Session Timer Present", "Ovr Session timer not present");
-        reporter.hardAssert(getBundleBuilderPage().verifyBundleBuilderPage(), "Bundle Builder page is displayed", "Bundle Builder page is not displayed");
-        reporter.reportLogWithScreenshot("Bundle Builder Page");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet Selected");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
-        reporter.reportLogWithScreenshot("TV Check box selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("load offers");
-        //Validate the symm. tier plan speeds
-        getRogersIgniteBundlesPage().clickViewDetails();
-        reporter.reportLogWithScreenshot("Package Details");
-        getRogersIgniteBundlesPage().clkExpandPackageDetails();
-        reporter.reportLogWithScreenshot("Package details section expanded");
-        reporter.hardAssert(getTVDashboardPage().verifyDownloadAndUploadSpeed(),"Download and upload speed symmetrical"," Download and upload speed not symmetrical");
-        getRogersIgniteBundlesPage().clkCloseBtn();
-        reporter.reportLogWithScreenshot("View details modal closed");
+        reporter.reportLogWithScreenshot("FWA Offers Page");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("added to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
-        reporter.reportLogWithScreenshot("No to PortIn Popup");
-
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+        reporter.reportLogWithScreenshot("Product in cart");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-
-        //reporter.reportLogWithScreenshot("Channel Personalization page");
-        //getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to 4k tv popup");
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        reporter.reportLogWithScreenshot("4k tv popup");
-        getRogersIgniteBundlesPage().contiue4KContent();
-
-        reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
-        getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        //verify Fiber activation banner
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyFibreActivationMSg(),"Fiber Activation Banner displayed","Fiber Activation Banner not Displayed");
+        reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.reportLogWithScreenshot("Customer Profile Page");
 
+        reporter.reportLogWithScreenshot("continue to Customer Profile Page");
         String email = getRogersOVCheckoutPage().setEmailCreateProfile();
         getRogersOVCheckoutPage().confirmEmailCreateProfile(email);
         reporter.reportLogWithScreenshot("Email entered for customer Profile");
@@ -113,8 +80,8 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        //For GPON Pro install selected by default
-//        getBundleBuilderPage().selectExpressProInstall();
+
+        //For FWA NAC Pro install selected by default
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();
         reporter.reportLogWithScreenshot("Time Slot selected");
@@ -128,8 +95,6 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         getBundleBuilderPage().clkContinueBillingAndPayment();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
         reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order review Page displayed", "Order Review Page not displayed");
-        //verify Fiber activation banner
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyFibreActivationMSg(),"Fiber Activation Banner displayed","Fiber Activation Banner not Displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         reporter.reportLogWithScreenshot("Order review Page");
@@ -143,10 +108,11 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-        //verify Fiber activation banner
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyFibreActivationMSg(),"Fiber Activation Banner displayed","Fiber Activation Banner not Displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+
+
+
 
     }
 }

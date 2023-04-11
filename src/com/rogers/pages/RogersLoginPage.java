@@ -1,13 +1,11 @@
 package com.rogers.pages;
 
-import com.rogers.test.base.BaseTestClass;
-import com.rogers.testdatamanagement.TestDataHandler;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import com.rogers.pages.base.BasePageClass;
 
 
 
@@ -79,6 +77,8 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
 	WebElement btnTextToAsRecoveryOption;
 
+	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
+	WebElement btnEmailToAsRecoveryOption;
 	@FindBy(xpath="//h1[text()='Receive verification code']")
 	WebElement lblMFAwindow;
 
@@ -368,6 +368,16 @@ public class RogersLoginPage extends BasePageClass {
     public void clkTextToAsRecoveryOption() {
 		getReusableActionsInstance().getWhenReady(btnTextToAsRecoveryOption,60).click();
     }
+
+	/**
+	 * Click on the email button to receive otp via email.
+	 * @author karthick.murugiah
+	 */
+	public void clkEmailToAsRecoveryOption() {
+		if(verifyMFAScreenIsVisible()) {
+			getReusableActionsInstance().getWhenReady(btnEmailToAsRecoveryOption, 30).click();
+		}
+	}
 
 	/**
 	 * verifies the MFA screen

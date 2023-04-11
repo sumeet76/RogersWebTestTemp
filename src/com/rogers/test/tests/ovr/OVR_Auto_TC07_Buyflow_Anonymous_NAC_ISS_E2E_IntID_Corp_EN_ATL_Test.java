@@ -22,7 +22,7 @@ public class OVR_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test 
         //closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR", "OVR_Sanity"})
+    @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC07_Buyflow_Anonymous_NAC_ISS_E2E_IntID_Corp_EN_ATL_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");

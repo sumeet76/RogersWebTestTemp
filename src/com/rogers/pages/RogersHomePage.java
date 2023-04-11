@@ -327,7 +327,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'About Ignite Internet')]")
 	WebElement lnkAboutIgniteInternet;
 
-	@FindBy(xpath ="//li[@class='mb-0 ng-star-inserted']/a[contains(@aria-label,'About TV & Streaming')]")
+	@FindBy(xpath ="//div[@class='rcl-navmain']//a[@title='Shop']//ancestor::ul//a[contains(text(),'TV & Streaming')]")
 	WebElement lnkAboutTVandStreaming;
 
 	@FindAll({
@@ -573,7 +573,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkAboutTVandStreamingLink() {
-		getReusableActionsInstance().getWhenVisible(lnkAboutIgniteInternet, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkAboutTVandStreaming, 10).click();
 	}
 
 	/**
