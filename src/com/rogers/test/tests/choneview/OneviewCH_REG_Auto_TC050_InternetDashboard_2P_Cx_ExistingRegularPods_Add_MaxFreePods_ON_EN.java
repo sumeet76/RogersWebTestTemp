@@ -15,7 +15,7 @@ public class OneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPod
     public void oneviewCH_REG_Auto_TC050_InternetDashboard_2P_Cx_ExistingRegularPods_Add_MaxFreePods_ON_EN() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max2pCx_Pods.getAccountNo(),TestDataHandler.Max2pCx_Pods.getContactID());
-        //getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
         reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
         reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");

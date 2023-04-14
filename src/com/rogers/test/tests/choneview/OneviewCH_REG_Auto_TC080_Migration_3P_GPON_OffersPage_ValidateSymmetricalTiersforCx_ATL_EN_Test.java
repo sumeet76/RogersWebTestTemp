@@ -18,6 +18,10 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().clkContinueServiceable();
@@ -70,7 +74,7 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
 }

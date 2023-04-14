@@ -76,6 +76,7 @@ public class AccountDetails {
 	private String downgradeInternetPlanFr;
 	private String removeAddOnNameEn;
 	private String removeAddOnNameFr;
+	private String addSTBban;
 
 
 
@@ -916,5 +917,9 @@ public class AccountDetails {
 	public void setRemoveAddOnNameFr(String removeAddOnNameFr) {
 		this.removeAddOnNameFr = removeAddOnNameFr;
 	}
+
+	public String getAddSTBban() { return addSTBban; }
+
+	public void setAddSTBban(String addSTBban) {this.addSTBban = addSTBban; }
 
 }

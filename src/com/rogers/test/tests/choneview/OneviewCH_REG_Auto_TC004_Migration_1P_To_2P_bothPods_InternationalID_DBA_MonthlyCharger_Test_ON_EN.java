@@ -28,29 +28,33 @@ public class OneviewCH_REG_Auto_TC004_Migration_1P_To_2P_bothPods_InternationalI
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 	//	getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkTVCheckbox();
-//		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
+
 		reporter.reportLogWithScreenshot("Dual play selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
-		//getRogersIgniteBundlesPage().noPortInPopup();
+		getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
+
 		reporter.reportLogWithScreenshot("review terms and condition");
-		getRogersIgniteBundlesPage().reviewAllTerms();
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-		getRogersIgniteBundlesPage().clickExchangeLater();
-		reporter.reportLogWithScreenshot("Exchange later");
-		reporter.reportLogWithScreenshot("After Exchange later");
+//		getRogersIgniteBundlesPage().clickExchangeLater();
+//		reporter.reportLogWithScreenshot("Exchange later");
+//		reporter.reportLogWithScreenshot("After Exchange later");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
@@ -104,6 +108,7 @@ public class OneviewCH_REG_Auto_TC004_Migration_1P_To_2P_bothPods_InternationalI
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");
+		getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Submit order");

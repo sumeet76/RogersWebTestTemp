@@ -15,7 +15,7 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
     public void oneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_EN(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Ignite_Mapped_Offers_2p.getAccountDetails().getBan(),TestDataHandler.Ignite_Mapped_Offers_2p.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
-        //getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched TV Dashboard Page");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
@@ -33,14 +33,21 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         reporter.reportLogWithScreenshot("click continue");
         getTVDashboardPage().clickExchangeNow();
         reporter.reportLogWithScreenshot("click Exchange Now");
-        getTVDashboardPage().clickRemoveChannel();
-        reporter.reportLogWithScreenshot("click Channel to removed");
-        getTVDashboardPage().clickSelectChannel();
-        reporter.reportLogWithScreenshot("Channel Remove selected");
-        getTVDashboardPage().clickAddChannelBtn();
-        reporter.reportLogWithScreenshot("click Channel to add");
-        getTVDashboardPage().clickSelectChannel();
-        reporter.reportLogWithScreenshot("Channel Add selected");
+        getTVDashboardPage().clickFirstChannelToRemove();
+        reporter.reportLogWithScreenshot("first channel to be removed is clicked");
+        getTVDashboardPage().clickSelectChannelRemove();
+        reporter.reportLogWithScreenshot("first channel is removed");
+        getTVDashboardPage().clickSecondChannelToRemove();
+        reporter.reportLogWithScreenshot("Second channel to be removed is clicked");
+        getTVDashboardPage().clickSelectChannelRemove();
+        reporter.reportLogWithScreenshot("second channel is removed");
+        getTVDashboardPage().clickFirstChannelToAdd();
+        reporter.reportLogWithScreenshot("First channel to be added is clicked ");
+        getTVDashboardPage().clickSelectChannelAdd();
+        reporter.reportLogWithScreenshot("First channel is added");
+        getTVDashboardPage().clickSecondChannelToAdd();
+        reporter.reportLogWithScreenshot("Second channel to be added is clicked");
+        getTVDashboardPage().clickSelectChannelAdd();
         getTVDashboardPage().clickContinueBottomOfPage();
         reporter.reportLogWithScreenshot("clicked continue");
        // getTVDashboardPage().clickReviewedAllIssuesWithCustomer();

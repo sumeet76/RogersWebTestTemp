@@ -16,7 +16,7 @@ public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_T
     public void oneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_TV_Internet_AdditionalChannels_Themepacks_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getBan(), TestDataHandler.TC028_InternetPackageDowngrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        //getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.hardAssert(getInternetDashboardPage().verifyChangePackageButtonEN()," Change package button on Internet dashboard is in English Language", "Change Package button on Internet dashboard is in French Language");
         reporter.reportLogWithScreenshot("Verified Change package button on Internet Dashboard is in English");
@@ -25,7 +25,7 @@ public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_T
         getInternetDashboardPage().selectPlanUnderTvPackage(TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getInternetBundle(),TestDataHandler.TC028_InternetPackageDowngrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinueChangeInternetPackage();
-        getRogersIgniteBundlesPage().clickExchangeLater();
+
         getTVDashboardPage().clickAddChannel();
         reporter.reportLogWithScreenshot("add channel");
         getTVDashboardPage().clickThemepacksTab();
@@ -36,7 +36,6 @@ public class OneviewCH_REG_Auto_TC083_Change_TV_INT_package_for_Existing_2P_CX_T
         getRogersIgniteBundlesPage().contiue4KContent();
         reporter.reportLogWithScreenshot("Pop for selecting billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
-        //getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
         reporter.reportLogWithScreenshot("Order Review Page");
         getRogersOVCheckoutPage().clkSubmit();

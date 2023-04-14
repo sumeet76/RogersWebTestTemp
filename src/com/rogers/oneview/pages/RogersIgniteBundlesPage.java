@@ -1,13 +1,9 @@
 package com.rogers.oneview.pages;
 
-//import com.rogers.test.listeners.TestListener;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
-
-import java.util.List;
 
 public class RogersIgniteBundlesPage extends BasePageClass{
 
@@ -170,7 +166,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
-	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
+	@FindBy(xpath = "//div[@class='modal-body']/child::div[4]/div/*[last()]")
 	WebElement scrollToLastPoint;
 
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
@@ -459,8 +455,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
 
-
-
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -496,22 +490,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	public void reviewAllTerms(){
-			if(getReusableActionsInstance().isElementVisible(reviewTV,10)){
-				getReusableActionsInstance().waitForElementVisibility(reviewTV,5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewTV);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewInternet,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,10)){
-				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewBattery,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
-			}
+		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 
 		}
 	/**
@@ -805,7 +787,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1109,7 +1090,7 @@ public void activateHomePhoneltrPopUp() {
 	*/
 	public void clickReviewAddons() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(5000);
 		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
 		getReusableActionsInstance().executeJavaScriptClick(reviewAddons);
 	}

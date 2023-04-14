@@ -24,7 +24,7 @@ public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("deal code");
-		//getAccountOverViewPage().clickIgniteTVBadge();
+		getAccountOverViewPage().clickIgniteTVBadge();
 		reporter.reportLogWithScreenshot("TV Batch");
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
@@ -35,10 +35,15 @@ public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow
 		getInternetDashboardPage().clickContinueChangeInternetPackage();
 		reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
 		getTVDashboardPage().clickExchangeNow();
-		getTVDashboardPage().clickRemoveChannel();
+		getTVDashboardPage().clickFirstChannelToRemove();
+		reporter.reportLogWithScreenshot("first channel to be removed is clicked");
 		getTVDashboardPage().clickSelectChannelRemove();
-		getTVDashboardPage().clickAddChannelBtn();
+		reporter.reportLogWithScreenshot("first channel is removed");
+
+		getTVDashboardPage().clickFirstChannelToAdd();
+		reporter.reportLogWithScreenshot("First channel to be added is clicked ");
 		getTVDashboardPage().clickSelectChannelAdd();
+		reporter.reportLogWithScreenshot("First channel is added");
 		reporter.reportLogWithScreenshot("add channel");
 		getTVDashboardPage().clickContinueBottomOfPage();
 		getTVDashboardPage().selectStandaloneChannelsTab();
