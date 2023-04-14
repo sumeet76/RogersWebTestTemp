@@ -36,6 +36,9 @@ public class OVR_Auto_TC58_SelfServe_TV_ADD_STB_E2E_FS_GF_ON_EN_Test extends Bas
 
         //TV Dashboard
         getOvrDashboardPage().clkTVDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");

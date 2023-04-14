@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH"})
+    @Test(groups = {"RegressionCH","RogersIgniteBuyAnonymousCH","R223"})
     public void rogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATL() {
         getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");

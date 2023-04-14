@@ -63,8 +63,8 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("4k tv pop up");

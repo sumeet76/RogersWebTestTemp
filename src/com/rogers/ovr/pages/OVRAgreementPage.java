@@ -49,7 +49,7 @@ public class OVRAgreementPage extends BasePageClass {
         getReusableActionsInstance().javascriptScrollToMiddleOfPage();
         getReusableActionsInstance().javascriptScrollByVisibleElement(additionalAgreementsH3);
         getReusableActionsInstance().scrollToElement(agreementCheckbox);
-        getReusableActionsInstance().clickWhenReady(agreementCheckbox);
+        getReusableActionsInstance().clickWhenReady(agreementCheckbox,90);
     }
 
     public void clkCompleteOrder() {

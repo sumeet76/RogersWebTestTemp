@@ -4,7 +4,8 @@ package com.rogers.test.helpers;
 import com.rogers.test.base.BaseTestClass;
 
 import java.sql.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DBValidation extends BaseTestClass{
 
