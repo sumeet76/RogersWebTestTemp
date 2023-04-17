@@ -23,6 +23,9 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//div[@translate='global.modals.serviceability.gponAvailable']")
     WebElement lblAddressIsServiceableForFiber;
 
+    @FindBy(xpath = "//div[@translate='global.modals.serviceability.fwaAvailable']")
+    WebElement lblAddressIsServiceableForFWA;
+
     @FindBy(xpath = "//p[contains(text(),'Multiple addresses found') or contains(text(),'Plusieurs adresses trouvées')]")
     WebElement lblMultipleAddressesFound;
 
@@ -133,4 +136,7 @@ public class CheckAvailabilityPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(lblAddressIsServiceableForFiber,30);
     }
 
+    public boolean verifyFWAServiceAvailabilityMessage() {
+        return getReusableActionsInstance().isElementVisible(lblAddressIsServiceableForFWA,30);
+    }
 }

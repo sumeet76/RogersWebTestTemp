@@ -125,7 +125,7 @@ task "localTest"(type: Test) {
 
 
 repositories {
-//	mavenLocal()
+	//mavenLocal()
 	maven {
 		url = "${artifactory_url}/${artifactory_repoKey}"
 		credentials {
@@ -144,7 +144,6 @@ dependencies {
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
-
 }
 
 group = 'com.rogers'

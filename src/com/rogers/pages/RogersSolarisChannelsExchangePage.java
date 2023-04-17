@@ -2,14 +2,13 @@ package com.rogers.pages;
 
 
 import com.rogers.pages.base.BasePageClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RogersSolarisChannelsExchangePage extends BasePageClass {
 
@@ -26,8 +25,14 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(id = "searchFilter_swapin")
 	WebElement infoChannelSwapinSeach;
 
-	@FindBy(xpath = "//button[@class='ute-btn-primary']")
+		@FindBy(xpath = "//button[@class='ute-btn-primary'] | //div[@class='exchange-channels__selected__desktop']//a//span[text()='Exchange']")
 	WebElement btnConfirmExchange;
+
+	@FindBy(xpath = "//div[@class='exchange-channels__selected__desktop']//span[text()='Cancel']")
+	WebElement btnCancel;
+
+	@FindBy(xpath = "//div[@class='m-cta -hideMobile']//a[@title='Contact Us']")
+	WebElement lnkContactUs;
 
 	@FindBy(xpath = "//div[@id='tvPopupTitle']/i[@class='ute-icon']")
 	WebElement infoSuccessIcon;	
@@ -81,6 +86,10 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@class,'d-inline-block -secondary -large')]")
 	WebElement btnAddChannelDifferentLogic;
 
+	@FindBy(xpath = "//button//span[@translate='global.cta.continue']")
+	WebElement btnContinue;
+
+
 	/**
 	 * Click the Change FlexChannels link on solaris TV dashboard page
 	 * @author chinnarao.vattam
@@ -127,7 +136,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmExchange() {
-		getReusableActionsInstance().clickWhenReady(btnConfirmExchange, 30);
+		//getReusableActionsInstance().scrollToElement(lnkContactUs);
+		getReusableActionsInstance().clickWhenReady(btnConfirmExchange,20);
 	}
 
 
@@ -347,5 +357,32 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 				getReusableActionsInstance().getWhenReady(channel, 45).sendKeys(Keys.TAB);
 			}
 		}
+	}
+
+	public Set<String> getFlexChannelsListFromExchangeFlexChannels() {
+		Set<String> result = new HashSet();
+		List<WebElement> elements3 = getDriver().findElements(By.xpath("//div[@class='cl-button']"));
+		getReusableActionsInstance().waitForAllElementsVisible(elements3,180);
+		for (WebElement ele : elements3
+		) {
+			try {
+				result.add(ele.getAttribute("id"));
+				//System.out.println(ele.getAttribute("id"));
+			} catch (StaleElementReferenceException exception) {
+				break;
+			}
+		}
+		return result;
+	}
+
+	public void selectOrUnselectChannel(String channelName){
+		WebElement element = getDriver().findElement(By.xpath("//div[@class='cl-button' and @id='"+channelName+"']"));
+		getReusableActionsInstance().scrollToElement(element);
+		getReusableActionsInstance().clickWhenReady(element,10);
+	}
+
+	public void clkContinueToDeleteDuplicateChannel(){
+		getReusableActionsInstance().waitForElementVisibility(btnContinue,10);
+		getReusableActionsInstance().clickWhenReady(btnContinue,10);
 	}
 }

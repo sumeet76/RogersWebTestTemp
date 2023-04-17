@@ -140,10 +140,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//t[contains(text(),'Make a payment')]")
     WebElement MakePaymentbtn;
 
-//    @FindBy(xpath = "//span[@class='icon rui-icon-internet-v2']")
-//    WebElement btnInternetBadge;
-
-    @FindBy(xpath = "//span[contains(text(),'Plan and Usage details')]")
+    @FindBy(xpath = "//t[text()='Ignite Internet' or text()='Élan Internet']/following::span[contains(text(),'Plan and Usage') or contains(text(),'Détails du plan et de')]")
     WebElement btnInternetBadge;
 
     @FindAll({
@@ -157,7 +154,7 @@ public class AccountOverViewPage extends BasePageClass {
 //	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
 //	@FindAll({
 
-    @FindBy(xpath = "//t[text()='TV' or text()='la télé']/following::span[text()='Plan Details'] or text()=' Détails du forfait ']")
+    @FindBy(xpath = "//t[text()='Ignite TV']/following::span[text()='Plan Details' or text()='Détails du forfait']")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
@@ -399,6 +396,9 @@ public class AccountOverViewPage extends BasePageClass {
     public void clickProceed(){
         getReusableActionsInstance().waitForElementVisibility(btnProceed, 5);
         getReusableActionsInstance().clickWhenReady(btnProceed);
+        if (getReusableActionsInstance().isElementVisible(OK, 30)) {
+            getReusableActionsInstance().executeJavaScriptClick(OK);
+        }
     }
 
     /**

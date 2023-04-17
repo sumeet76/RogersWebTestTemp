@@ -18,7 +18,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Tes
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
@@ -34,6 +34,9 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Tes
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Address Service Availability");
         getCheckAvailabilityPage().addressIsServiceable();
@@ -68,7 +71,7 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_Dealer_EN_ON_Tes
         reporter.reportLogWithScreenshot("Port In completed");
         getRogersIgniteBundlesPage().contiueToCartSummary();
 
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("4k tv pop up");

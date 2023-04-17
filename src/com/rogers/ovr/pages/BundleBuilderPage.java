@@ -105,7 +105,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
     WebElement courierDeliveryCheckbox;
 
-    @FindBy(xpath = "//div[contains(text(),'Services selected must include Internet')]")
+    @FindBy(xpath = "//div[contains(text(),'Sorry, this Service combination is unavailable.')]")
     WebElement nonValidBundlesErrorMessage;
 
     @FindBy(xpath = "//div[contains(text(),'This service change is not supported in Oneview')]")

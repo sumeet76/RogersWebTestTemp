@@ -34,18 +34,18 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
-        //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
-        reporter.reportLogWithScreenshot("Account Overview page has Launched");
-
         //Internet Dashboard Validation
-        getAccountOverViewPage().selectInternetBadage();
+        getOvrDashboardPage().clkInternetDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(), "Internet Speed Displayed", "Internet Speed not displayed");
-        //reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
+        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
         reporter.reportLogWithScreenshot("View Usage and Alert link displayed");
 
         getInternetDashboardPage().clickBacktoAccountOverview();
@@ -53,7 +53,10 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         getInternetDashboardPage().clickContinue();
 
         //TV Dashboard
-        getAccountOverViewPage().selectTVBadage();
+        getOvrDashboardPage().clkTVDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
@@ -65,7 +68,10 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         getInternetDashboardPage().clickContinue();
 
         //RHP Dashboard
-        getAccountOverViewPage().selectHomePhoneBadge();
+        getOvrDashboardPage().clkHomePhoneDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
         getInternetDashboardPage().clickBacktoAccountOverview();

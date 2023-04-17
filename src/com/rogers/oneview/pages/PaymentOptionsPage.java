@@ -20,7 +20,7 @@ public class PaymentOptionsPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='Options de paiement' or text()='Payment Options']")
 	WebElement paymentText;
 
-	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']/ancestor::button")
+	@FindBy(xpath = "//span[text()='Continuer' or text()='Continue']")
 	WebElement continueButton;
 	/**
 	 * Click Paper Billing  

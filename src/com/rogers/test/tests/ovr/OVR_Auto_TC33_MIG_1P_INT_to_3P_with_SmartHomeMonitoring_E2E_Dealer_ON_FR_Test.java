@@ -37,6 +37,9 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
@@ -61,13 +64,12 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("4k tv pop up");
