@@ -82,10 +82,10 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_Target
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-//        getCreditCheckPage().clickDigitalFrontline();
-//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        getCreditCheckPage().clickDigitalFrontline();
+        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 	    getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -100,6 +100,6 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_Target
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
 }

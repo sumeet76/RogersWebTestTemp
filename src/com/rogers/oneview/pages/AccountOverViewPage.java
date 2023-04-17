@@ -84,8 +84,8 @@ public class AccountOverViewPage extends BasePageClass {
 //    WebElement btnTVBadge;
 
     @FindAll({
-            @FindBy(xpath = "//div[contains(@class,'IPTV')]"),
-            @FindBy(xpath = "//span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]")
+            @FindBy(xpath = "//span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]"),
+            @FindBy(xpath = "//div[contains(@class,'IPTV')]")
     })
     WebElement btnTVBadge;
 
@@ -149,7 +149,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindAll({
             @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']"),
             @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']"),
-            @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border d-flex flex-column']/descendant::span[@class='ds-link__copy']/parent::span")
+            @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border']/descendant::span[@class='ds-link__copy']/parent::span")
     })
     WebElement btnHomePhoneBadge;
 
@@ -202,8 +202,8 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
     WebElement changeTVBundle;
 
-    @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
-//    @FindBy(xpath = "//span[@class='ds-link__copy']/descendant::span[@class='ng-star-inserted']")
+//    @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
+    @FindBy(xpath = "//span[@class='ds-link__copy']/descendant::span[@class='ng-star-inserted']")
     WebElement migrateToIgnite;
 
     @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
@@ -397,7 +397,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author Jarmanjeet.Batth
      */
     public void clickProceed(){
-        getReusableActionsInstance().waitForElementVisibility(btnProceed, 20);
+        getReusableActionsInstance().waitForElementVisibility(btnProceed, 5);
         getReusableActionsInstance().clickWhenReady(btnProceed);
     }
 

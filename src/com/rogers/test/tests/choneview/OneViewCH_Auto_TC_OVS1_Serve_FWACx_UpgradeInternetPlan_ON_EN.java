@@ -20,6 +20,8 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
+        getInternetDashboardPage().clickLoadOffers();
+        reporter.reportLogWithScreenshot("Load offers button clicked");
         getInternetDashboardPage().clickSelectButtonAsPerPackageName(TestDataHandler.Serve_FWACx_UpgradeInternetPlan.accountDetails.getInternetBundle());
         reporter.reportLogWithScreenshot("Internet Package selected for upgrade");
         getInternetDashboardPage().clickContinue();
@@ -38,7 +40,6 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
         startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "", "", "", method);
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {

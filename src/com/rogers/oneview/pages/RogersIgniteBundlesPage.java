@@ -783,7 +783,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */	
 	public void clkCollapse() {
-		getReusableActionsInstance().clickIfAvailable(collapse,45);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 
 	/**

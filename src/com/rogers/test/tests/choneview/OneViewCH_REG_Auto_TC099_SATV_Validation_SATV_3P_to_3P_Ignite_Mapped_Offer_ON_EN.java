@@ -53,5 +53,4 @@ public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mappe
     public void afterTest() {
         closeSession();
     }
-
 }

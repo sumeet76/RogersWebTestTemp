@@ -46,15 +46,14 @@ public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_
 //        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
         reporter.reportLogWithScreenshot("Best targeted offer for the customer is displayed");
-        getRogersIgniteBundlesPage().noPortInPopup();
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
-//        getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
+//        getRogersIgniteBundlesPage().noPortInPopup();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
+        getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
 //        getRogersIgniteBundlesPage().clickKeepNumber();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().goToPageBottom();
         reporter.reportLogWithScreenshot("review terms and condition");
 //        getRogersIgniteBundlesPage().expandInternetdiv();
 //        getRogersIgniteBundlesPage().expandHomePhonediv();
@@ -141,7 +140,7 @@ public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
     }
 

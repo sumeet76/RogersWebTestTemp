@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test extends BaseTestClass {
     @Test(groups = {"RMigration","RegressionCHOV"})
-    public void oneviewCH_Auto_TC105_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test(){
+    public void oneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_CourierDelivery_ATL_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNoLegacyToSHMInternet(),TestDataHandler.migrationData.getContactIDLegacyToSHMInternet());
         reporter.reportLogWithScreenshot("OneviewLaunched");
 
@@ -26,10 +26,10 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Use this address");
 //        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clickNo();
+//        getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Service Availability");
-//        getRogersIgniteBundlesPage().refreshContinue();
-//        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().refreshContinue();
+        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
@@ -40,17 +40,18 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
+//        getRogersIgniteBundlesPage().noPortInPopup();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-
         reporter.reportLogWithScreenshot("review terms and condition");
 //        getRogersIgniteBundlesPage().reviewAllTerms();
 //        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 //        reporter.reportLogWithScreenshot("Points to mention");
-//        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        reporter.reportLogWithScreenshot("Term and condition checkbox checked");
+        getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().addPods(5);
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
@@ -89,18 +90,18 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-        reporter.reportLogWithScreenshot(".enter Special Instructions");
+//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//        reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-        getCreditCheckPage().selectPaymentOption(1);
-        reporter.reportLogWithScreenshot("Monthly charges");
+//        getCreditCheckPage().selectPaymentOption(1);
+//        reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
         getRogersOVCheckoutPage().clkSubmit();
