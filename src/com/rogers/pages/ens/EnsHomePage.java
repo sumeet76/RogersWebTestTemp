@@ -46,6 +46,7 @@ public class EnsHomePage extends BasePageClass{
 		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 10);
 		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 		getDriver().switchTo().window(tabs.get(1));
+		getReusableActionsInstance().staticWait(5000);
 //		getDriver().get(strEnsUrl);
 	}
 	
