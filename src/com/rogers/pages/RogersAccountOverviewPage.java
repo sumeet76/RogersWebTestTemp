@@ -694,7 +694,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageSmartStream() {
-		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream, 90).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 	}
 
 	/**
