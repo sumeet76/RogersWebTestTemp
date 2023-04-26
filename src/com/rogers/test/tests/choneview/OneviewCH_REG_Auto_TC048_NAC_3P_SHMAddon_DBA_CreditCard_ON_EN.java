@@ -12,11 +12,17 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CrediCard_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CrediCard_ON_EN(){
+    public void oneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN(){
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
+
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
@@ -40,13 +46,13 @@ public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CrediCard_ON_EN extend
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
-
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clickExchangeLater();
+		reporter.reportLogWithScreenshot("Continue from channels and Themepacks");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().fourKContentPopup();
+		reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Addon Header present","Internet Addon Header not present");
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+		reporter.hardAssert(getRogersIgniteBundlesPage().validateHomephoneAddOnsHeader(),"HomePhone Addon Header present","HomePhone Addon Header not present");
 		getRogersIgniteBundlesPage().clkContinue();
 
 		getRogersIgniteBundlesPage().addSHMAddOn();

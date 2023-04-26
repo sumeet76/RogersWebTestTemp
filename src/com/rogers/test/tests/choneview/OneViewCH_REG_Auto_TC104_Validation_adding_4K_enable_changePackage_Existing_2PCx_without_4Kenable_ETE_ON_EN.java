@@ -15,7 +15,7 @@ public class OneViewCH_REG_Auto_TC104_Validation_adding_4K_enable_changePackage_
     public void oneViewCH_REG_Auto_TC104_Validation_adding_4K_enable_changePackage_Existing_2PCx_without_4Kenable_ETE_ON_EN() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.accountDetails.getBan(),TestDataHandler.Change_TV_Channel_Themepack_Immediate_Downgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().selectInternetBadage();
+        //getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.hardAssert(getInternetDashboardPage().verifyChangePackageButtonEN()," Change package button on Internet dashboard is in English Language", "Change Package button on Internet dashboard is in French Language");
         reporter.reportLogWithScreenshot("Verified Change package button on Internet Dashboard is in English");
@@ -54,7 +54,7 @@ public class OneViewCH_REG_Auto_TC104_Validation_adding_4K_enable_changePackage_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

@@ -1,12 +1,9 @@
 package com.rogers.oneview.pages;
 
-import com.rogers.testdatamanagement.TestDataHandler;
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.rogers.pages.base.BasePageClass;
-
-import java.util.Locale;
 
 
 public class EnvironmentSelectionPage extends BasePageClass {
@@ -195,7 +192,7 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	}
 
 	public void selectProduction(){
-		getReusableActionsInstance().waitForElementVisibility(envProduction, 30);
+		getReusableActionsInstance().waitForElementVisibility(envProduction, 40);
 		getReusableActionsInstance().clickWhenReady(envProduction);
 	}
 

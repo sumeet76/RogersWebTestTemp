@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 
-public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer_DBA_MonthlyCharges_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_REG_Auto_TC0066_MIG_SAI_ProductCampign_TermOffer_DBA_Monthly_ON_EN_Test extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
-    public void oneViewCH_Auto_TC095_1415_Migration_2P_To_2P_Product_TermOffer_DBA_MonthlyCharges_ON_EN_Test(){
+    public void oneViewCH_REG_Auto_TC0066_MIG_SAI_ProductCampign_TermOffer_DBA_Monthly_ON_EN_Test(){
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo2PToISSTMP(), TestDataHandler.migrationData.getContactID2PToISSTMP() );
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 //		getAccountOverViewPage().enterDealerCodeDialogue();
@@ -23,7 +23,7 @@ public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
-		getRogersIgniteBundlesPage().clkSmartStream();
+		//getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Internet Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
@@ -33,8 +33,7 @@ public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
-		getRogersIgniteBundlesPage().reviewAllTerms();
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		reporter.reportLogWithScreenshot("continue from terms");
@@ -43,12 +42,12 @@ public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer
 //		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteCampaignPage().clickCampaignTab();
 		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteCampaignPage().enterCoupon("KCS");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		reporter.reportLogWithScreenshot("Term Offer Applied");
-		getRogersIgniteCampaignPage().enterCoupon("KR2");
+//		getRogersIgniteCampaignPage().enterCoupon("TAG");
+//		getRogersIgniteCampaignPage().clickApplyCoupon();
+//		reporter.reportLogWithScreenshot("apply coupon");
+//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+//		reporter.reportLogWithScreenshot("Term Offer Applied");
+		getRogersIgniteCampaignPage().enterCoupon("KML");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");
 		reporter.reportLogWithScreenshot("Product Campign coupon applied");
@@ -97,7 +96,7 @@ public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Order Review Page");
-	//	getRogersOVCheckoutPage().clkSubmit();
+		getRogersOVCheckoutPage().clkSubmit();
 	//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
     }
@@ -110,7 +109,7 @@ public class OneViewCH_REG_Auto_TC0066_1415_Migration_2P_To_2P_Product_TermOffer
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

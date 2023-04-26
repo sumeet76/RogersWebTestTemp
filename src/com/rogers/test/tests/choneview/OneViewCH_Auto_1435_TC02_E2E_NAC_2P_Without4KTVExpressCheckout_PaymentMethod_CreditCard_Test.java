@@ -16,6 +16,11 @@ public class OneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_Paym
 	    public void oneViewCH_Auto_1435_TC02_E2E_NAC_2P_Without4KTVExpressCheckout_PaymentMethod_CreditCard_Test(){
 		 reporter.reportLogWithScreenshot("oneview env");
 		 getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		 getEnvironmentSelectionPage().selectProduction();
+		 reporter.reportLogWithScreenshot("Selected Production");
+		 getEnvironmentSelectionPage().clickProceed();
+		 reporter.reportLogWithScreenshot("Clicked proceed button");
+
 		 reporter.reportLogWithScreenshot("address");
 		 getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		 reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
