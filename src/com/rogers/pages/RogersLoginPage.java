@@ -255,7 +255,7 @@ public String emailID;
 			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
 			if(emailOTP!=null){
 				getReusableActionsInstance().getWhenReady(inputCode).sendKeys(emailOTP);
-				//getRegisterOrAccountRecoveryPage().clkBtnContinue();
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
 			}
 		}
 	}
