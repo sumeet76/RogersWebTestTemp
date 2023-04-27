@@ -172,7 +172,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'New customer') or contains(.,'Nouveau client')]")
     WebElement txtNewCustomerInExistingCustModal;
 
-    @FindBy(xpath = "//button[@data-test='rpp-migration-accept-cta']//span[contains(text(),'Continue')]")
+    @FindBy(xpath = "//button[@data-test='rpp-migration-accept-cta']")
     WebElement btnContinuemigrationRpp;
 
     @FindBy(xpath = "//button[@data-test='trident-cta-cnac']")
@@ -598,7 +598,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      *  @author praveeen.kumar7
      */
     public boolean verifySharedNonSharedModalPresent() {
-        return getReusableActionsInstance().isElementVisible(sharedNonSharedModal,30);
+        return getReusableActionsInstance().isElementVisible(sharedNonSharedModal,40);
     }
 
     /**
