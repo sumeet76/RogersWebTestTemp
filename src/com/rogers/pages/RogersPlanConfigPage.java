@@ -445,6 +445,22 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Creates an xpath for the provided stepper with index value which is passed as parameter
+     * @param dC_DO_TO string value of device cost, data option and talk option stepper
+     * @param className String value of class name
+     * @return String value of an xpath
+     * @author vedachalam.vasudevan
+     */
+    public String createXpathWithInputData(String dC_DO_TO, String className) {
+        if(className.toUpperCase().contains("AUTOPAY")) {
+            return "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option')]//label";
+        } else  {
+            return "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label";
+        }
+
+    }
+
+    /**
      * This method creates Xpath for protection plan
      *
      * @param protectionPlanDetails : String value of protection plan
@@ -494,13 +510,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public String getAutoPayPlanIndex(String autoPayDiscountType) {
-        String dataOptionIndex = "";
+        String dataOptionIndex="";
         try {
             if (autoPayDiscountType.equalsIgnoreCase("MSF")) {
-                if (getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0) {
-                    dataOptionIndex = getDriver().findElement(By.xpath("(//label[contains(.,'Includes $')])[1]/..")).getAttribute("data-test").split("infinite-")[1];
+                int totalAutoPayPlan= getDriver().findElements(By.xpath("//label[contains(.,'Auto-Pay')]")).size();
+                if (totalAutoPayPlan > 0) {
+                    dataOptionIndex = "0";
                 } else {
-                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0, "No plan is displayed with Autopay MSF discount");
+                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'Auto-Pay')]")).size() > 0, "No plan is displayed with Autopay MSF discount");
                 }
             }
             if (autoPayDiscountType.equalsIgnoreCase("PERCENT")) {
@@ -582,14 +599,25 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDataOptionAndClickonContinueButton(String dataOptionIndex, String className) {
            if (noofDataOptions.size() != 1) {
             int stepper = 2;
-            String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, stepper);
+            String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, className);
             if (Integer.parseInt(dataOptionIndex) == 0) {
-                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"[contains(.,'Auto-Pay')]"));
+                if(className.toUpperCase().contains("AUTOPAY")) {
+                    WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo + "[contains(.,'Auto-Pay')]/parent::ds-selection"));
+                    moveToCenterOfScreen(dataPlanSelection);
+                    getReusableActionsInstance().getWhenReady(dataPlanSelection).click();
+                } else {
+                    WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo+"/parent::ds-selection"));
+                    moveToCenterOfScreen(dataPlanSelection);
+                    getReusableActionsInstance().getWhenReady(dataPlanSelection).click();
+                }
                 getReusableActionsInstance().staticWait(5000);
-                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+                getReusableActionsInstance().getWhenReady(preCartDataOtionContinueButton, 20).click();
             } else {
-                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
-                getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo), 20));
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"[contains(.,'Auto-Pay')]"));
+                WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo +"/parent::ds-selection"));
+                moveToCenterOfScreen(dataPlanSelection);
+                getReusableActionsInstance().getWhenReady(dataPlanSelection, 20).click();
                 if (className.toUpperCase().contains("_PPC_") && className.toUpperCase().contains("DOWNGRADE")) {
                     getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 40);
                     getReusableActionsInstance().clickWhenReady(btnDowngradeFeeModalConitnue, 5);
@@ -1646,7 +1674,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public boolean verifyAutoPayPlanSelection(String dataOptionIndex, String className) {
         selectDataOptionAndClickonContinueButton(dataOptionIndex,className);
-        return autoPayText.size()==1;
+        return autoPayText.size()>=1;
     }
 
     /**
