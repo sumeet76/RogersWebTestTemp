@@ -12,12 +12,10 @@ sauceconnect {
 	options = "-i myTunnel --no-remove-colliding-tunnels"
 }
 
-
 def sauce = [
 		username: sauceconnect.username,
 		key     : sauceconnect.key,
 ]
-
 
 task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	if(!test_browser){
@@ -28,7 +26,6 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 		def browser = 'sauce'+test_browser
 		test_browser = browser
 	}
-
 
 	systemProperty 'QaUrl', test_qaURL
 	systemProperty 'QaOVUrl', test_qaOVURL
@@ -55,7 +52,6 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ensEnv',test_ens_env
 	systemProperty 'TunnelName', "Digital_Mobile_QA"
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
-
 
 	useTestNG(){
 		outputDirectory = file("$project.buildDir//testngOutput")
@@ -127,7 +123,7 @@ task "localTest"(type: Test) {
 
 
 repositories {
-	mavenLocal()
+	//mavenLocal()
 	maven {
 		url = "${artifactory_url}/${artifactory_repoKey}"
 		credentials {
