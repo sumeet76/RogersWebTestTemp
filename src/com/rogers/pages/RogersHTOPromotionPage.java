@@ -148,7 +148,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyPromotionPage() {
-		return getReusableActionsInstance().isElementVisible(txtSpecialOffer, 60);
+		return getReusableActionsInstance().isElementVisible(txtSpecialOffer, 90);
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyIgnitePromotionPage() {
-		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 60);
+		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 90);
 	}
 
 	/**

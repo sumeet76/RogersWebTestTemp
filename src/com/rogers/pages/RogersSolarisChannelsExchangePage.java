@@ -316,7 +316,8 @@ public class RogersSolarisChannelsExchangePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkConfirmSwapMobile() {
-		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwapMobile,30);
+		getReusableActionsInstance().waitForElementVisibility(btnConfirmSwapMobile,20);
+		getReusableActionsInstance().waitForElementTobeClickable(btnConfirmSwapMobile, 10);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnConfirmSwapMobile);
 		getReusableActionsInstance().executeJavaScriptClick(btnConfirmSwapMobile);
 	}

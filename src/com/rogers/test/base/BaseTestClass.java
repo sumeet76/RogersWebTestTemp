@@ -778,8 +778,9 @@ public class BaseTestClass {
 
             case "connectedhome_login":
                 setImplicitWait(getDriver(), 10);
+//                getDriver().get(strUrl + "/consumer/profile/signin");
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
-                //captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
 
             case "redesignrogers":
@@ -1052,6 +1053,10 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_legacylogin":
+                EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
+                EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
+                ensVerificationsThreadLocal.set(new VerifyInEns(this));
+                RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));

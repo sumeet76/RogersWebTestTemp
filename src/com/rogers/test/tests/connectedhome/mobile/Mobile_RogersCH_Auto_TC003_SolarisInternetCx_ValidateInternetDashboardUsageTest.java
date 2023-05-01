@@ -34,11 +34,11 @@ public class Mobile_RogersCH_Auto_TC003_SolarisInternetCx_ValidateInternetDashbo
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC003_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+       /* if (getRogersLoginPage().isOverlayContainerDisplayed()) {
             reporter.reportLogWithScreenshot("Select Continue in browser.");
             getRogersLoginPage().clkContinueInBrowser();
             reporter.reportLogWithScreenshot("Continue in Browser Selected");
-        }
+        }*/
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
