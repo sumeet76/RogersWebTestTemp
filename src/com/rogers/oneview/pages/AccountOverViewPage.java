@@ -2,7 +2,6 @@ package com.rogers.oneview.pages;
 
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -77,7 +76,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
-    @FindBy(xpath = "//t[text()='Ignite TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
+    @FindBy(xpath = "//t[text()='TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
     WebElement btnTVBadge;
 
     @FindBy(xpath = "//a[contains(text(),' Billing ')]")
@@ -131,21 +130,13 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//t[contains(text(),'Make a payment')]")
     WebElement MakePaymentbtn;
 
-    @FindBy(xpath = "//t[text()='Ignite Internet' or text()='Élan Internet']/following::span[contains(text(),'Plan and Usage') or contains(text(),'Détails du plan et de')]")
+    @FindBy(xpath = "//t[text()='Internet' or text()='Internet']/following::span[contains(text(),'Plan and Usage') or contains(text(),'Détails du plan et de')]")
     WebElement btnInternetBadge;
 
-    @FindAll({
-            @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']"),
-            @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']"),
-            @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border d-flex flex-column']/descendant::span[@class='ds-link__copy']/parent::span")
-    })
+    @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border']/descendant::span[@class='ds-link__copy']/parent::span")
     WebElement btnHomePhoneBadge;
 
-    //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
-//	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
-//	@FindAll({
-
-    @FindBy(xpath = "//t[text()='Ignite TV']/following::span[text()='Plan Details' or text()='Détails du forfait']")
+    @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']/ancestor::div[@class='tile-border']/descendant::span[@class='ds-link__copy']/parent::span")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
@@ -190,7 +181,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
     WebElement changeTVBundle;
 
-    @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
+    @FindBy(xpath = "//span[@class='ng-star-inserted']/child::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
     WebElement migrateToIgnite;
 
     @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
@@ -363,7 +354,7 @@ public class AccountOverViewPage extends BasePageClass {
      * @author aditi.jain
      */
     public void clickIgnite() {
-        getReusableActionsInstance().staticWait(5000);
+        getReusableActionsInstance().staticWait(10000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().executeJavaScriptClick(migrateToIgnite);
        if (getReusableActionsInstance().isElementVisible(OK, 30)) {

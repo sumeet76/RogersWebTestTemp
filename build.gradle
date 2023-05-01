@@ -52,9 +52,12 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
-	systemProperty 'TunnelName', "DigitalQETunnel"
+	systemProperty 'DBImportFlag', db_update_flag
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'RunType', test_runType
+	systemProperty 'ApplicationName', test_ApplicationName
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
-	systemProperty 'EmailId', emailId
 
 
 	useTestNG(){
@@ -104,6 +107,10 @@ task "localTest"(type: Test) {
 	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
+	systemProperty 'DBImportFlag', db_update_flag
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'RunType', test_runType
+	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
