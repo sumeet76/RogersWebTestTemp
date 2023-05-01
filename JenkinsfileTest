@@ -60,7 +60,7 @@ pipeline {
         parameterizedCron(env.BRANCH_NAME == 'RCom_CH_Sanity_Execution' ?'''
                     # leave spaces where you want them around the parameters. They'll be trimmed.
                     # we let the build run with the default name
-                    30 6 * * 1-5 %Browser=saucechrome;Language=en;%Groups=SanityCH;ThreadCount=1;TestProfile=ConnectedHome
+                    # 30 6 * * 1-5 %Browser=saucechrome;Language=en;%Groups=SanityCH;ThreadCount=1;TestProfile=ConnectedHome
                 ''':'')
     }
 
