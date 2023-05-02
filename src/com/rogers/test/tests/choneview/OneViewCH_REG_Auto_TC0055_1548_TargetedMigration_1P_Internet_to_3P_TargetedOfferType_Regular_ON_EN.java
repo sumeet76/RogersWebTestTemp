@@ -89,7 +89,7 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("entered payment info");
         getPaymentOptionsPage().clkContinue();
-        //   getRogersOVCheckoutPage().clkSubmit();
+           getRogersOVCheckoutPage().clkSubmit();
         reporter.reportLogWithScreenshot("submit payment");
         //   reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");

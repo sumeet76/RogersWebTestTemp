@@ -78,6 +78,7 @@ public class AccountDetails {
 	private String downgradeInternetPlanFr;
 	private String removeAddOnNameEn;
 	private String removeAddOnNameFr;
+	private String addSTBban;
 
 
 
@@ -926,4 +927,8 @@ public class AccountDetails {
 	public void setUnwiredAddress(Map<String, String> unwiredAddress) {
 		this.unwiredAddress = unwiredAddress;
 	}
+	public String getAddSTBban() { return addSTBban; }
+
+	public void setAddSTBban(String addSTBban) {this.addSTBban = addSTBban; }
+
 }

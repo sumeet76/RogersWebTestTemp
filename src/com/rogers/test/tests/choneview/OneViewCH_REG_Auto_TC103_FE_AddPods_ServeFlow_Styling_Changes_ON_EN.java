@@ -16,17 +16,17 @@ public class OneViewCH_REG_Auto_TC103_FE_AddPods_ServeFlow_Styling_Changes_ON_EN
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max2pCx_Pods.getAccountNo(),TestDataHandler.Max2pCx_Pods.getContactID());
         reporter.reportLogWithScreenshot("select Internet Badge");
-        getAccountOverViewPage().selectInternetBadage();
+        //getAccountOverViewPage().selectInternetBadage();
 
         reporter.reportLogWithScreenshot("click AddPods Button ");
         getInternetDashboardPage().clickAddPodsButton();
 
-        //getInternetDashboardPage().clickAddToCartForPods();
+        getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
         getRogersIgniteBundlesPage().addPods(0);
         getInternetDashboardPage().clickPlusToAddPod();
-        getRogersIgniteBundlesPage().addPods(5);
-        getInternetDashboardPage().clickPlusToAddPod();
+        //getRogersIgniteBundlesPage().addPods(5);
+        //getInternetDashboardPage().clickPlusToAddPod();
         reporter.reportLogWithScreenshot("click Plus To Add Pod");
         reporter.hardAssert(getInternetDashboardPage().verifyMaximumLimitReached(),"maximum limit reached appeared","maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();
