@@ -43,7 +43,7 @@ public class RogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmod
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc100_SAIonlyAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        getEnsVerifications().setVerificationCode();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc100_SAIonlyAccount.getUsername());
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc100_SAIonlyAccount.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC078_SAI_NAC_ValidateGWPOnly_CartSummary_Review_Conf
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyInternetPackagesPage(),"Packages page has Launched","Packages page has not Launched");
-      //  getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");

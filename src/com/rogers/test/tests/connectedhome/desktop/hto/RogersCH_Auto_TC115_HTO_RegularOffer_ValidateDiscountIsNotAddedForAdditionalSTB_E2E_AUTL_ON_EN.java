@@ -1,4 +1,4 @@
-package com.rogers.test.tests.connectedhome.desktop;
+package com.rogers.test.tests.connectedhome.desktop.hto;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;

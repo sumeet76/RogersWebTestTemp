@@ -41,6 +41,8 @@ public class RogersCH_Auto_TC041_ISS_NAC_ValidationWithAdditionalSTBTest extends
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         String  strAddressLine1=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line2");
+      //  getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        getDriver().get(System.getProperty("QaUrl")+"/internet/offers");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();

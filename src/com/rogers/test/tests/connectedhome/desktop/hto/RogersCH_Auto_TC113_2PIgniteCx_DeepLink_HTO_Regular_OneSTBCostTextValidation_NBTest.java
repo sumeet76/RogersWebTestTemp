@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/com/rogers/test/tests/connectedhome/desktop/tv/RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextValidation_NBTest.java
 package com.rogers.test.tests.connectedhome.desktop.tv;
+========
+package com.rogers.test.tests.connectedhome.desktop.hto;
+>>>>>>>> 3d72a3489f161b012dd8199607b5830648dca451:src/com/rogers/test/tests/connectedhome/desktop/hto/RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextValidation_NBTest.java
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
@@ -48,6 +52,7 @@ public class RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextV
 		reporter.reportLogWithScreenshot("Entered the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Sign-in");
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");

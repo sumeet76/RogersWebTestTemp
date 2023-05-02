@@ -62,15 +62,10 @@ public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShop
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
+		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-//		getDriver().get(System.getProperty("QaUrl")+"/bundles");
-//		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 //		getRogersHomePage().clkNoThnx();
-//		getRogersHomePage().clkServiceability();
+		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
 		getRogersHomePage().clkUseAddress();

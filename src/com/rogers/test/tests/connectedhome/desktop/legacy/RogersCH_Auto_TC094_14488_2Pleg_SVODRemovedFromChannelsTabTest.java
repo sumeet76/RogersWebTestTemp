@@ -35,6 +35,7 @@ public class RogersCH_Auto_TC094_14488_2Pleg_SVODRemovedFromChannelsTabTest exte
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
 			reporter.reportLogWithScreenshot("Select an account.");

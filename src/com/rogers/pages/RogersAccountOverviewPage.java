@@ -690,15 +690,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 	/**
-	 * Clicks on the 'Smart Stream Badge' option on the dashboard
+	 * Clicks on the 'Smart Stream Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
-	public void clkManageSmartStream() {
+	public void clkSmartStream() {
 		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 	}
 
 	/**
-	 * Clicks on the 'RHP Badge' option on the dashboard
+	 * Clicks on the 'RHP Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
 	public void clkRHPBadgeMobile() {

@@ -87,6 +87,7 @@ public class RogersInternetCreditCheckPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyCreditEvalutionPage() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(ddlCreditCheckYear, 90);
 		return	getReusableActionsInstance().isElementVisible(ddlCreditCheckYear);
 	}

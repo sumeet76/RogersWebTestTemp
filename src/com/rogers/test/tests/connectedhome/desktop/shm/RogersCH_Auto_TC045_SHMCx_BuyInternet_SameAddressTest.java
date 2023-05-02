@@ -35,7 +35,7 @@ public class RogersCH_Auto_TC045_SHMCx_BuyInternet_SameAddressTest extends BaseT
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc45_sHMSignedInInternetBuy.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        //getEnsVerifications().setVerificationCode();
+        getEnsVerifications().setVerificationCode();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc45_sHMSignedInInternetBuy.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

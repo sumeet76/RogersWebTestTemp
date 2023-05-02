@@ -1,4 +1,4 @@
-package com.rogers.test.tests.connectedhome.desktop;
+package com.rogers.test.tests.connectedhome.desktop.legacy;
 
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
@@ -19,34 +19,29 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBIn
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc111_3p_migration_gpon.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
-        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc111_3p_migration_gpon.getUsername());
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
        // getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
-       // getRogersHomePage().clkShop();
-        getDriver().get(System.getProperty("QaUrl") + "/bundles/offers?setProvince=NL");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NL region");
-     //   getRogersHomePage().clkServiceability();
+        getDriver().get(System.getProperty("QaUrl")+"/bundles/offers?env=qa");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc111_3p_migration_gpon.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc111_3p_migration_gpon.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
-        reporter.reportLogWithScreenshot("Entered address to check serviceability");
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
-        reporter.reportLogWithScreenshot("Entered Serviceability address");
+        getRogersHomePage().selectAddressOnFile();
+        reporter.reportLogWithScreenshot("Selected Address on file");
+        getRogersHomePage().clkUseAddress();
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
         //getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         getRogersIgniteTVBuyPage().selectInternetSpeeed("Flex 20","2.5 Gbps");
-        //reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
+        reporter.reportLogWithScreenshot("Selected 2.5 gbps download speed");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
-       // getRogersIgniteTVBuyPage().clkIUnderstand();
+        getRogersIgniteTVBuyPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Clicked on the \"Yes I Understand\" popup");
         //reporter.hardAssert(getRogersHomePhoneSelectionPage().verifyPortInOutPage(), "Port-InOut page has Launched", "Port-InOut page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
+        //reporter.reportLogWithScreenshot("Launched the home phone selection page");
         //getRogersHomePhoneSelectionPage().clkSkipforNewNumber();
         reporter.reportLogWithScreenshot("Launched the Home phone add-on page");
-       // getRogersIgniteTVBuyPage().clkHomePhone();
+        getRogersIgniteTVBuyPage().clkHomePhone();
+        reporter.reportLogWithScreenshot("Click continue on rhp Addons page");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
@@ -80,9 +75,9 @@ public class RogersCH_Auto_TC111_Migration_3P_GPON_DualTopology_4K_Validate2GBIn
         reporter.reportLogWithScreenshot("Passport Details");
         getRogersIgniteTVCreditCheckPage().clkCreditConsentSubmit();
 
-        reporter.reportLogWithScreenshot("Launched the home phone selection page");
-        reporter.reportLogWithScreenshot("Launched the Fulfilment page");
-
+        reporter.reportLogWithScreenshot("Clicked continue on Credit Check page");
+        getRogersIgniteTVBuyPage().clkReviewCallerContinuebtn();
+        reporter.reportLogWithScreenshot("Clicked continue on Review Caller info page");
         reporter.reportLogWithScreenshot("professional installation");
         getRogersTechInstallPage().selectPrefferedDate();
         getRogersTechInstallPage().selectPreferredTimeSlot();

@@ -42,7 +42,7 @@ public class RogersCH_Auto_TC017_SolarisInternetCx_enableVA_Livechat_InternetDas
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        getEnsVerifications().setVerificationCode();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

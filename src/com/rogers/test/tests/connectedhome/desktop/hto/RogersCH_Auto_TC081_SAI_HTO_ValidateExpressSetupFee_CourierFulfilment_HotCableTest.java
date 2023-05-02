@@ -56,6 +56,7 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc81_StandaloneInternetAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc81_StandaloneInternetAccount.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
 

@@ -60,25 +60,19 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc30_internetAccountUpgrade.accountDetails.getBan());
-		/* reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-		getDriver().get(System.getProperty("QaUrl")+"/bundles");
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.accountDetails.getBan());
+		getDriver().get(System.getProperty("QaUrl")+"/bundles?setProvince=NL");
+		reporter.reportLogWithScreenshot("Bundles- NL region");
 		reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkServiceability();*/
-		getRogersHomePage().clkNBProvinceLnk();
-		reporter.reportLogWithScreenshot("select NB region");
-		getRogersHomePage().clkExistingCustomerShop();
-		reporter.reportLogWithScreenshot("clicked shop menu from navigarion bar to selcet the IgniteTV");
-		getRogersHomePage().clkSubnavIgniteSmartStream();
-		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
+		getRogersHomePage().clkServiceability();
     	reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-        getRogersHomePage().clkIgniteAddressLookupSubmit();
+		reporter.reportLogWithScreenshot("Entered address for serviceability");
+		getRogersHomePage().clkIgniteAddressLookupSubmit();
 		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().selectFlex20Package();
@@ -88,9 +82,6 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 
 		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
-		//getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-		//getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
-		//reporter.reportLogWithScreenshot("Selected 2 STBs");
 		getRogersIgniteTVBuyPage().clkCheckout();
 
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");
@@ -99,7 +90,6 @@ public class RogersCH_Auto_TC030_SolarisInternetCx_InternetPackageUpgradeToSolar
 
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the tech install page");
-		//getRogersTechInstallPage().clkTechInstalConsent();
 		getRogersTechInstallPage().clkProInstallUpgradeNo();
 		reporter.reportLogWithScreenshot("tech install details");
 		getRogersTechInstallPage().clkTechInstallContinueSelf();

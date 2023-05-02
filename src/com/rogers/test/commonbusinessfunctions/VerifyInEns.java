@@ -129,6 +129,7 @@ public class VerifyInEns{
 		BaseTestClass.getEnsNotificationViewPage().closeEnsWindow();
 		return strVerifyCode;
 	}
+	
 	public void setVerificationCode() {
 		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			baseTestClass.reporter.reportLogWithScreenshot("Click on Text as recovery option");
@@ -145,6 +146,36 @@ public class VerifyInEns{
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			baseTestClass.reporter.reportLogWithScreenshot("Continue to Account Overview");
 		}
+	}
+
+	public void setVerificationCodeCH(String strAccountId) {
+		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+			baseTestClass.reporter.reportLogWithScreenshot("Click on Text as recovery option");
+			getRogersLoginPage().clkEmailToForVerificationCode();
+			String strTestingTab = baseTestClass.getDriver().getWindowHandle();
+			baseTestClass.reporter.reportLogWithScreenshot("ENS");
+			String strEnsUrl = System.getProperty("EnsUrl");
+			String recoveryCode = getEmailVerificationCodeCH(strAccountId, strEnsUrl);
+			baseTestClass.getDriver().switchTo().window(strTestingTab);
+			baseTestClass.reporter.reportLogWithScreenshot("Close the Overlay");
+			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
+			getRegisterOrAccountRecoveryPage().clkBtnContinue();
+			baseTestClass.reporter.reportLogWithScreenshot("Continue to Account Overview");
+			
+		}
+	}
+
+	private String getEmailVerificationCodeCH(String strAccountId, String strEnsUrl) {
+		this.startVerifyCH(strEnsUrl);
+		BaseTestClass.getEnsNotificationViewPage().clkMenuNotifViewer();
+		BaseTestClass.getEnsNotificationViewPage().clkBtnSearchNotification();
+		BaseTestClass.getEnsNotificationViewPage().clkLnkHtmlForEmailVerify(strAccountId);
+		baseTestClass.setImplicitWait(baseTestClass.getDriver(), 2);
+		BaseTestClass.getEnsNotificationViewPage().switchToNewTab(2);
+		String strVerifyCode = getRegisterOrAccountRecoveryPage().getVerificationCode();
+		baseTestClass.reporter.reportLogWithScreenshot("Got message notification code.");
+		return strVerifyCode;
+
 	}
 
 	public void setVerificationCodeMac() {

@@ -218,7 +218,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//button[contains(@aria-label,'What are Flex Channels?')]//span")
 	WebElement hvrFelxChannels;
 
-	@FindBy(xpath = "//div[@class='cart-tv-details-component']/descendant::button[contains(@aria-label, 'Flex')]//span[@class='channel-count__count']")
+	@FindBy(xpath = "//div[@class='cart-tv-details-component']/descendant::button[contains(@aria-label, 'Flex channels')]//span[@class='channel-count__count']")
 	WebElement txtFlexChannels;
 
 	@FindBy(xpath = "//span[normalize-space()='Flex Channels']")
@@ -793,12 +793,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public void clkUpdateCart() {
-getReusableActionsInstance().staticWait(3000);
+getReusableActionsInstance().staticWait(5000);
 		if(getReusableActionsInstance().isElementVisible(popupLoadingFingersciam,20)) {
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersciam, 90);
 		}
 		getReusableActionsInstance().waitForElementTobeClickable(buttonUpdateCart, 60);
-		getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
+		//getReusableActionsInstance().getWhenReady(buttonUpdateCart, 60).click();
+		getReusableActionsInstance().executeJavaScriptClick(buttonUpdateCart);
 	}
 
 	/**
@@ -1055,6 +1056,15 @@ getReusableActionsInstance().staticWait(3000);
 	 */
 	public void selectFlex20Package() {
 		getReusableActionsInstance().getWhenReady(btnFlex20Package, 60).click();
+
+	}
+	/**
+	 * Click Flex20+ package button for anonymous customer
+	 * @author manpreet.kaur3
+	 */
+	public void selectFlex20PackageMobile() {
+		getReusableActionsInstance().waitForElementVisibility(btnFlex20Package, 90);
+		getReusableActionsInstance().executeJavaScriptClick(btnFlex20Package);
 
 	}
 
@@ -1976,7 +1986,7 @@ getReusableActionsInstance().staticWait(3000);
 
 	public Boolean validateOTBCBundleOffers(String bundleName) {
 		By divOTBCRateCardHead= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::span[contains(text(), 'CREDIT')]");
-		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 50);
+		return getReusableActionsInstance().isElementVisible(divOTBCRateCardHead, 120);
 	}
 
 	public Boolean validateOTBCCampaign() {

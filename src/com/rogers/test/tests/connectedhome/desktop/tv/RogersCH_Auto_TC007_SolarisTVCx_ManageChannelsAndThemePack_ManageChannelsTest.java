@@ -36,7 +36,8 @@ public class RogersCH_Auto_TC007_SolarisTVCx_ManageChannelsAndThemePack_ManageCh
 		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc07_SolarisChangeTVManageChannels.getPassword());
 		 reporter.reportLogWithScreenshot("Enter the account credentials");
 		 getRogersLoginPage().clkSignInIFrame();
-		 reporter.reportLogWithScreenshot("Login Successful!");
+		 getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc07_SolarisChangeTVManageChannels.getUsername());
+
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc07_SolarisChangeTVManageChannels.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");

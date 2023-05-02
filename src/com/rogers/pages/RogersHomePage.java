@@ -990,6 +990,7 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().staticWait(3000);*/
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();

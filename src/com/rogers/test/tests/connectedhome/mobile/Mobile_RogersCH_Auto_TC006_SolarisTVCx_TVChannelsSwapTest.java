@@ -37,11 +37,11 @@ public class Mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwapTest extends B
     @Test(groups = {"MobileRegressionCH"})
    public void mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwap() {
      reporter.reportLogWithScreenshot("Launched the SignIn popup");
-     if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+    /* if (getRogersLoginPage().isOverlayContainerDisplayed()) {
       reporter.reportLogWithScreenshot("Select Continue in browser.");
       getRogersLoginPage().clkContinueInBrowser();
       reporter.reportLogWithScreenshot("Continue in Browser Selected");
-     }
+     }*/
      getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
      getRogersLoginPage().clkContinueInBrowser();
      getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
@@ -85,7 +85,7 @@ public class Mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwapTest extends B
      reporter.reportLogWithScreenshot("Selected the Swap-in Channel three");
      getRogersSolarisChannelsExchangePage().clkAddChannelDifferentLogic();
      reporter.reportLogWithScreenshot("Added the Swap-in Channel three");
-     getRogersSolarisChannelsExchangePage().clkConfirmSwapMobile();
+    // getRogersSolarisChannelsExchangePage().clkConfirmSwapMobile();
 
      reporter.hardAssert(getRogersSolarisChannelsExchangePage().verifyExchangeSuccess(),"Swap Success","Swap failed");
      reporter.reportLogWithScreenshot("Swap Success popup has launched");

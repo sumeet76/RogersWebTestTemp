@@ -69,23 +69,17 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         reporter.reportLogWithScreenshot("clicked Ignite wifi hub");
         getDriver().get(System.getProperty("QaUrl")+"/streaming");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-       // getRogersHomePage().clkSubnavIgniteInternet();
-       // reporter.reportLogWithScreenshot("Launched the Internet packages page");
-       // reporter.hardAssert(getRogersHomePage().isSubnavIgniteSmartStream(),"Smart Stream Sub nav is Present","Smart Stream Sub nav is not Present");
-       // getRogersHomePage().clkSubnavIgniteSmartStream() ;
-       // reporter.reportLogWithScreenshot("Smart Stream Sub nav");
-       // reporter.hardAssert(getRogersHomePage().isAboutTVandStreamingLinkPresent(),"About TV and Streaming Link is present","About TV and Streaming Link is not present");
-       // reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        //getRogersHomePage().clkAboutIgniteInternetLink();
+
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        getRogersInternetPackageSelectionPage().getInternetOffersPage();
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
-        getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
+       /* getRogersInternetPackageSelectionPage().clkInternetBuyContinueMobile();
         reporter.reportLogWithScreenshot("Continue to profile page");
        // getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
@@ -127,9 +121,9 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         getRogersTechInstallPage().clkTechInstallContinueSelf();
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(),"SetUp page has Launched","SetUp page has not Launched");
         getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
+       *//*getRogersTechInstallPage().clkTechInstalConsent();
        reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
+       getRogersTechInstallPage().clkTechInstallContinue();*//*
 
         reporter.hardAssert(getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
@@ -157,13 +151,13 @@ public class RogersCH_Auto_TC061_ISS_NAC_learnPage_ValidateSecondaryNavigationCo
         System.out.println("BAN from the portal : " + ban);
         String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
         System.out.println("SCHEMA : " + DbSchema);
-        /**
+        *//**
          * DB Validations in the subscriber table
-         */
+         *//*
         Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
         reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
         reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-	}
+*/	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

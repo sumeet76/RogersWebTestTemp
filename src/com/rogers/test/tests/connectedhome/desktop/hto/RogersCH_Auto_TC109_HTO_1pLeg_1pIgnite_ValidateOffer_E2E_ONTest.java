@@ -126,7 +126,7 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ONTest ext
     //login flow
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin, method);
     }
 
     @AfterMethod(alwaysRun = true)

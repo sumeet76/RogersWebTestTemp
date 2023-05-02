@@ -108,7 +108,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
 	WebElement headerChangepkg;
 
-	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait Télé.']")
+	@FindBy(xpath = "//span[text()='Changing your TV package' or text()='Changer votre forfait Télé.']")
 	WebElement headerChangeTVpkg;
 
 	@FindBy(xpath = "//div[@class='popup-modal-body__content']")

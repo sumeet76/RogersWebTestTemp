@@ -48,8 +48,11 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyOffersPage(),"Offers Page has launched","Offers Page has not launched");
         getRogersIgniteTVBuyPage().clkHomephone();
         reporter.reportLogWithScreenshot("Checked the Home Phone");
+
         getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
+        getRogersIgniteTVBuyPage().select500MbpsDownloadSpeedFlex20();
+        reporter.reportLogWithScreenshot("Selected 500 Mbps download speed");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
 

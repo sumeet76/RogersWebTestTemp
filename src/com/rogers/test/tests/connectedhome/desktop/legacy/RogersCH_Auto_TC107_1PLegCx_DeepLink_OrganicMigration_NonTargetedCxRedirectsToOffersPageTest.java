@@ -33,6 +33,7 @@ public class RogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCx
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc62_Legacy1PtoIgnite2P.getPassword());
 		reporter.reportLogWithScreenshot("Entered the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc62_Legacy1PtoIgnite2P.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		reporter.reportLogWithScreenshot("Sign-in");
 		getRogersHomePage().selectAddressOnFile();
@@ -45,7 +46,7 @@ public class RogersCH_Auto_TC107_1PLegCx_DeepLink_OrganicMigration_NonTargetedCx
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacyanonymous , method);
+		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_legacylogin , method);
 	}
 	
 	@AfterMethod(alwaysRun = true)

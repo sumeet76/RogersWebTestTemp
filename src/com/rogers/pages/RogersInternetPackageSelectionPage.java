@@ -370,7 +370,8 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void select150MonthToMonthTypeOfContact() {
-		getReusableActionsInstance().waitForElementVisibility(drpdwn150pkgTypeOfContract, 120);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementTobeClickable(drpdwn150pkgTypeOfContract, 60);
 		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
@@ -540,6 +541,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public void clkSmartStreamPackage() {
 		getReusableActionsInstance().getWhenReady(btnSmartStream150uPackage, 90).click();
+	}
+	public void getInternetOffersPage() {
+		getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
+		getReusableActionsInstance().waitForPageLoad();
 	}
 
 	public void clkSmartStream500uPackage() {

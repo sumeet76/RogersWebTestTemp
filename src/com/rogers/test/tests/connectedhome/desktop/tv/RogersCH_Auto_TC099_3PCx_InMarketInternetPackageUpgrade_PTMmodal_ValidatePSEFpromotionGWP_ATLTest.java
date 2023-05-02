@@ -47,7 +47,7 @@ public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_Va
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
 //        getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc99_3PCxInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());

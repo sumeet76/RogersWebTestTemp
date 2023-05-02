@@ -43,13 +43,13 @@ public class RogersCH_Auto_TC003_SolarisTVCx_TVChannelsSwapFromAddressmodalTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-        getDriver().get(System.getProperty("QaUrl") + "/web/consumer/ignite-bundles/tv-internet");
+        //getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
+       // reporter.reportLogWithScreenshot("Launched the Account Page");
+        getDriver().get(System.getProperty("QaUrl") + "/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceabilityMigration();
-       // getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("Select Address on file Radio Button");

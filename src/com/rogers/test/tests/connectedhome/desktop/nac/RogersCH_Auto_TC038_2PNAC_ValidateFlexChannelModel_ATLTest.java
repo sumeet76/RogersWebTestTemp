@@ -47,7 +47,7 @@ public class RogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATLTest extends 
 
     @Test(groups = {"RegressionCH","BundlesNAC"})
     public void rogersCH_Auto_TC038_2PNAC_ValidateFlexChannelModel_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NL");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

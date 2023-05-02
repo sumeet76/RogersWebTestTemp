@@ -37,8 +37,9 @@ public class RogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5PackDashboardButtonsRe
          getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getPassword());
          reporter.reportLogWithScreenshot("Enter the account credentials");
          getRogersLoginPage().clkSignInIFrame();
+         getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
          reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
+        // getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
          reporter.reportLogWithScreenshot("Launched the Account Page");
          getRogersSolarisTVDashboardPage().clkTVBadge();
          reporter.reportLogWithScreenshot("Launched the TV dashboard Page");

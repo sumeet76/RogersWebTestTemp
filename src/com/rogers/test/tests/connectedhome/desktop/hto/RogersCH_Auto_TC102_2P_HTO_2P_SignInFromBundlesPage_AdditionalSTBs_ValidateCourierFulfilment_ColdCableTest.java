@@ -67,6 +67,7 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {

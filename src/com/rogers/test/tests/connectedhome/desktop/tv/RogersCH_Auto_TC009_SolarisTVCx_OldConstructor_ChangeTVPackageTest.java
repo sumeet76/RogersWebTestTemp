@@ -42,6 +42,7 @@ public class RogersCH_Auto_TC009_SolarisTVCx_OldConstructor_ChangeTVPackageTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09_SolarisTVOldConstructor.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc09_SolarisTVOldConstructor.getUsername());
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc09_SolarisTVOldConstructor.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

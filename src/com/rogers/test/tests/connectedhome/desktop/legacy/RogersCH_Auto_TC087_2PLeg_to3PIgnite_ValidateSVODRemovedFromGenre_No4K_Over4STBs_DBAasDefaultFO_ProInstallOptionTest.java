@@ -148,7 +148,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
-        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+      //  getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
 
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();

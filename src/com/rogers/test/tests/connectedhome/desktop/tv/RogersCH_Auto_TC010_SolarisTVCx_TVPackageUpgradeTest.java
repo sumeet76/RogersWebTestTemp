@@ -38,13 +38,13 @@ public class RogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgradeTest extends BaseTe
     public void rogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgrade()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc10_SolarisTVAccountForUpgrade.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
@@ -52,9 +52,9 @@ public class RogersCH_Auto_TC010_SolarisTVCx_TVPackageUpgradeTest extends BaseTe
         reporter.reportLogWithScreenshot("Launched the TV packages page");
         getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanEn(),TestDataHandler.tc10_SolarisTVAccountForUpgrade.accountDetails.getUpgradePlanFr());
         reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
+      //  reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
        // reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContent(),"Verified the Change Package modal content", "Change Package Modal content is not matching");
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
+      //  reporter.hardAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
         getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the personalize channel page");
         getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();

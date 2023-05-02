@@ -59,6 +59,7 @@ public class RogersCH_Auto_TC027_LegacyDTV_CartAbandon_NoPortinTest extends Base
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc27_NoPortInAbondoneFlows.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentails");
 		getRogersLoginPage().clkSignInIFrame();
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc27_NoPortInAbondoneFlows.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc27_NoPortInAbondoneFlows.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");

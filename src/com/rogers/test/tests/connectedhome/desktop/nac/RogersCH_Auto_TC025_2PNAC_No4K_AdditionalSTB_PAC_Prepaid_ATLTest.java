@@ -51,12 +51,12 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH", "BundlesNAC"})
     public void rogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATL() {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
-        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=NB");
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
+        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=NL");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NL region");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
@@ -73,6 +73,7 @@ public class RogersCH_Auto_TC025_2PNAC_No4K_AdditionalSTB_PAC_Prepaid_ATLTest ex
         getRogersIgniteTVBuyPage().clkPlusAddIgniteTVBoxes();
         reporter.reportLogWithScreenshot("Selected 2 STBs");
         getRogersIgniteTVBuyPage().clkUpdateCart();
+        reporter.reportLogWithScreenshot("Cart updated with additional STBs");
         getRogersIgniteTVBuyPage().clkCheckout();
 
         reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

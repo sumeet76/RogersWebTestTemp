@@ -56,28 +56,30 @@ public class RogersCH_Auto_TC082_2P_LegMig_2P_ValidateFulfillmentoption_Courier_
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
+		reporter.reportLogWithScreenshot("Continue to Login");
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-
+		reporter.reportLogWithScreenshot("Signed-In");
+		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.getUsername());
+		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc82_Legacy2PtoIgnite2PMigration.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
-		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-		getRogersHomePage().clkExistingCustomerShop();
+
+		/*getRogersHomePage().clkExistingCustomerShop();
 		reporter.reportLogWithScreenshot("clicked shop menu from navigation bar to select the IgniteTV");
 		getRogersHomePage().clkSubnavIgniteSmartStream();
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();
-		//getDriver().get(System.getProperty("QaUrl")+"home/ignite-bundles/tv-internet");
+		getRogersHomePage().clkGetIgniteTvWithIgniteInternet();*/
+		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		//getRogersHomePage().clkNoThnx();
-		//getRogersHomePage().clkServiceability();
+		getRogersHomePage().clkServiceability();
 
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
+		reporter.reportLogWithScreenshot("Select the address on file");
 		getRogersHomePage().clkUseAddress();
 
-		reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 		getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 

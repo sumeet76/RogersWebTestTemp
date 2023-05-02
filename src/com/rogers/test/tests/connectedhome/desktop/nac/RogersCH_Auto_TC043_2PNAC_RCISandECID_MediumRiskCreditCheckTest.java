@@ -57,7 +57,7 @@ public class RogersCH_Auto_TC043_2PNAC_RCISandECID_MediumRiskCreditCheckTest ext
 		reporter.reportLogWithScreenshot("Launched the create profile page");
 		getRogersIgniteTVProfileCreationPage().setEmail(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getUsername());
 		getRogersIgniteTVProfileCreationPage().setFirstname(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getFirstName());
-		reporter.reportLogWithScreenshot("Entered Fuzzy first name");
+		reporter.reportLogWithScreenshot("Entered first name");
 		getRogersIgniteTVProfileCreationPage().setLastName(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getLastName());
 		getRogersIgniteTVProfileCreationPage().setPhone(TestDataHandler.tc43_rCISandECIDLowRiskMediumRiskAddressRetry.getAccountDetails().getPhoneNumber());
 		reporter.reportLogWithScreenshot("Fido wireless account details entered");

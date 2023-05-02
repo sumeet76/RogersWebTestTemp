@@ -46,7 +46,6 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
         getRogersHomePage().clkNBProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");
         getRogersHomePage().clkInternetAvailability();
-
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
@@ -70,8 +69,8 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
         reporter.reportLogWithScreenshot("Best Fit package for the selected");
         getRogersInternetPackageSelectionPage().clkDSTClose();
         reporter.reportLogWithScreenshot("Closed the DST Recommendation");
-//        getRogersInternetPackageSelectionPage().VerifyYourBestFit(); // to be fixed post release
-        reporter.reportLogWithScreenshot("Recommended pack is displayed");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(),"Best Fit package displayed post quiz","Best Fit package displayed post quiz");
+        reporter.reportLogWithScreenshot("Verify the recommended Banner");
         getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Type of contract selected");
         getRogersInternetPackageSelectionPage().clkBestAdd();
@@ -121,7 +120,7 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
-        getRogersPaymentOptionsPage().setCVV();
+//        getRogersPaymentOptionsPage().setCVV();
         getRogersPaymentOptionsPage().selectExpiryMonth();
         getRogersPaymentOptionsPage().selectExpiryYear();
         reporter.reportLogWithScreenshot("Payment options Details");

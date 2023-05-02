@@ -43,6 +43,7 @@ public class RogersCH_Auto_TC044_WirelessLegacySAICx_BuyInternet_SameAddressBase
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc44_WirelessSignedInInternetBuyBasement.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");

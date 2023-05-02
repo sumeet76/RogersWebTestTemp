@@ -43,6 +43,7 @@ public class RogersCH_Auto_TC090_1PInt_HTO_SAI_ISS_GPON_DualTopology_VerifyError
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc90_1P_HTO_GPON_DualTopology.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
