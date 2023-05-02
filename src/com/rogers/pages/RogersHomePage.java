@@ -29,15 +29,17 @@ public class RogersHomePage extends BasePageClass {
 	WebElement lnkTVBundle;
 
 	@FindAll({
+			@FindBy(xpath = "//ge-header-auth-controls[@id='geLinkHeaderSignIn']//span[contains(text(),'MyRogers')]"),
 			@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
 			@FindBy(xpath = "//div[@class='rcl-navbar-nav']//a[@class='m-navLink -navbar -login']//span[text()='Sign in'  or text()='Connexion']"),
 			@FindBy(xpath = "//a[@title='Sign in' and contains(@class,'m-navLink')]"),
-			@FindBy(xpath ="//a[@title='MyRogers']/span")})
+			@FindBy(xpath = "//a[@title='MyRogers']/span")})
 	WebElement lnkSignIn;
 
 	@FindAll({
 			@FindBy(xpath = "//ul[@class='dds_o-headerNavDropdown -navbar']//a[@href='/web/preLogout.jsp']"),
-			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]")})
+			@FindBy(xpath = "//a[@title='Sign out' and contains(@class,'m-navLink')]"),
+			@FindBy(xpath = "//div[contains(@class,'dropdown-items position-absolute ds-shadow-sober w-mx-content right-0 -active')]//span[contains(text(),'Sign out')]")})
 	WebElement lnkSignOut;
 
 	@FindBy(xpath = "//input[@formcontrolname='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
@@ -199,10 +201,14 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.targetedOffer.label.noContinueInternet']")
 	WebElement lnkOnlyInternet;
 
-	@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]")
+	@FindAll({
+			@FindBy(xpath = "//ul[@class='dds_o-navLinkList']//span[contains(text(),'ON')]"),
+			@FindBy(xpath = "//span[contains(text(),'ON')]")
+	})
 	WebElement lnkOptedON;
 
-	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
+	@FindAll({@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']"),
+			@FindBy(xpath = "//a[contains(@aria-label,'Province')]//span[@role='img']")})
 	WebElement lnkProvince;
 
 	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']")
@@ -211,15 +217,15 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='o-mobileNavLinkList__item']/a[@aria-label='Ontario']")
 	WebElement lnkOptedONMobile;
 
-
-
 	@FindBy(xpath = "//li[@class='o-mobileNavDropdown__item']/a[@title='New Brunswick']")
 	WebElement lnkProvinceNBMobile;
 
-	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']")
+	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='New Brunswick']"),
+			@FindBy(xpath = "//span[contains(text(),'New Brunswick')]")})
 	WebElement lnkProvinceNB;
 
-	@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']")
+	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']"),
+			@FindBy(xpath = "//span[contains(text(),'Newfoundland and Labrador')]")})
 	WebElement lnkProvinceNL;
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
@@ -289,7 +295,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement loaderInternetServiceability;
 
-	@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']")
+	@FindAll({
+			@FindBy(xpath = "//span[@class='m-navLink__icon rds-icon-avatar']"),
+			@FindBy(xpath = "//div[@class='d-none d-lg-block']//ge-icon[@class='ge-dropdown-icon']//span[1]")
+	})
 	WebElement btnIconAvatar;
 
 	@FindBy(xpath = "//dsa-subnav-desktop//a[contains(@aria-label,'Ignite Internet Information Pages')]")
@@ -318,7 +327,7 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//li[@class='mb-0 ng-star-inserted']//a[contains(@aria-label,'About Ignite Internet')]")
 	WebElement lnkAboutIgniteInternet;
 
-	@FindBy(xpath ="//li[@class='mb-0 ng-star-inserted']/a[contains(@aria-label,'About TV & Streaming')]")
+	@FindBy(xpath ="//div[@class='rcl-navmain']//a[@title='Shop']//ancestor::ul//a[contains(text(),'TV & Streaming')]")
 	WebElement lnkAboutTVandStreaming;
 
 	@FindAll({
@@ -564,7 +573,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkAboutTVandStreamingLink() {
-		getReusableActionsInstance().getWhenVisible(lnkAboutIgniteInternet, 30).click();
+		getReusableActionsInstance().getWhenVisible(lnkAboutTVandStreaming, 10).click();
 	}
 
 	/**
@@ -624,7 +633,8 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkSignOut() {
 		getReusableActionsInstance().getWhenVisible(btnIconAvatar,30).click();
-		getReusableActionsInstance().getWhenReady(lnkSignOut, 10).click();
+		getReusableActionsInstance().waitForElementVisibility(lnkSignOut, 10);
+		getReusableActionsInstance().executeJavaScriptClick(lnkSignOut);
 		getReusableActionsInstance().waitForPageLoad();
 	}
 	
@@ -980,6 +990,7 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ARROW_DOWN);
 		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
 		getReusableActionsInstance().staticWait(3000);*/
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(txaIgniteAddressContainerExisting, 60);
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();

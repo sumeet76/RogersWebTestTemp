@@ -53,7 +53,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	List<WebElement> termsCheckBoxes;
 	
 	@FindAll({
-		@FindBy(xpath = "//input[@id='cxEmail']/../label"),
+		@FindBy(xpath = "//input[@id='ds-radio-input-id-32']/parent::label"),
 		@FindBy(xpath = "//input[@id='digital-copy']/../label")})
 	WebElement rdbtnEmail;
 
@@ -74,7 +74,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.cta.submit']/ancestor::button")
 	WebElement submitOrder;
 
-	@FindBy(xpath="//p[contains(text(),'Monthly charges')]/following::button//span[contains(text(),'View details')]")
+	@FindBy(xpath="//p[contains(text(),'Monthly charges')]")
 	WebElement monthlyChargeDetails;
 
 	@FindBy(xpath="//div[@translate='global.label.carriedOver']")
@@ -86,7 +86,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyOrderReviewPage() {
-		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 60);
+		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 100);
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * @author Aditi.Jain
 	 */
 	public void clickSubmitOrder() {
-		getReusableActionsInstance().waitForElementVisibility(submitOrder, 60);
+		getReusableActionsInstance().waitForElementVisibility(submitOrder, 90);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(submitOrder);
 

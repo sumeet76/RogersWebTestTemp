@@ -52,8 +52,13 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TestExecutionKey',test_execution_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
+	systemProperty 'DBImportFlag', db_update_flag
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'RunType', test_runType
+	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperty 'TunnelName', "Digital_Mobile_QA"
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
+	//systemProperty 'EmailId', emailId
 
 
 	useTestNG(){
@@ -103,6 +108,10 @@ task "localTest"(type: Test) {
 	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
+	systemProperty 'DBImportFlag', db_update_flag
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'RunType', test_runType
+	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
@@ -125,7 +134,7 @@ task "localTest"(type: Test) {
 
 
 repositories {
-//	mavenLocal()
+	//mavenLocal()
 	maven {
 		url = "${artifactory_url}/${artifactory_repoKey}"
 		credentials {
@@ -144,7 +153,6 @@ dependencies {
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
-
 }
 
 group = 'com.rogers'

@@ -209,7 +209,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
+	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -403,6 +403,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
 	WebElement maximumLimitReached;
 
+	@FindBy(xpath = "//p[text()='Added to cart']")
+	WebElement addedToCart;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -541,8 +544,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
@@ -1271,7 +1273,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickExchangeNow() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 30);
+		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 50);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
@@ -1435,6 +1437,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickAddToCartForSTB() {
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().scrollToElement(addSTBToCart);
 		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
@@ -1447,7 +1450,6 @@ public class TVDashboardPage  extends BasePageClass {
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
 			getReusableActionsInstance().waitForElementVisibility(addAdditionalSTBToCart, 45);
 			getReusableActionsInstance().executeJavaScriptClick(addAdditionalSTBToCart);
-			getReusableActionsInstance().waitForPageLoad();
 		}
 	}
 
