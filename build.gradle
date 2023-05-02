@@ -58,7 +58,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 	systemProperty 'TunnelName', "DigitalQETunnel"
-	systemProperty 'EmailId', emailId
+
 
 
 	useTestNG(){
