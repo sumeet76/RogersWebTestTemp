@@ -565,6 +565,20 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 	}
 
+	public void addPackageToCart(String packageName) {
+		String packageXpath = "//div[text()='"+ packageName + "']";
+		String packageAddToCartXpath = "//div[text()='"+ packageName + "']/ancestor::rch-bundle-tile//child::rch-bundle-price//span[@translate='global.cta.addToCart']";
+		WebElement packageAddToCart = getDriver().findElement(By.xpath(packageAddToCartXpath));
+		WebElement packageElement = getDriver().findElement(By.xpath(packageXpath));
+
+		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
+		getReusableActionsInstance().scrollToElement(packageElement);
+
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,15);
+		getReusableActionsInstance().scrollToElement(packageAddToCart);
+		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
+	}
+
 	/**
 	 * Enter the address to search for service availability
 	 * @param address is the Address to check for availability
