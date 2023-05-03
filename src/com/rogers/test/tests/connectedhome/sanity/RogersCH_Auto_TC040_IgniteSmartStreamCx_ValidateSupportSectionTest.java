@@ -60,7 +60,7 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc40_igniteSmartStream.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 
-		getRogersAccountOverviewPage().clkManageSmartStream();
+		getRogersAccountOverviewPage().clkSmartStream();
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifySmartStreamdashboard(), "SmartStream dashboard page", "SmartStream dashboard page is not displaying");
 		reporter.hardAssert(getRogersSmartStreamDashboardPage().verifyUsingVoiceCommandsLinkdisplayed(),
 				"SmartStream Using Voice Commands Links displayed", "SmartStream Using Voice Commands Links not displayed correctly please investigate");
