@@ -109,6 +109,7 @@ public class CaptchaBypassHandlers {
 		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 	}
 
+
 	/**
 	 * To give the QA env mapping
 	 * @param strUrl String of test url
@@ -116,16 +117,29 @@ public class CaptchaBypassHandlers {
 	 */
 	public String envMapping(String strUrl) {
 		String cookieEnv=null;
-		if (strUrl.contains("qa")) {
-			cookieEnv = "https://self-serve" + strUrl.split("qa")[1].charAt(0);
+		if (strUrl.contains("qa1.") || strUrl.contains("qa5.") || strUrl.contains("qa6.") || strUrl.contains("qa7.")) {
+			cookieEnv = "https://ute" + strUrl.split("qa")[1].charAt(0);
+		} else if (strUrl.contains("qa2.")) {
+			cookieEnv = "https://ute3";
+		} else if (strUrl.contains("qa3.")) {
+			cookieEnv = "https://ute4";
+		} else if (strUrl.contains("qa4.")) {
+			cookieEnv = "https://ute2";
 		} else if (strUrl.contains("www.rogers.com")) {
-			cookieEnv = "https://self-serve.proda01";
+			cookieEnv = "https://ute1.prod01";
 		}
 		else {
 			cookieEnv = System.getProperty("CookieFetcherMapping");
 		}
 		return cookieEnv;
 	}
+	
+	/**
+	 * To give the QA env mapping
+	 * @param strUrl String of test url
+	 * @return String of url starter after mapping
+	 */
+
 
 //	/**
 //	 * To Bypass Captcha for login Flows
