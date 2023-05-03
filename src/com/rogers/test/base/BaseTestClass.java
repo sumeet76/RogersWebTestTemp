@@ -33,6 +33,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import utils.AppiumServerJava;
 import utils.BrowserDrivers;
+import utils.GetOTP;
 import utils.Reporter;
 
 import java.io.FileNotFoundException;
@@ -196,6 +197,9 @@ public class BaseTestClass {
     }
 
     protected static final ThreadLocal<RogersPSEFPage> RogersPSEFPageThreadLocal = new ThreadLocal<>();
+
+    protected static final ThreadLocal<GetOTP> getOTPThreadLocal = new ThreadLocal<GetOTP>();
+
 
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
@@ -729,6 +733,7 @@ public class BaseTestClass {
         ExtentListener.setDriver(getDriver());
         System.out.println(strUrl + "----------------------------------------------------------------------------");
         captcha_bypass_handlers = new CaptchaBypassHandlers(getDriver());
+        getOTPThreadLocal.set(new GetOTP());
         switch (strGroupName.toLowerCase().trim()) {
             case "selfserve":
             case "selfserve_login":
@@ -1372,7 +1377,7 @@ public class BaseTestClass {
     }
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException {
+    public void beforeSuite(ITestContext iTestContext) throws FileNotFoundException, IOException{
         TestDataHandler.dataInit(iTestContext.getSuite().getAllMethods());
     }
 
@@ -1389,6 +1394,10 @@ public class BaseTestClass {
     public void setCookie(String strUrl) {
         Cookie cookie = new Cookie("QSI_SI_eOGekr50Kdqo3dQ_intercept", "true", ".rogers.com", "/phones", null);
         getDriver().manage().addCookie(cookie);
+    }
+
+    public static GetOTP getOTP(){
+        return getOTPThreadLocal.get();
     }
 
 }
