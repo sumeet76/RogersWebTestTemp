@@ -92,9 +92,9 @@ public class CaptchaBypassHandlers {
 	public String generateCookieRegistrationURL(String strUrl) {
 		String cookieEnv = envMapping(strUrl);
 		if(!strUrl.contains("www.rogers.com")) {
-			return cookieEnv + ".qa01.cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
+			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
 		}
-		return cookieEnv + ".cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
+		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
 	}
 
 	/**
@@ -104,9 +104,9 @@ public class CaptchaBypassHandlers {
 	public String generateCookieFetchURL(String strUrl) {
 		String cookieEnv = envMapping(strUrl);
 		if(!strUrl.contains("www.rogers.com")) {
-			return cookieEnv + ".qa01.cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
+			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 		}
-		return cookieEnv + ".cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
+		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 	}
 
 	/**
