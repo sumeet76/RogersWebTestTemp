@@ -441,7 +441,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[1]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -450,7 +450,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
 	WebElement exclusiveOffers;
 
-	@FindBy(xpath = "//span[contains(text(),'Rabais de 10 $')]")
+	@FindBy(xpath = "(//span[contains(text(),'Rabais de 10 $')])[1]")
 	WebElement wirelessHomeInternetCred;
 
 	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
@@ -483,6 +483,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 //			getReusableActionsInstance().scrollToElement(currentCollapisble);
 //			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 //		}
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);

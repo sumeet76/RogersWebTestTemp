@@ -77,7 +77,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
-    @FindBy(xpath = "//t[text()='Ignite TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
+    @FindBy(xpath = "//t[text()='TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
     WebElement btnTVBadge;
 
     @FindBy(xpath = "//a[contains(text(),' Billing ')]")
@@ -135,7 +135,7 @@ public class AccountOverViewPage extends BasePageClass {
     WebElement btnInternetBadge;
 
     @FindAll({
-            @FindBy(xpath = "//t[text()='Ignite Home Phone' or text()='Téléphone fixe']"),
+            @FindBy(xpath = "//t[text()='Home Phone']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]"),
             @FindBy(xpath = "//span[@class='icon rui-icon-home-phone']"),
             @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border d-flex flex-column']/descendant::span[@class='ds-link__copy']/parent::span")
     })
@@ -145,7 +145,7 @@ public class AccountOverViewPage extends BasePageClass {
 //	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
 //	@FindAll({
 
-    @FindBy(xpath = "//t[text()='Ignite TV']/following::span[text()='Plan Details' or text()='Détails du forfait']")
+    @FindBy(xpath = "//t[text()='TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
     WebElement btnGetIgniteTVBadge;
 
     @FindBy(xpath="//t[contains(text(),'Ignite')]")
@@ -190,7 +190,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//div[@class='button-set set-left ng-star-inserted']/descendant::span[contains(text(),'TV')]")
     WebElement changeTVBundle;
 
-    @FindBy(xpath = "//span[@class='rui-icon-plus']/following-sibling::t[contains(text(), 'Ignite') or contains(text(), 'Élan')]")
+    @FindBy(xpath = "//t[text()='Add Ignite' or text()='Obtenez la Élan']")
     WebElement migrateToIgnite;
 
     @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
