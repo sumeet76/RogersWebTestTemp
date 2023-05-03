@@ -21,6 +21,9 @@ public class CallerInformationPage extends BasePageClass {
     @FindBy(xpath="//span[@translate='global.cta.continue']")
     WebElement continueButton;
 
+    @FindBy(xpath="(//span[@translate='global.cta.continue']//ancestor::button)[3]")
+    WebElement finalContinueButton;
+
     /*To verify caller information page
     * @suganya p
     */
@@ -42,5 +45,11 @@ public class CallerInformationPage extends BasePageClass {
      */
     public void goToPageBottom() {
         getReusableActionsInstance().javascriptScrollToBottomOfPage();
+    }
+
+    public void clickFinalContinue()
+    {
+        getReusableActionsInstance().staticWait(2000);
+        getReusableActionsInstance().getWhenReady(finalContinueButton,30).click();
     }
 }

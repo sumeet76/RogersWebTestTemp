@@ -34,9 +34,11 @@ public class AccountDetails {
 	private String postalCode;
 	private String payment;
 	private Map<String, String> address;
+	private Map<String, String> unwiredAddress;
 	private Map<String, String> addressOnFile;
 	private String internetBundle;
 	private String phoneNumber;
+
 	private String swapInChannelOne;
 	private String swapInChannelTwo;
 	private String swapInChannelThree;
@@ -76,6 +78,7 @@ public class AccountDetails {
 	private String downgradeInternetPlanFr;
 	private String removeAddOnNameEn;
 	private String removeAddOnNameFr;
+	private String addSTBban;
 
 
 
@@ -916,5 +919,16 @@ public class AccountDetails {
 	public void setRemoveAddOnNameFr(String removeAddOnNameFr) {
 		this.removeAddOnNameFr = removeAddOnNameFr;
 	}
+
+	public Map<String, String> getUnwiredAddress() {
+		return unwiredAddress;
+	}
+
+	public void setUnwiredAddress(Map<String, String> unwiredAddress) {
+		this.unwiredAddress = unwiredAddress;
+	}
+	public String getAddSTBban() { return addSTBban; }
+
+	public void setAddSTBban(String addSTBban) {this.addSTBban = addSTBban; }
 
 }

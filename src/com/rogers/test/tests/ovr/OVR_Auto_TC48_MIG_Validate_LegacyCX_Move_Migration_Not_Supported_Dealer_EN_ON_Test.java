@@ -34,6 +34,9 @@ public class OVR_Auto_TC48_MIG_Validate_LegacyCX_Move_Migration_Not_Supported_De
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.reportLogWithScreenshot("Service Availability");
 

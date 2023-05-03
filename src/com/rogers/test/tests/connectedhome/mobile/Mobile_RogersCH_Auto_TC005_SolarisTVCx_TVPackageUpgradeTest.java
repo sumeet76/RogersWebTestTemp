@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
  *7. Enter appropriate Contact details
  *8. Pick a date time in step 2 - Most Convenient Time for us to call
  *9. Click on Continue
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit
  *
  **/
@@ -40,7 +40,7 @@ public class Mobile_RogersCH_Auto_TC005_SolarisTVCx_TVPackageUpgradeTest extends
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
     	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());

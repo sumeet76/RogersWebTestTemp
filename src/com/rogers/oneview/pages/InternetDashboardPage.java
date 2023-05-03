@@ -287,7 +287,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clickContinue() {
-		getReusableActionsInstance().getWhenReady(btnContnue,30).click();
+		getReusableActionsInstance().clickWhenReady(btnContnue,30);
 	}
 
 	/**
@@ -391,6 +391,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * */
 	public void clickImmediateBill() {
 		getReusableActionsInstance().clickWhenReady(btnImmediateBill,120);
+		getReusableActionsInstance().staticWait(2000);
 	}
 	/*Clicks on add smart stream button
 	 * @author suganya p
@@ -579,8 +580,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	}
 
 	public void selectInternetPlan(String upgradeBundle){
-//		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::rch-bundle-price//span[@translate='global.cta.select']/ancestor::span[@role='text']");
-		By changePlan= By.xpath("//p[contains(text(),'"+upgradeBundle+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::rch-bundle-price//span[@translate='global.cta.select']/ancestor::span[@role='text']");
+//		By changePlan= By.xpath("//p[contains(text(),'"+upgradeBundle+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
 		WebElement changePlanElement= getDriver().findElement(changePlan);
 		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
 		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);
@@ -873,8 +874,8 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void clickSelectButtonAsPerPackageName(String internetPkg)
 	{
 		/*To click on Select button*/
-		By selectLocator = By.xpath("//span[contains(text(),'"+internetPkg+"')]/ancestor::div[contains(@class,'-w84 internet-tile__table')]/following-sibling::div//span[@translate='global.cta.select']");
-		getReusableActionsInstance().getWhenReady(selectLocator, 20);
+		By selectLocator = By.xpath("//span[contains(text(),'"+internetPkg+"')]/ancestor::div[contains(@class,'-w84 internet-tile__table')]/following-sibling::div//span[@translate='global.cta.select']//ancestor::button");
+		getReusableActionsInstance().getWhenReady(selectLocator, 30);
 		WebElement button = getDriver().findElement(selectLocator);
 		getReusableActionsInstance().executeJavaScriptClick(button);
 	}

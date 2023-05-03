@@ -1,10 +1,9 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 public class RogersDigitalTVDashboardPage extends BasePageClass {
 
@@ -36,11 +35,14 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ute-btn-primary']//a[@href='/web/consumer/ignite-bundles/tv-internet']")
 	WebElement btnBuyNowIgnite;
 
-	@FindBy(xpath = "//div[@class='view-my-channels']/div/a")
+	@FindBy(xpath = "//button[@id='ctaViewLineUp']//span[text()='View my channel lineup']")
 	WebElement lnkViewMyChannels;
 
+	@FindBy(xpath = "//div[@class='tv-page-component']//button//span[text()='View my Flex Channels']")
+	WebElement lnkViewMyFlexChannels;
 
-	
+	@FindBy(xpath = "//button[@title='Press to close']")
+	WebElement closeViewChannelsPopup;
 	/**
 	 * To verify the change package button on the legacy TV dash board
 	 * @return true, if  ChangeMyPackage button is visible on Digital TV Dashboard Page
@@ -84,8 +86,8 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	 * @author dharani.up
 	 */
 	public void clkViewMyChannelsLink() {
-		getReusableActionsInstance().isElementVisible(lnkViewMyChannels,90);
-		getReusableActionsInstance().getWhenReady(lnkViewMyChannels,30).click();
+		getReusableActionsInstance().waitForElementTobeClickable(lnkViewMyChannels,60);
+		getReusableActionsInstance().moveToElementAndClick(lnkViewMyChannels,30);
 	}
 	
 	/**
@@ -140,5 +142,15 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	public void clkBuyNowIgnite() {
 		getReusableActionsInstance().javascriptScrollByVisibleElement(btnBuyNowIgnite);
 		getReusableActionsInstance().moveToElementAndClick(btnBuyNowIgnite,30);
-	}	
+	}
+
+	public void clkviewMyFlexChannels() {
+		getReusableActionsInstance().waitForElementTobeClickable(lnkViewMyFlexChannels,30);
+		getReusableActionsInstance().moveToElementAndClick(lnkViewMyFlexChannels,30);
+	}
+
+	public void clkCloseViewMyChannels(){
+		getReusableActionsInstance().waitForElementTobeClickable(closeViewChannelsPopup,20);
+		getReusableActionsInstance().clickIfAvailable(closeViewChannelsPopup);
+	}
 }

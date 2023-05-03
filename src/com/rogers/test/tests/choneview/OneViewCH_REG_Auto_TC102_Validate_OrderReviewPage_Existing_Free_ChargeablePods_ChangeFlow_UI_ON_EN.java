@@ -21,15 +21,21 @@ public class OneViewCH_REG_Auto_TC102_Validate_OrderReviewPage_Existing_Free_Cha
         reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
-        getRogersIgniteBundlesPage().clkLoadOffers();
+
         reporter.reportLogWithScreenshot("Loaded Offers");
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getInternetDashboardPage().selectInternetPlan(TestDataHandler.Max2pCx_Pods.accountDetails.getUpgradePlan());
         reporter.reportLogWithScreenshot("Another Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");
+        getRogersIgniteBundlesPage().clickExchangeLater();
+
+        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        getRogersIgniteBundlesPage().contiue4KContent();
 
         /*Billing option to be selected*/;
         getInternetDashboardPage().clickImmediateBill();
+        getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in Immediate Bill");
         /* order review verification for the existing regular and free pods.*/
         reporter.hardAssert(getRogersOVOrderReviewPage().verifyCarriedOverInternetAddon(),"Order review validation success","Order review validation failure");

@@ -22,7 +22,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         closeSession();
     }
 
-    @Test(groups = {"OVR", "RegressionOVR"})
+    @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity"})
     public void ovr_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_EN_Test(){
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
@@ -33,9 +33,9 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
-//        getAccountOverViewPage().selectProduction();
-//        reporter.reportLogWithScreenshot("Select Environment as Production");
-//        getAccountOverViewPage().clickProceed();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
@@ -57,7 +57,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.reportLogWithScreenshot("SHM selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN());
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("NO to port in popup");

@@ -19,7 +19,7 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_AT
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_ATL_FR_Test() {

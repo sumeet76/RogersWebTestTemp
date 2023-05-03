@@ -16,6 +16,10 @@ public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_C
     public void oneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_Cx_Validate_Fraud_Error_Message_ON_EN(){
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("address");
         getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.GponData.getcontactDetails().getAddress());
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.GponData.contactDetails.getAddress()+" is serviceable",TestDataHandler.GponData.contactDetails.getAddress()+" not serviceable");
@@ -81,6 +85,6 @@ public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_C
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
