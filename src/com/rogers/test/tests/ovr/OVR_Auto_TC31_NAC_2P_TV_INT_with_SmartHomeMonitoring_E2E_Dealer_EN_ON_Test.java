@@ -54,7 +54,7 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("2P TV INT and SHM selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN());
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to PortIn Popup");
@@ -62,8 +62,8 @@ public class OVR_Auto_TC31_NAC_2P_TV_INT_with_SmartHomeMonitoring_E2E_Dealer_EN_
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed to add to cart");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-//        reporter.reportLogWithScreenshot("Channel Personalization page");
-//        getRogersIgniteBundlesPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Channel Personalization page");
+        getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
