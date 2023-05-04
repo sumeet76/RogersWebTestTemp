@@ -858,6 +858,7 @@ public class BaseTestClass {
             case "saucechrome":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());
+                sauceOptions.put(SauceCapabilities.screenResolution.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getScreenResolution());
                 break;
             case "saucefirefox":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformName());
@@ -870,6 +871,7 @@ public class BaseTestClass {
             case "saucesafari":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getBrowserVersion());
+                sauceOptions.put(SauceCapabilities.screenResolution.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getScreenResolution());
                 break;
             case "sauceandroidchrome":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName());
