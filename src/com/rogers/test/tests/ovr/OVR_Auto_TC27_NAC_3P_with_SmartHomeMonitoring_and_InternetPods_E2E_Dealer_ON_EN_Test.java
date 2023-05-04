@@ -57,7 +57,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.reportLogWithScreenshot("SHM selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN());
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("NO to port in popup");
@@ -69,7 +69,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Channel Personalization page");
-        //getRogersIgniteBundlesPage().clickExchangeLater();
+        getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
