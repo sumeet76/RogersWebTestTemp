@@ -751,10 +751,8 @@ public class BaseTestClass {
 
             case "connectedhome_igniteanonymous":
                 setImplicitWait(getDriver(), 10);
-                getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
-                captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
-                getDriver().get(strUrl + "/internet?setLanguage=" + language);
-               // getDriver().manage().deleteAllCookies();
+               //  getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
+               // captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 break;
 
             case "connectedhome_shm":

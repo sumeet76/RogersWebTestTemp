@@ -51,12 +51,12 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","SanityCH","ReleaseSanity","SanityNAC"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
         getDriver().get(System.getProperty("QaUrl") + "/bundles");
-        getRogersHomePage().clkNBProvinceLnk();
+        getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
