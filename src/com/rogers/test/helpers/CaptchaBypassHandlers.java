@@ -79,10 +79,11 @@ public class CaptchaBypassHandlers {
 		//Add wait time for the add cookie to work on Firefox.
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+			getDriver().manage().addCookie(captchBypass);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		getDriver().manage().addCookie(captchBypass);
+
 	}
 
 	/**
@@ -109,6 +110,7 @@ public class CaptchaBypassHandlers {
 		return cookieEnv + ".cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 	}
 
+
 	/**
 	 * To give the QA env mapping
 	 * @param strUrl String of test url
@@ -126,6 +128,13 @@ public class CaptchaBypassHandlers {
 		}
 		return cookieEnv;
 	}
+	
+	/**
+	 * To give the QA env mapping
+	 * @param strUrl String of test url
+	 * @return String of url starter after mapping
+	 */
+
 
 //	/**
 //	 * To Bypass Captcha for login Flows

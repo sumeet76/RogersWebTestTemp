@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+       /* if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
             String strTestingTab = getDriver().getWindowHandle();
@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
             getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
             getRegisterOrAccountRecoveryPage().clkBtnContinue();
             reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
+        }*/
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
     	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");

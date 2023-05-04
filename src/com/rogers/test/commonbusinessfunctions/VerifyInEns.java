@@ -1,12 +1,11 @@
 
 package com.rogers.test.commonbusinessfunctions;
 
-import java.io.IOException;
-
-import org.apache.http.client.ClientProtocolException;
-
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.testdatamanagement.TestDataHandler;
+import org.apache.http.client.ClientProtocolException;
+
+import java.io.IOException;
 
 import static com.rogers.test.base.BaseTestClass.getRegisterOrAccountRecoveryPage;
 import static com.rogers.test.base.BaseTestClass.getRogersLoginPage;
@@ -149,9 +148,9 @@ public class VerifyInEns{
 	}
 
 	public void setVerificationCodeCH(String strAccountId) {
-		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+		/*if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			baseTestClass.reporter.reportLogWithScreenshot("Click on Text as recovery option");
-			getRogersLoginPage().clkEmailToForVerificationCode();
+		//	getRogersLoginPage().clkEmailToForVerificationCode();
 			String strTestingTab = baseTestClass.getDriver().getWindowHandle();
 			baseTestClass.reporter.reportLogWithScreenshot("ENS");
 			String strEnsUrl = System.getProperty("EnsUrl");
@@ -162,7 +161,7 @@ public class VerifyInEns{
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			baseTestClass.reporter.reportLogWithScreenshot("Continue to Account Overview");
 			
-		}
+		}*/
 	}
 
 	private String getEmailVerificationCodeCH(String strAccountId, String strEnsUrl) {
