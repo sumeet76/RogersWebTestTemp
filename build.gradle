@@ -59,6 +59,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'TunnelName', "Digital_Mobile_QA"
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 	//systemProperty 'EmailId', emailId
+	systemProperty 'OVFidoUrl' , test_OVFidoUrl
 
 
 	useTestNG(){
@@ -112,6 +113,7 @@ task "localTest"(type: Test) {
 	systemProperty 'ReleaseName', test_release
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
+	systemProperty 'OVFidoUrl' , test_OVFidoUrl
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
