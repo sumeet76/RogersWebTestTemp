@@ -52,6 +52,8 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
         getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=ON");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
+        getRogersHomePage().clkNLProvinceLnk();
+        reporter.reportLogWithScreenshot("Clicked on NL Province Link");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getAddress().get("line1");

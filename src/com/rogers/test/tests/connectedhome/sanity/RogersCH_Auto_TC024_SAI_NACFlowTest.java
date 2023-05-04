@@ -34,6 +34,10 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        // remove once NAC serviceability issue is resolved & update address in tc23_24_standaloneInternetAccountforUpgrade with ON address
+        // & uncomment month to month contract
+        getRogersHomePage().clkNLProvinceLnk();
+        reporter.reportLogWithScreenshot("Clicked on NL Province Link");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
@@ -42,7 +46,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
-        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+//        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");

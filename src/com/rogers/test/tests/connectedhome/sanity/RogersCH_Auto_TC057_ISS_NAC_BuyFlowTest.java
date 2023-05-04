@@ -35,14 +35,11 @@ public class RogersCH_Auto_TC057_ISS_NAC_BuyFlowTest extends BaseTestClass {
 
     @Test(groups = {"SanityCH","RegressionCH","SmartStreamNAC"})
     public void rogersCH_Auto_TC057_ISS_NAC_BuyFlow() {
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?setProvince=NL");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming?env=qa&setProvince=NL");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page for ON region");
-        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
+        getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
         String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
-        getDriver().get(System.getProperty("QaUrl")+"/internet/offers");
-        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered to check the Service availability");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
