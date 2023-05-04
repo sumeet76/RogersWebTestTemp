@@ -28,13 +28,22 @@ import java.util.Map;
 
 public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH", "saiCH", "SanityCH","ReleaseSanity"})
+    @Test(groups = {"RegressionCH", "saiCH", "SanityCH","ReleaseSanity","SanityNAC"})
     public void rogersCH_Auto_TC024_SAI_NACFlow() throws InterruptedException {
 
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
+        getRogersHomePage().clkNBProvinceLnk();
         getRogersHomePage().clkInternetAvailability();
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
+        getRogersHomePage().clkIgniteAddressLookupSubmit();
+        reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
+
+        /*getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
         String strAddressLine2 = TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
@@ -43,7 +52,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
         getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");*/
         getRogersInternetPackageSelectionPage().clkInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
