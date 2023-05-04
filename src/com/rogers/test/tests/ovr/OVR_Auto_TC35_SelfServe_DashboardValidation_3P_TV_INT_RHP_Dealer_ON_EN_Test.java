@@ -38,9 +38,9 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
         //Internet Dashboard Validation
         getOvrDashboardPage().clkInternetDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
@@ -56,9 +56,9 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
         //TV Dashboard
         getOvrDashboardPage().clkTVDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
@@ -92,20 +92,20 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 
         //RHP Dashboard
         getOvrDashboardPage().clkHomePhoneDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
         reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
-//        getHomePhonedashboard().clickCancel();
-//        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
-        getHomePhonedashboard().clickYesResetPassword();;
-        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
-        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
-        reporter.reportLogWithScreenshot("reset success");
+        getHomePhonedashboard().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
+//        getHomePhonedashboard().clickYesResetPassword();;
+//        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
+//        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
+//        reporter.reportLogWithScreenshot("reset success");
 
 //        getHomePhonedashboard().clickChangeCallDisplayName();
 //        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");

@@ -67,6 +67,7 @@ public class OVR_Auto_TC51_Anonymous_NAC_2P_TV_INT_IntID_E2E_PR_WESA_EN_ON_Test 
         getRogersIgniteBundlesPage().contiue4KContent();
 
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
