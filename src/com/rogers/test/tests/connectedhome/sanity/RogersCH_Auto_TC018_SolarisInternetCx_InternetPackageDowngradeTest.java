@@ -36,7 +36,8 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
+
+        /* if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
             String strTestingTab = getDriver().getWindowHandle();
@@ -50,7 +51,8 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
             getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
             getRegisterOrAccountRecoveryPage().clkBtnContinue();
             reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
+        } */
+
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
             getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
@@ -62,12 +64,12 @@ public class RogersCH_Auto_TC018_SolarisInternetCx_InternetPackageDowngradeTest 
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
         reporter.reportLogWithScreenshot("Launched the Interent packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(), TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
-        //getRogersInternetDashboardPage().clkInternetChangeOK();
+//        getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.hardAssert(getRogersInternetDashboardPage().verifyContatUSInternetDowngardeInternet(),"Displayed the contat US popup","Download package has failed");
        /* reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(), "Verified the Change Package Popup Header", "Change Package Popup Header is not verified");
         // reporter.hardAssert(getRogersInternetDashboardPage().verifyContactUsModalContent(),"Verified the contact us modal content", "Contact us Modal content is not matching");
         reporter.hardAssert(getRogersInternetDashboardPage().verifyBookACallBack(), "Verified the Book a call back link", "Book a call back link not verified");
-        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(), "Verified the Live chat link", "Live Chat Link is not verified");*/
+        reporter.hardAssert(getRogersInternetDashboardPage().verifyLiveChat(), "Verified the Live chat link", "Live Chat Link is not verified"); */
     }
 	
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

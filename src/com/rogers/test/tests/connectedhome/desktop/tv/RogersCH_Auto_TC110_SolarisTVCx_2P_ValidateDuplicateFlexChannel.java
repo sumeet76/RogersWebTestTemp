@@ -37,20 +37,22 @@ public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel ext
         reporter.reportLogWithScreenshot("Enter the account credentails");
         getRogersLoginPage().clkSignInIFrame();
         getRogersLoginPage().clkEmailToAsRecoveryOption();
-        //reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-       // reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
-      //  getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
+//        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+//        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
+//        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
-        getRogersSolarisTVDashboardPage().clkViewfelxChannels();
+        getRogersSolarisTVDashboardPage().clkViewflexChannels();
         List<WebElement> elements = getDriver().findElements(By.xpath("//div[@class='channel-component']//button"));
         Set<String> flexChannels = new HashSet<>();
 
-        for (WebElement ele:elements) {
+        for (WebElement ele : elements) {
             try {
-                flexChannels.add(ele.getAttribute("id"));System.out.println(ele.getText());
-            }catch (StaleElementReferenceException exception){}
+                flexChannels.add(ele.getAttribute("id"));
+                System.out.println(ele.getText());
+            } catch (StaleElementReferenceException exception) {
+            }
         }
         reporter.reportLogWithScreenshot("Fetch the list of existing flex channels");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();

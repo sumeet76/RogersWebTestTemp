@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
  **/
 
 public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTest extends BaseTestClass {
-    @Test(groups = {"SanityCH","RegressionCH","IgniteTVDashboardCH","ReleaseSanity"}, description = "Rogers Ignite TV Dashboard")
+    @Test(groups = {"SanityCH", "RegressionCH", "IgniteTVDashboardCH", "ReleaseSanity"}, description = "Rogers Ignite TV Dashboard")
     public void rogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDF() throws IOException {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
@@ -36,6 +36,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
+
        /* if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
             reporter.reportLogWithScreenshot("Click on Text as recovery option");
             getRogersLoginPage().clkTextToAsRecoveryOption();
@@ -51,42 +52,40 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
             getRegisterOrAccountRecoveryPage().clkBtnContinue();
             reporter.reportLogWithScreenshot("Continue to Account Overview");
         }*/
+
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-    	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
-    	reporter.reportLogWithScreenshot("Launched the Account Page");
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
+        reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
-        reporter.reportLogWithScreenshot("Launched the TV dashboard Page");          
-        
-        //Verifying My Channel Line up
+        reporter.reportLogWithScreenshot("Launched the TV dashboard Page");
+
+        // verifying My Channel Line up
         getRogersSolarisTVDashboardPage().clkViewMyChannelLineup();
-        reporter.reportLogWithScreenshot("Displayed the available channels"); 
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"Channels are available","None of the Channels are available");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the channels are displayed in PDF","PDF is not displaying");
+        reporter.reportLogWithScreenshot("Displayed the available channels");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(), "Channels are available", "None of the Channels are available");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(), "all the channels are displayed in PDF", "PDF is not displaying");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
-         reporter.reportLogWithScreenshot("Closed the available channels popup");
+        reporter.reportLogWithScreenshot("Closed the available channels popup");
 
-         //Verifying the Flexchannels
-        getRogersSolarisTVDashboardPage().clkViewfelxChannels();
+        // verifying the Flexchannels
+        getRogersSolarisTVDashboardPage().clkViewflexChannels();
         reporter.reportLogWithScreenshot("Displayed the available flex channels");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are available","There are no flex channels");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displaying");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(), "flex channels are available", "There are no flex channels");
+        reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(), "all the flex channels are displayed in PDF", "PDF is not displaying");
         getRogersSolarisTVDashboardPage().clkCloseChannelsPopup();
-    	}       
+    }
 
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
-	}
-	
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    //login flow
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+    }
 
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 }
-
