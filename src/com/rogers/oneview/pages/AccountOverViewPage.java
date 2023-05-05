@@ -76,7 +76,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
-    @FindBy(xpath = "//t[text()='TV']/following::span[contains(text(),'Plan Details') or contains(text(),'Plan et détails')]")
+    @FindBy(xpath = "//t[text()='TV' or text()='Télévision']/following::span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]")
     WebElement btnTVBadge;
 
     @FindBy(xpath = "//a[contains(text(),' Billing ')]")
@@ -420,10 +420,10 @@ public class AccountOverViewPage extends BasePageClass {
             getReusableActionsInstance().getWhenReady(delearCodeOneViewDialogue, 50).sendKeys("0MAAA");
             getReusableActionsInstance().clickIfAvailable(btnSubmitOneViewDialogue, 30);
         }
-        if (getReusableActionsInstance().isElementVisible(skipNotification, 20)) {
+        if (getReusableActionsInstance().isElementVisible(skipNotification, 10)) {
             getReusableActionsInstance().clickWhenReady(skipNotification);
         }
-        WebElement btn = getReusableActionsInstance().getWhenReady(btnInternetBadge, 40);
+        WebElement btn = getReusableActionsInstance().getWhenReady(btnInternetBadge, 20);
         getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
         getReusableActionsInstance().clickWhenReady(btnInternetBadge, 45);
     }

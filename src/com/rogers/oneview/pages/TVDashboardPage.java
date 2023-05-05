@@ -1,16 +1,12 @@
 package com.rogers.oneview.pages;
 
 
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-
-import com.rogers.pages.base.BasePageClass;
-import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -44,7 +40,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-	@FindBy(xpath = "//button[@class='btn_s100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
+	@FindBy(xpath = "//p[text()='Success!']//parent::div//following::div/button//span[text()='OK']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -209,7 +205,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
+	@FindAll({
+			@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]"),
+			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")})
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +216,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[3]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
