@@ -59,6 +59,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ensEnv',test_ens_env
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 	systemProperty 'TunnelName', "DigitalQETunnel"
+	systemProperty 'EmailId', emailId
 
 
 
