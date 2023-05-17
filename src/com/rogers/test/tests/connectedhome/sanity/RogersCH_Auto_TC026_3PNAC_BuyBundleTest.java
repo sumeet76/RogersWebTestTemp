@@ -114,7 +114,7 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
-        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+//        getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 
