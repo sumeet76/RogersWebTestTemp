@@ -778,6 +778,7 @@ public class BaseTestClass {
 
             case "connectedhome_login":
                 setImplicitWait(getDriver(), 10);
+//                getDriver().get(strUrl + "/consumer/profile/signin");
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
@@ -854,6 +855,7 @@ public class BaseTestClass {
             case "saucechrome":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getBrowserVersion());
+                sauceOptions.put(SauceCapabilities.screenResolution.toString(), TestDataHandler.sauceSettings.getMutableChromeCapabilities().getScreenResolution());
                 break;
             case "saucefirefox":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableFireFoxCapabilities().getPlatformName());
@@ -866,6 +868,7 @@ public class BaseTestClass {
             case "saucesafari":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getPlatformName());
                 sauceOptions.put(SauceCapabilities.browserVersion.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getBrowserVersion());
+                sauceOptions.put(SauceCapabilities.screenResolution.toString(), TestDataHandler.sauceSettings.getMutableSafariCapabilities().getScreenResolution());
                 break;
             case "sauceandroidchrome":
                 sauceOptions.put(SauceCapabilities.platformName.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getPlatformName());
@@ -1052,6 +1055,10 @@ public class BaseTestClass {
                 break;
 
             case "connectedhome_legacylogin":
+                EnsHomePageThreadLocal.set(new EnsHomePage(getDriver()));
+                EnsNotificationViewPageThreadLocal.set(new EnsNotificationViewPage(getDriver()));
+                ensVerificationsThreadLocal.set(new VerifyInEns(this));
+                RogersRecoverPassOrNamePageThreadLocal.set(new RogersRegisterOrAccountRecoveryPage(getDriver()));
                 RogersHomePageThreadLocal.set(new RogersHomePage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));

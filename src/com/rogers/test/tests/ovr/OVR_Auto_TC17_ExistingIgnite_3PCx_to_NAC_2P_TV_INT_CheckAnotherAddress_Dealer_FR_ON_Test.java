@@ -83,7 +83,7 @@ public class OVR_Auto_TC17_ExistingIgnite_3PCx_to_NAC_2P_TV_INT_CheckAnotherAddr
         reporter.reportLogWithScreenshot("wish to continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer Profile Page");
-        getCreditCheckPage().clkAuthorize();
+        //getCreditCheckPage().clkAuthorize();
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");

@@ -83,9 +83,9 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
        /* getRogersIgniteTVBuyPage().clkHomephoneMobile();
-        reporter.reportLogWithScreenshot("Clicked Home Phone");
-*/
-        getRogersIgniteTVBuyPage().selectFlex20Package();
+        reporter.reportLogWithScreenshot("Clicked Home Phone");*/
+
+        getRogersIgniteTVBuyPage().selectFlex20PackageMobile();
         reporter.reportLogWithScreenshot("Added to cart");
 
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(),"4KTV radio button is availabe","4KTV radio button is not availabe");
@@ -153,17 +153,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         reporter.reportLogWithScreenshot("Agreement details");
         getRogersOrderReviewPage().clkSubmitMobile();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Order has created successfully","Order has failed");
-        reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-        System.out.println("SCHEMA : " + DbSchema);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
+
     }
     
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

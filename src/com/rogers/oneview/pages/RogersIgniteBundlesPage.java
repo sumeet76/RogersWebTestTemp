@@ -1,12 +1,9 @@
 package com.rogers.oneview.pages;
 
-//import com.rogers.test.listeners.TestListener;
-
 import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
 
 public class RogersIgniteBundlesPage extends BasePageClass{
 
@@ -169,7 +166,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
-	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
+	@FindBy(xpath = "//div[@class='modal-body']/child::div[4]/div/*[last()]")
 	WebElement scrollToLastPoint;
 
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
@@ -458,8 +455,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
 
-
-
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -495,22 +490,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	public void reviewAllTerms(){
-			if(getReusableActionsInstance().isElementVisible(reviewTV,10)){
-				getReusableActionsInstance().waitForElementVisibility(reviewTV,5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewTV);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewInternet,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewInternet, 5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewInternet);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewHomePhone,10)){
-				getReusableActionsInstance().waitForElementVisibility(reviewHomePhone,5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewHomePhone);
-			}
-			if(getReusableActionsInstance().isElementVisible(reviewBattery,10)) {
-				getReusableActionsInstance().waitForElementVisibility(reviewBattery, 5);
-				getReusableActionsInstance().executeJavaScriptClick(reviewBattery);
-			}
+		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
+		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
+		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 
 		}
 	/**
@@ -562,6 +545,20 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(addToCart,90);
 		getReusableActionsInstance().scrollToElement(addToCart);
 		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+	public void addPackageToCart(String packageName) {
+		String packageXpath = "//div[text()='"+ packageName + "']";
+		String packageAddToCartXpath = "//div[text()='"+ packageName + "']/ancestor::rch-bundle-tile//child::rch-bundle-price//span[@translate='global.cta.addToCart']";
+		WebElement packageAddToCart = getDriver().findElement(By.xpath(packageAddToCartXpath));
+		WebElement packageElement = getDriver().findElement(By.xpath(packageXpath));
+
+		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
+		getReusableActionsInstance().scrollToElement(packageElement);
+
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,15);
+		getReusableActionsInstance().scrollToElement(packageAddToCart);
+		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
 	}
 
 	/**
@@ -804,7 +801,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
 	}
 
@@ -1092,8 +1088,8 @@ public void activateHomePhoneltrPopUp() {
 
 	public void selectRecommendedOffer(){
 		getReusableActionsInstance().waitForElementTobeClickable(clickRecommendedOffer, 30);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
-		getReusableActionsInstance().clickWhenReady(clickRecommendedOffer);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(clickRecommendedOffer);
+		getReusableActionsInstance().executeJavaScriptClick(clickRecommendedOffer);
 	}
 
 	public void selectSixMappedRecommendedOffer(){
@@ -1108,7 +1104,7 @@ public void activateHomePhoneltrPopUp() {
 	*/
 	public void clickReviewAddons() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(5000);
 		if (getReusableActionsInstance().isElementVisible(reviewAddons,30))
 		getReusableActionsInstance().executeJavaScriptClick(reviewAddons);
 	}

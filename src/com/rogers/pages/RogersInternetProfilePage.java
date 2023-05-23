@@ -162,7 +162,6 @@ public class RogersInternetProfilePage extends BasePageClass {
 	 */
 	public void setPhone() {
 		String strPhoneNumber = FormFiller.generatePhoneNumber();
-		//String strPhoneNumber ="1010000062";
 		getReusableActionsInstance().executeJavaScriptClick(btnPhone);
 		getReusableActionsInstance().getWhenReady(btnPhone, 3).clear();
 		getReusableActionsInstance().getWhenReady(btnPhone,3).sendKeys(strPhoneNumber);

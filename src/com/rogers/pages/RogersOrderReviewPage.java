@@ -403,7 +403,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 
@@ -414,13 +413,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckboxMobile() {
 		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkAgreementPrivacyPolicy);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);
-		
-		getReusableActionsInstance().waitForElementVisibility(clkChangeAcceptCheckbox, 20);
+		getReusableActionsInstance().waitForElementTobeClickable(clkChangeAcceptCheckbox, 90);
 		getReusableActionsInstance().executeJavaScriptClick(clkChangeAcceptCheckbox);
+
 	}
 	
 	/**
@@ -581,8 +578,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		//getReusableActionsInstance().staticWait(5000);
-		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
+		return getReusableActionsInstance().isElementVisible(lblOrderReview, 300);
 	}
 
 	/**

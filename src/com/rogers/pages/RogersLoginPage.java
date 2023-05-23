@@ -73,12 +73,16 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
-	//button[contains(@title,'registered email')]/span
+
 	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
 	WebElement btnTextToAsRecoveryOption;
 
+	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
+	WebElement btnEmailBtnForVerificationCode;
+
 	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
 	WebElement btnEmailToAsRecoveryOption;
+
 	@FindBy(xpath="//h1[text()='Receive verification code']")
 	WebElement lblMFAwindow;
 
@@ -370,6 +374,14 @@ public class RogersLoginPage extends BasePageClass {
     }
 
 	/**
+	 * Click on Email button as a recovery option fpr MFA
+	 * @author manpreet.kaur3
+	 */
+	public void clkEmailToForVerificationCode() {
+		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
+	}
+
+	/**
 	 * Click on the email button to receive otp via email.
 	 * @author karthick.murugiah
 	 */
@@ -381,7 +393,7 @@ public class RogersLoginPage extends BasePageClass {
 
 	/**
 	 * verifies the MFA screen
-	 * @return true if MFA screen is vissible, else false
+	 * @return true if MFA screen is visible, else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyMFAScreenIsVisible() {

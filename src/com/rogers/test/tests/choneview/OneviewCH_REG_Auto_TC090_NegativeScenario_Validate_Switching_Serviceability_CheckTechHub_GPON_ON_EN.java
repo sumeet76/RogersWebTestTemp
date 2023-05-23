@@ -17,6 +17,10 @@ public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Servic
             /* serviceability check to Techhub for GPON 3P+SHA_NAC ENG*/
             reporter.reportLogWithScreenshot("OneView env");
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+            getEnvironmentSelectionPage().selectProduction();
+            reporter.reportLogWithScreenshot("Selected Production");
+            getEnvironmentSelectionPage().clickProceed();
+            reporter.reportLogWithScreenshot("Clicked proceed button");
             reporter.reportLogWithScreenshot("address");
             getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getGPON_3P_SHA_NAC());
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getGPON_3P_SHA_NAC()+" is serviceable on Fibre!",TestDataHandler.anonymousData.contactDetails.getGPON_3P_SHA_NAC()+" not serviceable");
@@ -33,12 +37,6 @@ public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Servic
             getRogersIgniteBundlesPage().clkContinue();
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
             reporter.reportLogWithScreenshot("Select Services Customer Wants");*/
-
-
-
-
-
-
         }
     }
 
@@ -50,6 +48,6 @@ public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Servic
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
