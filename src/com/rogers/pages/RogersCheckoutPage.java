@@ -187,6 +187,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
+			@FindBy(xpath = "//*[contains(text(),'Down payment')]/parent::div/following-sibling::div"),
 			@FindBy(xpath = "//ds-modal//*[contains(@data-test,'modal-credit-evaluation-section')]/div/div[contains(@class,'text-right')]/p"),
 			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
 		    @FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
