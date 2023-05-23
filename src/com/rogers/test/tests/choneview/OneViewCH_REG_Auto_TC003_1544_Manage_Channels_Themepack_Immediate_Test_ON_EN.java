@@ -22,12 +22,14 @@ public class OneViewCH_REG_Auto_TC003_1544_Manage_Channels_Themepack_Immediate_T
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
 //		reporter.hardAssert(getAccountOverViewPage().verifyCustomerFollowingsHeader(),"Customer followings displayed","Customer followings did not Displayed");
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
+
+		getTVDashboardPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("Add channel");
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("Themepack tab");
-
-		getTVDashboardPage().clickThemepackTabFromBundle();
-		reporter.reportLogWithScreenshot("themepack added");
+//		getTVDashboardPage().clickThemepackTabFromBundle();
 		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("themepack added");
 		reporter.reportLogWithScreenshot("4k popup");
 		//	getRogersIgniteBundlesPage().fourKTVPopup();
 		//	reporter.reportLogWithScreenshot("4k continue");

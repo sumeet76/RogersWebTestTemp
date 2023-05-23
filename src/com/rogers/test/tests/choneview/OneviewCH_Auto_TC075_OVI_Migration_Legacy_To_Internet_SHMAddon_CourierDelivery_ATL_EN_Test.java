@@ -26,10 +26,10 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Use this address");
 //        getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
-//        getRogersIgniteBundlesPage().clickNo();
+        getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Service Availability");
-        getRogersIgniteBundlesPage().refreshContinue();
-        getRogersIgniteBundlesPage().clkContinue();
+//        getRogersIgniteBundlesPage().refreshContinue();
+//        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
@@ -40,7 +40,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
-//        getRogersIgniteBundlesPage().noPortInPopup();
+        getRogersIgniteBundlesPage().noPortInPopup();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
@@ -49,6 +49,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 //        getRogersIgniteBundlesPage().reviewAllTerms();
 //        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 //        reporter.reportLogWithScreenshot("Points to mention");
+
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -100,8 +101,8 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-//        getCreditCheckPage().selectPaymentOption(1);
-//        reporter.reportLogWithScreenshot("Monthly charges");
+        getCreditCheckPage().selectPaymentOption(1);
+        reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("submit order");
         getRogersOVCheckoutPage().clkSubmit();

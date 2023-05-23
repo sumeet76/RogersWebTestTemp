@@ -44,7 +44,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[text()='Yes, they do' or text()='Oui, il en a un']/ancestor::button")
     WebElement yesFor4K;
 
-    @FindBy(xpath = "//*[@id=\"ds-modal-container-7\"]/rch-tv4k-modal/ds-modal/div[2]/div[2]/div[2]/div/button")
+    @FindBy(xpath = "//div[contains(@class,'ds-modal__footer')]//following::span[contains(text(),'Continue') or contains(text(),'Continuer')]/ancestor::button")
     WebElement fourKContinue;
 
     @FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
@@ -77,17 +77,14 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//a[@class='oneview-icon-tick tick-css expanded']")
     WebElement arrowDownAccountOverview;
 
-//    @FindBy(xpath = "//div[contains(@class,'IPTV')]")
-//    WebElement btnTVBadge;
-
-//    @FindBy(xpath = "//span[contains(text(),'Plan Details')]")
-//    WebElement btnTVBadge;
-
-    @FindAll({
-            @FindBy(xpath = "//span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]"),
-            @FindBy(xpath = "//div[contains(@class,'IPTV')]")
-    })
+    @FindBy(xpath = "//t[text()='TV' or text()='Télévision']/following::span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]")
     WebElement btnTVBadge;
+
+//    @FindAll({
+//            @FindBy(xpath = "//span[contains(text(),'Plan Details') or contains(text(),'Détails du forfait')]"),
+//            @FindBy(xpath = "//div[contains(@class,'IPTV')]")
+//    })
+//    WebElement btnTVBadge;
 
     @FindBy(xpath = "//a[contains(text(),' Billing ')]")
     WebElement Billinglink;
@@ -140,7 +137,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//t[contains(text(),'Make a payment')]")
     WebElement MakePaymentbtn;
 
-    @FindBy(xpath = "//t[text()='Ignite Internet' or text()='Élan Internet']/following::span[contains(text(),'Plan and Usage') or contains(text(),'Détails du plan et de')]")
+    @FindBy(xpath = "//span[contains(text(),'Plan and Usage') or contains(text(),'Détails du plan et de')]")
     WebElement btnInternetBadge;
 
     @FindAll({

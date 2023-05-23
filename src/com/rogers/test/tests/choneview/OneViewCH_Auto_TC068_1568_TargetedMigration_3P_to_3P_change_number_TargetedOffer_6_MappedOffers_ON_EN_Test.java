@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_TargetedOffer_6_MappedOffers_ON_EN_Test extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"Regression", "RegressionERM"})
     public void oneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest(){
 //          Launch One view
 
@@ -140,7 +140,7 @@ public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-//        closeSession();
+        closeSession();
     }
     }
 

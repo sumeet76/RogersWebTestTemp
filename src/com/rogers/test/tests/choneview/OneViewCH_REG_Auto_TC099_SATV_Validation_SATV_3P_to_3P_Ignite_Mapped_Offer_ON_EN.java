@@ -16,6 +16,9 @@ public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mappe
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc099_SATV3P_To_SATV3P_Mapped_Offers.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("launch the Tv Dashboard page");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");

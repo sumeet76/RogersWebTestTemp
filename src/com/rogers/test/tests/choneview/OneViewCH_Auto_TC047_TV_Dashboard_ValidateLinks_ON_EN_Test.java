@@ -17,6 +17,11 @@ public class OneViewCH_Auto_TC047_TV_Dashboard_ValidateLinks_ON_EN_Test extends 
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisTV.getAccountDetails().getBan(),TestDataHandler.solarisTV.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
         getAccountOverViewPage().selectTVBadage();
+        reporter.reportLogWithScreenshot("Selected TV badge");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("clicked Proceed button");
         reporter.reportLogWithScreenshot("Launched TV Dashboard Page");
         getTVDashboardPage().clickViewChannelLineUp();
         reporter.reportLogWithScreenshot("Click View Channel Lineup");
