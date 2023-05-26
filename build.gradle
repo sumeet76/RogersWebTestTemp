@@ -246,7 +246,7 @@ artifactory {
 		}
 		defaults {
 			publications('maven')
-			publishConfigs('archives', 'published')
+			//publishConfigs('archives', 'published')
 			publishBuildInfo = true
 			publishArtifacts = true
 			publishPom = true

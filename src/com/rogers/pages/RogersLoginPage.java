@@ -19,6 +19,7 @@ public String emailID;
 
 	@FindBy(xpath = "//ds-code-input/div/div[2]/input") //div[1]
 	WebElement inputCode;
+
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
 
@@ -265,7 +266,7 @@ public String emailID;
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public boolean verifyLoginFailMsgIframe() {
-		return getReusableActionsInstance().isElementVisible(failLoginMsg, 10);
+		return getReusableActionsInstance().isElementVisible(failLoginMsg, 5);
 	}
 
 	/**

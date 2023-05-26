@@ -188,8 +188,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyOfferBundle() {
-		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
-		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 30);
+		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 60);
 	}
 
 	public String getOfferBundlePrice() {

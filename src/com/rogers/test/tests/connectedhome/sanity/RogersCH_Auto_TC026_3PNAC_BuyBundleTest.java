@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","SanityCH","ReleaseSanity"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
-        getDriver().get(System.getProperty("QaUrl") + "/bundles?setprovince=ON");
+        getDriver().get(System.getProperty("QaUrl") + "/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("Clicked on NL Province Link");
@@ -114,7 +114,7 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
-        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+//        getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 

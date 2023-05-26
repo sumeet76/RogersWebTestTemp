@@ -37,6 +37,7 @@ public class RogersCH_Auto_TC119_Negative_2pLeg_PendingOrder_Validation_Servicea
         getRogersLoginPage().clkSignInIFrame();
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getAccountDetails().getBan());
         reporter.reportLogWithScreenshot("Account Selected");
+        reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getDriver().get(System.getProperty("QaUrl") + "/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();

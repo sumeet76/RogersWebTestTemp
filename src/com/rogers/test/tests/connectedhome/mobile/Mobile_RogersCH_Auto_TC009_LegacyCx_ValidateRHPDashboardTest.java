@@ -43,7 +43,7 @@ public class Mobile_RogersCH_Auto_TC009_LegacyCx_ValidateRHPDashboardTest extend
         getRogersLoginPage().clkSignInIFrame();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
-		//reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+//		reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadgeMobile();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");

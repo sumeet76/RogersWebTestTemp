@@ -25,10 +25,10 @@ import java.util.Set;
  * Click on continue or close button --> Duplicate channels should be deleted successfully as requested
  */
 
-public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel extends BaseTestClass {
+public class RogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannelTest extends BaseTestClass {
 
     @Test(groups = {"Regression"})
-    public void RogersCH_Auto_TC010_SolarisTVCx_2P_ValidateDuplicateFlexChannel()  {
+    public void rogersCH_Auto_TC110_SolarisTVCx_2P_ValidateDuplicateFlexChannel()  {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());

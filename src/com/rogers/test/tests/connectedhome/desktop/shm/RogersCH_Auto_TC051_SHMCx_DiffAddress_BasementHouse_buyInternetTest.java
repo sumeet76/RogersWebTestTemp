@@ -55,8 +55,8 @@ public class RogersCH_Auto_TC051_SHMCx_DiffAddress_BasementHouse_buyInternetTest
 //        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc51_ShmSignedInInternetBuyBasement.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().selectIgniteAddressLookupBasement(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");

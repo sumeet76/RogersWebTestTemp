@@ -43,11 +43,11 @@ public class RogersCH_Auto_TC019_SolarisTVCx_InternetBundleofferChangePackageDow
         getDriver().get(System.getProperty("QaUrl") + "/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
-        reporter.reportLogWithScreenshot("Address confirmation popup has lanched to select Ignite Internet speed button");
+        reporter.reportLogWithScreenshot("Address confirmation popup has launched to select Ignite Internet speed button");
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("Address Selected");
         getRogersBuyPage().clkIgniteInternetSpeed();
-        reporter.reportLogWithScreenshot("Launched the TV packge Page");
+        reporter.reportLogWithScreenshot("Launched the TV package Page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanEn(), TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getDowngradePlanFr());
         reporter.hardAssert(getRogersInternetDashboardPage().verifyChangePackagePopupHeader(), "Displayed the contat US popup", "Download package has failed");
     }

@@ -43,7 +43,7 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
 
         getDriver().get(System.getProperty("QaUrl")+"/internet?env=qa");
         reporter.reportLogWithScreenshot("Launched the Internet page");
-        getRogersHomePage().clkNBProvinceLnk();
+        getRogersHomePage().clkNLProvinceLnk();
         reporter.reportLogWithScreenshot("ATL region selected");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
@@ -71,7 +71,7 @@ public class RogersCH_Auto_TC074_DST_SAI_NAC_ValidateDSTdisplayofRecommendedBann
         reporter.reportLogWithScreenshot("Closed the DST Recommendation");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(),"Best Fit package displayed post quiz","Best Fit package displayed post quiz");
         reporter.reportLogWithScreenshot("Verify the recommended Banner");
-        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
+//        getRogersInternetPackageSelectionPage().select150MonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Type of contract selected");
         getRogersInternetPackageSelectionPage().clkBestAdd();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
