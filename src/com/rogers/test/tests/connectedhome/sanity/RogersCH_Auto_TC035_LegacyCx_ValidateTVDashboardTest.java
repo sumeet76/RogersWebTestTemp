@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTe
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-		if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
+		/*if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
 			reporter.reportLogWithScreenshot("Click on Text as recovery option");
 			getRogersLoginPage().clkTextToAsRecoveryOption();
 			String strTestingTab = getDriver().getWindowHandle();
@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTe
 			getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
 			getRegisterOrAccountRecoveryPage().clkBtnContinue();
 			reporter.reportLogWithScreenshot("Continue to Account Overview");
-		}
+		}*/
 	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
 		reporter.reportLogWithScreenshot("Launched the Account Page");

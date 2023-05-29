@@ -48,22 +48,23 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomatedGoestoMaestro_ATLTest extends BaseTestClass {
+public class RogersCH_Auto_TC031_LegacyDTV_TVPackageUpgradeToIgniteBundleFromShopOptionTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-	public void rogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomatedGoestoMaestro_ATL() {
+	public void rogersCH_Auto_TC031_LegacyDTV_TVPackageUpgradeToIgniteBundleFromShopOption() {
+
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc63_Legacy2PtoIgnite2P.getPassword());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc63_Legacy2PtoIgnite2P.accountDetails.getBan());
-        reporter.reportLogWithScreenshot("Launched the Account Page");
-		getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
+	    getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
+		reporter.reportLogWithScreenshot("Launched the Account Page");
+		getDriver().get(System.getProperty("QaUrl")+"/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
-		//getRogersHomePage().clkNoThnx();
+//		getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceability();
 		reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
 		getRogersHomePage().selectAddressOnFile();
@@ -75,11 +76,12 @@ public class RogersCH_Auto_TC063_2PLeg_2PIgniteTV_4K_E2E_ValidateOrdersAutomated
 		// getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
 		//getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
 		getRogersIgniteTVBuyPage().selectFlex20Package();
-		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.reportLogWithScreenshot("Flex20+ Added to cart");
+		reporter.reportLogWithScreenshot("Launched the information popup");
+		getRogersIgniteTVBuyPage().clkIUnderstand();
 		reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is availabe", "4KTV radio button is not availabe");
 		reporter.reportLogWithScreenshot("Launched the cart summary page");
-		getRogersIgniteTVBuyPage().set4KTV();
+		getRogersIgniteTVBuyPage().set4KTVNo();
 		reporter.reportLogWithScreenshot("4k TV selected");
 		getRogersIgniteTVBuyPage().clkCheckout();
 		reporter.hardAssert(getRogersIgniteTVProfileCreationPage().verifyProfilePage(), "Profile page has Launched", "Profile page has not Launched");

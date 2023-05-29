@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
+import utils.GetOTP;
 
 
 public class RogersLoginPage extends BasePageClass {
@@ -15,6 +15,13 @@ public class RogersLoginPage extends BasePageClass {
 		super(driver);
 	}
 
+public String emailID;
+
+	@FindBy(xpath = "//ds-code-input/div/div[2]/input") //div[1]
+	WebElement inputCode;
+
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")
+	WebElement inputCodeMobile;
 
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
@@ -73,18 +80,18 @@ public class RogersLoginPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
-
+	//button[contains(@title,'registered email')]/span
 	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
 	WebElement btnTextToAsRecoveryOption;
 
-	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
-	WebElement btnEmailBtnForVerificationCode;
-
-	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
+	@FindBy(xpath = "//button[contains(@title,'registered email address')]/span")
 	WebElement btnEmailToAsRecoveryOption;
 
 	@FindBy(xpath="//h1[text()='Receive verification code']")
 	WebElement lblMFAwindow;
+
+	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
+	WebElement btnEmailBtnForVerificationCode;
 
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
@@ -151,6 +158,7 @@ public class RogersLoginPage extends BasePageClass {
 
 	public void setUsernameIFrame(String strUsername) {
 		//getReusableActionsInstance().staticWait(5000);
+		emailID = strUsername;
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
 		getReusableActionsInstance().getWhenReady(txtUsername, 30).clear();
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
@@ -165,6 +173,7 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 
 	public void setUsernameMobile(String strUsername) {
+		emailID = strUsername;
 		getReusableActionsInstance().getWhenReady(lblUserName, 90).click();
 		getReusableActionsInstance().getWhenReady(txtUsernameMobile, 60).sendKeys(strUsername);
 	}
@@ -248,6 +257,33 @@ public class RogersLoginPage extends BasePageClass {
 			//getReusableActionsInstance().clickIfAvailable(btnSkip);
 		}catch (ElementClickInterceptedException ex) {
 			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}
+		// Click on the Email to As Recovery option for OTP
+		if(verifyMFAScreenIsVisible()) {
+			clkEmailToAsRecoveryOption();
+			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			if(emailOTP!=null){
+				getReusableActionsInstance().getWhenReady(inputCode).sendKeys(emailOTP);
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
+			}
+		}
+	}
+
+	public void clkSignInMobile() {
+		try {
+			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}catch (ElementClickInterceptedException ex) {
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}
+		// Click on the Email to As Recovery option for OTP
+		if(verifyMFAScreenIsVisible()) {
+			clkEmailToAsRecoveryOption();
+			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			if(emailOTP!=null){
+				getReusableActionsInstance().getWhenReady(inputCodeMobile).sendKeys(emailOTP);
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
+			}
 		}
 	}
 	//*[text()='Remember username']
@@ -374,14 +410,6 @@ public class RogersLoginPage extends BasePageClass {
     }
 
 	/**
-	 * Click on Email button as a recovery option fpr MFA
-	 * @author manpreet.kaur3
-	 */
-	public void clkEmailToForVerificationCode() {
-		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
-	}
-
-	/**
 	 * Click on the email button to receive otp via email.
 	 * @author karthick.murugiah
 	 */
@@ -401,4 +429,7 @@ public class RogersLoginPage extends BasePageClass {
 	}
 
 
+	public void clkEmailToForVerificationCode() {
+		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
+	}
 }

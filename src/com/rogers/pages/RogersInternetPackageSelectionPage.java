@@ -190,7 +190,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
-	@FindBy(xpath = "//*[text()='Take the quiz']")
+	@FindBy(xpath = "//button[@aria-label='Take the quiz']/span")
 	WebElement btnquiz;
 
 	@FindBy(xpath = "//label[@for='dsQ1A1']//span[contains(@class,'selection__label')]")
@@ -831,4 +831,5 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		return getReusableActionsInstance().isElementVisible(txtGoodNewsInternetOffers, 60);
     }
+
 }

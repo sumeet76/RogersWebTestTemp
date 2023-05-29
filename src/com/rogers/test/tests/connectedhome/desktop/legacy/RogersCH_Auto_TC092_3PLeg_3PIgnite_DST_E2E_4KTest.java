@@ -48,10 +48,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTestClass {
+public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_4KTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH"})
-	public void rogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4K() {
+	public void rogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_4K() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc92_Legacy3pToIgnite3P.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
@@ -109,8 +109,8 @@ public class RogersCH_Auto_TC092_3PLeg_3PIgnite_DST_E2E_No4KTest extends BaseTes
 		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Bundles-cart Summary page", "Cart Summary not verified");
 		// Mini Cart get monthly fees
 		// verify channels
-		getRogersIgniteTVBuyPage().set4KTVNo();
-		reporter.reportLogWithScreenshot("No, I don't have a 4k TV selected");
+		getRogersIgniteTVBuyPage().set4KTV();
+		reporter.reportLogWithScreenshot("4k TV selected");
 
 		getRogersIgniteTVBuyPage().clkCheckout();
 

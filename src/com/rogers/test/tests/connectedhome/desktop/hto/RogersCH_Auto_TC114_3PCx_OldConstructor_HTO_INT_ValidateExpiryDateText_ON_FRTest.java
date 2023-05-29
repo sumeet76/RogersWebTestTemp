@@ -35,7 +35,7 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC114_3PCx_OldConstructor_HTO_INT_ExpiredOffer_ON_FRTest extends BaseTestClass {
+public class RogersCH_Auto_TC114_3PCx_OldConstructor_HTO_INT_ValidateExpiryDateText_ON_FRTest extends BaseTestClass {
 
 	@Test
     public void rogersCH_Auto_TC114_3PCx_OldConstructor_HTO_INT_ExpiredOffer_ON_FR() {

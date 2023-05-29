@@ -37,10 +37,10 @@ import java.util.Map;
  *
  **/
 
-public class RogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATLTest extends BaseTestClass {
+public class RogersCH_Auto_TC039_3PNAC_ValidateUnifiedFlexChannel_OffersPage_CartSummary_ATLTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","BundlesNAC"})
-    public void rogersCH_Auto_TC039_3PNAC_ValidateFlexChannelModel_ATL() {
+    public void rogersCH_Auto_TC039_3PNAC_ValidateUnifiedFlexChannel_OffersPage_CartSummary_ATL() {
         getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=NB");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for NB region");
         getRogersHomePage().clkServiceability();

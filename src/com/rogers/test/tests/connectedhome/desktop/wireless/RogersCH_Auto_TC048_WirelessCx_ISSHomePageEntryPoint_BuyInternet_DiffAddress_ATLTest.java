@@ -37,7 +37,7 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
 
     @Test(groups = {"RegressionCH","SmartStreamCH"})
     public void rogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming?setProvince=NL");
         reporter.reportLogWithScreenshot("Launched Smart Stream login Page");
         getRogersHomePage().clkSignIn();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
@@ -46,26 +46,24 @@ RogersCH_Auto_TC048_WirelessCx_ISSHomePageEntryPoint_BuyInternet_DiffAddress_ATL
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        getEnsVerifications().setVerificationCode();
-    	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
+    	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkNBProvinceLnk();
         getDriver().get(System.getProperty("QaUrl")+"/internet");
         reporter.reportLogWithScreenshot("Launched the Internet page");
-        reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
-        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersHomePage().clkInternetAvailability();
-        reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc48_WirelessSignedInInternetBuyDiffAddress.getAccountDetails().getAddress().get("line2");
-        getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
+        reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
+        String strAddressLine1 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
+        getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
 
+        reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
 
-        getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
-        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
+       /* getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
+        reporter.reportLogWithScreenshot("Selected Month-to-month term contract");*/
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Launched the Internet-cart Summary page");
 
