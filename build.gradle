@@ -56,10 +56,9 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ReleaseName', test_release
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
-	systemProperty 'ensEnv',test_ens_env
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
-	systemProperty 'TunnelName', "DigitalQETunnel"
-
+	//systemProperty 'EmailId', emailId
 
 
 	useTestNG(){
@@ -151,7 +150,7 @@ dependencies {
 	api 'automation-utils:common-utils:latest.release'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
-	api 'org.json:json:20220320'
+	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
 	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
@@ -246,7 +245,7 @@ artifactory {
 		}
 		defaults {
 			publications('maven')
-			//publishConfigs('archives', 'published')
+			publishConfigs('archives', 'published')
 			publishBuildInfo = true
 			publishArtifacts = true
 			publishPom = true
