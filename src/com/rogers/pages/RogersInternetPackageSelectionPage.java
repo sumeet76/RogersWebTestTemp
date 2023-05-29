@@ -94,6 +94,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
 
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 2.5 Gigabit Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	WebElement btnInternet2d5Package;
+
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
 	WebElement headerIgniteInternet150;
 
@@ -238,6 +241,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/span[@role='text']")
 	WebElement btnBestAdd;
 
+	@FindBy(xpath = "//button[contains(@aria-label,'entered province')]")
+	WebElement btnViewPkgs;
+
+	public void clkViewPkgs() {
+		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs,10);
+		getReusableActionsInstance().getWhenReady(btnViewPkgs).click();
+		getReusableActionsInstance().staticWait(5000);
+	}
+
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
 	 * @param strPackageNameEn Internet package to be selected 
@@ -309,6 +321,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public void clkInternetPackage() {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
+	}
+
+	public void clkInternet2d5Package() {
+		getReusableActionsInstance().getWhenReady(btnInternet2d5Package, 120).click();
 	}
 
 
