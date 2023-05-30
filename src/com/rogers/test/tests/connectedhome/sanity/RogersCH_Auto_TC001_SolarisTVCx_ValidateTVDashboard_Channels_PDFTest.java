@@ -52,7 +52,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
          reporter.reportLogWithScreenshot("Closed the available channels popup");
 
          //Verifying the Flexchannels
-        getRogersSolarisTVDashboardPage().clkViewfelxChannels();
+        getRogersSolarisTVDashboardPage().clkViewflexChannels();
         reporter.reportLogWithScreenshot("Displayed the available flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are available","There are no flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displaying");
