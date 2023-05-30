@@ -768,7 +768,7 @@ public class BaseTestClass {
             case "connectedhome_legacylogin":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl + "/web/totes/api/v1/bypassCaptchaAuth");
-                getDriver().manage().deleteAllCookies();
+//                getDriver().manage().deleteAllCookies();
                 getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language);
                 captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 break;
