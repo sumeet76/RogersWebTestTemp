@@ -417,7 +417,7 @@ public String emailID;
 
 	/**
 	 * verifies the MFA screen
-	 * @return true if MFA screen is vissible, else false
+	 * @return true if MFA screen is visible, else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyMFAScreenIsVisible() {

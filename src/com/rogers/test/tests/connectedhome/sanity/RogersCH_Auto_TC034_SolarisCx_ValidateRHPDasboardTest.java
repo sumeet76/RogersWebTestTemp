@@ -69,7 +69,4 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		closeSession();
 	}
 
-
 }
-
-
