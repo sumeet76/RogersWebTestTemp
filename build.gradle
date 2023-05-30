@@ -56,9 +56,10 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ReleaseName', test_release
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
-	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'ensEnv',test_ens_env
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
-	//systemProperty 'EmailId', emailId
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
+
 
 
 	useTestNG(){

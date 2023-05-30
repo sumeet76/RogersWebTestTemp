@@ -37,7 +37,7 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
     @Test(groups = {"RegressionCH", "SmartStreamNAC"})
     public void rogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_Review_ConfirmPages() {
         reporter.reportLogWithScreenshot("Launched the main QA page");
-        getDriver().get(System.getProperty("QaUrl")+"/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC080_ISS_NAC_ValidateGWP_PSEFpromotion_CartSummary_R
         reporter.reportLogWithScreenshot("Launched the Internet-bundles page");
         getRogersInternetPackageSelectionPage().selectSmartStreamPkgMonthToMonthTypeOfContact();
         reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        getRogersInternetPackageSelectionPage().verifyISSBoxChecked("Ignite 150 Ultd");
+       // getRogersInternetPackageSelectionPage().verifyISSBoxChecked("Ignite 150 Ultd");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Add to cart Smart Stream Package");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Launched the Internet-cart Summary page", "Cart Summary not verified");

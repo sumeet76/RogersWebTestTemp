@@ -751,8 +751,8 @@ public class BaseTestClass {
 
             case "connectedhome_igniteanonymous":
                 setImplicitWait(getDriver(), 10);
-               //  getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
-               // captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
+//                getDriver().get(strUrl + "/web/totes/browsebuy/v1/byPassCaptcha");
+//                captcha_bypass_handlers.captchaBypassURLIgniteAnonymousBuyFlows(strUrl, language);
                 break;
 
             case "connectedhome_shm":
@@ -882,6 +882,7 @@ public class BaseTestClass {
                 sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getAndroidChromeCapabilities().getDeviceOrientation());
                 break;
             case "sauceioschrome":
+            case "sauceiossafari":
                 sauceOptions.put(SauceCapabilities.appiumVersion.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getAppiumVersion());
                 sauceOptions.put(SauceCapabilities.deviceName.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceName());
                 sauceOptions.put(SauceCapabilities.deviceOrientation.toString(), TestDataHandler.sauceSettings.getIosSafariCapabilities().getDeviceOrientation());

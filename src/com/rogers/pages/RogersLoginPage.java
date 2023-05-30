@@ -20,6 +20,9 @@ public String emailID;
 	@FindBy(xpath = "//ds-code-input/div/div[2]/input") //div[1]
 	WebElement inputCode;
 
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")
+	WebElement inputCodeMobile;
+
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
 
@@ -86,6 +89,9 @@ public String emailID;
 	@FindBy(xpath="//h1[text()='Receive verification code']")
 	WebElement lblMFAwindow;
 
+	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
+	WebElement btnEmailBtnForVerificationCode;
+
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
 
@@ -145,8 +151,8 @@ public String emailID;
 	}
 
 	/**
-	 * Enter the user name on Sign in frame
-	 * @param strUsername user name to be login
+	 * Enter the username on Sign in frame
+	 * @param strUsername username to be login
 	 * @author chinnarao.vattam
 	 */
 
@@ -161,12 +167,13 @@ public String emailID;
 	}
 
 	/**
-	 * Enter the user name on Mobile login page
-	 * @param strUsername user name to be login
+	 * Enter the username on Mobile login page
+	 * @param strUsername username to be login
 	 * @author manpreet.kaur3
 	 */
 
 	public void setUsernameMobile(String strUsername) {
+		emailID = strUsername;
 		getReusableActionsInstance().getWhenReady(lblUserName, 90).click();
 		getReusableActionsInstance().getWhenReady(txtUsernameMobile, 60).sendKeys(strUsername);
 	}
@@ -184,8 +191,8 @@ public String emailID;
 	}
 
 	/**
-	 * Enter the user name on Sign in frame
-	 * @param strUsername user name to be login
+	 * Enter the username on Sign in frame
+	 * @param strUsername username to be login
 	 * @author chinnarao.vattam
 	 */
 
@@ -251,11 +258,29 @@ public String emailID;
 			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
 		}
 		// Click on the Email to As Recovery option for OTP
-		if (verifyMFAScreenIsVisible()) {
+		if(verifyMFAScreenIsVisible()) {
 			clkEmailToAsRecoveryOption();
 			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
-			if (emailOTP != null) {
+			if(emailOTP!=null){
 				getReusableActionsInstance().getWhenReady(inputCode).sendKeys(emailOTP);
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
+			}
+		}
+	}
+
+	public void clkSignInMobile() {
+		try {
+			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}catch (ElementClickInterceptedException ex) {
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}
+		// Click on the Email to As Recovery option for OTP
+		if(verifyMFAScreenIsVisible()) {
+			clkEmailToAsRecoveryOption();
+			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			if(emailOTP!=null){
+				getReusableActionsInstance().getWhenReady(inputCodeMobile).sendKeys(emailOTP);
 				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
 			}
 		}
@@ -400,4 +425,7 @@ public String emailID;
 	}
 
 
+	public void clkEmailToForVerificationCode() {
+		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
+	}
 }

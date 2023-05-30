@@ -34,26 +34,11 @@ public class RogersCH_Auto_TC072_SHMCx_ValidateAccountDashboard_ATLTest extends 
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc72_RogersSHM_NB.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        /* if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
-            reporter.reportLogWithScreenshot("Click on Text as recovery option");
-            getRogersLoginPage().clkTextToAsRecoveryOption();
-            String strTestingTab = getDriver().getWindowHandle();
-            // Will open a new tab for ENS, to get verification code from ENS
-            reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
-            String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
-            getDriver().switchTo().window(strTestingTab);
-            reporter.reportLogWithScreenshot("Close the Overlay");
-            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-            getRegisterOrAccountRecoveryPage().clkBtnContinue();
-            reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }*/
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc72_RogersSHM_NB.accountDetails.getBan());
         getRogersSolarisTVDashboardPage().clkSHMBadge();
         reporter.reportLogWithScreenshot("SHM dashboard page");
-        //  reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),"Launched SHM dashboard successfully", "SHM dashboard failed");
+//        reporter.hardAssert(getRogersSHMDashboardPage().verifySHMDashBoardPageIsDisplayed(),"Launched SHM dashboard successfully", "SHM dashboard failed");
         reporter.softAssert(getRogersSHMDashboardPage().verifyLearnAboutSmartHomeMonitoringLinkdisplayed(),
                 "SHM Learn About Smart Home Monitoring displayed", "SHM Learn About SmartHome Monitoring not displayed correctly please investigate");
         reporter.softAssert(getRogersSHMDashboardPage().verifyInsuranceCertificateLinkdisplayed(),

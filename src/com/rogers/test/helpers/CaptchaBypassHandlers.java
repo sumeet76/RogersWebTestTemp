@@ -79,11 +79,10 @@ public class CaptchaBypassHandlers {
 		//Add wait time for the add cookie to work on Firefox.
 		try {
 			Thread.sleep(5000);
-			getDriver().manage().addCookie(captchBypass);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		getDriver().manage().addCookie(captchBypass);
 	}
 
 	/**
