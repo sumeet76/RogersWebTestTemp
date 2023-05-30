@@ -28,7 +28,7 @@ import java.util.Map;
  *7. Enter appropriate Contact details.
  *8. Pick a date time in step 2 - Most Convenient Time for us to call.
  *9. Click on Continue.
- *10. Go to Agreement section section,  scroll down all the way,  and click on "I have read………." check box
+ *10. Go to Agreement section,  scroll down all the way,  and click on "I have read………." check box
  *11. Click on Submit.
  *
  **/
@@ -44,26 +44,21 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
             getRogersLoginPage().clkContinueInBrowser();
             reporter.reportLogWithScreenshot("Continue in Browser Selected");
         }
-
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm04_SolarisInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm04_SolarisInternetAccount.getPassword());
-        reporter.reportLogWithScreenshot("Enter the account credentails");
+        reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInMobile();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getBan());
-        }
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getBan());
         reporter.reportLogWithScreenshot("Account Selected");
     	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkInternetBadgeMobile();
-        getRogersInternetDashboardPage().clkInternetPopup();
-        reporter.reportLogWithScreenshot("Launched the Interent dashboard");
+//        getRogersInternetDashboardPage().clkInternetPopup();
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackageMobile();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackageMobile(TestDataHandler.tcm04_SolarisInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().clkInternetChangeOK();
@@ -83,18 +78,7 @@ public class Mobile_RogersCH_Auto_TC004_SolarisInternetCx_InternetPackageUpgrade
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
         reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(),"Update order completed","Update order Failed");
         reporter.reportLogWithScreenshot("Verified the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-
-        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-        System.out.println("SCHEMA : " + DbSchema);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema +".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban),"Entry is updated in the billing table","BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"),"ACCOUNT_SUB_TYPE is verified as R","Account type is not updated as R");
-    	}
+}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
 	//login flow

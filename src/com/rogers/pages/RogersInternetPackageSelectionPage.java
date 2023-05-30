@@ -55,6 +55,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']")
 	WebElement VerifyRecommendedBannertitle;
 
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/parent::div/following-sibling::div/descendant::a[contains(@aria-label, 'Add to cart')]")
+	WebElement btnRecommendedPkgAddtoCart;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwn150pkgTypeOfContract;
 
@@ -435,6 +438,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	{
 		getReusableActionsInstance().waitForElementVisibility(VerifyRecommendedBannertitle, 90);
 		return getReusableActionsInstance().isElementVisible(VerifyRecommendedBannertitle,30);
+	}
+
+	/**
+	 * Add recommended banner (after DST) to cart
+	 */
+	public void clkRecommendedPkgAddtoCart()
+	{
+		getReusableActionsInstance().getWhenReady(btnRecommendedPkgAddtoCart, 30).click();
 	}
 
 	/**

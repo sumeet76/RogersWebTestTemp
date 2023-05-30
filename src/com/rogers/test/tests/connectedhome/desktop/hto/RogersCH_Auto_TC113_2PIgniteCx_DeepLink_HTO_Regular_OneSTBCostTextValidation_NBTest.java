@@ -48,12 +48,8 @@ public class RogersCH_Auto_TC113_2PIgniteCx_DeepLink_HTO_Regular_OneSTBCostTextV
 		reporter.reportLogWithScreenshot("Entered the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		reporter.reportLogWithScreenshot("Sign-in");
-		getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc04_08_SolarisTVAccount.getUsername());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-			reporter.reportLogWithScreenshot("Select an account.");
-			getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getBan());
-		}
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.getAccountDetails().getBan());
 		reporter.reportLogWithScreenshot("Account Selected");
 		getRogersSolarisTVDashboardPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV dash board");

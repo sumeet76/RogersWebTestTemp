@@ -25,8 +25,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseTestClass {
 
-
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH"})
+	@Test(groups = {"SanityCH", "RegressionCH", "LegacyDashboardCH"})
 	public void rogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboard() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
@@ -43,13 +42,13 @@ public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseT
 		reporter.hardAssert(getRogersAccountOverviewPage().verfyContactUsToManageFeaturess(), "Contact Us To Manage Featuress link has present on RHP dashboard", "Contact Us To Manage Featuress link has not present on RHP dashboard");
 	}
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod(alwaysRun = true)
+	@Parameters({"strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
 	}
-
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
@@ -57,4 +56,3 @@ public class RogersCH_Auto_TC037_LegacyCx_ValidateRHPDashboardTest extends BaseT
 	}
 
 }
-

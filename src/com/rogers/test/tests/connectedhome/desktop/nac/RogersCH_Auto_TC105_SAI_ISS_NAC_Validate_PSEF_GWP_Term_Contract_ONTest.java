@@ -43,13 +43,13 @@ public class RogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ONT
 
     @Test(groups = {"RegressionCH", "SmartStreamNAC"})
     public void rogersCH_Auto_TC105_SAI_ISS_NAC_Validate_PSEF_GWP_Term_Contract_ON() {
-        getDriver().get(System.getProperty("QaUrl") + "/internet/streaming?env=qa");
+        getDriver().get(System.getProperty("QaUrl") + "/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();

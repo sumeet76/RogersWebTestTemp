@@ -51,8 +51,9 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
     @Test(groups = {"RegressionCH", "RogersIgniteBuyAnonymousCH","SanityCH","ReleaseSanity","SanityNAC"})
     public void rogersCH_Auto_TC026_3PNAC_BuyBundle() {
         getDriver().get(System.getProperty("QaUrl") + "/bundles");
+        reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkNLProvinceLnk();
-        reporter.reportLogWithScreenshot("Launched the IgniteTV page for NL region");
+        reporter.reportLogWithScreenshot("Clicked on NL Province Link");
         getRogersHomePage().clkServiceability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
         String strAddressLine1 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
@@ -120,7 +121,7 @@ public class RogersCH_Auto_TC026_3PNAC_BuyBundleTest extends BaseTestClass {
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
-        getRogersHomePhoneSelectionPage().selectPhoneNumber();
+//        getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();
 

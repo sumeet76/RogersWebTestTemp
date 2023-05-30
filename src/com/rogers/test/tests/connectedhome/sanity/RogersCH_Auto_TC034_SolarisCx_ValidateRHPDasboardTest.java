@@ -10,7 +10,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 /**
  * This class contains the test method to validate the Solaris home phone dashboard for Rogers.com   
  * 
@@ -24,11 +23,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-
 public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RhpAndRhmCH","ReleaseSanity"})
-    public void rogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboard() {
+	@Test(groups = {"SanityCH", "RegressionCH", "RhpAndRhmCH", "ReleaseSanity"})
+	public void rogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboard() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
@@ -36,13 +34,11 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
 		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
-
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkRHPBadge();
 		reporter.reportLogWithScreenshot("Launched the RHP Dashboard Page");
-
 
 		reporter.softAssert(getRogersSolarisRHPDashboardPage().verifyConfigureYourCurrentFeatures(), "Verification of Configure Your Current Features link is success", "Verification of Configure Your Current Features link is Failed");
 		getRogersSolarisRHPDashboardPage().clkConfigureYourCurrentFeatures();
@@ -59,11 +55,12 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		reporter.reportLogWithScreenshot("Closed the Reset Voice mail password popup");
 	}
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod(alwaysRun = true)
+	@Parameters({"strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
 
 	}
 
@@ -72,8 +69,4 @@ public class RogersCH_Auto_TC034_SolarisCx_ValidateRHPDasboardTest extends BaseT
 		closeSession();
 	}
 
-
-
 }
-
-

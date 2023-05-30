@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsageTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH", "RegressionCH", "RogersInternetCH", "ReleaseSanity"})
     public void rogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
@@ -39,21 +39,6 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if (getRogersLoginPage().verifyMFAScreenIsVisible()) {
-            reporter.reportLogWithScreenshot("Click on Text as recovery option");
-            getRogersLoginPage().clkTextToAsRecoveryOption();
-            String strTestingTab = getDriver().getWindowHandle();
-            //Will open a new tab for ENS, to get verification code from ENS
-            reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
-            String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
-            getDriver().switchTo().window(strTestingTab);
-            reporter.reportLogWithScreenshot("Close the Overlay");
-            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-            getRegisterOrAccountRecoveryPage().clkBtnContinue();
-            reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersInternetDashboardPage().clkSolarisInternetBadge();
@@ -75,11 +60,12 @@ public class RogersCH_Auto_TC016_SolarisInternetCx_ValidateInternetDashboardUsag
         reporter.reportLogWithScreenshot("Usage and Alerts details");
     }
 
-    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
     //login flow
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
     }
 
     @AfterMethod(alwaysRun = true)

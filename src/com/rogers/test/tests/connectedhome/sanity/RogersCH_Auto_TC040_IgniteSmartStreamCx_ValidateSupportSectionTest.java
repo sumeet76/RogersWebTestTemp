@@ -10,7 +10,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 /**
  * This class contains the test method to validate the Solaris home phone dashboard for Rogers.com   
  * 
@@ -30,11 +29,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-
 public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","SmartStreamCH"})
-    public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
+	@Test(groups = {"SanityCH", "RegressionCH", "SmartStreamCH"})
+	public void rogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSection() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc40_igniteSmartStream.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
@@ -59,11 +57,12 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 				"SmartStream Go To Support Section Links displayed", "SmartStream Go To Support Section Links not displayed correctly please investigate");
 	}
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod(alwaysRun = true)
+	@Parameters({"strBrowser", "strLanguage"})
 	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -71,8 +70,4 @@ public class RogersCH_Auto_TC040_IgniteSmartStreamCx_ValidateSupportSectionTest 
 		closeSession();
 	}
 
-
-
 }
-
-

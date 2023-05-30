@@ -33,8 +33,8 @@ public class RogersCH_Auto_TC066_SAI_NAC_InvalidPromocode_OrganicFlow_ValidateEr
         String invalidPromoCode = "ABCDEF";
         getDriver().get(System.getProperty("QaUrl") + "/internet/offers");
         reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-        String strAddressLine1 = TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
-        String strAddressLine2 = TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line2");
+        String strAddressLine1 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line1");
+        String strAddressLine2 = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         reporter.reportLogWithScreenshot("Address entered for serviceability");
         getRogersHomePage().clkIgniteAddressLookupSubmit();

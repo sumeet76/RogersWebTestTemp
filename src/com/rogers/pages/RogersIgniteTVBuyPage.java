@@ -921,7 +921,7 @@ getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**
-	 * Click the I understand button on the important information popup
+	 * Click I understand button on the important information popup
 	 * @author chinnarao.vattam
 	 */
 	public void clkIUnderstand() {

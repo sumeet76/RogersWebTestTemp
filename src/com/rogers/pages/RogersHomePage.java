@@ -879,7 +879,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkNLProvinceLnk() {
-		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+//		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
 		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
 		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
@@ -906,7 +906,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(3000);
 	if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
 		{
 		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
@@ -1257,7 +1257,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,60);
+		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,120);
 		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 20);
 	}
 

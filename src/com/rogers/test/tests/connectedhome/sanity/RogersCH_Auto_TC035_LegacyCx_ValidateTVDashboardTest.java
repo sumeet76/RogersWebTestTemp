@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTestClass {
 
 
-	@Test(groups = {"SanityCH","RegressionCH","LegacyDashboardCH","ReleaseSanity"})
+	@Test(groups = {"SanityCH", "RegressionCH", "LegacyDashboardCH", "ReleaseSanity"})
 	public void rogersCH_Auto_TC035_LegacyCx_ValidateTVDashboard() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_legacyRHP.getUsername());
@@ -56,27 +56,28 @@ public class RogersCH_Auto_TC035_LegacyCx_ValidateTVDashboardTest extends BaseTe
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadge();
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-		if(getRogersDigitalTVDashboardPage().isPackageBlock()) {
+
+		if (getRogersDigitalTVDashboardPage().isPackageBlock()) {
 			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChangeMyPackage(), "Verifed the TV dashboard", "TV dashboard Verification has failed");
 		} else {
 			reporter.hardAssert(getRogersDigitalTVDashboardPage().verifyChatBlock(), "Verifed the TV dashboard with Support/Chat Block", "TV dashboard Verification has failed");
 		}
 		reporter.reportLogWithScreenshot("Launched the TV Dashboard Page");
-    	}
+	}
 
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+	@BeforeMethod(alwaysRun = true)
+	@Parameters({"strBrowser", "strLanguage"})
 	//login flow
 	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
 		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+		startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
 	}
 
-	
+
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
 		closeSession();
 	}
 
 }
-

@@ -53,11 +53,7 @@ public class RogersCH_Auto_TC109_HTO_1pLeg_1pIgnite_ValidateOffer_E2E_ONTest ext
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
-            reporter.reportLogWithScreenshot("Select an account");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc109_1P_HTO_DOCSIS.getAccountDetails().getBan());
-            reporter.reportLogWithScreenshot("Account Selected");
-        }
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc109_1P_HTO_DOCSIS.getAccountDetails().getBan());
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
             reporter.reportLogWithScreenshot("New Offer Modal Popup");
             getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();

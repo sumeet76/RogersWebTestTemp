@@ -406,7 +406,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the ViewfelxChannels link on Solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
-	public void clkViewfelxChannels() {
+	public void clkViewflexChannels() {
 		getReusableActionsInstance().waitForElementVisibility(lnkViewfelxChannels, 60);
 		getReusableActionsInstance().getWhenReady(lnkViewfelxChannels,10).click();
 	}
