@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 /**
  * This class contains the test method to test the HTO 2P flow for Rogers.com
- * CH-8309_CH-9786_2P-2p HTO_Regular_HOT_Sign in MyRogers_Validate the legal text_bundle discount_Add channels_theme pack_One-time fee_saving section discount detail displayed only for campaign applied products_Review_confirmation_ON_CH_EN
+ * TC012_CH-15483_CH-21693_DST_Validate DST For Bundles_ DOCSIS_2P -3P HTO_IF user selects HTO Offers_Validate DST is Suppressed_ON_FF_EN
  * @author nandan.master
  *
  * Test steps:
@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
  * 7. Navigated to the Bundles page
  * 8. Clicked on Serviceability button
  * 9. Launched bundle offers page
- * 10. Validated that the DST for bundles (2p legacy HTO) is supressed
+ * 10. Validated that the DST for bundles (2p legacy HTO) is suppressed
  *
  **/
 
@@ -50,9 +50,8 @@ public class RogersCH_Auto_TC124_2P_HTO_DST_Supressed_OfferSelectionTest extends
         reporter.reportLogWithScreenshot("Serviceability model is launched");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 
-        reporter.hardAssert(!getRogersIgniteTVBuyPage().verifyTaketheQuizButton(), "Take quiz (DST) is not present", "Take quiz (DST) is present");
+        reporter.hardAssert(!getRogersIgniteTVBuyPage().verifyTaketheQuizButton(), "Take quiz (DST) is suppressed", "Take quiz (DST) is present");
     }
-
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
