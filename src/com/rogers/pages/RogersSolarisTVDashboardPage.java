@@ -406,7 +406,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the ViewfelxChannels link on Solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
-	public void clkViewfelxChannels() {
+	public void clkViewflexChannels() {
 		getReusableActionsInstance().waitForElementVisibility(lnkViewfelxChannels, 60);
 		getReusableActionsInstance().getWhenReady(lnkViewfelxChannels,10).click();
 	}
@@ -536,7 +536,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']/button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label, '" + strPackageNameFr + "')]/span");
+		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']//button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label, '" + strPackageNameFr + "')]/span");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);

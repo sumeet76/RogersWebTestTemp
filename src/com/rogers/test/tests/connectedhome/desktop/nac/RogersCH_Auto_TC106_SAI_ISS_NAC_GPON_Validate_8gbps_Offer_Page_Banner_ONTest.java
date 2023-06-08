@@ -33,7 +33,7 @@ public class RogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Bann
     @Test(groups = {"RegressionCH", "SmartStreamNAC"})
     public void rogersCH_Auto_TC106_SAI_ISS_NAC_GPON_Validate_8gbps_Offer_Page_Banner_ON() throws InterruptedException {
 
-        getDriver().get(System.getProperty("QaUrl") + "/streaming");
+        getDriver().get(System.getProperty("QaUrl") + "/streaming?env=qa");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(),"Internet page has Launched","Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability();

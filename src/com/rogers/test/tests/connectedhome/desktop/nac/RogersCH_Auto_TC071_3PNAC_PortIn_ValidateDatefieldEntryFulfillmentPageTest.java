@@ -49,7 +49,7 @@ public class RogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentP
 
     @Test(groups = {"RegressionCH", "BundlesNAC"})
     public void rogersCH_Auto_TC071_3PNAC_PortIn_ValidateDatefieldEntryFulfillmentPage() {
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkServiceability();
 

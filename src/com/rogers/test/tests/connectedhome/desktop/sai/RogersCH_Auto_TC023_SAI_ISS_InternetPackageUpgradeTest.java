@@ -32,10 +32,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC023_SAI_InternetPackageUpgradeTest extends BaseTestClass {
+public class RogersCH_Auto_TC023_SAI_ISS_InternetPackageUpgradeTest extends BaseTestClass {
 
 	@Test(groups = {"RegressionCH","saiCH"})
-    public void rogersCH_Auto_TC023_SAI_InternetPackageUpgrade() {
+    public void rogersCH_Auto_TC023_SAI_ISS_InternetPackageUpgrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getUsername());
         getRogersLoginPage().clkContinueInBrowser();

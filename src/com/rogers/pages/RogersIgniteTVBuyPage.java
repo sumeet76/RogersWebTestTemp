@@ -921,7 +921,7 @@ getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**
-	 * Click the I understand button on the important information popup
+	 * Click I understand button on the important information popup
 	 * @author chinnarao.vattam
 	 */
 	public void clkIUnderstand() {
@@ -2052,7 +2052,7 @@ getReusableActionsInstance().staticWait(5000);
 	}
 
 	public void selectInternetSpeeed(String planName,String speed){
-		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'speeds')]";
+		String str_element = "//h3[contains(text(),'"+planName+"')]/ancestor::div[@class='vertical-tile ds-shadow']//select[contains(@aria-label,'internet speeds')]";
 		By element = By.xpath(str_element);
 		WebElement dropdownbox = getReusableActionsInstance().getWhenReady(element, 180);
 		getReusableActionsInstance().selectWhenReady(dropdownbox,4);

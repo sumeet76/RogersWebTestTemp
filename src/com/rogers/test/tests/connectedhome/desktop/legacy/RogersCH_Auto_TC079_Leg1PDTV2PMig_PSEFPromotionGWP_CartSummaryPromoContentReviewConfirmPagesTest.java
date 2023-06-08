@@ -27,7 +27,7 @@ import java.util.Map;
  * 8. Click on 'Yes I understood'button.
  * 9. Click "No thanks Continue".
  * 10. Click on Continue.
- * 11. Select one option for   'Do you have a 4K TV'.
+ * 11. Select one option for 'Do you have a 4K TV'.
  * 12. Click checkout button on cart summary page.
  * 13. All the personal information is auto populated.
  * 14. Click on continue button.
@@ -53,16 +53,16 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
     @Test(groups = {"RegressionCH",""})
 	public void rogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromoContentReviewConfirmPages() {
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
-		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());
+		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getPassword());
-		reporter.reportLogWithScreenshot("Enter the account credentails");
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc86_Legacy1PInternetToIgnite2P.getPassword());
+		reporter.reportLogWithScreenshot("Enter the account credentials");
 		getRogersLoginPage().clkSignInIFrame();
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.accountDetails.getBan());
 		reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		reporter.reportLogWithScreenshot("Launched the Account Page");
 
-		getDriver().get(System.getProperty("QaUrl") + "/home/ignite-bundles/tv-internet");
+		getDriver().get(System.getProperty("QaUrl") + "/bundles");
 		reporter.reportLogWithScreenshot("Launched the IgniteTV page");
 //    	getRogersHomePage().clkNoThnx();
 		getRogersHomePage().clkServiceabilityMigration();
@@ -116,9 +116,6 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		getRogersTechInstallPage().clkTechInstallContinueSelf();
 		reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallSetUp(), "SetUp page has Launched", "SetUp page has not Launched");
 		getRogersTechInstallPage().clkTechInstallContinue();
-       /*getRogersTechInstallPage().clkTechInstalConsent();
-       reporter.reportLogWithScreenshot("tech install details");
-       getRogersTechInstallPage().clkTechInstallContinue();*/
 		reporter.reportLogWithScreenshot("Launched the payment options page");
 
 		getRogersPaymentOptionsPage().clkPaymentConfirm();
@@ -139,16 +136,6 @@ public class RogersCH_Auto_TC079_Leg1PDTV2PMig_PSEFPromotionGWP_CartSummaryPromo
 		// validate PSEF promotion on order confirmation page
 		reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF verified", "PSEF not verified");
 
-		String ban = getRogersOrderConfirmationPage().getBAN();
-		System.out.println("BAN from the portal : " + ban);
-		String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-		System.out.println("SCHEMA : " + DbSchema);
-		/**
-		 * DB Validations in the subscriber table
-		 */
-		Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
-		reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-		reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
 	}
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})

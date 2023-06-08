@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
+import utils.GetOTP;
 
 
 public class RogersLoginPage extends BasePageClass {
@@ -15,6 +15,13 @@ public class RogersLoginPage extends BasePageClass {
 		super(driver);
 	}
 
+public String emailID;
+
+	@FindBy(xpath = "//ds-code-input/div/div[2]/input") //div[1]
+	WebElement inputCode;
+
+	@FindBy(xpath = "//input[contains(@id,'ds-form-input-id')]")
+	WebElement inputCodeMobile;
 
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txtUsername;
@@ -33,7 +40,7 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//iframe[contains(@src,'/web/totes/easylogin/signin')]")
 	WebElement fraSignIn;
-	
+
 	@FindBy (xpath = "//ds-alert[@variant='error']")
 	WebElement failLoginMsg;
 
@@ -42,7 +49,7 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//h5[@class='registerButton']//*[text()='Register' or text()=\"S'inscrire\"]")
 	WebElement lnkRegister;
-	
+
 	@FindBy(xpath = "//button[text()='Register now' or text()=\"S'inscrire maintenant\"]")
 	WebElement btnRegisterNow;
 
@@ -51,40 +58,39 @@ public class RogersLoginPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@title='Sign out' or @title='Fermer la session' and @tabindex='0']")
 	WebElement lnkSignOut;
-		
+
 	@FindAll({
-		@FindBy(xpath = "//dsa-header/header[contains(@class,'rcl-header l-headerDesk')]//*[text()='Sign in' or text()='Connexion']"),
-        @FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
-        @FindBy(xpath = "//a[contains(@class,'signin-interceptor dds_m-navLink -navbar -login dropdown-hide')]")})	
+			@FindBy(xpath = "//dsa-header/header[contains(@class,'rcl-header l-headerDesk')]//*[text()='Sign in' or text()='Connexion']"),
+			@FindBy(xpath = "//div[@class='dds-navbar-nav']//a[@aria-label='Sign in to My Rogers']//span[text()='Sign in'  or text()='Connexion']"),
+			@FindBy(xpath = "//a[contains(@class,'signin-interceptor dds_m-navLink -navbar -login dropdown-hide')]")})
 	WebElement lnkReSignInAs;
 
 	@FindBy(xpath = "//a[text()='Forgot username and/or password?' or contains(text(),\"Nom d'utilisateur ou mot de passe oublié?\")]")
 	WebElement btnForgotUserNameAndPassword;
-	
+
 	@FindBy(xpath = "//span[text()='Forgot username' or contains(text(),'utilisateur oubli')]")
 	WebElement lnkForgotUserName;
 
 	@FindBy(xpath = "//input[@id='input_password' or @id='password']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblPassword;
-	
+
 	@FindBy(xpath = "//input[@formcontrolname='username']/parent::div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement lblUserName;
 
 	@FindBy(xpath = "//span[text()='Forgot password ' or contains(text(),'Mot de passe oubli')]")
 	WebElement lnkForgotPassword;
 
-
+	//button[contains(@title,'registered email')]/span
 	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
 	WebElement btnTextToAsRecoveryOption;
 
-	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
-	WebElement btnEmailBtnForVerificationCode;
-
-	@FindBy(xpath = "//button[contains(@title,'wireless recovery number')]/span")
+	@FindBy(xpath = "//button[contains(@title,'registered email address')]/span")
 	WebElement btnEmailToAsRecoveryOption;
-
 	@FindBy(xpath="//h1[text()='Receive verification code']")
 	WebElement lblMFAwindow;
+
+	@FindBy(xpath = "//button[contains(@title,'registered email')]/span")
+	WebElement btnEmailBtnForVerificationCode;
 
 	@FindBy(xpath = "//div[contains(@class,'cdk-overlay-pane ds-modalWindow')]")
 	WebElement overlayContainer;
@@ -106,17 +112,18 @@ public class RogersLoginPage extends BasePageClass {
 		getDriver().switchTo().frame(fraSignIn);
 //		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraSignIn, 30);
 	}
-	
+
 	/**
 	 * Is sign in frame displayed
 	 * @return boolean, true if sign-in iframe is displayed, otherwise false.
 	 * @author Mirza.Kamran
 	 */
-	 public boolean isSignInFrameDisplayed() {
-		 return (getReusableActionsInstance().isElementVisible(fraSignIn,30)
-				 || getReusableActionsInstance().isElementVisible(lblPassword)
-				 || getReusableActionsInstance().isElementVisible(txtPassword));
-	 }
+	public boolean isSignInFrameDisplayed() {
+		return (getReusableActionsInstance().isElementVisible(fraSignIn,30)
+				|| getReusableActionsInstance().isElementVisible(lblPassword)
+				|| getReusableActionsInstance().isElementVisible(txtPassword));
+	}
+
 	/**
 	 * Check if the overlay container to continue in browser is display or not
 	 * @return true if it display, otherwise false.
@@ -144,13 +151,14 @@ public class RogersLoginPage extends BasePageClass {
 	}
 
 	/**
-	 * Enter the user name on Sign in frame
-	 * @param strUsername user name to be login
+	 * Enter the username on Sign in frame
+	 * @param strUsername username to be login
 	 * @author chinnarao.vattam
-	 */	
+	 */
 
 	public void setUsernameIFrame(String strUsername) {
 		//getReusableActionsInstance().staticWait(5000);
+		emailID = strUsername;
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
 		getReusableActionsInstance().getWhenReady(txtUsername, 30).clear();
 		getReusableActionsInstance().clickIfAvailable(lblUserName,20);
@@ -159,12 +167,13 @@ public class RogersLoginPage extends BasePageClass {
 	}
 
 	/**
-	 * Enter the user name on Mobile login page
-	 * @param strUsername user name to be login
+	 * Enter the username on Mobile login page
+	 * @param strUsername username to be login
 	 * @author manpreet.kaur3
 	 */
 
 	public void setUsernameMobile(String strUsername) {
+		emailID = strUsername;
 		getReusableActionsInstance().getWhenReady(lblUserName, 90).click();
 		getReusableActionsInstance().getWhenReady(txtUsernameMobile, 60).sendKeys(strUsername);
 	}
@@ -175,24 +184,25 @@ public class RogersLoginPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void setPasswordMobile(String strPassword) {
-			getReusableActionsInstance().getWhenReady(lblPassword).click();
-			//getReusableActionsInstance().getWhenVisible(txtPasswordMobile, 20).clear();
-			getReusableActionsInstance().getWhenVisible(txtPasswordMobile).sendKeys(strPassword);
+		getReusableActionsInstance().getWhenReady(lblPassword).click();
+		//getReusableActionsInstance().getWhenVisible(txtPasswordMobile, 20).clear();
+		getReusableActionsInstance().getWhenVisible(txtPasswordMobile).sendKeys(strPassword);
 
 	}
+
 	/**
-	 * Enter the user name on Sign in frame
-	 * @param strUsername user name to be login
+	 * Enter the username on Sign in frame
+	 * @param strUsername username to be login
 	 * @author chinnarao.vattam
-	 */	
+	 */
 
 	public void setUsernameIFrameMobile(String strUsername) {
 		//getReusableActionsInstance().clickIfAvailable(lblUserName,20);
 		getReusableActionsInstance().getWhenVisible(txtUsername, 30).clear();
 		getReusableActionsInstance().getWhenVisible(txtUsername).sendKeys(strUsername);
 	}
-	
-	
+
+
 	/**
 	 * Enter the password on Sign in frame
 	 * @param strPassword user password to be login
@@ -205,8 +215,7 @@ public class RogersLoginPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
 			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
-		}catch (Exception ex)
-		{
+		}catch (Exception ex) {
 			//getReusableActionsInstance().scrollToElement(lblPassword);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
 			getReusableActionsInstance().getWhenVisible(txtPassword, 5).clear();
@@ -227,8 +236,7 @@ public class RogersLoginPage extends BasePageClass {
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
 			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
 			getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(strPassword);
-		}catch (Exception ex)
-		{
+		}catch (Exception ex) {
 			getReusableActionsInstance().scrollToElement(btnSignIn);
 			getReusableActionsInstance().getWhenReady(lblPassword).click();
 			getReusableActionsInstance().getWhenVisible(txtPassword, 20).clear();
@@ -245,18 +253,45 @@ public class RogersLoginPage extends BasePageClass {
 		try {
 			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
 			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
-			//getReusableActionsInstance().clickIfAvailable(btnSkip);
+//			getReusableActionsInstance().clickIfAvailable(btnSkip);
+		} catch (ElementClickInterceptedException ex) {
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
+		}
+		// Click on the Email to As Recovery option for OTP
+		if(verifyMFAScreenIsVisible()) {
+			clkEmailToAsRecoveryOption();
+			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			if(emailOTP!=null){
+				getReusableActionsInstance().getWhenReady(inputCode).sendKeys(emailOTP);
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
+			}
+		}
+	}
+
+	public void clkSignInMobile() {
+		try {
+			getReusableActionsInstance().waitForElementTobeClickable(btnSignIn, 2);
+			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
 		}catch (ElementClickInterceptedException ex) {
 			getReusableActionsInstance().getWhenReady(btnSignIn, 20).click();
 		}
+		// Click on the Email to As Recovery option for OTP
+		if(verifyMFAScreenIsVisible()) {
+			clkEmailToAsRecoveryOption();
+			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			if(emailOTP!=null){
+				getReusableActionsInstance().getWhenReady(inputCodeMobile).sendKeys(emailOTP);
+				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();
+			}
+		}
 	}
-	//*[text()='Remember username']
+
 	/**
 	 * Check if the login failed message displayed
 	 * @return true if login fail message is displayed, otherwise false.
 	 */
 	public boolean verifyLoginFailMsgIframe() {
-		return getReusableActionsInstance().isElementVisible(failLoginMsg, 10);
+		return getReusableActionsInstance().isElementVisible(failLoginMsg, 5);
 	}
 
 	/**
@@ -270,7 +305,7 @@ public class RogersLoginPage extends BasePageClass {
 			getReusableActionsInstance().clickWhenReady(btnSkip);
 		}
 	}
-	
+
 	/**
 	 * Switch out from the frame
 	 * @author chinnarao.vattam
@@ -278,19 +313,19 @@ public class RogersLoginPage extends BasePageClass {
 	public void switchOutOfSignInIFrame() {
 		getDriver().switchTo().defaultContent();
 	}
-	
+
 	/**
 	 * Clicks on the 'Register' link on the Sign-in overlay
-	 * @author rajesh.varalli1 
+	 * @author rajesh.varalli1
 	 */
 	public void clickRegister() {
 		getReusableActionsInstance().getWhenReady(lnkRegister).click();
 	}
-	
-	
+
+
 	/**
 	 * Clicks on the 'Register Now' button on the Sign-in overlay
-	 * @author rajesh.varalli1 
+	 * @author rajesh.varalli1
 	 */
 	public void clickRegisterNow() {
 		getReusableActionsInstance().clickIfAvailable(btnRegisterNow);
@@ -305,45 +340,42 @@ public class RogersLoginPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(lnkSignOut, 20);
 		getReusableActionsInstance().clickIfAvailable(lnkSignOut);
 		getReusableActionsInstance().waitForPageLoad();
-		
+
 	}
-	
+
 	/**
 	 * Click on SignInAs in header Navigation bar after user logout
 	 * @author Mirza.Kamran
 	 */
-	public void clkSignInAs() {	
+	public void clkSignInAs() {
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
-			if(!getReusableActionsInstance().isElementVisible(fraSignIn))
-			{
+			if(!getReusableActionsInstance().isElementVisible(fraSignIn)) {
 				getReusableActionsInstance().waitForElementTobeClickable(lnkReSignInAs, 120);
 				getReusableActionsInstance().javascriptScrollByVisibleElement(lnkReSignInAs);
 				getReusableActionsInstance().executeJavaScriptClick(lnkReSignInAs);
 				getReusableActionsInstance().staticWait(3000);
-				if(getReusableActionsInstance().isElementVisible(fraSignIn))
-				{
+				if(getReusableActionsInstance().isElementVisible(fraSignIn)) {
 					clickSuccess=true;
 					break;
 				}
 				count++;
-			}else
-			{
+			}else {
 				clickSuccess=true;
 				break;
 			}
-			
+
 		}
-		
+
 	}
 
 	/**
 	 * Click on button forgot username and password
 	 * @author Mirza.Kamran
 	 */
-	public void clkForgotPassOrNameIframe() {	
-		
+	public void clkForgotPassOrNameIframe() {
+
 		getReusableActionsInstance().clickIfAvailable(btnForgotUserNameAndPassword);
 	}
 
@@ -352,17 +384,17 @@ public class RogersLoginPage extends BasePageClass {
 	 */
 	public void clkForgotUsernameIframe() {
 		getReusableActionsInstance().getWhenReady(lnkForgotUserName).click();
-		
+
 	}
 
-	
+
 	/**
 	 * Clicks on Forgot Password iframe
 	 * @author Mirza.Kamran
 	 */
 	public void clkForgotPasswordIframe() {
 		getReusableActionsInstance().getWhenReady(lnkForgotPassword).click();
-		
+
 	}
 
 	/**
@@ -372,14 +404,6 @@ public class RogersLoginPage extends BasePageClass {
     public void clkTextToAsRecoveryOption() {
 		getReusableActionsInstance().getWhenReady(btnTextToAsRecoveryOption,60).click();
     }
-
-	/**
-	 * Click on Email button as a recovery option fpr MFA
-	 * @author manpreet.kaur3
-	 */
-	public void clkEmailToForVerificationCode() {
-		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
-	}
 
 	/**
 	 * Click on the email button to receive otp via email.
@@ -401,4 +425,7 @@ public class RogersLoginPage extends BasePageClass {
 	}
 
 
+	public void clkEmailToForVerificationCode() {
+		getReusableActionsInstance().getWhenReady(btnEmailBtnForVerificationCode, 60).click();
+	}
 }

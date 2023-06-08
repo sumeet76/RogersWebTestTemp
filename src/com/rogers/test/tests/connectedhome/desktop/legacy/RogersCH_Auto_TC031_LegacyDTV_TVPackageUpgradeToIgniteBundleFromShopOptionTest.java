@@ -48,10 +48,10 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShopOptionTest extends BaseTestClass {
+public class RogersCH_Auto_TC031_LegacyDTV_TVPackageUpgradeToIgniteBundleFromShopOptionTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH","RogersCustomerIgniteBuyCH"})
-	public void rogersCH_Auto_TC031_LegacyTV_TVPackageUpgradeToIgniteBundleFromShopOption() {
+	public void rogersCH_Auto_TC031_LegacyDTV_TVPackageUpgradeToIgniteBundleFromShopOption() {
 
 		reporter.reportLogWithScreenshot("Launched the SignIn popup");
 		getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc31_DigitalTVUpgradeToIgnite.getUsername());

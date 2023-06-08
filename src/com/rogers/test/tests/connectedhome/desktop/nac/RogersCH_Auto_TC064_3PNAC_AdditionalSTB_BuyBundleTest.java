@@ -50,7 +50,7 @@ public class RogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundleTest extends BaseT
 
     @Test(groups = {"RegressionCH", "BundlesNAC"})
     public void rogersCH_Auto_TC064_3PNAC_AdditionalSTB_BuyBundle() {
-        getDriver().get(System.getProperty("QaUrl")+"/bundles?setprovince=ON");
+        getDriver().get(System.getProperty("QaUrl")+"/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
         getRogersHomePage().clkServiceability();
 

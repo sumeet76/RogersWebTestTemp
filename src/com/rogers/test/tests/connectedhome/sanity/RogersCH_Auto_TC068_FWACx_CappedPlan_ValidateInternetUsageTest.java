@@ -10,7 +10,6 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-
 /**
  * This class contains the test method to validate Internet Dashboard Usage for Rogers.com   
  * 
@@ -30,7 +29,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest extends BaseTestClass {
 
-	@Test(groups = {"SanityCH","RegressionCH","RogersInternetCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH", "RegressionCH", "RogersInternetCH", "ReleaseSanity"})
     public void rogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc68_FWACappedPlan.getUsername());
@@ -38,23 +37,6 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc68_FWACappedPlan.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
-            reporter.reportLogWithScreenshot("Click on Text as recovery option");
-            getRogersLoginPage().clkTextToAsRecoveryOption();
-            String strTestingTab = getDriver().getWindowHandle();
-            //Will open a new tab for ENS, to get verification code from ENS
-            reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
-            String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
-            getDriver().switchTo().window(strTestingTab);
-            reporter.reportLogWithScreenshot("Close the Overlay");
-            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-            getRegisterOrAccountRecoveryPage().clkBtnContinue();
-            reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
-
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc68_FWACappedPlan.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -69,25 +51,25 @@ public class RogersCH_Auto_TC068_FWACx_CappedPlan_ValidateInternetUsageTest exte
         reporter.reportLogWithScreenshot("Daily Breakdown details");
         reporter.softAssert(getRogersInternetUsagePage().verifyDailyBreakdownTable(), "Verified the daily usage", "Daily usage deatils are not present");
         getRogersInternetUsagePage().clkMonthlyUsage();
-        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(),"Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdown(), "Verified the monthly usage Breakdown", "Monthly usage Breakdown deatils are not present");
         reporter.reportLogWithScreenshot("Monthly Breakdown details");
-        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(),"Verified the monthly usage", "Monthly usage deatils are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyMonthlyBreakdownTable(), "Verified the monthly usage", "Monthly usage deatils are not present");
         getRogersInternetUsagePage().clkUsageAlerts();
-        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(),"Verified the Usage Alerts", "Usage Alerts are not present");
+        reporter.softAssert(getRogersInternetUsagePage().verifyUsageAlerts(), "Verified the Usage Alerts", "Usage Alerts are not present");
         reporter.reportLogWithScreenshot("Usage and Alerts details");
-                	}
+    }
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
-	}
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
+    //login flow
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
+    }
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
-
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 }

@@ -41,7 +41,7 @@ public class Mobile_RogersCH_Auto_TC005_SolarisTVCx_TVPackageUpgradeTest extends
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
-        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().clkSignInMobile();
     	//reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tcm05_SolarisTVAccountForUpgrade.accountDetails.getBan());
     	//reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
