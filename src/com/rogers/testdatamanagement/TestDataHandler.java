@@ -883,7 +883,7 @@ public class TestDataHandler {
 		tc_62_Ovr_Mig_Data_3p_to_3p_6_Mapped_Offers = YamlHandler.getOvrReusableData("TC62_Mig_Data_3P_to_3P_6Mapped_Offers");
 		tc_63_Ovr_Targeted_Mig_Data_3p_to_3p = YamlHandler.getOvrReusableData("TC63_Targeted_Mig_Data_3p_to_3p");
 		tc_03_Ovr_ERM_Mig_Data_2p_to_3p = YamlHandler.getOvrReusableData("ERM_TC03_Mig_Data_2p_TV_INT_to_3p");
-		tc_64_Ovr_FidoToRogers_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC64_FidoToRogers_Data_Nac_ISS.yml");
-		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS.yml");
+		tc_64_Ovr_FidoToRogers_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC64_FidoToRogers_Data_Nac_ISS");
+		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS");
 	}
 }

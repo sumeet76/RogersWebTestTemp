@@ -8,21 +8,36 @@ public class OvrConfigData {
     private String flexChannelsPackageEN;
     private String flexChannelsPackageFR;
     private String sspIgniteDealerCode;
+
     private String grabAndGoSerialNumber;
     private String sspGrabAndGoDealerCode;
     private String fidoDealerCode;
 
+
     public String getGrabAndGoSerialNumber() {
         return grabAndGoSerialNumber;
+    }
+
+    public void setGrabAndGoSerialNumber(String grabAndGoSerialNumber) {
+        this.grabAndGoSerialNumber = grabAndGoSerialNumber;
     }
 
     public String getSspGrabAndGoDealerCode() {
         return sspGrabAndGoDealerCode;
     }
 
+    public void setSspGrabAndGoDealerCode(String sspGrabAndGoDealerCode) {
+        this.sspGrabAndGoDealerCode = sspGrabAndGoDealerCode;
+    }
+
     public String getFidoDealerCode() {
         return fidoDealerCode;
     }
+
+    public void setFidoDealerCode(String fidoDealerCode) {
+        this.fidoDealerCode = fidoDealerCode;
+    }
+
 
     public String getSspIgniteDealerCode() {
         return sspIgniteDealerCode;

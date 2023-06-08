@@ -20,6 +20,9 @@ public class OneViewCH_Auto_TC_023_TV_PackageDowngrade_ImmediateTest extends Bas
         getAccountOverViewPage().clkSubmitBtnDealerCodeDialogue();
         getAccountOverViewPage().setSkipNotification();*/
         getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
