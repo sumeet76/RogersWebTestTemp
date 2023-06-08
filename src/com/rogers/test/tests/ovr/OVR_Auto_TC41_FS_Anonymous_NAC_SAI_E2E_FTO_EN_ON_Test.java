@@ -24,7 +24,7 @@ public class OVR_Auto_TC41_FS_Anonymous_NAC_SAI_E2E_FTO_EN_ON_Test extends BaseT
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_TC41_FS_Anonymous_NAC_SAI_E2E_FTO_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_FTO_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");

@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_GrabAndGo_E2E_GF_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,10 +22,10 @@ public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends 
         closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
-    public void ovr_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_password"));
+    public void ovr_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_GrabAndGo_E2E_GF_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_GF_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspGrabAndGoDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
@@ -94,12 +94,12 @@ public class OVR_Auto_TC37_FS_Anonymous_NAC_SAI_IntID_E2E_GF_EN_ON_Test extends 
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
+        getBundleBuilderPage().selectGrabAndGoInstall();
+        reporter.reportLogWithScreenshot("Grab and Go Install Option selected");
+        getBundleBuilderPage().enterGrabAndGoSerialNumber(TestDataHandler.ovrConfigData.getGrabAndGoSerialNumber());
+        reporter.reportLogWithScreenshot("Grab and Go serial number entered");
+        reporter.hardAssert(getBundleBuilderPage().verifyGrabAndGoSerialNumber(),"G and G serial Number accepted", "G and G serial Number not accepted");
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");

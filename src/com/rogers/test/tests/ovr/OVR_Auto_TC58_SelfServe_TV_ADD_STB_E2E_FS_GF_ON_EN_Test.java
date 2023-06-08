@@ -23,7 +23,7 @@ public class OVR_Auto_TC58_SelfServe_TV_ADD_STB_E2E_FS_GF_ON_EN_Test extends Bas
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC58_SelfServe_TV_ADD_STB_E2E_FS_GF_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_GF_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());

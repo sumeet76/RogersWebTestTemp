@@ -1215,6 +1215,7 @@ public class BaseTestClass {
                 RogersOVReviewOrderPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVReviewOrderPage(getDriver()));
                 RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
+                OvrDashboardPageThreadLocal.set(new com.rogers.ovr.pages.OvrDashboardPage(getDriver()));
                 break;
 
             case "redesignrogers":

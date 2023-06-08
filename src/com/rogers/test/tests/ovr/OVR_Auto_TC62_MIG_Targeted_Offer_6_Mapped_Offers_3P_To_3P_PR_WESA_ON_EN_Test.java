@@ -23,7 +23,7 @@ public class OVR_Auto_TC62_MIG_Targeted_Offer_6_Mapped_Offers_3P_To_3P_PR_WESA_O
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_PR"})
     public void ovr_Auto_TC62_MIG_Targeted_Offer_6_Mapped_Offers_3P_To_3P_PR_WESA_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("PR_WESA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");

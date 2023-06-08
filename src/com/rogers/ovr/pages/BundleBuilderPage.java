@@ -102,6 +102,9 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Courier Delivery')]")
     WebElement courierDeliveryInstall;
 
+    @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Grab and Go')]")
+    WebElement grabAndGoInstall;
+
     @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
     WebElement courierDeliveryCheckbox;
 
@@ -125,6 +128,18 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//h1[contains(text(),'successfully logged out')]")
     WebElement loggedOutOfChampLbl;
+
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]//parent::div")
+    WebElement grabAndGoSerialNumber;
+
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]")
+    WebElement grabAndGoSerialNumberInput;
+
+    @FindBy(xpath = "//span[contains(text(),'Customer understands billing starts today and equipment must be self installed')]")
+    WebElement grabAndGoCheckbox;
+
+    @FindBy(xpath = "//span[contains(text(),'Success! Serial number added')]")
+    WebElement grabAndGoSerialNumberSuccess;
 
 
     public void openFooter() throws InterruptedException {
@@ -180,6 +195,12 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().waitForElementVisibility(igniteProfessionalInstall, 60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(igniteProfessionalInstall);
         getReusableActionsInstance().executeJavaScriptClick(igniteProfessionalInstall);
+    }
+
+    public void selectGrabAndGoInstall() {
+        getReusableActionsInstance().waitForElementVisibility(grabAndGoInstall, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoInstall);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoInstall);
     }
 
     public void selectDeliveryByAppointmentInstall() {
@@ -297,4 +318,19 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenVisible(logoutOneviewAndSSP,5);
         return getReusableActionsInstance().isElementVisible(loggedOutOfChampLbl,30);
     }
+
+    public void enterGrabAndGoSerialNumber(String serialNumber){
+        getReusableActionsInstance().getWhenVisible(grabAndGoSerialNumber,30);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumber);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumber);
+        getReusableActionsInstance().enterText(grabAndGoSerialNumberInput, serialNumber, 20);
+
+        getReusableActionsInstance().scrollToElement(grabAndGoCheckbox);
+        getReusableActionsInstance().clickWhenReady(grabAndGoCheckbox);
+    }
+
+    public boolean verifyGrabAndGoSerialNumber(){
+        return getReusableActionsInstance().isElementVisible(grabAndGoSerialNumberSuccess,20);
+    }
+
 }
