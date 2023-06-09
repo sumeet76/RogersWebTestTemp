@@ -121,7 +121,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

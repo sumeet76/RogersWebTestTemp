@@ -129,7 +129,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
