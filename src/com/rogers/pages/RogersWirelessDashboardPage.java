@@ -11,8 +11,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import com.rogers.test.helpers.DateHelpersFunctions;
-import org.apache.commons.validator.routines.BigDecimalValidator;
-import org.apache.commons.validator.routines.CurrencyValidator;
+//import org.apache.commons.validator.routines.BigDecimalValidator;
+//import org.apache.commons.validator.routines.CurrencyValidator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -2859,20 +2859,20 @@ public class RogersWirelessDashboardPage extends BasePageClass {
 		}
 	}
 
-	public boolean currencyValueValidator(String strCurrencyValue){
-		strCurrencyValue = strCurrencyValue.replaceAll("$","").trim();
-		BigDecimalValidator validator = CurrencyValidator.getInstance();
-		BigDecimal amount =null;
-		if(System.getProperty("test_language")=="en") {
-			amount = validator.validate(strCurrencyValue, Locale.CANADA);
-		}else if(System.getProperty("test_language")=="fr"){
-			amount = validator.validate(strCurrencyValue, Locale.CANADA_FRENCH);
-		}
-		return amount!=null;
-
-
-
-	}
+//	public boolean currencyValueValidator(String strCurrencyValue){
+//		strCurrencyValue = strCurrencyValue.replaceAll("$","").trim();
+//		BigDecimalValidator validator = CurrencyValidator.getInstance();
+//		BigDecimal amount =null;
+//		if(System.getProperty("test_language")=="en") {
+//			amount = validator.validate(strCurrencyValue, Locale.CANADA);
+//		}else if(System.getProperty("test_language")=="fr"){
+//			amount = validator.validate(strCurrencyValue, Locale.CANADA_FRENCH);
+//		}
+//		return amount!=null;
+//
+//
+//
+//	}
 
 	public boolean isYouWIllNeedToReturnYourDeviceByDateDisplayedCorrectly() {
 		String strDate = getReusableActionsInstance().getWhenReady(modalneedToReturnDeviceOn).getText().trim();

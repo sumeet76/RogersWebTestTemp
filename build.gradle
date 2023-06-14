@@ -137,7 +137,7 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:latest.release'
+	api 'automation-utils:common-utils:1.74-SeleniumV4-SNAPSHOT'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'
@@ -149,7 +149,7 @@ dependencies {
 
 group = 'com.rogers'
 version = '1.0-SNAPSHOT'
-sourceCompatibility = '1.8'
+//sourceCompatibility = '1.8'
 
 sourceSets {
 
