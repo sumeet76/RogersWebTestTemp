@@ -455,6 +455,47 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
 
+	@FindBy(xpath="//span[@translate='global.cta.compareTVPackage']")
+	WebElement compareTvPackages;
+
+	@FindBy(xpath="//p[text()='Select packages to compare']")
+	WebElement TvpackageComparePopUp;
+
+	@FindBy(xpath="//span[@translate='global.cta.compareChannelLineup']")
+	WebElement compareChannelLineup;
+
+	@FindBy(xpath="//span[@translate='global.cta.emailChannelPDF']")
+	WebElement emailChannelsPdf;
+
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 5 Bundle']")
+	WebElement flex5;
+
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 10 Bundle']")
+	WebElement flex10;
+
+	@FindBy(xpath="//span[@translate='global.cta.sendPDF']")
+	WebElement sendPdf;
+
+	@FindBy(xpath="//span[@translate='global.cta.viewPDF']")
+	WebElement viewPdf;
+
+	@FindBy(xpath="//input[@id='ds-form-input-id-8']")
+	WebElement customerEmail;
+
+	@FindBy(xpath="//input[@id='ds-form-input-id-9']")
+	WebElement confirmCustomerEmail;
+
+
+	@FindBy(xpath="//p[text()='Success! PDF was sent']")
+	WebElement successPdfSend;
+
+	@FindBy(xpath="//span[@translate='global.cta.cancel']")
+	WebElement cancelPdfResend;
+
+	@FindBy(xpath="//span[@translate='global.cta.selectPackage']")
+	WebElement selectTvPackage;
+
+
 	/**
 	 * Click Load Offers button
 	 * @author aditi.jain
@@ -1588,6 +1629,76 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementTobeClickable(rdoBtnSelectExisitingAddress,60);
 		getReusableActionsInstance().executeJavaScriptClick(rdoBtnSelectExisitingAddress);
 	}
+
+	/*Methods for compare package*/
+	public void clkcompareTvPackages(){
+		getReusableActionsInstance().waitForElementVisibility(compareTvPackages,60);
+		getReusableActionsInstance().scrollToElement(compareTvPackages);
+		getReusableActionsInstance().executeJavaScriptClick(compareTvPackages);
+	}
+
+	public boolean verifyCompareTvPackagePopUp() {
+		return getReusableActionsInstance().isElementVisible(TvpackageComparePopUp,60);
+	}
+
+	public void clkcompareChannelLineup(){
+		getReusableActionsInstance().waitForElementVisibility(compareChannelLineup,60);
+		getReusableActionsInstance().scrollToElement(compareChannelLineup);
+		getReusableActionsInstance().executeJavaScriptClick(compareChannelLineup);
+	}
+
+	public void clkemailChannelsPdf(){
+		getReusableActionsInstance().waitForElementVisibility(emailChannelsPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(emailChannelsPdf);
+	}
+
+	public void selectPackagesToCompare(){
+
+		if(getReusableActionsInstance().isElementVisible(flex5,20)) {
+			getReusableActionsInstance().executeJavaScriptClick(flex5);
+		}
+
+		if(getReusableActionsInstance().isElementVisible(flex10,20)) {
+			getReusableActionsInstance().executeJavaScriptClick(flex10);
+		}
+
+	}
+
+	public void clkSendPdf(){
+		getReusableActionsInstance().waitForElementVisibility(sendPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(sendPdf);
+	}
+
+	public void clkViewPdf(String mainWindow){
+		getReusableActionsInstance().waitForElementVisibility(viewPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(viewPdf);
+		getReusableActionsInstance().switchToMainWindow(mainWindow);
+	}
+
+	public void enterCustomerEmail(String email){
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().scrollToElementAndClick(customerEmail);
+		getReusableActionsInstance().executeJavaScriptClick(customerEmail);
+		getReusableActionsInstance().enterText(customerEmail,email,60);
+	}
+
+	public void enterConfirmCustomerEmail(String cemail){
+		getReusableActionsInstance().scrollToElementAndClick(confirmCustomerEmail);
+		getReusableActionsInstance().executeJavaScriptClick(confirmCustomerEmail);
+		getReusableActionsInstance().enterText(confirmCustomerEmail,cemail,60);
+	}
+
+	public boolean verifySuccessPdfSend() {
+		return getReusableActionsInstance().isElementVisible(successPdfSend,60);
+	}
+
+	public void clkCancelPdfResend(){
+		getReusableActionsInstance().waitForElementVisibility(cancelPdfResend,120);
+		getReusableActionsInstance().executeJavaScriptClick(cancelPdfResend);
+	}
+	public void clkSelectTvPackage() {
+		getReusableActionsInstance().waitForElementVisibility(selectTvPackage, 60);
+		getReusableActionsInstance().executeJavaScriptClick(selectTvPackage);}
 
 }
 
