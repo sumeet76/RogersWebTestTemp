@@ -19,11 +19,13 @@ public class OneViewCH_REG_Auto_TC0066_MIG_SAI_ProductCampign_TermOffer_DBA_Mont
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 //		getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
+		getAccountOverViewPage().selectProduction();
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
-		//getRogersIgniteBundlesPage().clkSmartStream();
+
 		reporter.reportLogWithScreenshot("Internet Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
@@ -37,16 +39,16 @@ public class OneViewCH_REG_Auto_TC0066_MIG_SAI_ProductCampign_TermOffer_DBA_Mont
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		reporter.reportLogWithScreenshot("continue from terms");
-		getRogersIgniteBundlesPage().clkContinue();
-//		getRogersIgniteBundlesPage().clkContinueInternetAddon();
+	//	getRogersIgniteBundlesPage().clkContinue();
+	getRogersIgniteBundlesPage().clkContinueInternetAddon();
 //		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("load offers");
-//		getRogersIgniteCampaignPage().enterCoupon("TAG");
-//		getRogersIgniteCampaignPage().clickApplyCoupon();
-//		reporter.reportLogWithScreenshot("apply coupon");
-//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-//		reporter.reportLogWithScreenshot("Term Offer Applied");
+		/*reporter.reportLogWithScreenshot("load offers");
+		getRogersIgniteCampaignPage().enterCoupon("TAG");
+		getRogersIgniteCampaignPage().clickApplyCoupon();
+		reporter.reportLogWithScreenshot("apply coupon");
+		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+		reporter.reportLogWithScreenshot("Term Offer Applied");*/
 		getRogersIgniteCampaignPage().enterCoupon("KML");
 		getRogersIgniteCampaignPage().clickApplyCoupon();
 		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove Coupon option exist", "Remove Coupon does not exist");

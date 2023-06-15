@@ -16,6 +16,8 @@ public class OneViewCH_REG_Auto_TC0081_IgniteMappedOffers_SAI_TO_ISS_Test extend
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteOffers_SAI_Adding_ISS.getAccountNo(),TestDataHandler.IgniteOffers_SAI_Adding_ISS.getContactID());
         getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("select Internet Badge");
         getAccountOverViewPage().clickViewOffers();
         reporter.reportLogWithScreenshot("click View Offers");
