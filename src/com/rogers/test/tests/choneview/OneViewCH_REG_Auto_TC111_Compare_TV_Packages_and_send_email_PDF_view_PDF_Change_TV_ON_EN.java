@@ -23,20 +23,31 @@ public class OneViewCH_REG_Auto_TC111_Compare_TV_Packages_and_send_email_PDF_vie
 		getAccountOverViewPage().selectInternetBadage();
 		getAccountOverViewPage().selectProduction();
 		getAccountOverViewPage().clickProceed();
+		getInternetDashboardPage().clickChangeInternetPackage();
 
 		/*Click on Compare TV Packages*/
 		getRogersIgniteBundlesPage().clkcompareTvPackages();
+		reporter.reportLogWithScreenshot("compare package");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCompareTvPackagePopUp(),"Select packages to compare pop up appears successfully","Select packages to compare pop up didnt appeared");
+		reporter.reportLogWithScreenshot("compare package");
 		getRogersIgniteBundlesPage().clkcompareChannelLineup();
+		reporter.reportLogWithScreenshot("compare package");
 		getRogersIgniteBundlesPage().clkemailChannelsPdf();
+		reporter.reportLogWithScreenshot("compare package");
 		getRogersIgniteBundlesPage().selectPackagesToCompare();
+		reporter.reportLogWithScreenshot("compare package");
 		//getRogersIgniteBundlesPage().clkViewPdf(mainWidow);
 		getRogersIgniteBundlesPage().enterCustomerEmail("xtz@mailinator.com");
+		reporter.reportLogWithScreenshot("compare package");
 		getRogersIgniteBundlesPage().enterConfirmCustomerEmail("xtz@mailinator.com");
+		reporter.reportLogWithScreenshot("compare package");
 getRogersIgniteBundlesPage().clkSendPdf();
+		reporter.reportLogWithScreenshot("compare package");
 reporter.hardAssert(getRogersIgniteBundlesPage().verifySuccessPdfSend(),"PDF sent Successfully","PDF not sent successfully");
 getRogersIgniteBundlesPage().clkCancelPdfResend();
+		reporter.reportLogWithScreenshot("compare package");
 getRogersIgniteBundlesPage().clkSelectTvPackage();
+		reporter.reportLogWithScreenshot("compare package");
 
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
