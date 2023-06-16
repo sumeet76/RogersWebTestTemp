@@ -121,6 +121,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	}
 
 	public void clickNoTheyDont() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 30);
 		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
 

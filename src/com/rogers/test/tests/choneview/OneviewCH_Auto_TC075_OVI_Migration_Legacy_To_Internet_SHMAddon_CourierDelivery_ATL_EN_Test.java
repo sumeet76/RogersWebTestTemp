@@ -25,15 +25,17 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Click proceed button");
         reporter.reportLogWithScreenshot("Use this address");
 //        getAccountOverViewPage().selectAddress();
+//        getRogersIgniteBundlesPage().clickOkButton();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().clickNo();
+//        getRogersIgniteBundlesPage().clickNo();
         reporter.reportLogWithScreenshot("Service Availability");
-//        getRogersIgniteBundlesPage().refreshContinue();
-//        getRogersIgniteBundlesPage().clkContinue();
+        getRogersIgniteBundlesPage().refreshContinue();
+        getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.reportLogWithScreenshot("Internet selected");
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("SHM Internet Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
@@ -73,7 +75,6 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 
         reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
         reporter.reportLogWithScreenshot("Credit check page is displayed");
-
         reporter.reportLogWithScreenshot("evaluation form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));

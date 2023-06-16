@@ -58,7 +58,6 @@ public class OneViewCH_Auto_TC047_TV_Dashboard_ValidateLinks_ON_EN_Test extends 
        reporter.reportLogWithScreenshot("Clicked Continue on Reset Parental Controls");
         getTVDashboardPage().clickOK();
         reporter.reportLogWithScreenshot("Test Passed");
-
     }
 
     @BeforeMethod(alwaysRun=true)

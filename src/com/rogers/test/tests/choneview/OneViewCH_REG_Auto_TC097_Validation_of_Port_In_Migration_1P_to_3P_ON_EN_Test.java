@@ -18,6 +18,10 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         getRogersIgniteBundlesPage().clkContinue();
         //getRogersIgniteBundlesPage().clkUsethisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
@@ -33,8 +37,8 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         reporter.reportLogWithScreenshot("Product in cart");
         getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+        reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.reportLogWithScreenshot("Port In Service");
         getRogersIgniteBundlesPage().clkTVCheckbox();
@@ -48,11 +52,12 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         getRogersIgniteBundlesPage().contiueFromPortIn();
         reporter.reportLogWithScreenshot("portin continue");
         getRogersIgniteBundlesPage().contiueToCartSummary();
-        getRogersIgniteBundlesPage().clickExchangeLater();
+//        getRogersIgniteBundlesPage().clickExchangeLater();
 //        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
-        getRogersOVChannelsAndThemePacksPage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinue();
     //    getRogersIgniteBundlesPage().clkExpressCheckOut();
+//        getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -67,6 +72,9 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("credit form");
+        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+        reporter.reportLogWithScreenshot("Credit check page is displayed");
+        reporter.reportLogWithScreenshot("evaluation form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
         getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
         getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());

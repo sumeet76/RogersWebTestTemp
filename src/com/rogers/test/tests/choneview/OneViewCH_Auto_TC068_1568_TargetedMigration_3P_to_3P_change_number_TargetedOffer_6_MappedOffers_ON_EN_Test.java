@@ -71,6 +71,7 @@ public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_
 //        reporter.reportLogWithScreenshot("Channel added");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersOVChannelsAndThemePacksPage().clkbtnContinueOn4ktv();
+//        getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
         getRogersIgniteBundlesPage().fourKContentPopup();
         reporter.reportLogWithScreenshot("bottom to continue");
         reporter.softAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"internet add header displayed","internet addon header did not display");
