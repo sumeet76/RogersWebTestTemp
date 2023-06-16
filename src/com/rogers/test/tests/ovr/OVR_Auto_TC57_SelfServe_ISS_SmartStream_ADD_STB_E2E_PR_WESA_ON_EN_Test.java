@@ -23,7 +23,7 @@ public class OVR_Auto_TC57_SelfServe_ISS_SmartStream_ADD_STB_E2E_PR_WESA_ON_EN_T
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC57_SelfServe_ISS_SmartStream_ADD_STB_E2E_PR_WESA_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("PR_WESA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());

@@ -76,7 +76,7 @@ public class TestDataHandler {
 	public static AccountData tc15_solarisTVAccountStarterPackage;
 	public static AccountData tc14_SolarisTVAccountFlex5Package;
 	public static AccountData tc14_solarisTVAccountPopularPackage;
-	public static AccountData tc10_SolarisTVAccountForUpgradeON;
+	public static AccountData tc121_SolarisTVAccountGrandFathered;
 	public static AccountData tc12_SolarisTVAccountForUpgradeNL;
 	public static AccountData tc11_SolarisTVAccountForUpgradeNB;
 	public static AccountData tc30_internetAccountUpgrade;
@@ -402,6 +402,9 @@ public class TestDataHandler {
 	public static OvrReusableData tc_59_Ovr_SelfServe_IgniteTV_AddSTB;
 	public static OvrReusableData tc_62_Ovr_Mig_Data_3p_to_3p_6_Mapped_Offers;
 	public static OvrReusableData tc_63_Ovr_Targeted_Mig_Data_3p_to_3p;
+	public static OvrReusableData tc_03_Ovr_ERM_Mig_Data_2p_to_3p;
+	public static OvrReusableData tc_64_Ovr_FidoToRogers_Nac_Data_ISS;
+	public static OvrReusableData tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
@@ -547,7 +550,7 @@ public class TestDataHandler {
     	tc14_SolarisTVAccountFlex5Package = YamlHandler.getCableAccountData("TC14_SolarisTVAccountFlex5Package");
     	tc14_solarisTVAccountPopularPackage = YamlHandler.getCableAccountData("TC14_SolarisTVAccountPopularPackage");
     	tc10_SolarisTVAccountForUpgrade = YamlHandler.getCableAccountData("TC10_SolarisTVAccountForUpgrade");
-    	tc10_SolarisTVAccountForUpgradeON = YamlHandler.getCableAccountData("TC10_SolarisTVAccountForUpgradeON");
+    	tc121_SolarisTVAccountGrandFathered = YamlHandler.getCableAccountData("TC121_SolarisTVAccountGrandFathered");
     	tc12_SolarisTVAccountForUpgradeNL = YamlHandler.getCableAccountData("TC12_SolarisTVAccountForUpgradeNL");
     	tc11_SolarisTVAccountForUpgradeNB = YamlHandler.getCableAccountData("TC11_SolarisTVAccountForUpgradeNB");
     	tc09_SolarisTVOldConstructor = YamlHandler.getCableAccountData("TC09_SolarisTVOldConstructor");
@@ -879,5 +882,8 @@ public class TestDataHandler {
 		tc_59_Ovr_SelfServe_IgniteTV_AddSTB = YamlHandler.getOvrReusableData("TC59_SelfServe_IgniteTV_AddSTB");
 		tc_62_Ovr_Mig_Data_3p_to_3p_6_Mapped_Offers = YamlHandler.getOvrReusableData("TC62_Mig_Data_3P_to_3P_6Mapped_Offers");
 		tc_63_Ovr_Targeted_Mig_Data_3p_to_3p = YamlHandler.getOvrReusableData("TC63_Targeted_Mig_Data_3p_to_3p");
+		tc_03_Ovr_ERM_Mig_Data_2p_to_3p = YamlHandler.getOvrReusableData("ERM_TC03_Mig_Data_2p_TV_INT_to_3p");
+		tc_64_Ovr_FidoToRogers_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC64_FidoToRogers_Data_Nac_ISS");
+		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS");
 	}
 }

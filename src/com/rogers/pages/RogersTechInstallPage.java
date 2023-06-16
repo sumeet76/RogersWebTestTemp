@@ -743,8 +743,9 @@ public class RogersTechInstallPage extends BasePageClass {
 	public void clkTechInstallContinue() {
 		getReusableActionsInstance().waitForElementTobeClickable(btnTechInstallContinue, 60);
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().getWhenReady(btnTechInstallContinue, 30).click();
-		getReusableActionsInstance().clickIfAvailable(btnTechInstallContinue, 30);
+
 	}
 
 	/**

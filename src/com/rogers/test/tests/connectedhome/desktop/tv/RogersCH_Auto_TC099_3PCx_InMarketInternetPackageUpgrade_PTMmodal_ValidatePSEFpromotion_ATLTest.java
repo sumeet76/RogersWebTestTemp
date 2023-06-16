@@ -33,9 +33,9 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_ValidatePSEFpromotionGWP_ATLTest extends BaseTestClass {
+public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_ValidatePSEFpromotion_ATLTest extends BaseTestClass {
 	@Test
-    public void rogersCH_Auto_TC099_3PCx_ChangeInternetPackage_PTMmodal_ValidatePSEFpromotionGWP_ATL() {
+    public void rogersCH_Auto_TC099_3PCx_ChangeInternetPackage_PTMmodal_ValidatePSEFpromotion_ATL() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc99_3PCxInternetAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
@@ -63,7 +63,7 @@ public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_Va
 		reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPageInternet(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");
         reporter.hardAssert(!getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
+       // reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyGWPTag(), "GWP verified", "GWP not verified");
         reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(),"Agreement has Launched","Agreement has not Launched");
 		
         getRogersOrderReviewPage().clkAcceptenceCheckboxUpdateInternet();

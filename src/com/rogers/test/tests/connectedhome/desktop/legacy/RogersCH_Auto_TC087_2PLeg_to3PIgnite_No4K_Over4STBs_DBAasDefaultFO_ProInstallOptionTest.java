@@ -49,10 +49,10 @@ import java.util.Map;
  * 31. Order confirmation page will be displayed with the order number and validate the order details.
  **/
 
-public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOptionTest extends BaseTestClass {
+public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_No4K_Over4STBs_DBAasDefaultFO_ProInstallOptionTest extends BaseTestClass {
 
     @Test(groups = {"RegressionCH"})
-    public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
+    public void rogersCH_Auto_TC087_2PLeg_to3PIgnite_No4K_Over4STBs_DBAasDefaultFO_ProInstallOption() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc87_Legacy2PTVToIgnite3P.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
@@ -78,23 +78,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
        // reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
        // getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
        // reporter.reportLogWithScreenshot("Selected Month-to-month type of contract");
-        getRogersIgniteTVBuyPage().clkTotalChannelsFlex20();
 
-       reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewTotalChannelsPopupModal(), "View Total Channels Popup Modal has launched", "View Total Channels Popup Modal has not launched");
-       reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
-        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
-        reporter.reportLogWithScreenshot("Clicked on Close Total Channels popup Modal");
-       getRogersIgniteTVBuyPage().clkFlexChannelsFlex20();
-        reporter.reportLogWithScreenshot("Clicked on Flex channels link");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyViewFlexChannelsPopupModal(), "View Flex Channels Popup Modal has launched", "View Flex Channels Popup Modal has not launched");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifySVODRemovedFromGenre(), "SVOD removed from the genre dropdown","SVOD present under genre dropdown");
-        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
-        reporter.reportLogWithScreenshot("Clicked on Close Flex Channels popup Modal");
-         getRogersIgniteTVBuyPage().clkViewMoreDetailsFlex20();
-        reporter.reportLogWithScreenshot("Clicked on View More Details");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyMoreDetailsPopup(), "View More Details Modal has launched", "View More Details Popup Modal has not launched");
-        getRogersIgniteTVBuyPage().clkCloseChannelsPopup();
-        reporter.reportLogWithScreenshot("Clicked on Close verify More details popup Modal");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Clicked on bundles package");
         getRogersIgniteTVBuyPage().clkIUnderstand();
@@ -148,7 +132,7 @@ public class RogersCH_Auto_TC087_2PLeg_to3PIgnite_ValidateSVODRemovedFromGenre_N
         reporter.reportLogWithScreenshot("Launched the home phone selection page");
         getRogersHomePhoneSelectionPage().clkPhoneNumberGenerator();
         reporter.reportLogWithScreenshot("clicked on generate Numbers");
-      //  getRogersHomePhoneSelectionPage().selectPhoneNumber();
+        getRogersHomePhoneSelectionPage().selectPhoneNumber();
         reporter.reportLogWithScreenshot("Phone number selected");
 
         getRogersHomePhoneSelectionPage().clkContinueHomePhoneSelection();

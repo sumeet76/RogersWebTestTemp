@@ -36,7 +36,7 @@ public class RogersCH_Auto_TC075_DST_ISS_NAC_ValidateDSTdisplayofRecommendedBann
 
     @Test(groups = {"RegressionCH","SmartStreamNAC"})
     public void rogersCH_Auto_TC075_DST_ISS_NAC_ValidateDSTdisplayofRecommendedBanner_PostQuiz_InternetOffersPage() {
-        getDriver().get(System.getProperty("QaUrl")+"/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
         String  strAddressLine1=TestDataHandler.tc23_24_standaloneInternetAccountforUpgrade.getAccountDetails().getAddress().get("line1");
@@ -63,6 +63,7 @@ public class RogersCH_Auto_TC075_DST_ISS_NAC_ValidateDSTdisplayofRecommendedBann
         reporter.reportLogWithScreenshot("Verify the recommended Banner");
         getRogersInternetPackageSelectionPage().clkSmartStreamPackage();
         reporter.reportLogWithScreenshot("Select the best fit package");
+        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");
         getRogersInternetPackageSelectionPage().clkInternetBuyContinue();
 
         reporter.hardAssert(getRogersInternetProfilePage().verifyProfilePageSAI(),"Profile page has Launched","Profile page has not Launched");

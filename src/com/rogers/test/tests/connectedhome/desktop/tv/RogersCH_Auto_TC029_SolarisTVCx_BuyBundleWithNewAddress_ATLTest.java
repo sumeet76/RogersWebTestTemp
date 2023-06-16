@@ -59,14 +59,12 @@ public class RogersCH_Auto_TC029_SolarisTVCx_BuyBundleWithNewAddress_ATLTest ext
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 	  	 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
-//		 getRogersHomePage().clkNBProvinceLnk();
-		 getDriver().get(System.getProperty("QaUrl") + "/bundles?setProvince=NB");
-//		 reporter.hardAssert(getRogersHomePage().verifyIgnitepage(), "Ignite page has Launched", "Ignite page has not Launched");
-		 reporter.reportLogWithScreenshot("Navigated to IgniteTV Page - NB province");
+		 getDriver().get(System.getProperty("QaUrl") + "/bundles?setProvince=NL");
+		 reporter.reportLogWithScreenshot("Navigated to IgniteTV Page - NL province");
 		 getRogersHomePage().clkServiceability();
 		 reporter.reportLogWithScreenshot("Launched the customer availability check popup");
-		 String strAddressLine1 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-		 String strAddressLine2 = TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+		 String strAddressLine1 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+		 String strAddressLine2 = TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
 		 getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
 		 getRogersHomePage().clkIgniteAddressLookupSubmit();
 		 reporter.reportLogWithScreenshot("Launched the ignite-bundles page");

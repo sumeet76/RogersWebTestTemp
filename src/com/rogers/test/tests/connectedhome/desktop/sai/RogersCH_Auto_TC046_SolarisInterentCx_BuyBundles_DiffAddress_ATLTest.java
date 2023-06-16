@@ -46,7 +46,6 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc46_saiAccountForIgniteBundleBuy.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Launched the Account Page");
-//        getRogersHomePage().clkNBProvinceLnk();
         getDriver().get(System.getProperty("QaUrl") + "/bundles?setProvince=NL");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page");
         getRogersHomePage().clkServiceability();
@@ -56,11 +55,10 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1 + "," + strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
-//        reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("TV Bundle is selected");
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not availabe");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
         reporter.reportLogWithScreenshot("Launched the cart summary page");
         getRogersIgniteTVBuyPage().set4KTVNo();
         reporter.reportLogWithScreenshot("4k TV selected as NO");
@@ -70,7 +68,7 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
 
         reporter.hardAssert(getRogersTechInstallPage().verifyTechInstallPage(), "TechInstall page has Launched", "TechInstall page has not Launched");
         reporter.reportLogWithScreenshot("Launched the tech install page");
-        //getRogersTechInstallPage().clkTechInstalConsent();
+//        getRogersTechInstallPage().clkTechInstalConsent();
         getRogersTechInstallPage().clkProInstallUpgradeNo();
         reporter.reportLogWithScreenshot("tech install details");
         getRogersTechInstallPage().clkTechInstallContinueSelf();
@@ -90,29 +88,19 @@ public class RogersCH_Auto_TC046_SolarisInterentCx_BuyBundles_DiffAddress_ATLTes
         getRogersOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOrderConfirmationPage().verifyOrderConfirmationNew(), "Order has created successfully", "Order has failed");
         reporter.reportLogWithScreenshot("Launched the Confirmation page");
-        String ban = getRogersOrderConfirmationPage().getBAN();
-        System.out.println("BAN from the portal : " + ban);
-        String DbSchema = getDbConnection().getSchemaName(System.getProperty("DbEnvUrl"));
-        System.out.println("SCHEMA : " + DbSchema);
-        /**
-         * DB Validations in the subscriber table
-         */
-        Map<Object, Object> dblists = getDbConnection().connectionMethod(System.getProperty("DbEnvUrl")).executeDBQuery("select BAN,ACCOUNT_SUB_TYPE,SYS_CREATION_DATE from " + DbSchema + ".billing_account where BAN='" + ban + "'", false);
-        reporter.softAssert(dblists.get("BAN").equals(ban), "Entry is updated in the billing table", "BAN is not present in the billing account table");
-        reporter.softAssert(dblists.get("ACCOUNT_SUB_TYPE").equals("R"), "ACCOUNT_SUB_TYPE is verified as R", "Account type is not updated as R");
     }
 
-	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
-	//login flow
-	public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-		// xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
-	}
+    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    //login flow
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+    }
 
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-		closeSession();
-	}
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 
 
 }

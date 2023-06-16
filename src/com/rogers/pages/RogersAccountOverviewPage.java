@@ -22,10 +22,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class RogersAccountOverviewPage extends BasePageClass {
-
-
-
-
 	public RogersAccountOverviewPage(WebDriver driver) {
 		super(driver);
 	}

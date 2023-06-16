@@ -58,7 +58,7 @@ public class RogersCH_Auto_TC065_2PNAC_UnwiredCable_ESI_Minicart_legalText_insta
         String strAddressLine2= TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getUnwiredAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmit();
-        //Validate cableCondition="Unwired" from addressServices call, will be adding with selenium4
+        // Validate cableCondition= "U" (Unwired) from addressServices call, will be adding with selenium4
         reporter.reportLogWithScreenshot("Launched the ignite-bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(),"Bundles Page has launched","Bundles Page has not launched");
         getRogersIgniteTVBuyPage().selectStarterPackageMonthToMonthTypeOfContract();

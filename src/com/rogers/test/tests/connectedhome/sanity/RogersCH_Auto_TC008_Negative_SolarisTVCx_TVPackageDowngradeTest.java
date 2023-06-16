@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest extends BaseTestClass {
 
-    @Test(groups = {"SanityCH","RegressionCH","TVPlanUpgardeCH","ReleaseSanity"})
+    @Test(groups = {"SanityCH", "RegressionCH", "TVPlanUpgardeCH", "ReleaseSanity"})
     public void rogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngrade() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
@@ -36,51 +36,39 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
-            reporter.reportLogWithScreenshot("Click on Text as recovery option");
-            getRogersLoginPage().clkTextToAsRecoveryOption();
-            String strTestingTab = getDriver().getWindowHandle();
-            //Will open a new tab for ENS, to get verification code from ENS
-            reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
-            String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
-            getDriver().switchTo().window(strTestingTab);
-            reporter.reportLogWithScreenshot("Close the Overlay");
-            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-            getRegisterOrAccountRecoveryPage().clkBtnContinue();
-            reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-//        reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
         getRogersSolarisTVDashboardPage().clkTVBadge();
         reporter.reportLogWithScreenshot("Launched the TV dash board");
         getRogersSolarisTVDashboardPage().clkChangeTVPackage();
         reporter.reportLogWithScreenshot("Launched the TV packages page");
-      /*  getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
+
+        /* getRogersSolarisTVDashboardPage().clkViewMoreDetailsFlex5();
         reporter.reportLogWithScreenshot("clicked on more details");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteBoxPrice(),"Additional feature price not zero","zero Additional feature price");
-        reporter.reportLogWithScreenshot("clicked on verify details");*/
-        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanEn(),TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanFr());
-        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(),"Displayed the contat US popup","Download package has failed");
+        reporter.reportLogWithScreenshot("clicked on verify details"); */
+
+        getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanEn(), TestDataHandler.tc04_08_SolarisTVAccount.accountDetails.getDowngradePlanFr());
+        reporter.hardAssert(getRogersSolarisTVDashboardPage().verifycontatUSPopUp(), "Displayed the contat US popup", "Download package has failed");
         reporter.reportLogWithScreenshot("Launched the customer care popup");
+
        /* reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangePackagePopupHeader(),"Verified the Change Package Popup Header","Change Package Popup Header is not verified");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyBookACallBack(),"Verified the Book a call back link","Book a call back link not verified");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");*/
-      /* // If difference in cost between current and selected package is +/- 20 upgrade modal will be shown
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyLiveChat(),"Verified the Live chat link","Live Chat Link is not verified");
+         // If difference in cost between current and selected package is +/- 20 upgrade modal will be shown
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackagePopupHeader(),"Verified the Change TV Package Popup Header","Change TV Package Popup Header is not verified");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageModalContentHeader(),"Verified the Change Package modal content header", "Change Package Modal content header is not matching");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChangeTVPackageCancelBtn(),"Verified Change TV Package cancel button", "Cancel button verification failed");
-        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyPopupChangeTVPackageContinueBtn(), "Verified the Continue button", "Continue button not verified");*/
+        reporter.softAssert(getRogersSolarisTVDashboardPage().verifyPopupChangeTVPackageContinueBtn(), "Verified the Continue button", "Continue button not verified"); */
     }
 
-    @BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"strBrowser", "strLanguage"})
     //login flow
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,  ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.connectedhome_login, method);
+        startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_login, method);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -88,9 +76,4 @@ public class RogersCH_Auto_TC008_Negative_SolarisTVCx_TVPackageDowngradeTest ext
         closeSession();
     }
 
-
-
-
 }
-
-

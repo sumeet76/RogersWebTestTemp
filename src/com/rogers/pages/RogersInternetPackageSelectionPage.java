@@ -55,6 +55,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']")
 	WebElement VerifyRecommendedBannertitle;
 
+	@FindBy(xpath = "//div[@class='vertical-tile__ribbon__body -promo-available']/parent::div/following-sibling::div/descendant::a[contains(@aria-label, 'Add to cart')]")
+	WebElement btnRecommendedPkgAddtoCart;
+
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwn150pkgTypeOfContract;
 
@@ -90,6 +93,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet 2.5 Gigabit Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	WebElement btnInternet2d5Package;
 
 	@FindBy(xpath="//h3[text()='Ignite Internet 150u']")
 	WebElement headerIgniteInternet150;
@@ -187,7 +193,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ontario']//span[@class='m-navLink__chevron rds-icon-expand']")
 	WebElement lnkProvince;
 
-	@FindBy(xpath = "//*[text()='Take the quiz']")
+	@FindBy(xpath = "//button[@aria-label='Take the quiz']/span")
 	WebElement btnquiz;
 
 	@FindBy(xpath = "//label[@for='dsQ1A1']//span[contains(@class,'selection__label')]")
@@ -234,6 +240,15 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']/span[@role='text']")
 	WebElement btnBestAdd;
+
+	@FindBy(xpath = "//button[contains(@aria-label,'entered province')]")
+	WebElement btnViewPkgs;
+
+	public void clkViewPkgs() {
+		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs,10);
+		getReusableActionsInstance().getWhenReady(btnViewPkgs).click();
+		getReusableActionsInstance().staticWait(5000);
+	}
 
 	/**
 	 * selects the Internet package if it visible and ready if not click on the next arrow to get the desired package
@@ -306,6 +321,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	public void clkInternetPackage() {
 		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
+	}
+
+	public void clkInternet2d5Package() {
+		getReusableActionsInstance().getWhenReady(btnInternet2d5Package, 120).click();
 	}
 
 
@@ -419,6 +438,14 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	{
 		getReusableActionsInstance().waitForElementVisibility(VerifyRecommendedBannertitle, 90);
 		return getReusableActionsInstance().isElementVisible(VerifyRecommendedBannertitle,30);
+	}
+
+	/**
+	 * Add recommended banner (after DST) to cart
+	 */
+	public void clkRecommendedPkgAddtoCart()
+	{
+		getReusableActionsInstance().getWhenReady(btnRecommendedPkgAddtoCart, 30).click();
 	}
 
 	/**
@@ -815,4 +842,5 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		return getReusableActionsInstance().isElementVisible(txtGoodNewsInternetOffers, 60);
     }
+
 }

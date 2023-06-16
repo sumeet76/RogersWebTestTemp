@@ -72,7 +72,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath="//a[contains(@aria-label, '1 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
+	@FindBy(xpath="//a[contains(@aria-label, '1.5 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
