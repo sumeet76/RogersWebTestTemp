@@ -41,7 +41,7 @@ public class Mobile_RogersCH_Auto_TC008_LegacyCx_ValidateTVDashboardTest extends
 		reporter.reportLogWithScreenshot("Username entered");
 		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
-        getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSignInMobile();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
 		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());

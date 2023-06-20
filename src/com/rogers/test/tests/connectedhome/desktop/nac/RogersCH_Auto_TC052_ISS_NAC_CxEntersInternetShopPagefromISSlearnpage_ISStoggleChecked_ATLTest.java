@@ -35,13 +35,13 @@ public class RogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpag
 
     @Test(groups = {"RegressionCH", "SmartStreamNAC"})
     public void rogersCH_Auto_TC052_ISS_NAC_CxEntersInternetShopPagefromISSlearnpage_ISStoggleChecked_ATL() {
-        getDriver().get(System.getProperty("QaUrl")+"/streaming");
+        getDriver().get(System.getProperty("QaUrl")+"/streaming?env=qa");
         reporter.reportLogWithScreenshot("Launched the Stream Availability check page");
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("select NB region");
+        getRogersHomePage().clkNLProvinceLnk();
+        reporter.reportLogWithScreenshot("select NL region");
         getRogersInternetPackageSelectionPage().clkSmartStreamAvailability() ;
-        String  strAddressLine1=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line1");
-        String  strAddressLine2=TestDataHandler.tc25_IgniteServiceabilityAddressNB.getAccountDetails().getAddress().get("line2");
+        String  strAddressLine1=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line1");
+        String  strAddressLine2=TestDataHandler.tc52_IgniteSmartStreamNL.getAccountDetails().getAddress().get("line2");
         getRogersHomePage().setIgniteAddressLookup(strAddressLine1+","+strAddressLine2);
         getRogersHomePage().clkIgniteAddressLookupSubmitSS();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

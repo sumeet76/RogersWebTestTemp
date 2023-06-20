@@ -36,21 +36,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        if(getRogersLoginPage().verifyMFAScreenIsVisible()) {
-            reporter.reportLogWithScreenshot("Click on Text as recovery option");
-            getRogersLoginPage().clkTextToAsRecoveryOption();
-            String strTestingTab = getDriver().getWindowHandle();
-            //Will open a new tab for ENS, to get verification code from ENS
-            reporter.reportLogWithScreenshot("ENS");
-            String strPhoneNum = TestDataHandler.tc01_02_03_IgniteTVAccount.getAccountDetails().getRecoveryNumber();
-            String strEnsUrl = System.getProperty("EnsUrl");
-            String recoveryCode = getEnsVerifications().getTextVerificationCode(strPhoneNum, strEnsUrl);
-            getDriver().switchTo().window(strTestingTab);
-            reporter.reportLogWithScreenshot("Close the Overlay");
-            getRegisterOrAccountRecoveryPage().setVerificationCode(recoveryCode);
-            getRegisterOrAccountRecoveryPage().clkBtnContinue();
-            reporter.reportLogWithScreenshot("Continue to Account Overview");
-        }
+
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
     	getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
     	reporter.reportLogWithScreenshot("Launched the Account Page");
@@ -66,7 +52,7 @@ public class RogersCH_Auto_TC001_SolarisTVCx_ValidateTVDashboard_Channels_PDFTes
          reporter.reportLogWithScreenshot("Closed the available channels popup");
 
          //Verifying the Flexchannels
-        getRogersSolarisTVDashboardPage().clkViewfelxChannels();
+        getRogersSolarisTVDashboardPage().clkViewflexChannels();
         reporter.reportLogWithScreenshot("Displayed the available flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().verifyChannelList(),"flex channels are available","There are no flex channels");
         reporter.softAssert(getRogersSolarisTVDashboardPage().clklAndVerifyViewPDF(),"all the flex channels are displayed in PDF","PDF is not displaying");

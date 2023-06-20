@@ -35,16 +35,14 @@ public class RogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATLTest extends BaseTe
     public void rogersCH_Auto_TC085_3P_TVPackageDowngrade_FR_ATL()
     {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc01_02_03_IgniteTVAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
+        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc01_02_03_IgniteTVAccount.accountDetails.getBan());
         reporter.reportLogWithScreenshot("Account Selected");
-        getRogersHomePage().clkNBProvinceLnk();
-        reporter.reportLogWithScreenshot("Clicked NB Province Link");
         getRogersSolarisTVDashboardPage().clkFR();
         reporter.reportLogWithScreenshot("Launched the Account Page FR");
         getRogersSolarisTVDashboardPage().clkTVBadge();

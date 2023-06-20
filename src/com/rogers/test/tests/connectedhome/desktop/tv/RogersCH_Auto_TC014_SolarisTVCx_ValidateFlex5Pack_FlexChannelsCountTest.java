@@ -27,17 +27,16 @@ import java.lang.reflect.Method;
  *
  **/
 
-public class RogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5PackDashboardButtonsRepositioningTest extends BaseTestClass {
+public class RogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5Pack_FlexChannelsCountTest extends BaseTestClass {
 
 	 @Test(groups = {"RegressionCH","IgniteTVDashboardCH"})
-    public void rogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5PackDashboardButtonsRepositioning() {
+    public void rogersCH_Auto_TC014_SolarisTVCx_ValidateFlex5Pack_FlexChannelsCount() {
          reporter.reportLogWithScreenshot("Launched the SignIn popup");
          getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
          getRogersLoginPage().clkContinueInBrowser();
          getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getPassword());
          reporter.reportLogWithScreenshot("Enter the account credentials");
          getRogersLoginPage().clkSignInIFrame();
-         getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc14_SolarisTVAccountFlex5Package.getUsername());
          reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         // getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc14_SolarisTVAccountFlex5Package.accountDetails.getBan());
          reporter.reportLogWithScreenshot("Launched the Account Page");

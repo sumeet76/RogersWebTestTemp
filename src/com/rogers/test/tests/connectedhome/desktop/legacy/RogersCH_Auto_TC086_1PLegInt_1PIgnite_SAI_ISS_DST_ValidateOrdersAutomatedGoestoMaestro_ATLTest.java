@@ -59,11 +59,11 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Account Selected");
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Launched the Account Page");
-        getRogersHomePage().clkNLProvinceLnk();
-        reporter.reportLogWithScreenshot("Selected the NL Province");
-        getDriver().get(System.getProperty("QaUrl") + "/internet?env=qa");
+//        getRogersHomePage().clkNLProvinceLnk();
+//        reporter.reportLogWithScreenshot("Selected the NL Province");
+        getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");
-        getRogersHomePage().clkServiceability();
+        getRogersHomePage().clkInternetAvailability();
         getRogersHomePage().selectAddressOnFile();
         reporter.reportLogWithScreenshot("selected address on file");
         getRogersHomePage().clkUseAddress();
@@ -92,12 +92,9 @@ public class RogersCH_Auto_TC086_1PLegInt_1PIgnite_SAI_ISS_DST_ValidateOrdersAut
         reporter.reportLogWithScreenshot("Clicked on back to packages");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().VerifyRecommendedBanner(), "Best Fit package displayed post quiz", "Best Fit package displayed post quiz");
         reporter.reportLogWithScreenshot("Verify recommended banner");
-        //getRogersInternetPackageSelectionPage().selectIgniteSmartStream1GbpsCheckBox();
-        //reporter.reportLogWithScreenshot("Selected Ignite Smart Stream checkbox");
-        //getRogersInternetPackageSelectionPage().selectMonthToMonthTypeOfContact();
-        //reporter.reportLogWithScreenshot("Selected Month-to-month term contract");
-        getRogersInternetPackageSelectionPage().clkSmartStream1GbpsPackage();
-        reporter.reportLogWithScreenshot("Selected Add to Cart");
+
+        getRogersInternetPackageSelectionPage().clkRecommendedPkgAddtoCart();
+        reporter.reportLogWithScreenshot("Selected Add to Cart for recommended package");
         getRogersInternetPackageSelectionPage().clkIUnderstand();
         reporter.reportLogWithScreenshot("Selected Yes I understand button");
         reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyCartSummaryHeader(), "Cart Summary Page page has Launched", "Cart Summary Page page has not Launched");

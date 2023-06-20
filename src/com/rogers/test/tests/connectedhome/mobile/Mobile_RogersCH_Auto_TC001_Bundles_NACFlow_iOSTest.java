@@ -8,9 +8,6 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
-
-import static com.rogers.testdatamanagement.TestDataHandler.tc25_IgniteServiceabilityAddressNB;
 
 /**
  * This class contains the test method to test the IgniteTV buy flow for Rogers.com   
@@ -49,10 +46,10 @@ import static com.rogers.testdatamanagement.TestDataHandler.tc25_IgniteServiceab
  *
  **/
 
-public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClass {
+public class Mobile_RogersCH_Auto_TC001_Bundles_NACFlow_iOSTest extends BaseTestClass {
 
     @Test(groups = {"MobileRegressionCH"})
-    public void mobile_RogersCH_Auto_TC001_3PNAC_BuyBundle() {
+    public void mobile_RogersCH_Auto_TC001_Bundles_NACFlow_iOS() {
 
        /* reporter.reportLogWithScreenshot("Launched the Main QA Page");
         getRogersHomePage().clkBurgerMenuMobile();
@@ -134,7 +131,8 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
 
         reporter.hardAssert( getRogersPaymentOptionsPage().verifyPaymentModepage(),"Payment Mode page has Launched","Payment Mode page has not Launched");
         reporter.reportLogWithScreenshot("Launched the payment options page");
-        getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
+        getRogersPaymentOptionsPage().selectPaymentMode("Monthly Bill");
+        /*getRogersPaymentOptionsPage().selectPaymentMode("Pre-authorized Credit Card");
         getRogersPaymentOptionsPage().switchToCreditCardIFrame();
         getRogersPaymentOptionsPage().setCreditCardNumberIFrame(TestDataHandler.chPaymentInfo.getCreditCardDetails().getNumber());
         getRogersPaymentOptionsPage().switchOutOfCreditCardIFrame();
@@ -142,7 +140,7 @@ public class Mobile_RogersCH_Auto_TC001_3PNAC_BuyBundleTest extends BaseTestClas
         getRogersPaymentOptionsPage().setCVVMobile();
         getRogersPaymentOptionsPage().selectExpiryMonth();
         getRogersPaymentOptionsPage().selectExpiryYear(); 
-        reporter.reportLogWithScreenshot("Payment options Details");
+        reporter.reportLogWithScreenshot("Payment options Details");*/
         getRogersPaymentOptionsPage().clkPaymentConfirmMobile();
     	reporter.hardAssert(getRogersOrderReviewPage().verifyAgreementPage(),"Agreement page has Launched","Agreement page has not Launched");
 		reporter.reportLogWithScreenshot("Launched the order review page");

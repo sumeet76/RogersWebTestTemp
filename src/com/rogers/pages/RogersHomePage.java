@@ -124,6 +124,18 @@ public class RogersHomePage extends BasePageClass {
 
 	@FindBy(xpath ="//a[contains(@aria-label,'View bundles  View Ignite TV + Internet bundles available to you')]/span")
 	WebElement btnServiceability;
+
+	@FindBy(xpath = "//a[contains(@aria-label,'Subscribe Now')]")
+	WebElement btnSubscribeNowCraveTV;
+
+	@FindBy(xpath = "//h3[text()='To subscribe to Crave, you need an Ignite TV + Internet bundle']")
+	WebElement headerCraveModal;
+
+	@FindBy(xpath ="//a[@aria-label='Sign in to buy online']")
+	WebElement lnkCraveSignIn;
+
+	@FindBy(xpath ="//a[@aria-label='Shop Ignite TV and Internet bundles now']/span")
+	WebElement btnCraveShopNow;
 		
 	@FindBy(xpath = "//a[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
 	WebElement btnWelcomeback;
@@ -867,19 +879,34 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkNLProvinceLnk() {
-		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+//		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
 		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
 		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
 	}
 
+	public void clkSubscribeNow() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().getWhenReady(btnSubscribeNowCraveTV, 30).click();
+	}
 
+	public boolean verifyCraveHeader() {
+		return getReusableActionsInstance().isElementVisible(headerCraveModal, 20);
+	}
+
+	public boolean verifySignInThroughCraveModal() {
+		return getReusableActionsInstance().isElementVisible(lnkCraveSignIn, 20);
+	}
+
+	public void clkShopNowFromCraveModal() {
+		getReusableActionsInstance().getWhenReady(btnCraveShopNow, 20).click();
+	}
 	/**
 	 * Clicks on the 'Service ability' button
 	 * @author chinnarao.vattam
 	 */
 	public void clkServiceability() {
-		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().staticWait(3000);
 	if(getReusableActionsInstance().isElementVisible(overlayHomePage,2))
 		{
 		getReusableActionsInstance().waitForElementInvisibility(overlayHomePage,5);
@@ -1230,7 +1257,7 @@ public class RogersHomePage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectAddressOnFile() {
-		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,60);
+		getReusableActionsInstance().waitForElementVisibility(rdoAddressOnFile,120);
 		getReusableActionsInstance().clickWhenVisible(rdoAddressOnFile, 20);
 	}
 

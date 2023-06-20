@@ -23,7 +23,7 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_MDU_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_MDU_username"), System.getenv("FS_MDU_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getChampLoginPage().changeChampToFR();
         reporter.reportLogWithScreenshot("Changed Champ page to French");
@@ -34,8 +34,11 @@ public class OVR_Auto_TC38_FS_Anonymous_NAC_ISS_E2E_MDU_FR_ATL_Test extends Base
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("5 Danforth Street, Moncton", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 AIRPORT HEIGHTS DR, ST. JOHN'S, NL, A1A4W8", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

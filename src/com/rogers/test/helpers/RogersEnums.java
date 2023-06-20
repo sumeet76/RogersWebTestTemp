@@ -43,6 +43,7 @@ public class RogersEnums {
     	platformVersion,
     	appiumVersion,
     	deviceName,
-    	deviceOrientation
+    	deviceOrientation,
+		screenResolution
     };
 }

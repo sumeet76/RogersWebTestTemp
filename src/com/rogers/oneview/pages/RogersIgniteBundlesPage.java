@@ -560,7 +560,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
-		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,15);
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,60);
 		getReusableActionsInstance().scrollToElement(packageAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
 	}

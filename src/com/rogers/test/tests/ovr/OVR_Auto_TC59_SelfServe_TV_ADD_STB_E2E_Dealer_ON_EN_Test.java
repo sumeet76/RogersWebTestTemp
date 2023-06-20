@@ -54,12 +54,9 @@ public class OVR_Auto_TC59_SelfServe_TV_ADD_STB_E2E_Dealer_ON_EN_Test extends Ba
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded", "Installation Page not loaded");
         reporter.reportLogWithScreenshot("Installation Page");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
+        getBundleBuilderPage().selectDeliveryByCourier();
+        reporter.reportLogWithScreenshot("Courier Delivery selected");
+        getCreditCheckPage().goToPageBottom();
         getBundleBuilderPage().clkContinueInstallation();
         reporter.reportLogWithScreenshot("Continue to Order Review Page");
         reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order review page loaded", "Order review page not loaded");
