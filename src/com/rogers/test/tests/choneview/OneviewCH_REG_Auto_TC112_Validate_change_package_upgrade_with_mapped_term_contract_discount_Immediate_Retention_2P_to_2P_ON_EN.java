@@ -10,9 +10,9 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_REG_Auto_Validate_change_package_upgrade_with_mapped_term_contract_discount_Immediate_Retention_2P_to_2P_ON_EN extends BaseTestClass {
+public class OneviewCH_REG_Auto_TC112_Validate_change_package_upgrade_with_mapped_term_contract_discount_Immediate_Retention_2P_to_2P_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
-    public void oneviewCH_REG_Auto_Validate_change_package_upgrade_with_mapped_term_contract_discount_Immediate_Retention_2P_to_2P_ON_EN() {
+    public void oneviewCH_REG_Auto_TC112_Validate_change_package_upgrade_with_mapped_term_contract_discount_Immediate_Retention_2P_to_2P_ON_EN() {
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteOffersChangeTV_INTpackage.getAccountNo(),TestDataHandler.IgniteOffersChangeTV_INTpackage.getContactID());
         getAccountOverViewPage().selectInternetBadage();
