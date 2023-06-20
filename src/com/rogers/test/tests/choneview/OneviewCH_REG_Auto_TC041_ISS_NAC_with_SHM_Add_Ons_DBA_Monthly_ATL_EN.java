@@ -18,6 +18,8 @@ public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_E
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
+		getEnvironmentSelectionPage().selectProduction();
+		getEnvironmentSelectionPage().clickProceed();
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress_ALT(),"Chrome");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress_ALT()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -70,9 +72,9 @@ public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_E
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
-		//getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-		reporter.reportLogWithScreenshot(".enter Email Mail Address");
-		//getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo()); //no need for these steps
+//		reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getRogersIgniteBundlesPage().clkContinue();

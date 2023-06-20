@@ -44,7 +44,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-	@FindBy(xpath = "//button[@class='btn_s100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
+	@FindBy(xpath = "//span[text()='OK']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -209,7 +209,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]")
+	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +218,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
+	@FindBy(xpath = "(//h4[text()='FAITHTV']/following::span[text()='Add'])[1]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -447,6 +447,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
+		getReusableActionsInstance().staticWait(40000);
 		getReusableActionsInstance().waitForElementVisibility(addThemepack, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
@@ -488,7 +489,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-
+	getReusableActionsInstance().staticWait(10000);
 		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
 			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
 		}
@@ -543,7 +544,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
-		getReusableActionsInstance().waitForPageLoad();
+		//getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
@@ -589,6 +590,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}

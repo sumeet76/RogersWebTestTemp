@@ -180,7 +180,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//h1[@translate='global.label.OrderReview']")
 	WebElement  OrderReview;
 
-	@FindBy(xpath = "//span[contains(text(),'Download speed') or contains(text(),'Location de la passerelle')]/parent::li")
+	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
 	WebElement DownloadSpeedReview;
 
     @FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
