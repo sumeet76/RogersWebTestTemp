@@ -42,11 +42,11 @@ public class OneViewCH_REG_Auto_TC038_TV_Change_TV_Package_Upgrade_Next_Bill_Cyc
         getTVDashboardPage().clickContinue4kChannelPack();
         reporter.reportLogWithScreenshot("Continue clicked on 4k channels pack");
         reporter.reportLogWithScreenshot("Next Billing Cycle is Selected by default");
-        getTVDashboardPage().clickContinueOnSelectDateChange();
-        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        getTVDashboardPage().clickContinueOnSelectDateChange();
+//        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)

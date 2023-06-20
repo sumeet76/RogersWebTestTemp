@@ -72,9 +72,6 @@ public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_E
 		getCreditCheckPage().selectDeliveryByAppointment();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
-//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo()); //no need for these steps
-//		reporter.reportLogWithScreenshot(".enter Email Mail Address");
-//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getRogersIgniteBundlesPage().clkContinue();

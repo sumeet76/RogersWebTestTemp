@@ -447,7 +447,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void addThemepack() {
-		getReusableActionsInstance().staticWait(40000);
 		getReusableActionsInstance().waitForElementVisibility(addThemepack, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addThemepack);
 		/*if (getReusableActionsInstance().isElementVisible(yesToContinue, 120)) {
@@ -489,7 +488,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-	getReusableActionsInstance().staticWait(10000);
 		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
 			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
 		}
@@ -544,7 +542,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickAddChannel() {
-		//getReusableActionsInstance().waitForPageLoad();
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);

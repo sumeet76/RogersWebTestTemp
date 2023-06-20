@@ -480,7 +480,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 //			getReusableActionsInstance().scrollToElement(currentCollapisble);
 //			getReusableActionsInstance().clickWhenReady(currentCollapisble);
 //		}
-		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);

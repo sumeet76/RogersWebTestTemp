@@ -140,13 +140,6 @@ public class AccountOverViewPage extends BasePageClass {
     })
     WebElement btnHomePhoneBadge;
 
-    //	@FindBy(xpath = "//t[contains(text(),'Ignite')]/ancestor::a")})
-//	@FindBy(xpath = "//div[@translate='myaccoverview_get_ignite_bundle']/ancestor::div[@role='button']"),
-//	@FindAll({
-
-//    @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-home-phone']/ancestor::div[@class='tile-border']/descendant::span[@class='ds-link__copy']/parent::span")
-//    WebElement btnHomePhoneBadge;
-
     @FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-tv']/ancestor::div[@class='tile-border']/descendant::span[@class='ds-link__copy']/parent::span")
 
     WebElement btnGetIgniteTVBadge;
