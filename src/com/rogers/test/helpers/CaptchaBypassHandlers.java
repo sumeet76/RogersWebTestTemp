@@ -203,11 +203,7 @@ public class CaptchaBypassHandlers {
 	}
 
 	public static String ChOVNACUrl(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
-<<<<<<< HEAD
-		String queryParam = "LoginId="+strLoginID+"&UserRole=R76,BT%20User,R21,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310&IntID=&Target=UTE&TimeStamp=2023-03-24T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
-=======
 		String queryParam = "LoginId="+strLoginID+"&UserRole=R76,BT%20User,R21,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310&IntID=&Target=UTE&TimeStamp=2023-03-18T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
->>>>>>> 0b98ec612b8d1c523851e70f9deadcc576545705
 		String oneViewUrl = strUrl + queryParam;
 		return oneViewUrl;
 	}
