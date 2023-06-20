@@ -321,7 +321,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Sécurité résidentielle ']")
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
@@ -348,7 +348,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
-	@FindBy(xpath = "(//span[text()='Door/Window Sensor' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
 	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
@@ -437,7 +437,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -446,7 +446,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
 	WebElement exclusiveOffers;
 
-	@FindBy(xpath = "//span[contains(text(),'Rabais de 10 $')]")
+	@FindBy(xpath = "(//span[contains(text(),'Rabais de 90 $')])[1]")
 	WebElement wirelessHomeInternetCred;
 
 	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
@@ -454,6 +454,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
+
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement OK;
 
 	/**
 	 * Click Load Offers button
@@ -1137,6 +1140,9 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickOtherAddress() {
+		if (getReusableActionsInstance().isElementVisible(OK, 30)) {
+			getReusableActionsInstance().executeJavaScriptClick(OK);
+		}
 		getReusableActionsInstance().clickWhenReady(otherAddress,30);
 	}
 
@@ -1368,9 +1374,9 @@ public void activateHomePhoneltrPopUp() {
 	public void addSHMAddOn(){
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().staticWait(5000);
-		//getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
