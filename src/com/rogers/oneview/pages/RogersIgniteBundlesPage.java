@@ -324,6 +324,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[text()=' Smart Home Monitoring ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	WebElement homeSecurity ;
+
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
 	WebElement fourKContentContinue;
 
@@ -1230,6 +1233,10 @@ public void activateHomePhoneltrPopUp() {
 	public void clickSmartHomeMonitoring() {
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoring, 10);
 		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoring);
+	}
+	public void clickHomeSecurity() {
+		getReusableActionsInstance().waitForElementVisibility(homeSecurity, 10);
+		getReusableActionsInstance().executeJavaScriptClick(homeSecurity);
 	}
 
 	/**

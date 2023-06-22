@@ -17,6 +17,9 @@ public class OneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN ex
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
 
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");

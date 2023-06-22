@@ -392,7 +392,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
 	WebElement tvAddOnsPageHeader;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="//span[@translate='global.cta.addToCart']/ancestor::button")
 	WebElement addSTBToCart;
 
 	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
@@ -1436,7 +1436,6 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickAddToCartForSTB() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().scrollToElement(addSTBToCart);
 		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
 	}

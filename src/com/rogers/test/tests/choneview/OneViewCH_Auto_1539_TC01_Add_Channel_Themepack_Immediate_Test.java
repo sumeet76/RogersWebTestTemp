@@ -20,6 +20,9 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		getAccountOverViewPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Ignite TV widget select");
 		getAccountOverViewPage().selectTVBadage();
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
 //		reporter.reportLogWithScreenshot("select bundle");
 //		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
@@ -27,10 +30,10 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		getTVDashboardPage().clickManageChannelsAndThemepacks();
 		reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
 
-//		getTVDashboardPage().clickChannelTab();
-//		reporter.reportLogWithScreenshot("Channal tab");
-//		getTVDashboardPage().clickAddChannel();
-//		reporter.reportLogWithScreenshot("Add channel");
+		getTVDashboardPage().clickChannelTab();
+		reporter.reportLogWithScreenshot("Channal tab");
+		getTVDashboardPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("Add channel");
 
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("themepack tab");

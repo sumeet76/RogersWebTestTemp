@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_Add_ons_ON_EN extends BaseTestClass {
+public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim_CA_Wide_Call_IHP_AddOns_TMP_ProInstall_ON_EN extends BaseTestClass {
     @Test
-    public void oneViewCH_Auto_SUS_16646_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
+    public void oneViewCH_Auto_TC01_Validation_of_NAC_flow_3P_Add_both_International_Plus_Long_Distance_and_Unlimited_Canada_Wide_Calling_IHP_Add_ons_Test() {
         reporter.reportLogWithScreenshot("oneview env");
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().selectProduction();
@@ -64,11 +64,23 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
 //        getHomePhoneAddonsPage().incompatibleAddonRadioBtn();
 //        reporter.reportLogWithScreenshot("Incompatible Add ons Dialog box displayed");
         getRogersIgniteBundlesPage().clkContinue();
+
+        /*** Adding Campaign in cart summary page ***/
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        reporter.reportLogWithScreenshot("campaign");
+        getRogersIgniteCampaignPage().clickCampaignTab();
+        getRogersIgniteCampaignPage().enterCoupon("K1D");
+        reporter.reportLogWithScreenshot("Campaign code entered");
+        getRogersIgniteCampaignPage().clickApplyCoupon();
+        reporter.reportLogWithScreenshot("Campaign code applied");
+        reporter.reportLogWithScreenshot("close coupon alert");
+        getRogersIgniteCampaignPage().closeCouponAlert();
         reporter.reportLogWithScreenshot("Clicked on Continue");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("Checkout on Cart Summary page clicked");
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.reportLogWithScreenshot("Customer wish to continue dialog box appeared");
+
         getCustomerProfilePage().verifyCustomerProfile();
         reporter.reportLogWithScreenshot("Verified Customer profile header");
         getCustomerProfilePage().clkContinue();
@@ -87,11 +99,27 @@ public class OVCH_Auto_TC009_SUS_16646_Valida_of_NAC_flow_3P_Add_both_Intern_Plu
         reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
         reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
         reporter.reportLogWithScreenshot("Installation options");
+//        getCreditCheckPage().verifyInstallationOption();
+//        getCreditCheckPage().clkCourierDelivery();
+//        reporter.reportLogWithScreenshot("in person delivery");
+//        getCreditCheckPage().clickInPersonDelivery();
+//        getRogersIgniteBundlesPage().clkContinue();
+
+        /*** Professional Installation ***/
         getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().clkCourierDelivery();
-        reporter.reportLogWithScreenshot("in person delivery");
-        getCreditCheckPage().clickInPersonDelivery();
-        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("professional installation");
+        getCreditCheckPage().selectProfessionalInstallation();
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        getPaymentOptionsPage().clkContinue();
+
+
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().verifyBillingAndPaymentOption();
