@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -198,7 +199,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
 	WebElement viewOffer;
 
-	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	@FindAll({
+			@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button"),
+			@FindBy(xpath = "//p[text()='Recommended Offer(s)']"),
+	})
 	WebElement recommendedOffer;
 
 	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
