@@ -20,6 +20,10 @@ public class OneViewCH_REG_Auto_TC0091_Validate_SwitchingServiceability_CheckTec
             getAccountOverViewPage().enterDealerCodeDialogue();
             reporter.reportLogWithScreenshot("click ignite");
             getAccountOverViewPage().clickIgnite();
+            getEnvironmentSelectionPage().selectProduction();
+            reporter.reportLogWithScreenshot("Selected Production");
+            getEnvironmentSelectionPage().clickProceed();
+            reporter.reportLogWithScreenshot("Clicked proceed button");
             reporter.reportLogWithScreenshot("check availaiblity");
             getRogersIgniteBundlesPage().clickOtherAddress();
             reporter.reportLogWithScreenshot("OtherAddress");
@@ -51,6 +55,6 @@ public class OneViewCH_REG_Auto_TC0091_Validate_SwitchingServiceability_CheckTec
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

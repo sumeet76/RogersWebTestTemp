@@ -17,9 +17,12 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
-		getAccountOverViewPage().goToPageBottom();
+		//getAccountOverViewPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Ignite TV widget select");
 		getAccountOverViewPage().selectTVBadage();
+		getAccountOverViewPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getAccountOverViewPage().clickProceed();
 //		reporter.reportLogWithScreenshot("select bundle");
 //		getAccountOverViewPage().selectBundleChangeIfPresent();
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
@@ -66,7 +69,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-	closeSession();
+	//closeSession();
 	}
 }
 

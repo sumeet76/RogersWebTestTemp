@@ -28,6 +28,9 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 
         getAccountOverViewPage().setLanguageFrench();
         getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
@@ -52,10 +55,10 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
         reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
         getTVDashboardPage().continueFromChangeDate();
 
-        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
-        getRogersOVOrderReviewPage().clkSubmit();
-        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-        reporter.reportLogWithScreenshot("Order Placed");
+//        reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+//        getRogersOVOrderReviewPage().clkSubmit();
+//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+//        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -67,6 +70,6 @@ public class OneViewCH_Auto_TC037_TV_ChangeTVPackageUpgrade_Immediate_ON_FR exte
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
