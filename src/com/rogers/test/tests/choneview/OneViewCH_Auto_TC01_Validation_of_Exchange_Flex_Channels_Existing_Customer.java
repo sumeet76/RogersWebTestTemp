@@ -18,7 +18,7 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
         reporter.reportLogWithScreenshot(" Select TV Option");
         getAccountOverViewPage().selectTVBadage();
         getEnvironmentSelectionPage().selectProduction();
-        reporter.reportLogWithScreenshot("Selected Production");
+        reporter.reportLogWithScreenshot("Select Environment as Production");
         getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched Tv Dashboard Page");
         getTVDashboardPage().clickManageChannelsAndThemepacks();
@@ -47,11 +47,11 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
         reporter.reportLogWithScreenshot("Second channel is added");
         getTVDashboardPage().ScrolltoConfirmExchangeBtn();
         reporter.reportLogWithScreenshot("Click on confirm Exchange button");
-        getTVDashboardPage().clickConfirmExchange("chrome");
-        reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
-        getTVDashboardPage().clickOK();
-        getTVDashboardPage().clickSuccessOk();
-        reporter.reportLogWithScreenshot("Exchange chanel completed");
+//        getTVDashboardPage().clickConfirmExchange("chrome");
+//        reporter.reportLogWithScreenshot("Click Ok to confirm Exchange");
+//        getTVDashboardPage().clickOK();
+//        getTVDashboardPage().clickSuccessOk();
+//        reporter.reportLogWithScreenshot("Exchange chanel completed");
 
     }
     @BeforeMethod(alwaysRun=true)

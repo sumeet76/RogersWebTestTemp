@@ -54,6 +54,9 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='proceed-button']/button")
 	WebElement btnProceed;
 
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement OK;
+
 	/**
 	 * Enter user roles
 	 * @param env to select on oneview portal
@@ -64,6 +67,12 @@ public class EnvironmentSelectionPage extends BasePageClass {
 		String url = "https://"+env.toLowerCase()+"-oneview.rogers.com/web/a/dashboard";
 		getReusableActionsInstance().selectWhenReadyByVisibleText(targetUrl, url);
 //		getReusableActionsInstance().selectWhenReady(targetUrl, url);
+	}
+
+	public void selectOneViewFidoUrl(String env) {
+		getReusableActionsInstance().javascriptScrollByVisibleElement(targetUrl);
+		String url = "https://"+env.toLowerCase()+"-oneview.fido.ca";
+		getReusableActionsInstance().selectWhenReadyByVisibleText(targetUrl, url);
 	}
 
 	/**
@@ -125,6 +134,15 @@ public class EnvironmentSelectionPage extends BasePageClass {
 		enterUserRoles("CSR,BRT Authorized CSR-3,Oneview Pilot-1,Oneview Pilot-2,Oneview Pilot-4,Oneview BRT-1,Oneview BRT-2,Oneview BRT-3,R76,BT User,R21,R39,R60,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310,BRT Authorized CSR-1,BRT Authorized CSR-3,BRT Authorized CSR-4,IgniteLearningLabAdditiveRole");
 		String env = System.getProperty("OneViewEnv").substring(4);
 		selectOneViewUrl(env);
+		launch();
+	}
+
+	public void launchOneViewFido(String accountNumber, String contactId) {
+		enterAccountNumber(accountNumber);
+		enterContactId(contactId);
+		enterUserRoles("R76,BT User,R21,R39,R60,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310");
+		String env = System.getProperty("OneViewEnv").substring(4);
+		selectOneViewFidoUrl(env);
 		launch();
 	}
 
@@ -199,6 +217,9 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	public void clickProceed(){
 		getReusableActionsInstance().waitForElementVisibility(btnProceed, 20);
 		getReusableActionsInstance().clickWhenReady(btnProceed);
+		if (getReusableActionsInstance().isElementVisible(OK, 30)) {
+			getReusableActionsInstance().executeJavaScriptClick(OK);
+		}
 	}
 
 }

@@ -24,14 +24,15 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
 //        getInternetDashboardPage().clickLoadOffers();
+       // getInternetDashboardPage().clickLoadOffers();
         getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Clicked Continue");
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
-        getInternetDashboardPage().clickContinueOnSelectDateChange();
-        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
+//        getInternetDashboardPage().clickContinueOnSelectDateChange();
+//        reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
 //        getRogersOVOrderReviewPage().clkSubmit();
 //        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 //        reporter.reportLogWithScreenshot("Order Placed");

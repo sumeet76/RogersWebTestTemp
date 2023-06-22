@@ -36,15 +36,15 @@ public class Mobile_RogersCH_Auto_TC008_LegacyCx_ValidateTVDashboardTest extends
 			getRogersLoginPage().clkContinueInBrowser();
 		}
 		reporter.reportLogWithScreenshot("Continue in Browser Selected");
-		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc35_digitalTVAccount.getUsername());
+		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc37_legacyRHP.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		reporter.reportLogWithScreenshot("Username entered");
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc35_digitalTVAccount.getPassword());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
-        getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSignInMobile();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc35_digitalTVAccount.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
 		reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
         reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkTVBadgeMobile();

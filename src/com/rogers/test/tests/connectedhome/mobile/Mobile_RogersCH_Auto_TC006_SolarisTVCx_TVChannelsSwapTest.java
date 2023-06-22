@@ -37,23 +37,23 @@ public class Mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwapTest extends B
     @Test(groups = {"MobileRegressionCH"})
    public void mobile_RogersCH_Auto_TC006_SolarisTVCx_TVChannelsSwap() {
      reporter.reportLogWithScreenshot("Launched the SignIn popup");
-     if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+    /* if (getRogersLoginPage().isOverlayContainerDisplayed()) {
       reporter.reportLogWithScreenshot("Select Continue in browser.");
       getRogersLoginPage().clkContinueInBrowser();
       reporter.reportLogWithScreenshot("Continue in Browser Selected");
-     }
+     }*/
      getRogersLoginPage().setUsernameMobile(TestDataHandler.tcm06_IgniteTVAccount.getUsername());
      getRogersLoginPage().clkContinueInBrowser();
      getRogersLoginPage().setPasswordMobile(TestDataHandler.tcm06_IgniteTVAccount.getPassword());
-     reporter.reportLogWithScreenshot("Enter the account credentails");
-     getRogersLoginPage().clkSignInIFrame();
+     reporter.reportLogWithScreenshot("Enter the account credentials");
+      getRogersLoginPage().clkSignInMobile();
      reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-     // reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
+//      reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
      reporter.reportLogWithScreenshot("Launched the Account Page");
      getRogersSolarisTVDashboardPage().clkTVBadgeMobile();
      reporter.reportLogWithScreenshot("Launched the TV dash board");
      getRogersSolarisTVDashboardPage().clkChangeFlexChannelsMobile();
-     reporter.reportLogWithScreenshot("TV channels pannel has displayed");
+     reporter.reportLogWithScreenshot("TV channels panel has displayed");
      getRogersSolarisChannelsExchangePage().verifyExchangeChannelPage();
      reporter.reportLogWithScreenshot("TV channels exchange page has launched");
      getRogersSolarisChannelsExchangePage().verifyChannelsPannel();

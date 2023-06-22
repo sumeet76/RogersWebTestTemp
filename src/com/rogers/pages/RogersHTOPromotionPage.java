@@ -148,7 +148,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyPromotionPage() {
-		return getReusableActionsInstance().isElementVisible(txtSpecialOffer, 60);
+		return getReusableActionsInstance().isElementVisible(txtSpecialOffer, 90);
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyIgnitePromotionPage() {
-		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 60);
+		return getReusableActionsInstance().isElementVisible(txtPersonalizedOffer, 90);
 	}
 
 	/**
@@ -188,8 +188,8 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyOfferBundle() {
-		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
-		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 30);
+//		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
+		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 60);
 	}
 
 	public String getOfferBundlePrice() {

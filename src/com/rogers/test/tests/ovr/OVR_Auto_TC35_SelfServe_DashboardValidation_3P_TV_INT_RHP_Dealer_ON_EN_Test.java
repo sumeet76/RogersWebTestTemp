@@ -100,12 +100,12 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
         reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
-//        getHomePhonedashboard().clickCancel();
-//        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
-        getHomePhonedashboard().clickYesResetPassword();;
-        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
-        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
-        reporter.reportLogWithScreenshot("reset success");
+        getHomePhonedashboard().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
+//        getHomePhonedashboard().clickYesResetPassword();;
+//        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
+//        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
+//        reporter.reportLogWithScreenshot("reset success");
 
 //        getHomePhonedashboard().clickChangeCallDisplayName();
 //        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");

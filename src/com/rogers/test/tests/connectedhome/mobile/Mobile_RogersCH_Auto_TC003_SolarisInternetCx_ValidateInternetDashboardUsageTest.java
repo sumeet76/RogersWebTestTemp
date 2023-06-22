@@ -34,16 +34,16 @@ public class Mobile_RogersCH_Auto_TC003_SolarisInternetCx_ValidateInternetDashbo
     @Test(groups = {"MobileRegressionCH"})
     public void mobile_RogersCH_Auto_TC003_SolarisInternetCx_ValidateInternetDashboardUsage() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        if (getRogersLoginPage().isOverlayContainerDisplayed()) {
+       /* if (getRogersLoginPage().isOverlayContainerDisplayed()) {
             reporter.reportLogWithScreenshot("Select Continue in browser.");
             getRogersLoginPage().clkContinueInBrowser();
             reporter.reportLogWithScreenshot("Continue in Browser Selected");
-        }
+        }*/
         getRogersLoginPage().setUsernameMobile(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc16_SolarisInternetAccountWithUsage.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentails");
-        getRogersLoginPage().clkSignInIFrame();
+        getRogersLoginPage().clkSignInMobile();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc16_SolarisInternetAccountWithUsage.accountDetails.getBan());
         reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");

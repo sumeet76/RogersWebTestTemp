@@ -1,12 +1,16 @@
 package com.rogers.oneview.pages;
 
 
-import com.rogers.pages.base.BasePageClass;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+
+
+import com.rogers.pages.base.BasePageClass;
+import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -486,7 +490,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-
 		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
 			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
 		}
@@ -587,6 +590,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}

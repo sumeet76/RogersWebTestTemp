@@ -23,6 +23,13 @@ public class EnsHomePage extends BasePageClass{
 	
 	@FindBy (xpath = "//input[@name='Password']")
 	WebElement inputPassword;
+
+	@FindBy (xpath = "//button[@id='details-button']")
+	WebElement btnAdvancedSettings;
+
+	@FindBy (xpath = "//a[@id='proceed-link']")
+	WebElement btnProceedEns;
+
 	
 	@FindBy (xpath = "//span[@class='submit']")
 	WebElement btnSignIn;
@@ -39,7 +46,8 @@ public class EnsHomePage extends BasePageClass{
 		getReusableActionsInstance().waitForNumberOfWindowsToBe(2, 10);
 		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 		getDriver().switchTo().window(tabs.get(1));
-//		getDriver().get(strEnsUrl);
+		getReusableActionsInstance().staticWait(5000);
+		//getDriver().get(strEnsUrl);
 	}
 	
 	/**
@@ -75,7 +83,14 @@ public class EnsHomePage extends BasePageClass{
 		}
 		
 	}
-	
+	public void clkSafeToProceed() {
+
+		if(getReusableActionsInstance().isElementVisible(btnAdvancedSettings)) {
+			getReusableActionsInstance().getWhenReady(btnAdvancedSettings).click();
+			getReusableActionsInstance().getWhenReady(btnProceedEns).click();
+		}
+
+	}
 	/**
 	 * Click on the Sign In button
 	 * @author ning.xue

@@ -23,7 +23,7 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("PR_GSA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());

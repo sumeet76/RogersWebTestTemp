@@ -22,10 +22,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class RogersAccountOverviewPage extends BasePageClass {
-
-
-
-
 	public RogersAccountOverviewPage(WebDriver driver) {
 		super(driver);
 	}
@@ -628,7 +624,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkLegacyInternetBadge() {
-		getReusableActionsInstance().getWhenReady(btnLegacyInternetBadge, 120).click();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(btnLegacyInternetBadge);
 	}
 	
 
@@ -665,8 +662,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * Clicks on the 'TV Badge' option on the dash board
 	 * @author chinnarao.vattam
 	 */
-	public void clkTVBadge( ) {	
-		getReusableActionsInstance().getWhenReady(btnTVBadge, 60).click();
+	public void clkTVBadge( ) {
+		getReusableActionsInstance().executeJavaScriptClick(btnTVBadge);
 	}
 	
 	/**
@@ -684,7 +681,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkRHPBadge() {
-		getReusableActionsInstance().getWhenReady(btnRHPBadge, 90).click();
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		getReusableActionsInstance().executeJavaScriptClick(btnRHPBadge);
 		}
 
 	/**
@@ -692,7 +690,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkSmartStream() {
-		getReusableActionsInstance().getWhenReady(btnSmartStream, 90).click();
+		getReusableActionsInstance().executeJavaScriptClick(btnSmartStream);
 	}
 
 	/**

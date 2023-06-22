@@ -34,9 +34,9 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
@@ -87,10 +87,10 @@ public class OVR_Auto_TC03_Migration_1pINT_to_ISS_AdditionalSTB_E2E_Dealer_ON_EN
 //        reporter.reportLogWithScreenshot("Continue to install options  page");
 //        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
 //        reporter.reportLogWithScreenshot("Install Options page");
-//        getBundleBuilderPage().selectExpressProInstall();
-//        getBundleBuilderPage().clkTechInstallSlot();
-//        reporter.reportLogWithScreenshot("Time Slot selected");
-//        getBundleBuilderPage().setMobileNumber();
+//        getBundleBuilderPage().selectDeliveryByCourier();
+//        //getBundleBuilderPage().clkTechInstallSlot();
+//        //reporter.reportLogWithScreenshot("Time Slot selected");
+//        //getBundleBuilderPage().setMobileNumber();
 //        reporter.reportLogWithScreenshot("tech install details");
 //        getBundleBuilderPage().clkContinueInstallation();
 //

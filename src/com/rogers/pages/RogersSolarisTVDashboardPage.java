@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -47,7 +48,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//embed[@id='plugin']")
 	WebElement lnkPDFPage;
 
-	@FindBy(xpath = "//span[text()='FR']")
+	@FindAll({@FindBy(xpath = "//span[text()='FR']"),
+			@FindBy(xpath = "//div[@class='d-flex align-items-center container']//span[contains(text(),'Français')]")
+	})
 	WebElement lnkFR;
 
 	@FindBy(xpath = "//button[@aria-label='View more details about your package' and @aria-expanded='false']/span")
@@ -105,7 +108,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Want to change your TV package?' or text()='Vous voulez changer votre forfait télé?']")
 	WebElement headerChangepkg;
 
-	@FindBy(xpath = "//span[text()='Changing the TV package' or text()='Changer votre forfait Télé.']")
+	@FindBy(xpath = "//span[text()='Changing your TV package' or text()='Changer votre forfait Télé.']")
 	WebElement headerChangeTVpkg;
 
 	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
@@ -135,7 +138,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@aria-label, 'Contact')]")
 	WebElement lnkContactUs;
 
-	@FindBy(xpath = "//span[@id='ariaPopupHeader']")
+	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
 	WebElement popupContatUS;
 	//div[@class='live-support']
 
@@ -308,8 +311,9 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkTVBadge() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolaristvBadge,60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
-		//getReusableActionsInstance().getWhenReady(btnSolaristvBadge,40).click();
+
 	}
 
 	/**
@@ -402,7 +406,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Click the ViewfelxChannels link on Solaris TV dashboard page
 	 * @author chinnarao.vattam
 	 */
-	public void clkViewfelxChannels() {
+	public void clkViewflexChannels() {
 		getReusableActionsInstance().waitForElementVisibility(lnkViewfelxChannels, 60);
 		getReusableActionsInstance().getWhenReady(lnkViewfelxChannels,10).click();
 	}
@@ -476,7 +480,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkManageChannelsAndThemePacks() {
-		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,60);
+		getReusableActionsInstance().waitForElementVisibility(btnManageChannelsAndThemePacks,120);
 		getReusableActionsInstance().getWhenReady(btnManageChannelsAndThemePacks, 30).click();
 	}
 
@@ -497,10 +501,12 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		//getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
 		//Need ti to pull channels from ATG
 		getReusableActionsInstance().staticWait(10000);
-		WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
+		getReusableActionsInstance().waitForElementInvisibility(By.className("QSIPopOverShadowBox"),90);
+		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannels);
+		/*WebElement lnkChangeFlexChannelsMobile = getDriver().findElement(By.xpath("//a[@id='ctaExchangeFlexMobile']"));
 		getReusableActionsInstance().waitForElementVisibility(lnkChangeFlexChannelsMobile, 60);
 		getReusableActionsInstance().waitForElementTobeClickable(lnkChangeFlexChannelsMobile, 60);
-		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);
+		getReusableActionsInstance().executeJavaScriptClick(lnkChangeFlexChannelsMobile);*/
 	}
 	/**
 	 * To verify Exchange FlexChanne link
@@ -530,7 +536,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void selectSolarisTVPackage(String strPackageNameEn, String strPackageNameFr) {
-		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']/button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label, '" + strPackageNameFr + "')]/span");
+		By packageNameLocator = By.xpath("//div[@class='vertical-tile__cta']//button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label, '" + strPackageNameFr + "')]/span");
 		if(getReusableActionsInstance().isElementVisible(packageNameLocator,60))
 		{		
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 20);
@@ -731,8 +737,8 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * Clicks on SHM Badge
 	 * @author Mirza.Kamran
 	 */
-	public void clkSHMBadge() {		
-		getReusableActionsInstance().getWhenReady(btnSHMBadge,60).click();
+	public void clkSHMBadge() {
+		getReusableActionsInstance().executeJavaScriptClick(btnSHMBadge);
 	}
 
 	
@@ -831,7 +837,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public void clkFR() {
-		getReusableActionsInstance().clickIfAvailable(lnkFR, 30);
+		getReusableActionsInstance().getWhenReady(lnkFR, 60).click();
 	}
 
 	/**

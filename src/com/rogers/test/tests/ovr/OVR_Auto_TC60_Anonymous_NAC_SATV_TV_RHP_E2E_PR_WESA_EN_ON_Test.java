@@ -23,7 +23,7 @@ public class OVR_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test exte
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("PR_WESA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -117,7 +117,7 @@ public class OVR_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test exte
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

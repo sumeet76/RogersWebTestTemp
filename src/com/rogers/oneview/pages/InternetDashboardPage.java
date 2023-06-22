@@ -184,7 +184,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
 	WebElement DownloadSpeedReview;
 
-    @FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+    @FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
     WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -854,11 +854,11 @@ public class InternetDashboardPage  extends BasePageClass {
 //		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
 		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
 		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
-		String[] d1 = download.split(" ");
-		System.out.println(d1[4]);
-		String[] u1 = upload.split(" ");
-		System.out.println(u1[4]);
-		Boolean areEqual = d1[4].equals(u1[4]);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
 		if (areEqual) {
 			System.out.println("Download and Upload speed Symmetrical");
 			return true;

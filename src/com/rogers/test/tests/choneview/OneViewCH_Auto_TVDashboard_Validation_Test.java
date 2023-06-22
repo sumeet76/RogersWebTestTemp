@@ -18,6 +18,9 @@ public class OneViewCH_Auto_TVDashboard_Validation_Test extends BaseTestClass {
         //reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");

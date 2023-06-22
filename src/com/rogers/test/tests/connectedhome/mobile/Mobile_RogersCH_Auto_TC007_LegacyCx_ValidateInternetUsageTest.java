@@ -35,14 +35,14 @@ public class Mobile_RogersCH_Auto_TC007_LegacyCx_ValidateInternetUsageTest exten
 			getRogersLoginPage().clkContinueInBrowser();
 		}*/
 		reporter.reportLogWithScreenshot("Continue in Browser Selected");
-		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc36_legacyInternetAccount.getUsername());
+		getRogersLoginPage().setUsernameMobile(TestDataHandler.tc37_legacyRHP.getUsername());
 		getRogersLoginPage().clkContinueInBrowser();
 		reporter.reportLogWithScreenshot("Username entered");
-		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc36_legacyInternetAccount.getPassword());
+		getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc37_legacyRHP.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
-        getRogersLoginPage().clkSignInIFrame();
+		getRogersLoginPage().clkSignInMobile();
     	reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc36_legacyInternetAccount.accountDetails.getBan());
+		getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc37_legacyRHP.accountDetails.getBan());
     	reporter.hardAssert(getRogersAccountOverviewPage().verifyLoginSuccessWelcome(),"Launched the Account Page","Account Page hasn't launched");
     	reporter.reportLogWithScreenshot("Launched the Account Page");
 		getRogersAccountOverviewPage().clkLegacyInternetMobile();

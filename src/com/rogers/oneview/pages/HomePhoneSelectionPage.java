@@ -13,7 +13,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	}
 
 //	@FindBy(xpath = "//span[contains(text(),'Cancel') or contains(text(),'Annuler')]//following::button//child::span[contains(text(),'Continue') or contains(text(),'Continuer')]")
-	@FindBy(xpath = "//div[@class='button-set']/child::button//span[text()='Continue']")
+	@FindBy(xpath = "//span[@translate='global.cta.cancel']/following::span[@translate='global.cta.continue']")
 	WebElement continueOnGeneratePhone;
 
 	//@FindBy(xpath = "(//span[@translate='global.cta.continue'])/ancestor::button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']")

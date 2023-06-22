@@ -3,6 +3,16 @@ package com.rogers.yaml.pojo;
 public class MutableCapabilities {
 	private String platformName;
 	private String browserVersion;
+
+	public String getScreenResolution() {
+		return screenResolution;
+	}
+
+	public void setScreenResolution(String screenResolution) {
+		this.screenResolution = screenResolution;
+	}
+
+	private String screenResolution;
 	/**
 	 * @return the browserVersion
 	 */

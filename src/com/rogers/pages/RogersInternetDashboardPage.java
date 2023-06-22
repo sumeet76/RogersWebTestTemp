@@ -32,8 +32,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnSolarisInternetBadge;
 
 	@FindAll({
-	@FindBy(xpath = "//h1[@class='-mb8']"),
-	@FindBy(xpath = "//div[@rchapiexposer='global.cta.at']")})
+			@FindBy(xpath = "//h1[@class='-mb8']"),
+			@FindBy(xpath = "//div[@rchapiexposer='global.cta.at']")})
 	WebElement infoInternet;
 
 	@FindBy(xpath = "//*[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -secondary -large ng-star-inserted']")
@@ -47,20 +47,22 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnSolChangeInternetPackage;
 	//span[@translate='global.dashboard.common.changeInternetPackage']
 
-	@FindBy(xpath = "//h1[@class='flex items-center mb-5 text-headline1']")
+	@FindBy(xpath = "//h1[contains(text(), \"Setup & Install\")] | //p[contains(text(), \"Select your device\")]")
 	WebElement txtIgniteWifiHub;
 
 	@FindBy(xpath = "//div[@class='live-support']")
 	WebElement popupContatUS;
-	
-	@FindBy(xpath = "//div[@class='popup-modal-body__content']")
+
+	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
 	WebElement popupContatUSInternetDowngarde;
-	
+
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popUpInternetPopup;
 
 	//@FindBy(xpath = "//span[@id='ariaChangeWifiPassword']/ancestor::span[@role='text']")
-	@FindBy(xpath = "//a[@aria-label='Change your WiFi password. The link will open a new tab in your browser.']//span[@class='ds-icon d-inline-flex rds-icon-open-new']")
+	@FindAll({@FindBy(xpath = "//span[contains(text(), \"change your WiFi pass\")]"),
+			@FindBy(xpath = "//a[@aria-label='Change your WiFi password. The link will open a new tab in your browser.']//span[@class='ds-icon d-inline-flex rds-icon-open-new']")})
+
 	WebElement btnWifiPassword;
 
 	@FindBy(xpath = "//div[@id='terms-conditions']")
@@ -70,59 +72,59 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath="//a[contains(@aria-label, '1 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
+	@FindBy(xpath="//a[contains(@aria-label, '1.5 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
 	WebElement btnSAInternetChangeOK;
-	
+
 	@FindBy(xpath = "//i[@class='ute-icon-button-right']")
 	WebElement imgNext;
-	
+
 	@FindBy(xpath = "//i[@class='ute-icon-button-left']")
 	WebElement imgPrevious;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'preloader')]")
 	WebElement popupLoadingFingers;
-	
+
 	@FindBy(xpath = "//i[@class='li-loader']")
-	WebElement popupLoadingFingersInternet;	
-	
+	WebElement popupLoadingFingersInternet;
+
 	@FindBy(xpath = "//div[@class='preloader loading-secondary']")
 	WebElement popupLoadingFingersMobile;
-	
+
 	@FindBy(xpath = "//div[@class='owl-item active']//ins[@translate='global.cta.select']")
 	WebElement btnSelectInternetPackageMobile;
-	
+
 	@FindBy(xpath = "//a[@href='#']/img")
 	WebElement btnVaButton;
-	
+
 	@FindBy(xpath = "//h1[@translate='global.label.internet']")
 	WebElement txtInternet;
-	
+
 	@FindBy(xpath = "//a[@href='#' and @class='mat-menu-trigger va-header-ham-button']")
 	WebElement btnVaMenu;
 	//a[@class='mat-menu-trigger va-header-ham-button']
-	
+
 	@FindBy(xpath = "//button[@id='va-menu-minimum-button']")
 	WebElement btnVAMininmize;
 
 	@FindBy(xpath = "//iframe[@id='va-iframe']")
 	WebElement ifrmVA;
 
-	
+
 	@FindBy(xpath = "//div[@id='va-welcome-header']")
 	WebElement txtVaWelcome;
-	
+
 	@FindBy(xpath = "//input[@id='va-welcome-input']")
 	WebElement txtVaCustomerName;
-	
+
 	@FindBy(xpath = "//button[@id='va-welcome-send-button']")
 	WebElement btnVaWelcomeSend;
-	
+
 	@FindBy(xpath = "//input[@name='va-welcome-input']")
 	WebElement selVaTopicList;
-	
+
 	@FindBy(xpath = "//button[@id='va-menu-close-button']")
 	WebElement btnVAClose;
 
@@ -194,7 +196,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true if the Internet usage displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyInternetUsage() {	
+	public boolean verifyInternetUsage() {
 		return getReusableActionsInstance().isElementVisible(txtInternetUsage,30);
 	}
 
@@ -215,16 +217,17 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkChangeInternetPackage() {
-			getReusableActionsInstance().getWhenReady(btnChangeInternetPackage,90).click();
+		getReusableActionsInstance().getWhenReady(btnChangeInternetPackage,90).click();
 	}
-	
+
 	/**
 	 * Click the Solaris Internet Badge on the Solaris account page
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
-		//getReusableActionsInstance().getWhenReady(btnSolarisInternetBadge,40).click();
+
 	}
 
 	/**
@@ -236,12 +239,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
 	}
+
 	/**
 	 * Verify the Internet header text on the Solaris Internet dash board
 	 * @return true if the Internet heading displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyInternet() {		
+	public boolean verifyInternet() {
 		return getReusableActionsInstance().isElementVisible(infoInternet,40);
 	}
 
@@ -254,12 +258,13 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(lnkInternetUsageAlerts);
 
 	}
+
 	/**
 	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
 	 * @return true if the Internet Usage Alerts link displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyUsageAndAlerts() {		
+	public boolean verifyUsageAndAlerts() {
 		return getReusableActionsInstance().isElementVisible(infoUsageAndAlerts,30);
 	}
 
@@ -337,6 +342,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		//getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		//getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
+
 	/**
 	 * verify the Change Internet Package button on Solaris Internet dash board is present or not
 	 *  @return true if button is not present, else false
@@ -345,20 +351,21 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	public boolean verifyChangeInternetPackageBtnNotPresent() {
 		return !(getReusableActionsInstance().isElementVisible(btnSolChangeInternetPackage, 10));
 	}
+
 	/**
 	 * Click the Change Internet Package button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkSolChangeInternetPackageMobile() {	
+	public void clkSolChangeInternetPackageMobile() {
 		getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolChangeInternetPackage);
 	}
-	
+
 	/**
 	 * Click the Change Internet Package OK button on Solaris Internet dash board
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkInternetChangeOK() {		
+	public void clkInternetChangeOK() {
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
 		getReusableActionsInstance().staticWait(8000);
 	}
@@ -384,7 +391,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyInternetPage() {	
+	public boolean verifyInternetPage() {
 		return getReusableActionsInstance().isElementVisible(txtInternet, 30);
 	}
 

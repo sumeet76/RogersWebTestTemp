@@ -34,6 +34,9 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         getCheckAvailabilityPage().checkAvailability("43 Airport Heights", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
@@ -52,7 +55,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.reportLogWithScreenshot("Home Phone Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageFR());
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to port in popup");
@@ -64,24 +67,24 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Channel Personalization page and Exchange Options");
-//        getRogersIgniteExchangePage().clickExchangeNow();
-//        reporter.reportLogWithScreenshot("Exchange Now");
-//        getRogersIgniteExchangePage().verifyChannelToSwapHeader();
-//        getRogersIgniteExchangePage().selectFirstChannelToRemove();
-//        reporter.reportLogWithScreenshot("first channel selected");
-//        getRogersIgniteExchangePage().clickSelectButton();
-//        reporter.reportLogWithScreenshot("button select");
-//        getRogersIgniteExchangePage().selectFirstChannelToAdd();
-//        reporter.reportLogWithScreenshot("first channel to Add");
-//        getRogersIgniteExchangePage().clickSelectButton();
-//        reporter.reportLogWithScreenshot("Channel Swapped");
-//        getRogersIgniteExchangePage().clkContinue();
+        getRogersIgniteExchangePage().clickExchangeNow();
+        reporter.reportLogWithScreenshot("Exchange Now");
+        getRogersIgniteExchangePage().verifyChannelToSwapHeader();
+        getRogersIgniteExchangePage().selectFirstChannelToRemove();
+        reporter.reportLogWithScreenshot("first channel selected");
+        getRogersIgniteExchangePage().clickSelectButton();
+        reporter.reportLogWithScreenshot("button select");
+        getRogersIgniteExchangePage().selectFirstChannelToAdd();
+        reporter.reportLogWithScreenshot("first channel to Add");
+        getRogersIgniteExchangePage().clickSelectButton();
+        reporter.reportLogWithScreenshot("Channel Swapped");
+        getRogersIgniteExchangePage().clkContinue();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k tv popup");
-        //getRogersIgniteBundlesPage().contiue4KContent();
-        //reporter.reportLogWithScreenshot("4k Content popup");
+        getRogersIgniteBundlesPage().contiue4KContent();
+        reporter.reportLogWithScreenshot("4k Content popup");
 
         reporter.reportLogWithScreenshot("Continue to Internet Add Ons page");
         reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Internet Add Ons Page loaded","Internet Add Ons Page not loaded");
@@ -126,7 +129,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

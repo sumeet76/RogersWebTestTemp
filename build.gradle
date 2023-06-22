@@ -56,8 +56,10 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'ReleaseName', test_release
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
-	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'ensEnv',test_ens_env
 	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
+	systemProperty 'OVFidoUrl' , test_OVFidoUrl
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
 
 
 	useTestNG(){
@@ -111,6 +113,8 @@ task "localTest"(type: Test) {
 	systemProperty 'ReleaseName', test_release
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
+	systemProperty 'OVFidoUrl' , test_OVFidoUrl
+	systemProperty 'ensEnv',test_ens_env
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 

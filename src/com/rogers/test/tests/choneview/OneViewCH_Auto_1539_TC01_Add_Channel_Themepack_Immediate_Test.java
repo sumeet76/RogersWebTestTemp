@@ -17,7 +17,7 @@ public class OneViewCH_Auto_1539_TC01_Add_Channel_Themepack_Immediate_Test exten
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("TV Badge");
-		getAccountOverViewPage().goToPageBottom();
+		//getAccountOverViewPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("Ignite TV widget select");
 		getAccountOverViewPage().selectTVBadage();
 		getEnvironmentSelectionPage().selectProduction();

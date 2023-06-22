@@ -47,8 +47,8 @@ public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homeph
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("click continue");
-		getRogersIgniteBundlesPage().clickExchangeLater();
-		reporter.reportLogWithScreenshot("click exchange");
+//		getRogersIgniteBundlesPage().clickExchangeLater();
+//		reporter.reportLogWithScreenshot("click exchange");
 		getRogersOVChannelsAndThemePacksPage().clickAddChannel();
 		reporter.reportLogWithScreenshot("click add channel");
 		getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
