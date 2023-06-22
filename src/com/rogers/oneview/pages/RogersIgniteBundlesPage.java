@@ -345,7 +345,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Caméra de sonnette Élan']//parent::div/parent::div/parent::div//child::button)[1]")
