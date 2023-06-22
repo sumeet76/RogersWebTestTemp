@@ -19,6 +19,9 @@ public class OneViewCH_Auto_Internet_Dashboard_Validation_Test extends BaseTestC
 //        reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");

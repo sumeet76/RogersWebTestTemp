@@ -18,6 +18,8 @@ public class OneviewCH_REG_Auto_TC033_TV_Dashboard_Reset_Parental_Controls_And_R
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectTVBadage();
 		reporter.reportLogWithScreenshot("Launched the TV dashboard page");
+		getEnvironmentSelectionPage().selectProduction();
+		getEnvironmentSelectionPage().clickProceed();
 		getTVDashboardPage().goToPageBottom();
 		getTVDashboardPage().clickResetParentalControl();
 		reporter.reportLogWithScreenshot("Reset Parental Controls popup has launched");		
