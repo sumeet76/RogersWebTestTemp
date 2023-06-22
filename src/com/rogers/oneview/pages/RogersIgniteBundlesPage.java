@@ -455,11 +455,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
 
-<<<<<<< HEAD
+
 	@FindBy(xpath="//span[@translate='global.cta.compareTVPackage']")
 	WebElement compareTvPackages;
 
-	@FindBy(xpath="//p[text()='Select packages to compare']")
+	@FindBy(xpath="//p[text()='Select packages to compare' or text()='Sélectionnez les forfaits à comparer']")
 	WebElement TvpackageComparePopUp;
 
 	@FindBy(xpath="//span[@translate='global.cta.compareChannelLineup']")
@@ -468,10 +468,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.emailChannelPDF']")
 	WebElement emailChannelsPdf;
 
-	@FindBy(xpath="//input[@value='Rogers Ignite Flex 5 Bundle']")
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 5 Bundle' or @value='Offre groupée Élan Flex 5']")
 	WebElement flex5;
 
-	@FindBy(xpath="//input[@value='Rogers Ignite Flex 10 Bundle']")
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 10 Bundle' or @value='Offre groupée Élan Flex 10']")
 	WebElement flex10;
 
 	@FindBy(xpath="//span[@translate='global.cta.sendPDF']")
@@ -480,14 +480,14 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.viewPDF']")
 	WebElement viewPdf;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-8']")
+	@FindBy(xpath="//input[@id='ds-form-input-id-8' or @id='ds-form-input-id-15']")
 	WebElement customerEmail;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-9']")
+	@FindBy(xpath="//input[@id='ds-form-input-id-9' or @id='ds-form-input-id-16']")
 	WebElement confirmCustomerEmail;
 
 
-	@FindBy(xpath="//p[text()='Success! PDF was sent']")
+	@FindBy(xpath="//p[text()='Success! PDF was sent' or text()='C’est réussi! Le PDF a été envoyé']")
 	WebElement successPdfSend;
 
 	@FindBy(xpath="//span[@translate='global.cta.cancel']")
@@ -496,10 +496,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//span[@translate='global.cta.selectPackage']")
 	WebElement selectTvPackage;
 
-=======
+
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement OK;
->>>>>>> c39e9e38bbe10b452cefd51b0f7aedb6e2dba980
+
 
 	/**
 	 * Click Load Offers button

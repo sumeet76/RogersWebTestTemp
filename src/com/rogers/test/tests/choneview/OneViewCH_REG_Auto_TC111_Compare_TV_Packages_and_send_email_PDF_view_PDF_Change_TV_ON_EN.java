@@ -37,10 +37,6 @@ public class OneViewCH_REG_Auto_TC111_Compare_TV_Packages_and_send_email_PDF_vie
 		getRogersIgniteBundlesPage().selectPackagesToCompare();
 		reporter.reportLogWithScreenshot("compare package");
 		//getRogersIgniteBundlesPage().clkViewPdf(mainWidow);
-		/*getRogersIgniteBundlesPage().enterCustomerEmail("xtz@mailinator.com");
-		reporter.reportLogWithScreenshot("compare package");
-		getRogersIgniteBundlesPage().enterConfirmCustomerEmail("xtz@mailinator.com");
-		reporter.reportLogWithScreenshot("compare package");*/
 getRogersIgniteBundlesPage().clkSendPdf();
 		reporter.reportLogWithScreenshot("compare package");
 reporter.hardAssert(getRogersIgniteBundlesPage().verifySuccessPdfSend(),"PDF sent Successfully","PDF not sent successfully");
