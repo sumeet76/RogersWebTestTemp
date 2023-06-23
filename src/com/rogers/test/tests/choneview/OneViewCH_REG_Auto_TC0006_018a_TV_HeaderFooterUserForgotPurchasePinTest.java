@@ -25,10 +25,8 @@ public class OneViewCH_REG_Auto_TC0006_018a_TV_HeaderFooterUserForgotPurchasePin
 				getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.solarisTV.getContactID());
     			reporter.reportLogWithScreenshot("Launched the account dashboard page");
     			getAccountOverViewPage().selectTVBadage();
-				getAccountOverViewPage().selectProduction();
-				reporter.reportLogWithScreenshot("Select Environment as Production");
-				getAccountOverViewPage().clickProceed();
-				reporter.reportLogWithScreenshot("clicked Proceed button");
+    			getAccountOverViewPage().selectProduction();
+    			getAccountOverViewPage().clickProceed();
     			reporter.reportLogWithScreenshot("Launched the TV dashboard page");
     			reporter.softAssert(getTVDashboardPage().verifyHeader(),"Header is available","Verification of Header failed");
     			reporter.reportLogWithScreenshot("Header available on TV Dashboard page");

@@ -19,9 +19,7 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
-        reporter.reportLogWithScreenshot("Click proceed button");
         getRogersIgniteBundlesPage().clkContinue();
         //getRogersIgniteBundlesPage().clkUsethisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
@@ -56,14 +54,14 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
 //        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-    //    getRogersIgniteBundlesPage().clkExpressCheckOut();
+//        getRogersIgniteBundlesPage().clkExpressCheckOut();
 //        getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         getHomePhoneAddonsPage().clkContinue();
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue");
@@ -90,10 +88,10 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         //reporter.reportLogWithScreenshot("continue");
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Phone number generated");
-        //getHomePhoneSelectionPage().clkContinue();
-        //   reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-    //    reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-    //    reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
+//        getHomePhoneSelectionPage().clkContinue();
+//        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+//        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+//        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         getCreditCheckPage().goToPageBottom();
         reporter.reportLogWithScreenshot("in person delivery");
@@ -125,7 +123,7 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     }
 

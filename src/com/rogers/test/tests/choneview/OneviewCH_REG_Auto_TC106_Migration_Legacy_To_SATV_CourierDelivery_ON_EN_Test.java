@@ -51,7 +51,7 @@ public class OneviewCH_REG_Auto_TC106_Migration_Legacy_To_SATV_CourierDelivery_O
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("After Exchange later");
         getRogersIgniteBundlesPage().clickReviewAddons();
         getCustomerProfilePage().clkContinue();
@@ -89,6 +89,7 @@ public class OneviewCH_REG_Auto_TC106_Migration_Legacy_To_SATV_CourierDelivery_O
         reporter.reportLogWithScreenshot("Phone Number Selected");
         getCreditCheckPage().goToPageBottom();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinue();
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("installation options");
         getCreditCheckPage().clkCourierDelivery();
