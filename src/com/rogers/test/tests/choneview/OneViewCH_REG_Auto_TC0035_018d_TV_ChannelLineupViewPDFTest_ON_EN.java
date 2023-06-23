@@ -25,6 +25,8 @@ public class OneViewCH_REG_Auto_TC0035_018d_TV_ChannelLineupViewPDFTest_ON_EN ex
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisTV.accountDetails.getBan(), TestDataHandler.solarisTV.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectTVBadage();
+		getAccountOverViewPage().selectProduction();
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");
 		getTVDashboardPage().clickViewChannelLineUp();
 		reporter.hardAssert(getTVDashboardPage().verifyViewPdf(),"Channel Line up displays view PDF button","View PDF button on channel line up not available- Test failed");

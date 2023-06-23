@@ -20,6 +20,8 @@ public class OneViewCH_REG_Auto_TC0046_InternetDashboard_Validate_Support_Links_
 //        reporter.hardAssert(getAccountOverViewPage().verifySuccessfulLogin(),"Login Successful","Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("select Internet badge");
         getInternetDashboardPage().goToPageBottom();
         if(getInternetDashboardPage().verifLlnkLearnMoreWallToWallWifi()) {
