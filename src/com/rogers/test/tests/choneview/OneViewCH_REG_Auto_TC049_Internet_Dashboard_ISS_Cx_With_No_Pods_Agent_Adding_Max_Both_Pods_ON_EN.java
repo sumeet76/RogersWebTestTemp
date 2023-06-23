@@ -17,6 +17,10 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SAI_ISSCxPods.getAccountNo(),TestDataHandler.SAI_ISSCxPods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click Add Pods Button");
         getInternetDashboardPage().clickAddToCartForPods();
@@ -28,7 +32,7 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         reporter.hardAssert(getInternetDashboardPage().verifyRestricted(),"Restricted appeared","Restricted did not appeared");
         getInternetDashboardPage().clickAddToCartForPods();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
-       // getInternetDashboardPage().clickPlusToAddPod();
+        getInternetDashboardPage().clickPlusToAddRestrictedPod();
         reporter.reportLogWithScreenshot("click Add To Cart For Pods");
         reporter.hardAssert(getInternetDashboardPage().verifySecondMaximumLimitReached(),"Second maximum limit reached appeared","Second maximum limit reached did not appeared");
         getInternetDashboardPage().clickContinueButton();
@@ -38,9 +42,9 @@ public class OneViewCH_REG_Auto_TC049_Internet_Dashboard_ISS_Cx_With_No_Pods_Age
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-//        getRogersOVOrderReviewPage().clickSubmitOrder();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clickSubmitOrder();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

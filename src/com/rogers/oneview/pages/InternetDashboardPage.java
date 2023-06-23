@@ -119,7 +119,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.dashboard.internet.pods.addPods']/ancestor::button")
 	WebElement addPodsButton;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
 	WebElement addPodToCart;
 
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
@@ -128,6 +128,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	//@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
 	@FindBy(xpath = "//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span")
 	WebElement plusButtonToAddPod;
+
+	@FindBy(xpath = "(//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span)[2]")
+	WebElement plusButtonToAddRestrictedPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
 	WebElement minusButtonToRemovePod;
@@ -703,6 +706,16 @@ public class InternetDashboardPage  extends BasePageClass {
 		}
 	}
 
+	public void clickPlusToAddRestrictedPod() {
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().scrollToElement(plusButtonToAddRestrictedPod);
+
+		while(!getReusableActionsInstance().isElementVisible(secondMaximumLimitReached, 10)){
+			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddRestrictedPod, 45);
+			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddRestrictedPod);
+			getReusableActionsInstance().waitForPageLoad();
+		}
+	}
 
 	/*
 	 * verify Maximum Limit Reached

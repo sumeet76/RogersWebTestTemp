@@ -44,8 +44,8 @@ public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue is clicked");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later is clicked");
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.reportLogWithScreenshot("Exchange later is clicked");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Clicked on Continue");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -135,7 +135,6 @@ public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim
 		reporter.reportLogWithScreenshot("sumbit order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-
     }
 
     @BeforeMethod (alwaysRun=true)

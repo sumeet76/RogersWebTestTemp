@@ -24,7 +24,7 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-    //    getRogersIgniteBundlesPage().refreshContinue();
+
         getRogersIgniteBundlesPage().clkContinueServiceable();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
@@ -36,7 +36,9 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
 //      reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+       /* getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();*/
         reporter.reportLogWithScreenshot("Points to remember");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
