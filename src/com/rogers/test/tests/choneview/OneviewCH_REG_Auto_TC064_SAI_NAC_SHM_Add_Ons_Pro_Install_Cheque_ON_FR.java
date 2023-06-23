@@ -26,6 +26,9 @@ public class OneviewCH_REG_Auto_TC064_SAI_NAC_SHM_Add_Ons_Pro_Install_Cheque_ON_
 		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 		reporter.reportLogWithScreenshot("address");
+		getAccountOverViewPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getAccountOverViewPage().clickProceed();
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress(),"Chrome");
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),TestDataHandler.anonymousData.contactDetails.getAddress()+" is serviceable",TestDataHandler.anonymousData.contactDetails.getAddress()+" not serviceable");
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -119,7 +122,6 @@ public class OneviewCH_REG_Auto_TC064_SAI_NAC_SHM_Add_Ons_Pro_Install_Cheque_ON_
 	public void afterTest() {
 		closeSession();
 	}
-
 }
 
 

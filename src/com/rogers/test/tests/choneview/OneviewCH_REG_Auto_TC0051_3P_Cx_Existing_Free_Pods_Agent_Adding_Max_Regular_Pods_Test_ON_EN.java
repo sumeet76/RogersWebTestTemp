@@ -17,7 +17,11 @@ public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max3pCx_Pods.getAccountNo(),TestDataHandler.Max3pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
-    //    reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
+    //   reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
     //   reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
         getInternetDashboardPage().clickAddPodsButton();
         reporter.reportLogWithScreenshot("click AddPods Button ");
@@ -34,9 +38,9 @@ public class OneviewCH_REG_Auto_TC0051_3P_Cx_Existing_Free_Pods_Agent_Adding_Max
         reporter.reportLogWithScreenshot("click Customer Understand Checkbox");
         getInternetDashboardPage().clickContinueButton();
         reporter.reportLogWithScreenshot("click Continue Button");
-    //   reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
-    //    getRogersOVOrderReviewPage().clickSubmitOrder();
-////        reporter.reportLogWithScreenshot("click Submit Order");
+        reporter.hardAssert(getInternetDashboardPage().verifyOrderReview(),"OrderReview appeared","OrderReview did not appeared");
+        getRogersOVOrderReviewPage().clickSubmitOrder();
+        reporter.reportLogWithScreenshot("click Submit Order");
     }
 
         @BeforeMethod(alwaysRun=true)

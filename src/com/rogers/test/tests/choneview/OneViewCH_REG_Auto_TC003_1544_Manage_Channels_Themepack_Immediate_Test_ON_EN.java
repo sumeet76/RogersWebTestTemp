@@ -27,10 +27,10 @@ public class OneViewCH_REG_Auto_TC003_1544_Manage_Channels_Themepack_Immediate_T
 		getTVDashboardPage().clickAddChannel();
 		getTVDashboardPage().clickThemepacksTab();
 		reporter.reportLogWithScreenshot("Themepack tab");
-
 		//getTVDashboardPage().clickThemepackTabFromBundle();
 		reporter.reportLogWithScreenshot("themepack added");
 		getTVDashboardPage().addThemepack();
+		reporter.reportLogWithScreenshot("themepack added");
 		reporter.reportLogWithScreenshot("4k popup");
 		//	getRogersIgniteBundlesPage().fourKTVPopup();
 		//	reporter.reportLogWithScreenshot("4k continue");

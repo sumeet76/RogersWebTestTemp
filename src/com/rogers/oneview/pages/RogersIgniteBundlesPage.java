@@ -166,7 +166,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
-	@FindBy(xpath = "//div[@class='modal-body']/child::div[4]/div/*[last()]")
+	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
 	WebElement scrollToLastPoint;
 
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
@@ -345,10 +345,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
-	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Caméra de sonnette Élan']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
 	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
@@ -547,8 +547,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().scrollToElement(loadOffers);
+//		getReusableActionsInstance().staticWait(3000);
+//		getReusableActionsInstance().scrollToElement(loadOffers);
 		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
@@ -837,7 +837,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */
 	public void clkCollapse() {
-		getReusableActionsInstance().clickIfAvailable(collapse,45);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 
 	/**
@@ -847,7 +847,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
-		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
+		getReusableActionsInstance().executeJavaScriptClick(exchangeLater);
 	}
 
 	/**
@@ -865,7 +865,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().scrollToElement(internetCheckbox);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(internetCheckbox);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 
@@ -1291,8 +1291,8 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickSmartHomeMonitoring() {
-		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoring, 10);
-		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoring);
+		getReusableActionsInstance().waitForElementTobeClickable(smartHomeMonitoring, 10);
+		getReusableActionsInstance().getWhenReady(smartHomeMonitoring).click();
 	}
 
 	/**

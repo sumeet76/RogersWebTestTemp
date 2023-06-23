@@ -44,7 +44,8 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-	@FindBy(xpath = "//span[text()='OK']")
+
+	@FindBy(xpath = "//button[@class='btn_s100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -138,6 +139,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()=' Internet ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement selectInternetCheckbox;
 
+	@FindBy(xpath = "//span[text()='Fibre' or text()='Fibre optique']")
+	WebElement selectFibreRadiobutton;
+
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
@@ -217,8 +221,8 @@ public class TVDashboardPage  extends BasePageClass {
 
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
-
-	@FindBy(xpath = "(//h4[text()='FAITHTV']/following::span[text()='Add'])[1]")
+	
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -778,6 +782,11 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement btn = getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60).click();
+	}
+	public void clickRadioButtonFibre() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60).click();
 	}
 
 	/**
