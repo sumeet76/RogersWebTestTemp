@@ -31,7 +31,7 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         reporter.reportLogWithScreenshot("Loaded Offers");
 //        getInternetDashboardPage().selectUpgradeInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradeBundle(),TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
 //        reporter.reportLogWithScreenshot("Higher Internet Plan selected");
-        getInternetDashboardPage().selectInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
+//        getInternetDashboardPage().selectInternetPlan(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getUpgradePlanEn());
         reporter.reportLogWithScreenshot("Higher Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");

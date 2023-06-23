@@ -44,8 +44,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-
-	@FindBy(xpath = "//button[@class='btn_s100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large text-no-decoration ng-star-inserted']")
+	@FindBy(xpath = "//p[text()='Success!']//parent::div//following::div/button//span[text()='OK']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -213,7 +212,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
+	@FindAll({
+			@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]"),
+			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")})
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -221,7 +222,7 @@ public class TVDashboardPage  extends BasePageClass {
 
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
-	
+
 	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
 	WebElement addChannel;
 
@@ -398,7 +399,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
 	WebElement tvAddOnsPageHeader;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="//span[@translate='global.cta.addToCart']/ancestor::button")
 	WebElement addSTBToCart;
 
 	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
@@ -1447,7 +1448,6 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickAddToCartForSTB() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().scrollToElement(addSTBToCart);
 		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
 	}

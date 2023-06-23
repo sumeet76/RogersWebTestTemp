@@ -17,12 +17,13 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
-        reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");
         getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
+//        getInternetDashboardPage().clickLoadOffers();
        // getInternetDashboardPage().clickLoadOffers();
         getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("Lowest Internet Package selected");

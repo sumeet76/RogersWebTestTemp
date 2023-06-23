@@ -17,6 +17,10 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");
         getAccountOverViewPage().selectTVBadage();
         reporter.reportLogWithScreenshot("Launched TV Dashboard Page");
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         getTVDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
         reporter.hardAssert(getTVDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
