@@ -61,7 +61,7 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
         getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101_2P_HTO_HotCableAccount.getAccountDetails().getBan());
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
-            reporter.reportLogWithScreenshot("New Offer Modal Popup");
+            reporter.reportLogWithScreenshot("New Offer Modal Popup is displayed");
             getRogersAccountOverviewPage().clkCloseNewOfferModalPopup();
         }
         reporter.reportLogWithScreenshot("New Offer Modal Popup closed");
