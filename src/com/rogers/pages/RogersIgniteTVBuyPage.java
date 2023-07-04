@@ -1634,6 +1634,13 @@ getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**
+	 * To ensure whether DST is available
+	 */
+	public boolean verifyTaketheQuizButton() {
+		return getReusableActionsInstance().isElementVisible(btnTakeQuiz, 15);
+	}
+
+	/**
 	 * To select Live TV channels in DST
 	 * @author Manpreet.Kaur3
 	 */
