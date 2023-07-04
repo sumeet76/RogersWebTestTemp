@@ -411,6 +411,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Added to cart']")
 	WebElement addedToCart;
 
+	@FindBy(xpath = "//ds-modal/div/p[text()='Upgrade to Fibre-to-the-home is available for the customer']")
+	WebElement dtoGModal;
+
 
 	/**
 	 * Get list of all channels and themepacks and remove them one by one
@@ -981,6 +984,11 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		return getReusableActionsInstance().isElementVisible(btnChangePackage);
+	}
+
+	public boolean verifyDtoGModal() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGModal,30);
+		return getReusableActionsInstance().isElementVisible(dtoGModal);
 	}
 
 	/**

@@ -29,9 +29,9 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
         getInternetDashboardPage().selectRadioImmediate();
         getInternetDashboardPage().clickContinueOnSelectDateChange();
         reporter.reportLogWithScreenshot("Continue clicked in select date pop up for next billing cycle");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -43,7 +43,7 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
 
