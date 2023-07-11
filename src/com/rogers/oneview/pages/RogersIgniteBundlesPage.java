@@ -503,6 +503,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement OK;
 
+	@FindBy(xpath = "//span[text()='Fibre']/../preceding::div[contains(@class,'ds-radioButton')]")
+	WebElement dtoGFibreOption;
+
 
 	/**
 	 * Click Load Offers button
@@ -1715,6 +1718,10 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(selectTvPackage, 60);
 		getReusableActionsInstance().executeJavaScriptClick(selectTvPackage);}
 
+	public void selectDtoGFireOption() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGFibreOption,100);
+		getReusableActionsInstance().executeJavaScriptClick(dtoGFibreOption);
+	}
 }
 
 
