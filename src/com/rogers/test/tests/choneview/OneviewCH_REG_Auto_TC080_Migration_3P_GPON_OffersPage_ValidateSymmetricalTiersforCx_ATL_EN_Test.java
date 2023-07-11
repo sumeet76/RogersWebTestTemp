@@ -52,6 +52,7 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.reportLogWithScreenshot("contine from terms");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyInternetAddOnsHeader(),"Internet Addons Header displayed","Internet Addons  Header did not Displayed");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("bottom to continue");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
@@ -74,7 +75,7 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 }

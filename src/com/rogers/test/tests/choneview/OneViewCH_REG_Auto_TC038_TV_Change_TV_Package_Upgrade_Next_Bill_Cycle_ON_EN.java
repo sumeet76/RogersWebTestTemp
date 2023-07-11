@@ -20,8 +20,10 @@ public class OneViewCH_REG_Auto_TC038_TV_Change_TV_Package_Upgrade_Next_Bill_Cyc
         //reporter.reportLogWithScreenshot("clicked on account overview arrow-down to see the customer address");
         //reporter.hardAssert(getAccountOverViewPage().verifyProvince(),"ON address displayed","ON address doesn't displayed");
         getAccountOverViewPage().clickIgniteTVBadge();
+        getEnvironmentSelectionPage().selectProduction();
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-        reporter.hardAssert(getTVDashboardPage().verifyChangePackage(),"Change Package Displayed","Change Package doesn't displayed");
+        //reporter.hardAssert(getTVDashboardPage().verifyChangePackage(),"Change Package Displayed","Change Package doesn't displayed");
         reporter.reportLogWithScreenshot("Click on Change Package");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");

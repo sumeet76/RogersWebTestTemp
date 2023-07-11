@@ -44,7 +44,7 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-		getRogersIgniteBundlesPage().clickExchangeLater();
+		//getRogersIgniteBundlesPage().clickExchangeLater();
 		getRogersIgniteBundlesPage().clickReviewAddons();
 		reporter.reportLogWithScreenshot("Add channel themepack view");
 		getCustomerProfilePage().clkContinue();
@@ -93,7 +93,6 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		getCreditCheckPage().enterSpecialInstructions();
 		getCreditCheckPage().clkContinueInstallationOption();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
 		//getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");

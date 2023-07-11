@@ -28,8 +28,8 @@ public class OneViewCH_Auto_1443_TC01_E2E_NAC_SAIISS_ExpressCheckout_PaymentMeth
 		reporter.reportLogWithScreenshot("click Continue");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("click Internet Check box");
-		//getRogersIgniteBundlesPage().clkSmartStream();
-		//reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
+		getRogersIgniteBundlesPage().clkSmartStream();
+		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_TargetedOfferType_Recommended_ATL_EN extends BaseTestClass {
-    @Test(groups = {"RegressionCHOV"})
+    @Test(groups = {"RegressionCHOV","RegressionERM"})
     public void oneViewCH_1617_TC01_TargetedMigrationFlovToSAIISSTest(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration1PTvToSAIISS.getAccountNo(), TestDataHandler.targetedMigration1PTvToSAIISS.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
@@ -45,6 +45,7 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_Target
         getRogersIgniteBundlesPage().clkContinue();
 //        getRogersIgniteBundlesPage().reviewAllTerms();
 //        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         reporter.reportLogWithScreenshot("Points to mention");
@@ -82,10 +83,10 @@ public class OneViewCH_Auto_TC058_1549_TargetedMigration_2P_Int_TV_to_ISS_Target
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         getCreditCheckPage().verifyBillingAndPaymentOption();
-//        getCreditCheckPage().clickDigitalFrontline();
-//        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-//        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-//        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+        getCreditCheckPage().clickDigitalFrontline();
+        getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+        getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+        getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		getPaymentOptionsPage().clkContinue();
 	    getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");

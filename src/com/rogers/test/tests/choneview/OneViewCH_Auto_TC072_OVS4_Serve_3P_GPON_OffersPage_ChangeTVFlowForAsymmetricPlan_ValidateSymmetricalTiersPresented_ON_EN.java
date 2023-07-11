@@ -16,9 +16,18 @@ public class OneViewCH_Auto_TC072_OVS4_Serve_3P_GPON_OffersPage_ChangeTVFlowForA
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.accountDetails.getBan(), TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.getContactID());
         reporter.reportLogWithScreenshot("Launched account dashboard page");
         getAccountOverViewPage().selectTVBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
+//        getTVDashboardPage().clickContinue();
+//        reporter.reportLogWithScreenshot("Click continue upgrade fiber modal");
+//        getTVDashboardPage().clickRadioButtonFibre();
+//        reporter.reportLogWithScreenshot("select Fibre");
+//        getTVDashboardPage().clickLoadOffers();
+//        reporter.reportLogWithScreenshot("Load offers button clicked");
         getTVDashboardPage().clickViewDetails(TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.accountDetails.getDowngradePlanEn(), TestDataHandler.GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan.accountDetails.getDowngradePlanFr());
         reporter.reportLogWithScreenshot("View details button clicked");
         getTVDashboardPage().clickPackageDetailsExpander();

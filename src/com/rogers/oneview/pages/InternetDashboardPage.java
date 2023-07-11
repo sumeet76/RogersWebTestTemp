@@ -4,6 +4,7 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[3]")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[4]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -118,7 +119,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.dashboard.internet.pods.addPods']/ancestor::button")
 	WebElement addPodsButton;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[1]")
 	WebElement addPodToCart;
 
 	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)[2]")
@@ -127,6 +128,9 @@ public class InternetDashboardPage  extends BasePageClass {
 	//@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-plus']/ancestor::button")
 	@FindBy(xpath = "//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span")
 	WebElement plusButtonToAddPod;
+
+	@FindBy(xpath = "(//div[@class='d-flex flex-row justify-content-center']/child::button[contains(@class,'tile-button increment p-0 tile-button-pod increment-pod active-pod ds-button ')]/child::span)[2]")
+	WebElement plusButtonToAddRestrictedPod;
 
 	@FindBy(xpath="//span[@class='ds-icon d-inline-flex rds-icon-minus']/ancestor::button")
 	WebElement minusButtonToRemovePod;
@@ -183,7 +187,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
 	WebElement DownloadSpeedReview;
 
-    @FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
+    @FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
     WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -198,7 +202,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
 	WebElement viewOffer;
 
-	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	@FindAll({
+			@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button"),
+			@FindBy(xpath = "//p[text()='Recommended Offer(s)']"),
+	})
 	WebElement recommendedOffer;
 
 	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
@@ -699,6 +706,16 @@ public class InternetDashboardPage  extends BasePageClass {
 		}
 	}
 
+	public void clickPlusToAddRestrictedPod() {
+		getReusableActionsInstance().staticWait(10000);
+		getReusableActionsInstance().scrollToElement(plusButtonToAddRestrictedPod);
+
+		while(!getReusableActionsInstance().isElementVisible(secondMaximumLimitReached, 10)){
+			getReusableActionsInstance().waitForElementVisibility(plusButtonToAddRestrictedPod, 45);
+			getReusableActionsInstance().executeJavaScriptClick(plusButtonToAddRestrictedPod);
+			getReusableActionsInstance().waitForPageLoad();
+		}
+	}
 
 	/*
 	 * verify Maximum Limit Reached
@@ -850,11 +867,11 @@ public class InternetDashboardPage  extends BasePageClass {
 //		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
 		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
 		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
-		String[] d1 = download.split(" ");
-		System.out.println(d1[4]);
-		String[] u1 = upload.split(" ");
-		System.out.println(u1[4]);
-		Boolean areEqual = d1[4].equals(u1[4]);
+		String[] d1 = download.split(":");
+		System.out.println(d1[1]);
+		String[] u1 = upload.split(":");
+		System.out.println(u1[1]);
+		Boolean areEqual = d1[1].equals(u1[1]);
 		if (areEqual) {
 			System.out.println("Download and Upload speed Symmetrical");
 			return true;

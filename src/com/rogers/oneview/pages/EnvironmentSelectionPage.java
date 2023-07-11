@@ -54,6 +54,9 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='proceed-button']/button")
 	WebElement btnProceed;
 
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement OK;
+
 	/**
 	 * Enter user roles
 	 * @param env to select on oneview portal
@@ -214,6 +217,9 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	public void clickProceed(){
 		getReusableActionsInstance().waitForElementVisibility(btnProceed, 20);
 		getReusableActionsInstance().clickWhenReady(btnProceed);
+		if (getReusableActionsInstance().isElementVisible(OK, 30)) {
+			getReusableActionsInstance().executeJavaScriptClick(OK);
+		}
 	}
 
 }
