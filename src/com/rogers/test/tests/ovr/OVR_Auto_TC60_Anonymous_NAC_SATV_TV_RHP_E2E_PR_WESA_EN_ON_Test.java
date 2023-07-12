@@ -23,7 +23,7 @@ public class OVR_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test exte
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("PR_WESA_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_WESA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -34,7 +34,7 @@ public class OVR_Auto_TC60_Anonymous_NAC_SATV_TV_RHP_E2E_PR_WESA_EN_ON_Test exte
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
 
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 abana rd missisauga", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

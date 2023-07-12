@@ -405,9 +405,11 @@ public class TestDataHandler {
 	public static OvrReusableData tc_03_Ovr_ERM_Mig_Data_2p_to_3p;
 	public static OvrReusableData tc_64_Ovr_FidoToRogers_Nac_Data_ISS;
 	public static OvrReusableData tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS;
+	public static OvrReusableData tc_66_Ovr_FidoToRogers_MIG_Data;
 	public static AddonData tc50SAA_AddLongDistance;
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
+	public static OvrReusableData tc_70_Ovr_ChangePackage_Data;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -885,5 +887,7 @@ public class TestDataHandler {
 		tc_03_Ovr_ERM_Mig_Data_2p_to_3p = YamlHandler.getOvrReusableData("ERM_TC03_Mig_Data_2p_TV_INT_to_3p");
 		tc_64_Ovr_FidoToRogers_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC64_FidoToRogers_Data_Nac_ISS");
 		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS");
+		tc_66_Ovr_FidoToRogers_MIG_Data = YamlHandler.getOvrReusableData("TC66_FidoWireless_with_legacy_MIG_Data");
+		tc_70_Ovr_ChangePackage_Data = YamlHandler.getOvrReusableData("TC70_ChangePackage_IPTV_to_IPTV");
 	}
 }

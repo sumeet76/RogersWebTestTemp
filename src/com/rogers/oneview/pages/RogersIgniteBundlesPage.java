@@ -324,6 +324,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	WebElement homeSecurity ;
+
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
 	WebElement fourKContentContinue;
 
@@ -500,6 +503,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement OK;
 
+	@FindBy(xpath = "//span[text()='Fibre']/../preceding::div[contains(@class,'ds-radioButton')]")
+	WebElement dtoGFibreOption;
+
 
 	/**
 	 * Click Load Offers button
@@ -602,7 +608,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
-		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,60);
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,120);
 		getReusableActionsInstance().scrollToElement(packageAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
 	}
@@ -1294,6 +1300,10 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementTobeClickable(smartHomeMonitoring, 10);
 		getReusableActionsInstance().getWhenReady(smartHomeMonitoring).click();
 	}
+	public void clickHomeSecurity() {
+		getReusableActionsInstance().waitForElementVisibility(homeSecurity, 10);
+		getReusableActionsInstance().executeJavaScriptClick(homeSecurity);
+	}
 
 	/**
 	 * CLick Continue for four K Content
@@ -1401,7 +1411,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){
@@ -1708,6 +1718,10 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().waitForElementVisibility(selectTvPackage, 60);
 		getReusableActionsInstance().executeJavaScriptClick(selectTvPackage);}
 
+	public void selectDtoGFireOption() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGFibreOption,100);
+		getReusableActionsInstance().executeJavaScriptClick(dtoGFibreOption);
+	}
 }
 
 

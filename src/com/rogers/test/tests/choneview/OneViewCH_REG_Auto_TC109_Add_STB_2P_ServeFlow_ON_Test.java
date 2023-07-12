@@ -17,6 +17,10 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
         getEnvironmentSelectionPage().launchOneView( TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getAddSTBban(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         reporter.reportLogWithScreenshot("Clicked on Add STB box");
         getTVDashboardPage().addTVBoxes();

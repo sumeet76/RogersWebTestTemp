@@ -17,9 +17,9 @@ public class OneViewCH_Auto_TC01_Validation_of_Exchange_Flex_Channels_Existing_C
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         reporter.reportLogWithScreenshot(" Select TV Option");
         getAccountOverViewPage().selectTVBadage();
-        getAccountOverViewPage().selectProduction();
+        getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched Tv Dashboard Page");
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
