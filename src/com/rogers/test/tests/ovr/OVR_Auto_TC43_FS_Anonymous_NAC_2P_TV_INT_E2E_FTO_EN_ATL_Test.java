@@ -24,7 +24,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_FTO_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");

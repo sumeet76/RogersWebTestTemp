@@ -26,8 +26,12 @@ public class OVR_Auto_TC65_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_OVC_EN_ON_Test 
         reporter.reportLogWithScreenshot("OneView Fido Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getOvrDashboardPage().clickIgniteLink();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("address");
-        getRogersIgniteBundlesPage().checkAvailability("43 AIRPORT HEIGHTS DR, ST. JOHN'S, NL, A1A4W8","Chrome");
+
+        getRogersIgniteBundlesPage().checkAvailability("642 abana missisauga","Chrome");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
