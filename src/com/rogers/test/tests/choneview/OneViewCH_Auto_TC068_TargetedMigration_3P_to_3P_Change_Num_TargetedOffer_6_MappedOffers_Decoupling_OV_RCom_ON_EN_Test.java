@@ -55,9 +55,6 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
-//        getRogersIgniteBundlesPage().expandInternetdiv();
-//        getRogersIgniteBundlesPage().expandHomePhonediv();
-//        getRogersIgniteBundlesPage().expandBatteryBackUpdiv();
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();

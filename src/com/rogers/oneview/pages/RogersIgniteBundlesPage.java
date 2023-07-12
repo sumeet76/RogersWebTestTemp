@@ -1419,7 +1419,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
