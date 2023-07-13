@@ -23,7 +23,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[4]")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[5]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
