@@ -107,25 +107,20 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
 //        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
 //        reporter.reportLogWithScreenshot("reset success");
 
-//        getHomePhonedashboard().clickChangeCallDisplayName();
-//        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
-//        reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
-//        getHomePhonedashboard().enterCallername("bbbdb","duhh");
-//        reporter.reportLogWithScreenshot("The new caller name are entered");
-//        getHomePhonedashboard().clickSubmit();
-//        reporter.reportLogWithScreenshot("The call display name changed successfully");
-//        //reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Call Display name changed successfully","Call display name is not changed");
-//        getHomePhonedashboard().clickBackToDashboard();
-//        reporter.reportLogWithScreenshot("Back to Dashboard button is clicked");
+        getHomePhonedashboard().clickChangeCallDisplayName();
+        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
+        reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
+        getHomePhonedashboard().enterCallername("bbbdb","duhh");
+        reporter.reportLogWithScreenshot("The new caller name are entered");
+        getHomePhonedashboard().clickSubmit();
+        reporter.reportLogWithScreenshot("The call display name changed successfully");
+        //reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Call Display name changed successfully","Call display name is not changed");
+        getHomePhonedashboard().clickBackToDashboard();
+        reporter.reportLogWithScreenshot("Back to Dashboard button is clicked");
 
-//        getInternetDashboardPage().clickBacktoAccountOverview();
-//        reporter.reportLogWithScreenshot("Back to account Overview Page");
-//        getInternetDashboardPage().clickContinue();
-
-
-
-
-
+        getInternetDashboardPage().clickBacktoAccountOverview();
+        reporter.reportLogWithScreenshot("Back to account Overview Page");
+        getInternetDashboardPage().clickContinue();
 
     }
 }

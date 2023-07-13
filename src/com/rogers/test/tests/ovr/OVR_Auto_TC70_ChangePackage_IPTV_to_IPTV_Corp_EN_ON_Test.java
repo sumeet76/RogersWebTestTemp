@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test extends BaseTestClass {
+public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,8 +22,8 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_GF_username"), System.getenv("FS_GF_password"));
+    public void ovr_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp("ChampTest18.User18@trci.trogers.ca", "RAMP@379");
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -33,24 +33,7 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
-
-        //Internet Dashboard Validation
-        getOvrDashboardPage().clkInternetDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
-        reporter.reportLogWithScreenshot("Launched the internet dashboard page");
-        reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
-        reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
-        reporter.softAssert(getInternetDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
-        reporter.reportLogWithScreenshot("Footer available on internet Dashboard page");
-        reporter.softAssert(getInternetDashboardPage().verifyInternetSpeedDisplayed(), "Internet Speed Displayed", "Internet Speed not displayed");
-        reporter.softAssert(getInternetDashboardPage().verifyUsageAndAlerts(), "Usage and Alerts link Available", "Usage and Alerts link not Available");
-        reporter.reportLogWithScreenshot("View Usage and Alert link displayed");
-
-        getInternetDashboardPage().clickBacktoAccountOverview();
-        reporter.reportLogWithScreenshot("Back to account Over view Page");
-        getInternetDashboardPage().clickContinue();
+        reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         //TV Dashboard
         getOvrDashboardPage().clkTVDashboard();
@@ -63,19 +46,39 @@ public class OVR_Auto_TC26_SelfServe_DashboardValidation_3P_TV_INT_RHP_FS_ON_EN_
         reporter.softAssert(getTVDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Footer available on TV Dashboard page");
 
-        getInternetDashboardPage().clickBacktoAccountOverview();
-        reporter.reportLogWithScreenshot("Back to account Over view Page");
-        getInternetDashboardPage().clickContinue();
+        getTVDashboardPage().clickChangePackage();
+        reporter.reportLogWithScreenshot("Changed TV Package clicked");
+        getTVDashboardPage().selectTVPackage(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN(),TestDataHandler.ovrConfigData.getFlexChannelsPackageFR());
+        reporter.reportLogWithScreenshot("Upgrade TV Package selected");
 
-        //RHP Dashboard
-        getOvrDashboardPage().clkHomePhoneDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
-        reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
+        /*For Flex Channels - Exchange Later*/
+        getTVDashboardPage().clickContinueChangeTVPackage();
+        reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
+        getTVDashboardPage().clickExchangeLater();
+        reporter.reportLogWithScreenshot("Exchange later is selected");
 
-        getInternetDashboardPage().clickBacktoAccountOverview();
-        reporter.reportLogWithScreenshot("Back to account Over view Page");
-        getInternetDashboardPage().clickContinue();
+        getTVDashboardPage().clickContinueChannelsAndThemePacks();
+        reporter.reportLogWithScreenshot("click continue at channels and themepack");
+        getRogersIgniteBundlesPage().fourKTVPopup();
+        getRogersIgniteBundlesPage().fourKContinue();
+        reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
+
+        getInternetDashboardPage().clickImmediateBill();
+        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
+        getTVDashboardPage().continueFromChangeDate();
+
+        reporter.hardAssert(getOVROrderReviewPage().verifyReviewYourOrderHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
+        getOVROrderReviewPage().clkContinue();
+        reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
+        getOVRAgreementPage().signAgreement();
+        reporter.reportLogWithScreenshot("Back to Agreement Page");
+        getOVRAgreementPage().clkAgreementCheckbox();
+        getOVRAgreementPage().clkCompleteOrder();
+        reporter.reportLogWithScreenshot("Order Confirmation Page");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+
+
     }
-}
+
+    }

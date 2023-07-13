@@ -25,6 +25,9 @@ public class OneviewCH_REG_Auto_TC002_ChangeTV_INT_Package_Downgrade_ExchangeNow
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("deal code");
 		getAccountOverViewPage().clickIgniteTVBadge();
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
 		reporter.reportLogWithScreenshot("TV Batch");
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");

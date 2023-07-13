@@ -26,7 +26,6 @@ public class OneViewCH_Auto_TC092_Validate_SwitchingServiceability_CheckTechhub_
             reporter.hardAssert(getRogersIgniteBundlesPage().verifyBulkAddress(),TestDataHandler.anonymousData.contactDetails.getAddress_MDU_NAC()+" MDU Address",TestDataHandler.anonymousData.contactDetails.getAddress_MDU_NAC()+" not MDU Address");
             reporter.reportLogWithScreenshot("MDU Address");
             getRogersIgniteBundlesPage().clickCancelButton();
-
         }
     }
 

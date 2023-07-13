@@ -166,7 +166,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[@rchtrackclickevent='exchangeLater']")
 	WebElement exchangeLater;
 
-	@FindBy(xpath = "//div[@class='modal-body']/child::div[4]/div/*[last()]")
+	@FindBy(xpath = "//div[text()='Internet']//following::li[last()]")
 	WebElement scrollToLastPoint;
 
 	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label")
@@ -324,6 +324,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement smartHomeMonitoring ;
 
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	WebElement homeSecurity ;
+
 	@FindBy(xpath = "//ds-modal[@ng-reflect-heading='4K Content']/descendant::span[@translate='global.cta.continue']")
 	WebElement fourKContentContinue;
 
@@ -345,10 +348,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Smart Home Monitoring Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
-	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Détecteur de fumée et d’incendie']//parent::div/parent::div/parent::div//child::button)[1]")
+	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Caméra de sonnette Élan']//parent::div/parent::div/parent::div//child::button)[1]")
 	WebElement smartHomeMonitoringAddOn;
 
 	@FindBy(xpath = "//span[text()='Add to the order:' or text()='Ajouter à la commande :']//parent::div//preceding-sibling::div[contains(@class,'ds-checkbox')]")
@@ -455,8 +458,54 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[2]")
 	WebElement secondOptionToCart;
 
+
+	@FindBy(xpath="//span[@translate='global.cta.compareTVPackage']")
+	WebElement compareTvPackages;
+
+	@FindBy(xpath="//p[text()='Select packages to compare' or text()='Sélectionnez les forfaits à comparer']")
+	WebElement TvpackageComparePopUp;
+
+	@FindBy(xpath="//span[@translate='global.cta.compareChannelLineup']")
+	WebElement compareChannelLineup;
+
+	@FindBy(xpath="//span[@translate='global.cta.emailChannelPDF']")
+	WebElement emailChannelsPdf;
+
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 5 Bundle' or @value='Offre groupée Élan Flex 5']")
+	WebElement flex5;
+
+	@FindBy(xpath="//input[@value='Rogers Ignite Flex 10 Bundle' or @value='Offre groupée Élan Flex 10']")
+	WebElement flex10;
+
+	@FindBy(xpath="//span[@translate='global.cta.sendPDF']")
+	WebElement sendPdf;
+
+	@FindBy(xpath="//span[@translate='global.cta.viewPDF']")
+	WebElement viewPdf;
+
+	@FindBy(xpath="//input[@id='ds-form-input-id-8' or @id='ds-form-input-id-15']")
+	WebElement customerEmail;
+
+	@FindBy(xpath="//input[@id='ds-form-input-id-9' or @id='ds-form-input-id-16']")
+	WebElement confirmCustomerEmail;
+
+
+	@FindBy(xpath="//p[text()='Success! PDF was sent' or text()='C’est réussi! Le PDF a été envoyé']")
+	WebElement successPdfSend;
+
+	@FindBy(xpath="//span[@translate='global.cta.cancel']")
+	WebElement cancelPdfResend;
+
+	@FindBy(xpath="//span[@translate='global.cta.selectPackage']")
+	WebElement selectTvPackage;
+
+
 	@FindBy(xpath = "//span[contains(text(),'OK')]")
 	WebElement OK;
+
+	@FindBy(xpath = "//span[text()='Fibre']/../preceding::div[contains(@class,'ds-radioButton')]")
+	WebElement dtoGFibreOption;
+
 
 	/**
 	 * Click Load Offers button
@@ -504,8 +553,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author aditi.jain
 	 */
 	public void clkLoadOffers() {
-		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().scrollToElement(loadOffers);
+//		getReusableActionsInstance().staticWait(3000);
+//		getReusableActionsInstance().scrollToElement(loadOffers);
 		getReusableActionsInstance().waitForElementVisibility(loadOffers, 30);
 		getReusableActionsInstance().executeJavaScriptClick(loadOffers);
 	}
@@ -559,7 +608,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
-		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,60);
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,120);
 		getReusableActionsInstance().scrollToElement(packageAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
 	}
@@ -794,7 +843,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */
 	public void clkCollapse() {
-		getReusableActionsInstance().clickIfAvailable(collapse,45);
+		getReusableActionsInstance().clickIfAvailable(collapse,60);
 	}
 
 	/**
@@ -804,7 +853,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	public void clickExchangeLater() {
 		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementTobeClickable(exchangeLater,50);
-		getReusableActionsInstance().clickWhenReady(exchangeLater,60);
+		getReusableActionsInstance().executeJavaScriptClick(exchangeLater);
 	}
 
 	/**
@@ -822,7 +871,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetCheckbox() {
-		getReusableActionsInstance().scrollToElement(internetCheckbox);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(internetCheckbox);
 		getReusableActionsInstance().executeJavaScriptClick(internetCheckbox);
 	}
 
@@ -1248,8 +1297,12 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void clickSmartHomeMonitoring() {
-		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoring, 10);
-		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoring);
+		getReusableActionsInstance().waitForElementTobeClickable(smartHomeMonitoring, 10);
+		getReusableActionsInstance().getWhenReady(smartHomeMonitoring).click();
+	}
+	public void clickHomeSecurity() {
+		getReusableActionsInstance().waitForElementVisibility(homeSecurity, 10);
+		getReusableActionsInstance().executeJavaScriptClick(homeSecurity);
 	}
 
 	/**
@@ -1358,7 +1411,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){
@@ -1595,6 +1648,80 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().executeJavaScriptClick(rdoBtnSelectExisitingAddress);
 	}
 
+	/*Methods for compare package*/
+	public void clkcompareTvPackages(){
+		getReusableActionsInstance().waitForElementVisibility(compareTvPackages,60);
+		getReusableActionsInstance().scrollToElement(compareTvPackages);
+		getReusableActionsInstance().executeJavaScriptClick(compareTvPackages);
+	}
+
+	public boolean verifyCompareTvPackagePopUp() {
+		return getReusableActionsInstance().isElementVisible(TvpackageComparePopUp,60);
+	}
+
+	public void clkcompareChannelLineup(){
+		getReusableActionsInstance().waitForElementVisibility(compareChannelLineup,60);
+		getReusableActionsInstance().scrollToElement(compareChannelLineup);
+		getReusableActionsInstance().executeJavaScriptClick(compareChannelLineup);
+	}
+
+	public void clkemailChannelsPdf(){
+		getReusableActionsInstance().waitForElementVisibility(emailChannelsPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(emailChannelsPdf);
+	}
+
+	public void selectPackagesToCompare(){
+
+		if(getReusableActionsInstance().isElementVisible(flex5,20)) {
+			getReusableActionsInstance().executeJavaScriptClick(flex5);
+		}
+
+		if(getReusableActionsInstance().isElementVisible(flex10,20)) {
+			getReusableActionsInstance().executeJavaScriptClick(flex10);
+		}
+
+	}
+
+	public void clkSendPdf(){
+		getReusableActionsInstance().waitForElementVisibility(sendPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(sendPdf);
+	}
+
+	public void clkViewPdf(String mainWindow){
+		getReusableActionsInstance().waitForElementVisibility(viewPdf,120);
+		getReusableActionsInstance().executeJavaScriptClick(viewPdf);
+		getReusableActionsInstance().switchToMainWindow(mainWindow);
+	}
+
+	public void enterCustomerEmail(String email){
+		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().scrollToElementAndClick(customerEmail);
+		getReusableActionsInstance().executeJavaScriptClick(customerEmail);
+		getReusableActionsInstance().enterText(customerEmail,email,60);
+	}
+
+	public void enterConfirmCustomerEmail(String cemail){
+		getReusableActionsInstance().scrollToElementAndClick(confirmCustomerEmail);
+		getReusableActionsInstance().executeJavaScriptClick(confirmCustomerEmail);
+		getReusableActionsInstance().enterText(confirmCustomerEmail,cemail,60);
+	}
+
+	public boolean verifySuccessPdfSend() {
+		return getReusableActionsInstance().isElementVisible(successPdfSend,60);
+	}
+
+	public void clkCancelPdfResend(){
+		getReusableActionsInstance().waitForElementVisibility(cancelPdfResend,120);
+		getReusableActionsInstance().executeJavaScriptClick(cancelPdfResend);
+	}
+	public void clkSelectTvPackage() {
+		getReusableActionsInstance().waitForElementVisibility(selectTvPackage, 60);
+		getReusableActionsInstance().executeJavaScriptClick(selectTvPackage);}
+
+	public void selectDtoGFireOption() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGFibreOption,100);
+		getReusableActionsInstance().executeJavaScriptClick(dtoGFibreOption);
+	}
 }
 
 

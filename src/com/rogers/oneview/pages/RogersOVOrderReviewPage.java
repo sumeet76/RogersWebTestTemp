@@ -80,6 +80,9 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath="//div[@translate='global.label.carriedOver']")
 	WebElement internetAddonCarriedOver;
 
+	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
+	WebElement fibreActivationTag;
+
 	/**
 	 * Verify order review page is loaded properly
 	 * @return true if page loaded else false
@@ -209,6 +212,11 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 		getReusableActionsInstance().executeJavaScriptClick(monthlyChargeDetails);
 		getReusableActionsInstance().waitForElementVisibility(internetAddonCarriedOver, 60);
 		return	getReusableActionsInstance().isElementVisible(internetAddonCarriedOver);
+	}
+
+	public boolean verifyFibreActivationTag() {
+		getReusableActionsInstance().waitForElementVisibility(fibreActivationTag,30);
+		return getReusableActionsInstance().isElementVisible(fibreActivationTag);
 	}
 
 }

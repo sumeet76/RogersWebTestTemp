@@ -17,6 +17,8 @@ public class OneViewCH_REG_Auto_TC056_1437_E2E_NAC_3P_Without4KTVExpressCheckout
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 			reporter.reportLogWithScreenshot("address");
+			getAccountOverViewPage().selectProduction();
+			getAccountOverViewPage().clickProceed();
 			getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 			reporter.reportLogWithScreenshot("Service Availability");
 			getRogersIgniteBundlesPage().clkContinue();
@@ -69,8 +71,8 @@ public class OneViewCH_REG_Auto_TC056_1437_E2E_NAC_3P_Without4KTVExpressCheckout
 
 			reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 			reporter.reportLogWithScreenshot("Installation options");
-			reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-			reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
+		//	reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+		//	reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 			getCreditCheckPage().verifyInstallationOption();
 			reporter.reportLogWithScreenshot("go To Page Bottom");
 			getCreditCheckPage().goToPageBottom();

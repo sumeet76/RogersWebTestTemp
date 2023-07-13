@@ -44,7 +44,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-	@FindBy(xpath = "//span[text()='OK']")
+	@FindBy(xpath = "//p[text()='Success!']//parent::div//following::div/button//span[text()='OK']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -138,6 +138,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()=' Internet ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement selectInternetCheckbox;
 
+	@FindBy(xpath = "//span[text()='Fibre' or text()='Fibre optique']")
+	WebElement selectFibreRadiobutton;
+
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
@@ -209,7 +212,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
+	@FindAll({
+			@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]"),
+			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")})
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +223,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//h4[text()='FAITHTV']/following::span[text()='Add'])[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -394,7 +399,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
 	WebElement tvAddOnsPageHeader;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="//span[@translate='global.cta.addToCart']/ancestor::button")
 	WebElement addSTBToCart;
 
 	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
@@ -405,6 +410,9 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//p[text()='Added to cart']")
 	WebElement addedToCart;
+
+	@FindBy(xpath = "//ds-modal/div/p[text()='Upgrade to Fibre-to-the-home is available for the customer']")
+	WebElement dtoGModal;
 
 
 	/**
@@ -779,6 +787,11 @@ public class TVDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60).click();
 	}
+	public void clickRadioButtonFibre() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60).click();
+	}
 
 	/**
 	 * Click Load Offers on the TV dashboard for SATV flow
@@ -971,6 +984,11 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		return getReusableActionsInstance().isElementVisible(btnChangePackage);
+	}
+
+	public boolean verifyDtoGModal() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGModal,30);
+		return getReusableActionsInstance().isElementVisible(dtoGModal);
 	}
 
 	/**
@@ -1438,7 +1456,6 @@ public class TVDashboardPage  extends BasePageClass {
 
 	public void clickAddToCartForSTB() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().scrollToElement(addSTBToCart);
 		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
 	}

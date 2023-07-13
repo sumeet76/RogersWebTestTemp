@@ -10,25 +10,23 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON_EN extends BaseTestClass {
-    @Test(groups = {"RChangeInternet","RegressionCHOV","MaySanity","ReleaseSanity"})
-    public void oneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON_EN() {
-        //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tupeloDowngradeTest.accountDetails.getBan(),TestDataHandler.tupeloDowngradeTest.getContactID());
+public class OneViewCH_Auto_1546_TC112_TargetedMigration_Downgrade_TermContract_1P_Internet_to_SAI_Test extends BaseTestClass {
+    @Test(groups = {"RegressionCHOV"})
+    public void oneViewCH_1617_TC01_TargetedMigrationFlowInternetToSAIISSTest(){
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteMappedOffersSAItoSAI.accountDetails.getBan(),TestDataHandler.IgniteMappedOffersSAItoSAI.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");
         getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        getInternetDashboardPage().clickChangePackageButton();
-        reporter.reportLogWithScreenshot("Change Internet Package clicked");
-//        getInternetDashboardPage().clickLoadOffers();
-       // getInternetDashboardPage().clickLoadOffers();
-        getInternetDashboardPage().clickSelectbutton();
-        reporter.reportLogWithScreenshot("Lowest Internet Package selected");
-        getInternetDashboardPage().clickContinue();
-        reporter.reportLogWithScreenshot("Clicked Continue");
+        getAccountOverViewPage().clickViewOffers();
+        reporter.reportLogWithScreenshot("click View Offers");
+        getAccountOverViewPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("select Recommended Offer");
+        getAccountOverViewPage().selectFirstExclusiveOffer();
+        reporter.reportLogWithScreenshot("select Exclusive Offer");
+        getAccountOverViewPage().clickContinue();
         getInternetDashboardPage().clickImmediateBill();
         reporter.reportLogWithScreenshot("Immediate option is selected for billing cycle");
         getInternetDashboardPage().clickContinueOnSelectDateChange();
@@ -42,16 +40,12 @@ public class OneViewCH_REG_Auto_TC025_ISS_Change_Internet_Downgrade_Immediate_ON
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
-        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","","", method);
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
+
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
         //closeSession();
     }
-
 }
-
-
-

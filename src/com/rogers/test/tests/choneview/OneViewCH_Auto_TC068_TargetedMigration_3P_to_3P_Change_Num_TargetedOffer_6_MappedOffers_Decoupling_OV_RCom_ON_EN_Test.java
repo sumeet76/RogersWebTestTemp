@@ -11,9 +11,9 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_TargetedOffer_6_MappedOffers_ON_EN_Test extends BaseTestClass {
+public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_TargetedOffer_6_MappedOffers_Decoupling_OV_RCom_ON_EN_Test extends BaseTestClass {
 
-    @Test
+    @Test(groups = {"Regression", "RegressionERM"})
     public void oneViewCH_Auto_1568_TC01_TargetedMigration_3P_to_3P_change_numbTest(){
 //          Launch One view
 
@@ -46,19 +46,17 @@ public class OneViewCH_Auto_TC068_1568_TargetedMigration_3P_to_3P_change_number_
 //        getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clkAddToCartForBestOffer();
         reporter.reportLogWithScreenshot("Best targeted offer for the customer is displayed");
-        getRogersIgniteBundlesPage().noPortInPopup();
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
-//        getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
+//        getRogersIgniteBundlesPage().noPortInPopup();
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyHomePhoneSetupPopUp(),"Homephone pop is displayed","no popup is displayed");
+        getRogersIgniteBundlesPage().clkChooseNewNumberbtn();
 //        getRogersIgniteBundlesPage().clickKeepNumber();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().goToPageBottom();
         reporter.reportLogWithScreenshot("review terms and condition");
 //        getRogersIgniteBundlesPage().expandInternetdiv();
 //        getRogersIgniteBundlesPage().expandHomePhonediv();
-//        getRogersIgniteBundlesPage().goToPageBottom();
 //        getRogersIgniteBundlesPage().expandBatteryBackUpdiv();
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");

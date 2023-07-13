@@ -44,7 +44,7 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		reporter.reportLogWithScreenshot("Internet and TV Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("Load Offers");
-//		getRogersIgniteBundlesPage().termOffer();
+		getRogersIgniteBundlesPage().termOffer();
 		getRogersIgniteBundlesPage().oneTimeCredit();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("Add To Cart");
@@ -63,10 +63,7 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		getRogersIgniteBundlesPage().fourKContentPopup();
 		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.reportLogWithScreenshot("Cart Summary");
-//		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-		/*		getRogersIgniteBundlesPage().fourKTVPopup();
-		reporter.reportLogWithScreenshot("four KTV Popup");
-		getRogersIgniteBundlesPage().fourKContentPopup();*/
+
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();

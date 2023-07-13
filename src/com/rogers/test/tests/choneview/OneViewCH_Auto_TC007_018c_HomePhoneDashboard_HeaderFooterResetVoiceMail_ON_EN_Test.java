@@ -18,6 +18,10 @@ public class OneViewCH_Auto_TC007_018c_HomePhoneDashboard_HeaderFooterResetVoice
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.solarisAccount.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectHomePhoneBadge();
+		reporter.reportLogWithScreenshot("Clicked the HomePhone dashboard icon");
+		getAccountOverViewPage().selectProduction();
+		reporter.reportLogWithScreenshot("Select Environment as Production");
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("Lanched the HomePhone dashboard page ");		
 		reporter.softAssert(getHomePhonedashboard().verifyHeader(),"Header is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Header available on Home Phone Dashboard page");

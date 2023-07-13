@@ -39,7 +39,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
-	@FindBy(xpath = "(//button[@name='tab-themepack'])")
+	@FindBy(xpath = "(//button[@name='tab-themepack'])[2]")
 	WebElement themePacksTab;
 
 	@FindBy(xpath = "(//button[contains(@class,'btn-themepack ds-button ds-corners ds-pointer text-center')])[1]")
@@ -121,6 +121,7 @@ public class RogersOVChannelsAndThemePacksPage  extends BasePageClass {
 	}
 
 	public void clickNoTheyDont() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(noTheyDontBtn, 30);
 		getReusableActionsInstance().clickWhenReady(noTheyDontBtn);
 
