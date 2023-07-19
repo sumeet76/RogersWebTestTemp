@@ -31,7 +31,6 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
         getRogersIgniteBundlesPage().clkContinue();
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("installation options");
-        getCreditCheckPage().selectDeliveryByAppointment();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");

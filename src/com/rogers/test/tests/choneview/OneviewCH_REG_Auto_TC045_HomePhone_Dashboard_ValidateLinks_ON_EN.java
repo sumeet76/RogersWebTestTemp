@@ -20,10 +20,6 @@ public class OneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN ex
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
-        getEnvironmentSelectionPage().selectProduction();
-        reporter.reportLogWithScreenshot("Selected Production");
-        getEnvironmentSelectionPage().clickProceed();
-
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
         reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
@@ -50,6 +46,6 @@ public class OneviewCH_REG_Auto_TC045_HomePhone_Dashboard_ValidateLinks_ON_EN ex
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+            //closeSession();
     }
 }

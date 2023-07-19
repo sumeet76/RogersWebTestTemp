@@ -54,7 +54,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
-	@FindBy(xpath = "//span[@translate='global.cta.addToCart']")
+	@FindBy(xpath = "//span[text()=' Add to cart ']")
 	//@FindBy(xpath = "//span[contains(text(),'Ignite 50 Ultd + SmartStream')or contains(text(),'Élan Internet 150 illimité + Diffusion futée')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement firstAddToCart;
 
@@ -1429,7 +1429,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
