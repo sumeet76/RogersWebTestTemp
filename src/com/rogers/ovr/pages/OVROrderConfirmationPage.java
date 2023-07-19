@@ -44,7 +44,7 @@ public class OVROrderConfirmationPage extends BasePageClass {
 
 
     public boolean verifyOrderConfirmation(){
-        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 60);
+        getReusableActionsInstance().waitForElementVisibility(orderConfirmation, 120);
         return getReusableActionsInstance().isElementVisible(orderConfirmation);
     }
 

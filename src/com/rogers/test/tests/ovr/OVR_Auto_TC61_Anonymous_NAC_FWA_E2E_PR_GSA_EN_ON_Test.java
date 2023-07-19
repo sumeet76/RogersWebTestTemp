@@ -23,7 +23,7 @@ public class OVR_Auto_TC61_Anonymous_NAC_FWA_E2E_PR_GSA_EN_ON_Test extends BaseT
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC61_Anonymous_NAC_FWA_E2E_PR_GSA_EN_ON_Test() {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -37,7 +37,7 @@ public class OVR_Auto_TC61_Anonymous_NAC_FWA_E2E_PR_GSA_EN_ON_Test extends BaseT
         getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use a FWA address
-        getCheckAvailabilityPage().checkAvailability("215-1211 BARTON ST 231 ON L8H2V4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("1211 BARTON ST E, 231, ON, L8H2V4", "chrome");
         reporter.hardAssert(getCheckAvailabilityPage().verifyFWAServiceAvailabilityMessage(),"Address is serviceable for FWA","Address is not serviceable for FWA");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

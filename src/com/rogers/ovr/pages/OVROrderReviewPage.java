@@ -33,6 +33,9 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//*[@translate='global.label.OrderReview']")
     WebElement orderReviewPageHeader;
 
+    @FindBy(xpath = "//*[@translate='global.label.reviewYourOrder']")
+    WebElement reviewYourOrderHeader;
+
     @FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
     WebElement smartHomeMonitoringMonthlyCharges;
 
@@ -48,6 +51,10 @@ public class OVROrderReviewPage extends BasePageClass {
 
     public boolean verifyOrderOverviewHeader(){
         return getReusableActionsInstance().isElementVisible(orderReviewPageHeader,120);
+    }
+
+    public boolean verifyReviewYourOrderHeader(){
+        return getReusableActionsInstance().isElementVisible(reviewYourOrderHeader,120);
     }
 
     public boolean verifyOneTimeFees(){

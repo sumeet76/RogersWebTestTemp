@@ -608,7 +608,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
-		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,60);
+		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,120);
 		getReusableActionsInstance().scrollToElement(packageAddToCart);
 		getReusableActionsInstance().executeJavaScriptClick(packageAddToCart);
 	}
@@ -1411,7 +1411,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateInternetAddOnsHeader(){
-		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,60);
+		return getReusableActionsInstance().isElementVisible(internetAddOnsCharges,120);
 	}
 
 	public boolean validateHomephoneAddOnsHeader(){

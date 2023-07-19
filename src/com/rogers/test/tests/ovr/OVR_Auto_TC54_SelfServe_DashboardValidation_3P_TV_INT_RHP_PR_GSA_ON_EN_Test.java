@@ -23,7 +23,7 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("PR_GSA_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -37,6 +37,9 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
 
         //Internet Dashboard Validation
         getOvrDashboardPage().clkInternetDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on internet Dashboard page");
@@ -52,6 +55,9 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
 
         //TV Dashboard
         getOvrDashboardPage().clkTVDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the TV dashboard page");
         reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
         reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
@@ -85,6 +91,9 @@ public class OVR_Auto_TC54_SelfServe_DashboardValidation_3P_TV_INT_RHP_PR_GSA_ON
 
         //RHP Dashboard
         getOvrDashboardPage().clkHomePhoneDashboard();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launch Home Phone dashboard page");
 
         getHomePhonedashboard().clickResetVoiceMail();

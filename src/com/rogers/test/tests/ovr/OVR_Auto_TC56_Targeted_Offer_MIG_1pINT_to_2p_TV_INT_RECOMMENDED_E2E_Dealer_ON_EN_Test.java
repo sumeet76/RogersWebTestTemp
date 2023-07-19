@@ -30,7 +30,7 @@ public class OVR_Auto_TC56_Targeted_Offer_MIG_1pINT_to_2p_TV_INT_RECOMMENDED_E2E
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
-        //Map legacy 1p Int to ISS
+        //Map legacy 1p Int to 2p
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS.getBanNumber(), TestDataHandler.tc_56_Ovr_Targeted_Mig_Data_1p_to_ISS.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();

@@ -71,9 +71,9 @@ public class OVR_Auto_TC11_WirelessCX_Nac_Flow_2P_TV_INT_PORTIN_IntID_Dealer_EN_
         reporter.reportLogWithScreenshot("Port In completed");
         getRogersIgniteBundlesPage().contiueToCartSummary();
         reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
-        getRogersIgniteBundlesPage().clkContinue();
+        //getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
         reporter.reportLogWithScreenshot("4k tv popup");

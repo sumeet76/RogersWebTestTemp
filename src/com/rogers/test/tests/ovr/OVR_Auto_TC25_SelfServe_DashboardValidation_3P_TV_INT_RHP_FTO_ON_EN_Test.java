@@ -23,7 +23,7 @@ public class OVR_Auto_TC25_SelfServe_DashboardValidation_3P_TV_INT_RHP_FTO_ON_EN
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC25_SelfServe_DashboardValidation_3P_TV_INT_RHP_FTO_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_FTO_username"), System.getenv("FS_FTO_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
