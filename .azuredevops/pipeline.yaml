@@ -1,0 +1,144 @@
+name: $(Rev:r)
+appendCommitMessageToRunName: false
+
+resources:
+  repositories:
+    - repository: shared
+      type: github
+      endpoint: svcdawsdev
+      name: RogersCommunications/enterprise-ado-pipelines
+      ref: refs/heads/main
+
+trigger: none
+pr: none
+
+# schedules:
+#   - cron: '30 4 * * *'
+#     displayName: Scheduled Dependency Check
+#     always: true
+#     batch: true
+#     branches:
+#       include:
+#         - main
+
+parameters:
+  - name: Browser
+    displayName: Test Browser
+    type: string
+    default: saucechrome
+  - name: Language
+    displayName: Test Language
+    type: string
+    default: en
+  - name: ThreadCount
+    displayName: Number of parallel test sessions
+    type: string
+    default: 2
+  - name: Groups
+    displayName: Groups names separated by comma
+    type: string
+    default: SanityCH
+  - name: TestProfile
+    displayName: Only used for reporting - has no impact on test runs
+    type: string
+    default: DefaultProfile
+  - name: IndividualTests
+    displayName: Individual tests to be passed as Test1 Test2 Test3 Test4 and so on
+    type: string
+    default: NULL
+  - name: PageLoadStrategy
+    displayName: Give the strategy as NORMAL , EAGER or NONE
+    type: string
+    default: NORMAL
+  - name: QaUrl
+    displayName: Test QA URL Link
+    type: string
+    default: NULL
+  - name: DbEnvUrl
+    displayName: Give env as sft02 , sft04 or sft06
+    type: string
+    default: NULL
+  - name: SearchUrl
+    displayName: Search URL Link
+    type: string
+    default: NULL
+  - name: QaOVUrl
+    displayName: QA OV URL Link
+    type: string
+    default: NULL
+  - name: AWSPRODUrl
+    displayName: BFA AWS PROD URL
+    type: string
+    default: NULL
+  - name: AWSUrl
+    displayName: BFA AWS URL
+    type: string
+    default: NULL
+  - name: OneViewEnv
+    displayName: One View Env
+    type: string
+    default: NULL
+  - name: TestProject
+    displayName: Test plan to update the test results in JIRA
+    type: string
+    default: RTM
+  - name: TestPlanKey
+    displayName: Test plan to update the test results in JIRA
+    type: string
+    default: NULL
+  - name: TestExecutionKey
+    displayName: Test Execution to update the test results in JIRA
+    type: string
+    default: NULL
+  - name: XrayImportFlag
+    displayName: Flag to check whether results need to be imported in Xray
+    type: string
+    default: false
+
+extends:
+  template: generic-utility-1.yml@shared
+  parameters:
+    name: Output
+    pool: openjdk11-azure
+    teams: https://rcirogers.webhook.office.com/webhookb2/6ea85403-ca28-4482-a9df-b1dca6632d94@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/b8939b915823406792effcb46b15c66c/79e29d92-4686-45ef-81a6-f2d1cc6ac806
+    groups:
+      - common
+      - artifactory_serv_svc_dawsdev
+      - global
+      - github_daws_svc_account
+    steps:
+      - script: |
+          export GIT_COMMIT=$BUILD_SOURCEVERSION
+          export BRANCH_NAME=$BUILD_SOURCEBRANCHNAME
+          sh github-credentials.sh
+          sh artifactory-credentials.sh
+          sh sonarqube-credentials.sh
+          if [ ${{parameters.IndividualTests}} = "NULL" ]; then
+            gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+          else
+             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${urlLink}} -i --stacktrace
+          fi
+          # if [ ${{parameters.urlLink}} = "NULL" ]; then
+          #    gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+          # else
+          #    gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} ${urlLink}} -i --stacktrace
+          # fi
+        displayName: Run Test
+        env:
+          ARTIFACTORY_CREDENTIALS_PSW: $(ARTIFACTORY_CREDENTIALS_PSW)
+          ARTIFACTORY_CREDENTIALS_USR: $(ARTIFACTORY_CREDENTIALS_USR)
+          GITHUB_CREDENTIALS_PSW: $(GITHUB_CREDENTIALS_PSW)
+          GITHUB_CREDENTIALS_USR: $(GITHUB_CREDENTIALS_USR)
+          SAUCE_USERNAME: $(SAUCE_USERNAME)
+          SAUCE_ACCESS_KEY: $(SAUCE_ACCESS_KEY)
+          NETSTORAGE_HOST: $(NETSTORAGE_HOST)
+          NETSTORAGE_ID: $(NETSTORAGE_ID)
+          NETSTORAGE_ACCESS_KEY: $(NETSTORAGE_ACCESS_KEY)
+          EMAIL_USERNAME: $(EMAIL_USERNAME)
+          EMAIL_PASSWORD: $(EMAIL_PASSWORD)
+          XRAY_PROD_CRED_USR: $(XRAY_PROD_CRED_USR)
+          XRAY_PROD_CRED_PSW: $(XRAY_PROD_CRED_PSW)
+          MaestroLoginID: $(MaestroLoginID)
+          MaestroUsrID: $(MaestroUsrID)
+          champLoginUserName: $(champLoginUserName)
+          champLoginPassword: $(champLoginPassword)
