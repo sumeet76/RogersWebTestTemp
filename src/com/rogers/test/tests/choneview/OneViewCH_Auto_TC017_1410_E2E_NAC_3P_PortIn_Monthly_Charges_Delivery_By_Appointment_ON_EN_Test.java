@@ -65,6 +65,7 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.reportLogWithScreenshot("Click Continue HomephoneAddon");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Clicked on Continue");
+
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -90,13 +91,16 @@ public class OneViewCH_Auto_TC017_1410_E2E_NAC_3P_PortIn_Monthly_Charges_Deliver
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().selectDeliveryByAppointment();
-		getFulfillmentPage().clkFirstAvailableAppointment();
-		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-		reporter.reportLogWithScreenshot(".enter Special Instructions");
-		getCreditCheckPage().enterSpecialInstructions();
+		getCreditCheckPage().clkCourierDelivery();
+		getCreditCheckPage().clickInPersonDelivery();
+//		getCreditCheckPage().selectDeliveryByAppointment();
+//		getFulfillmentPage().clkFirstAvailableAppointment();
+//		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//		reporter.reportLogWithScreenshot(".enter Special Instructions");
+//		getCreditCheckPage().enterSpecialInstructions();
+
 		getCreditCheckPage().clkContinueInstallationOption();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();

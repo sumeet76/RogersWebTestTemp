@@ -21,6 +21,7 @@ public class ContactDetails {
 	private String passportNo;
 	private String paymentOption;
 	private String contactID3PPortIn;
+	private String contactID_SHM_3P_PortIn;
 	private String contactIDSAIPortIn;
 	private String contactIDSAITMP;
 	private String contactIDSAIISSTMP;
@@ -338,6 +339,20 @@ public class ContactDetails {
 	 */
 	public void setContactID3PPortIn(String contactID3PPortIn) {
 		this.contactID3PPortIn = contactID3PPortIn;
+	}
+
+	/**
+	 * @return the ID contactId For SHM 3P Port-In as Yes test
+	 */
+	public String getContactID_SHM_3P_PortIn() {
+		return contactID_SHM_3P_PortIn;
+	}
+
+	/**
+	 * @param contactID_SHM_3P_PortIn for SHM 3P Port-In test
+	 */
+	public void setContactID_SHM_3P_PortIn(String contactID_SHM_3P_PortIn) {
+		this.contactID_SHM_3P_PortIn = contactID_SHM_3P_PortIn;
 	}
 
 	public String getContactIDSAITMP() {

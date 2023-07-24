@@ -89,9 +89,6 @@ public class OneViewCH_REG_Auto_TC115_Fido_To_Rogers_Migration_Flow_1p_To_2p_EN_
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
 
-
-
-
     }
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})

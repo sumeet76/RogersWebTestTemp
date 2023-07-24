@@ -412,6 +412,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
 	WebElement UploadSpeedReview;
 
+	@FindBy(xpath = "//span[contains(text(),'Download speed') or contains(text(),'Location de la passerelle')]/parent::li")
+	WebElement DownloadSpeed;
+
+	@FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
+	WebElement UploadSpeed;
+
 	@FindBy(xpath = "//div[contains(text(),'This address is not serviceable right now') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement addressNotServiceable;
 
@@ -1511,7 +1517,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 	public boolean verifyDownloadAndUploadSpeed() {
 //		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
-//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
 		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
 		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
 		String[] d1 = download.split(":");
@@ -1519,6 +1525,28 @@ public void activateHomePhoneltrPopUp() {
 		String[] u1 = upload.split(":");
 		System.out.println(u1[1]);
 		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
+
+	public boolean verifyInternetDownloadAndUploadSpeed() {
+		getReusableActionsInstance().scrollToElement(UploadSpeed);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeed);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeed);
+//		System.out.println("download speed "+ download);
+//		System.out.println("upload speed "+ upload);
+		String[] d1 = download.split(" ");
+		System.out.println("download speed "+ d1);
+		String[] u1 = upload.split(" ");
+		System.out.println("Upload speed "+ u1);
+		Boolean areEqual = d1[1].equals(u1[1]);
+//		Boolean areEqual = download.equals(upload);
+		System.out.println("upload speed "+ areEqual);
 		if (areEqual) {
 			System.out.println("Download and Upload speed Symmetrical");
 			return true;

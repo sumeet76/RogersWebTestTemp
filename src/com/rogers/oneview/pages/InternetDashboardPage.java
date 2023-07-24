@@ -208,7 +208,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	})
 	WebElement recommendedOffer;
 
-	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
+	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16 -ip-w-23']//span[contains(text(),'Select')]/ancestor::button")
 	WebElement exclusiveOfferAvailable;
 
 	/**

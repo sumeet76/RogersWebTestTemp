@@ -105,8 +105,10 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
 
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation options");
-        reporter.reportLogWithScreenshot("Delivery by Appointment installation");
-        getCreditCheckPage().selectDeliveryByAppointment();
+//        reporter.reportLogWithScreenshot("Delivery by Appointment installation");
+//        getCreditCheckPage().selectDeliveryByAppointment();
+        reporter.reportLogWithScreenshot("Select Prfessional Install");
+        getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");

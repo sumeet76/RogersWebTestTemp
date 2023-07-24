@@ -83,6 +83,9 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationTag;
 
+	@FindBy(xpath = "//h1[@translate='global.label.reviewYourOrder']")
+	WebElement orderReviewHeader;
+
 	/**
 	 * Verify order review page is loaded properly
 	 * @return true if page loaded else false
@@ -217,6 +220,10 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	public boolean verifyFibreActivationTag() {
 		getReusableActionsInstance().waitForElementVisibility(fibreActivationTag,30);
 		return getReusableActionsInstance().isElementVisible(fibreActivationTag);
+	}
+
+	public boolean verifyOrderReviewHeader() {
+		return getReusableActionsInstance().isElementVisible(orderReviewHeader, 100);
 	}
 
 }
