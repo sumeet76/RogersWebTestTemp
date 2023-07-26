@@ -3,19 +3,19 @@ plugins {
 	id 'java-library'
 	id 'maven-publish'
 	id 'com.jfrog.artifactory' version '4.15.1'
-	id 'com.aditya.SauceConnectPlugin' version '0.0.15'
+	id 'io.github.karthick1110.SauceConnectPlugin' version '0.0.6'
 }
 
-sauceconnect {
+sauceAuth {
 	username = System.getenv('SAUCE_USERNAME')
 	key = System.getenv('SAUCE_ACCESS_KEY')
-	options = "-i myTunnel --no-remove-colliding-tunnels"
+	options = "--tunnel-pool --tunnel-name myTunnel "
 }
 
 
 def sauce = [
-		username: sauceconnect.username,
-		key     : sauceconnect.key,
+		username: sauceAuth.username,
+		key     : sauceAuth.key,
 ]
 
 
@@ -160,7 +160,7 @@ dependencies {
 
 group = 'com.rogers'
 version = '1.0-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 sourceSets {
 
