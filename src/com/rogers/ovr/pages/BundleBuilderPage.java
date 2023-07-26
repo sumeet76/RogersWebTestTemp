@@ -93,7 +93,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[text()='Continue' or @translate='global.cta.continue']")
     WebElement continueBtn;
 
-    @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
+    @FindBy(xpath = "//span[contains(text(),'Courier Delivery') or contains(text(),'Livraison par messager')]")
     WebElement deliveryByAppointmentInstall;
 
     @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']/parent::div/following-sibling::div/descendant::span[2]")
@@ -117,7 +117,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//a[@id='session-indicator-remaining-time']")
     WebElement footerSessionTimer;
 
-    @FindBy(xpath = "//a[contains(text(),'Sign out')]")
+    @FindBy(xpath = "//a[contains(text(),'Log out')]")
     WebElement footerSignOutLink;
 
     @FindBy(xpath = "//a[contains(text(),'Search for another customer')]")

@@ -20,12 +20,15 @@ public class OneviewCH_Auto_TC116_TC04_Validation_DOCSIS_to_GPON_regularMappedOf
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");
         getEnvironmentSelectionPage().clickProceed();
-        //ToDo verify modal for D to G confirmation
         reporter.reportLogWithScreenshot("Clicked proceed button");
         getInternetDashboardPage().clickViewOffers();
-        //ToDo select technology verification - fibre
+        // verify modal for D to G confirmation
+        reporter.hardAssert(getTVDashboardPage().verifyDtoGModal(),"Docisis to GPON upgrade modal visible"," Fibre to the home available modal not visible");
+        getTVDashboardPage().clickContinue();
+        // select technology verification - fibre
         reporter.reportLogWithScreenshot("view offers link clicked");
         reporter.hardAssert(getInternetDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
+
         getTVDashboardPage().selectRecommendedOffer();
         getInternetDashboardPage().selectExclusiveOfferAvailable();
         reporter.reportLogWithScreenshot("selected package");
@@ -47,8 +50,10 @@ public class OneviewCH_Auto_TC116_TC04_Validation_DOCSIS_to_GPON_regularMappedOf
 
         //verify customer is activate on fibre tag.
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+        reporter.hardAssert(getRogersOVOrderReviewPage().verifyFibreActivationTag()," Fibre activation tag present","Fibre activation tag not present");
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVOrderReviewPage().verifyFibreActivationTag()," Fibre activation tag present","Fibre activation tag not present");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 
