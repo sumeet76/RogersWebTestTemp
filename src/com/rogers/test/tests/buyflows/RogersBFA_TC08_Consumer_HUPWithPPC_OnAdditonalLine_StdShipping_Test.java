@@ -54,7 +54,7 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");
         //getRogersPlanConfigPage().clickShowMoreDetails();
-        getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc08HUPAdditionalLineSS.getDataOptionIndex()),this.getClass().getSimpleName());
+        //getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc08HUPAdditionalLineSS.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Data option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
@@ -73,10 +73,10 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present",
                 "Order Review Page Title is not Present");
         reporter.reportLogPass("Order Review Page");
-        getRogersReviewOrderPage().clkFinancingConsentCheckbox();
+//        getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
-        getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
+//        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+//        getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
             getRogersOrderReviewPage().clkContinue();

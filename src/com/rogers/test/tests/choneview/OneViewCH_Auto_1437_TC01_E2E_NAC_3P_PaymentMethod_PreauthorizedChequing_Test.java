@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedChequing_Test extends BaseTestClass {
-	@Test (groups = {"RegressionCHOV","SanityCHOV"})
+	@Test (groups = {"RegressionCHOV","SanityCHOV","OVR_Sanity"})
     public void oneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedChequing_Test(){
 			reporter.reportLogWithScreenshot("oneview env");
 			getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
@@ -82,12 +82,11 @@ public class OneViewCH_Auto_1437_TC01_E2E_NAC_3P_PaymentMethod_PreauthorizedCheq
 			getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
 			getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 			reporter.reportLogWithScreenshot("Payment screen");
-//			getPaymentOptionsPage().clkContinue();
-//			reporter.reportLogWithScreenshot("submit order");
-			//getRogersOVCheckoutPage().clkSubmit();
-			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			//reporter.reportLogWithScreenshot("Order Placed");
-
+			getPaymentOptionsPage().clkContinue();
+			reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

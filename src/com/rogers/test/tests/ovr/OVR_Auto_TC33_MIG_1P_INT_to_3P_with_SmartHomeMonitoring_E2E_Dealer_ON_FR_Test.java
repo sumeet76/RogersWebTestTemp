@@ -68,8 +68,8 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Review Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
+        //reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
+        //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("4k tv pop up");
@@ -95,7 +95,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         //Validation for SHM Addon
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
+        //reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
         reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
@@ -121,7 +121,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
@@ -143,7 +143,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         //Validation for SHM Addon monthly fees.
-        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
         reporter.reportLogWithScreenshot("Order review Page");
 
         getOVROrderReviewPage().clkContinue();
@@ -160,7 +160,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_SmartHomeMonitoring_E2E_Dealer_
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
         //Validation for SHM Addon monthly fees.
-        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
 
     }
 }

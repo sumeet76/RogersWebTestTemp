@@ -17,6 +17,9 @@ public class OneViewCH_REG_Auto_TC094_Validate_Ignite_mappedOffers_SAI_to_SAI_ON
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteMappedOffersSAItoSAI.accountDetails.getBan(),TestDataHandler.IgniteMappedOffersSAItoSAI.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");

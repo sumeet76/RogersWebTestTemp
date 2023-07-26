@@ -277,7 +277,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[@id='ds-stepper-id-1-completedContent-2']")
     WebElement completedDataOptionStepper;
 
-    @FindBy(xpath = "//span[contains(text(),'Have a promo code') or contains(text(),'code promotionnel')]")
+    @FindAll({
+            @FindBy(xpath = "//ds-icon[@name='chevron-down']/parent::div"),
+            @FindBy(xpath = "//div[@data-test='view-more-promos-header']/span[contains(text(),'Promos')]")
+    })
     WebElement promoSection;
 
     @FindAll({
@@ -296,11 +299,13 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement btnCheckPromo;
 
     @FindAll({
-            @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to cart') or contains(text(),' ajouté au panier')]"),
+            @FindBy(xpath = "//ds-modal-container[@aria-label='Add promo code']//p[contains(text(),'Add promo code')]"),
             @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to your cart') or contains(text(),' ajoutée à votre panier')]")
     })
     WebElement promoCodeSuccessMsg;
 
+    @FindBy(xpath = "//ds-modal-container[@aria-label='Add promo code']//button[@data-test='modal-pom-continue']")
+    WebElement continueBtnPromo;
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
@@ -1518,6 +1523,16 @@ public class RogersPlanConfigPage extends BasePageClass {
     public boolean verifyPromoSuccessMsg() {
         return getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg, 60);
     }
+
+    /**
+     * Clicks on the Continue button in Promo Modal
+     * @author Subash.Nedunchezhian
+     */
+    public void clickContinuePromoModal(){
+        getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg);
+        getReusableActionsInstance().clickWhenReady(continueBtnPromo);
+    }
+
 
     /**
      * Validates the Line Item of the Promotion in cart summary

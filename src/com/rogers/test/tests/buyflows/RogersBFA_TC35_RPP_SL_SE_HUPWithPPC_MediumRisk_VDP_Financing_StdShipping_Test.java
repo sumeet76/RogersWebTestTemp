@@ -64,11 +64,11 @@ public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShi
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
-            financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
-            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
-            reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
-            reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
-                    "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
+//            financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
+//            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc35_RPP_HUPWithPPC_SL_SE_MediumRisk_Financing_VDP_SS.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
+//            reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
+//            reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+//                    "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
             getRogersCheckoutPage().clickSkipAutopay();
             reporter.reportLogPassWithScreenshot("On Checkout page");

@@ -6,6 +6,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -33,8 +34,11 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("5 Danforth St E1C3X6", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 Airport Heights", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -51,7 +55,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         reporter.reportLogWithScreenshot("Home Phone Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageFR());
         reporter.reportLogWithScreenshot("added to cart");
         getRogersIgniteBundlesPage().noPortInPopup();
         reporter.reportLogWithScreenshot("No to port in popup");
@@ -125,7 +129,7 @@ public class OVR_Auto_TC40_Anonymous_NAC_3P_TV_INT_RHP_ExchangeChannels_IntID_E2
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("Continue from Home phone personalization");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

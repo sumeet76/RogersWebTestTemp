@@ -79,7 +79,7 @@ public class CaptchaBypassHandlers {
 		//Add wait time for the add cookie to work on Firefox.
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		getDriver().manage().addCookie(captchBypass);
@@ -92,9 +92,9 @@ public class CaptchaBypassHandlers {
 	public String generateCookieRegistrationURL(String strUrl) {
 		String cookieEnv = envMapping(strUrl);
 		if(!strUrl.contains("www.rogers.com")) {
-			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
+			return cookieEnv + ".qa01.cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
 		}
-		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
+		return cookieEnv + ".cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/register";
 	}
 
 	/**
@@ -104,10 +104,11 @@ public class CaptchaBypassHandlers {
 	public String generateCookieFetchURL(String strUrl) {
 		String cookieEnv = envMapping(strUrl);
 		if(!strUrl.contains("www.rogers.com")) {
-			return cookieEnv + ".qa01.eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
+			return cookieEnv + ".qa01.cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 		}
-		return cookieEnv + ".eks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
+		return cookieEnv + ".cex.aks.rogers.com/api/recaptcha/v1/user/recaptchaBypass/login";
 	}
+
 
 	/**
 	 * To give the QA env mapping
@@ -116,22 +117,23 @@ public class CaptchaBypassHandlers {
 	 */
 	public String envMapping(String strUrl) {
 		String cookieEnv=null;
-		if (strUrl.contains("qa1.") || strUrl.contains("qa5.") || strUrl.contains("qa6.") || strUrl.contains("qa7.")) {
-			cookieEnv = "https://ute" + strUrl.split("qa")[1].charAt(0);
-		} else if (strUrl.contains("qa2.")) {
-			cookieEnv = "https://ute3";
-		} else if (strUrl.contains("qa3.")) {
-			cookieEnv = "https://ute4";
-		} else if (strUrl.contains("qa4.")) {
-			cookieEnv = "https://ute2";
+		if (strUrl.contains("qa")) {
+			cookieEnv = "https://self-serve" + strUrl.split("qa")[1].charAt(0);
 		} else if (strUrl.contains("www.rogers.com")) {
-			cookieEnv = "https://ute1.prod01";
+			cookieEnv = "https://self-serve.proda01";
 		}
 		else {
 			cookieEnv = System.getProperty("CookieFetcherMapping");
 		}
 		return cookieEnv;
 	}
+	
+	/**
+	 * To give the QA env mapping
+	 * @param strUrl String of test url
+	 * @return String of url starter after mapping
+	 */
+
 
 //	/**
 //	 * To Bypass Captcha for login Flows
@@ -203,10 +205,9 @@ public class CaptchaBypassHandlers {
 	}
 
 	public static String ChOVNACUrl(String strUrl, String strLoginID, String strLanID, String strAccNo, String strLanguage, String strContactID) {
-		String queryParam = "LoginId="+strLoginID+"&UserRole=R76,BT%20User,R21,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310&IntID=&Target=UTE&TimeStamp=2022-10-18T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
+		String queryParam = "LoginId="+strLoginID+"&UserRole=R76,BT%20User,R21,R75,R77,R180,R182,R185,R246,R252,R261,R167,R306,R307,R304,R309,R311,R310&IntID=&Target=UTE&TimeStamp=2023-03-18T11:29:45.4412-04:00&Lang="+strLanguage+"&AppId=CRM&li="+strLanID+"&AccNo=&ContactID="+strContactID+"&targetURL=IgniteNAC";
 		String oneViewUrl = strUrl + queryParam;
 		return oneViewUrl;
 	}
 
-	
 }

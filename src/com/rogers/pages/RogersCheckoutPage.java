@@ -187,11 +187,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
-			@FindBy(xpath = "//*[contains(text(),'Down payment')]/parent::div/following-sibling::div"),
-			@FindBy(xpath = "//ds-modal//*[contains(@data-test,'modal-credit-evaluation-section')]/div/div[contains(@class,'text-right')]/p"),
-			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
+			@FindBy(xpath = "//ds-modal//*[contains(@data-test,'modal-credit-evaluation-section')]/div/div[contains(@class,'text-right')]/p[1]"),
+			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p[1]"),
 		    @FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
-		    @FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
 	})
 	WebElement downPaymentAmt;
 
@@ -225,6 +223,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[1]")
 	WebElement rdoChoosePhoneNumber;
+
+	@FindBy(xpath = "//button[@data-test='search-available-number-button']")
+	WebElement searchNumberBtn;
 
 	@FindBy(xpath = "//div[@class='my-16']/button")
 	WebElement btnFindMoreAvlNumber;
@@ -957,9 +958,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
 		//if(riskClass.toUpperCase().contains("HIGH")) {
 			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 30).getText().trim().replace("$", "");
-			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
+			System.out.println(actualDownPayment);
+			if(expectedDownPayment.contains(actualDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
 				return true;
-			} else return false;
+			}
+			else return false;
+
 		/*} else if (riskClass.toUpperCase().contains("MEDIUM")) {
 			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
 			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
@@ -1117,6 +1121,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
+		getReusableActionsInstance().clickWhenReady(searchNumberBtn,20);
 		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 30).click();
 	}
 	/**

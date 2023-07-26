@@ -18,10 +18,13 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
-    //    getRogersIgniteBundlesPage().refreshContinue();
+
         getRogersIgniteBundlesPage().clkContinueServiceable();
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
@@ -33,8 +36,9 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
 //      reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
+       /* getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();*/
         reporter.reportLogWithScreenshot("Points to remember");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         getRogersIgniteBundlesPage().clickExchangeLater();
@@ -43,10 +47,13 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
         getCustomerProfilePage().clkContinue();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContinue();
-        reporter.reportLogWithScreenshot("Cart Summary");
+        reporter.reportLogWithScreenshot("Internet addons page");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyInternetAddOnsHeader(),"Internet addons header","header not displayed-internet addons");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
+        reporter.hardAssert(getHomePhoneAddonsPage().verifyHomePhoneAddOnsHeader(),"Homephone addons header","header not displayed-Homehone addons");
+
         getHomePhoneAddonsPage().clkContinue();
-//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
         reporter.reportLogWithScreenshot("continue");
@@ -89,7 +96,7 @@ public class OneViewCH_REG_Auto_TC0055_1548_TargetedMigration_1P_Internet_to_3P_
         getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
         reporter.reportLogWithScreenshot("entered payment info");
         getPaymentOptionsPage().clkContinue();
-        //   getRogersOVCheckoutPage().clkSubmit();
+           getRogersOVCheckoutPage().clkSubmit();
         reporter.reportLogWithScreenshot("submit payment");
         //   reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");

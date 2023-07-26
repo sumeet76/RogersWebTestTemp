@@ -61,7 +61,7 @@ public class EnsNotificationViewPage extends BasePageClass {
 	 * @author ning.xue
 	 */
 	public void clkBtnSearchNotification() {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(6000);
 		getReusableActionsInstance().clickWhenVisible(btnSearchNotification);
 	}
 	/**

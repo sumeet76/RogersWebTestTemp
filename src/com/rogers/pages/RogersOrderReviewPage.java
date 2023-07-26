@@ -1,13 +1,12 @@
 package com.rogers.pages;
 
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import com.rogers.pages.base.BasePageClass;
 
 import java.util.List;
 
@@ -404,7 +403,6 @@ public class RogersOrderReviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckbox, 90).click();
 	}
 
@@ -415,13 +413,11 @@ public class RogersOrderReviewPage extends BasePageClass {
 	public void clkAcceptenceCheckboxMobile() {
 		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
 		getReusableActionsInstance().executeJavaScriptClick(lnkAgreementPrivacyPolicy);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 10).sendKeys(Keys.PAGE_DOWN);
-		getReusableActionsInstance().getWhenVisible(lnkAgreementPrivacyPolicy, 5).sendKeys(Keys.PAGE_DOWN);
-		
-		getReusableActionsInstance().waitForElementVisibility(clkChangeAcceptCheckbox, 20);
+		getReusableActionsInstance().waitForElementTobeClickable(clkChangeAcceptCheckbox, 90);
 		getReusableActionsInstance().executeJavaScriptClick(clkChangeAcceptCheckbox);
+
 	}
 	
 	/**
@@ -582,8 +578,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyTargetedOfferOrderReviewPage() {
-		//getReusableActionsInstance().staticWait(5000);
-		return getReusableActionsInstance().isElementVisible(lblOrderReview, 200);
+		return getReusableActionsInstance().isElementVisible(lblOrderReview, 300);
 	}
 
 	/**
@@ -772,5 +767,19 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkLearnMoreCourierDelivery() {
 		getReusableActionsInstance().getWhenReady(lnkLearnMoreCourierDelivery, 30).click();
+	}
+
+	public void clkAcceptenceCheckboxHTO() {
+		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
+		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
+
+		List<WebElement> checkboxAgreement = getDriver().findElements(By.xpath("//label[contains(@class,'ds-checkboxLabel')]/input"));
+		for (WebElement ele:checkboxAgreement ) {
+			if(!ele.isSelected()){
+				getReusableActionsInstance().executeJavaScriptClick(ele);
+			}
+		}
 	}
 }

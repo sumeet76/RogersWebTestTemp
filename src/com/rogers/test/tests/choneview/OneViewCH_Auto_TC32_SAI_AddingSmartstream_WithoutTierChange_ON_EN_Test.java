@@ -18,6 +18,9 @@ public class OneViewCH_Auto_TC32_SAI_AddingSmartstream_WithoutTierChange_ON_EN_T
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Add SmartStream is clicked");
         getInternetDashboardPage().clickCheckBoxSmartStream();

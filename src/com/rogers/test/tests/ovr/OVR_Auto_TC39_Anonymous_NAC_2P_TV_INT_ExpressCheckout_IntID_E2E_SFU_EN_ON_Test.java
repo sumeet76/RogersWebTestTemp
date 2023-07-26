@@ -6,6 +6,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.FormFiller;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -23,7 +24,7 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_ExpressCheckout_IntID_E2E_SFU
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})
     public void ovr_Auto_TC39_Anonymous_NAC_2P_TV_INT_IntID_E2E_SFU_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_SFU_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("FS_SFU_username"), System.getenv("FS_SFU_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -32,8 +33,11 @@ public class OVR_Auto_TC39_Anonymous_NAC_2P_TV_INT_ExpressCheckout_IntID_E2E_SFU
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA missisauga", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

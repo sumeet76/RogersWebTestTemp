@@ -44,7 +44,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//div[contains(text(),'Success!')]")
 	WebElement txtSuccess;
 
-	@FindBy(xpath = "//button[@class='btn_s100 ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large ng-star-inserted']")
+	@FindBy(xpath = "//p[text()='Success!']//parent::div//following::div/button//span[text()='OK']")
 	WebElement btnSuccessOk;
 
 	@FindBy(xpath = "//span[text()='OK']/ancestor::button")
@@ -138,6 +138,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//*[text()=' Internet ']/preceding-sibling::div[@class='ds-checkbox__box my-12']")
 	WebElement selectInternetCheckbox;
 
+	@FindBy(xpath = "//span[text()='Fibre' or text()='Fibre optique']")
+	WebElement selectFibreRadiobutton;
+
 	@FindBy(xpath = "//span[text()='Load offers' or text()='Charger les offres']")
 	WebElement btnLoadOffers;
 
@@ -209,7 +212,9 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@translate='global.cta.tabs.channels']")
 	WebElement channelsTab;
 
-	@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")
+	@FindAll({
+			@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]"),
+			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")})
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -218,7 +223,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[3]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -394,7 +399,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.label.stbAddOns.header'] | //span[text()='TV Add-ons']")
 	WebElement tvAddOnsPageHeader;
 
-	@FindBy(xpath="(//span[@translate='global.cta.addToCart']/ancestor::button)")
+	@FindBy(xpath="//span[@translate='global.cta.addToCart']/ancestor::button")
 	WebElement addSTBToCart;
 
 	@FindBy(xpath="//span[text()=' + ']/ancestor::button")
@@ -402,6 +407,12 @@ public class TVDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath="//p[contains(text(), 'Reached maximum')]")
 	WebElement maximumLimitReached;
+
+	@FindBy(xpath = "//p[text()='Added to cart']")
+	WebElement addedToCart;
+
+	@FindBy(xpath = "//ds-modal/div/p[text()='Upgrade to Fibre-to-the-home is available for the customer']")
+	WebElement dtoGModal;
 
 
 	/**
@@ -485,7 +496,6 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void clickThemepacksTab() {
-
 		if (getReusableActionsInstance().isElementVisible(duplicateYes)) {
 			getReusableActionsInstance().executeJavaScriptClick(duplicateYes);
 		}
@@ -541,8 +551,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		WebElement bTn = getReusableActionsInstance().getWhenReady(addChannel, 60);
-		getReusableActionsInstance().javascriptScrollByCoordinates(0, bTn.getLocation().y - 300);
+		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 120);
 		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}
@@ -587,6 +596,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 * @author Aditi.jain
 	 */
 	public void immediateDateChangeOption() {
+		getReusableActionsInstance().staticWait(10000);
 		getReusableActionsInstance().waitForElementVisibility(immediateDateChange, 90);
 		getReusableActionsInstance().getWhenReady(immediateDateChange, 45).click();
 	}
@@ -776,6 +786,11 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement btn = getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().getWhenReady(selectInternetCheckbox, 60).click();
+	}
+	public void clickRadioButtonFibre() {
+		WebElement btn = getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60);
+		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
+		getReusableActionsInstance().getWhenReady(selectFibreRadiobutton, 60).click();
 	}
 
 	/**
@@ -969,6 +984,11 @@ public class TVDashboardPage  extends BasePageClass {
 		WebElement select = getReusableActionsInstance().getWhenReady(btnChangePackage, 120);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, select.getLocation().y - 300);
 		return getReusableActionsInstance().isElementVisible(btnChangePackage);
+	}
+
+	public boolean verifyDtoGModal() {
+		getReusableActionsInstance().waitForElementVisibility(dtoGModal,30);
+		return getReusableActionsInstance().isElementVisible(dtoGModal);
 	}
 
 	/**
@@ -1271,7 +1291,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickExchangeNow() {
-		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 30);
+		WebElement btn = getReusableActionsInstance().getWhenReady(exchangeNow, 50);
 		getReusableActionsInstance().javascriptScrollByCoordinates(0, btn.getLocation().y - 300);
 		getReusableActionsInstance().executeJavaScriptClick(exchangeNow);
 	}
@@ -1435,7 +1455,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public void clickAddToCartForSTB() {
-		getReusableActionsInstance().scrollToElement(addSTBToCart);
+		getReusableActionsInstance().waitForPageLoad();
 		getReusableActionsInstance().waitForElementVisibility(addSTBToCart, 30);
 		getReusableActionsInstance().executeJavaScriptClick(addSTBToCart);
 	}
@@ -1447,7 +1467,6 @@ public class TVDashboardPage  extends BasePageClass {
 		while(!getReusableActionsInstance().isElementVisible(maximumLimitReached, 10)){
 			getReusableActionsInstance().waitForElementVisibility(addAdditionalSTBToCart, 45);
 			getReusableActionsInstance().executeJavaScriptClick(addAdditionalSTBToCart);
-			getReusableActionsInstance().waitForPageLoad();
 		}
 	}
 

@@ -25,6 +25,8 @@ public class UniLoginPage extends BasePageClass {
 
     String sspbtn_xpath = "//span[contains(text(),'SSP Rogers SSP_ENV') or contains(text(),'PVS Rogers SSP_ENV')]";
 
+    String fidoSSPBtnXpath = "//span[contains(text(),'SSP Fido SSP_ENV') or contains(text(),'PVS Fido SSP_ENV')]";
+
     @FindBy(xpath = "//input[@value='Next' or @value='suivante']")
     WebElement corpLoginNextBtn;
 
@@ -77,6 +79,15 @@ public class UniLoginPage extends BasePageClass {
                 getReusableActionsInstance().getWhenVisible(staySignedInNO).click();
             }
         }
+
+    }
+
+    public void selectFidoSSPEnvAndSwitchWindow(String env){
+        fidoSSPBtnXpath = fidoSSPBtnXpath.replace("SSP_ENV", env);
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().getWhenVisible(By.xpath(fidoSSPBtnXpath)).click();
+        getReusableActionsInstance().switchToNewWindow();
+
 
     }
 }

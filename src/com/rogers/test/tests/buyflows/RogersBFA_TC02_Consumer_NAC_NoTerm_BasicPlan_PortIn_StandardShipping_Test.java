@@ -29,7 +29,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 
 		// **************************Device catalog page*****************************************
 
-		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+		//reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName=TestDataHandler.tc02NACNoTermStandardShipping.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");

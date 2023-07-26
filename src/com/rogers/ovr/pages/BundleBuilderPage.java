@@ -93,7 +93,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[text()='Continue' or @translate='global.cta.continue']")
     WebElement continueBtn;
 
-    @FindBy(xpath = "//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
+    @FindBy(xpath = "//span[contains(text(),'Courier Delivery') or contains(text(),'Livraison par messager')]")
     WebElement deliveryByAppointmentInstall;
 
     @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']/parent::div/following-sibling::div/descendant::span[2]")
@@ -101,6 +101,9 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Courier Delivery')]")
     WebElement courierDeliveryInstall;
+
+    @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Grab and Go')]")
+    WebElement grabAndGoInstall;
 
     @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
     WebElement courierDeliveryCheckbox;
@@ -114,7 +117,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//a[@id='session-indicator-remaining-time']")
     WebElement footerSessionTimer;
 
-    @FindBy(xpath = "//a[contains(text(),'Sign out')]")
+    @FindBy(xpath = "//a[contains(text(),'Log out')]")
     WebElement footerSignOutLink;
 
     @FindBy(xpath = "//a[contains(text(),'Search for another customer')]")
@@ -125,6 +128,18 @@ public class BundleBuilderPage extends BasePageClass {
 
     @FindBy(xpath = "//h1[contains(text(),'successfully logged out')]")
     WebElement loggedOutOfChampLbl;
+
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]//parent::div")
+    WebElement grabAndGoSerialNumber;
+
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]")
+    WebElement grabAndGoSerialNumberInput;
+
+    @FindBy(xpath = "//span[contains(text(),'Customer understands billing starts today and equipment must be self installed')]")
+    WebElement grabAndGoCheckbox;
+
+    @FindBy(xpath = "//span[contains(text(),'Success! Serial number added')]")
+    WebElement grabAndGoSerialNumberSuccess;
 
 
     public void openFooter() throws InterruptedException {
@@ -180,6 +195,12 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().waitForElementVisibility(igniteProfessionalInstall, 60);
         getReusableActionsInstance().javascriptScrollByVisibleElement(igniteProfessionalInstall);
         getReusableActionsInstance().executeJavaScriptClick(igniteProfessionalInstall);
+    }
+
+    public void selectGrabAndGoInstall() {
+        getReusableActionsInstance().waitForElementVisibility(grabAndGoInstall, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoInstall);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoInstall);
     }
 
     public void selectDeliveryByAppointmentInstall() {
@@ -297,4 +318,19 @@ public class BundleBuilderPage extends BasePageClass {
         getReusableActionsInstance().clickWhenVisible(logoutOneviewAndSSP,5);
         return getReusableActionsInstance().isElementVisible(loggedOutOfChampLbl,30);
     }
+
+    public void enterGrabAndGoSerialNumber(String serialNumber){
+        getReusableActionsInstance().getWhenVisible(grabAndGoSerialNumber,30);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumber);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumber);
+        getReusableActionsInstance().enterText(grabAndGoSerialNumberInput, serialNumber, 20);
+
+        getReusableActionsInstance().scrollToElement(grabAndGoCheckbox);
+        getReusableActionsInstance().clickWhenReady(grabAndGoCheckbox);
+    }
+
+    public boolean verifyGrabAndGoSerialNumber(){
+        return getReusableActionsInstance().isElementVisible(grabAndGoSerialNumberSuccess,20);
+    }
+
 }

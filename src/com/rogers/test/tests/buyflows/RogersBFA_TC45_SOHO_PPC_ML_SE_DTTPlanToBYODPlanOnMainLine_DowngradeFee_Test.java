@@ -23,7 +23,7 @@ public class RogersBFA_TC45_SOHO_PPC_ML_SE_DTTPlanToBYODPlanOnMainLine_Downgrade
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SOHOPPC"})
+    @Test(groups = {"RegressionBFA","SOHOPPC","SOHO"})
     public void tc45_sohoPPC_ML_SE_FINInTerm_BYODPlan_DowngradeFeeTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

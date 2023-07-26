@@ -38,7 +38,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("5 DANFORTH ST, MONCTON, NB, E1C3X6", "chrome");
+        getCheckAvailabilityPage().checkAvailability("43 Airport Heights", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
@@ -78,8 +78,8 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getRogersIgniteBundlesPage().contiueToCartSummary();
 
         reporter.reportLogWithScreenshot("Channel Personalization page");
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Channels and theme packs page");
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to 4k tv popup");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -148,7 +148,7 @@ public class OVR_Auto_TC09_Buyflow_Anonymous_3P_PortIn_Int_IntID_Corp_EN_ATL_Tes
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");

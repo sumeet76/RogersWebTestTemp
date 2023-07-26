@@ -19,6 +19,10 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		//	getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
+		getEnvironmentSelectionPage().selectProduction();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("use this address");
 		//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -38,8 +42,7 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		//getRogersIgniteBundlesPage().noPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkContinue();
-		getRogersIgniteBundlesPage().reviewAllTerms();
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 		//getRogersIgniteBundlesPage().clickExchangeLater();
 		getRogersIgniteBundlesPage().clickReviewAddons();
@@ -47,8 +50,9 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		getCustomerProfilePage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
-	//	getCustomerProfilePage().clkContinue();
+		//getCustomerProfilePage().clkContinue();
 		reporter.reportLogWithScreenshot("Internet addons page");
+		reporter.hardAssert(getRogersIgniteBundlesPage().validateInternetAddOnsHeader(),"Validating Internet addons header","Internet add ons page not displayed");
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		getRogersIgniteBundlesPage().clickReviewAddons();
 		getRogersIgniteBundlesPage().clickAddOnAddToCart();
@@ -89,13 +93,12 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 		getCreditCheckPage().enterSpecialInstructions();
 		getCreditCheckPage().clkContinueInstallationOption();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
-		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("billing and payment");
 		//getCreditCheckPage().selectPaymentOption(1);
 		reporter.reportLogWithScreenshot("Monthly charges");
 		getPaymentOptionsPage().clkContinue();
 		//	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("Submitting the order");
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");

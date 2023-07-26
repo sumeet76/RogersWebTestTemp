@@ -18,6 +18,10 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+        reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
         getRogersIgniteBundlesPage().clkContinueServiceable();
@@ -42,11 +46,13 @@ public class OneviewCH_REG_Auto_TC080_Migration_3P_GPON_OffersPage_ValidateSymme
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
         getRogersIgniteBundlesPage().goToPageBottom();
-        getRogersIgniteBundlesPage().reviewAllTerms();
-        getRogersIgniteBundlesPage().reviewTermsAndCondition();
+/*        getRogersIgniteBundlesPage().reviewAllTerms();
+        getRogersIgniteBundlesPage().reviewTermsAndCondition();*/
+        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.reportLogWithScreenshot("contine from terms");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyInternetAddOnsHeader(),"Internet Addons Header displayed","Internet Addons  Header did not Displayed");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.reportLogWithScreenshot("bottom to continue");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");

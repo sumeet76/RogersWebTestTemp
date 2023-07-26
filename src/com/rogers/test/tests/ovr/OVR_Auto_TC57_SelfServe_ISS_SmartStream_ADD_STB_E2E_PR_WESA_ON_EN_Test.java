@@ -18,7 +18,7 @@ public class OVR_Auto_TC57_SelfServe_ISS_SmartStream_ADD_STB_E2E_PR_WESA_ON_EN_T
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_FS"})

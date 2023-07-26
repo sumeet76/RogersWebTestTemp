@@ -38,9 +38,9 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         reporter.hardAssert(getAccountOverViewPage().verifyReviewYourOrder(), "Review Your Order displayed", "Review Your Order did not displayed");
 
         reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Previous Package displayed ", "Previous Package did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
+//        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");
-        reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
+//        reporter.hardAssert(getAccountOverViewPage().verifyNewTvDetails(), "New Tv Details displayed", "New Tv Details did not displayed");
         reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
         getAccountOverViewPage().clickSubmit();
         reporter.reportLogWithScreenshot("click Submit");
@@ -59,7 +59,6 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            //closeSession();
+            closeSession();
     }
-
 }

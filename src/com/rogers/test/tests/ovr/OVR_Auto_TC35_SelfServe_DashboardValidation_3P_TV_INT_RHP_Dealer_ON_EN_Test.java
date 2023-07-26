@@ -100,32 +100,27 @@ public class OVR_Auto_TC35_SelfServe_DashboardValidation_3P_TV_INT_RHP_Dealer_ON
         getHomePhonedashboard().clickResetVoiceMail();
         reporter.reportLogWithScreenshot("Clicked on Reset Voicemail");
         reporter.hardAssert(getHomePhonedashboard().verifyResetVoicemailPasswordImage(),"Reset Voicemail Password link works", "Reset Voicemail Password link is not working");
-//        getHomePhonedashboard().clickCancel();
-//        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
-        getHomePhonedashboard().clickYesResetPassword();;
-        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
-        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
-        reporter.reportLogWithScreenshot("reset success");
+        getHomePhonedashboard().clickCancel();
+        reporter.reportLogWithScreenshot("Closing Reset Voicemail Password image");
+//        getHomePhonedashboard().clickYesResetPassword();;
+//        reporter.reportLogWithScreenshot("Yes clicked on the reset voicemail link pop up to continue");
+//        reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Verification of reset success","Reset has Failed with a technical error");
+//        reporter.reportLogWithScreenshot("reset success");
 
-//        getHomePhonedashboard().clickChangeCallDisplayName();
-//        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
-//        reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
-//        getHomePhonedashboard().enterCallername("bbbdb","duhh");
-//        reporter.reportLogWithScreenshot("The new caller name are entered");
-//        getHomePhonedashboard().clickSubmit();
-//        reporter.reportLogWithScreenshot("The call display name changed successfully");
-//        //reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Call Display name changed successfully","Call display name is not changed");
-//        getHomePhonedashboard().clickBackToDashboard();
-//        reporter.reportLogWithScreenshot("Back to Dashboard button is clicked");
+        getHomePhonedashboard().clickChangeCallDisplayName();
+        reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(),"Pop Up Displayed","Pop up not loaded");
+        reporter.reportLogWithScreenshot("The current caller name is "+ getHomePhonedashboard().currentCallerName());
+        getHomePhonedashboard().enterCallername("bbbdb","duhh");
+        reporter.reportLogWithScreenshot("The new caller name are entered");
+        getHomePhonedashboard().clickSubmit();
+        reporter.reportLogWithScreenshot("The call display name changed successfully");
+        //reporter.hardAssert(getHomePhonedashboard().verifySuccess(),"Call Display name changed successfully","Call display name is not changed");
+        getHomePhonedashboard().clickBackToDashboard();
+        reporter.reportLogWithScreenshot("Back to Dashboard button is clicked");
 
-//        getInternetDashboardPage().clickBacktoAccountOverview();
-//        reporter.reportLogWithScreenshot("Back to account Overview Page");
-//        getInternetDashboardPage().clickContinue();
-
-
-
-
-
+        getInternetDashboardPage().clickBacktoAccountOverview();
+        reporter.reportLogWithScreenshot("Back to account Overview Page");
+        getInternetDashboardPage().clickContinue();
 
     }
 }

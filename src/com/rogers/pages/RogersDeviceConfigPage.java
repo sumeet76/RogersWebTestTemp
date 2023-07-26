@@ -97,10 +97,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'supérieure  de l’appareil')]")
     WebElement deviceProtectionAddon;
 
-    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']")
+    @FindBy(xpath = "//span[@data-test='regular-promo-header']")
     WebElement regularPromoRibbon;
 
-    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']/following::p[1]")
+    @FindBy(xpath = "//span[@data-test='regular-promodiscount-displayname']")
     WebElement regularPromoDetail;
 
     @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")
@@ -621,6 +621,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public String getRegularPromoDetails(){
+        getReusableActionsInstance().clickWhenReady(regularPromoRibbon,20);
         getReusableActionsInstance().scrollToElement(regularPromoDetail);
         return regularPromoDetail.getText().replaceAll("\\n", "");
     }

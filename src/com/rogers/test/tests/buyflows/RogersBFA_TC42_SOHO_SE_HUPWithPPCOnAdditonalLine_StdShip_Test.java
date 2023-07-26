@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test extends BaseTestClass {
 
-	@Test(groups = {"RegressionBFA","SOHOHUPBFA"})
+	@Test(groups = {"RegressionBFA","SOHOHUPBFA","SOHO"})
     public void tc42_sohoHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

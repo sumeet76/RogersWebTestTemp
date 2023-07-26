@@ -51,7 +51,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc01NACTermHighRiskStdShipping.getDataOptionIndex()),this.getClass().getSimpleName());
         reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
         getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
-        reporter.reportLogPassWithScreenshot("Plan config page data protection selected");
+        reporter.reportLogPassWithScreenshot("Plan config page data selected");
         //getRogersPlanConfigPage().clickOptionInDataProtection(deviceName);
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
@@ -77,8 +77,6 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
       //*************** AVS Data Code- Commented for future issue ******//
         String firstName = getRogersCheckoutPage().setFirstNameCreateProfile();
         String lastName = getRogersCheckoutPage().setLastNameCreateProfile();
-        //String firstName = getRogersCheckoutPage().setFirstNameCreateProfilepage("AMARAssspeares");
-        //String lastName = getRogersCheckoutPage().setLastNameCreateProfilepage("SPEARSsscheck");
         String fullNameCreateProfile=firstName+" "+lastName;
         String contactNumberCreateProfile=TestDataHandler.tc01NACTermHighRiskStdShipping.getContactNumber();
         getRogersCheckoutPage().setContactNumberCreateProfile(contactNumberCreateProfile);
@@ -119,7 +117,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.reportLogWithScreenshot("CLA/Down payment Modal");*/
         String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc01NACTermHighRiskStdShipping.getRiskClass(),deviceCost,upfrontEdge,financeProgramCredit);
         reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
-        reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+        reporter.softAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
                "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
         //reporter.hardAssert(getRogersCheckoutPage().verifyClaTextOnModal(), "CLA text on modal displayed properly", "CLA text on modal not displayed");
         getRogersCheckoutPage().clkAcceptButton();

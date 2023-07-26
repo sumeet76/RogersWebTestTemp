@@ -12,7 +12,7 @@ public class HomePhonedashboard  extends BasePageClass {
 	public HomePhonedashboard(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
+	@FindBy(xpath = "//span[text()='Continue' or text()='Continuer']")
 	WebElement btnContnue;
 
 	//@FindBy(xpath = "//span[@class='ds-icon rds-icon-check-circle']")
