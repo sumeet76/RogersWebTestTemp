@@ -51,6 +51,6 @@ public class OneViewCH_REG_Auto_TC094_Validate_Ignite_mappedOffers_SAI_to_SAI_ON
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-//        closeSession();
+        closeSession();
     }
 }

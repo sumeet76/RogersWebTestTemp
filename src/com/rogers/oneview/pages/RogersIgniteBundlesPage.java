@@ -443,7 +443,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement termoffer;
 
 
-	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	@FindBy(xpath = "//div[@class='ds-checkboxLabel__container ml-8 text-body my-12 text-semi']//span[contains(text(),'$30 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
 	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[2]")
@@ -1594,7 +1594,7 @@ public void activateHomePhoneltrPopUp() {
 	public void clickCheckAnotherAddress() {
 		getReusableActionsInstance().waitForElementTobeClickable(checkAnotherAddress,30);
 		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
-		getReusableActionsInstance().clickWhenReady(checkAnotherAddress);
+		getReusableActionsInstance().executeJavaScriptClick(checkAnotherAddress);
 		getReusableActionsInstance().staticWait(5000);
 	}
 

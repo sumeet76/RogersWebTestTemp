@@ -51,6 +51,6 @@ public class OneViewCH_REG_Auto_TC113_MappedTermContract_Restart_ValidateMappedT
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+//        closeSession();
     }
 }
