@@ -19,7 +19,8 @@ def sauce = [
 ]
 
 
-task "sauceTest"(type: Test) {
+//task "sauceTest"(type: Test) {
+task "sauceTest"(dependsOn: startSauceConnect, type: Test){
 	if(!test_browser){
 		test_browser='saucechrome'
 	}
@@ -64,10 +65,10 @@ task "sauceTest"(type: Test) {
 	systemProperty 'TestEnv', test_env
 	systemProperty 'TestUrl', test_TestURL
 	systemProperty 'IsPieChartRequired', IsPieChartRequired
-	systemProperty 'TunnelName', TunnelName
-	systemProperty 'parentTunnelOwner', parentTunnelOwner
-	/*systemProperty 'TunnelName', "Digital_Mobile_QA"
-	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"*/
+	//systemProperty 'TunnelName', TunnelName
+	//systemProperty 'parentTunnelOwner', parentTunnelOwner
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 
 
 	useTestNG(){

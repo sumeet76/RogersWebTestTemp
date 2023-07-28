@@ -706,7 +706,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author Subash.Nedunchezhian
      */
     public boolean clickGetStartedButtonOnModalRPP(){
-        getReusableActionsInstance().clickIfAvailable(modalContainerGetStartedbutton);
+        getReusableActionsInstance().executeJavaScriptClick(modalContainerGetStartedbutton);
         return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
     }
 
