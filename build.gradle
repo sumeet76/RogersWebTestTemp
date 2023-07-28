@@ -19,7 +19,8 @@ def sauce = [
 ]
 
 
-task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
+//task "sauceTest"(type: Test) {
+task "sauceTest"(dependsOn: startSauceConnect, type: Test){
 	if(!test_browser){
 		test_browser='saucechrome'
 	}
@@ -50,6 +51,7 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
+	systemProperty 'JiraTestRepoPath',jira_Test_Repo_Path
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
 	systemProperty 'DBImportFlag', db_update_flag
@@ -57,9 +59,16 @@ task "sauceTest"(dependsOn: startSauceConnect, type: Test) {
 	systemProperty 'RunType', test_runType
 	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperty 'ensEnv',test_ens_env
-	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 	systemProperty 'OVFidoUrl' , test_OVFidoUrl
 	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'TestEnv', test_env
+	systemProperty 'TestUrl', test_TestURL
+	systemProperty 'IsPieChartRequired', IsPieChartRequired
+	//systemProperty 'TunnelName', TunnelName
+	//systemProperty 'parentTunnelOwner', parentTunnelOwner
+	systemProperty 'TunnelName', "Digital_Mobile_QA"
+	systemProperty 'parentTunnelOwner', "DigitalQAWebAutomation"
 
 
 	useTestNG(){
@@ -104,9 +113,10 @@ task "localTest"(type: Test) {
 	systemProperty 'CookieFetcherMapping', test_CookieFetcherMapping
 	systemProperty 'OVRURL', test_ovr
 	systemProperty 'XrayImportFlag', xray_import_flag
+	systemProperty 'JiraProjectKey', jira_project_key
 	systemProperty 'TestPlanKey',test_plan_key
 	systemProperty 'TestExecutionKey',test_execution_key
-	systemProperty 'JiraProjectKey', jira_project_key
+	systemProperty 'JiraTestRepoPath',jira_Test_Repo_Path
 	systemProperty 'JiraAssignee', test_jira_assignee
 	systemProperty 'JiraReporter', test_jira_reporter
 	systemProperty 'DBImportFlag', db_update_flag
@@ -115,6 +125,11 @@ task "localTest"(type: Test) {
 	systemProperty 'ApplicationName', test_ApplicationName
 	systemProperty 'OVFidoUrl' , test_OVFidoUrl
 	systemProperty 'ensEnv',test_ens_env
+	systemProperty 'ReleaseName', test_release
+	systemProperty 'TestEnv', test_env
+	systemProperty 'TestUrl', test_TestURL
+	systemProperty 'IsPieChartRequired', IsPieChartRequired
+
 	systemProperties(System.getProperties())
 	outputs.upToDateWhen { false }  // Always run tests
 
@@ -149,7 +164,7 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:latest.release'
+	api 'automation-utils:common-utils:1.74-SeleniumV4-SNAPSHOT'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'

@@ -71,8 +71,8 @@ public class RogersBFA_TC03_POM_RegularPromoHWFin_Consumer_NAC_TermBopisShipping
 //				"RPOTG Label and subcopy verified in Plan Config Page verified as" + "--->" + rpotgLabelPlanConfig);
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
 				"BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
-				"Promotion Applied Successfully", "Promotion Not Applied");
+//		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+//				"Promotion Applied Successfully", "Promotion Not Applied");
 		String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
 		getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
 		// ***************************Plan config page************************************

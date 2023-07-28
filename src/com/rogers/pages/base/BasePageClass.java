@@ -1,8 +1,10 @@
  package com.rogers.pages.base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.TouchActions;
+//import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ReusableActions;
@@ -22,7 +24,7 @@ public class BasePageClass {
   /**
    * The Action.
    */
-  TouchActions action;
+  //TouchActions action;
   /**
    * The Time out seconds.
    */
@@ -96,7 +98,15 @@ public class BasePageClass {
    * @return the driver
    */
 
-
+  /**
+   * Move the element to center page of the screen
+   * @param element
+   * @author vedachalam.vasudevan
+   */
+  public void moveToCenterOfScreen(WebElement element) {
+    JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+    jse.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'})", element);
+  }
 
 
 }

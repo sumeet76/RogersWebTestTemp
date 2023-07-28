@@ -23,7 +23,7 @@ public class RogersBFA_TC44_SOHO_PPC_SL_NonSE_TTPlanToDTTPlan_Test extends BaseT
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SOHOPPC"})
+    @Test(groups = {"RegressionBFA","SOHOPPC","SOHO"})
     public void tc44_sohoPPC_SLNonSE_TTPlanToDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

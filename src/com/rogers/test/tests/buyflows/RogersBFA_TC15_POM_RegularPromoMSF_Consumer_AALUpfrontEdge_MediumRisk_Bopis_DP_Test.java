@@ -112,6 +112,8 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         String isSelectedDeviceTier = getRogersPlanConfigPage().getDeviceCostTierSelected();
         reporter.hardAssert(getRogersPlanConfigPage().verifyCartLineItem(),
                 "Promo Discount amount Line Item displayed","Promo line item not displayed");
+        getReporter().softAssert(getRogersPlanConfigPage().getDownPaymentLineCart(expectedDownPayment),
+                "DownPayment amount is displayed correctly", "DownPayment amount is not displayed correctly");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //---------------------------------------Checkout pages---------------------------------------------------------
         reporter.softAssert(getRogersCheckoutPage().isChooseaNumberTitleDisplayed(), "Choose a Number Title Displayed", "Choose a Number Title not disaplayed");

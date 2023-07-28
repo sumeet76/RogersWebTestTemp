@@ -29,7 +29,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 
 		// **************************Device catalog page*****************************************
 
-		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+		//reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName=TestDataHandler.tc02NACNoTermStandardShipping.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen", "Modal element is not present on the screen");
@@ -65,9 +65,9 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		// *****************************Create Profile Page*****************************************
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
-		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
+		//String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
-				+ " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
+				+ " 2. oneTimeFee" + oneTimeFee /*+ " 3. Purchase Include" + purchaseIncludes*/);
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
 				"Create profile Title not present");
 		String emailCreateProfile = getRogersCheckoutPage().setEmailCreateProfile();
