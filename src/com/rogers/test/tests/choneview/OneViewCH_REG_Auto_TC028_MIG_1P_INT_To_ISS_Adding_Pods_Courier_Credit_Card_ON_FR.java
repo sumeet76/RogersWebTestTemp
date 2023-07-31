@@ -20,14 +20,16 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("click ignite");
-//		getAccountOverViewPage().setLanguageFrench();
+		getAccountOverViewPage().setLanguageFrench();
 		getAccountOverViewPage().clickIgnite();
+		getAccountOverViewPage().selectProduction();
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("use this address");
 	//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
-		getRogersIgniteBundlesPage().clkSmartStream();
+		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS selected");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("Internet checkbox is selected");
@@ -43,9 +45,11 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		getRogersIgniteBundlesPage().reviewTermsAndCondition();
 		reporter.reportLogWithScreenshot("Reviewed terms anc conditions");
 		getRogersIgniteBundlesPage().clkReviewContinue();
+		getRogersIgniteBundlesPage().addPods(5);
+		getRogersIgniteBundlesPage().addPods(0);
 		getRogersIgniteBundlesPage().refreshContinue();
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
-	//	getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
 	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
@@ -81,9 +85,9 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("Entered card details");
 		getCreditCheckPage().goToPageBottom();
 		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.reportLogWithScreenshot("Order Placed");
+		reporter.reportLogWithScreenshot("submit order");
+		getRogersOVCheckoutPage().clkSubmit();
+		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

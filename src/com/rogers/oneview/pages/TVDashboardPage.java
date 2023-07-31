@@ -213,8 +213,8 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement channelsTab;
 
 	@FindAll({
-			@FindBy(xpath = "(//button[@translate='global.cta.tabs.themePacks'])[2]"),
-			@FindBy(xpath = "//button[@translate='global.cta.tabs.themePacks']")})
+			@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']/parent::button"),
+			@FindBy(xpath = "//span[@translate='global.cta.tabs.themePacks']")})
 	WebElement themesTab;
 
 	@FindBy(xpath = "//button[@name='tab-channel']")
@@ -551,7 +551,7 @@ public class TVDashboardPage  extends BasePageClass {
 	 */
 	public void clickAddChannel() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 120);
+		getReusableActionsInstance().waitForElementTobeClickable(addChannel, 2400);
 		getReusableActionsInstance().executeJavaScriptClick(addChannel);
 		getReusableActionsInstance().staticWait(3000);
 	}

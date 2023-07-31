@@ -97,8 +97,8 @@ public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homeph
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("Installation options");
 		//getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("Delivery by Appointment installation");
-		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("professional installation");
+		getCreditCheckPage().selectProfessionalInstallation();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
@@ -107,8 +107,7 @@ public class OneViewCH_REG_Auto_TC001_NAC_3P_4KTV_Channels_and_Themepacks_Homeph
 		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
-		reporter.reportLogWithScreenshot(".enter Special Instructions");
-		getPaymentOptionsPage().clkContinue();
+		getRogersIgniteBundlesPage().clkContinue();
 		reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");

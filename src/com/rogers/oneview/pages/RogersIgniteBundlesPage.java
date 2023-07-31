@@ -154,11 +154,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(text(),'Streaming')]/ancestor::label"),
-			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']"),
-			@FindBy(xpath = "//div[contains(text(), 'Streaming')]")
+			@FindBy(xpath = "//div[contains(text(),' Home Security ')]/ancestor::label"),
+			@FindBy(xpath = "(//input[@id='ds-checkbox-id-27']//following-sibling::div)[1]"),
+			@FindBy(xpath = "//div[contains(text(), ' Home Security ') or contains(text(),' Sécurité résidentielle ')]")
 	})
-	WebElement smartStreamCheckbox;
+	WebElement smartHomeMonitoring;
 
 	@FindBy(xpath = "//h1[text()='Cart Summary']")
 	WebElement cartSummaryLabel;
@@ -321,8 +321,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
-	WebElement smartHomeMonitoring ;
+	@FindBy(xpath="//div[text()=' Streaming ' or text()=' Sécurité résidentielle ']")
+	WebElement smartStreamCheckbox ;
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement homeSecurity ;
@@ -440,7 +440,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -449,7 +449,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath ="//span[text()='Exclusive Offer Available' or text()='Offre exclusive en vigueur']")
 	WebElement exclusiveOffers;
 
-	@FindBy(xpath = "(//span[contains(text(),'$90 off Wireless')])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'Rabais de 90 $')])[1]")
 	WebElement wirelessHomeInternetCred;
 
 	@FindBy(xpath = "//button[@type='button']//parent::ds-popover[@class='popover ng-star-inserted']")
@@ -545,7 +545,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
-		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+		//getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 
 		}
 	/**
