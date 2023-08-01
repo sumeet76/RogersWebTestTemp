@@ -791,21 +791,21 @@ public class BaseTestClass {
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl+"/phones");
-                setCookie(strUrl);
+//                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
-                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&province=" + "ON");
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") && !(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO"))){
-                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&province=" + "ON");
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
                     getDriver().get(strUrl + "/phones/" + "?type=soho");
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("BFA_PROD")) {
                     getDriver().get(strUrl);
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
                     getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;
 

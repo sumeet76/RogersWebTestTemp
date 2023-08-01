@@ -551,7 +551,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 * @author rajesh.varalli1
 	 */
 	public void clkSubmitOrder() {
-		getReusableActionsInstance().clickWhenVisible(btnSubmitOrder,60);
+		getReusableActionsInstance().getWhenReady(btnSubmitOrder,60).click();
 	}
 	
 	/**

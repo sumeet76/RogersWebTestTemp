@@ -187,9 +187,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement depositAmt;
 
 	@FindAll({
-			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p"),
-		@FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
-		@FindBy(xpath = "//div[contains(@class,'ds-price__amountDollars')]")
+			@FindBy(xpath = "//ds-modal//*[contains(@data-test,'modal-credit-evaluation-section')]/div/div[contains(@class,'text-right')]/p[1]"),
+			@FindBy(xpath = "//ds-modal//*[contains(@class,'text-right')]/p[1]"),
+		    @FindBy(xpath = "//p[@data-test='modal-credit-evaluation-deposit']/following-sibling::div[@class='d-flex']//div[contains(@class,'text-right')]//p[2]"),
 	})
 	WebElement downPaymentAmt;
 
@@ -223,6 +223,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[1]")
 	WebElement rdoChoosePhoneNumber;
+
+	@FindBy(xpath = "//button[@data-test='search-available-number-button']")
+	WebElement searchNumberBtn;
 
 	@FindBy(xpath = "//div[@class='my-16']/button")
 	WebElement btnFindMoreAvlNumber;
@@ -763,7 +766,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	public void clkBtnGotoCreditEvalStepper() {
 //		WebDriverWait wait = new WebDriverWait(driver, 10);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@data-test='personal-info-continue']")));
-		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 40);
+		getReusableActionsInstance().clickWhenReady(btnGotoCreditEvalStepper, 60);
 	}
 
 	/**
@@ -954,10 +957,13 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDownPaymentAmt(String expectedDownPayment) {
 		//if(riskClass.toUpperCase().contains("HIGH")) {
-			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim().replace("$", "");
-			if(actualDownPayment.contains(expectedDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
+			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 30).getText().trim().replace("$", "");
+			System.out.println(actualDownPayment);
+			if(expectedDownPayment.contains(actualDownPayment) || actualDownPayment.replace(",", ".").contains(expectedDownPayment)) {
 				return true;
-			} else return false;
+			}
+			else return false;
+
 		/*} else if (riskClass.toUpperCase().contains("MEDIUM")) {
 			double expectedDownPayment = (Double.parseDouble(deviceCost)) / 100.0 * 20.0;
 			String actualDownPayment = getReusableActionsInstance().getWhenReady(downPaymentAmt, 20).getText().trim();
@@ -1019,14 +1025,16 @@ public class RogersCheckoutPage extends BasePageClass {
 		String downPayment = String.valueOf(downPay);
 		int decimal=0;
 		String[] modify = downPayment.split("\\.");
-		char secondDecimal = modify[1].charAt(1);
-		char thirdDecimal = modify[1].charAt(2);
-		if(Integer.parseInt(String.valueOf(thirdDecimal)) >= 5){
-			decimal = Integer.parseInt(String.valueOf(secondDecimal))+1;
-		} else {
-			decimal = Integer.parseInt(String.valueOf(secondDecimal));
+		if(modify[1].length() >= 3) {
+			char secondDecimal = modify[1].charAt(1);
+			char thirdDecimal = modify[1].charAt(2);
+			if (Integer.parseInt(String.valueOf(thirdDecimal)) >= 5) {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal)) + 1;
+			} else {
+				decimal = Integer.parseInt(String.valueOf(secondDecimal));
+			}
 		}
-		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1) + decimal;
+		String modifiedDownPayment = modify[0] + "." + modify[1].substring(0,1);
 		return modifiedDownPayment;
 	}
 
@@ -1113,6 +1121,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void clkChosePhoneNumber() {
+		getReusableActionsInstance().clickWhenReady(searchNumberBtn,20);
 		getReusableActionsInstance().getWhenReady(rdoChoosePhoneNumber, 30).click();
 	}
 	/**
@@ -1167,6 +1176,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clkExistingNumberTab(){
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().executeJavaScriptClick(existingNumberTab);
 	}
 
@@ -1175,7 +1185,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void setExistingPortInNumber(String eligiblePortInNumber){
-	getReusableActionsInstance().clickWhenReady(existingNumberField);
+	getReusableActionsInstance().getWhenReady(existingNumberField).click();
 	getReusableActionsInstance().executeJavaScriptClick(inputPortInNumber);
 //	inputPortInNumber.clear();
 	inputPortInNumber.sendKeys(eligiblePortInNumber);
