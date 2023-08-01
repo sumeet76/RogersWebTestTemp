@@ -1268,7 +1268,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
-		getReusableActionsInstance().scrollToElement(recommendedOffer);
+		//getReusableActionsInstance().scrollToElement(recommendedOffer);
 		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 

@@ -19,6 +19,9 @@ public class OneviewCH_REG_Auto_TC034_InternetDashboard_Internet_HeaderFooterUsa
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.solarisAccount.accountDetails.getBan(),TestDataHandler.solarisAccount.getContactID());
 		reporter.reportLogWithScreenshot("Launched the account dashboard page");
 		getAccountOverViewPage().selectInternetBadage();
+		reporter.reportLogWithScreenshot("Selected Production");
+		getEnvironmentSelectionPage().clickProceed();
+		reporter.reportLogWithScreenshot("Clicked proceed button");
 		reporter.reportLogWithScreenshot("Lanched the internet dashboard page ");
 		reporter.softAssert(getInternetDashboardPage().verifyHeader(),"Header is available","Verification of Header failed");
 		reporter.reportLogWithScreenshot("Header available on Internet Dashboard page");

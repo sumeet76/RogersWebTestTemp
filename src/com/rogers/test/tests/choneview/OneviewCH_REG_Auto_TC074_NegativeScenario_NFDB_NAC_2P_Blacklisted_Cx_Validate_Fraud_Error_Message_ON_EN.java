@@ -14,7 +14,6 @@ import java.lang.reflect.Method;
 public class OneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_Cx_Validate_Fraud_Error_Message_ON_EN extends BaseTestClass {
     @Test(groups = "")
     public void oneviewCH_REG_Auto_TC074_NegativeScenario_NFDB_NAC_2P_Blacklisted_Cx_Validate_Fraud_Error_Message_ON_EN(){
-
         getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");

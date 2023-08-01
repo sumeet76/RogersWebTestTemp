@@ -589,6 +589,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void selectInternetPlan(String upgradeBundle){
 		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::rch-bundle-price//span[@translate='global.cta.select']/ancestor::span[@role='text']");
 //		By changePlan= By.xpath("//p[contains(text(),'"+upgradeBundle+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+		getReusableActionsInstance().staticWait(10000);
 		WebElement changePlanElement= getDriver().findElement(changePlan);
 		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
 		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);
