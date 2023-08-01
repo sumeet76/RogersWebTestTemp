@@ -154,7 +154,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(text(),' Home Security ')]/ancestor::label"),
+			@FindBy(xpath = "//div[contains(text(),' Home Security ') or contains(text(),' Sécurité résidentielle ']/ancestor::label"),
 			@FindBy(xpath = "(//input[@id='ds-checkbox-id-27']//following-sibling::div)[1]"),
 			@FindBy(xpath = "//div[contains(text(), ' Home Security ') or contains(text(),' Sécurité résidentielle ')]")
 	})
