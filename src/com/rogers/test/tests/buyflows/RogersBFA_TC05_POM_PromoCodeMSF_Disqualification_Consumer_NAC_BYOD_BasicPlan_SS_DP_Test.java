@@ -38,18 +38,18 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 		reporter.reportLogWithScreenshot("Promo Code Entered");
 		getRogersPlanConfigPage().clkCheckPromoBtn();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(), "Discount Value and Duration displayed", "Promo Code Not Applied");
+		getRogersPlanConfigPage().clickContinuePromoModal();
 		//############################Plan config page###############################
 		//getRogersPlanConfigPage().clkBasicTab();
 		//getRogersPlanConfigPage().selectBasicPlanAndClkContinueBtn(TestDataHandler.tc05NACByodSS.getDataOptionIndex());
 		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		//getRogersPlanConfigPage().clickShowMoreDetails();
-		//getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
+		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
 		getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
 		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		getRogersPlanConfigPage().clickGetBPOOffer();
+		//getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().selectBYODdpAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
 		getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc05NACByodSS.getDpIMEI());

@@ -138,10 +138,10 @@ public class RogersReviewOrderPage extends BasePageClass {
     	getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyFeeAfterTax);
     	getReusableActionsInstance().staticWait(1500);
     	System.out.println(monthlyFeeAfterTax.getText());
-    	String[] str = monthlyFeeAfterTax.getText().replaceAll("\\n","").split("\\$");
+    	return monthlyFeeAfterTax.getText().replaceAll("\\n","");
+    	/*String[] str = monthlyFeeAfterTax.getText().replaceAll("\\n","").split("\\$");
     	String[] splittedStr = str[1].split("\\/");
-    	return splittedStr[0];
-    	
+    	return splittedStr[0];*/
     	}
 
     /**

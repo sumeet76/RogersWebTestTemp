@@ -71,7 +71,7 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinInTerm_CreatingSharedGroup_
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
                 "Additional line option page is displayed", "Additional line option page is not disaplayed");
-        getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
+        getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","0");
         reporter.reportLogWithScreenshot("Additional line data and talk selected");
         getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc23PPCMLNonSESharedGroupDTTPlan.getNewPlanType());
         reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
