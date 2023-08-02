@@ -154,11 +154,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 
 	@FindAll({
-			@FindBy(xpath = "//div[contains(text(),' Home Security ') or contains(text(),' Sécurité résidentielle ']/ancestor::label"),
-			@FindBy(xpath = "(//input[@id='ds-checkbox-id-27']//following-sibling::div)[1]"),
-			@FindBy(xpath = "//div[contains(text(), ' Home Security ') or contains(text(),' Sécurité résidentielle ')]")
+			@FindBy(xpath = "//div[contains(text(),'Streaming')]/ancestor::label"),
+			@FindBy(xpath = "//div[@id='ds-checkbox-id-2-label-container']"),
+			@FindBy(xpath = "//div[contains(text(), 'Streaming')]")
 	})
-	WebElement smartHomeMonitoring;
+	WebElement smartStreamCheckbox;
 
 	@FindBy(xpath = "//h1[text()='Cart Summary']")
 	WebElement cartSummaryLabel;
@@ -321,8 +321,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()=' Retirer ' or text()=' Remove ']/ancestor::button")
 	WebElement removeButton;
 
-	@FindBy(xpath="//div[text()=' Streaming ' or text()=' Sécurité résidentielle ']")
-	WebElement smartStreamCheckbox ;
+	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
+	WebElement smartHomeMonitoring ;
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement homeSecurity ;
