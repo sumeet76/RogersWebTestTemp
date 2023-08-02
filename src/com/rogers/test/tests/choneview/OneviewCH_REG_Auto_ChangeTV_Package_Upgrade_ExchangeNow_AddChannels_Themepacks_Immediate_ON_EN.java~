@@ -25,11 +25,10 @@ public class OneviewCH_REG_Auto_ChangeTV_Package_Upgrade_ExchangeNow_AddChannels
 		getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("deal code");
 		getAccountOverViewPage().clickIgniteTVBadge();
-		reporter.reportLogWithScreenshot("TV Batch");
 		getEnvironmentSelectionPage().selectProduction();
 		reporter.reportLogWithScreenshot("Selected Production");
 		getEnvironmentSelectionPage().clickProceed();
-		reporter.reportLogWithScreenshot("Click Proceed");
+		reporter.reportLogWithScreenshot("TV Batch");
 		reporter.hardAssert(getAccountOverViewPage().verifyTVOrChannelHeader(),"TV or Channel header displayed","TV or Channel header did not Displayed");
 		reporter.reportLogWithScreenshot("Ignite TV widget selected");
 		getTVDashboardPage().clickChangePackage();
@@ -47,13 +46,9 @@ public class OneviewCH_REG_Auto_ChangeTV_Package_Upgrade_ExchangeNow_AddChannels
 		getTVDashboardPage().clickSelectChannelAdd();
 		reporter.reportLogWithScreenshot("First channel is added");
 		getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
-		reporter.reportLogWithScreenshot("Themepack Tab clicked");
 		getRogersOVChannelsAndThemePacksPage().addThemepack();
-		reporter.reportLogWithScreenshot("Themepack added");
 		getRogersOVChannelsAndThemePacksPage().clkContinue();
-		reporter.reportLogWithScreenshot("Continue button clicked");
 		getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
-		reporter.reportLogWithScreenshot("Click on No They Don't");
 		//getTVDashboardPage().clickContinue4kChannelPack();
 		getTVDashboardPage().immediateDateChangeOption();
 		reporter.reportLogWithScreenshot("Immediate date");

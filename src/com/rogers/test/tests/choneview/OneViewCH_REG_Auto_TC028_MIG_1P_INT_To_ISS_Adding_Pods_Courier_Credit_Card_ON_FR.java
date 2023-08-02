@@ -29,7 +29,7 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
-		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
+		getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS selected");
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("Internet checkbox is selected");
