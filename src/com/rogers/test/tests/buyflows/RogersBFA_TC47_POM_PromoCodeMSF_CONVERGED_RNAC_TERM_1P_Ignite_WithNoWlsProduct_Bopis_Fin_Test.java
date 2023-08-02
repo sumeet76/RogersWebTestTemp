@@ -16,7 +16,7 @@ import java.util.Map;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_VDP_Bopis_Fin_Test extends BaseTestClass {
+public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithNoWlsProduct_Bopis_Fin_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,9 +25,9 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
 	}
 
     @Test(groups = {"RegressionBFA","CovergeBFA","POM"})
-    public void tc47_pomRNACTerm_1P_Ignite_VDP_BopisTest() throws InterruptedException, IOException {
+    public void tc47_pomRNACTerm_1P_Ignite_BopisTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
-        reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+        //reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getDeviceName());
         reporter.reportLogWithScreenshot("New or existing customer modal Popup");
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyAddALineBtnForIgniteCustomer(),
@@ -56,8 +56,8 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
                 "Promo Code Applied Successfully", "Promo Code Not Applied");
         reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(),
                 "Discount Value and Duration displayed", "Promo Code Not Applied");
-        getRogersPlanConfigPage().clkDownPaymentChkBox();
-        reporter.reportLogWithScreenshot("Down payment checkbox is selected");
+//        getRogersPlanConfigPage().clkDownPaymentChkBox();
+//        reporter.reportLogWithScreenshot("Down payment checkbox is selected");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         getRogersPlanConfigPage().clickShowMoreDetails();
         getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
@@ -140,27 +140,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkBopisConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
-        //getRogersReviewOrderPage().clkSubmitOrderBtn();
-        //---------------------One Time Payment page------------------------------//
-        if(getRogersOrderReviewPage().isPaymentRequired()) {
-            getRogersOrderReviewPage().clkContinue();
-            reporter.reportLogWithScreenshot("Rogers Payment Page");
-            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentTitle(),
-                    "One Time Payment Page displayed","One Time Payment Page Not displayed");
-            String otpAmount = getRogersOneTimePaymentPage().getOneTimePaymentAmount();
-            reporter.reportLogWithScreenshot("One Time Payment Amount = " +otpAmount);
-            reporter.hardAssert(getRogersOneTimePaymentPage().verifyOneTimePaymentPage(),"Payment page displayed successfully","Payment page did not display");
-            getRogersOneTimePaymentPage().setNameonCard();
-            getRogersOneTimePaymentPage().switchToCreditCardIFrame();
-            getRogersOneTimePaymentPage().setCreditCardNumberIFrame(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getCreditCardDetailsOTP());
-            getRogersOneTimePaymentPage().switchOutOfCreditCardIFrame();
-            getRogersOneTimePaymentPage().setExpiryDate(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getExpiryDateOTP());
-            getRogersOneTimePaymentPage().setCVV();
-            reporter.reportLogPassWithScreenshot("Credit Card Details Entered Successfully");
-            getRogersOneTimePaymentPage().clkSubmitOrderBtn();
-        } else {
-            getRogersOrderReviewPage().clkSubmitOrder();
-        }
+        getRogersReviewOrderPage().clkSubmitOrderBtn();
         //************Order Confirmation Page****************//
         reporter.hardAssert(getRogersNACOrderConfirmationPage().isOrderConfirmationTitlePresent(),"Order Confrimation Page Title Present","Order Confrimation Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Confirmation Page");

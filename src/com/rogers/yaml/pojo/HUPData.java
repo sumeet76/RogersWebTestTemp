@@ -23,6 +23,7 @@ public class HUPData {
 	private String expiryDateOTP;
 	private String passcode;
 	private String promoCode;
+	private String riskClass;
 
 	public String getCreditCardDetails() {
 		return creditCardDetails;
@@ -265,4 +266,11 @@ public class HUPData {
 		this.promoCode = promoCode;
 	}
 
+	public String getRiskClass() {
+		return riskClass;
+	}
+
+	public void setRiskClass(String riskClass) {
+		this.riskClass = riskClass;
+	}
 }

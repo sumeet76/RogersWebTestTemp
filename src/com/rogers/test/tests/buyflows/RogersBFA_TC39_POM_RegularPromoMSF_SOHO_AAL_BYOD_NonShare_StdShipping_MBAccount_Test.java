@@ -23,7 +23,7 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SOHOAAL","POM"})
+    @Test(groups = {"RegressionBFA","SOHOAAL","POM","SOHO"})
     public void tc39_pomsohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

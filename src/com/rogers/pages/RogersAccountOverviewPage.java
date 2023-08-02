@@ -2371,7 +2371,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 */
 	public void clickManageButton() {
 		getReusableActionsInstance().scrollToElement(btnManage);
-		getReusableActionsInstance().clickWhenReady(btnManage,20);
+		getReusableActionsInstance().executeJavaScriptClick(btnManage);
 	}
 
 	/**
