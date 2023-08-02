@@ -18,6 +18,8 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_DowngradeInternetPlan_ON_EN exte
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
         getInternetDashboardPage().clickLoadOffers();

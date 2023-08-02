@@ -440,7 +440,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -545,7 +545,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
-		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+		//getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 
 		}
 	/**
@@ -1429,7 +1429,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(smartHomeMonitoringAddOn);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);

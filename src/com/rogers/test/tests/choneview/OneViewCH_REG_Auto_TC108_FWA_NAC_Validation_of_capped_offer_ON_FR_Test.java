@@ -80,11 +80,11 @@ public class OneViewCH_REG_Auto_TC108_FWA_NAC_Validation_of_capped_offer_ON_FR_T
 			reporter.reportLogWithScreenshot("Billing and payment");
 			getCreditCheckPage().selectPaymentOption(1);
 			reporter.reportLogWithScreenshot("Monthly charges");
-//			getPaymentOptionsPage().clkContinue();
-			//reporter.reportLogWithScreenshot("submit order");
-			//getRogersOVCheckoutPage().clkSubmit();
-			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			//reporter.reportLogWithScreenshot("Order Placed");
+			getPaymentOptionsPage().clkContinue();
+			reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			reporter.reportLogWithScreenshot("Order Placed");
 		
     }
 
