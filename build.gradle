@@ -164,13 +164,13 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:1.74-SeleniumV4-SNAPSHOT'
-	api 'io.rest-assured:rest-assured:4.3.1'
-	api 'io.rest-assured:json-path:4.3.1'
-	api 'org.json:json:20180813'
+	api 'automation-utils:common-utils:1.82-20230802.184515-2'
+//	api 'io.rest-assured:rest-assured:4.3.1'
+//	api 'io.rest-assured:json-path:4.3.1'
+//	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
-	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+//	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
 }
 
 group = 'com.rogers'

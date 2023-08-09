@@ -28,13 +28,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
-import utils.AppiumServerJava;
-import utils.BrowserDrivers;
-import utils.GetOTP;
-import utils.Reporter;
+import utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -790,7 +788,13 @@ public class BaseTestClass {
             case "redesignrogers":
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
+                //DevTools chromeDevTools = getDriver().getDevTools();
+                //chromeDevTools.createSession();
                 getDriver().get(strUrl+"/phones");
+                DevToolsUtils utils = new DevToolsUtils();
+                utils.addExtraHeader(utils.enableDevTools(getDriver()), "x-envrnmt", "aks");
+                utils.addExtraHeader(utils.enableDevTools(getDriver()), "Pragma", "akamai-x-get-cache-key");
+                utils.addExtraHeader(utils.enableDevTools(getDriver()), "X-Akamai-Debug", "RogersFidoHeaders");
 //                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
                     getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&province=" + "ON");

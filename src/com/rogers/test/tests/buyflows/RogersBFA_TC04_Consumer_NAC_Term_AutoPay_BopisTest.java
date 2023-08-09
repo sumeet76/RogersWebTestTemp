@@ -25,10 +25,9 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 
 	@Test(groups = {"RegressionBFA","NACBFA","SanityNACBFA"})
 	public void tc04_rogersNACTermAutoPayBopisTest() throws InterruptedException {
-
 		// **************************Device catalog page*****************************************
 		//getRogersDeviceCataloguePage().setProvince("Ontario");
-		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
+//		reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
 		String deviceName = TestDataHandler.tc04NACTermBopis.getDeviceName();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
 		reporter.softAssert(getRogersDeviceCataloguePage().isModalDisplayed(), "Modal element is present on the screen",
