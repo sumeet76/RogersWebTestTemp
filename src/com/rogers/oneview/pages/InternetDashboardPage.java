@@ -211,6 +211,12 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
 	WebElement exclusiveOfferAvailable;
 
+	@FindBy(xpath = "//span[@translate='global.dashboard.common.addIgniteSelfProtect']")
+	WebElement addIgniteSelfProtect;
+
+	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
+	WebElement addToCart;
+
 	/**
 	 * Verify the result
 	 * @return true if link is visible, else false
@@ -918,6 +924,18 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferAvailable, 30);
 		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferAvailable);
 	}
+
+	public void selectIgniteSelfProtect() {
+		getReusableActionsInstance().waitForElementVisibility(addIgniteSelfProtect, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addIgniteSelfProtect);
+	}
+
+	public void selectAddToCart() {
+		getReusableActionsInstance().waitForElementVisibility(addToCart, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+
 
 }
 
