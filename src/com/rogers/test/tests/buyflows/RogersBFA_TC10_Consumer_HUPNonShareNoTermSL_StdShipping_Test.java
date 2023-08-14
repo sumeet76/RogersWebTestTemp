@@ -6,6 +6,7 @@ import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.DevToolsUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -40,6 +41,10 @@ public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_StdShipping_Test extend
                     "Modal element is not present on the screen");
             getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
             reporter.reportLogWithScreenshot("Upgrade button clicked on Modal window Popup");
+            DevToolsUtils utils = new DevToolsUtils();
+            utils.addExtraHeader(utils.enableDevTools(getDriver()), "x-envrnmt", "aks");
+            utils.addExtraHeader(utils.enableDevTools(getDriver()), "Pragma", "akamai-x-get-cache-key");
+            utils.addExtraHeader(utils.enableDevTools(getDriver()), "X-Akamai-Debug", "RogersFidoHeaders");
             reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                     "Continue button on the device config page is present", "Continue button on the device config page is not present");
             String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
