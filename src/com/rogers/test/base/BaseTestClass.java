@@ -789,25 +789,18 @@ public class BaseTestClass {
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl+"/phones");
-                DevToolsUtils utils = new DevToolsUtils();
 //                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
                     getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&province=" + "ON");
 //                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "x-envrnmt", "aks");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "Pragma", "akamai-x-get-cache-key");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "X-Akamai-Debug", "RogersFidoHeaders");
+                    addEnvHeader();
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") && !(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO"))){
                     getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&province=" + "ON");
 //                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "x-envrnmt", "aks");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "Pragma", "akamai-x-get-cache-key");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "X-Akamai-Debug", "RogersFidoHeaders");
+                    addEnvHeader();
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
                     getDriver().get(strUrl + "/phones/" + "?type=soho");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "x-envrnmt", "aks");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "Pragma", "akamai-x-get-cache-key");
-                    utils.addExtraHeader(utils.enableDevTools(getDriver()), "X-Akamai-Debug", "RogersFidoHeaders");
+                    addEnvHeader();
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("BFA_PROD")) {
                     getDriver().get(strUrl);
 //                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
@@ -844,6 +837,17 @@ public class BaseTestClass {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
+    }
+
+    /**
+     * For Buysflows tests to add env headers using DevTools
+     */
+    private void addEnvHeader(){
+        DevToolsUtils utils = new DevToolsUtils();
+        DevTools devTools = utils.enableDevTools(getDriver());
+        utils.addExtraHeader(devTools, "x-envrnmt", "aks");
+        utils.addExtraHeader(devTools, "Pragma", "akamai-x-get-cache-key");
+        utils.addExtraHeader(devTools, "X-Akamai-Debug", "RogersFidoHeaders");
     }
 
     /**
