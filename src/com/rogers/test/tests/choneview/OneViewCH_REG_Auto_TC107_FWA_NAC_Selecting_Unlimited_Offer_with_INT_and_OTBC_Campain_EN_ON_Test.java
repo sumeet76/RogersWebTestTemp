@@ -73,10 +73,10 @@ public class OneViewCH_REG_Auto_TC107_FWA_NAC_Selecting_Unlimited_Offer_with_INT
 			getCreditCheckPage().selectPaymentOption(1);
 			reporter.reportLogWithScreenshot("Monthly charges");
 			getPaymentOptionsPage().clkContinue();
-			//reporter.reportLogWithScreenshot("submit order");
-			//getRogersOVCheckoutPage().clkSubmit();
-			//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-			//reporter.reportLogWithScreenshot("Order Placed");
+			reporter.reportLogWithScreenshot("submit order");
+			getRogersOVCheckoutPage().clkSubmit();
+			reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+			reporter.reportLogWithScreenshot("Order Placed");
 		
     }
 

@@ -30,15 +30,19 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
         reporter.reportLogWithScreenshot(" Smart Stream Selected");
         getInternetDashboardPage().clickContinueAddingStream();
         reporter.reportLogWithScreenshot("Continue clicked on Adding Stream pop up");
-        getRogersOVInstallationPage().clkCourierDelivery();
-        reporter.reportLogWithScreenshot("Select the courier delivery");
-        getRogersOVInstallationPage().clickInstallationCheckBox();
-        reporter.reportLogWithScreenshot("Activation Check box selected successfully");
-//        getRogersOVInstallationPage().clickContinue();
-//        reporter.reportLogWithScreenshot("Continue clicked");
-//        getRogersOVOrderReviewPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//        reporter.reportLogWithScreenshot("Order Placed");
+        reporter.reportLogWithScreenshot("click Date Time Radio Button");
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+        reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        getRogersIgniteBundlesPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue clicked");
+        getRogersOVOrderReviewPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.reportLogWithScreenshot("Order Placed");
     }
 
     @BeforeMethod(alwaysRun=true)
@@ -50,7 +54,7 @@ public class OneViewCH_REG_Auto_TC0026_1466_TC01_SAI_AddingSmartstream_With_Tier
     
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }
 

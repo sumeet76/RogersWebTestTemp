@@ -20,6 +20,8 @@ public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM
 
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Use this address");
         getAccountOverViewPage().selectAddress();
         getRogersIgniteBundlesPage().clkContinue();
@@ -50,7 +52,6 @@ public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
 
-        getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Customer followed channels and themepacks");
         getRogersIgniteBundlesPage().clickReviewAddons();
         reporter.reportLogWithScreenshot("Clicked customer’s legacy add-ons.");
@@ -60,7 +61,7 @@ public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM
         reporter.reportLogWithScreenshot("themepack added");
         getTVDashboardPage().clickstandaloneAndSeasonalTab();
         reporter.reportLogWithScreenshot("StandAlone and Seasonal Events Selected");
-        getTVDashboardPage().clickAddChannel();
+        getRogersOVChannelsAndThemePacksPage().clickAddChannel();
         reporter.reportLogWithScreenshot("add channel");
         getRogersIgniteBundlesPage().clkContinue();
 
@@ -71,15 +72,13 @@ public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM
         getRogersIgniteBundlesPage().addPods(0);
         reporter.reportLogWithScreenshot("Free internet add on is added to the cart");
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-
-        getRogersIgniteBundlesPage().clickReviewAddons();
         getRogersIgniteBundlesPage().clickAddOnAddToCart();
         reporter.reportLogWithScreenshot("clicked Homephone Add On Add To Cart");
         getRogersIgniteBundlesPage().validateAddonAddToCart();
         reporter.reportLogWithScreenshot("validate add on add to cart");
         getRogersIgniteBundlesPage().clkContinue();
 
-//        getRogersIgniteBundlesPage().addSHMAddOn();
+        getRogersIgniteBundlesPage().addSHMAddOn();
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Cart Summary");
@@ -112,23 +111,18 @@ public class OneviewCH_REG_Auto_TC086_MIG_3P_To_3P_SHM_ChannelsandThemepacks_SHM
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         getCreditCheckPage().enterSpecialInstructions();
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
-//        getCreditCheckPage().selectPaymentOption(1);
         reporter.reportLogWithScreenshot("Monthly charges");
         getPaymentOptionsPage().clkContinue();
 
         reporter.reportLogWithScreenshot("submit order");
-//        getRogersOVCheckoutPage().clkSubmit();
-//        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        getRogersOVCheckoutPage().clkSubmit();
+        reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

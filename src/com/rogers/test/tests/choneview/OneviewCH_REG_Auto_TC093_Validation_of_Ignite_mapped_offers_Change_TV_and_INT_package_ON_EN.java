@@ -17,6 +17,8 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteOffersChangeTV_INTpackage.getAccountNo(),TestDataHandler.IgniteOffersChangeTV_INTpackage.getContactID());
         getAccountOverViewPage().selectInternetBadage();
         reporter.reportLogWithScreenshot("select Internet Badge");
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         getAccountOverViewPage().clickViewOffers();
         reporter.reportLogWithScreenshot("click View Offers");
         getAccountOverViewPage().selectRecommendedOffer();
@@ -36,7 +38,6 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         getAccountOverViewPage().clickSelectChangeContinue();
         reporter.reportLogWithScreenshot("click Continue");
         reporter.hardAssert(getAccountOverViewPage().verifyReviewYourOrder(), "Review Your Order displayed", "Review Your Order did not displayed");
-
         reporter.hardAssert(getAccountOverViewPage().verifyPreviousPackage(), "Previous Package displayed ", "Previous Package did not displayed");
 //        reporter.hardAssert(getAccountOverViewPage().verifyTvDetails(), "Tv Details displayed", "Tv Details did not displayed");
         reporter.hardAssert(getAccountOverViewPage().verifyNewPackage(), "New Package displayed", "New Package did not displayed");

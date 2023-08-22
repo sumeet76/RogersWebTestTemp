@@ -161,7 +161,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.select' and contains(text(),'Select')])[4]/ancestor::button")
 	WebElement btnSelectSmartStream;
 
-	@FindBy(xpath = "//div[text()='Ignite Flex 5']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[4]/child::button")
+	@FindBy(xpath = "//span[text()='Ignite 2.5 Gbps Ultd + Streaming']/ancestor::div[3]/following-sibling::div/child::rch-bundle-price/child::div/child::div[5]/child::button")
 	WebElement btnViewDetails;
 
 	@FindBy(xpath = "//span[text()='Pricing details' or text()='Détails sur la tarification']/ancestor::div[3]")
@@ -187,7 +187,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//li[contains(text(),'Download speeds') or contains(text(),'Location de la passerelle')]")
 	WebElement DownloadSpeedReview;
 
-    @FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
+    @FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
     WebElement UploadSpeedReview;
 
 	@FindBy(xpath = "//span[text()='Change package']")
@@ -212,6 +212,12 @@ public class InternetDashboardPage  extends BasePageClass {
 
 	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[contains(@class,'-w16')]//span[contains(text(),'Select')]/ancestor::button")
 	WebElement exclusiveOfferAvailable;
+
+	@FindBy(xpath = "//span[@translate='global.dashboard.common.addIgniteSelfProtect']")
+	WebElement addIgniteSelfProtect;
+
+	@FindBy(xpath = "//span[@translate='global.cta.addToCart']/ancestor::button")
+	WebElement addToCart;
 
 	/**
 	 * Verify the result
@@ -625,9 +631,10 @@ public class InternetDashboardPage  extends BasePageClass {
 	 * @author Jarmanjeet.Batth
 	 * */
 	public void clickViewDetails() {
+		getReusableActionsInstance().staticWait(5000);
 		WebElement btn=getReusableActionsInstance().getWhenReady(btnViewDetails, 60);
 		getReusableActionsInstance().scrollToElement(btnViewDetails);
-		getReusableActionsInstance().getWhenReady(btnViewDetails,60).click(); }
+		getReusableActionsInstance().clickWhenReady(btnViewDetails,60); }
 
 	public void clickPackageDetails(){
 		getReusableActionsInstance().waitForElementVisibility(expandPackageDetails, 60);
@@ -920,6 +927,18 @@ public class InternetDashboardPage  extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(exclusiveOfferAvailable, 30);
 		getReusableActionsInstance().executeJavaScriptClick(exclusiveOfferAvailable);
 	}
+
+	public void selectIgniteSelfProtect() {
+		getReusableActionsInstance().waitForElementVisibility(addIgniteSelfProtect, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addIgniteSelfProtect);
+	}
+
+	public void selectAddToCart() {
+		getReusableActionsInstance().waitForElementVisibility(addToCart, 30);
+		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+	}
+
+
 
 }
 
