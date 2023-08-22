@@ -170,7 +170,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']/ancestor::div[3]")
     WebElement expandPackageDetails;
 
-	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
+	@FindBy(xpath = "//p[text()='Remove Pods']")
 	WebElement RemovePods;
 
 
@@ -199,12 +199,14 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
 	WebElement internetSpeeds;
 
-	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	@FindBy(xpath = "//*[text()=' View offers ' or text()=' Voir les offres ']")
 	WebElement viewOffer;
 
 	@FindAll({
 			@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button"),
 			@FindBy(xpath = "//p[text()='Recommended Offer(s)']"),
+			@FindBy(xpath = "//span[text()='MEILLEURE']"),
+			@FindBy(xpath = "//span[text()='OFFRES RECOMMANDÉES']"),
 	})
 	WebElement recommendedOffer;
 
