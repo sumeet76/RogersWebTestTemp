@@ -34,7 +34,7 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'The customer authorizes') or contains(text(),'Le client autorise Rogers à obtenir des renseignements')]/parent::div/ancestor::ds-checkbox//div[1]")
     WebElement authorizecheckbox;
 
-    @FindBy(xpath = "//h1[@translate='global.label.reviewYourOrder']/parent::div")
+    @FindBy(xpath = "//h1[@translate='global.label.OrderReview']/parent::div")
     WebElement ReviewYourOrder;
 
     @FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")

@@ -412,6 +412,7 @@ public class TestDataHandler {
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
 	public static OvrReusableData tc_70_Ovr_ChangePackage_Data;
+	public static AccountData Serve_Adding_Ignite_HomeSecurity;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -844,7 +845,7 @@ public class TestDataHandler {
 		Serve_FWACx_DowngradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_DowngradeInternetPlan");
 		IgniteMappedOffersSAItoSAI = YamlHandler.getOVAccountData("IgniteMappedOffersSAItoSAI");
 		Change_TV_Channel_Themepack_Immediate_Downgrade = YamlHandler.getOVAccountData("Change_TV_Channel_Themepack_Immediate_Downgrade");
-
+		Serve_Adding_Ignite_HomeSecurity = YamlHandler.getOVAccountData("Serve_Adding_Ignite_HomeSecurity");
 
 	}
 

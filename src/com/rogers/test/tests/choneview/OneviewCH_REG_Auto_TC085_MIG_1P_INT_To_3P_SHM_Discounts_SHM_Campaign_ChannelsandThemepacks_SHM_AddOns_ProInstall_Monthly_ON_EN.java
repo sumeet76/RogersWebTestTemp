@@ -18,6 +18,8 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         reporter.reportLogWithScreenshot("OneviewLaunched");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
+        getAccountOverViewPage().selectProduction();
+        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Use this address");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability");
@@ -44,9 +46,9 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         getRogersIgniteBundlesPage().reviewTermsAndCondition();
         reporter.reportLogWithScreenshot("Points to mention");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later");
-        reporter.reportLogWithScreenshot("After Exchange later");
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.reportLogWithScreenshot("Exchange later");
+//        reporter.reportLogWithScreenshot("After Exchange later");
         getRogersOVChannelsAndThemePacksPage().clickAddChannel();
         getRogersOVChannelsAndThemePacksPage().clickThemepacksTab();
         getRogersOVChannelsAndThemePacksPage().addThemepack();
@@ -59,12 +61,12 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
         getRogersIgniteBundlesPage().goToPageBottom();
         getRogersIgniteBundlesPage().clkContinue();
-        //getRogersIgniteBundlesPage().addSHMAddOn();
+        getRogersIgniteBundlesPage().addSHMAddOn();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("smart home addons page");
         reporter.reportLogWithScreenshot("campaign");
         getRogersIgniteCampaignPage().clickCampaignTab();
-        getRogersIgniteCampaignPage().enterCoupon("PCR6");
+        getRogersIgniteCampaignPage().enterCoupon("PCR1");
         getRogersIgniteCampaignPage().clickApplyCoupon();
         reporter.reportLogWithScreenshot("campaign coupon applied");
         getRogersIgniteBundlesPage().clickCancelButton();
@@ -100,11 +102,11 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
         getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
-        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        reporter.reportLogWithScreenshot(".enter Email Mail Address");
-        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
-        getCreditCheckPage().enterSpecialInstructions();
+//        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+//        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//        reporter.reportLogWithScreenshot(".enter Email Mail Address");
+//        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+       getCreditCheckPage().enterSpecialInstructions();
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
@@ -124,6 +126,6 @@ public class OneviewCH_REG_Auto_TC085_MIG_1P_INT_To_3P_SHM_Discounts_SHM_Campaig
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 }

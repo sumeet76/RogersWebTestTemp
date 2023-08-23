@@ -446,7 +446,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[@class='ds-checkboxLabel__container ml-8 text-body my-12 text-semi']//span[contains(text(),'$30 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -551,7 +551,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		getReusableActionsInstance().waitForElementVisibility(reviewTermsAndCondition, 30);
-		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
+		//getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 
 		}
 	/**
