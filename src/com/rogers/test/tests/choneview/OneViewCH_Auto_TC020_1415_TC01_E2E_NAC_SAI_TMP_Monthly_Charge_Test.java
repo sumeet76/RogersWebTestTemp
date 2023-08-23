@@ -31,7 +31,7 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 		reporter.reportLogWithScreenshot("Internet Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
-		getRogersIgniteBundlesPage().selectProductCampaign();
+		getRogersIgniteBundlesPage().termOffer();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 		getRogersIgniteBundlesPage().noPortInPopup();
@@ -109,7 +109,6 @@ public class OneViewCH_Auto_TC020_1415_TC01_E2E_NAC_SAI_TMP_Monthly_Charge_Test 
 	public void afterTest() {
 		closeSession();
 	}
-
 }
 
 

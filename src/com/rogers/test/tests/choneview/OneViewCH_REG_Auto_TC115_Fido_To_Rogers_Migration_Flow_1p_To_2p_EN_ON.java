@@ -41,8 +41,8 @@ public class OneViewCH_REG_Auto_TC115_Fido_To_Rogers_Migration_Flow_1p_To_2p_EN_
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-        getRogersIgniteBundlesPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Clicked On Exchange later");
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.reportLogWithScreenshot("Clicked On Exchange later");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Clicked Continue on add channel and theme pack");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -95,8 +95,8 @@ public class OneViewCH_REG_Auto_TC115_Fido_To_Rogers_Migration_Flow_1p_To_2p_EN_
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
         startOVSession(System.getProperty("OVFidoUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"", "","", "", method);
     }
-//    @AfterMethod(alwaysRun = true)
-//    public void afterTest() {
-//        closeSession();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public void afterTest() {
+        closeSession();
+    }
 }

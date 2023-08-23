@@ -87,16 +87,14 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().selectProfessionalInstallation();
-        reporter.reportLogWithScreenshot("click Date Time Radio Button");
-        getFulfillmentPage().clkFirstAvailableAppointment();
+        getCreditCheckPage().clkCourierDelivery();
+        getCreditCheckPage().clickInPersonDelivery();
 //        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
 //        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 //        reporter.reportLogWithScreenshot(".enter Email Mail Address");
 //        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 //        reporter.reportLogWithScreenshot(".enter Special Instructions");
-        getCreditCheckPage().enterSpecialInstructions();
+//        getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
