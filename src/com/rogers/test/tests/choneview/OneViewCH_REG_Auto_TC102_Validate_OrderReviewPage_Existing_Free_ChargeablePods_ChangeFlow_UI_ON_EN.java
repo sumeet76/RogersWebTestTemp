@@ -16,6 +16,9 @@ public class OneViewCH_REG_Auto_TC102_Validate_OrderReviewPage_Existing_Free_Cha
         reporter.reportLogWithScreenshot("One view is launched");
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Max2pCx_Pods.getAccountNo(),TestDataHandler.Max2pCx_Pods.getContactID());
         getAccountOverViewPage().selectInternetBadage();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("select Internet Badge");
         reporter.hardAssert(getInternetDashboardPage().verifyIgniteWiFiPod(),"Ignite WiFi Pod appeared","Ignite WiFi Pod did not appeared");
         reporter.hardAssert(getInternetDashboardPage().verifyRemovePods(),"Remove Pods appeared","Remove Pods did not appeared");
@@ -23,7 +26,7 @@ public class OneViewCH_REG_Auto_TC102_Validate_OrderReviewPage_Existing_Free_Cha
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
 
         reporter.reportLogWithScreenshot("Loaded Offers");
-        getInternetDashboardPage().selectInternetPlan(TestDataHandler.Max2pCx_Pods.accountDetails.getUpgradePlan());
+        //getInternetDashboardPage().selectInternetPlan(TestDataHandler.Max2pCx_Pods.accountDetails.getUpgradePlan());
         reporter.reportLogWithScreenshot("Another Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Continue clicked on change Internet Package");

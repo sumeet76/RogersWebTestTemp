@@ -1,16 +1,12 @@
 package com.rogers.oneview.pages;
 
 
-
+import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-
-import com.rogers.pages.base.BasePageClass;
-import utils.ReusableActions;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -223,7 +219,7 @@ public class TVDashboardPage  extends BasePageClass {
 //	@FindBy(xpath = "//div[@role='tablist'] | //button[@ng-reflect-translate='global.cta.tabs.themePacks']")
 //	WebElement goToChannelOrThemepackTabs;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[1]")
+	@FindBy(xpath = "(//span[@translate='global.cta.add']/ancestor::button)[2]")
 	WebElement addChannel;
 
 	@FindBy(xpath = "(//label[@class='ds-radioLabel d-inline-flex align-items-start'])[2]")
@@ -319,10 +315,10 @@ public class TVDashboardPage  extends BasePageClass {
 	WebElement addThemepackFromBundle;
 
 
-	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	@FindBy(xpath = "//*[text()=' View offers ' or text()=' Voir les offres ']")
 	WebElement viewOffer;
 
-	@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button")
+	@FindBy(xpath = "//*[text()='BEST' or text()='MEILLEURE']/following::*[text()='Select']/ancestor::button")
 	WebElement recommendedOffer;
 
 	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
@@ -411,7 +407,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//p[text()='Added to cart']")
 	WebElement addedToCart;
 
-	@FindBy(xpath = "//ds-modal/div/p[text()='Upgrade to Fibre-to-the-home is available for the customer']")
+	@FindBy(xpath = "//ds-modal/div/p[text()='Upgrade to Fibre-to-the-home is available for the customer' or text()='Il est possible pour le client de passer au service de fibre jusqu’au domicile']")
 	WebElement dtoGModal;
 
 
@@ -1268,7 +1264,7 @@ public class TVDashboardPage  extends BasePageClass {
 	}
 
 	public boolean verifyRecommendedOffer() {
-		getReusableActionsInstance().scrollToElement(recommendedOffer);
+		//getReusableActionsInstance().scrollToElement(recommendedOffer);
 		return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
 	}
 

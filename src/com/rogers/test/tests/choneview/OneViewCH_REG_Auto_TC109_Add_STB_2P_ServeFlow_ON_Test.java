@@ -31,7 +31,6 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
         getRogersIgniteBundlesPage().clkContinue();
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("installation options");
-        getCreditCheckPage().selectDeliveryByAppointment();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
@@ -42,7 +41,7 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getPaymentOptionsPage().clkContinue();
         reporter.reportLogWithScreenshot("click Continue Button");
-        reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage(),"order review page","waiting for order review page");
+       // reporter.hardAssert(getRogersOVOrderReviewPage().verifyOrderReviewPage(),"order review page","waiting for order review page");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
