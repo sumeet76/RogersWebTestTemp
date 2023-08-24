@@ -17,6 +17,9 @@ public class OneViewCH_Auto_TC_OVS1_Serve_FWACx_UpgradeInternetPlan_ON_EN extend
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.Serve_FWACx_UpgradeInternetPlan.accountDetails.getBan(),  TestDataHandler.Serve_FWACx_UpgradeInternetPlan.getContactID() );
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectInternetBadage();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");

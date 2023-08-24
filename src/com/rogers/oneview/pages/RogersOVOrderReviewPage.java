@@ -92,7 +92,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyOrderReviewPage() {
-		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 100);
+		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 120);
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 100);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
 		getReusableActionsInstance().staticWait(10000);
 	}

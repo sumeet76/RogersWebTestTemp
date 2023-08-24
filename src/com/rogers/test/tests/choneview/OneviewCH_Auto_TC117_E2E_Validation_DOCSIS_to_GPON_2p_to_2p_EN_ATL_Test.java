@@ -48,7 +48,7 @@ public class OneviewCH_Auto_TC117_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_
         //For Flex Channels - Exchange Later
         getTVDashboardPage().clickContinueChangeTVPackage();
         reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
-       // getTVDashboardPage().clickExchangeLater();
+        getTVDashboardPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Exchange later is selected");
 
         getTVDashboardPage().clickContinueChannelsAndThemePacks();
