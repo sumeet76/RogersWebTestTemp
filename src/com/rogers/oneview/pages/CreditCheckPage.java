@@ -221,6 +221,10 @@ public class CreditCheckPage  extends BasePageClass {
 	public void goToPageBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
+
+	public void goToMiddlePage() {
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+	}
 	/**
 	 * Validates that the label 'Billing and Payment Options' is displayed
 	 * @author aditi.jain

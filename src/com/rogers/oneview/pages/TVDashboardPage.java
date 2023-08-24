@@ -314,8 +314,7 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@rchtrackclickevent='themepacks']")
 	WebElement addThemepackFromBundle;
 
-
-	@FindBy(xpath = "//*[text()=' View offers ' or text()=' Voir les offres ']")
+	@FindBy(xpath = "//span[contains(text(),'View offers') or contains(text(),'Voir les offres')]")
 	WebElement viewOffer;
 
 	@FindBy(xpath = "//*[text()='BEST' or text()='MEILLEURE']/following::*[text()='Select']/ancestor::button")

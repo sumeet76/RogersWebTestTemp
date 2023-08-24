@@ -22,8 +22,11 @@ public class AccountOverViewPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(), 'View offers') or contains(text(), 'Voir les offres')]")
     WebElement viewOffers;
 
-    @FindBy(xpath = "(//div[text()=' Ignite TV Flex 10 ']/following::button[@aria-label='Select'])[1]")
+    @FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
     WebElement selectRecommendedOffer;
+
+    @FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
+    WebElement recommendedOffer;
 
     @FindBy(xpath = "(//span[@translate='global.cta.select'])[1]")
     WebElement selectExclusiveOffer;
@@ -823,6 +826,14 @@ public class AccountOverViewPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(selectRecommendedOffer);
     }
 
+    /**
+     * This method  select Recommended Offer
+     *
+     * @author Jarmanjeet.Batth
+     */
+    public boolean verifyRecommendedOffers() {
+        return getReusableActionsInstance().isElementVisible(recommendedOffer, 30);
+    }
 
     /**
      * This method  select First Exclusive Offer
