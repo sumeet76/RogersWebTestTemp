@@ -95,6 +95,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersRegisterOrAccountRecoveryPage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
     protected BrowserDrivers browserdriver;
     protected static final ThreadLocal<RogersInternetDashboardPage> RogersInternetDashboardPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersChangePackageChannelsNThemePacksPage> RogersChangePackageChannelsNThemePacksPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
@@ -337,6 +338,10 @@ public class BaseTestClass {
 
     public static RogersInternetDashboardPage getRogersInternetDashboardPage() {
         return RogersInternetDashboardPageThreadLocal.get();
+    }
+
+    public static RogersChangePackageChannelsNThemePacksPage getRogersChangePackageChannelsNThemePacksPage() {
+        return RogersChangePackageChannelsNThemePacksPageThreadLocal.get();
     }
 
     public static RogersInternetPackageSelectionPage getRogersInternetPackageSelectionPage() {
@@ -1091,6 +1096,7 @@ public class BaseTestClass {
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
+                RogersChangePackageChannelsNThemePacksPageThreadLocal.set(new RogersChangePackageChannelsNThemePacksPage(getDriver()));
                 RogersInternetPackageSelectionPageThreadLocal.set(new RogersInternetPackageSelectionPage(getDriver()));
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersDigitalTVPackageSelectionPageThreadLocal.set(new RogersDigitalTVPackageSelectionPage(getDriver()));
@@ -1124,6 +1130,7 @@ public class BaseTestClass {
                 RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
+                RogersChangePackageChannelsNThemePacksPageThreadLocal.set(new RogersChangePackageChannelsNThemePacksPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
                 RogersInternetPackageSelectionPageThreadLocal.set(new RogersInternetPackageSelectionPage(getDriver()));

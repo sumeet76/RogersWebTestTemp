@@ -410,7 +410,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clkStorageType(String strStorage) {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(1));
+            WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]")));
             WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + strStorage + "-host')]"));
             Actions action = new Actions(getDriver());
@@ -423,7 +423,7 @@ public class RogersSearchPage extends BasePageClass {
 
     public void clickingOnDevice(String device) {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(1));
+            WebDriverWait wait = new WebDriverWait(getDriver(), 1000);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ds-checkbox[contains(@id,'" + device + "-host')]")));
             WebElement element = getDriver().findElement(By.xpath("//ds-checkbox[contains(@id,'" + device + "-host')]"));
             Actions action = new Actions(getDriver());
@@ -1544,12 +1544,12 @@ public class RogersSearchPage extends BasePageClass {
      * @author naina.agarwal
      */
     public void waitForDetailsPage() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(getDriver(), 15000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleOnDetailsPage));
     }
 
     public void waitForToggleToBeDisplayed() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(getDriver(), 15000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(provinceInToggle));
     }
 
@@ -1578,12 +1578,12 @@ public class RogersSearchPage extends BasePageClass {
             if (isMobile) {
                 getReusableActionsInstance().clickWhenReady(topFilterMbl);
                 javascriptClickWithPerform(provinceDropdownMbl);
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+                WebDriverWait wait = new WebDriverWait(getDriver(), 15000);
                 wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValuesMbl));
                 province = getDriver().findElements(provinceDropdownValuesMbl);
             } else {
                 getReusableActionsInstance().clickWhenReady(provinceDropdown);
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+                WebDriverWait wait = new WebDriverWait(getDriver(), 15000);
                 wait.until(ExpectedConditions.visibilityOfElementLocated(provinceDropdownValues));
                 province = getDriver().findElements(provinceDropdownValues);
             }
@@ -1636,7 +1636,7 @@ public class RogersSearchPage extends BasePageClass {
         boolean homeURL = false;
         String currentURL = null;
         try {
-            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(2));
+            wait = new WebDriverWait(getDriver(), 2000);
             String defaultURL = System.getProperty("SearchUrl");
             if (defaultURL.contains("qa")) {
                 wait.until(ExpectedConditions.urlContains("home"));

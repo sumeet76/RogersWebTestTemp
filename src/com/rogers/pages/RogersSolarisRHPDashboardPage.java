@@ -97,14 +97,14 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyConfigureYourCurrentFeatures() {
-		wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+		wait = new WebDriverWait(getDriver(), 30000);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")));
 		//getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 60);
 		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures, 30);
 	}
 	/**
 	 * Verify the access your voice mail settings link onSolaris RHP dashboard
-	 * @return true if the RHP dash board display the access your voice mail settings link, else false
+	 * @return true if the RHP dashboard display the access your voice mail settings link, else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verfyAccessYourVoicemailSettings() {

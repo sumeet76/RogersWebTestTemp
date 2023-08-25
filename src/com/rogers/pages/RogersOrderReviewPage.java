@@ -355,7 +355,7 @@ public class RogersOrderReviewPage extends BasePageClass {
 	 */
 	public void clkAcceptenceCheckboxUpdateInternet() {
 		getReusableActionsInstance().waitForElementVisibility(lnkAgreementPrivacyPolicy, 30);
-		getReusableActionsInstance().getWhenReady(lnkAgreementPrivacyPolicy, 10).click();
+		getReusableActionsInstance().clickWhenVisible(lnkAgreementPrivacyPolicy, 60);
 		getReusableActionsInstance().getWhenVisible(lnkAgreementToEnd, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(lnkAgreementToEnd);
 		getReusableActionsInstance().getWhenReady(clkChangeAcceptCheckboxUpdateInternet, 90);
