@@ -19,6 +19,9 @@ public class RogersChangePackageChannelsNThemePacksPage extends BasePageClass {
 	@FindBy(xpath = "//h1[contains(text(), 'Changes to your Ignite TV services')]")
 	WebElement headerChannelsNThemePacksPage;
 
+	@FindBy(xpath = "//h3[text() = 'Details about your channels']")
+	WebElement subheaderAddOnsDetails;
+
 	@FindBy(xpath = "//span[contains(text(),'Review Flex Channels')]")
 	WebElement btnReviewFlexChannels;
 
@@ -28,6 +31,10 @@ public class RogersChangePackageChannelsNThemePacksPage extends BasePageClass {
 
 	public boolean verifyChannelsNThemePacksPage() {
 		return getReusableActionsInstance().isElementVisible(headerChannelsNThemePacksPage, 120);
+	}
+
+	public boolean verifyAddonsHeader() {
+		return getReusableActionsInstance().isElementVisible(subheaderAddOnsDetails, 120);
 	}
 
 	/**

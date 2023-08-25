@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.FindBys;
 
 public class RogersInternetDashboardPage extends BasePageClass {
 
@@ -54,7 +54,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement popupContatUS;
 
 	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
-	WebElement popupContatUSInternetDowngarde;
+	WebElement popupContatUSInternetDowngrade;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popUpInternetPopup;
@@ -188,9 +188,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Changes to your Ignite services']")
 	WebElement headerPTMmodal;
 
-	@FindBy(xpath = "//div[contains(@class, 'popup-modal-body__content')]")
-	WebElement txtPTMmodal;
-
+	@FindBys({@FindBy(xpath = "//div[contains(@class, 'popup-modal-body__content')]//ul//li[1]"),
+			@FindBy(xpath = "//div[contains(@class, 'popup-modal-body__content')]//ul//li[2]")})
+	WebElement txtContentPTMModel;
+	
+	
 	/**
 	 * Verify the Internet usage on the Internet dashboard page
 	 *
@@ -439,7 +441,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 *
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkVAMininmize() {
+	public void clkVAMinimize() {
 		getReusableActionsInstance().getWhenReady(btnVAMininmize, 10).click();
 
 	}
@@ -542,11 +544,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyContatUSInternetDowngarde() {
+	public boolean verifyContactUSInternetDowngrade() {
 		if (getReusableActionsInstance().isElementVisible(popupLoadingFingersInternet, 30)) {
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersInternet, 60);
 		}
-		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngrade, 20);
 	}
 
 	/**
@@ -555,9 +557,9 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyContatUSInternetDowngardeInternet() {
-		getReusableActionsInstance().waitForElementVisibility(popupContatUSInternetDowngarde, 60);
-		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
+	public boolean verifyContactUSInternetDowngradeInternet() {
+		getReusableActionsInstance().waitForElementVisibility(popupContatUSInternetDowngrade, 60);
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngrade, 20);
 	}
 
 
