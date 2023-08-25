@@ -75,11 +75,6 @@ public class ContactDetails {
 	private String address_MDU_NAC;
 	private String address_ALT;
 
-	private String contactID_SHM_3P_PortIn;
-
-
-
-
 	public ContactDetails() {
 		
 	}
@@ -878,11 +873,6 @@ public class ContactDetails {
 
 	private String address_FWA;
 
-	public String getContactID_SHM_3P_PortIn() {return contactID_SHM_3P_PortIn;
-	}
-
-	public void setContactID_SHM_3P_PortIn(String contactID_SHM_3P_PortIn) {this.contactID_SHM_3P_PortIn = contactID_SHM_3P_PortIn;
-	}
 
 
 
