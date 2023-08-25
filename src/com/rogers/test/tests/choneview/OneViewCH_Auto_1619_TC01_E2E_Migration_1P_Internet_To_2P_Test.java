@@ -85,7 +85,7 @@ public class OneViewCH_Auto_1619_TC01_E2E_Migration_1P_Internet_To_2P_Test exten
 //		reporter.reportLogWithScreenshot("submit order");
 //		getRogersOVCheckoutPage().clkSubmit();
 //		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-		reporter.reportLogWithScreenshot("Order Placed");
+//		reporter.reportLogWithScreenshot("Order Placed");
 
     }
 

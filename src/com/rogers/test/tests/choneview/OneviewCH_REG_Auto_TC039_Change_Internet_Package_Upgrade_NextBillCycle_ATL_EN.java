@@ -24,6 +24,9 @@ public class OneviewCH_REG_Auto_TC039_Change_Internet_Package_Upgrade_NextBillCy
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC030_Internet_PackageUpgrade.accountDetails.getBan(),TestDataHandler.TC030_Internet_PackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account overview page");
         getAccountOverViewPage().selectInternetBadage();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         getInternetDashboardPage().clickChangeInternetPackage();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");

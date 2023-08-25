@@ -18,6 +18,9 @@ public class OneviewCH_REG_Auto_TC010_HomePhone_Dashboard_Validation_CallerIDCha
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.SUS_15702_TC01_Validation_Of_CallerID.accountDetails.getBan(),TestDataHandler.SUS_15702_TC01_Validation_Of_CallerID.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectHomePhoneBadge();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Home Phone dashboard page");
         getHomePhonedashboard().clickChangeCallDisplayName();
         reporter.hardAssert(getHomePhonedashboard().verifyChangeCallNameDisplayPopUp(), "Pop Up Displayed", "Pop up not loaded");

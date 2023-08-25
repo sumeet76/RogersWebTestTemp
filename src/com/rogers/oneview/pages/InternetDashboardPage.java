@@ -170,7 +170,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Package Details' or text()='Détails du forfait']/ancestor::div[3]")
     WebElement expandPackageDetails;
 
-	@FindBy(xpath = "//p[@translate='global.dashboard.internet.pods.alertRemovePodsTitle']")
+	@FindBy(xpath = "//p[text()='Remove Pods']")
 	WebElement RemovePods;
 
 
@@ -199,16 +199,19 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
 	WebElement internetSpeeds;
 
-	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	@FindBy(xpath = "//span[contains(text(),'View offers') or contains(text(),'Voir les offres')]")
 	WebElement viewOffer;
 
 	@FindAll({
 			@FindBy(xpath = "//*[text()='BEST']/following::*[text()='Select']/ancestor::button"),
 			@FindBy(xpath = "//p[text()='Recommended Offer(s)']"),
+			@FindBy(xpath = "//span[text()='MEILLEURE']"),
+			@FindBy(xpath = "//span[text()='OFFRES RECOMMANDÉES']"),
 	})
 	WebElement recommendedOffer;
 
-	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[@class='-w16']//span[contains(text(),'Select')]/ancestor::button")
+
+	@FindBy(xpath = "//span[contains(text(),'Exclusive Offer Available')]/parent::div/following-sibling::div/child::div[contains(@class,'-w16')]//span[contains(text(),'Select')]/ancestor::button")
 	WebElement exclusiveOfferAvailable;
 
 	@FindBy(xpath = "//span[@translate='global.dashboard.common.addIgniteSelfProtect']")
@@ -595,6 +598,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	public void selectInternetPlan(String upgradeBundle){
 		By changePlan= By.xpath("//div[contains(text(),'"+upgradeBundle+"')]/ancestor::div[@class='bundle-tile__main']/descendant::rch-bundle-price//span[@translate='global.cta.select']/ancestor::span[@role='text']");
 //		By changePlan= By.xpath("//p[contains(text(),'"+upgradeBundle+"')]/ancestor::div[contains(@class,'internet-tile__table')]/following::div/button");
+		getReusableActionsInstance().staticWait(10000);
 		WebElement changePlanElement= getDriver().findElement(changePlan);
 		getReusableActionsInstance().waitForElementTobeClickable(changePlanElement,10);
 		getReusableActionsInstance().executeJavaScriptClick(changePlanElement);

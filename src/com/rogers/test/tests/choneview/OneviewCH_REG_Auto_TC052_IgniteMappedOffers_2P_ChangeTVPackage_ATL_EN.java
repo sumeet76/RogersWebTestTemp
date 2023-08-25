@@ -71,8 +71,6 @@ public class OneviewCH_REG_Auto_TC052_IgniteMappedOffers_2P_ChangeTVPackage_ATL_
         reporter.reportLogWithScreenshot("Order Placed");
 
 
-
-
     }
 
     @BeforeMethod(alwaysRun=true)

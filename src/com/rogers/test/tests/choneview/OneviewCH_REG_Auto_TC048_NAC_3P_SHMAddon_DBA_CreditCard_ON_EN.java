@@ -15,7 +15,6 @@ import java.lang.reflect.Method;
 public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN extends BaseTestClass {
 	@Test (groups = {"RNAC","RegressionCHOV"})
     public void oneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN(){
-		reporter.reportLogWithScreenshot("OneView env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
 
 		getEnvironmentSelectionPage().selectProduction();
@@ -34,7 +33,8 @@ public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN exten
 		getRogersIgniteBundlesPage().clkTVCheckbox();
 		getRogersIgniteBundlesPage().clkInternetCheckbox();
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
-		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
+//		getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
+		getRogersIgniteBundlesPage().clickHomeSecurity();
 		reporter.reportLogWithScreenshot("Single Play - SAI Selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -88,12 +88,12 @@ public class OneviewCH_REG_Auto_TC048_NAC_3P_SHMAddon_DBA_CreditCard_ON_EN exten
 		reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().goToPageBottom();
-		getCreditCheckPage().selectDeliveryByAppointment();
+		getCreditCheckPage().selectProfessionalInstallation();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");
-		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+//		getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+//		getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 		reporter.reportLogWithScreenshot(".enter Special Instructions");
 		getCreditCheckPage().enterSpecialInstructions();
 		getCreditCheckPage().clkContinueInstallationOption();

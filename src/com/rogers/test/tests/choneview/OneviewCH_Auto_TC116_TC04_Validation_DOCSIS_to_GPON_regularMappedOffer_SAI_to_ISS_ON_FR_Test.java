@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OneviewCH_Auto_TC116_TC04_Validation_DOCSIS_to_GPON_regularMappedOffer_SAI_to_ISS_ON_FR_Test extends BaseTestClass {
-    @Test()
+    @Test(groups={"RegressionCHOV"})
     public void oneviewCH_Auto_TC116_TC04_Validation_DOCSIS_to_GPON_regularMappedOffer_SAI_to_ISS_ON_FR_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IgniteMappedOffersSAItoSAI.getAccountDetails().getBan(),TestDataHandler.IgniteMappedOffersSAItoSAI.getContactID());
         reporter.reportLogWithScreenshot("Launched Account Dashboard page");

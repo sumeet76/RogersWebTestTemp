@@ -23,6 +23,8 @@ public class OneViewCH_REG_Auto_TC113_MappedTermContract_Restart_ValidateMappedT
         reporter.reportLogWithScreenshot("clicked Proceed button");
         getAccountOverViewPage().clickViewOffers();
         reporter.reportLogWithScreenshot("click View Offers");
+        getAccountOverViewPage().verifyRecommendedOffers();
+        reporter.reportLogWithScreenshot("Recommended Offer displayed");
         getAccountOverViewPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("select Recommended Offer");
         getAccountOverViewPage().selectFirstExclusiveOffer();
@@ -34,8 +36,8 @@ public class OneViewCH_REG_Auto_TC113_MappedTermContract_Restart_ValidateMappedT
         reporter.reportLogWithScreenshot("click Authorize");
         getAccountOverViewPage().clickContinue();
         reporter.reportLogWithScreenshot("click Continue");
-//        getAccountOverViewPage().IsOrderReviewPageTitlePresent();
-        reporter.reportLogWithScreenshot("Is Order Review Page Title Present");
+        getRogersOVOrderReviewPage().verifyOrderReviewHeader();
+        reporter.reportLogWithScreenshot("Order Review Page Title Present");
         reporter.reportLogWithScreenshot("click Submit");
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
@@ -49,6 +51,6 @@ public class OneViewCH_REG_Auto_TC113_MappedTermContract_Restart_ValidateMappedT
     }
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+//        closeSession();
     }
 }
