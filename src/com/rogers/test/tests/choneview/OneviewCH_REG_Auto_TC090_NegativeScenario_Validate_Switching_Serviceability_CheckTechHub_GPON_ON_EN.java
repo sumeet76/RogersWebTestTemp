@@ -15,7 +15,7 @@ public class OneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Servic
     public void oneviewCH_REG_Auto_TC090_NegativeScenario_Validate_Switching_Serviceability_CheckTechHub_GPON_ON_EN() {
         {
             /* serviceability check to Techhub for GPON 3P+SHA_NAC ENG*/
-            reporter.reportLogWithScreenshot("OneView env");
+
             getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
             getEnvironmentSelectionPage().selectProduction();
             reporter.reportLogWithScreenshot("Selected Production");

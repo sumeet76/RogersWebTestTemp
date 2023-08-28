@@ -22,7 +22,7 @@ public class OneviewCH_REG_Auto_TC070_RHPAddOns_Validate_CallerId_And_Dir_Listin
         reporter.reportLogWithScreenshot("Manage Add ons is Clicked");
         getHomePhonedashboard().removeUnlistedNumberAddOn();
         reporter.reportLogWithScreenshot("Unlisted Number Addon Remove Clicked");
-        getTVDashboardPage().clickYourChanges();
+        //getTVDashboardPage().clickYourChanges();
         getHomePhonedashboard().removeCallDisplayBlockAddon();
         reporter.reportLogWithScreenshot("Call Display Blocking Addon is Removed");
         getHomePhonedashboard().yourChangeContinue();

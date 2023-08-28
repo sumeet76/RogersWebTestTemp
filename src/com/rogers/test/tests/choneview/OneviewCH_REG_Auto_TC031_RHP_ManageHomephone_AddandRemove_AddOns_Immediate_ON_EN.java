@@ -18,6 +18,9 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().selectHomePhoneBadge();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Home Phone dashboard page");
         getHomePhonedashboard().clickManageAddOns();
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameEn(),TestDataHandler.RHPManage_AddOns.accountDetails.getAddOnNameFr());
