@@ -46,7 +46,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(),"Build plan page is loaded successfully","Build plan page is not loaded");
 		getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
-		getRogersPlanConfigPage().clickShowMoreDetails();
+		//getRogersPlanConfigPage().clickShowMoreDetails();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayPlanSelection(getRogersPlanConfigPage().getAutoPayPlanIndex("MSF"),this.getClass().getSimpleName()),
 				"Autopay plan is selected successfully","Autopay plan is not selected");
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");

@@ -35,25 +35,25 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h2[@data-test='personal-info-title']")
 	WebElement createProfileTitle;
 
-	@FindBy(xpath = "//input[@formcontrolname='emailAddress']/ancestor::ds-form-field")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddress']/parent::div")
 	WebElement emailCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='emailAddress']")
 	WebElement inputEmail;
 
-	@FindBy(xpath = "//input[@formcontrolname='emailAddressConfirm']/ancestor::ds-form-field")
+	@FindBy(xpath = "//input[@formcontrolname='emailAddressConfirm']/parent::div")
 	WebElement confirmEmailCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='emailAddressConfirm']")
 	WebElement inputConfirmEmail;
 
-	@FindBy(xpath = "//input[@formcontrolname='firstName']/ancestor::ds-form-field")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']/parent::div")
 	WebElement firstNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='firstName']")
 	WebElement inputFirstName;
 
-	@FindBy(xpath = "//input[@formcontrolname='lastName']/ancestor::ds-form-field")
+	@FindBy(xpath = "//input[@formcontrolname='lastName']/parent::div")
 	WebElement lastNameCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='lastName']")
@@ -77,7 +77,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='companySize']")
 	WebElement inputCompanySize;
 
-	@FindBy(xpath = "//input[@formcontrolname='contactNumber']/ancestor::ds-form-field")
+	@FindBy(xpath = "//input[@formcontrolname='contactNumber']/parent::div")
 	WebElement contactNumberCreateProfile;
 
 	@FindBy(xpath = "//input[@formcontrolname='contactNumber']")
@@ -565,7 +565,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setEmailCreateProfile() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().clickWhenReady(emailCreateProfile);
+		getReusableActionsInstance().executeJavaScriptClick(emailCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputEmail,40).sendKeys(FormFiller.generateEmail());
 		return getReusableActionsInstance().getWhenReady(inputEmail,40).getAttribute("value");
 	}
@@ -577,8 +577,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public void confirmEmailCreateProfile(String confirmEmail) {
-		getReusableActionsInstance().clickWhenReady(confirmEmailCreateProfile);
-		getReusableActionsInstance().getWhenReady(inputConfirmEmail, 3).sendKeys(confirmEmail);
+		getReusableActionsInstance().executeJavaScriptClick(confirmEmailCreateProfile);
+		getReusableActionsInstance().getWhenReady(inputConfirmEmail, 10).sendKeys(confirmEmail);
 	}
 
 	/**
@@ -589,7 +589,7 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public String setFirstNameCreateProfile() {
 
-		getReusableActionsInstance().clickWhenReady(firstNameCreateProfile);
+		getReusableActionsInstance().executeJavaScriptClick(firstNameCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputFirstName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputFirstName,20).getAttribute("value");
 	}
@@ -636,7 +636,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setLastNameCreateProfile() {
-		getReusableActionsInstance().clickWhenReady(lastNameCreateProfile);
+		getReusableActionsInstance().executeJavaScriptClick(lastNameCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputLastName,3).sendKeys(FormFiller.generateRandomName()+FormFiller.generateRandomName());
 		return getReusableActionsInstance().getWhenReady(inputLastName,20).getAttribute("value");
 	}
@@ -677,7 +677,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 
 	public String setContactNumberCreateProfile(String contactNumber) {
-		getReusableActionsInstance().clickWhenReady(contactNumberCreateProfile);
+		getReusableActionsInstance().executeJavaScriptClick(contactNumberCreateProfile);
 		getReusableActionsInstance().getWhenReady(inputContactNumber,3).sendKeys(contactNumber);
 		return getReusableActionsInstance().getWhenReady(inputContactNumber,20).getAttribute("value").trim();
 	}
