@@ -24,7 +24,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//button[@class='a-btnPrimary ng-star-inserted']")
 	WebElement btnSuccessOk;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[4]")
+	@FindBy(xpath = "(//span[@translate='global.cta.select']//ancestor::button)[2]")
 	WebElement packageName;
 
 	@FindBy(xpath = "//i[@class='li-loader']")
@@ -199,7 +199,7 @@ public class InternetDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//span[@translate='global.dashboard.internet.speedsUpTo']")
 	WebElement internetSpeeds;
 
-	@FindBy(xpath = "//*[text()='View offers' or text()='Voir les offres']")
+	@FindBy(xpath = "//span[contains(text(),'View offers') or contains(text(),'Voir les offres')]")
 	WebElement viewOffer;
 
 	@FindAll({

@@ -87,7 +87,7 @@ public class CheckAvailabilityPage extends BasePageClass {
      * @author sameer.ahuja
      */
     public void checkAvailability(String address,String browser) {
-        getReusableActionsInstance().clickWhenReady(inputContainer,60);
+        getReusableActionsInstance().clickWhenReady(inputContainer,30);
         if(browser.equals("chrome")) {
             getReusableActionsInstance().enterText(addressInput,address+ Keys.BACK_SPACE,120);
             getReusableActionsInstance().staticWait(8000);
@@ -103,6 +103,21 @@ public class CheckAvailabilityPage extends BasePageClass {
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }
         //getReusableActionsInstance().clickIfAvailable(btnContinue);
+    }
+
+    public void secondServiceabilityCheck(String address,String browser) {
+        getReusableActionsInstance().clickWhenReady(inputContainer,30);
+        if(browser.equals("chrome")) {
+            getReusableActionsInstance().enterText(addressInput,"asd",120);
+            getReusableActionsInstance().staticWait(8000);
+        }
+        else {
+            getReusableActionsInstance().enterText(addressInput,"asd",120);
+            getReusableActionsInstance().staticWait(3000);
+        }
+        getReusableActionsInstance().clickAndHoldFor(searchResult, 333);
+        getReusableActionsInstance().staticWait(2000);
+
     }
 
     public void checkAvailabilityAtOtherAddress(String address, String browser){

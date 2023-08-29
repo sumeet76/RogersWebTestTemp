@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_D_To_G_Flow_OVR_PR_GSA_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,8 +22,8 @@ public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test extends Ba
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp("ChampTest18.User18@trci.trogers.ca", "RAMP@379");
+    public void ovr_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_DToG_Flow_OVR_PR_GSA_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), "Rogers@491");
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -32,40 +32,47 @@ public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test extends Ba
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
-        reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
-        //TV Dashboard
-        getOvrDashboardPage().clkTVDashboard();
+        getOvrDashboardPage().clkInternetDashboard();
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
-        reporter.reportLogWithScreenshot("Launched the TV dashboard page");
-        reporter.softAssert(getTVDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
-        reporter.reportLogWithScreenshot("Header available on TV Dashboard page");
-        reporter.softAssert(getTVDashboardPage().verifyFooter(), "Footer is available", "Verification of Header failed");
-        reporter.reportLogWithScreenshot("Footer available on TV Dashboard page");
+        reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
+        reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
 
-        getTVDashboardPage().clickChangePackage();
-        reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        getTVDashboardPage().selectTVPackage(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN(),TestDataHandler.ovrConfigData.getFlexChannelsPackageFR());
-        reporter.reportLogWithScreenshot("Upgrade TV Package selected");
+        getInternetDashboardPage().clickViewOffers();
+        reporter.reportLogWithScreenshot("view offers link clicked");
+        getInternetDashboardPage().clickContinueButton();
+        reporter.hardAssert(getInternetDashboardPage().verifyRecommendedOffer(),"Recommended offer available ","no Recommended offer displayed");
+        getInternetDashboardPage().selectRecommendedOffer();
+        reporter.reportLogWithScreenshot("Recommended offer selected");
 
-        /*For Flex Channels - Exchange Later*/
-        getTVDashboardPage().clickContinueChangeTVPackage();
-        reporter.reportLogWithScreenshot("Continue clicked on change TV Package");
-        getTVDashboardPage().clickExchangeLater();
-        reporter.reportLogWithScreenshot("Exchange later is selected");
+        getRogersIgniteBundlesPage().clickViewDetails();
+        reporter.reportLogWithScreenshot("Package Details");
+        getRogersIgniteBundlesPage().clkExpandPackageDetails();
+        reporter.reportLogWithScreenshot("Package details section expanded");
+        reporter.hardAssert(getTVDashboardPage().verifyDownloadAndUploadSpeed(),"Download and upload speed symmetrical"," Download and upload speed not symmetrical");
+        getRogersIgniteBundlesPage().clkCloseBtn();
+        reporter.reportLogWithScreenshot("View details modal closed");
 
-        getTVDashboardPage().clickContinueChannelsAndThemePacks();
-        reporter.reportLogWithScreenshot("click continue at channels and themepack");
-        getRogersIgniteBundlesPage().fourKTVPopup();
-        getRogersIgniteBundlesPage().fourKContinue();
-        reporter.reportLogWithScreenshot("Continue clicked on 4k TV dailog");
+        //getInternetDashboardPage().clickSelectbutton();
+        reporter.reportLogWithScreenshot("New Internet Package selected");
+        getInternetDashboardPage().clickContinue();
+        reporter.reportLogWithScreenshot("Clicked Continue");
 
-        getInternetDashboardPage().clickImmediateBill();
-        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
-        getTVDashboardPage().continueFromChangeDate();
+//        getInternetDashboardPage().clickImmediateBill();
+//        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
+//        getTVDashboardPage().continueFromChangeDate();
+
+        //getBundleBuilderPage().selectExpressProInstall();
+        reporter.reportLogWithScreenshot("Install Options");
+        getBundleBuilderPage().clkTechInstallSlot();
+        reporter.reportLogWithScreenshot("Time Slot selected");
+        getBundleBuilderPage().setMobileNumber();
+        reporter.reportLogWithScreenshot("tech install details");
+        getBundleBuilderPage().clkContinueInstallation();
+        reporter.reportLogWithScreenshot("Billing and Payment page");
 
         reporter.hardAssert(getOVROrderReviewPage().verifyReviewYourOrderHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
         getOVROrderReviewPage().clkContinue();
@@ -78,7 +85,6 @@ public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test extends Ba
         reporter.reportLogWithScreenshot("Order Confirmation Page");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
 
-
     }
 
-    }
+}
