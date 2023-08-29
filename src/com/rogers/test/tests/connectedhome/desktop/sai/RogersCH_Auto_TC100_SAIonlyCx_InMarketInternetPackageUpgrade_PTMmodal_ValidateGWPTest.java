@@ -58,7 +58,7 @@ public class RogersCH_Auto_TC100_SAIonlyCx_InMarketInternetPackageUpgrade_PTMmod
         reporter.reportLogWithScreenshot("Verified the PTM modal");
         getRogersInternetDashboardPage().verifyPTMmodalHeader();
         reporter.reportLogWithScreenshot("Verified the PTM modal header");
-        getRogersInternetDashboardPage().verifyPTMmodalContent();
+        getRogersInternetDashboardPage().verifyPTMmodalContent1();
         reporter.reportLogWithScreenshot("Verified the PTM modal content");
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Clicked continue on the PTM modal");
