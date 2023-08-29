@@ -28,13 +28,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
-import utils.AppiumServerJava;
-import utils.BrowserDrivers;
-import utils.GetOTP;
-import utils.Reporter;
+import utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -841,6 +839,17 @@ public class BaseTestClass {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
+    }
+
+    /**
+     * For Buysflows tests to add env headers using DevTools
+     */
+    private void addEnvHeader(){
+        DevToolsUtils utils = new DevToolsUtils();
+        DevTools devTools = utils.enableDevTools(getDriver());
+        utils.addExtraHeader(devTools, "x-envrnmt", "aks");
+        utils.addExtraHeader(devTools, "Pragma", "akamai-x-get-cache-key");
+        utils.addExtraHeader(devTools, "X-Akamai-Debug", "RogersFidoHeaders");
     }
 
     /**

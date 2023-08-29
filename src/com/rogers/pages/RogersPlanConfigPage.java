@@ -118,6 +118,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
     WebElement byodDPContinue;
 
+    @FindBy(xpath = "//ds-radio-button[@data-test='stepper-5-radio-no']")
+    WebElement eSIMOptNo;
+    @FindBy(xpath = "//button[@data-test='stepper-5-continue-cta']")
+    WebElement eSIMContinue;
+
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
@@ -897,7 +902,16 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public void clickByodDPContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(byodDPContinue, 5);
+        getReusableActionsInstance().clickWhenReady(byodDPContinue, 5);
+    }
+
+    /**
+     * Click continue on eSIM Stepper in BYOD Plan config page
+     * @author subash.nedunchezhian
+     */
+    public void clickeSIMContinueButton() {
+        getReusableActionsInstance().clickWhenVisible(eSIMOptNo,10);
+        getReusableActionsInstance().clickWhenReady(eSIMContinue, 5);
     }
 
     /**

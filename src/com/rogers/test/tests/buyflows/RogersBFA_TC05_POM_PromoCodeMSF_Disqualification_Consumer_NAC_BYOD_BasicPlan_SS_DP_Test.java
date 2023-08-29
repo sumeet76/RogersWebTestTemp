@@ -62,6 +62,7 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 		reporter.hardAssert(getRogersPlanConfigPage().verifyEligibilityMsg(),"Entered IMEI is eligible for Device Protection Addon","Entered IMEI is not eligible");
 		getRogersPlanConfigPage().clickPreCartSummaryContinueButtonAddOns();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
+		getRogersPlanConfigPage().clickeSIMContinueButton();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyDPCartLineItem(),"DP Addon added to cart","DP Addon not added to cart");
 		String dpAddon = getRogersPlanConfigPage().getDeviceProtectionAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection - " +dpAddon);

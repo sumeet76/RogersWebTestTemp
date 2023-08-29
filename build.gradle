@@ -170,7 +170,7 @@ dependencies {
 	api 'org.json:json:20180813'
 	api 'org.yaml:snakeyaml:1.24'
 	//implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
-	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+//	api 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
 }
 
 group = 'com.rogers'

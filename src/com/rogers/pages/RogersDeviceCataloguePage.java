@@ -209,7 +209,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author nimmy.george
      */
     public String createXpathWithDeviceName(String deviceName) {
-        xpathDeviceName="//p[contains(@class,'text-title-5 ')][contains(text(),'"+deviceName+"')]";
+        //xpathDeviceName="//p[contains(@class,'text-title-5 ')][contains(text(),'"+deviceName+"')]";
+        xpathDeviceName="//a[contains(@class,'text-title-5')][contains(text(),'"+deviceName+"')]";
         return xpathDeviceName;
     }
 

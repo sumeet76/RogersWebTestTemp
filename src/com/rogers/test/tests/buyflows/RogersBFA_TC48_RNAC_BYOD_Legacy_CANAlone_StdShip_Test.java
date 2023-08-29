@@ -53,6 +53,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
         reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+        getRogersPlanConfigPage().clickeSIMContinueButton();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
         //***************Create Profile Stepper*************//
         if(!(custInfoMap.size()==0)) {
