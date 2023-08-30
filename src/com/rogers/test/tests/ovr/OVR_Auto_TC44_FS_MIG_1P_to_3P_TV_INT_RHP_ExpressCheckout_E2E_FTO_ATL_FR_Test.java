@@ -99,7 +99,7 @@ public class OVR_Auto_TC44_FS_MIG_1P_to_3P_TV_INT_RHP_ExpressCheckout_E2E_FTO_AT
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
