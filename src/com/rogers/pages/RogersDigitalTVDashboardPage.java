@@ -43,6 +43,34 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 
 	@FindBy(xpath = "//button[@title='Press to close']")
 	WebElement closeViewChannelsPopup;
+
+	@FindBy(xpath="//button[@aria-label='Reset Digital Pin']/span")
+	WebElement lnkResetDigitalPin;
+
+	@FindBy(xpath="//button[contains(@aria-label,'Reset Digital Box')]/span")
+	WebElement lnkResetDigitalBox;
+
+	@FindBy(xpath = "//div[@class='ds-radioButton__outerCircle my-12']")
+	WebElement rdoResetDigitalPin;
+
+	@FindBy(xpath = "//span[contains(text(),'Continue') or contains(text(),'Continue')]")
+	WebElement btnResetContinue;
+
+	@FindBy(xpath="//span[contains(@class,'color-success')]")
+	WebElement successResetIcon;
+
+	@FindBy(xpath = "//span[contains(text(),'OK')]")
+	WebElement btnOk;
+
+	@FindBy(xpath="//button[@aria-label='Cancel']")
+	WebElement btnCancelResetBox;
+
+	@FindBy(xpath= "//span[text()= 'Cancel']")
+	WebElement btnCancelResetPin;
+
+	@FindBy(xpath="//span[contains(@class,'rds-icon-close')]/ancestor::span[@role='text']")
+	WebElement btnClose;
+
 	/**
 	 * To verify the change package button on the legacy TV dash board
 	 * @return true, if  ChangeMyPackage button is visible on Digital TV Dashboard Page
@@ -152,5 +180,41 @@ public class RogersDigitalTVDashboardPage extends BasePageClass {
 	public void clkCloseViewMyChannels(){
 		getReusableActionsInstance().waitForElementTobeClickable(closeViewChannelsPopup,20);
 		getReusableActionsInstance().clickIfAvailable(closeViewChannelsPopup);
+	}
+
+	public boolean verifySuccessIcon() {
+		return getReusableActionsInstance().isElementVisible(successResetIcon, 180);
+	}
+
+	public void clkOkContinue() {
+		getReusableActionsInstance().getWhenReady(btnOk, 90).click();
+	}
+
+	public void clkResetContinue() {
+		getReusableActionsInstance().getWhenReady(btnResetContinue, 90).click();
+	}
+
+	public void clkRadioDigitalPin() {
+		getReusableActionsInstance().getWhenReady(rdoResetDigitalPin, 90).click();
+	}
+
+	public void clkResetDigitalBox() {
+		getReusableActionsInstance().getWhenReady(lnkResetDigitalBox, 90).click();
+	}
+
+	public void clkResetDigitalPin() {
+		getReusableActionsInstance().executeJavaScriptClick(lnkResetDigitalPin);
+	}
+
+	public void clkResetBoxCancel() {
+		getReusableActionsInstance().getWhenReady(btnCancelResetBox, 90).click();
+	}
+
+	public void clkResetPinCancel() {
+		getReusableActionsInstance().getWhenReady(btnCancelResetPin, 90).click();
+	}
+
+	public void clkResetClose() {
+		getReusableActionsInstance().getWhenReady(btnClose, 90).click();
 	}
 }

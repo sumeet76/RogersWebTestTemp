@@ -67,9 +67,8 @@ public class OneviewCH_REG_Auto_TC041_ISS_NAC_with_SHM_Add_Ons_DBA_Monthly_ATL_E
 		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
-		reporter.reportLogWithScreenshot("Select delivery by appointment");
-		// Install Type - Delivery By Appointment
-		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("professional installation");
+		getCreditCheckPage().selectProfessionalInstallation();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Special Instructions");

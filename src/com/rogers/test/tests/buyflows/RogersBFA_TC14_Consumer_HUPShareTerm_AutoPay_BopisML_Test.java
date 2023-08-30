@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 /**
  * TC14 - Regression - Rogers HUP BOPIS
  */
-class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTestClass {
+public class RogersBFA_TC14_Consumer_HUPShareTerm_AutoPay_BopisML_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
     public void tc14_rogersHUPShareTermBopisMLTest() {

@@ -75,7 +75,7 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
         reporter.reportLogPass("Order Review Page");
         getRogersReviewOrderPage().clkFinancingConsentCheckbox();
         getRogersReviewOrderPage().clkAgreementConsentCheckbox();
-        getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
+       getRogersReviewOrderPage().clkUpfrontConsentCheckbox();
         getRogersReviewOrderPage().clkReturningUEDeviceConsentCheckbox();
         reporter.reportLogPassWithScreenshot("Order Review Page: T&C");
         if(getRogersOrderReviewPage().isPaymentRequired()) {
@@ -100,9 +100,9 @@ public class RogersBFA_TC08_Consumer_HUPWithPPC_OnAdditonalLine_StdShipping_Test
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows , method);
     }
 
-    /*@AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         closeSession();
-    }*/
+    }
     
 }

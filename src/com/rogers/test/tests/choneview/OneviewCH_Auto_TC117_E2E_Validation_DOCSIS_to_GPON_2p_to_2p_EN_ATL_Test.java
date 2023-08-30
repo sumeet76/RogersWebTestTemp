@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OneviewCH_Auto_TC115_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_Test extends BaseTestClass {
+public class OneviewCH_Auto_TC117_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_Test extends BaseTestClass {
     @Test(groups = {"RchangeTv","Baseline","ChangePackage","OVSet2"})
-    public void oneviewCH_Auto_TC115_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_TestN() {
+    public void oneviewCH_Auto_TC117_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_TestN() {
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(), TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
@@ -28,8 +28,13 @@ public class OneviewCH_Auto_TC115_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_
         reporter.reportLogWithScreenshot("Click on Change Package");
         getTVDashboardPage().clickChangePackage();
         reporter.reportLogWithScreenshot("Changed TV Package clicked");
-        //ToDo verify modal for D to G confirmation
-        //ToDo select technology verification - fibre
+        // verify modal for D to G confirmation
+        reporter.hardAssert(getTVDashboardPage().verifyDtoGModal(),"Docisis to GPON upgrade modal visible"," Fibre to the home available modal not visible");
+        getTVDashboardPage().clickContinue();
+        // select technology verification - fibre
+        getRogersIgniteBundlesPage().selectDtoGFireOption();
+        getRogersIgniteBundlesPage().clkLoadOffers();
+
         getRogersIgniteBundlesPage().clickViewDetails();
         reporter.reportLogWithScreenshot("View Details Clicked");
         getRogersIgniteBundlesPage().clkExpandPackageDetails();
@@ -69,8 +74,10 @@ public class OneviewCH_Auto_TC115_E2E_Validation_DOCSIS_to_GPON_2p_to_2p_EN_ATL_
 
         //verify customer is activate on fibre tag.
         reporter.softAssert(getRogersOVOrderReviewPage().verifyMonthlyCharges(),"Monthly Charges Displayed","Failed to Navigate to Monthly Charges Page");
+        reporter.hardAssert(getRogersOVOrderReviewPage().verifyFibreActivationTag()," Fibre activation tag present","Fibre activation tag not present");
         getRogersOVOrderReviewPage().clkSubmit();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+        reporter.hardAssert(getRogersOVOrderReviewPage().verifyFibreActivationTag()," Fibre activation tag present","Fibre activation tag not present");
         reporter.reportLogWithScreenshot("Order Placed");
     }
 

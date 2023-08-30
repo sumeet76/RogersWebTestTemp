@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.support.FindBys;
 
 public class RogersInternetDashboardPage extends BasePageClass {
 
@@ -18,17 +18,17 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//section[@class='internet-my-usage'] | //h1[text()= ' Internet ']")
 	WebElement txtInternetUsage;
 
-	@FindBy(xpath= "//span[@translate='global.selfServe.legacyDashboard.internet.dailyUsage']")
+	@FindBy(xpath = "//span[@translate='global.selfServe.legacyDashboard.internet.dailyUsage']")
 	WebElement txtDailyUsage;
 
-	@FindBy(xpath="//span[@translate='global.selfServe.legacyDashboard.internet.monthlyUsage']")
+	@FindBy(xpath = "//span[@translate='global.selfServe.legacyDashboard.internet.monthlyUsage']")
 	WebElement txtMonthlyUsage;
 
 	@FindBy(xpath = "//span[@data-test-id='myr-internetMyPackage-managePackage']")
 	WebElement btnChangeInternetPackage;
 
 
-	@FindBy(xpath ="//span[text()=' Internet ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
+	@FindBy(xpath = "//span[text()=' Internet ']/ancestor::rss-subscription-detail-row//a[contains(@class,'ds-link')]//span[@role='text']")
 	WebElement btnSolarisInternetBadge;
 
 	@FindAll({
@@ -54,7 +54,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	WebElement popupContatUS;
 
 	@FindBy(xpath = "//h1[@aria-labelledby='ariaPopupHeader']")
-	WebElement popupContatUSInternetDowngarde;
+	WebElement popupContatUSInternetDowngrade;
 
 	@FindBy(xpath = "//span[@class='ds-icon rds-icon-close']")
 	WebElement popUpInternetPopup;
@@ -68,11 +68,11 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//div[@id='terms-conditions']")
 	WebElement infoAgreement;
 
-	@FindBy(xpath="//span[contains(text(),'Continue')]")
+	@FindBy(xpath = "//span[contains(text(),'Continue')]")
 	WebElement btnInternetChangeOK;
 
 
-	@FindBy(xpath="//a[contains(@aria-label, '1.5 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
+	@FindBy(xpath = "//a[contains(@aria-label, '1.5 Gbps')]/span/ancestor::div[@class='sai-vertical-tile-component']//div[@class='vertical-tile__internet']//label[contains(@title,'Add for $5')]")
 	WebElement btnSmartstreamPack;
 
 	@FindBy(xpath = "//button[contains(@class,'-primary -large ng-star-inserted')]")
@@ -185,91 +185,101 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-info-circle ds-color-info']")
 	WebElement imgInfoIconPTMmodal;
 
-	@FindBy(xpath= "//span[text()='Changing your Internet package']")
+	@FindBy(xpath = "//span[text()='Changes to your Ignite services']")
 	WebElement headerPTMmodal;
 
-	@FindBy(xpath = "//h2[contains(@class, 'popup-modal-body__heading')]")
-	WebElement txtPTMmodal;
-
+	@FindBys({@FindBy(xpath = "//div[contains(@class, 'popup-modal-body__content')]//ul//li[1]"),
+			@FindBy(xpath = "//div[contains(@class, 'popup-modal-body__content')]//ul//li[2]")})
+	WebElement txtContentPTMModel;
+	
+	
 	/**
-	 * Verify the Internet usage on the Internet dash board page
+	 * Verify the Internet usage on the Internet dashboard page
+	 *
 	 * @return true if the Internet usage displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternetUsage() {
-		return getReusableActionsInstance().isElementVisible(txtInternetUsage,30);
+		return getReusableActionsInstance().isElementVisible(txtInternetUsage, 30);
 	}
 
 	public boolean verifyDailyUsage() {
-		return getReusableActionsInstance().isElementVisible(txtDailyUsage,30);
+		return getReusableActionsInstance().isElementVisible(txtDailyUsage, 30);
 	}
 
 	public boolean verifyMonthlyUsage() {
-		return getReusableActionsInstance().isElementVisible(txtMonthlyUsage,30);
+		return getReusableActionsInstance().isElementVisible(txtMonthlyUsage, 30);
 	}
 
 	public boolean verifyInternetUsageMobile() {
-		return getReusableActionsInstance().isElementVisible(txtInternetUsage,90);
+		return getReusableActionsInstance().isElementVisible(txtInternetUsage, 90);
 	}
 
 	/**
-	 * Verify the Internet usage on the Internet dash board page
+	 * Verify the Internet usage on the Internet dashboard page
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkChangeInternetPackage() {
-		getReusableActionsInstance().getWhenReady(btnChangeInternetPackage,90).click();
+		getReusableActionsInstance().getWhenReady(btnChangeInternetPackage, 90).click();
 	}
 
 	/**
 	 * Click the Solaris Internet Badge on the Solaris account page
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolarisInternetBadge() {
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,60);
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge, 60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
 
 	}
 
 	/**
 	 * Click the Solaris Internet Badge on the Solaris account page
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetBadgeMobile() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge,90);
+		getReusableActionsInstance().waitForElementVisibility(btnSolarisInternetBadge, 90);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolarisInternetBadge);
 	}
 
 	/**
-	 * Verify the Internet header text on the Solaris Internet dash board
+	 * Verify the Internet header text on the Solaris Internet dashboard
+	 *
 	 * @return true if the Internet heading displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternet() {
-		return getReusableActionsInstance().isElementVisible(infoInternet,40);
+		return getReusableActionsInstance().isElementVisible(infoInternet, 40);
 	}
 
 	/**
-	 * Click on the Internet Usage Alerts link on solaris Internet dash board
+	 * Click on the Internet Usage Alerts link on solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetUsageAlerts() {
-		getReusableActionsInstance().waitForElementVisibility(lnkInternetUsageAlerts,60);
+		getReusableActionsInstance().waitForElementVisibility(lnkInternetUsageAlerts, 60);
 		getReusableActionsInstance().executeJavaScriptClick(lnkInternetUsageAlerts);
 
 	}
 
 	/**
-	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
+	 * Verify the Internet Usage Alerts link on Solaris Internet dashboard
+	 *
 	 * @return true if the Internet Usage Alerts link displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyUsageAndAlerts() {
-		return getReusableActionsInstance().isElementVisible(infoUsageAndAlerts,30);
+		return getReusableActionsInstance().isElementVisible(infoUsageAndAlerts, 30);
 	}
 
 	/**
-	 * Clicks on the 'InternetPopup' option on the dash board
+	 * Clicks on the 'InternetPopup' option on the dashboard
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clkInternetPopup() {
@@ -277,7 +287,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Clicks on the 'InternetPopup' option on the dash board
+	 * Clicks on the 'InternetPopup' option on the dashboard
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clkIgniteInternetOption() {
@@ -285,16 +296,18 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
+	 * Verify the Internet Usage Alerts link on Solaris Internet dashboard
+	 *
 	 * @return true if the Internet Usage Alerts link displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyInternetIssues() {
-		return getReusableActionsInstance().isElementVisible(optsInternetIssues,30);
+		return getReusableActionsInstance().isElementVisible(optsInternetIssues, 30);
 	}
 
 	/**
-	 * Clicks on the 'InternetPopup' option on the dash board
+	 * Clicks on the 'InternetPopup' option on the dashboard
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void clkWifiPassword() {
@@ -302,17 +315,19 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Verify the Internet Usage Alerts link on Solaris Internet dash board
+	 * Verify the Internet Usage Alerts link on Solaris Internet dashboard
+	 *
 	 * @return true if the Internet Usage Alerts link displayed; else false
 	 * @author Chinnarao.Vattam
 	 */
 	public boolean verifyChangeWifiPassword() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		return getReusableActionsInstance().isElementVisible(btnWifiPassword,30);
+		return getReusableActionsInstance().isElementVisible(btnWifiPassword, 30);
 	}
 
 	/**
 	 * Click the PDF link on MyChannelLineup popup
+	 *
 	 * @return true if the PDF is displaying in new tab, else false
 	 * @author chinnarao.vattam
 	 */
@@ -330,7 +345,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Change Internet Package button on Solaris Internet dash board
+	 * Click the Change Internet Package button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackage() {
@@ -338,22 +354,24 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		By btnSolChangeInternetPackage = By.xpath("//div[contains(@class,'change-internet-button')]//button");
 		getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 90);
 		WebElement changePkg = getDriver().findElement(btnSolChangeInternetPackage);
-		getReusableActionsInstance().getWhenReady(changePkg,60).click();
+		getReusableActionsInstance().clickWhenReady(changePkg);
 		//getReusableActionsInstance().waitForElementVisibility(btnSolChangeInternetPackage, 120);
 		//getReusableActionsInstance().getWhenReady(btnSolChangeInternetPackage, 60).click();
 	}
 
 	/**
-	 * verify the Change Internet Package button on Solaris Internet dash board is present or not
-	 *  @return true if button is not present, else false
-	 *  @author manpreet.kaur3
+	 * verify the Change Internet Package button on Solaris Internet dashboard is present or not
+	 *
+	 * @return true if button is not present, else false
+	 * @author manpreet.kaur3
 	 */
 	public boolean verifyChangeInternetPackageBtnNotPresent() {
 		return !(getReusableActionsInstance().isElementVisible(btnSolChangeInternetPackage, 10));
 	}
 
 	/**
-	 * Click the Change Internet Package button on Solaris Internet dash board
+	 * Click the Change Internet Package button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSolChangeInternetPackageMobile() {
@@ -362,16 +380,18 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkInternetChangeOK() {
 		getReusableActionsInstance().clickIfAvailable(btnInternetChangeOK, 30);
-		getReusableActionsInstance().staticWait(8000);
+		getReusableActionsInstance().staticWait(3000);
 	}
 
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSmartstreamPack() {
@@ -379,7 +399,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkSAInternetChangeOK() {
@@ -388,6 +409,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
@@ -396,51 +418,57 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkVAButton() {		
+	public void clkVAButton() {
 		getReusableActionsInstance().getWhenReady(btnVaButton, 10).click();
 
 	}
-	
+
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkVAMenu() {	
+	public void clkVAMenu() {
 		getReusableActionsInstance().getWhenReady(btnVaMenu, 20).click();
 	}
-	
+
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkVAMininmize() {		
+	public void clkVAMinimize() {
 		getReusableActionsInstance().getWhenReady(btnVAMininmize, 10).click();
 
 	}
-	
+
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
-	public void clkVAClose() {		
+	public void clkVAClose() {
 		getReusableActionsInstance().getWhenReady(btnVAClose, 10).click();
 
 	}
-	
+
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyVAButton() {	
+	public boolean verifyVAButton() {
 		return getReusableActionsInstance().isElementVisible(btnVaButton, 10);
 	}
-	
+
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
@@ -450,6 +478,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * To switch to the iframe
+	 *
 	 * @author chinnarao.vattam
 	 */
 	public void switchToVAIFrame() {
@@ -459,15 +488,17 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyVaTopicList() {	
+	public boolean verifyVaTopicList() {
 		return getReusableActionsInstance().isElementVisible(selVaTopicList, 30);
 	}
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
@@ -477,6 +508,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
@@ -485,7 +517,8 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	/**
-	 * Click the Change Internet Package OK button on Solaris Internet dash board
+	 * Click the Change Internet Package OK button on Solaris Internet dashboard
+	 *
 	 * @author Chinnarao.Vattam
 	 */
 	public void clkVaWelcomeSend() {
@@ -496,6 +529,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
@@ -503,75 +537,77 @@ public class RogersInternetDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers, 60);
 		return getReusableActionsInstance().isElementVisible(popupContatUS, 20);
 	}
-	
+
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyContatUSInternetDowngarde() {
-		if (getReusableActionsInstance().isElementVisible(popupLoadingFingersInternet, 30)){
+	public boolean verifyContactUSInternetDowngrade() {
+		if (getReusableActionsInstance().isElementVisible(popupLoadingFingersInternet, 30)) {
 			getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersInternet, 60);
 		}
-		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngrade, 20);
 	}
 
 	/**
 	 * Checks if the pop up contact us is visible
+	 *
 	 * @return true when pop up contact us is visible else false
 	 * @author Chinnarao.Vattam
 	 */
-	public boolean verifyContatUSInternetDowngardeInternet() {
-		getReusableActionsInstance().waitForElementVisibility(popupContatUSInternetDowngarde, 60);
-		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngarde, 20);
+	public boolean verifyContactUSInternetDowngradeInternet() {
+		getReusableActionsInstance().waitForElementVisibility(popupContatUSInternetDowngrade, 60);
+		return getReusableActionsInstance().isElementVisible(popupContatUSInternetDowngrade, 20);
 	}
-	
+
 
 	/**
 	 * Select the  Internet Package on change Internet package page
+	 *
 	 * @param strPackageNameEn Internet package to be selected
 	 * @param strPackageNameFr Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackageOld(String strPackageNameEn,String strPackageNameFr) {
-		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+	public void selectSolarisInternetPackageOld(String strPackageNameEn, String strPackageNameFr) {
+		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn + "') or contains(normalize-space(text()),'" + strPackageNameFr + "')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		if(getReusableActionsInstance().isElementVisible(btnPackageSelection, 60))
-		{		
-	    getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
-		 }
-	   else
-		{
-	    getReusableActionsInstance().getWhenReady(imgNext, 90).click();
-	    getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
-	    getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
+		if (getReusableActionsInstance().isElementVisible(btnPackageSelection, 60)) {
+			getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
+		} else {
+			getReusableActionsInstance().getWhenReady(imgNext, 90).click();
+			getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
+			getReusableActionsInstance().getWhenReady(btnPackageSelection, 30).click();
 		}
 	}
 
-	
+
 	/**
 	 * Select Solaris Internet Package
+	 *
 	 * @param strPackageNameEn package name
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage(String strPackageNameEn,String strPackageNameFr) {
-		getReusableActionsInstance().staticWait(5000);
-		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "') or contains(@aria-label,'" + strPackageNameFr +"')]/span");
+	public void selectSolarisInternetPackage(String strPackageNameEn, String strPackageNameFr) {
+		getReusableActionsInstance().staticWait(3000);
+		By packageNameLocator = By.xpath("//button[contains(@aria-label, '" + strPackageNameEn + "') or contains(@aria-label,'" + strPackageNameFr + "')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
-		getReusableActionsInstance().getWhenReady(pkg,60).click();
+		getReusableActionsInstance().clickWhenReady(pkg, 60);
 	}
 
 	/**
 	 * Select Solaris Internet Package
+	 *
 	 * @param strPackageNameEn package name
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
+	public void selectSolarisInternetPackageMobile(String strPackageNameEn, String strPackageNameFr) {
 		getReusableActionsInstance().staticWait(3000);
-		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn + "')]/span");
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='change-internet-sai-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]/span");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
@@ -580,73 +616,77 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Select Solaris Internet Package
+	 *
 	 * @param strPackageNameEn package name
 	 * @param strPackageNameFr package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectStandAloneInternetPackage(String strPackageNameEn,String strPackageNameFr) {
+	public void selectStandAloneInternetPackage(String strPackageNameEn, String strPackageNameFr) {
 		//By packageNameLocator = By.xpath("//span[contains(text(),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]/ancestor::div[@class='internet-bundle-tile__row']//button[contains(@aria-label,'Add Ignite Internet')]");
-		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn+ "')]/span");
+		By packageNameLocator = By.xpath("//a[contains(@aria-label, '" + strPackageNameEn + "')]/span");
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 60);
 		WebElement pkg = getDriver().findElement(packageNameLocator);
 		getReusableActionsInstance().executeJavaScriptClick(pkg);
 	}
+
 	/**
 	 * Select the  Internet Package on change Internet package page
+	 *
 	 * @param strPackageNameEn Internet package to be selected
 	 * @param strPackageNameFr Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectInternetPackageMobile(String strPackageNameEn,String strPackageNameFr) {
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile,120);
-		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn+ "') or contains(normalize-space(text()),'" + strPackageNameFr +"')]");
-		if(getReusableActionsInstance().isElementVisible(btnPackageSelection, 60))
-		{		
-	    getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
-		 }
-	   else
-		{
-	    getReusableActionsInstance().getWhenReady(imgNext, 90).click();
-	    getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
-	    getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
+	public void selectInternetPackageMobile(String strPackageNameEn, String strPackageNameFr) {
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile, 120);
+		By btnPackageSelection = By.xpath("//span[contains(normalize-space(text()),'" + strPackageNameEn + "') or contains(normalize-space(text()),'" + strPackageNameFr + "')]");
+		if (getReusableActionsInstance().isElementVisible(btnPackageSelection, 60)) {
+			getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
+		} else {
+			getReusableActionsInstance().getWhenReady(imgNext, 90).click();
+			getReusableActionsInstance().isElementVisible(btnPackageSelection, 60);
+			getReusableActionsInstance().getWhenReady(btnSelectInternetPackageMobile, 30).click();
 		}
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile,120);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingersMobile, 120);
 	}
-	
+
 	/**
 	 * Select the  Internet Package on change Internet package page for migration flow
+	 *
 	 * @param strPackageName Internet package to be selected
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectSolarisInternetPackageMigration(String strPackageName) {
 		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName
 				+ "') or contains(normalize-space(text()),'Élan Internet gigabit')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
-		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers,90);
+		getReusableActionsInstance().waitForElementInvisibility(popupLoadingFingers, 90);
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 60).click();
 	}
-	
+
 	/**
 	 * Select Solaris Internet Package
+	 *
 	 * @param strPackageName package name
 	 * @author Chinnarao.Vattam
 	 */
-	public void selectSolarisInternetPackage1(String strPackageName) {		
-		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName+ "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
+	public void selectSolarisInternetPackage1(String strPackageName) {
+		By packageNameLocator = By.xpath("//span[contains(normalize-space(text()),'" + strPackageName + "') or contains(normalize-space(text()),'Élan Internet 150i')]/ancestor::div[@class='owl-item active']//ins[@translate='global.cta.select']");
 		getReusableActionsInstance().getWhenReady(packageNameLocator, 90).click();
 	}
 
 	/**
 	 * Verify Smart Stream Modal
+	 *
 	 * @retun true if smart stream modal present
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifySmartStreamHeader() {
-		return getReusableActionsInstance().isElementVisible(headerSmartStreamModal,30);
+		return getReusableActionsInstance().isElementVisible(headerSmartStreamModal, 30);
 	}
 
 	/**
 	 * Close Smart Stream Modal
+	 *
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkOnNoThanks() {
@@ -656,13 +696,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 
-    public void clkContinueToChangeInternetPackage() {
+	public void clkContinueToChangeInternetPackage() {
 		getReusableActionsInstance().waitForElementVisibility(btnContinue, 20);
 		getReusableActionsInstance().getWhenReady(btnContinue, 20).click();
-    }
+	}
 
 	/**
 	 * Click Show Details link
+	 *
 	 * @author Manpreet.Kaur3
 	 */
 	public void clkShowDetails() {
@@ -671,6 +712,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verify Show Details link is expanded
+	 *
 	 * @retun true if Hide Details link is visible , else false
 	 * @author Manpreet.Kaur3
 	 */
@@ -680,30 +722,34 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verify the number is text or link for Bulk Tenant
+	 *
 	 * @retun true if the number is clickable , else false
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyCallUs() {
-		return  getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
+		return getReusableActionsInstance().isElementVisible(lnkCallUs, 20);
 	}
 
 	/**
 	 * Verifies if Change Package Header is present
+	 *
 	 * @return true if Header is present else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyChangePackagePopupHeader() {
 		return getReusableActionsInstance().isElementVisible(headerChangepkg, 20);
 	}
+
 	/**
 	 * Gets the Change Package - Contact Us Modal content
+	 *
 	 * @return true if Actual copy is matching the desired copy, else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyContactUsModalContent() {
 		String contactUsContentDesired = "Great! Contact us or book a call back – we’ll help you with all the details.";
 		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
-		if(contactUsContentActual.equals(contactUsContentDesired)){
+		if (contactUsContentActual.equals(contactUsContentDesired)) {
 			return true;
 		}
 
@@ -712,6 +758,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verifies if Book a call back link is present
+	 *
 	 * @return true if Book a call back link is present else false
 	 * @author manpreet.kaur3
 	 */
@@ -723,6 +770,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verifies if Live Chat link is present
+	 *
 	 * @return true if Live Chat link is present else false
 	 * @author manpreet.kaur3
 	 */
@@ -733,13 +781,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Gets the Change Package - Contact Us Modal content
+	 *
 	 * @return true if Actual copy is matching the desired copy, else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyContactUsModalContentFR() {
 		String contactUsContentDesired = "Super! Communiquez avec nous ou choisissez une heure de rappel et nous réglerons les détails avec vous.";
 		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtContactUsPopupModal, 20).getText();
-		if(contactUsContentActual.equals(contactUsContentDesired)){
+		if (contactUsContentActual.equals(contactUsContentDesired)) {
 			return true;
 		}
 
@@ -748,6 +797,7 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verifies the Invalid TNAC offer popup
+	 *
 	 * @return true if popup present, else false
 	 * @author manpreet.kaur3
 	 */
@@ -758,13 +808,14 @@ public class RogersInternetDashboardPage extends BasePageClass {
 	}
 
 	public void clkViewPkgs() {
-		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs,10);
+		getReusableActionsInstance().waitForElementVisibility(btnViewPkgs, 10);
 		getReusableActionsInstance().getWhenReady(btnViewPkgs).click();
 		getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**
 	 * Verifies if PTM modal is present
+	 *
 	 * @return true if present else false
 	 * @author manpreet.kaur3
 	 */
@@ -774,21 +825,35 @@ public class RogersInternetDashboardPage extends BasePageClass {
 
 	/**
 	 * Verifies if PTM modal Header is present
+	 *
 	 * @return true if Header is present else false
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyPTMmodalHeader() {
 		return getReusableActionsInstance().isElementVisible(headerPTMmodal, 20);
 	}
+
 	/**
 	 * Gets the PTM modal content
+	 *
 	 * @return true if Actual copy is matching the desired copy, else false
 	 * @author manpreet.kaur3
 	 */
-	public boolean verifyPTMmodalContent() {
-		String contactUsContentDesired = "Congrats on selecting your new internet package! Please note that by making this change, you’ll lose any discounts or promotions on your current package.";
-		String contactUsContentActual = getReusableActionsInstance().getWhenReady(txtPTMmodal, 20).getText();
-		if(contactUsContentActual.equals(contactUsContentDesired)){
+	public boolean verifyPTMmodalContent1() {
+		By txtPTMModalCont1 = By.xpath("//div[contains(@class, 'popup-modal-body__content')]//ul//li[1]");
+		String contactUsContentDesired = "Your new Ignite services will replace your existing services and promotions.";
+		String txtPTMModalCont1Actual = getReusableActionsInstance().getWhenReady(txtPTMModalCont1, 20).getText();
+		if (txtPTMModalCont1Actual.equals(contactUsContentDesired)) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean verifyPTMmodalContent2() {
+		By txtPTMModalCont2 = By.xpath("//div[contains(@class, 'popup-modal-body__content')]//ul//li[2]");
+		String contactUsContentDesired = "Any existing add-ons or additional Ignite Entertainment Boxes will remain on your account.";
+		String txtPTMModalCont2Actual = getReusableActionsInstance().getWhenReady(txtPTMModalCont2, 20).getText();
+		if (txtPTMModalCont2Actual.equals(contactUsContentDesired)) {
 			return true;
 		}
 		return false;

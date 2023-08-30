@@ -20,7 +20,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
 
     public String xpathDeviceName;
 
-    @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']")
+    @FindAll({
+    @FindBy(xpath = "//button[@title='Select' or @title='Continue' or @title='Continuer' or @title='Ship to home' or @title='Expédier à la maison']"),
+            @FindBy(xpath = "//*[contains(@title,'Ship to home')]")
+    })
     WebElement continueButton;
 
     @FindBy(xpath = "//span[contains(text(),'Pre-order Ship Home') or contains(text(),'PREORDER RESERVE')]")
@@ -94,10 +97,10 @@ public class RogersDeviceConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[contains(@class,'ds-checkboxLabel')]//parent::label[contains(@title,'Device Protection') or contains(@title,'supérieure  de l’appareil')]")
     WebElement deviceProtectionAddon;
 
-    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']")
+    @FindBy(xpath = "//span[@data-test='regular-promo-header']")
     WebElement regularPromoRibbon;
 
-    @FindBy(xpath = "//span[@data-test='wirelessDiscount-promo-ribbon']/following::p[1]")
+    @FindBy(xpath = "//span[@data-test='regular-promodiscount-displayname']")
     WebElement regularPromoDetail;
 
     @FindBy(xpath = "//button[@id='trident-cta-hup']//span[contains(@class,'ds-button__copy')]")
@@ -485,7 +488,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
     public String getDeviceFullPrice(String className) {
         if (className.toUpperCase().contains("_FR")) {
             String deviceFullPriceFR = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
-            return deviceFullPriceFR.substring(0, deviceFullPriceFR.indexOf(","));
+            return deviceFullPriceFR.replaceAll("[^0-9,]","").replace("\\,","\\.");
         } else {
             String deviceFullPriceEN = getReusableActionsInstance().getWhenReady(txtDeviceCost).getText().trim();
             return deviceFullPriceEN.replaceAll("[^0-9.]","");
@@ -618,6 +621,7 @@ public class RogersDeviceConfigPage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public String getRegularPromoDetails(){
+        getReusableActionsInstance().clickWhenReady(regularPromoRibbon,20);
         getReusableActionsInstance().scrollToElement(regularPromoDetail);
         return regularPromoDetail.getText().replaceAll("\\n", "");
     }

@@ -23,7 +23,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","AALBFA","SanityBFA"})
+    @Test(groups = {"RegressionBFA","AALBFA","SanityBFA","SUB"})
     public void tc19_rogersAalByodBopisTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -68,6 +68,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
         getRogersPlanConfigPage().selectNoDeviceProtection();
         reporter.reportLogPassWithScreenshot("No Device Protection option selected after checking the eligibility(failure)");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
+        getRogersPlanConfigPage().clickeSIMContinueButton();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

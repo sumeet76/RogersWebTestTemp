@@ -42,7 +42,7 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
         reporter.reportLogWithScreenshot("add to cart");
-        getRogersIgniteBundlesPage().noPortInPopup();
+//        getRogersIgniteBundlesPage().noPortInPopup();
         getRogersIgniteBundlesPage().clkCollapse();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
@@ -51,7 +51,6 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
 //        getRogersIgniteBundlesPage().reviewAllTerms();
 //        getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 //        reporter.reportLogWithScreenshot("Points to mention");
-
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -88,16 +87,14 @@ public class OneviewCH_Auto_TC075_OVI_Migration_Legacy_To_Internet_SHMAddon_Cour
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
         reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
-        getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().selectProfessionalInstallation();
-        reporter.reportLogWithScreenshot("click Date Time Radio Button");
-        getFulfillmentPage().clkFirstAvailableAppointment();
+        getCreditCheckPage().clkCourierDelivery();
+        getCreditCheckPage().clickInPersonDelivery();
 //        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
 //        getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
 //        reporter.reportLogWithScreenshot(".enter Email Mail Address");
 //        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
 //        reporter.reportLogWithScreenshot(".enter Special Instructions");
-        getCreditCheckPage().enterSpecialInstructions();
+//        getCreditCheckPage().enterSpecialInstructions();
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");

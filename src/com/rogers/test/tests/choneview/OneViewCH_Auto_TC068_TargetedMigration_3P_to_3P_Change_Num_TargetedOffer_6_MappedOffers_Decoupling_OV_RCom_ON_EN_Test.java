@@ -40,7 +40,7 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         reporter.reportLogWithScreenshot("Selected the Recommended offer");
 
 //        getRogersIgniteBundlesPage().clkTVCheckbox();
-//        getRogersIgniteBundlesPage().clkInternetCheckbox();
+//        getRogersIgniteBundlesPage().clkInternetCheckbox();t
 //        getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         reporter.reportLogWithScreenshot("Triple Play - Internet, TV and HomePhone is Selected");
 //        getRogersIgniteBundlesPage().clkLoadOffers();
@@ -55,9 +55,6 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         reporter.reportLogWithScreenshot("Product Added");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("review terms and condition");
-//        getRogersIgniteBundlesPage().expandInternetdiv();
-//        getRogersIgniteBundlesPage().expandHomePhonediv();
-//        getRogersIgniteBundlesPage().expandBatteryBackUpdiv();
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
@@ -100,16 +97,20 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         getCreditCheckPage().clkAuthorize();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
-
         getCreditCheckPage().clkContinue();
+        reporter.reportLogWithScreenshot("Continue to Caller Info Review Page");
+//        reporter.softAssert(getCallerInformationPage().callerInfoPageLoad(), "Caller Info Review Page loaded", "Caller Info Review Page not loaded");
+//        reporter.reportLogWithScreenshot("Continue from Caller Info Review Page");
+//        getCallerInformationPage().goToPageBottom();
+//        getCallerInformationPage().clickFinalContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        //getHomePhoneSelectionPage().verifySelectedNumber();
+        getHomePhoneSelectionPage().verifySelectedNumber();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("Installation options");
-        reporter.reportLogWithScreenshot("Delivery by Appointment installation");
-        getCreditCheckPage().selectDeliveryByAppointment();
+        reporter.reportLogWithScreenshot("Select Prfessional Install");
+        getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
@@ -125,7 +126,6 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         getPaymentOptionsPage().clkContinue();
 
 //        Checkout Page
-
 		getRogersOVCheckoutPage().clkSubmit();
 		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
@@ -139,7 +139,7 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
     }
 

@@ -10,6 +10,8 @@ import com.rogers.pages.base.BasePageClass;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class RogersSolarisRHPDashboardPage extends BasePageClass {
 
 	public RogersSolarisRHPDashboardPage(WebDriver driver) {
@@ -95,7 +97,7 @@ public class RogersSolarisRHPDashboardPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public boolean verifyConfigureYourCurrentFeatures() {
-		wait = new WebDriverWait(getDriver(), 30);
+		wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Configure your current features') or contains(text(),'Configuration des fonctions')]/ancestor::a")));
 		//getReusableActionsInstance().waitForElementVisibility(lnkConfigureYourCurrentFeatures, 60);
 		return getReusableActionsInstance().isElementVisible(lnkConfigureYourCurrentFeatures, 30);
