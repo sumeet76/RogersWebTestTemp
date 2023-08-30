@@ -22,7 +22,7 @@ public class OVR_Auto_TC73_ADD_TSU_SAI_to_SAI_ExistingTermCarriedOver_D_To_D_Flo
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC73_ADD_TSU_SAI_to_SAI_ExistingTermCarriedOver_DocsisToDocsis_Flow_OVR_Dealer_EN_ON_Test() {
+    public void ovr_Auto_TC73_ADD_TSU_SAI_to_SAI_ExistingTermCarriedOver_D_To_D_Flow_OVR_Dealer_EN_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
@@ -31,7 +31,7 @@ public class OVR_Auto_TC73_ADD_TSU_SAI_to_SAI_ExistingTermCarriedOver_D_To_D_Flo
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data.getBanNumber(), TestDataHandler.tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
 
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
@@ -41,7 +41,6 @@ public class OVR_Auto_TC73_ADD_TSU_SAI_to_SAI_ExistingTermCarriedOver_D_To_D_Flo
         getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
         reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
-
         getInternetDashboardPage().clickChangePackageButton();
         reporter.reportLogWithScreenshot("Change Internet Package clicked");
 

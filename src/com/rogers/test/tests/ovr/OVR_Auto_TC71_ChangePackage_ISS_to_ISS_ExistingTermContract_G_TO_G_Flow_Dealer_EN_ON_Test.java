@@ -22,7 +22,7 @@ public class OVR_Auto_TC71_ChangePackage_ISS_to_ISS_ExistingTermContract_G_TO_G_
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC71_ChangePackage_ISS_to_ISS_TermContract_Dealer_EN_ON_Test() {
+    public void ovr_Auto_TC71_ChangePackage_ISS_to_ISS_ExistingTermContract_G_TO_G_Flow_Dealer_EN_ON_Test() {
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.

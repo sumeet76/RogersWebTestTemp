@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_D_To_G_Flow_OVR_PR_GSA_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstallWaiver_D_To_G_Flow_OVR_PR_GSA_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -22,8 +22,8 @@ public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_D_To_G_Flow_OVR
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_DToG_Flow_OVR_PR_GSA_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), "Rogers@491");
+    public void ovr_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstallWaiver_D_To_G_Flow_OVR_PR_GSA_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("PR_GSA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -31,7 +31,7 @@ public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstalWaiver_D_To_G_Flow_OVR
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data.getBanNumber(), TestDataHandler.tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         getOvrDashboardPage().clkInternetDashboard();

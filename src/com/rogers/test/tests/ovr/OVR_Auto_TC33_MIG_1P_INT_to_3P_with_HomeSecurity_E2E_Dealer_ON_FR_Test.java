@@ -53,7 +53,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_HomeSecurity_E2E_Dealer_ON_FR_T
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         reporter.reportLogWithScreenshot("HomePhone selected");
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
-        reporter.reportLogWithScreenshot("3P services with SHM selected");
+        reporter.reportLogWithScreenshot("3P services with HomeSecurity selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Click on Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -87,15 +87,15 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_HomeSecurity_E2E_Dealer_ON_FR_T
         getHomePhoneAddonsPage().clkContinue();
 
         reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"SHM Add ons page loaded","SHM add ons page not loaded");
-        getRogersIgniteBundlesPage().addSHMAddOn();
-        reporter.reportLogWithScreenshot("SHM Add on added to cart");
+//        getRogersIgniteBundlesPage().addSHMAddOn();
+//        reporter.reportLogWithScreenshot("SHM Add on added to cart");
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to Cart Summary Page");
         reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        //Validation for SHM Addon
-        //reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly SHM charges present", "Monthly SHM charges not Present");
+        //Validation for HomeSecurity Addon
+        //reporter.hardAssert(getRogersIgniteBundlesPage().validateSHMMonthlyChargesInCartSummary(),"Monthly HomeSecurity charges present", "Monthly HomeSecurity charges not Present");
         reporter.reportLogWithScreenshot("Cart Summary page");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 
@@ -121,7 +121,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_HomeSecurity_E2E_Dealer_ON_FR_T
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
@@ -143,7 +143,7 @@ public class OVR_Auto_TC33_MIG_1P_INT_to_3P_with_HomeSecurity_E2E_Dealer_ON_FR_T
         reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
         reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
         //Validation for SHM Addon monthly fees.
-        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"HomeSecurity charges present", "HomeSecurity add ons charges not present");
         reporter.reportLogWithScreenshot("Order review Page");
 
         getOVROrderReviewPage().clkContinue();

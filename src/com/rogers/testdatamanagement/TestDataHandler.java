@@ -410,6 +410,11 @@ public class TestDataHandler {
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
 	public static OvrReusableData tc_70_Ovr_ChangePackage_Data;
+	public static OvrReusableData tc_71_Ovr_ChangePackage_Data;
+	public static OvrReusableData tc_72_AddTSU_SAI_to_SAI_MappedTerm_Data;
+	public static OvrReusableData tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data;
+	public static OvrReusableData tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data;
+	public static OvrReusableData tc_67_FidoToRogers_FooterValidations_Data;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -889,5 +894,10 @@ public class TestDataHandler {
 		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS");
 		tc_66_Ovr_FidoToRogers_MIG_Data = YamlHandler.getOvrReusableData("TC66_FidoWireless_with_legacy_MIG_Data");
 		tc_70_Ovr_ChangePackage_Data = YamlHandler.getOvrReusableData("TC70_ChangePackage_IPTV_to_IPTV");
+		tc_71_Ovr_ChangePackage_Data = YamlHandler.getOvrReusableData("TC71_ChangePackage_ISS_to_ISS");
+		tc_72_AddTSU_SAI_to_SAI_MappedTerm_Data = YamlHandler.getOvrReusableData("TC72_AddTSU_SAI_to_SAI_mappedTerm");
+		tc_67_FidoToRogers_FooterValidations_Data = YamlHandler.getOvrReusableData("TC67_FidoToRogers_Footervalidations");
+		tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data = YamlHandler.getOvrReusableData("TC73_AddTSU_SAI_to_SAI_ExistingTerm");
+		tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data = YamlHandler.getOvrReusableData("TC74_AddTSU_SAI_to_ISS_mappedInstallWaiver");
 	}
 }

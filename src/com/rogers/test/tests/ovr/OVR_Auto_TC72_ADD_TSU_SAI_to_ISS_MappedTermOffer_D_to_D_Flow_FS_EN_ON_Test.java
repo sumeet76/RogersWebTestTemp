@@ -22,8 +22,8 @@ public class OVR_Auto_TC72_ADD_TSU_SAI_to_ISS_MappedTermOffer_D_to_D_Flow_FS_EN_
     }
 
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC72_ADD_TSU_SAI_to_ISS_ExistingTermOffer_D_to_D_Flow_FS_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), "Rogers@491");
+    public void ovr_Auto_TC72_ADD_TSU_SAI_to_ISS_MappedTermOffer_D_to_D_Flow_FS_EN_ON_Test() {
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("PR_GSA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());

@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC49_Anonymous_NAC_SAI_IntID_E2E_PR_GSA_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC49_Anonymous_NAC_SAI_SecondaryServiceCheck_IntID_E2E_PR_GSA_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -23,7 +23,7 @@ public class OVR_Auto_TC49_Anonymous_NAC_SAI_IntID_E2E_PR_GSA_EN_ON_Test extends
     }
 
     @Test(groups = {"OVR", "RegressionOVR", "OVR_PR"})
-    public void ovr_Auto_TC49_Anonymous_NAC_SAI_IntID_E2E_PR_GSA_EN_ON_Test() {
+    public void ovr_Auto_TC49_Anonymous_NAC_SAI_SecondaryServiceCheck_IntID_E2E_PR_GSA_EN_ON_Test() {
         getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -31,13 +31,13 @@ public class OVR_Auto_TC49_Anonymous_NAC_SAI_IntID_E2E_PR_GSA_EN_ON_Test extends
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(), "Check Availability Popup present", "Check Availability Popup not present");
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().secondServiceabilityCheck("642", "Abana","Ontario","L5A1H4","chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(), "Address is serviceable", "Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
