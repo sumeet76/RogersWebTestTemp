@@ -23,7 +23,7 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.buyflows, method);
     }
 
-    @Test(groups = {"RegressionBFA","SOHOAAL","POM"})
+    @Test(groups = {"RegressionBFA","SOHOAAL","POM","SOHO"})
     public void tc39_pomsohoAalByodNonShareStdShippingMBTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -73,6 +73,7 @@ public class RogersBFA_TC39_POM_RegularPromoMSF_SOHO_AAL_BYOD_NonShare_StdShippi
                 "Talk option selected and Addons page in expanded state","Addons page not in expanded state");
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         getRogersPlanConfigPage().clkContinueDeviceProtection();
+        getRogersPlanConfigPage().clickeSIMContinueButton();
         getRogersPlanConfigPage().setUserNameCallerID();
         reporter.reportLogWithScreenshot("CalledID details entered");
         String monthlyFeesAmountWithTax = getRogersPlanConfigPage().getMonthlyFeesAmount();

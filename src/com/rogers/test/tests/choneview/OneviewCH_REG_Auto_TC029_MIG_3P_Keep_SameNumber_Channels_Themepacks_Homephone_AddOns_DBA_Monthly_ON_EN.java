@@ -82,8 +82,8 @@ public class OneviewCH_REG_Auto_TC029_MIG_3P_Keep_SameNumber_Channels_Themepacks
 
 		getCreditCheckPage().verifyInstallationOption();
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("in person delivery");
-		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("Professional Installation");
+		//getCreditCheckPage().selectDeliveryByAppointment();
 		//getCreditCheckPage().selectProfessionalInstallation();
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");

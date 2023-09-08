@@ -28,7 +28,7 @@ public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Fina
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc09HUPMLSharedCLMAcctRVSS.getPassword());
         reporter.reportLogWithScreenshot("Login Page");
         getRogersLoginPage().clkSignInIFrame();
-        reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
+        //reporter.reportLogWithScreenshot("Initial Setup Reminder Page");
         //getRogersLoginPage().switchOutOfSignInIFrame();
         reporter.hardAssert(getRogersAccountOverviewPage().verifySuccessfulLogin(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Account Overview page");

@@ -63,6 +63,25 @@ public class CheckAvailabilityPage extends BasePageClass {
     @FindBy(xpath = "//span[@translate='global.modals.serviceability.checkAnotherAddress']//ancestor::button")
     WebElement checkAnotherAddressBtn;
 
+    @FindBy(xpath = "//input[@name='streetName']//parent::div")
+    WebElement streetNameInputContainer;
+    @FindBy(xpath = "//input[@name='streetName']")
+    WebElement streetNameInput;
+    @FindBy(xpath = "//input[@name='streetNumber']//parent::div")
+    WebElement streetNumberInputContainer;
+    @FindBy(xpath = "//input[@name='streetNumber']")
+    WebElement streetNumberInput;
+
+    @FindBy(xpath = "//select[@formcontrolname='province']")
+    WebElement provinceDropDown;
+    @FindBy(xpath = "//input[@name='postalCode']//parent::div")
+    WebElement postalCodeInputContainer;
+    @FindBy(xpath = "//input[@name='postalCode']")
+    WebElement postalCodeInput;
+
+    @FindBy(xpath = "//p[text()='Secondary serviceability check']")
+    WebElement secondaryServiceCheckHeader;
+
 
     public void useThisAddress()  {
         getReusableActionsInstance().getWhenVisible(btnContinue, 60).click();
@@ -87,7 +106,7 @@ public class CheckAvailabilityPage extends BasePageClass {
      * @author sameer.ahuja
      */
     public void checkAvailability(String address,String browser) {
-        getReusableActionsInstance().clickWhenReady(inputContainer,60);
+        getReusableActionsInstance().clickWhenReady(inputContainer,30);
         if(browser.equals("chrome")) {
             getReusableActionsInstance().enterText(addressInput,address+ Keys.BACK_SPACE,120);
             getReusableActionsInstance().staticWait(8000);
@@ -103,6 +122,33 @@ public class CheckAvailabilityPage extends BasePageClass {
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown, 2);
         }
         //getReusableActionsInstance().clickIfAvailable(btnContinue);
+    }
+
+    public void secondServiceabilityCheck(String streetNumber, String streetName, String province, String postalCode,String browser) {
+        getReusableActionsInstance().clickWhenReady(inputContainer,30);
+        if(browser.equals("chrome")) {
+            getReusableActionsInstance().enterText(addressInput,"asd",120);
+            getReusableActionsInstance().staticWait(3000);
+        }
+        else {
+            getReusableActionsInstance().enterText(addressInput,"asd",120);
+            getReusableActionsInstance().staticWait(3000);
+        }
+        getReusableActionsInstance().clickAndHoldFor(searchResult, 333);
+        getReusableActionsInstance().waitForElementVisibility(secondaryServiceCheckHeader,20);
+
+        getReusableActionsInstance().clickWhenReady(streetNameInputContainer);
+        getReusableActionsInstance().enterText(streetNameInput, streetName, 15);
+        getReusableActionsInstance().clickWhenReady(streetNumberInputContainer);
+        getReusableActionsInstance().enterText(streetNumberInput, streetNumber, 15);
+        getReusableActionsInstance().selectWhenReadyByVisibleText(provinceDropDown, province);
+        getReusableActionsInstance().clickWhenReady(postalCodeInputContainer);
+        getReusableActionsInstance().enterText(postalCodeInput, postalCode, 15);
+
+        getReusableActionsInstance().clickWhenReady(checkAvailabilityBtn, 15);
+        getReusableActionsInstance().waitForElementVisibility(lblMultipleAddressesFound, 10);
+        getReusableActionsInstance().clickIfAvailable(btnContinue);
+
     }
 
     public void checkAvailabilityAtOtherAddress(String address, String browser){

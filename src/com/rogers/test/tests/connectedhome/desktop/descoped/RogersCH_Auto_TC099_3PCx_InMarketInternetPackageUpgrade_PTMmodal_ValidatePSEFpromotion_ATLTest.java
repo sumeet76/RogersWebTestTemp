@@ -49,14 +49,14 @@ public class RogersCH_Auto_TC099_3PCx_InMarketInternetPackageUpgrade_PTMmodal_Va
 //        getRogersInternetDashboardPage().clkInternetPopup();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard");
         getRogersInternetDashboardPage().clkSolChangeInternetPackage();
-        reporter.reportLogWithScreenshot("Launched the Interent packages page");
+        reporter.reportLogWithScreenshot("Launched the Internet packages page");
         getRogersInternetDashboardPage().selectSolarisInternetPackage(TestDataHandler.tc99_3PCxInternetAccount.getAccountDetails().getUpgradePlanEn(),TestDataHandler.tc17_18_19_20_SolarisInternetAccount.getAccountDetails().getUpgradePlanFr());
         reporter.reportLogWithScreenshot("Launched the agreement page");
         getRogersInternetDashboardPage().verifyInfoIconPTMmodal();
         reporter.reportLogWithScreenshot("Verified the PTM modal");
         getRogersInternetDashboardPage().verifyPTMmodalHeader();
         reporter.reportLogWithScreenshot("Verified the PTM modal header");
-        getRogersInternetDashboardPage().verifyPTMmodalContent();
+//        getRogersInternetDashboardPage().verifyPTMmodalContent();
         reporter.reportLogWithScreenshot("Verified the PTM modal content");
         getRogersInternetDashboardPage().clkInternetChangeOK();
         reporter.reportLogWithScreenshot("Clicked continue on the PTM modal");

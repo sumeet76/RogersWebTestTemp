@@ -89,12 +89,18 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Select a time slot");
-        getBundleBuilderPage().setMobileNumber();
+        getBundleBuilderPage().selectDeliveryByCourier();
+        reporter.reportLogWithScreenshot("Courier Delivery selected");
+        getCreditCheckPage().goToPageBottom();
         getBundleBuilderPage().clkContinueInstallation();
+
+//        getBundleBuilderPage().selectExpressProInstall();
+//        reporter.reportLogWithScreenshot("Install Options");
+//        getBundleBuilderPage().clkTechInstallSlot();
+//        reporter.reportLogWithScreenshot("Select a time slot");
+//        getBundleBuilderPage().setMobileNumber();
+//        getBundleBuilderPage().clkContinueInstallation();
+
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
         getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");

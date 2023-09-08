@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class RogersSolarisTVDashboardPage extends BasePageClass {
 
 	public RogersSolarisTVDashboardPage(WebDriver driver) {
@@ -349,7 +351,7 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */
 	public void clkViewMyChannelLineup() {
-		wait = new WebDriverWait(getDriver(), 30);
+		wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='View my channel lineup']")));
 		getReusableActionsInstance().getWhenReady(lnkViewMyChannelLineup, 30).click();
 	}

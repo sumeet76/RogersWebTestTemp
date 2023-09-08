@@ -10,7 +10,7 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_EN_Test extends BaseTestClass {
+public class OVR_Auto_TC27_NAC_3P_with_HomeSecurity_and_InternetPods_E2E_Dealer_ON_EN_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -23,15 +23,16 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
     }
 
     @Test(groups = {"OVR", "RegressionOVR","OVR_Sanity"})
-    public void ovr_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_Dealer_ON_EN_Test(){
+    public void ovr_Auto_TC27_NAC_3P_with_HomeSecurity_and_InternetPods_E2E_Dealer_ON_EN_Test(){
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
-        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        //getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
@@ -54,7 +55,7 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         reporter.reportLogWithScreenshot("Home Phone Selected");
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
-        reporter.reportLogWithScreenshot("SHM selected");
+        reporter.reportLogWithScreenshot("Home Security selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().addPackageToCart(TestDataHandler.ovrConfigData.getFlexChannelsPackageEN());
@@ -91,9 +92,9 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         getHomePhoneAddonsPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to SHM Add ons page");
 
-        reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"SHM Add ons page loaded","SHM add ons page not loaded");
-        getRogersIgniteBundlesPage().addSHMAddOn();
-        reporter.reportLogWithScreenshot("SHM Add on added to cart");
+        reporter.hardAssert(getRogersIgniteBundlesPage().validateSmartHomeAddOnsHeader(),"Home Security Add ons page loaded","Home Security add ons page not loaded");
+//        getRogersIgniteBundlesPage().addSHMAddOn();
+//        reporter.reportLogWithScreenshot("SHM Add on added to cart");
         getRogersIgniteBundlesPage().clkContinue();
 
         reporter.reportLogWithScreenshot("Continue to Cart Summary");
@@ -118,66 +119,67 @@ public class OVR_Auto_TC27_NAC_3P_with_SmartHomeMonitoring_and_InternetPods_E2E_
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
         reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
-//        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-//        reporter.reportLogWithScreenshot("Credit Evaluation Page");
-//        getCreditCheckPage().setDriversLicense("British Columbia",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("BC"));
-//        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
-//        reporter.reportLogWithScreenshot("credit form completed");
-//        getCreditCheckPage().clkAuthorize();
-//        reporter.reportLogWithScreenshot("Credit Check Authorized");
-//        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
-//        reporter.reportLogWithScreenshot("Credit Check Information");
-//        getCreditCheckPage().clkContinue();
-//
-//        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
-//        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
-//        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-//        reporter.reportLogWithScreenshot("Generate Phone Number");
-//        getCreditCheckPage().goToPageBottom();
-//        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-//        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
-//
-//        reporter.reportLogWithScreenshot("Continue to install options  page");
-//        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("Credit Evaluation Page");
+        getCreditCheckPage().setDriversLicense("British Columbia",FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("BC"));
+        getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generatePassportNumber());
+        reporter.reportLogWithScreenshot("credit form completed");
+        getCreditCheckPage().clkAuthorize();
+        reporter.reportLogWithScreenshot("Credit Check Authorized");
+        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("Credit Check Information");
+        getCreditCheckPage().clkContinue();
+
+        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
+        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
+        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.reportLogWithScreenshot("Generate Phone Number");
+        getCreditCheckPage().goToPageBottom();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        reporter.reportLogWithScreenshot("Continue from Home phone personalization");
+
+        reporter.reportLogWithScreenshot("Continue to install options  page");
+        reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
 //        getBundleBuilderPage().selectExpressProInstall();
 //        reporter.reportLogWithScreenshot("Install Options");
 //        getBundleBuilderPage().clkTechInstallSlot();
 //        reporter.reportLogWithScreenshot("Time Slot selected");
-//        getBundleBuilderPage().setMobileNumber();
+//        //getBundleBuilderPage().setMobileNumber();
 //        reporter.reportLogWithScreenshot("tech install details");
-//        getBundleBuilderPage().clkContinueInstallation();
-//        reporter.reportLogWithScreenshot("Billing and Payment page");
-//        reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
-//        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
-//        reporter.reportLogWithScreenshot("Monthly billing selected");
-//        getBundleBuilderPage().clkContinueBillingAndPayment();
-//        reporter.reportLogWithScreenshot("Continue to Order Review Page");
-//
-//        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
-//
-//        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
-//        //Validation for SHM Addon monthly fees.
-//        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
-//        reporter.reportLogWithScreenshot("Order review Page");
-//
-//        getOVROrderReviewPage().clkContinue();
-//        reporter.reportLogWithScreenshot("Sign Agreement Page");
-//        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
-//        getOVRAgreementPage().signAgreement();
-//        reporter.reportLogWithScreenshot("Back to Agreement Page");
-//        getOVRAgreementPage().clkAgreementCheckbox();
-//        getOVRAgreementPage().clkCompleteOrder();
-//        reporter.reportLogWithScreenshot("Order Confirmation Page");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-//
-//        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
-//        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in cart summary");
-//        //Validation for SHM Addon monthly fees.
-//        reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"SMH charges present", "SHM add ons charges not present");
+        getBundleBuilderPage().selectDeliveryByCourier();
+        getBundleBuilderPage().clkContinueInstallation();
+        reporter.reportLogWithScreenshot("Billing and Payment page");
+        reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
+        getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");
+        reporter.reportLogWithScreenshot("Monthly billing selected");
+        getBundleBuilderPage().clkContinueBillingAndPayment();
+        reporter.reportLogWithScreenshot("Continue to Order Review Page");
+
+        reporter.hardAssert(getOVROrderReviewPage().verifyOrderOverviewHeader(), "Order Review Page Loaded", "Order Review Page Not loaded");
+        reporter.hardAssert(getOVROrderReviewPage().verifyOneTimeFees(), "One time Fees is displayed", "One time fees not displayed");
+
+        reporter.hardAssert(getOVROrderReviewPage().verifyMonthlyCharges(), "Monthly Charges is displayed", "Monthly Charges not displayed");
+        //Validation for SHM Addon monthly fees.
+        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"Home Security charges present", "Home Security add ons charges not present");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in cart summary", "Internet AddOns not present in cart summary");
+        reporter.reportLogWithScreenshot("Order review Page");
+
+        getOVROrderReviewPage().clkContinue();
+        reporter.reportLogWithScreenshot("Sign Agreement Page");
+        reporter.hardAssert(getOVRAgreementPage().verifySignAgreementPage(), "Agreement page displayed", "Agreement page not displayed");
+        getOVRAgreementPage().signAgreement();
+        reporter.reportLogWithScreenshot("Back to Agreement Page");
+        getOVRAgreementPage().clkAgreementCheckbox();
+        getOVRAgreementPage().clkCompleteOrder();
+        reporter.reportLogWithScreenshot("Order Confirmation Page");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
+
+        reporter.hardAssert(getOVROrderConfirmationPage().verifyMonthlyCharges(), "Monthly Charges displayed", "Monthly charges not displayed");
+        reporter.hardAssert(getOVROrderReviewPage().verifyInternetAddOns(),"Internet AddOns present in order confirmation", "Internet AddOns not present in cart summary");
+        //Validation for SHM Addon monthly fees.
+        //reporter.hardAssert(getOVROrderReviewPage().validateSHMMonthlyChargesInCartSummary(),"Home Security charges present", "Home Security add ons charges not present");
 
     }
 }

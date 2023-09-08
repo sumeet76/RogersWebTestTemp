@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","SOHOHUPBFA"})
+        @Test(groups = {"RegressionBFA","SOHOHUPBFA","SOHO"})
         public void tc40_sohoHUP_NS_MediumRisk_KeepCurrentPlanSL_BOPIS_Test() {
 
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
@@ -54,7 +54,6 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             financeProgramCredit = getRogersDeviceConfigPage().getFinanceProgramCreditPrice(this.getClass().getSimpleName());
             String upfrontEdgeAmt = "0.0";
             upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
-            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc15POMAALShareTermBopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
             getRogersDeviceConfigPage().clickContinueButton();
 
             reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
@@ -70,6 +69,10 @@ public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test 
             getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
             getRogersPlanConfigPage().clkContinueDeviceProtection();
             reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
+            String expectedDownPayment = getRogersCheckoutPage().setDownPaymentUpfrontEdge(TestDataHandler.tc40_SOHO_HUP_MediumRisk_KeepCurrentPlan_Bopis.getRiskClass(),deviceCost,upfrontEdgeAmt,financeProgramCredit);
+            reporter.reportLog("Expected DownPayment: <b> " +expectedDownPayment +"</b>");
+            reporter.hardAssert(getRogersCheckoutPage().verifyDownPaymentAmt(expectedDownPayment),
+                    "Downpayment amount is displayed correctly", "Downpayment amount is not displayed correctly");
             getRogersPlanConfigPage().clickCartSummaryContinueButton();
             getRogersCheckoutPage().clickSkipAutopay();
             reporter.reportLogPassWithScreenshot("On Checkout page");

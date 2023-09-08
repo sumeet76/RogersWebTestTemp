@@ -1,6 +1,7 @@
 package com.rogers.ovr.pages;
 
 import com.rogers.pages.base.BasePageClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,14 +14,6 @@ public class BundleBuilderPage extends BasePageClass {
     public BundleBuilderPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//a[@role='button' and @aria-label='quick-links']")
-    WebElement lnkExpandFooter;
-
-    @FindBy(partialLinkText = "LNP Eligibility")
-    WebElement lnklnpEligibility;
-    @FindBy(partialLinkText = "Offline Agreement")
-    WebElement lnkOfflineAgreement;
-
     @FindBy(xpath = "//span[contains(text(),'Professional Install') or contains(text(),'Installation professionnelle')]")
     WebElement igniteProfessionalInstall;
 
@@ -108,10 +101,10 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'receive the equipment delivery.')]")
     WebElement courierDeliveryCheckbox;
 
-    @FindBy(xpath = "//div[contains(text(),'Sorry, this Service combination is unavailable.')]")
+    @FindBy(xpath = "//p[contains(text(),'Sorry, this Service combination is unavailable.')]")
     WebElement nonValidBundlesErrorMessage;
 
-    @FindBy(xpath = "//div[contains(text(),'This service change is not supported in Oneview')]")
+    @FindBy(xpath = "//p[contains(text(),'This service change is not supported in Oneview')]")
     WebElement downgradeMigrationFlowErrorMessage;
 
     @FindBy(xpath = "//a[@id='session-indicator-remaining-time']")
@@ -142,27 +135,20 @@ public class BundleBuilderPage extends BasePageClass {
     WebElement grabAndGoSerialNumberSuccess;
 
 
-    public void openFooter() throws InterruptedException {
-        getReusableActionsInstance().getWhenVisible(lnkExpandFooter).click();
-        Thread.sleep(5000);
+    public void switchToTab(String windowHandle){
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().staticWait(3000);
+        getReusableActionsInstance().closeCurrentWindow();
+        getReusableActionsInstance().switchToMainWindow(windowHandle);
     }
 
-    public void openLNPEligibilityPage() throws InterruptedException {
-        getReusableActionsInstance().getWhenVisible(lnklnpEligibility).click();
-        Thread.sleep(5000);
+    public void switchToMainTab(){
+        getReusableActionsInstance().waitForPageLoad();
+        getReusableActionsInstance().closeCurrentWindow();
+        getReusableActionsInstance().switchToMainWindow();
     }
 
 
-    public void openFooterAndNavigateToLNPPage() throws InterruptedException {
-        openFooter();
-        openLNPEligibilityPage();
-
-    }
-    public void openFooterAndNavigateToLofflinragreementPage() throws InterruptedException {
-        openFooter();
-        openLNPEligibilityPage();
-
-    }
     public void scrollAndClickContinue() {
         getReusableActionsInstance().staticWait(2000);
         getReusableActionsInstance().javascriptScrollToBottomOfPage();

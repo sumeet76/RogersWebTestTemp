@@ -37,7 +37,7 @@ public class OVR_Auto_TC66_Fido_WirelessCX_MIG_Flow_1p_to_ISS_Corp_EN_ON_Test ex
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
-
+        reporter.reportLogWithScreenshot("Service Availability");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
@@ -85,17 +85,11 @@ public class OVR_Auto_TC66_Fido_WirelessCX_MIG_Flow_1p_to_ISS_Corp_EN_ON_Test ex
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
         reporter.reportLogWithScreenshot("Install Options page");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Select a time slot");
-        getBundleBuilderPage().setMobileNumber();
-        getBundleBuilderPage().clkContinueInstallation();
 
-//        getBundleBuilderPage().selectDeliveryByCourier();
-//        reporter.reportLogWithScreenshot("Courier Delivery selected");
-//        getCreditCheckPage().goToPageBottom();
-//        getBundleBuilderPage().clkContinueInstallation();
+        getBundleBuilderPage().selectDeliveryByCourier();
+        reporter.reportLogWithScreenshot("Courier Delivery selected");
+        getCreditCheckPage().goToPageBottom();
+        getBundleBuilderPage().clkContinueInstallation();
 
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");

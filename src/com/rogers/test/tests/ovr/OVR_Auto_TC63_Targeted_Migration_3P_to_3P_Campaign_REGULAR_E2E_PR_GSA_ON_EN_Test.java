@@ -19,7 +19,7 @@ public class OVR_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_G
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_PR"})
     public void ovr_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_GSA_ON_EN_Test() {
@@ -35,6 +35,9 @@ public class OVR_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_G
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");

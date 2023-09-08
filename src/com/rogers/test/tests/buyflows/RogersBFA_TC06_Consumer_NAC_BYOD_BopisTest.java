@@ -50,6 +50,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("No Device Protection option selected after checking the eligibility(success)");
 		getRogersPlanConfigPage().clickByodDPContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
+		getRogersPlanConfigPage().clickeSIMContinueButton();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Device Protection Pop-up is not displayed and Proceed to checkout clicked");
 		//############################CheckoutPage############################//

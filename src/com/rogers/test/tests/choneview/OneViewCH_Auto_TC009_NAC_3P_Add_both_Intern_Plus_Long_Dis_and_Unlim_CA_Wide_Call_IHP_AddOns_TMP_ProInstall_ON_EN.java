@@ -119,7 +119,6 @@ public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim
         getCreditCheckPage().enterSpecialInstructions();
         getPaymentOptionsPage().clkContinue();
 
-
         reporter.hardAssert(getCreditCheckPage().verifyBillingAndPaymentOption(),"Billing And Payment Options displayed","Billing And Payment Options did not display");
         reporter.reportLogWithScreenshot("billing and payment");
         getCreditCheckPage().verifyBillingAndPaymentOption();

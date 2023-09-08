@@ -36,18 +36,26 @@ public class UniLoginPage extends BasePageClass {
     @FindBy(id= "idBtn_Back")
     WebElement staySignedInNO;
 
+    @FindBy(xpath = "//span[contains(text(),'OK')]/ancestor::button")
+    WebElement okButton;
+
 
     /**
      * Login to unilogin page by entering dealer code
      * @author Vikas.gorla
      */
     public void searchWithDealerCode(String dealerCode) {
-        if(getReusableActionsInstance().isElementVisible(btnaccept,15))
+        if(getReusableActionsInstance().isElementVisible(btnaccept,5))
         {getReusableActionsInstance().clickWhenVisible(btnaccept);}
         getReusableActionsInstance().getWhenVisible(eledealercode).click();
         getReusableActionsInstance().getWhenVisible(txtdealercode, 30).sendKeys(dealerCode);
         getReusableActionsInstance().getWhenVisible(btnSubmit).click();
-
+    }
+    public void searchWithDealerCode(){
+        String dealerCodeSelectorXpath = "//span[contains(text(),'RCP')]/preceding::ds-radio-button[1]";
+        WebElement dealerCodeSelector = getReusableActionsInstance().getWhenReady(By.xpath(dealerCodeSelectorXpath),45);
+        getReusableActionsInstance().clickWhenReady(dealerCodeSelector);
+        getReusableActionsInstance().getWhenVisible(okButton).click();
     }
 
     public void selectSSPEnv(String env){
@@ -90,4 +98,6 @@ public class UniLoginPage extends BasePageClass {
 
 
     }
+
+
 }

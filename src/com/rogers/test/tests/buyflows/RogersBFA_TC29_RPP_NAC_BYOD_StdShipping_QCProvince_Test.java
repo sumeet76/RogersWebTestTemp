@@ -32,7 +32,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 	public void tc29_RPP_NACBYOD_QCProvinceTest() throws InterruptedException {
 		//############################Plan config page###############################
 
-		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod&province=qc&type=rpp");
+		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod&province=QC&type=rpp");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
 		getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPasscode());
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");

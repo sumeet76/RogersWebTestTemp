@@ -17,7 +17,10 @@ public class OneviewCH_REG_Auto_TC084_Validate_IPTV_Dashboard_Mulitple_STB_ON_EN
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.IPTVDasboad_MulitplsSTB.getAccountNo(),TestDataHandler.IPTVDasboad_MulitplsSTB.getContactID());
         getAccountOverViewPage().clickIgniteTVBadge();
         reporter.reportLogWithScreenshot("select TV Badage");
-//        getRogersAccountOverviewPage().scrollToBottomOfPage();
+        getEnvironmentSelectionPage().selectProduction();
+        reporter.reportLogWithScreenshot("Selected Production");
+        getEnvironmentSelectionPage().clickProceed();
+
         getAccountOverViewPage().verifydisplayedMulitplsSTB();
         reporter.reportLogWithScreenshot("Test Passed");
     }

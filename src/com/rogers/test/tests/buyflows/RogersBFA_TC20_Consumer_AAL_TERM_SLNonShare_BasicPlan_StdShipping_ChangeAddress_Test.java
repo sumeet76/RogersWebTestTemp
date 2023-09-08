@@ -52,7 +52,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         reporter.reportLogWithScreenshot("Device Catalog Page");
         getRogersDeviceCataloguePage().clickDeviceTileCTAButton(deviceName);
         //------------------------------------Device Config page--------------------------------------------
-        getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc20AALTermSLNonSEBasicPlanStdShipping.getDeviceColor());
+        //getRogersDeviceConfigPage().selectDeviceColor(TestDataHandler.tc20AALTermSLNonSEBasicPlanStdShipping.getDeviceColor());
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");

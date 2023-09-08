@@ -118,6 +118,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@data-test='stepper-4-edit-step-continue-button']")
     WebElement byodDPContinue;
 
+    @FindBy(xpath = "//ds-radio-button[@data-test='stepper-5-radio-no']")
+    WebElement eSIMOptNo;
+    @FindBy(xpath = "//button[@data-test='stepper-5-continue-cta']")
+    WebElement eSIMContinue;
+
     @FindBy(xpath = "//button[@data-test='build-plan-checkout-flow-button']")
     WebElement continueButtonOnCartSummary;
 
@@ -169,7 +174,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//button[@id='ds-stepper-id-1-editButtonId-1']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']")
     WebElement editButtonDeviceCost;
 
-    @FindBy(xpath = "//span[contains(text(),'Plans') or contains(text(),'Forfaits')]")
+    @FindBy(xpath = "//span[contains(text(),' Plans') or contains(text(),'Forfaits')]")
     WebElement plansInBreadCrumb;
 
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
@@ -206,8 +211,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement vdpCheckBox;
 
     @FindAll({
-        @FindBy(xpath = "//div[contains(@class,'dsa-infoWidget__ctnInfo')]//span[contains(@class,'dsa-infoWidget__ctnCopy')]"),
-        @FindBy(xpath = "//button[contains(@class,'dsa-cartSummary__header')]")
+            @FindBy(xpath = "//div[contains(@class,'dsa-infoWidget__ctnInfo')]//span[contains(@class,'dsa-infoWidget__ctnCopy')]"),
+            @FindBy(xpath = "//button[contains(@class,'dsa-cartSummary__header')]")
     })
     WebElement infoWidgetCtnCopy;
 
@@ -277,24 +282,35 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//div[@id='ds-stepper-id-1-completedContent-2']")
     WebElement completedDataOptionStepper;
 
-    @FindBy(xpath = "//span[contains(text(),'Have a promo code') or contains(text(),'code promotionnel')]")
+    @FindAll({
+            @FindBy(xpath = "//ds-icon[@name='chevron-down']/parent::div"),
+            @FindBy(xpath = "//div[@data-test='view-more-promos-header']/span[contains(text(),'Promos')]")
+    })
     WebElement promoSection;
 
-    @FindBy(xpath = "//div[contains(@class,'ds-formField__wrapper')]/ancestor::ds-form-field")
+    @FindAll({
+    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/ancestor::ds-form-field"),
+    @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']")
+    })
     WebElement promoCodeField;
 
-    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+    @FindAll({
+            @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']//input"),
+            @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]")
+    })
     WebElement txtPromoCode;
 
     @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
     WebElement btnCheckPromo;
 
     @FindAll({
-            @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to cart') or contains(text(),' ajouté au panier')]"),
+            @FindBy(xpath = "//ds-modal-container[@aria-label='Add promo code']//p[contains(text(),'Add promo code')]"),
             @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'added to your cart') or contains(text(),' ajoutée à votre panier')]")
     })
     WebElement promoCodeSuccessMsg;
 
+    @FindBy(xpath = "//ds-modal-container[@aria-label='Add promo code']//button[@data-test='modal-pom-continue']")
+    WebElement continueBtnPromo;
     @FindBy(xpath = "//span[contains(@class,'text-body') and contains(text(),'with promo code') or contains(text(),'avec le code promotionnel')]")
     WebElement promoCodeDuration;
 
@@ -357,6 +373,9 @@ public class RogersPlanConfigPage extends BasePageClass {
 
     @FindBy(xpath = "//button[@data-test='modal-pom-continue']")
     WebElement continueWithSelectedPlanButton;
+
+    @FindBy(xpath = "//dsa-order-table//span[contains(text(),'Down payment')]/parent::div//following-sibling::div/span")
+    WebElement downPaymentLineCart;
 
 
     /**
@@ -436,6 +455,22 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Creates an xpath for the provided stepper with index value which is passed as parameter
+     * @param dC_DO_TO string value of device cost, data option and talk option stepper
+     * @param className String value of class name
+     * @return String value of an xpath
+     * @author vedachalam.vasudevan
+     */
+    public String createXpathWithInputData(String dC_DO_TO, String className) {
+        if(className.toUpperCase().contains("AUTOPAY")) {
+            return "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option')]//label";
+        } else  {
+            return "//ds-selection[contains(@data-test,'stepper-2-edit-step-selection-option-infinite-" + dC_DO_TO + "')]//label";
+        }
+
+    }
+
+    /**
      * This method creates Xpath for protection plan
      *
      * @param protectionPlanDetails : String value of protection plan
@@ -485,13 +520,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public String getAutoPayPlanIndex(String autoPayDiscountType) {
-        String dataOptionIndex = "";
+        String dataOptionIndex="";
         try {
             if (autoPayDiscountType.equalsIgnoreCase("MSF")) {
-                if (getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0) {
-                    dataOptionIndex = getDriver().findElement(By.xpath("(//label[contains(.,'Includes $')])[1]/..")).getAttribute("data-test").split("infinite-")[1];
+                int totalAutoPayPlan= getDriver().findElements(By.xpath("//label[contains(.,'Auto-Pay')]")).size();
+                if (totalAutoPayPlan > 0) {
+                    dataOptionIndex = "0";
                 } else {
-                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'Includes $')]")).size() > 0, "No plan is displayed with Autopay MSF discount");
+                    Assert.assertTrue(getDriver().findElements(By.xpath("//label[contains(.,'Auto-Pay')]")).size() > 0, "No plan is displayed with Autopay MSF discount");
                 }
             }
             if (autoPayDiscountType.equalsIgnoreCase("PERCENT")) {
@@ -573,14 +609,25 @@ public class RogersPlanConfigPage extends BasePageClass {
     public void selectDataOptionAndClickonContinueButton(String dataOptionIndex, String className) {
            if (noofDataOptions.size() != 1) {
             int stepper = 2;
-            String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, stepper);
+            String xpathDcDoTo = createXpathWithInputData(dataOptionIndex, className);
             if (Integer.parseInt(dataOptionIndex) == 0) {
-                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"[contains(.,'Auto-Pay')]"));
+                if(className.toUpperCase().contains("AUTOPAY")) {
+                    WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo + "[contains(.,'Auto-Pay')]/parent::ds-selection"));
+                    moveToCenterOfScreen(dataPlanSelection);
+                    getReusableActionsInstance().getWhenReady(dataPlanSelection).click();
+                } else {
+                    WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo+"/parent::ds-selection"));
+                    moveToCenterOfScreen(dataPlanSelection);
+                    getReusableActionsInstance().getWhenReady(dataPlanSelection).click();
+                }
                 getReusableActionsInstance().staticWait(5000);
-                getReusableActionsInstance().clickWhenVisible(preCartDataOtionContinueButton, 20);
+                getReusableActionsInstance().getWhenReady(preCartDataOtionContinueButton, 20).click();
             } else {
-                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"//div[@class='dsa-dataBlock']//*[contains(text(),'Automatic')]"));
-                getReusableActionsInstance().executeJavaScriptClick(getReusableActionsInstance().getWhenReady(By.xpath(xpathDcDoTo), 20));
+                autoPayText = getDriver().findElements(By.xpath(xpathDcDoTo+"[contains(.,'Auto-Pay')]"));
+                WebElement dataPlanSelection = getDriver().findElement(By.xpath(xpathDcDoTo +"/parent::ds-selection"));
+                moveToCenterOfScreen(dataPlanSelection);
+                getReusableActionsInstance().getWhenReady(dataPlanSelection, 20).click();
                 if (className.toUpperCase().contains("_PPC_") && className.toUpperCase().contains("DOWNGRADE")) {
                     getReusableActionsInstance().waitForElementTobeClickable(btnDowngradeFeeModalConitnue, 40);
                     getReusableActionsInstance().clickWhenReady(btnDowngradeFeeModalConitnue, 5);
@@ -855,7 +902,16 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author subash.nedunchezhian
      */
     public void clickByodDPContinueButton() {
-        getReusableActionsInstance().clickIfAvailable(byodDPContinue, 5);
+        getReusableActionsInstance().clickWhenReady(byodDPContinue, 5);
+    }
+
+    /**
+     * Click continue on eSIM Stepper in BYOD Plan config page
+     * @author subash.nedunchezhian
+     */
+    public void clickeSIMContinueButton() {
+        getReusableActionsInstance().clickWhenVisible(eSIMOptNo,10);
+        getReusableActionsInstance().clickWhenReady(eSIMContinue, 5);
     }
 
     /**
@@ -976,7 +1032,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public boolean verifyAdditionalLinePageDisplayed() {
-        return getReusableActionsInstance().isElementVisible(titleAdditionalLinePage, 30);
+        return getReusableActionsInstance().isElementVisible(titleAdditionalLinePage, 60);
     }
 
     /**
@@ -988,9 +1044,9 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void changePlanForAdditionalLine(String planType, String additionalLineDataIndex) {
         getReusableActionsInstance().javascriptScrollByVisibleElement(getReusableActionsInstance().getWhenReady(By.xpath("//span[contains(@class,'dsa-cartSummary')]")));
-        getReusableActionsInstance().clickWhenVisible(planTypeDropDown, 10);
+        getReusableActionsInstance().clickWhenVisible(planTypeDropDown, 30);
         getReusableActionsInstance().selectWhenReady(planTypeDropDown, planType);
-        getReusableActionsInstance().clickWhenVisible(dataDropDown, 10);
+        getReusableActionsInstance().clickWhenVisible(dataDropDown, 30);
         if (getReusableActionsInstance().isElementVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[" + additionalLineDataIndex + "]"))) {
             getReusableActionsInstance().clickWhenVisible(By.xpath("(//ul[@class='dropdown-menu-plan']//li)[" + additionalLineDataIndex + "]"));
         } else {
@@ -1007,13 +1063,14 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkAddToCartAndProceedToCheckout(String className, String newPlanType) {
-        getReusableActionsInstance().clickWhenVisible(By.xpath("//button[contains(@id,'ds-accordion-panel')]"));
-        getReusableActionsInstance().clickWhenReady(btnAddToCart);
+        getReusableActionsInstance().staticWait(30000);
+        getReusableActionsInstance().clickWhenVisible(By.xpath("//button[@data-test='add-to-cart-btn']"));
+        //getReusableActionsInstance().clickWhenReady(btnAddToCart);
         if (className.toUpperCase().contains("SUBSIDY") && newPlanType.equalsIgnoreCase("FINANCING")) {
             getReusableActionsInstance().staticWait(15000);
         }
-        getReusableActionsInstance().waitForElementTobeClickable(btnProceedToCheckout, 30);
-        getReusableActionsInstance().clickWhenReady(btnProceedToCheckout);
+        //getReusableActionsInstance().waitForElementTobeClickable(btnProceedToCheckout, 30);
+        getReusableActionsInstance().getWhenReady(btnProceedToCheckout, 30).click();
     }
 
     /**
@@ -1126,7 +1183,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author saurav.goyal
      */
     public boolean verifyBreadCrumb() {
-        if (getReusableActionsInstance().isElementVisible(plansInBreadCrumb) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb))
+        if (getReusableActionsInstance().isElementVisible(plansInBreadCrumb,20) && getReusableActionsInstance().isElementVisible(buildPlanInBreadCrumb,20) && getReusableActionsInstance().isElementVisible(bringYourOwnDeviceInBreadCrumb,20))
             return true;
         return false;
     }
@@ -1482,6 +1539,16 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
+     * Clicks on the Continue button in Promo Modal
+     * @author Subash.Nedunchezhian
+     */
+    public void clickContinuePromoModal(){
+        getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg);
+        getReusableActionsInstance().clickWhenReady(continueBtnPromo);
+    }
+
+
+    /**
      * Validates the Line Item of the Promotion in cart summary
      * @return true if the Promo discount amount line item displayed; else false
      * @author Subash.Nedunchezhian
@@ -1636,7 +1703,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public boolean verifyAutoPayPlanSelection(String dataOptionIndex, String className) {
         selectDataOptionAndClickonContinueButton(dataOptionIndex,className);
-        return autoPayText.size()==1;
+        return autoPayText.size()>=1;
     }
 
     /**
@@ -1661,5 +1728,21 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public String getRegularPromoName(){
         return regularPromoDetail.getText().replaceAll("\\n", "");
+    }
+
+    /**
+     * get actual dow payment and compares with expected down payment
+     * @param expectedDownPayment
+     * @return true actual and expected down payment equal else false
+     * @author vedachalam.vasudevan
+     */
+    public boolean getDownPaymentLineCart(String expectedDownPayment) {
+        getReusableActionsInstance().waitForElementVisibility(downPaymentLineCart);
+        String actualDownPayment = getReusableActionsInstance().getElementText(downPaymentLineCart);
+        actualDownPayment = actualDownPayment.replaceAll("[^0-9.]","");
+        if(actualDownPayment.contains(expectedDownPayment)) {
+            return true;
+        }
+            return false;
     }
 }

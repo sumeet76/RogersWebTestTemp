@@ -54,7 +54,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//div[text()='Rogers Ignite Flex 5']/parent::div/parent::div//span[text()='Ajouter au panier' or text()='Add to cart']/ancestor::button | (//span[@translate='global.cta.addToCart'])[1]")
 	WebElement addToCart;
 
-	@FindBy(xpath = "//span[@translate='global.cta.addToCart']")
+	@FindBy(xpath = "//span[text()=' Add to cart ']")
 	//@FindBy(xpath = "//span[contains(text(),'Ignite 50 Ultd + SmartStream')or contains(text(),'Élan Internet 150 illimité + Diffusion futée')]/ancestor::div[3]/following-sibling::div/rch-bundle-price/child::div/child::div[3]/child::button")
 	WebElement firstAddToCart;
 
@@ -119,7 +119,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Yes, keep number' or text()='Oui, garder mon numéro']/ancestor::button")
 	WebElement btnKeepNumber;
 
-	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
+	@FindBy(xpath = "//span[text()=' I have reviewed the customer’s add-ons. ' or text()=' J’ai passé en revue les options du client. ']")
 	WebElement customerAddonReveiwLink;
 
 	@FindBy(xpath = "//span[text()='Non, choisir un nouveau numéro' or text()='No, select new number']/ancestor::button")
@@ -281,7 +281,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement yesButton;
 
 
-	@FindBy(xpath = "//div[@translate='global.modals.serviceability.moveMigrationNotSupported']")
+	@FindBy(xpath = "//p[contains(text(),'Move migration orders cannot be processed via Oneview')]")
 	WebElement verifyMoveMigrationNotSupported;
 
 	@FindBy(xpath = "//*[@id='ds-modal-container-1']/descendant::div[@class='input-search']")
@@ -322,7 +322,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement removeButton;
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
-	WebElement smartHomeMonitoring ;
+	WebElement smartHomeMonitoring;
+
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement homeSecurity ;
@@ -348,7 +349,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Ignite Home Security Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Caméra de sonnette Élan']//parent::div/parent::div/parent::div//child::button)[1]")
@@ -412,6 +413,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//li[contains(text(),'Upload speeds') or contains(text(),'Vitesses de téléversement')]")
 	WebElement UploadSpeedReview;
 
+	@FindBy(xpath = "//span[contains(text(),'Download speed') or contains(text(),'Location de la passerelle')]/parent::li")
+	WebElement DownloadSpeed;
+
+	@FindBy(xpath = "//span[contains(text(),'Upload speed') or contains(text(),'Vitesses de téléversement')]/parent::li")
+	WebElement UploadSpeed;
+
 	@FindBy(xpath = "//div[contains(text(),'This address is not serviceable right now') or contains(text(),'Cette adresse peut être desservie')]")
 	WebElement addressNotServiceable;
 
@@ -437,10 +444,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement termoffer;
 
 
-	@FindBy(xpath = "//label[@class='ds-radioLabel d-inline-flex align-items-start']//span[contains(text(),'$40 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
+	@FindBy(xpath = "//div[@class='ds-checkboxLabel__container ml-8 text-body my-12 text-semi']//span[contains(text(),'$30 off Ignite') or contains(text(),'Rabais de 25 $ sur une offre Élan')]")
 	WebElement productCampaign;
 
-	@FindBy(xpath = "(//span[contains(text(),'(PCR5)')])[2]")
+	@FindBy(xpath = "(//span[contains(text(),'(PCR6)')])[2]")
 	WebElement oneTimeCredit;
 
 	@FindBy(xpath = "//span[@translate='global.checkout.campaign.stickyTab']")
@@ -605,7 +612,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		WebElement packageAddToCart = getDriver().findElement(By.xpath(packageAddToCartXpath));
 		WebElement packageElement = getDriver().findElement(By.xpath(packageXpath));
 
-		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
+		getReusableActionsInstance().waitForElementVisibility(packageElement,120);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
 		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,120);
@@ -1429,7 +1436,7 @@ public void activateHomePhoneltrPopUp() {
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
-		getReusableActionsInstance().executeJavaScriptClick(addToCart);
+		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
 		if(getReusableActionsInstance().isElementVisible(additionalSHMAddons,20)){
 			getReusableActionsInstance().waitForElementVisibility(additionalSHMAddons);
 			getReusableActionsInstance().executeJavaScriptClick(additionalSHMAddons);
@@ -1511,7 +1518,7 @@ public void activateHomePhoneltrPopUp() {
 	}
 	public boolean verifyDownloadAndUploadSpeed() {
 //		getReusableActionsInstance().scrollToElement(DownloadSpeedReview);
-//		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
+		getReusableActionsInstance().scrollToElement(UploadSpeedReview);
 		String download = getReusableActionsInstance().getElementText(DownloadSpeedReview);
 		String upload = getReusableActionsInstance().getElementText(UploadSpeedReview);
 		String[] d1 = download.split(":");
@@ -1519,6 +1526,28 @@ public void activateHomePhoneltrPopUp() {
 		String[] u1 = upload.split(":");
 		System.out.println(u1[1]);
 		Boolean areEqual = d1[1].equals(u1[1]);
+		if (areEqual) {
+			System.out.println("Download and Upload speed Symmetrical");
+			return true;
+		} else {
+			System.out.println("Download and Upload speed is not Symmetrical");
+			return false;
+		}
+	}
+
+	public boolean verifyInternetDownloadAndUploadSpeed() {
+		getReusableActionsInstance().scrollToElement(UploadSpeed);
+		String download = getReusableActionsInstance().getElementText(DownloadSpeed);
+		String upload = getReusableActionsInstance().getElementText(UploadSpeed);
+//		System.out.println("download speed "+ download);
+//		System.out.println("upload speed "+ upload);
+		String[] d1 = download.split(" ");
+		System.out.println("download speed "+ d1);
+		String[] u1 = upload.split(" ");
+		System.out.println("Upload speed "+ u1);
+		Boolean areEqual = d1[1].equals(u1[1]);
+//		Boolean areEqual = download.equals(upload);
+		System.out.println("upload speed "+ areEqual);
 		if (areEqual) {
 			System.out.println("Download and Upload speed Symmetrical");
 			return true;
@@ -1566,7 +1595,7 @@ public void activateHomePhoneltrPopUp() {
 	public void clickCheckAnotherAddress() {
 		getReusableActionsInstance().waitForElementTobeClickable(checkAnotherAddress,30);
 		//getReusableActionsInstance().clickWhenReady(infoBalanceLable);
-		getReusableActionsInstance().clickWhenReady(checkAnotherAddress);
+		getReusableActionsInstance().executeJavaScriptClick(checkAnotherAddress);
 		getReusableActionsInstance().staticWait(5000);
 	}
 

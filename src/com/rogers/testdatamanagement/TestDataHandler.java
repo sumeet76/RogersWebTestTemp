@@ -151,6 +151,7 @@ public class TestDataHandler {
 	public static AccountData tupeloUpgradeTest;
 	public static AccountData TC032_SAI_AddingSmartStream;
 	public static AccountData TC030_Internet_PackageUpgrade;
+	public static AccountData tc120_ChangeTVPackage_ExistingTermContract;
 
 	public static AccountData tc106StandaloneInternetAccount;
 	public static RedesignRpotgData tc01NACTermHighRiskStdShipping;
@@ -370,6 +371,7 @@ public class TestDataHandler {
 	public static AccountData SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan;
 	public static AccountData Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx;
 	public static AccountData GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan;
+	public static AccountData Migration_SAI_GPON;
 	public static AccountData RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage;
 	public static MigrationData TargetedMigration_Delivery_by_Appointment_3pto3p_MonthlyCharges;
 	public static ContactData GponData;
@@ -410,6 +412,12 @@ public class TestDataHandler {
 	public static AddonData tc51SAA_RemoveLongDistance;
 	public static AddonData tc52SAA_AddDeviceProtection;
 	public static OvrReusableData tc_70_Ovr_ChangePackage_Data;
+	public static OvrReusableData tc_71_Ovr_ChangePackage_Data;
+	public static OvrReusableData tc_72_AddTSU_SAI_to_SAI_MappedTerm_Data;
+	public static OvrReusableData tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data;
+	public static OvrReusableData tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data;
+	public static OvrReusableData tc_67_FidoToRogers_FooterValidations_Data;
+	public static AccountData Serve_Adding_Ignite_HomeSecurity;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -780,6 +788,7 @@ public class TestDataHandler {
 		addChannelAndThempackImmediate = YamlHandler.getMigrationData("1539_AddChannelandThemepackImmediate");
 		TC023_TVPackageDowngrade= YamlHandler.getOVAccountData("TC_023_TV_PackageDowngrade");
 		TC026_TVPackageUpgrade= YamlHandler.getOVAccountData("TC026_TVPackageUpgrade");
+		tc120_ChangeTVPackage_ExistingTermContract = YamlHandler.getOVAccountData("TC120_ChangeTVPackage_ExistingTermContractCx_CarryOver");
 		tc098_SATV2P_To_Bundle2P=YamlHandler.getOVAccountData("TC098_SATV_2P_to_Bundle_2P");
 		tc099_SATV3P_To_SATV3P_Mapped_Offers=YamlHandler.getOVAccountData("IgniteMapped_Offers_SATV3p_to_SATV3P");
 		TC028_InternetPackageDowngrade= YamlHandler.getOVAccountData("TC_028_Internet_PackageDowngrade");
@@ -833,6 +842,7 @@ public class TestDataHandler {
 		SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan = YamlHandler.getOVAccountData("SAI_GPON_ATL_ValidateChangeInternetFlowSymmetricPlan");
 		Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx = YamlHandler.getOVAccountData("Migration_3P_GPON_ATL_OffersPage_ValidateSymmetricalTiersforCx");
 		GPON_3P_ON_OffersPage_ChangeTVFlowForAsymmetricPlan= YamlHandler.getOVAccountData("3P_GPON_ON_OffersPage_ChangeTVFlowForAsymmetricPlan");
+		Migration_SAI_GPON = YamlHandler.getOVAccountData("Migration_SAI_GPON");
 		GponData=YamlHandler.getContactData("GPONData");
 		RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage= YamlHandler.getOVAccountData("RHPAddOns_ValidateConfigureCallerIdAndDirectoryListingPage");
 		OVS2_Change_TV_Internet_2P=YamlHandler.getOVAccountData("OVS2_Change_TV_Internet_2P");
@@ -840,7 +850,7 @@ public class TestDataHandler {
 		Serve_FWACx_DowngradeInternetPlan = YamlHandler.getOVAccountData("Serve_FWACx_DowngradeInternetPlan");
 		IgniteMappedOffersSAItoSAI = YamlHandler.getOVAccountData("IgniteMappedOffersSAItoSAI");
 		Change_TV_Channel_Themepack_Immediate_Downgrade = YamlHandler.getOVAccountData("Change_TV_Channel_Themepack_Immediate_Downgrade");
-
+		Serve_Adding_Ignite_HomeSecurity = YamlHandler.getOVAccountData("Serve_Adding_Ignite_HomeSecurity");
 
 	}
 
@@ -889,5 +899,10 @@ public class TestDataHandler {
 		tc_65_Ovr_FidoToRogers_Care_Nac_Data_ISS = YamlHandler.getOvrReusableData("TC65_FidoToRogers_Data_Nac_ISS");
 		tc_66_Ovr_FidoToRogers_MIG_Data = YamlHandler.getOvrReusableData("TC66_FidoWireless_with_legacy_MIG_Data");
 		tc_70_Ovr_ChangePackage_Data = YamlHandler.getOvrReusableData("TC70_ChangePackage_IPTV_to_IPTV");
+		tc_71_Ovr_ChangePackage_Data = YamlHandler.getOvrReusableData("TC71_ChangePackage_ISS_to_ISS");
+		tc_72_AddTSU_SAI_to_SAI_MappedTerm_Data = YamlHandler.getOvrReusableData("TC72_AddTSU_SAI_to_SAI_mappedTerm");
+		tc_67_FidoToRogers_FooterValidations_Data = YamlHandler.getOvrReusableData("TC67_FidoToRogers_Footervalidations");
+		tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data = YamlHandler.getOvrReusableData("TC73_AddTSU_SAI_to_SAI_ExistingTerm");
+		tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data = YamlHandler.getOvrReusableData("TC74_AddTSU_SAI_to_ISS_mappedInstallWaiver");
 	}
 }

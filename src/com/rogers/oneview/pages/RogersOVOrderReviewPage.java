@@ -83,13 +83,16 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='CUSTOMER WILL BE ACTIVATED ON FIBRE']")
 	WebElement fibreActivationTag;
 
+	@FindBy(xpath = "//h1[@translate='global.label.reviewYourOrder']")
+	WebElement orderReviewHeader;
+
 	/**
 	 * Verify order review page is loaded properly
 	 * @return true if page loaded else false
 	 * @author Saurav.Goyal
 	 */
 	public boolean verifyOrderReviewPage() {
-		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 100);
+		return getReusableActionsInstance().isElementVisible(rdbtnEmail, 120);
 	}
 
 	/**
@@ -115,7 +118,7 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	 */	
 	public void clkSubmit() {	
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		getReusableActionsInstance().waitForElementVisibility(submitButton, 60);
+		getReusableActionsInstance().waitForElementVisibility(submitButton, 100);
 		getReusableActionsInstance().executeJavaScriptClick(submitButton);
 		getReusableActionsInstance().staticWait(10000);
 	}
@@ -217,6 +220,10 @@ public class RogersOVOrderReviewPage  extends BasePageClass {
 	public boolean verifyFibreActivationTag() {
 		getReusableActionsInstance().waitForElementVisibility(fibreActivationTag,30);
 		return getReusableActionsInstance().isElementVisible(fibreActivationTag);
+	}
+
+	public boolean verifyOrderReviewHeader() {
+		return getReusableActionsInstance().isElementVisible(orderReviewHeader, 100);
 	}
 
 }

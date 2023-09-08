@@ -28,13 +28,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
-import utils.AppiumServerJava;
-import utils.BrowserDrivers;
-import utils.GetOTP;
-import utils.Reporter;
+import utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -95,6 +93,7 @@ public class BaseTestClass {
     protected static final ThreadLocal<RogersRegisterOrAccountRecoveryPage> RogersRecoverPassOrNamePageThreadLocal = new ThreadLocal<>();
     protected BrowserDrivers browserdriver;
     protected static final ThreadLocal<RogersInternetDashboardPage> RogersInternetDashboardPageThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<RogersChangePackageChannelsNThemePacksPage> RogersChangePackageChannelsNThemePacksPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersInternetPackageSelectionPage> RogersInternetPackageSelectionPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVDashboardPage> RogersDigitalTVDashboardPageThreadLocal = new ThreadLocal<>();
     protected static final ThreadLocal<RogersDigitalTVPackageSelectionPage> RogersDigitalTVPackageSelectionPageThreadLocal = new ThreadLocal<>();
@@ -337,6 +336,10 @@ public class BaseTestClass {
 
     public static RogersInternetDashboardPage getRogersInternetDashboardPage() {
         return RogersInternetDashboardPageThreadLocal.get();
+    }
+
+    public static RogersChangePackageChannelsNThemePacksPage getRogersChangePackageChannelsNThemePacksPage() {
+        return RogersChangePackageChannelsNThemePacksPageThreadLocal.get();
     }
 
     public static RogersInternetPackageSelectionPage getRogersInternetPackageSelectionPage() {
@@ -791,21 +794,21 @@ public class BaseTestClass {
             case "buyflows":
                 setImplicitWait(getDriver(), 10);
                 getDriver().get(strUrl+"/phones");
-                setCookie(strUrl);
+//                setCookie(strUrl);
                 if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC_BYOD")) {
-                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                    getDriver().get(strUrl + "/phones/bring-your-own-device?flowType=byod" + "?setLanguage=" + language + "&province=" + "ON");
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC") && !(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO"))){
-                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+                    getDriver().get(strUrl + "/phones/" + "?setLanguage=" + language + "&province=" + "ON");
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("SOHO") && currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("NAC")){
                     getDriver().get(strUrl + "/phones/" + "?type=soho");
                 }else if(currentTestMethodName.getDeclaringClass().getSimpleName().toUpperCase().contains("BFA_PROD")) {
                     getDriver().get(strUrl);
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }else{
                     getDriver().get(strUrl + "/consumer/easyloginriverpage" + "?setLanguage=" + language + "&?province=" + "ON");
-                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
+//                    captcha_bypass_handlers.captchaBypassUrlLoginFlows(strUrl, language);
                 }
                 break;
 
@@ -836,6 +839,17 @@ public class BaseTestClass {
             getDriver().manage().window().maximize();
         }
         init(strGroupName);
+    }
+
+    /**
+     * For Buysflows tests to add env headers using DevTools
+     */
+    private void addEnvHeader(){
+        DevToolsUtils utils = new DevToolsUtils();
+        DevTools devTools = utils.enableDevTools(getDriver());
+        utils.addExtraHeader(devTools, "x-envrnmt", "aks");
+        utils.addExtraHeader(devTools, "Pragma", "akamai-x-get-cache-key");
+        utils.addExtraHeader(devTools, "X-Akamai-Debug", "RogersFidoHeaders");
     }
 
     /**
@@ -1091,6 +1105,7 @@ public class BaseTestClass {
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
+                RogersChangePackageChannelsNThemePacksPageThreadLocal.set(new RogersChangePackageChannelsNThemePacksPage(getDriver()));
                 RogersInternetPackageSelectionPageThreadLocal.set(new RogersInternetPackageSelectionPage(getDriver()));
                 RogersDigitalTVDashboardPageThreadLocal.set(new RogersDigitalTVDashboardPage(getDriver()));
                 RogersDigitalTVPackageSelectionPageThreadLocal.set(new RogersDigitalTVPackageSelectionPage(getDriver()));
@@ -1124,6 +1139,7 @@ public class BaseTestClass {
                 RogersHTOPromotionPageThreadLocal.set(new RogersHTOPromotionPage(getDriver()));
                 RogersBuyPageThreadLocal.set(new RogersBuyPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
+                RogersChangePackageChannelsNThemePacksPageThreadLocal.set(new RogersChangePackageChannelsNThemePacksPage(getDriver()));
                 RogersAccountOverviewPageThreadLocal.set(new RogersAccountOverviewPage(getDriver()));
                 RogersInternetDashboardPageThreadLocal.set(new RogersInternetDashboardPage(getDriver()));
                 RogersInternetPackageSelectionPageThreadLocal.set(new RogersInternetPackageSelectionPage(getDriver()));
@@ -1223,6 +1239,8 @@ public class BaseTestClass {
                 RogersOVOneTimePaymentPageThreadLocal.set(new com.rogers.oneview.pages.RogersOVOneTimePaymentPage(getDriver()));
                 CallerInformationPageThreadLocal.set(new com.rogers.oneview.pages.CallerInformationPage(getDriver()));
                 OvrDashboardPageThreadLocal.set(new com.rogers.ovr.pages.OvrDashboardPage(getDriver()));
+                BundleBuilderPageThreadLocal.set(new com.rogers.ovr.pages.BundleBuilderPage(getDriver()));
+                CheckAvailabilityPageThreadLocal.set(new com.rogers.ovr.pages.CheckAvailabilityPage(getDriver()));
                 break;
 
             case "redesignrogers":

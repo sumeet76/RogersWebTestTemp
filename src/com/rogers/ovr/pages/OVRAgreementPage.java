@@ -53,7 +53,7 @@ public class OVRAgreementPage extends BasePageClass {
     }
 
     public void clkCompleteOrder() {
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
-        getReusableActionsInstance().clickWhenReady(completeOrderBtn);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(completeOrderBtn);
+        getReusableActionsInstance().executeJavaScriptClick(completeOrderBtn);
     }
 }
