@@ -104,13 +104,15 @@ extends:
   parameters:
     name: Output
     pool: openjdk11-azure
-    teams: https://rcirogers.webhook.office.com/webhookb2/6ea85403-ca28-4482-a9df-b1dca6632d94@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/b8939b915823406792effcb46b15c66c/79e29d92-4686-45ef-81a6-f2d1cc6ac806
+    teams: https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd
     groups:
       - common
       - artifactory_serv_svc_dawsdev
       - global
       - github_daws_svc_account
     steps:
+      - checkout: self
+        submodules: true
       - script: |
           export GIT_COMMIT=$BUILD_SOURCEVERSION
           export BRANCH_NAME=$BUILD_SOURCEBRANCHNAME
