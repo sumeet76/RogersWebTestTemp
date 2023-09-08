@@ -122,11 +122,11 @@ extends:
           else
              gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${urlLink}} -i --stacktrace
           fi
-          if [ ${{parameters.urlLink}} = "NULL" ]; then
-             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
-          else
-             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} ${urlLink}} -i --stacktrace
-          fi
+#          if [ ${{parameters.urlLink}} = "NULL" ]; then
+#             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+#          else
+#             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} ${generateTestString(params.IndividualTests)}} -Ptest_threadCount=${{parameters.ThreadCount}} ${urlLink}} -i --stacktrace
+#          fi
         displayName: Run Test
         env:
           ARTIFACTORY_CREDENTIALS_PSW: $(ARTIFACTORY_CREDENTIALS_PSW)
