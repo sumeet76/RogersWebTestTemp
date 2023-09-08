@@ -131,9 +131,17 @@ extends:
           sh artifactory-credentials.sh
           sh sonarqube-credentials.sh
           if [[ ${{parameters.IndividualTests}} == "NULL" ]]; then
-            gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+            if [[ ${{parameters.urlLink}} == "NULL" ]]; then
+              gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+            else
+              gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
+            fi
           else
-             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
+            if [[ ${{parameters.urlLink}} == "NULL" ]]; then
+              gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
+            else
+              gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
+            fi
           fi
 #          if [[ ${{parameters.urlLink}} == "NULL" ]]; then
 #             gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
