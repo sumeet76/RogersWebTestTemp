@@ -113,7 +113,11 @@ extends:
     steps:
       - checkout: self
         submodules: true
-      - env | sort
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: 'env | sort'
+        displayName: Get Env
       - script: |
           generateTestString(){
             local input="${1}"
@@ -144,7 +148,6 @@ extends:
               gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
             fi
           fi
-
         displayName: Run Test
         env:
           ARTIFACTORY_CREDENTIALS_PSW: $(ARTIFACTORY_CREDENTIALS_PSW)
