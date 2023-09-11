@@ -12,15 +12,6 @@ resources:
 trigger: none
 pr: none
 
-# schedules:
-#   - cron: '30 4 * * *'
-#     displayName: Scheduled Dependency Check
-#     always: true
-#     batch: true
-#     branches:
-#       include:
-#         - main
-
 parameters:
   - name: Browser
     displayName: Test Browser
@@ -30,6 +21,9 @@ parameters:
     displayName: Test Language
     type: string
     default: en
+    values:
+      - en
+      - fr
   - name: ThreadCount
     displayName: Number of parallel test sessions
     type: string
@@ -99,6 +93,15 @@ parameters:
     type: string
     default: NULL
 
+schedules:
+  - cron: '00 17 * * Mon-Fri'
+    displayName: Scheduled Work Day Daily
+    always: true
+    batch: true
+    branches:
+      include:
+        - ado-migration
+        -
 extends:
   template: generic-utility-1.yml@shared
   parameters:
