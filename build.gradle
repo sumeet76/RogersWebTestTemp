@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'java-library'
 	id 'maven-publish'
-	id 'com.jfrog.artifactory' version '4.15.1'
+	id 'com.jfrog.artifactory' version '4.28.1'
 	id 'io.github.karthick1110.SauceConnectPlugin' version '0.0.6'
 }
 
@@ -164,7 +164,7 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:1.82-20230823.205619-8'
+	api 'automation-utils:common-utils:1.84-SNAPSHOT'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'
