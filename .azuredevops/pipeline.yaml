@@ -133,7 +133,7 @@ extends:
           sh github-credentials.sh
           sh artifactory-credentials.sh
           sh sonarqube-credentials.sh
-          if [[ $BUILD_REASON == 'Schedule']]; then
+          if [[ $BUILD_REASON == 'Schedule' ]]; then
             gradle sauceTest -Ptest_browser='saucechrome' -Ptest_language='en' -Ptest_groupName='PRODNACSanity' -Ptest_threadCount=6 -Ptest_profile='BFA' -i --stacktrace
           fi
           if [[ ${{parameters.IndividualTests}} == "NULL" ]]; then
