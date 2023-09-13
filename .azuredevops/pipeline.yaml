@@ -7,7 +7,7 @@ resources:
       type: github
       endpoint: svcdawsdev
       name: RogersCommunications/enterprise-ado-pipelines
-      ref: refs/heads/main
+      ref: refs/heads/custom-cache
 
 trigger: none
 pr: none
@@ -118,6 +118,8 @@ extends:
         submodules: true
 
       - template: jobs/gradle/steps/cache.yml@shared
+        parameters:
+          use_cache_ignore: false
 
       - script: |
           generateTestString(){
