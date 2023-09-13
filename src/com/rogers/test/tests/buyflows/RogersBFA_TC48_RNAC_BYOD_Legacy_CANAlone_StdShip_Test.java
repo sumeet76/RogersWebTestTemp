@@ -24,7 +24,7 @@ public class RogersBFA_TC48_RNAC_BYOD_Legacy_CANAlone_StdShip_Test extends BaseT
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","CovergeBFA"})
+    @Test(groups = {"RegressionBFA","ConvergeBFA"})
     public void tc48_rnacByod_Legacy_StdShipTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
 

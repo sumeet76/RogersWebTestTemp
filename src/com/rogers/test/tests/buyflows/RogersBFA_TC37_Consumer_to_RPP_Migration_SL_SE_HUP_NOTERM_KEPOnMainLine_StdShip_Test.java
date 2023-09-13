@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC37_Consumer_to_RPP_Migration_SL_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","RPPHUPBFA"})
+        @Test(groups = {"RegressionBFA","RPPBFA"})
         public void tc37_ConToRppHUP_SL_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");

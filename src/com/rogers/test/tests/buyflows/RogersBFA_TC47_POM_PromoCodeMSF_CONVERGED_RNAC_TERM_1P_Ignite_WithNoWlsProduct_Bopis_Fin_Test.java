@@ -24,7 +24,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-    @Test(groups = {"RegressionBFA","CovergeBFA","POM"})
+    @Test(groups = {"RegressionBFA","ConvergeBFA","POM"})
     public void tc47_pomRNACTerm_1P_Ignite_BopisTest() throws InterruptedException, IOException {
     	 //**************************Device catalog page****************************************
         //reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

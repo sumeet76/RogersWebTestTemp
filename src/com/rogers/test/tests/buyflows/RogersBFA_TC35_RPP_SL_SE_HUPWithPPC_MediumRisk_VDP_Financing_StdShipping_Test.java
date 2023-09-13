@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC35_RPP_SL_SE_HUPWithPPC_MediumRisk_VDP_Financing_StdShipping_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","RPPHUPBFA","SanityBFA"})
+        @Test(groups = {"RegressionBFA","RPPBFA","SanityBFA"})
         public void tc35_rppHUP_SE_MediumRisk_HUPWithPPC_VDP_StdShipping_Test() {
 
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");

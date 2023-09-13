@@ -57,12 +57,13 @@ public class RogersBFA_TC26_Consumer_PPC_ML_SE_FinancingOutTerm_PPCOnAdditionalL
         getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
         reporter.reportLogWithScreenshot("Addons option selected");
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
+        getRogersCheckoutPage().clkContinueWithoutPromo();
         getRogersCheckoutPage().clickSkipAutopay();
-        /**reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
-                "Additional line option page is displayed", "Additional line option page is not disaplayed");
-        getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
-        reporter.reportLogWithScreenshot("Additional line data and talk selected");
-        getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc26PPCMLSEAdditionalLineDTTPlan.getNewPlanType());**/
+//        reporter.hardAssert(getRogersPlanConfigPage().verifyAdditionalLinePageDisplayed(),
+//                "Additional line option page is displayed", "Additional line option page is not disaplayed");
+//        getRogersPlanConfigPage().changePlanForAdditionalLine("FIN_DATA_TALK_TEXT","1");
+//        reporter.reportLogWithScreenshot("Additional line data and talk selected");
+//        getRogersPlanConfigPage().clkAddToCartAndProceedToCheckout(this.getClass().getSimpleName(), TestDataHandler.tc26PPCMLSEAdditionalLineDTTPlan.getNewPlanType());
         //-----------------------------------------Review Order Page----------------------------------------------------
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(), "Order Review Page Title Present", "Order Review Page Title is not Present");
         reporter.reportLogPassWithScreenshot("Order Review Page");

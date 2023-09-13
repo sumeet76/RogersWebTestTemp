@@ -341,7 +341,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]")
     WebElement BYODdpAddon;
 
-    @FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']")
+    //@FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']/div")
+    @FindBy(xpath="//input[@formcontrolname='imei']/parent::div")
     WebElement dpimeiField;
 
     @FindBy(xpath = "//input[@formcontrolname='imei']")
@@ -876,7 +877,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(setLastName);
         setLastName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
         getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
-        clickGetBPOOffer();
+        //clickGetBPOOffer();
     }
 
     /**
@@ -1627,7 +1628,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author Subash.Nedunchezhian
      */
     public void enterDPIMEI(String tacCode) {
-        getReusableActionsInstance().clickWhenReady(dpimeiField, 20);
+        getReusableActionsInstance().executeJavaScriptClick(dpimeiField);
         getReusableActionsInstance().getWhenReady(inputDPIMEI, 20).sendKeys(tacCode + FormFiller.generateRandomNumber(7));
         getReusableActionsInstance().clickWhenReady(dpIMEIContinue);
     }

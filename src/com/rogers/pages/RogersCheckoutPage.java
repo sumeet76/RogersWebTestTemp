@@ -437,7 +437,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@data-test='account-number']//input")
 	WebElement inputAccountNumber;
 
-	@FindBy(xpath = "//ds-checkbox[contains(@id,'dsa-terms-conditions')]")
+	@FindBy(xpath = "//input[contains(@name,'autopayTermsConsent')]/..")
 	WebElement chAutoPayConsent;
 
 	@FindBy(xpath = "//div[contains(text(),'Not now')]/parent::label")
@@ -1274,7 +1274,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clkContinueWithoutPromo(){
-		getReusableActionsInstance().clickWhenVisible(continueWithoutPromoBtn);
+		getReusableActionsInstance().clickIfAvailable(continueWithoutPromoBtn,10);
 	}
 
 	/**
@@ -1370,8 +1370,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkBillingContinueButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 10);
-		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().clickWhenVisible(btnBillingContinueButton,30);
+		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
+		getReusableActionsInstance().executeJavaScriptClick(btnBillingContinueButton);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -1687,11 +1687,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void enterBankDetails() {
-		getReusableActionsInstance().getWhenReady(formTransitNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formTransitNumber);
 		inputTransitNumber.sendKeys("00011");
-		getReusableActionsInstance().getWhenReady(formInstitutionNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formInstitutionNumber);
 		inputInstitutionNumber.sendKeys("001");
-		getReusableActionsInstance().getWhenReady(formAccountNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formAccountNumber);
 		inputAccountNumber.sendKeys(FormFiller.generateRandomNumber(10));
 	}
 
@@ -1700,7 +1700,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkAutoPayConsentCheckBox() {
-		getReusableActionsInstance().clickWhenReady(chAutoPayConsent);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(chAutoPayConsent);
+		getReusableActionsInstance().executeJavaScriptClick(chAutoPayConsent);
 	}
 
 	/**

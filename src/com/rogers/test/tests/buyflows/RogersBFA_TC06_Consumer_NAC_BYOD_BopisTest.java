@@ -26,16 +26,16 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void tc06_rogersNACBYODBopisTest() throws InterruptedException {
 //############################Plan config page###############################
-		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
+//		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clickShowMoreDetails();
+		//getRogersPlanConfigPage().clickShowMoreDetails();
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
 		//reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		getRogersPlanConfigPage().clickGetBPOOffer();
+		//getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().selectBYODdpAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
 		getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc06NACByodTermBopis.getDpIMEI());

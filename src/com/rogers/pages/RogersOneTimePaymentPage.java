@@ -41,7 +41,7 @@ public class RogersOneTimePaymentPage extends BasePageClass {
     @FindBy(xpath ="//button[@id='main-continue-button']")
     WebElement submitOrderBtn;
 
-    @FindBy(xpath = "//ds-form-field[@data-test='name']")
+    @FindBy(xpath = "//ds-form-field[@data-test='name']//div/div[contains(@class,'ds-formField__inputContainer')]")
     WebElement nameOnCard;
 
     @FindBy(xpath = "//ds-form-field[@data-test='name']//input")

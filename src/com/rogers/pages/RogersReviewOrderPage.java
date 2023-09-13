@@ -67,7 +67,7 @@ public class RogersReviewOrderPage extends BasePageClass {
     @FindBy(xpath ="//ds-checkbox[@name='credit-check']")
     WebElement chEmailConsent;
 
-    @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']")
+    @FindBy(xpath ="//ds-checkbox[@data-test='bopis-consent']/label ")
     WebElement chBopisConsent;
 
     @FindBy(xpath = "//input[@name='accessoriesFinancingConsent']/..")
@@ -284,7 +284,7 @@ public class RogersReviewOrderPage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void clkBopisConsentCheckbox() {
-        getReusableActionsInstance().clickWhenReady(chBopisConsent,5);
+        getReusableActionsInstance().clickIfAvailable(chBopisConsent,5);
     }
 
     /**

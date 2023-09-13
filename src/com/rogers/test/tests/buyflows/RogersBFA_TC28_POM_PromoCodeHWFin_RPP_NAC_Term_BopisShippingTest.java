@@ -21,7 +21,7 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_BopisShippingTest ex
 		startSession(System.getProperty("QaUrl"), strBrowser,strLanguage,RogersEnums.GroupName.redesignrogers, method);
 	}
 
-	@Test(groups = {"RegressionBFA","NACBFA","POM","SUB"})
+	@Test(groups = {"RegressionBFA","NACBFA","POM","RPPBFA"})
 	public void tc28_rogersRPPNACTermBopisShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
