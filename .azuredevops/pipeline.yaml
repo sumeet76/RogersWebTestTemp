@@ -94,7 +94,7 @@ parameters:
     default: NULL
 
 schedules:
-  - cron: '30 17 * * Mon-Fri'
+  - cron: '40 17 * * Mon-Fri'
     displayName: Scheduled Work Day Daily
     always: true
     batch: true
