@@ -138,6 +138,7 @@ extends:
           sh github-credentials.sh
           sh artifactory-credentials.sh
           sh sonarqube-credentials.sh
+          gradle clean
           if [[ $BUILD_REASON == 'Schedule' ]]; then
             echo "gradle sauceTest -Ptest_browser='saucechrome' -Ptest_language='en' -Ptest_groupName='PRODNACSanity' -Ptest_threadCount=6 -Ptest_profile='BFA' -i --stacktrace"
             gradle sauceTest -Ptest_browser='saucechrome' -Ptest_language='en' -Ptest_groupName='PRODNACSanity' -Ptest_threadCount=6 -Ptest_profile='BFA' -i --stacktrace
