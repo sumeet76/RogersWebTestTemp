@@ -116,6 +116,9 @@ extends:
     steps:
       - checkout: self
         submodules: true
+
+      - template: jobs/gradle/steps/cache.yml@shared
+
       - script: |
           generateTestString(){
             local input="${1}"
