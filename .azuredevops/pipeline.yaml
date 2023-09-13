@@ -117,6 +117,7 @@ extends:
       - checkout: self
         submodules: true
       - script: |
+          set -x;
           generateTestString(){
             local input="${1}"
             input="$(echo ${input} | xargs)"
