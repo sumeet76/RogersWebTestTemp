@@ -144,8 +144,10 @@ extends:
               fi
             else
               if [[ ${{parameters.urlLink}} == "NULL" ]]; then
+                echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace"
                 gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
               else
+                echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace"
                 gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
               fi
             fi
