@@ -117,7 +117,6 @@ extends:
       - checkout: self
         submodules: true
       - script: |
-          set -x;
           generateTestString(){
             local input="${1}"
             input="$(echo ${input} | xargs)"
@@ -135,18 +134,23 @@ extends:
           sh artifactory-credentials.sh
           sh sonarqube-credentials.sh
           if [[ $BUILD_REASON == 'Schedule' ]]; then
+            echo "gradle sauceTest -Ptest_browser='saucechrome' -Ptest_language='en' -Ptest_groupName='PRODNACSanity' -Ptest_threadCount=6 -Ptest_profile='BFA' -i --stacktrace"
             gradle sauceTest -Ptest_browser='saucechrome' -Ptest_language='en' -Ptest_groupName='PRODNACSanity' -Ptest_threadCount=6 -Ptest_profile='BFA' -i --stacktrace
           fi
           if [[ ${{parameters.IndividualTests}} == "NULL" ]]; then
             if [[ ${{parameters.urlLink}} == "NULL" ]]; then
+              echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace" 
               gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
             else
+              echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace"
               gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} -Ptest_groupName='${{parameters.Groups}}' -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
             fi
           else
             if [[ ${{parameters.urlLink}} == "NULL" ]]; then
+              echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace"
               gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} -i --stacktrace
             else
+              echo "gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace"
               gradle sauceTest -Ptest_browser=${{parameters.Browser}} -Ptest_language=${{parameters.Language}} $(generateTestString "${{parameters.IndividualTests}}") -Ptest_threadCount=${{parameters.ThreadCount}} ${{parameters.urlLink}} -i --stacktrace
             fi
           fi
