@@ -91,8 +91,8 @@ timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authoriz
 
 curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result.json
 # cat result.json
-stage_results=$(cat result.json | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
-echo "stage_results: $stage_results"
+cat result.json | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result'
+# echo "stage_results: $stage_results"
 build_result="Unknown"
 
 if printf '%s\0' "${stage_results[@]}" | grep -Fxqz 'failed'; then

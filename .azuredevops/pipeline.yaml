@@ -184,45 +184,6 @@ extends:
           export GIT_COMMIT=$BUILD_SOURCEVERSION
           export BRANCH_NAME=$BUILD_SOURCEBRANCHNAME
           sh github-credentials.sh
-
-          # drop_whitespaces(){
-          #     cat | tr -d "\n" | tr -d ' '
-          # }
-          # drop_git_prefix(){
-          #     cat | sed 's|refs/heads/||g;s|refs/tags/||g;s|/merge||g;s|refs/pull/|PR-|g'
-          # }
-          # find_pull_request_id(){
-          #     cat | grep 'refs/pull/' | sed 's|refs/pull/||g;s|/merge||g'
-          # }
-          
-          # git_default_branch(){
-          #     url=`git config --get remote.origin.url`
-          #     echo -n `git remote show $url | grep 'HEAD branch' | cut -d' ' -f5`
-          # }
-          
-          # ls -l .git/refs/heads/
-          
-          # git_username=$(git config user.name)
-
-          # if [ -n "${git_username}" ]; then
-          #   url=`git config --get remote.origin.url`
-          #   git remote show $url | grep 'HEAD branch'
-          #   echo "##vso[task.setvariable variable=GIT_DEFAULT_BRANCH]$(git_default_branch | drop_whitespaces)"
-          # fi
-
-          # echo "##vso[task.setvariable variable=GIT_URL]$(git config --get remote.origin.url | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=GITHUB_REPO]${BUILD_REPOSITORY_ID}"
-          # echo "##vso[task.setvariable variable=GIT_REPO]$(basename "$(git config --get remote.origin.url)" | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=BRANCH_NAME]$(echo -n "${BUILD_SOURCEBRANCH}" | drop_git_prefix | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=CHANGE_ID]${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}"
-          # echo "##vso[task.setvariable variable=CHANGE_AUTHOR]${BUILD_SOURCEVERSIONAUTHOR}"
-          # echo "##vso[task.setvariable variable=CHANGE_BRANCH]${SYSTEM_PULLREQUEST_SOURCEBRANCH}"
-          # echo "##vso[task.setvariable variable=CHANGE_TARGET]${SYSTEM_PULLREQUEST_TARGETBRANCH}"
-          # echo "##vso[task.setvariable variable=GIT_BRANCH]$(echo -n "${BUILD_SOURCEBRANCH}" | drop_git_prefix | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=GIT_LOCAL_BRANCH]$(echo -n "${BUILD_SOURCEBRANCH}" | drop_git_prefix | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=GIT_COMMIT]$(git rev-parse HEAD | drop_whitespaces)"
-          # echo "##vso[task.setvariable variable=GIT_PREVIOUS_COMMIT]$(git rev-parse HEAD~1 | drop_whitespaces)"  
-          # echo "##vso[task.setvariable variable=DEPENDABOT_PACKAGES]$(cat .azuredevops/dependabot.yml | grep package-ecosystem | cut -d ':' -f2)"
           # env | sort
           export teams_url="https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd"
           sh .azuredevops/teams-notification-custom.sh $teams_url
