@@ -107,7 +107,7 @@ extends:
   parameters:
     name: Output
     pool: openjdk11-azure
-    # teams: https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd
+    teams: https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd
     groups:
       - common
       - artifactory_serv_svc_dawsdev
@@ -181,10 +181,13 @@ extends:
       #     champLoginPassword: $(champLoginPassword)
 
       - script: |
-          sh teams-notification-generic.sh
+          export teams_url="https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd"
+          sh -xv teams-notification-generic.sh $teams_url
 
         displayName: Notification
-        # env:
+        env:
+          ACCESS_TOKEN: $(System.AccessToken)
+
         #   ARTIFACTORY_CREDENTIALS_PSW: $(ARTIFACTORY_CREDENTIALS_PSW)
         #   ARTIFACTORY_CREDENTIALS_USR: $(ARTIFACTORY_CREDENTIALS_USR)
         #   GITHUB_CREDENTIALS_PSW: $(GITHUB_CREDENTIALS_PSW)
