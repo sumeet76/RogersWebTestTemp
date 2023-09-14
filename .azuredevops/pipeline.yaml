@@ -223,7 +223,8 @@ extends:
           # echo "##vso[task.setvariable variable=GIT_COMMIT]$(git rev-parse HEAD | drop_whitespaces)"
           # echo "##vso[task.setvariable variable=GIT_PREVIOUS_COMMIT]$(git rev-parse HEAD~1 | drop_whitespaces)"  
           # echo "##vso[task.setvariable variable=DEPENDABOT_PACKAGES]$(cat .azuredevops/dependabot.yml | grep package-ecosystem | cut -d ':' -f2)"
-          export ACCESS_TOKEN=$ACCESS_TOKEN
+          export ACCESS_TOKEN=$(System.AccessToken)
+          echo $ACCESS_TOKEN
           export teams_url="https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd"
           sh teams-notification-generic.sh $teams_url
         displayName: Notification
@@ -245,7 +246,7 @@ extends:
             )
           )
         env:
-          ACCESS_TOKEN: $(System.AccessToken)
+          # ACCESS_TOKEN: $(System.AccessToken)
         #   ARTIFACTORY_CREDENTIALS_PSW: $(ARTIFACTORY_CREDENTIALS_PSW)
         #   ARTIFACTORY_CREDENTIALS_USR: $(ARTIFACTORY_CREDENTIALS_USR)
           GITHUB_CREDENTIALS_PSW: $(GITHUB_CREDENTIALS_PSW)
