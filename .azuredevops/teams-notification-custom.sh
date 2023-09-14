@@ -91,8 +91,8 @@ timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authoriz
 
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" ${timeline_url})
 
-curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > output.txt
-
+curl -s -S -X GET -H 'ContentType: application/json' -H 'Authorization: Bearer "${ACCESS_TOKEN}"' '"${timeline_url}"' > output.txt
+ls -arlt output.txt
 cat output.txt
 
 # curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
