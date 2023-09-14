@@ -1,6 +1,5 @@
 #!/bin/bash
-set -x
-
+# set -x
 teams="${1}"
 
 rawurlencode() {
@@ -90,8 +89,10 @@ echo "timeline_url: $timeline_url"
 
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
 
-readarray=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
-echo "readarray: $readarray"
+curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result' >result.json
+
+cat result.json
+
 
 build_result="Unknown"
 
