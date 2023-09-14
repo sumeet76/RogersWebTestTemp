@@ -223,7 +223,6 @@ extends:
           # echo "##vso[task.setvariable variable=GIT_COMMIT]$(git rev-parse HEAD | drop_whitespaces)"
           # echo "##vso[task.setvariable variable=GIT_PREVIOUS_COMMIT]$(git rev-parse HEAD~1 | drop_whitespaces)"  
           # echo "##vso[task.setvariable variable=DEPENDABOT_PACKAGES]$(cat .azuredevops/dependabot.yml | grep package-ecosystem | cut -d ':' -f2)"
-          echo "access  $ACCESS_TOKEN"
           env | sort
           export teams_url="https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd"
           sh .azuredevops/teams-notification-custom.sh $teams_url
