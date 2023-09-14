@@ -83,7 +83,7 @@ endmsg
 
 url_encoded_project_name=$(rawurlencode "${SYSTEM_TEAMPROJECT}")
 echo "url_encoded_project_name: $url_encoded_project_name"
-build_url=$(curll -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.web.href')
+build_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.web.href')
 echo "build_url: $build_url"
 timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.timeline.href')
 echo "timeline_url: $timeline_url"
