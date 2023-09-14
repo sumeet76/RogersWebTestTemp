@@ -94,7 +94,7 @@ curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer $
 
 # cat result.json
 
-results=$(cat result.json | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
+results=$(cat result.json | jq -r ".records[] | select(.state==completed and .type==Stage and .identifier!=environment and .identifier!=post) | .result")
 
 echo "results: $results"
 
