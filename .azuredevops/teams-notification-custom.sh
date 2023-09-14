@@ -88,7 +88,9 @@ timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authoriz
 
 echo "timeline_url: $timeline_url"
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
-readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r ".records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result")
+
+readCommand=$(readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result'))
+echo "readCommand: $readCommand"
 
 # curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result.json
 
