@@ -91,13 +91,13 @@ timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authoriz
 
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" ${timeline_url})
 
-curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
+curl -v -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result'
 
-cat result
+# curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
 
-results=$(cat result | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
+# cat result
 
-echo "results: $result"
+
 
 build_result="Unknown"
 
@@ -109,36 +109,36 @@ else
   build_result="Succeeded"
 fi
 
-repo_name=$(echo "${GITHUB_REPO}" | awk -F/ '{print $NF}')
-notification_header="Notification from ${SYSTEM_TEAMPROJECT} » ${BUILD_DEFINITIONNAME} » ${repo_name} » ${BUILD_SOURCEBRANCHNAME} » ${BUILD_BUILDNUMBER} (${BUILD_REASON})"
-commit_url="https://github.com/${GITHUB_REPO}/commit/${BUILD_SOURCEVERSION}" 
+# repo_name=$(echo "${GITHUB_REPO}" | awk -F/ '{print $NF}')
+# notification_header="Notification from ${SYSTEM_TEAMPROJECT} » ${BUILD_DEFINITIONNAME} » ${repo_name} » ${BUILD_SOURCEBRANCHNAME} » ${BUILD_BUILDNUMBER} (${BUILD_REASON})"
+# commit_url="https://github.com/${GITHUB_REPO}/commit/${BUILD_SOURCEVERSION}" 
 
-jq -r --arg value "${CHANGE_AUTHOR}"              '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Commit Author")  .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
-jq -r --arg value "${BUILD_SOURCEVERSIONMESSAGE}" '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Commit Message") .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
-jq -r --arg value "${build_result}"               '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Status")         .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${CHANGE_AUTHOR}"              '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Commit Author")  .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${BUILD_SOURCEVERSIONMESSAGE}" '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Commit Message") .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${build_result}"               '(.attachments | .[].content.body | .[] | select(.type=="FactSet") | .facts | .[] | select(.title=="Status")         .value) = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
 
-jq -r --arg value "${notification_header}"        '(.attachments | .[].content.body | .[] | select(.text=="notification_header") .text)                                        = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${notification_header}"        '(.attachments | .[].content.body | .[] | select(.text=="notification_header") .text)                                        = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
 
-jq -r --arg value "${commit_url}"                 '(.attachments | .[].content.actions | .[] | select(.title=="View Commit") .url)                                             = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
-jq -r --arg value "${build_url}"                  '(.attachments | .[].content.actions | .[] | select(.title=="View Build")  .url)                                             = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${commit_url}"                 '(.attachments | .[].content.actions | .[] | select(.title=="View Commit") .url)                                             = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
+# jq -r --arg value "${build_url}"                  '(.attachments | .[].content.actions | .[] | select(.title=="View Build")  .url)                                             = $value' "${filename}.json" > "${filename}.tmp" && mv "${filename}.tmp" "${filename}.json"
 
-urls="${teams}"
+# urls="${teams}"
 
-if [ ! -z "${urls}" ]; then
-  if [[ ! "${urls}" =~ ['|'] ]]; then
-    urls=$(
-      echo "${urls}" \
-        | tr '\n' '|'             `# make it one line, pipe separated        ` \
-        | sed 's/^/|/g'           `# add the extra pipe up front             `
-    )
-  fi
+# if [ ! -z "${urls}" ]; then
+#   if [[ ! "${urls}" =~ ['|'] ]]; then
+#     urls=$(
+#       echo "${urls}" \
+#         | tr '\n' '|'             `# make it one line, pipe separated        ` \
+#         | sed 's/^/|/g'           `# add the extra pipe up front             `
+#     )
+#   fi
 
-  IFS='|' read -r -a urls_array <<< "${urls}"
+#   IFS='|' read -r -a urls_array <<< "${urls}"
 
-  for url in "${urls_array[@]}"; do
-    if [ ! -z "${url}" ]; then
-      curl -X POST -H "Content-Type: application/json" -d @"${filename}.json" "${url}"
-    fi
-  done
-fi
+#   for url in "${urls_array[@]}"; do
+#     if [ ! -z "${url}" ]; then
+#       curl -X POST -H "Content-Type: application/json" -d @"${filename}.json" "${url}"
+#     fi
+#   done
+# fi
 
