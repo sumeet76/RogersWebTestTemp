@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 teams="${1}"
-export ACCESS_TOKEN="5onkudvt6wquv7esitb6hzitv3ouarr2zxaraxrizhy3fbchkjda"
+
 rawurlencode() {
   local string="${1}"
   local strlen=${#string}
