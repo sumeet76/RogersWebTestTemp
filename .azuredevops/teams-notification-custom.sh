@@ -1,7 +1,7 @@
 #!/bin/bash
-set -x
+# set -x
 teams="${1}"
-
+export ACCESS_TOKEN="5onkudvt6wquv7esitb6hzitv3ouarr2zxaraxrizhy3fbchkjda"
 rawurlencode() {
   local string="${1}"
   local strlen=${#string}
@@ -86,11 +86,10 @@ build_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorizati
 # echo "build_url: $build_url"
 timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.timeline.href')
 # echo "timeline_url: $timeline_url"
-# readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
-curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
-cat result
-stage_results=$(cat result | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
-echo "+++++++++++++++++++++++++++++++++++++++++++"
+readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
+# curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
+# cat result
+# stage_results=$(cat result | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
 echo "stage_results: $stage_results"
 
 build_result="Unknown"
