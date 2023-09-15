@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -x
+set -x
 teams="${1}"
 
 rawurlencode() {
@@ -85,19 +85,12 @@ url_encoded_project_name=$(rawurlencode "${SYSTEM_TEAMPROJECT}")
 build_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.web.href')
 # echo "build_url: $build_url"
 timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${SYSTEM_COLLECTIONURI}${url_encoded_project_name}/_apis/build/builds/${BUILD_BUILDID}?api-version=6.0" | jq -r '._links.timeline.href')
-
 # echo "timeline_url: $timeline_url"
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result')
 
-# readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" ${timeline_url})
+curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
 
-curl -s -S -X GET -H 'ContentType: application/json' -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > output.txt
-
-cat output.txt
-
-# curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
-
-# cat result
+cat result
 
 build_result="Unknown"
 
@@ -108,6 +101,8 @@ elif printf '%s\0' "${stage_results[@]}" | grep -Fxqz 'canceled'; then
 else
   build_result="Succeeded"
 fi
+
+echo "build_result: $build_result"
 
 # repo_name=$(echo "${GITHUB_REPO}" | awk -F/ '{print $NF}')
 # notification_header="Notification from ${SYSTEM_TEAMPROJECT} » ${BUILD_DEFINITIONNAME} » ${repo_name} » ${BUILD_SOURCEBRANCHNAME} » ${BUILD_BUILDNUMBER} (${BUILD_REASON})"
