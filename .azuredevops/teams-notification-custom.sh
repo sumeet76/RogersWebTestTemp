@@ -91,8 +91,9 @@ timeline_url=$(curl -s -S -X GET -H "ContentType: application/json" -H "Authoriz
 
 # readarray -t stage_results < <(curl -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" ${timeline_url})
 
-curl -s -S -X GET -H 'ContentType: application/json' -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > output.txt
-ls -arlt output.txt
+curl -s -S -X GET -H 'ContentType: application/json' -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" | jq -r '.records[] | select(.state=="completed" and .type=="Stage" and .identifier!="environment" and .identifier!="post") | .result' > output.txt
+ls -arlt .
+
 cat output.txt
 
 # curl -s -S -X GET -H "ContentType: application/json" -H "Authorization: Bearer ${ACCESS_TOKEN}" "${timeline_url}" > result
