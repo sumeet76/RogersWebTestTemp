@@ -92,10 +92,6 @@ parameters:
     displayName: url Link
     type: string
     default: NULL
-  # - name: reports
-  #   displayName: Report URL
-  #   type: string
-  #   default: "https://qa1.rogers.com/Digital-QE/report/RogersWebTestAutomation/results.html"
 
 # schedules:
 #   - cron: '40 17 * * Mon-Fri'
