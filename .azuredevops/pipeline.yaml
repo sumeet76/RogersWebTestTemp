@@ -93,15 +93,15 @@ parameters:
     type: string
     default: NULL
 
-schedules:
-  - cron: '40 17 * * Mon-Fri'
-    displayName: Scheduled Work Day Daily
-    always: true
-    batch: true
-    branches:
-      include:
-        - ado-migration
-        -
+#schedules:
+#  - cron: '40 17 * * Mon-Fri'
+#    displayName: Scheduled Work Day Daily
+#    always: true
+#    batch: true
+#    branches:
+#      include:
+#        - ado-migration
+#        -
 extends:
   template: generic-utility-1.yml@shared
   parameters:
