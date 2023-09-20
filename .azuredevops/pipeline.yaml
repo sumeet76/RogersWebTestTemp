@@ -32,10 +32,6 @@ parameters:
     displayName: Groups names separated by comma
     type: string
     default: SanityCH
-  - name: TestProfile
-    displayName: Only used for reporting - has no impact on test runs
-    type: string
-    default: Profile1
   - name: IndividualTests
     displayName: Individual tests to be passed as Test1 Test2 Test3 Test4 and so on
     type: string
@@ -108,7 +104,8 @@ extends:
     name: Output
     pool: openjdk11-azure
     teams: https://rcirogers.webhook.office.com/webhookb2/e3556c59-ec6f-42ad-b0e7-7e48d22625f9@0ab4cbbf-4bc7-4826-b52c-a14fed5286b9/IncomingWebhook/c1d14a56b09d4f7d859f607318cbefef/7ddb6f8f-d5ee-4b6c-b03e-fa40f0240dbd
-    reports: "https://qa1.rogers.com/Digital-QE/report/"
+    TestProfile: profile2
+    reports: "https://qa1.rogers.com/Digital-QE/report"
     groups:
       - common
       - artifactory_serv_svc_dawsdev
