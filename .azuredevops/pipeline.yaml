@@ -9,8 +9,8 @@ resources:
       name: RogersCommunications/enterprise-ado-pipelines
       ref: refs/heads/test-notification
 
-# trigger: none
-# pr: none
+trigger: none
+pr: none
 
 parameters:
   - name: Browser
