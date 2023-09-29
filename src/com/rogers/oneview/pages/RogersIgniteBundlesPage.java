@@ -119,7 +119,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[text()='Yes, keep number' or text()='Oui, garder mon numéro']/ancestor::button")
 	WebElement btnKeepNumber;
 
-	@FindBy(xpath = "//span[text()='I have reviewed the customer’s add-ons.' or text()='J’ai passé en revue les options du client.']")
+	@FindBy(xpath = "//span[text()=' I have reviewed the customer’s add-ons. ' or text()=' J’ai passé en revue les options du client. ']")
 	WebElement customerAddonReveiwLink;
 
 	@FindBy(xpath = "//span[text()='Non, choisir un nouveau numéro' or text()='No, select new number']/ancestor::button")
@@ -281,7 +281,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement yesButton;
 
 
-	@FindBy(xpath = "//div[@translate='global.modals.serviceability.moveMigrationNotSupported']")
+	@FindBy(xpath = "//p[contains(text(),'Move migration orders cannot be processed via Oneview')]")
 	WebElement verifyMoveMigrationNotSupported;
 
 	@FindBy(xpath = "//*[@id='ds-modal-container-1']/descendant::div[@class='input-search']")
@@ -322,7 +322,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement removeButton;
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
-	WebElement smartHomeMonitoring ;
+	WebElement smartHomeMonitoring;
+
 
 	@FindBy(xpath="//div[text()=' Home Security ' or text()=' Sécurité résidentielle ']")
 	WebElement homeSecurity ;
@@ -348,7 +349,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//*[@translate='global.label.oneTimeHeader']")
 	WebElement oneTimeCharges;
 
-	@FindBy(xpath = "//h1[contains(text(),'Options du Système de domotique Rogers') or contains(text(),'Ignite Home Security Add-ons')]")
+	@FindBy(xpath = "//h1[contains(text(),'Options') or contains(text(),'Ignite Home Security Add-ons')]")
 	WebElement smartHomeAddOnsPageH1;
 
 	@FindBy(xpath = "(//span[text()='Ignite Doorbell Camera' or text()='Caméra de sonnette Élan']//parent::div/parent::div/parent::div//child::button)[1]")
@@ -611,7 +612,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		WebElement packageAddToCart = getDriver().findElement(By.xpath(packageAddToCartXpath));
 		WebElement packageElement = getDriver().findElement(By.xpath(packageXpath));
 
-		getReusableActionsInstance().waitForElementVisibility(packageElement,90);
+		getReusableActionsInstance().waitForElementVisibility(packageElement,120);
 		getReusableActionsInstance().scrollToElement(packageElement);
 
 		getReusableActionsInstance().waitForElementVisibility(packageAddToCart,120);

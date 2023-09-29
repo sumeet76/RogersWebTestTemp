@@ -25,11 +25,8 @@ gradlew.bat
 fido_property.dat
 .idea/
 *.iml
-<<<<<<< HEAD
 /build/
 *.prefs
 *.zip
 *.class
-=======
-/build/
->>>>>>> master
+!.azuredevops

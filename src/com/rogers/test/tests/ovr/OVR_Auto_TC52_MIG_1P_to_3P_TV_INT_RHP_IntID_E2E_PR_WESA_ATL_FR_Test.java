@@ -39,6 +39,7 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Service Availability");
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");
@@ -69,6 +70,7 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         //reporter.reportLogWithScreenshot("Continue to Channel Personalization page");
         //getRogersIgniteBundlesPage().clickExchangeLater();
         reporter.reportLogWithScreenshot("Channels and theme packs page");
+        getRogersIgniteBundlesPage().clkCustomerAddonReview();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("4k tv pop up");
         getRogersIgniteBundlesPage().fourKTVPopup();
@@ -112,7 +114,7 @@ public class OVR_Auto_TC52_MIG_1P_to_3P_TV_INT_RHP_IntID_E2E_PR_WESA_ATL_FR_Test
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
         reporter.reportLogWithScreenshot("Generate Phone Number");
         getCreditCheckPage().goToPageBottom();
-        //getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
         reporter.reportLogWithScreenshot("continue from generate phone number");
 
         reporter.reportLogWithScreenshot("Continue to install options  page");
