@@ -25,7 +25,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","POM","DP"})
-    public void tc15_pomRogersAalTermBopisTest() {
+    public void tc15_POMRegularPromoMSF_RogersAALUpfrontEdgeTermMedium_DPExpressTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

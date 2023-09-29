@@ -24,7 +24,7 @@ public class RogersBFA_TC46_SOHO_PPC_ML_SE_PPCOnAdditionalLine_BYODPlanToDTTPlan
     }
 
     @Test(groups = {"RegressionBFA","SOHOPPC","SOHO"})
-    public void tc46_sohoPPC_ML_SE_BYODPlanToDTTPlanOnAdditionalLine() {
+    public void tc46_SOHOPPC_ML_SE_BYODPlanToDTTPlanOnAdditionalLine() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

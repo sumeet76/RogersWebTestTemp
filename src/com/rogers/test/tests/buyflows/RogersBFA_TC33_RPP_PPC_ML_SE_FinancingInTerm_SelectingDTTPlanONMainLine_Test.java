@@ -24,7 +24,7 @@ public class RogersBFA_TC33_RPP_PPC_ML_SE_FinancingInTerm_SelectingDTTPlanONMain
     }
 
     @Test(groups = {"RegressionBFA","PPCRPP","RPPBFA"})
-    public void tc33_rogersPPC_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
+    public void tc33_RogersPPC_ML_SE_FinancingInTerm_SelectingDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

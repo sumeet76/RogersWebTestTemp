@@ -24,7 +24,7 @@ public class RogersBFA_TC31_RPP_AAL_BYOD_StdShipping_DP_Test extends BaseTestCla
     }
 
     @Test(groups = {"RegressionBFA","RPPAAL","DPBYOD","RPPBFA"})
-    public void tc31_rogersRPPAalByodStdShipTest() {
+    public void tc31_RogersRPPAALBYODStdShipDPTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

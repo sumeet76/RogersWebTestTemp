@@ -14,10 +14,10 @@ import java.lang.reflect.Method;
  * TC40 - Regression - SOHO HUP-E2E-SL Non Shared-Validate the HUP by selecting Keep current plan with BOPIS shipping_Chrome_EN_ON
  * @author praveen.kumar7
  */
-public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_BOPIS_Test extends BaseTestClass{
+public class RogersBFA_TC40_SOHO_SL_NSE_MediumRisk_HUP_KEP_Financing_Express_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","SOHOHUPBFA","SOHO"})
-        public void tc40_sohoHUP_NS_MediumRisk_KeepCurrentPlanSL_BOPIS_Test() {
+        public void tc40_SOHOHUP_NonSharedSL_MediumRisk_KeepCurrentPlanFin_Express_Test() {
 
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");

@@ -207,7 +207,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(@data-test,'stepper-2-completed')]/following-sibling::div//p")
     WebElement planData;
 
-    @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']")
+    @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']/label")
     WebElement vdpCheckBox;
 
     @FindAll({
@@ -289,8 +289,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement promoSection;
 
     @FindAll({
-    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/ancestor::ds-form-field"),
-    @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']")
+            @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/parent::div"),
+            @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']/div")
     })
     WebElement promoCodeField;
 
@@ -1506,6 +1506,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clkPromoSection() {
         getReusableActionsInstance().waitForElementVisibility(promoSection, 20);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(promoSection);
         getReusableActionsInstance().clickWhenVisible(promoSection);
     }
 
@@ -1547,7 +1548,6 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg);
         getReusableActionsInstance().clickWhenReady(continueBtnPromo);
     }
-
 
     /**
      * Validates the Line Item of the Promotion in cart summary

@@ -24,7 +24,7 @@ public class RogersBFA_TC32_RPP_PPC_SL_FinInTerm_selectingBYOD_DowngradeFee_Test
     }
 
     @Test(groups = {"RegressionBFA","PPCRPP","RPPBFA"})
-    public void tc32_rogersRPP_PPC_SL_FINInTerm_BYODPlan_DowngradeFeeTest() {
+    public void tc32_RogersRPP_PPC_SL_FINInTerm_BYODPlan_DowngradeFeeTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

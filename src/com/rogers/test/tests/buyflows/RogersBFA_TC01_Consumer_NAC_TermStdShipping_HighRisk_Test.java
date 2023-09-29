@@ -10,13 +10,12 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TC01 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(Finance plan with Non POTG)_E2E
  */
 
-public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_Test extends BaseTestClass {
+public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})
-    public void tc01_rogersNACTermHighRiskSSTest() throws InterruptedException {
+    public void tc01_RogersNACTermFinHighRiskSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         String deviceName=TestDataHandler.tc01NACTermHighRiskStdShipping.getDeviceName();

@@ -29,7 +29,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 	}
 
 	@Test(groups = {"RegressionBFA","RPPBFA","SanityNACBFA"})
-	public void tc29_RPP_NACBYOD_QCProvinceTest() throws InterruptedException {
+	public void tc29_RPPNACBYOD_QCProvinceStdShippingTest() throws InterruptedException {
 		//############################Plan config page###############################
 
 		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod&province=QC&type=rpp");

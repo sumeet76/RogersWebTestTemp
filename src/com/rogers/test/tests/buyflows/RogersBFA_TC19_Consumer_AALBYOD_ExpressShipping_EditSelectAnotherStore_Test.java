@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherStore_Test extends BaseTestClass {
+public class RogersBFA_TC19_Consumer_AALBYOD_ExpressShipping_EditSelectAnotherStore_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA","SUB"})
-    public void tc19_rogersAalByodBopisTest() {
+    public void tc19_RogersAALBYODExpressEditStoreTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

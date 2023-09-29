@@ -4,7 +4,6 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -15,7 +14,7 @@ import java.lang.reflect.Method;
  * TC02 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(No Term plan)_E2E
  */
 
-public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShipping_Test extends BaseTestClass {
+public class RogersBFA_TC02_Consumer_NAC_NoTerm_PortIn_StandardShipping_Test extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc02_rogersNACNoTermPortInStdShippingTest() throws InterruptedException {
+	public void tc02_RogersNACNoTermPortInStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 

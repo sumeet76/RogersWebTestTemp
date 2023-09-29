@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC36_RPP_ML_SE_HUPOnAdditionalLine_KEP_Financing_BOPIS_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","RPPBFA"})
-    public void tc36_rppHUP_ML_SE_HUPOnAdditionaLineByKEP_BOPIS_Test() {
+    public void tc36_RPPHUP_ML_SE_HUPOnAdditionalLineByKEPFIN_BOPIS_Test() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();

@@ -14,10 +14,10 @@ import java.lang.reflect.Method;
  * TC43 - Regression - SOHO HUP-E2E-SL Shared - Validate the HUP flow by selecting the Noterm cost option_Chrome_EN_ON
  * @author praveen.kumar7
  */
-public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_KEP_StdShip_Test extends BaseTestClass{
+public class RogersBFA_TC43_SOHO_SL_SE_HUP_NOTERM_StdShip_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","SOHOHUPBFA","SOHO"})
-        public void tc43_sohoHU_SL_SE_HUP_NOTERM_KEP_StdShip_Test() {
+        public void tc43_SOHOHUP_SLSE_HUP_NOTERM_StdShip_Test() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();

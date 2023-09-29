@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
-        public void tc13_rogersTabletHUPFinMLSEStandardShippingTest() {
+        public void tc13_RogersTabletHUPFinMLSEStdShippingTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();

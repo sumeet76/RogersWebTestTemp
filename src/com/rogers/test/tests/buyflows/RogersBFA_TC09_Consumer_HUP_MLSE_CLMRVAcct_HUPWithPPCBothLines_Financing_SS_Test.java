@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC09_Consumer_HUP_MLSE_CLMRVAcct_HUPWithPPCBothLines_Financing_SS_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","HUPBFA"})
-    public void tc09_rogersHUPCLMMLTest() {
+    public void tc09_RogersMLRVHUPCLMPPCBothLines_StdTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();

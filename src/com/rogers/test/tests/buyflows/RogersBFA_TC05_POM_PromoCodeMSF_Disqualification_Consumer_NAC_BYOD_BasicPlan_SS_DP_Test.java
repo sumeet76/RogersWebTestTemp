@@ -28,7 +28,7 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","DPBYOD"})
-	public void tc05_pomrogersNacByodDPStdShippingTest() throws InterruptedException {
+	public void tc05_POMPromoCodeMSF_RogersNacBYODDP_SSTest() throws InterruptedException {
 		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		// ***************************Promo Section************************************

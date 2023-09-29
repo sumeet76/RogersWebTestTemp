@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 /**
  * TC06 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Express Pickup Shipping - BOPIS_E2E
  */
-public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
+public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc06_rogersNACBYODBopisTest() throws InterruptedException {
+	public void tc06_RogersNACBYODExpressShippingTest() throws InterruptedException {
 //############################Plan config page###############################
 //		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");

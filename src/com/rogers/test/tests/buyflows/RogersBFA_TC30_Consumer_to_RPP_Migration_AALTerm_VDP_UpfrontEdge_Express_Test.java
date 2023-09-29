@@ -9,14 +9,13 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * TC30 - RPP_AAL TERM_Share Everything_Selecting Upfront edge cost option, Voluntary Down payment and BOPIS shipping
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bopis_Test extends BaseTestClass {
+public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Express_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Bo
     }
 
     @Test(groups = {"RegressionBFA","RPPAAL","RPPBFA"})
-    public void tc30_ConToRPP_AALTerm_VDP_UpfronEdge_BopisTest() {
+    public void tc30_ConToRPP_AALTerm_VDP_UpfronEdgeExpressTest() {
         //reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

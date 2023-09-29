@@ -160,7 +160,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']")
     WebElement provinceDropDown;
 
-    @FindBy(xpath = "//ds-form-field[@data-test='rpp-passcode']")
+    @FindBy(xpath = "//input[@formcontrolname='passCode']/parent::div")
     WebElement frmFieldRppPasscode;
 
     @FindBy(xpath = "//input[@formcontrolname='passCode']")

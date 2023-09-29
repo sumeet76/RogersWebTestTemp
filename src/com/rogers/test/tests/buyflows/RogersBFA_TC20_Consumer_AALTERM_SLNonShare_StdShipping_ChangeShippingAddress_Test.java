@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_ChangeAddress_Test extends BaseTestClass {
+public class RogersBFA_TC20_Consumer_AALTERM_SLNonShare_StdShipping_ChangeShippingAddress_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
     }
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void tc20_rogersAalTermSLNonSEBasicPlanSSTest() {
+    public void tc20_RogersAALTermSLNonSharedStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
