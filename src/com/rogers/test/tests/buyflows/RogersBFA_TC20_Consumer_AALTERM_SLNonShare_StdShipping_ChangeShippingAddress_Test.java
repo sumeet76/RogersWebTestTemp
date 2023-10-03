@@ -110,6 +110,8 @@ public class RogersBFA_TC20_Consumer_AALTERM_SLNonShare_StdShipping_ChangeShippi
         reporter.reportLog("CheckoutpageCartSummaryInfo"+"1.TotalMonthlyFees"+totalMonthlyFeesCheckout
                 +"2.oneTimeFee"+oneTimeFeeCheckout);
         //getRogersCheckoutPage().clkNoThanks();
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

@@ -103,7 +103,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@formcontrolname='lastName']")
     WebElement setLastName;
 
-    @FindBy(xpath = "//button[contains(@data-test,'stepper-5')]")
+    @FindAll({
+            @FindBy(xpath = "//button[contains(@data-test,'stepper-6')]"),
+            @FindBy(xpath = "//button[@data-test='caller-id-continue']")
+
+    })
     WebElement continueCallerID;
 
     @FindBy(xpath = "//div[contains(@class,'ds-step__content ds-border-bottom ds-brcolor-concrete p-16 p-md-24 ds-bgcolor-misty')]//button[contains(@class,'primary -large')]")

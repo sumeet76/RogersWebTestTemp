@@ -96,6 +96,8 @@ public class RogersBFA_TC16_Consumer_AALTERMFinPlan_ExpressShipping_Test extends
         String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
                 + " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

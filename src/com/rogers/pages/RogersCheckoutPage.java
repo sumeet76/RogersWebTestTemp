@@ -479,6 +479,12 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[4]")
 	WebElement selectAnotherPhoneNumber;
 
+	@FindBy(xpath = "//button[@data-test='activation-options-continue']")
+	WebElement saveAndContinueBtnCheckoutPage;
+
+	@FindBy(xpath = "//*[contains(text(),'Upon order fulfillment')]/ancestor::ds-radio-button")
+	WebElement UponOrdrFulfillmentRadioBtnCheckoutPage;
+
 	/**
 	 * To get the Title of post checkout page
 	 * @return checkoutTitle
@@ -1787,6 +1793,15 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDpAddonPage(){
 		return getReusableActionsInstance().isElementVisible(dpAddonPageTitle,10);
+	}
+
+	public void clksaveAndContinueBtnCheckoutPage(){
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().waitForElementTobeClickable(UponOrdrFulfillmentRadioBtnCheckoutPage,40);
+		getReusableActionsInstance().scrollToElement(UponOrdrFulfillmentRadioBtnCheckoutPage);
+		getReusableActionsInstance().executeJavaScriptClick(UponOrdrFulfillmentRadioBtnCheckoutPage);
+		getReusableActionsInstance().getWhenReady(saveAndContinueBtnCheckoutPage,30);
+		getReusableActionsInstance().executeJavaScriptClick(saveAndContinueBtnCheckoutPage);
 	}
 }
 
