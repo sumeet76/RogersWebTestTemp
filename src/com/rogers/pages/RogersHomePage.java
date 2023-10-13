@@ -1023,11 +1023,12 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
 		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
-		try{
-			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+		getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath), 20);
+		try {
+			getReusableActionsInstance().clickWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 20);
 
-		}catch (Exception e){
-			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
+		} catch (Exception e) {
+			getReusableActionsInstance().clickWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10);
 		}
 	}
 
