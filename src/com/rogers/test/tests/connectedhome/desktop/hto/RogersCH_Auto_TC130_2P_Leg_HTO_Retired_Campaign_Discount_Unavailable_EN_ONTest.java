@@ -20,19 +20,19 @@ import java.lang.reflect.Method;
  * <p>
  * 1. Launch Rogers.com Home Page
  * 2. Sign in with 2p legacy Cx profile (with HTO)
- * 4. Close the New Offer Modal if displayed
- * 5. Verify Special Offer badge on AO page
- * 6. Click on Special Offer badge
- * 7. Validate promo page is loaded successfully
- * 8. Verify current and promotional bundle prices
- * 9. Verify the promo price is NOT struck out
- * 8. Verify there are no discounts in Promotions & Discounts section
- * 9. Click on I want this upgrade checkbox
- * 10. Click on review your upgrade
- * 10. Verify Order Review page is launched successfully
- * 11. Validate the discount section is not appeared on Review page
- * 12. Validate discounts not appeared in monthly charges
- * 13. Match Offer prices on promo and order review page
+ * 3. Close the New Offer Modal if displayed
+ * 4. Verify Special Offer badge on AO page
+ * 5. Click on Special Offer badge
+ * 6. Validate promo page is loaded successfully
+ * 7. Verify current and promotional bundle prices
+ * 8. Verify the promo price is NOT struck out
+ * 9. Verify there are no discounts in Promotions & Discounts section
+ * 10. Click on I want this upgrade checkbox
+ * 11. Click on review your upgrade
+ * 12. Verify Order Review page is launched successfully
+ * 13. Validate the discount section is not appeared on Review page
+ * 14. Validate discounts not appeared in monthly charges
+ * 15. Match Offer prices on promo and order review page
  *
  **/
 
@@ -41,9 +41,9 @@ public class RogersCH_Auto_TC130_2P_Leg_HTO_Retired_Campaign_Discount_Unavailabl
     public void rogersCH_Auto_TC130_2P_Leg_HTO_Retired_Campaign_Discount_Unavailable_EN_ON() {
 
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");

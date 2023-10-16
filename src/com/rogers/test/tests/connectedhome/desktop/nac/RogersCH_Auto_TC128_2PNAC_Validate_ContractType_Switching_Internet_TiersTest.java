@@ -52,7 +52,7 @@ public class RogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_
         getRogersIgniteTVBuyPage().selectInternetSpeedStarterPack(" 500 Mbps ");
         reporter.reportLogWithScreenshot("Selected 500Mbps Internet Speed for Starter Pack");
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().validateIfContractTypeIsDisabled(),"Bundles Page has launched", "Bundles Page has not launched");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateIfContractTypeIsDisabled(),"Contract Type dropdown is greyed out", "Contract Type dropdown is NOT greyed out");
         reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers("Ignite Starter"), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Ignite Starter Pack Added to cart");

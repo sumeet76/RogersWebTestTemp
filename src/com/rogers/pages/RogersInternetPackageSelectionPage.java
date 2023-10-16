@@ -320,7 +320,7 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	}
 
 	public void clkInternetPackage() {
-		getReusableActionsInstance().getWhenReady(btnInternetPackage, 120).click();
+		getReusableActionsInstance().clickWhenReady(btnInternetPackage, 120);
 	}
 
 	public void clkInternet2d5Package() {

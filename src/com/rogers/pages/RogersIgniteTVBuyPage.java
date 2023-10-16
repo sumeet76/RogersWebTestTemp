@@ -642,7 +642,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnStarterPackageTypeOfContract,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@id='ds-form-input-id-1']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
@@ -651,8 +651,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * @author Nandan.Master
 	 */
 	public Boolean validateIfContractTypeIsDisabled() {
-		getReusableActionsInstance().getWhenReady(drpdwnDisabledStarterPackageTypeOfContract, 40);
-		return getReusableActionsInstance().isElementVisible(drpdwnDisabledStarterPackageTypeOfContract);
+		return getReusableActionsInstance().isElementVisible(drpdwnDisabledStarterPackageTypeOfContract, 60);
 	}
 
 	/**

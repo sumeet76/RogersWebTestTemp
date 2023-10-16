@@ -55,7 +55,7 @@ public class TestDataHandler {
 	public static AccountData tc99_3PCxInternetAccount;
 	public static AccountData tc100_SAIonlyAccount;
 	public static AccountData tc101_2P_HTO_HotCableAccount;
-	public static AccountData tc102_2P_HTO_ColdCableAccount;
+	public static AccountData tc130_2P_Leg_HTO_RetiredCampaign;
 	public static AccountData tc108_2PLeg_3PIgnite_otbc;
 	public static AccountData tc109_1P_HTO_DOCSIS;
 	public static AccountData tc112_3P_HTO_RecommendedOffer;
@@ -510,7 +510,7 @@ public class TestDataHandler {
 		tc89_2PMigrationGPON = YamlHandler.getCableAccountData("TC89_2PMigrationGPON");
 		tc90_1P_HTO_GPON_DualTopology = YamlHandler.getCableAccountData("TC90_1P_HTO_GPON_DualTopology");
 		tc101_2P_HTO_HotCableAccount = YamlHandler.getCableAccountData("TC101_2P_HTO_HotCable");
-		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
+		tc130_2P_Leg_HTO_RetiredCampaign = YamlHandler.getCableAccountData("TC130_2P_Leg_HTO_RetiredCampaign");
 		tc108_2PLeg_3PIgnite_otbc = YamlHandler.getCableAccountData("TC108_2PLeg_3PIgnite_OTBC");
 		tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
 		tc112_3P_HTO_RecommendedOffer = YamlHandler.getCableAccountData("TC112_3P_HTO_Recommended");
