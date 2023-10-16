@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
 
 public class RogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_TiersTest extends BaseTestClass {
 
-    @Test(groups = {"RegressionCH"})
+    @Test
     public void rogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_Tiers() throws InterruptedException {
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
         getDriver().get(System.getProperty("QaUrl") + "/bundles");

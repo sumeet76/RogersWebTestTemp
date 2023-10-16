@@ -15,14 +15,14 @@ import java.lang.reflect.Method;
  * fulfillment_legal text_One-time fee_Offer page_unified checkout_order confirmation_ON_CH_EN
  *
  * @author nandan.master
- *
+ * <p>
  * Test steps:
- *
+ * <p>
  * 1. Launch Rogers.com Home Page
  * 2. Sign in with 2p legacy Cx profile (with HTO)
  * 4. Close the New Offer Modal if displayed
  * 5. Verify Special Offer badge on AO page
- * 6. Click on special offer badge
+ * 6. Click on Special Offer badge
  * 7. Validate promo page is loaded successfully
  * 8. Verify current and promotional bundle prices
  * 9. Verify the promo price is NOT struck out
