@@ -23,7 +23,7 @@ public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_D_To_D_Flow_Corp_EN_ON_Tes
 
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_Auto_TC70_ChangePackage_IPTV_to_IPTV_Corp_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp("ChampTest18.User18@trci.trogers.ca", "RAMP@379");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
@@ -31,7 +31,7 @@ public class OVR_Auto_TC70_ChangePackage_IPTV_to_IPTV_D_To_D_Flow_Corp_EN_ON_Tes
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getBanNumber(), TestDataHandler.tc_35_DashboardValidation_Ignite_3P.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_70_Ovr_ChangePackage_Data.getBanNumber(), TestDataHandler.tc_70_Ovr_ChangePackage_Data.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("Proceed to Account Overview Page");
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 

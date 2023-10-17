@@ -157,7 +157,7 @@ public class OvrDashboardPage extends BasePageClass {
     public void openFooter() {
         getReusableActionsInstance().waitForPageLoad();
         getReusableActionsInstance().getWhenVisible(lnkExpandFooter).click();
-        getReusableActionsInstance().staticWait(5000);
+        getReusableActionsInstance().staticWait(3000);
     }
 
     public void closeFooter(){
@@ -191,14 +191,18 @@ public class OvrDashboardPage extends BasePageClass {
         getReusableActionsInstance().waitForPageLoad();
     }
 
-    public String openFidoTradeTool(){
+    public void openFidoTradeTool(){
         openFooter ();
-        String currentWindow = getDriver().getWindowHandle();
+        int numberOfWindows = getDriver().getWindowHandles().size();
         getReusableActionsInstance().getWhenVisible(fidoTradeTool).click();
+        getReusableActionsInstance().waitForNumberOfWindowsToBe(numberOfWindows + 1);
         getReusableActionsInstance().switchToNewWindow();
-        getReusableActionsInstance().staticWait(5000);
-        return currentWindow;
+        //getReusableActionsInstance().staticWait(5000);
+    }
 
+    public String getCurrentWindowHandle(){
+        getReusableActionsInstance().waitForPageLoad();
+        return getDriver().getWindowHandle();
     }
 
 
@@ -217,10 +221,23 @@ public class OvrDashboardPage extends BasePageClass {
 
     public String openLink(String linkText){
         String currentWindow = getDriver().getWindowHandle();
+        int numberOfWindows = getDriver().getWindowHandles().size();
         String linkXpath = "//t[text()='"+linkText+"']//parent::a";
         WebElement linkElement = getDriver().findElement(By.xpath(linkXpath));
         getReusableActionsInstance().getWhenVisible(linkElement).click();
-        getReusableActionsInstance().waitForNumberOfWindowsToBe(2);
+        getReusableActionsInstance().waitForNumberOfWindowsToBe(numberOfWindows + 1);
+        getReusableActionsInstance().switchToNewWindow();
+        getReusableActionsInstance().staticWait(5000);
+        return currentWindow;
+    }
+
+    public String openRogersLink(String linkText){
+        String currentWindow = getDriver().getWindowHandle();
+        int numberOfWindows = getDriver().getWindowHandles().size();
+        String linkXpath = "//a[text()='"+linkText+"']";
+        WebElement linkElement = getDriver().findElement(By.xpath(linkXpath));
+        getReusableActionsInstance().getWhenVisible(linkElement).click();
+        getReusableActionsInstance().waitForNumberOfWindowsToBe(numberOfWindows + 1);
         getReusableActionsInstance().switchToNewWindow();
         getReusableActionsInstance().staticWait(5000);
         return currentWindow;

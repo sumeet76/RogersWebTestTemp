@@ -53,13 +53,13 @@ public class TVDashboardPage  extends BasePageClass {
 	@FindBy(xpath = "//i[@class='li-loader']")
 	WebElement popupLoadingFinger;
 
-	@FindBy(xpath = "//div[@class='header']")
+	@FindBy(xpath = "//div[@class='header self-serve-header']")
 	WebElement icnHeader;
 
 	@FindBy(xpath = "//h1[@translate='global.label.tv']")
 	WebElement TvLabel;
 
-	@FindBy(xpath = "//div[@class='header']")
+	@FindBy(xpath = "//div[@class='footer']")
 	WebElement icnFooter;
 
 	@FindBy(xpath = "//span[text()='Back to Overview' or text()='Retourner à l’aperçu']")

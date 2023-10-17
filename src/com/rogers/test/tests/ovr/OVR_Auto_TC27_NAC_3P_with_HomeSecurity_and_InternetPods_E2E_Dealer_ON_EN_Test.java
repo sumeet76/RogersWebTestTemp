@@ -39,7 +39,7 @@ public class OVR_Auto_TC27_NAC_3P_with_HomeSecurity_and_InternetPods_E2E_Dealer_
         getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Address Availability popup");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA missisauga", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

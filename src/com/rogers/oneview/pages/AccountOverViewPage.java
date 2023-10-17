@@ -202,8 +202,8 @@ public class AccountOverViewPage extends BasePageClass {
 
     @FindBy(xpath = "//t[text()='Add Ignite' or text()='Obtenez la Élan']")
     WebElement migrateToIgnite;
-
-    @FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
+    
+    @FindBy(xpath = "//h3[text()='Production']")
     WebElement envProduction;
 
     @FindBy(xpath = "//div[@class='proceed-button']/button")

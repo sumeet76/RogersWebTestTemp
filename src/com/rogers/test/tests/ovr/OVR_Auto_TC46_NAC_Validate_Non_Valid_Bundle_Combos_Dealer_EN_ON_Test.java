@@ -30,7 +30,7 @@ public class OVR_Auto_TC46_NAC_Validate_Non_Valid_Bundle_Combos_Dealer_EN_ON_Tes
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
