@@ -24,6 +24,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//button[@class='ute-btn-secondary']//ins[@translate='global.cta.yes']")
 	WebElement btnActivateLater;
 
+	@FindBy(xpath ="//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
+	WebElement drpDownIgniteStarterContractTypeVisibleText;
+
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::a")
 	WebElement btnSolarisSelectPackage;
 
@@ -265,9 +268,6 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
 	WebElement drpdwnStarterPackageTypeOfContract;
-
-	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']//ds-form-field[contains(@class, 'disabled')]")
-	WebElement drpdwnDisabledStarterPackageTypeOfContract;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
 	WebElement drpdwnFlex20PackageTypeOfContract;
@@ -636,7 +636,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To select type of contract to month-to-month
+	 * To select type of contract to month-to-month for Ignite Starter pack
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
@@ -647,15 +647,16 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * Validates Guaranteed Price for term contract on a Rate Card
+	 * Validates that M2M contract type is disabled on rate card for a specified package
 	 * @author Nandan.Master
 	 */
-	public Boolean validateIfContractTypeIsDisabled() {
-		return getReusableActionsInstance().isElementVisible(drpdwnDisabledStarterPackageTypeOfContract, 60);
+	public Boolean validateIfM2MContractTypeIsDisabled(String bundleName) {
+		By strContractM2M = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//option[contains(text(), 'Month-to-month')]/parent::select[contains(@class,'disabled')]");
+		return getReusableActionsInstance().isElementVisible(strContractM2M, 60);
 	}
 
 	/**
-	 * Validates Guaranteed Price on Term Contract for a specified package on a Rate Card
+	 * Validates Guaranteed Price text for Term Contract on Rate Card for a specified package
 	 * @author Nandan.Master
 	 */
 	public Boolean validateGuaranteedPriceTermContract(String bundleName) {
@@ -667,22 +668,13 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	 * Validates "24 months" Term Contract is selected for a specified package
 	 * @author Nandan.Master
 	 */
-	public Boolean validateTermContractVisibleOnDropdownSelection(String bundleName) {
-		String expectedValue = " 24-month term ";
-		By strTermPriceGuarantee= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select/option[1]");
-		String strTermContractValue = getReusableActionsInstance().getWhenReady(strTermPriceGuarantee).getText();
-		return strTermContractValue.equals(expectedValue);
-	}
-
-	/**
-	 * Validates "Month to Month" Contract is selected for a specified package
-	 * @author Nandan.Master
-	 */
-	public Boolean validateM2MContractVisibleOnDropdownSelection(String bundleName) {
-		String expectedValue = "  Month-to-month  ";
-		By strTermPriceGuarantee= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select/option[2]");
-		String strTermContractValue = getReusableActionsInstance().getWhenReady(strTermPriceGuarantee).getText();
-		return strTermContractValue.equals(expectedValue);
+	public Boolean validateSelectedTypeOfContractRateCard(String bundleName, String expectedValue) {
+		String strDrpDownValue = "//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select";
+		getReusableActionsInstance().getWhenReady(drpDownIgniteStarterContractTypeVisibleText, 60);
+		Select typeOfContract = new Select(getDriver().findElement(By.xpath(strDrpDownValue)));
+		WebElement strCurrentValue = typeOfContract.getFirstSelectedOption();
+		String selectedValueOption = strCurrentValue.getText();
+		return selectedValueOption.equals(expectedValue);
 	}
 
 	/**
@@ -744,8 +736,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Upgrading To Ignite bundels Modal
-	 * @param    bundleName : name of the bundle package
+	 * To verify Upgrading To Ignite bundles Modal
+	 * @param  bundleName : name of the bundle package
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
@@ -774,7 +766,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To click on the chevron of the starter bundel package
+	 * To click on the chevron of the starter bundles package
 	 * @param    bundleName : name of the bundle package
 	 * @author Saurav.Goyal
 	 */
@@ -794,7 +786,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Upgrading To Ignite bundels Modal
+	 * To verify Upgrading To Ignite bundles Modal
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
@@ -804,7 +796,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To click okay on the modal Upgrading To Ignite bundels
+	 * To click okay on the modal Upgrading To Ignite bundles
 	 * @author Saurav.Goyal
 	 */
 	public void clkOkayUpgradingToIgnitebundelsModal() {

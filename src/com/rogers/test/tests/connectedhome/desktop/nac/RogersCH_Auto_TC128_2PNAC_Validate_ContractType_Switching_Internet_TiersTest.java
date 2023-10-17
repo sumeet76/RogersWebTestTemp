@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
  * 6. Confirm the Guaranteed Term Contract price text appears on rate card
  * 7. Confirm 24 Months Term Contract is selected by default
  * 8. Change Internet Download Speed to 500mbps for Ignite Starter
- * 9. Validate Contract Type is disabled
+ * 9. Validate Contract Type is Month to Month & disabled
  * 10. Validate OTBC (One Time Bill Credit) banner
  * 11. Select the Starter pack & validate cart summary
  * 12. Hit Checkout option on Cart Summary
@@ -33,6 +33,7 @@ public class RogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_
 
     @Test
     public void rogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_Tiers() throws InterruptedException {
+        String bundleName = "Ignite Starter";
         reporter.reportLogWithScreenshot("Launched the Main QA Page");
         getDriver().get(System.getProperty("QaUrl") + "/bundles");
         reporter.reportLogWithScreenshot("Launched the IgniteTV page for ON region");
@@ -46,14 +47,20 @@ public class RogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_
         reporter.reportLogWithScreenshot("Launched the Ignite Bundles page");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verifyBundlesPage(), "Bundles Page has launched", "Bundles Page has not launched");
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().validateGuaranteedPriceTermContract("Ignite Starter"),"Guaranteed Price for term contract text is present", "Guaranteed Price for term contract text is NOT present");
-//        reporter.hardAssert(getRogersIgniteTVBuyPage().validateTermContractVisibleOnDropdownSelection("Ignite Starter"),"24 Months Term Contract is selected", "24 Months Term Contract is NOT selected");
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateGuaranteedPriceTermContract(bundleName),"Guaranteed Price for term contract text is present on Rate Card for a specified package", "Guaranteed Price for term contract text is NOT present on Rate Card for a specified package");
+
+        // verify the selected type of contract is 24 months on first load
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateSelectedTypeOfContractRateCard(bundleName, "24-month term"),"24 Months Term Contract is selected", "24 Months Term Contract is NOT selected");
 
         getRogersIgniteTVBuyPage().selectInternetSpeedStarterPack(" 500 Mbps ");
         reporter.reportLogWithScreenshot("Selected 500Mbps Internet Speed for Starter Pack");
 
-        reporter.hardAssert(getRogersIgniteTVBuyPage().validateIfContractTypeIsDisabled(),"Contract Type dropdown is greyed out", "Contract Type dropdown is NOT greyed out");
-        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers("Ignite Starter"), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
+        // verify after changing internet tier the type of contract changes to m2m & greyed out
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateIfM2MContractTypeIsDisabled(bundleName),"Contract Type dropdown is greyed out", "Contract Type dropdown is NOT greyed out");
+
+        // validate one time bill credit promo
+        reporter.hardAssert(getRogersIgniteTVBuyPage().validateOTBCBundleOffers(bundleName), "OTBC validated for a Bundle on offers page", "OTBC NOT validated for a Bundle on offers page");
+
         getRogersIgniteTVBuyPage().selectSolarisStarterPackage();
         reporter.reportLogWithScreenshot("Ignite Starter Pack Added to cart");
         reporter.hardAssert(getRogersIgniteTVBuyPage().verify4KTV(), "4KTV radio button is available", "4KTV radio button is not available");
@@ -66,10 +73,8 @@ public class RogersCH_Auto_TC128_2PNAC_Validate_ContractType_Switching_Internet_
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
-    //legacyAnonymous
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
         startSession(System.getProperty("QaUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_igniteanonymous, method);
-        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
     }
 
     @AfterMethod(alwaysRun = true)
