@@ -89,6 +89,7 @@ public class CheckAvailabilityPage extends BasePageClass {
             getReusableActionsInstance().selectWhenReady(multipleAddressDropdown,2,  5);
         }
         getReusableActionsInstance().getWhenVisible(btnContinue).click();
+        getReusableActionsInstance().clickIfAvailable(btnContinue);
     }
 
 

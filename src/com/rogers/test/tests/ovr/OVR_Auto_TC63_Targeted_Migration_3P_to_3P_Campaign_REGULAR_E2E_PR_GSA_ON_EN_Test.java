@@ -23,7 +23,7 @@ public class OVR_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_G
     }
     @Test(groups = {"OVR", "RegressionOVR","OVR_PR"})
     public void ovr_Auto_TC63_Targeted_Migration_3P_to_3P_Campaign_REGULAR_E2E_PR_GSA_ON_EN_Test() {
-        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("FS_password"));
+        getChampLoginPage().logIntoCorpChamp(System.getenv("PR_GSA_username"), System.getenv("PR_GSA_password"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");

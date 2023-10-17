@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class OVR_Auto_TC68_Fido_Footer_validations_Footerlinks_and_signout_Flow_OVC_EN_ON_Test extends BaseTestClass {
+public class OVR_Auto_TC68_FidoToRogers_Footer_validations_Footerlinks_and_signout_Flow_OVC_EN_ON_Test extends BaseTestClass {
     @BeforeMethod(alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -20,7 +20,7 @@ public class OVR_Auto_TC68_Fido_Footer_validations_Footerlinks_and_signout_Flow_
         closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
-    public void ovr_Auto_TC68_Fido_Footer_validations_Footerlinks_and_signout_Flow_OVC_EN_ON_Test(){
+    public void ovr_Auto_TC68_FidoToRogers_Footer_validations_Footerlinks_and_signout_Flow_OVC_EN_ON_Test(){
         getEnvironmentSelectionPage().launchOneViewFido(TestDataHandler.tc_67_FidoToRogers_FooterValidations_Data.getBanNumber(), "CO2100013754");
         reporter.reportLogWithScreenshot("OneView Fido Interface has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();

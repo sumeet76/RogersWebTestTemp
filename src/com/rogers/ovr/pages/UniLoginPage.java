@@ -15,7 +15,7 @@ public class UniLoginPage extends BasePageClass {
     @FindBy(xpath = "//span[text()='Entrer code de concessionnaire' or text()='Enter dealer code']//ancestor::span[1]//parent::div")
     WebElement eledealercode;
 
-    @FindBy(xpath = "//span[text()='Entrer code de concessionnaire' or text()='Enter dealer code']//ancestor::span[1]//preceding-sibling::input")
+    @FindBy(xpath = "//input[@formcontrolname='dealerCode']")
     WebElement txtdealercode;
 
     @FindBy(xpath = "//span[text()=' Soumettre ' or text()=' Submit ']")
@@ -23,9 +23,9 @@ public class UniLoginPage extends BasePageClass {
     @FindBy(xpath ="//*[text()=' Accept / Accepter ']" )
     WebElement btnaccept;
 
-    String sspbtn_xpath = "//span[contains(text(),'SSP Rogers SSP_ENV') or contains(text(),'PVS Rogers SSP_ENV')]";
+    String sspbtn_xpath = "//span[contains(text(),'SSP SSP_ENV') or contains(text(),'PVS SSP_ENV')]";
 
-    String fidoSSPBtnXpath = "//span[contains(text(),'SSP Fido SSP_ENV') or contains(text(),'PVS Fido SSP_ENV')]";
+    String fidoSSPBtnXpath = "//span[contains(text(),'SSP SSP_ENV') or contains(text(),'PVS SSP_ENV')]";
 
     @FindBy(xpath = "//input[@value='Next' or @value='suivante']")
     WebElement corpLoginNextBtn;
