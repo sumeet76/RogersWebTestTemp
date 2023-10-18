@@ -133,7 +133,8 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_Test extends B
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
-     // ***************Billing & Payment Stepper*************//
+        getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
+        // ***************Billing & Payment Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
         reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getPaymentMethod());
@@ -148,6 +149,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_Test extends B
         reporter.reportLogWithScreenshot("Shipping stepper");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
       //***************Order Review Page*************//
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");

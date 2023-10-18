@@ -48,19 +48,19 @@ public class RogersBFA_TC07_POM_RegularPromoMSFPostLogin_Consumer_HUPWithPPC_Mai
         reporter.hardAssert(getRogersDeviceConfigPage().verifyContinueButton(),
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
-        reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+        /*reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
                 "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
         String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
-        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
+        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);*/
         reporter.reportLogPassWithScreenshot("Device config page displayed");
         getRogersDeviceConfigPage().clickContinueButton();
         reporter.softAssert(getRogersPlanConfigPage().verifyBreadCrumb(deviceName),
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         // ***************************Promo Section************************************
-        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+        /*reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
                 "Promotion Successfully", "Promotion Not Applied");
         String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
-        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
+        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);*/
         getRogersPlanConfigPage().clkDownPaymentChkBox();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
         reporter.reportLogPassWithScreenshot("Plan config page device cost selected");

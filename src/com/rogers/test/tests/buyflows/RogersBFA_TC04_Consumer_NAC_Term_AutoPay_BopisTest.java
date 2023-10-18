@@ -56,7 +56,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyAutoPayDiscountInCartSummary(),"AutoPay discount is added in cart summary","AutoPay is not added in cart summary");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		// ***************Create Profile Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
 				"Create profile Title not present");
@@ -104,6 +104,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		getRogersCheckoutPage().clkContinueWithoutPromo();
 		// ***************Billing & Payment Stepper*************//
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");
 		getRogersCheckoutPage().enterBankDetails();
 		getRogersCheckoutPage().clkAutoPayConsentCheckBox();
@@ -116,6 +117,7 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		// ***************Order Review Page****************************************************

@@ -65,6 +65,7 @@ public class RogersBFA_TC20_Consumer_AALTERM_SLNonShare_StdShipping_ChangeShippi
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         getRogersPlanConfigPage().clkRadioButtonNoTerm();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        getRogersPlanConfigPage().clickContinueWithSelectedPlanButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermMLNonSEBasicPlanStdShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         //getRogersPlanConfigPage().clkBasicTab();

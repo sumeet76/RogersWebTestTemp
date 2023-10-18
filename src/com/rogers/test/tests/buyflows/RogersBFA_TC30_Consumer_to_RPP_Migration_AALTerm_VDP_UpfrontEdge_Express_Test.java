@@ -113,6 +113,7 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Ex
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
+        //getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

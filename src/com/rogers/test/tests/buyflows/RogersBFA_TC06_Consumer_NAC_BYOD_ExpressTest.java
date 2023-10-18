@@ -102,6 +102,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass 
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
@@ -116,6 +117,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass 
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		//***************Order Review Page*************//

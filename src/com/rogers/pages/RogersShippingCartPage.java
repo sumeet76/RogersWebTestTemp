@@ -12,14 +12,16 @@ public class RogersShippingCartPage  extends BasePageClass{
         super(driver);
     }
     @FindBy(xpath="//button[@data-test='proceed-to-checkout-btn']")
-    WebElement proceedToCheckOut;
+    WebElement proceedToCheckOutShoppingCart;
 
-    public void clkproceedToCheckOut()
+    /* This method is used to click on Proceed to checkout on ML NAC view
+     *@author sonali.bansal */
+    public void clkProceedShoppingCart()
     {
         getReusableActionsInstance().staticWait(5000);
-        getReusableActionsInstance().javascriptScrollByVisibleElement(proceedToCheckOut);
-        getReusableActionsInstance().executeJavaScriptClick(proceedToCheckOut);
-        getReusableActionsInstance().waitForElementInvisibilityNOException(proceedToCheckOut, 60);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(proceedToCheckOutShoppingCart);
+        getReusableActionsInstance().executeJavaScriptClick(proceedToCheckOutShoppingCart);
+        getReusableActionsInstance().waitForElementInvisibilityNOException(proceedToCheckOutShoppingCart, 60);
 
     }
 }

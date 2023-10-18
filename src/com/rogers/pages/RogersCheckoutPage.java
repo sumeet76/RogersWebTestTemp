@@ -486,7 +486,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	WebElement UponOrdrFulfillmentRadioBtnCheckoutPage;
 
 	@FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
-	WebElement btnContinueName;
+	WebElement ContinueCallerIdName;
 
 	@FindAll({
 			@FindBy(xpath = "//button[contains(@data-test,'stepper-6')]"),
@@ -1806,16 +1806,14 @@ public class RogersCheckoutPage extends BasePageClass {
 	}
 
 	public void clksaveAndContinueBtnCheckoutPage(){
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementTobeClickable(UponOrdrFulfillmentRadioBtnCheckoutPage,40);
 		getReusableActionsInstance().scrollToElement(UponOrdrFulfillmentRadioBtnCheckoutPage);
 		getReusableActionsInstance().executeJavaScriptClick(UponOrdrFulfillmentRadioBtnCheckoutPage);
-		getReusableActionsInstance().getWhenReady(saveAndContinueBtnCheckoutPage,30);
 		getReusableActionsInstance().executeJavaScriptClick(saveAndContinueBtnCheckoutPage);
 	}
 
 	public void clkContinueAfterFirstNameLastName() {
-		getReusableActionsInstance().clickWhenVisible(btnContinueName);
+		getReusableActionsInstance().clickWhenVisible(ContinueCallerIdName);
 		getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
 	}
 }

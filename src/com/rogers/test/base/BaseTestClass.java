@@ -199,6 +199,7 @@ public class BaseTestClass {
 
     protected static final ThreadLocal<GetOTP> getOTPThreadLocal = new ThreadLocal<GetOTP>();
 
+    protected static final ThreadLocal<RogersShippingCartPage> RogersShippingCartPageThreadLocal = new ThreadLocal<>();
 
     AppiumServerJava appiumServer = new AppiumServerJava();
     //int port = 4723;
@@ -704,11 +705,13 @@ public class BaseTestClass {
     public static DashboardProfilePage getDashboardProfilePage() {
         return DASHBOARD_PROFILE_PAGE_THREAD_LOCAL.get();
     }
+    public static RogersShippingCartPage getRogersShippingCartPage() {
+        return RogersShippingCartPageThreadLocal.get();
+    }
+
     public static DashboardBillingPage getDashboardBillingPage() {
         return DASHBOARD_BILLING_PAGE_THREAD_LOCAL.get();
     }
-
-
 
     public Map<String, String> getRunParameters() {
         return RunParameters;
@@ -1196,6 +1199,7 @@ public class BaseTestClass {
                 RogersCheckoutPageThreadLocal.set(new RogersCheckoutPage(getDriver()));
                 RogersReviewOrderPageThreadLocal.set(new RogersReviewOrderPage(getDriver()));
                 RogersWirelessDashboardPageThreadLocal.set(new RogersWirelessDashboardPage(getDriver()));
+                RogersShippingCartPageThreadLocal.set(new RogersShippingCartPage(getDriver()));
                 break;
 
             case "connectedhome_oneview":
@@ -1252,6 +1256,7 @@ public class BaseTestClass {
                 RogersNACOrderConfirmationPageThreadLocal.set(new RogersNACOrderConfirmationPage(getDriver()));
                 RogersOneTimePaymentPageThreadLocal.set(new RogersOneTimePaymentPage(getDriver()));
                 RogersLoginPageThreadLocal.set(new RogersLoginPage(getDriver()));
+                RogersShippingCartPageThreadLocal.set(new RogersShippingCartPage(getDriver()));
 
             case "buyflowsoneview":
 

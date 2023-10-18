@@ -196,10 +196,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@value='payUpfrontEdgeAmount']/parent::label[@class='dsa-radio']")
     WebElement keepMyCurrentPhone;
 
-    @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
+    @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]//input")
     List<WebElement> checkBoxAdditionalLineOPtion;
 
-    @FindBy(xpath = "//button[contains(@data-test,'add-to-cart')]")
+    @FindBy(xpath = "//button[contains(@data-test,'add-to-cart-btn')]")
     WebElement btnAddToCart;
 
     @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
