@@ -30,14 +30,14 @@ public class OVR_Auto_TC53_Anonymous_NAC_2P_TV_INT_GPON_Validation_E2E_Dealer_EN
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use a GPON address valid for FIBER Service
-        getCheckAvailabilityPage().checkAvailability("17 ABBEY LANE, MOUNT PEARL, NL, A1N4N5", "chrome");
+        getCheckAvailabilityPage().checkAvailability("5 JUNCTION CS, BRAMPTON, ON, L7A2G6", "chrome");
         reporter.hardAssert(getCheckAvailabilityPage().verifyFiberServiceAvailabilityMessage(),"Address is serviceable for FIBER","Address is not serviceable for FIBER");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

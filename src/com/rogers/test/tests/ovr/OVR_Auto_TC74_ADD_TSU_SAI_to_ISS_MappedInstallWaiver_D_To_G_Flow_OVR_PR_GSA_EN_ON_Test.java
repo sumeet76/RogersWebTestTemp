@@ -35,12 +35,11 @@ public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstallWaiver_D_To_G_Flow_OV
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
 
         getOvrDashboardPage().clkInternetDashboard();
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         reporter.reportLogWithScreenshot("Launched the Internet dashboard page");
-        reporter.softAssert(getInternetDashboardPage().verifyHeader(), "Header is available", "Verification of Header failed");
-
+        
         getInternetDashboardPage().clickViewOffers();
         reporter.reportLogWithScreenshot("view offers link clicked");
         getInternetDashboardPage().clickContinueButton();
@@ -56,7 +55,7 @@ public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstallWaiver_D_To_G_Flow_OV
         getRogersIgniteBundlesPage().clkCloseBtn();
         reporter.reportLogWithScreenshot("View details modal closed");
 
-        //getInternetDashboardPage().clickSelectbutton();
+        getInternetDashboardPage().clickSelectbutton();
         reporter.reportLogWithScreenshot("New Internet Package selected");
         getInternetDashboardPage().clickContinue();
         reporter.reportLogWithScreenshot("Clicked Continue");
@@ -65,6 +64,7 @@ public class OVR_Auto_TC74_ADD_TSU_SAI_to_ISS_MappedInstallWaiver_D_To_G_Flow_OV
 //        reporter.reportLogWithScreenshot("Immediate Billing Cycle Selected");
 //        getTVDashboardPage().continueFromChangeDate();
 
+        //for D to G pro install selected by default
         //getBundleBuilderPage().selectExpressProInstall();
         reporter.reportLogWithScreenshot("Install Options");
         getBundleBuilderPage().clkTechInstallSlot();

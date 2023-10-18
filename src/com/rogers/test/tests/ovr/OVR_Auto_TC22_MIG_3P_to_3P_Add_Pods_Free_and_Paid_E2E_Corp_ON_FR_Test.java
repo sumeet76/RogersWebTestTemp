@@ -36,9 +36,9 @@ public class OVR_Auto_TC22_MIG_3P_to_3P_Add_Pods_Free_and_Paid_E2E_Corp_ON_FR_Te
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         reporter.hardAssert(getBundleBuilderPage().verifyCustomerCurrentPlan(), "Current Plan is displayed", "Current Plan is not displayed");

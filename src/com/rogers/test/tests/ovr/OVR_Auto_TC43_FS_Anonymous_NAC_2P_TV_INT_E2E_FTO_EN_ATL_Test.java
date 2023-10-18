@@ -31,7 +31,7 @@ public class OVR_Auto_TC43_FS_Anonymous_NAC_2P_TV_INT_E2E_FTO_EN_ATL_Test extend
         getUniLoginPage().selectCorpSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
-        getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
         //Use ATL region address

@@ -418,6 +418,7 @@ public class TestDataHandler {
 	public static OvrReusableData tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data;
 	public static OvrReusableData tc_67_FidoToRogers_FooterValidations_Data;
 	public static AccountData Serve_Adding_Ignite_HomeSecurity;
+	public static OvrReusableData tc_75_Rogers_FooterValidations;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -904,5 +905,6 @@ public class TestDataHandler {
 		tc_67_FidoToRogers_FooterValidations_Data = YamlHandler.getOvrReusableData("TC67_FidoToRogers_Footervalidations");
 		tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data = YamlHandler.getOvrReusableData("TC73_AddTSU_SAI_to_SAI_ExistingTerm");
 		tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data = YamlHandler.getOvrReusableData("TC74_AddTSU_SAI_to_ISS_mappedInstallWaiver");
+		tc_75_Rogers_FooterValidations = YamlHandler.getOvrReusableData("TC75_Rogers_Footervalidations");
 	}
 }
