@@ -164,7 +164,7 @@ repositories {
 }
 
 dependencies {
-	api 'automation-utils:common-utils:1.84-20231003.151516-21'
+	api 'automation-utils:common-utils:1.84-SNAPSHOT'
 	api 'io.rest-assured:rest-assured:4.3.1'
 	api 'io.rest-assured:json-path:4.3.1'
 	api 'org.json:json:20180813'

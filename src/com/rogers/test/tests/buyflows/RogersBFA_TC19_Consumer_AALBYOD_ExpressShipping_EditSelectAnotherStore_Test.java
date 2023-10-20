@@ -25,11 +25,7 @@ public class RogersBFA_TC19_Consumer_AALBYOD_ExpressShipping_EditSelectAnotherSt
 
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA","SUB"})
     public void tc19_RogersAALBYODExpressEditStoreTest() {
-        reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        //reporter.reportLogWithScreenshot("Home Page");
-        //getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+        reporter.reportLog("URL:" + System.getProperty("QaUrl"));;
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc19AALBYODBopisShipping.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc19AALBYODBopisShipping.getPassword());

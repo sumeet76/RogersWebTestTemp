@@ -102,7 +102,8 @@ public class RogersBFA_TC04_Consumer_NAC_Term_AutoPay_BopisTest extends BaseTest
 		getRogersCheckoutPage().clkChosePhoneNumber();
 		reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-		getRogersCheckoutPage().clkContinueWithoutPromo();
+		//getRogersCheckoutPage().clkContinueWithoutPromo();
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		reporter.hardAssert(getRogersCheckoutPage().verifyAutoPaymentPage(),"Autopay payment page is displayed","Autopay payment page is not displayed");

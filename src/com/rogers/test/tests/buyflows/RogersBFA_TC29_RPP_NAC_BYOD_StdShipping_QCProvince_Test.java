@@ -31,12 +31,11 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 	@Test(groups = {"RegressionBFA","RPPBFA","SanityNACBFA"})
 	public void tc29_RPPNACBYOD_QCProvinceStdShippingTest() throws InterruptedException {
 		//############################Plan config page###############################
-
 		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod&province=QC&type=rpp");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
 		getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPasscode());
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
-		getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+		getRogersDeviceCataloguePage().clkContinueBtnPassCodeModal();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getDataOptionIndex()),this.getClass().getSimpleName());
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
@@ -45,6 +44,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		getRogersPlanConfigPage().clickPreCartAddonsContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on your addon's");
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
+		getRogersPlanConfigPage().clickeSIMContinueButton();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on proceed to checkout");
 		//############################CheckoutPage############################//
@@ -95,6 +95,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 //		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc29_RPP_NACByod_StdShipping_QCProvince.getPaymentMethod());
@@ -105,6 +106,7 @@ public class RogersBFA_TC29_RPP_NAC_BYOD_StdShipping_QCProvince_Test extends Bas
 		reporter.reportLogPassWithScreenshot("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");

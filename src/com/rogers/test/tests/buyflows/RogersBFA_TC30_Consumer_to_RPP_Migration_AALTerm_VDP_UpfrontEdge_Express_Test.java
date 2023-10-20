@@ -35,7 +35,7 @@ public class RogersBFA_TC30_Consumer_to_RPP_Migration_AALTerm_VDP_UpfrontEdge_Ex
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
         getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getPasscode());
         reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
-        getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+        getRogersDeviceCataloguePage().clkContinueBtnPassCodeModal();
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
         getRogersDeviceCataloguePage().clickAddALineButtonOnModal();
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc30_RPP_AALTERM_VDP_UpfronEdge_BOPIS.getUsername());

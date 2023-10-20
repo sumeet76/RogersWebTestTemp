@@ -87,7 +87,7 @@ public class RogersReviewOrderPage extends BasePageClass {
 
     @FindAll({
             @FindBy(xpath="//span[contains(text(),'Delivery Method') or contains(text(),'Mode de livraison')]/following::a[@class='link']"),
-            @FindBy(xpath = "//a[@class='link' and contains(text(),'Edit')]")
+            @FindBy(xpath = "//span[@data-test='in-store-pickup']/following-sibling::a[contains(@class,'link') and contains(text(),'Edit')]")
     })
     WebElement editDeliveryMethod;
 

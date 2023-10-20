@@ -128,6 +128,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_PortIn_StandardShipping_Test ext
 		getRogersCheckoutPage().clkCheckEligibilityBtn();
 		reporter.hardAssert(getRogersCheckoutPage().verifyPortInSuccess(),"Entered Number is eligible for PortIn","Entered Number is not eligible for PortIn");
 		getRogersCheckoutPage().clkContinueChooseNumber();
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
@@ -144,6 +145,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_PortIn_StandardShipping_Test ext
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		String totalMonthlyFeesCheckOut = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFeeCheckOut = getRogersCheckoutPage().getOneTimeFeeAfterTax();

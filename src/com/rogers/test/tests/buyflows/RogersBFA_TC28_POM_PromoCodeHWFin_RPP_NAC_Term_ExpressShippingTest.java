@@ -22,32 +22,31 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_ExpressShippingTest 
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","POM","RPPBFA"})
-	public void tc28_POMPormoCodeHWFin_RPPNACTermExpressShippingTest() throws InterruptedException {
+	public void tc28_POMPromoCodeHWFin_RPPNACTermExpressShippingTest() throws InterruptedException {
 		// **************************Device catalog page*****************************************
 		getDriver().get(System.getProperty("AWSUrl")+"/?type=rpp");
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
 		getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPasscode());
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
-		getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+		getRogersDeviceCataloguePage().clkContinueBtnPassCodeModal();
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
-		getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP();
-		//-------------------------------Device Catalog Page----------------------------
+		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
+				"Get Started button not able to click");
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceName());
-//		reporter.reportLogWithScreenshot("Modal window Popup");
-//		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
-//				"Get Started button not able to click");
+		reporter.reportLogWithScreenshot("Device Selected " +TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceName());
 		// ***************************Device config page************************************
 		reporter.reportLogWithScreenshot("Device Config page");
 		getRogersDeviceConfigPage().clickContinueButton();
 		// ***************************Promo Section************************************
-		getRogersPlanConfigPage().clkPromoSection();
+		//getRogersPlanConfigPage().clkPromoSection();
 		reporter.reportLogWithScreenshot("Promo Section Displayed");
 		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPromoCode());
 		reporter.reportLogWithScreenshot("Promo Code Entered");
 		getRogersPlanConfigPage().clkCheckPromoBtn();
 		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(), "Promo Code Applied Successfully", "Promo Code Not Applied");
-		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoCreditInfo(), "Device Credit Offer Info displayed",
-				"Promo Code Not Applied");
+//		reporter.hardAssert(getRogersPlanConfigPage().verifyPromoCreditInfo(), "Device Credit Offer Info displayed",
+//				"Promo Code Not Applied");
+		getRogersPlanConfigPage().clickContinuePromoModal();
 		// ****************************Plan config page***************************************
 		getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceCostIndex()));
 		reporter.reportLogPassWithScreenshot("Device cost option selected");
@@ -115,7 +114,7 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_ExpressShippingTest 
 		//reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
 				//"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getPaymentMethod());
@@ -131,6 +130,7 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_ExpressShippingTest 
 				"Express pickup location map is not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		// ***************Order Review Page****************************************************

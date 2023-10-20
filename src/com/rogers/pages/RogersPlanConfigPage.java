@@ -184,7 +184,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
     WebElement bringYourOwnDeviceInBreadCrumb;
 
-    @FindBy(xpath = "//ds-checkbox//div[@class='ds-checkbox__box my-12']")
+    @FindBy(xpath = "//ds-checkbox[@data-test='keep-current-plan-checkbox']/label")
     WebElement checkBoxKeepMyCurrentPlan;
 
     @FindBy(xpath = "//ds-modal")
@@ -1736,7 +1736,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * get actual dow payment and compares with expected down payment
+     * get actual down payment and compares with expected down payment
      * @param expectedDownPayment
      * @return true actual and expected down payment equal else false
      * @author vedachalam.vasudevan

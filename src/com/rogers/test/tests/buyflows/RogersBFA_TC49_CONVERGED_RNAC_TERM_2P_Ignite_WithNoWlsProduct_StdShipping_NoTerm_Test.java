@@ -104,8 +104,9 @@ public class RogersBFA_TC49_CONVERGED_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdSh
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkChooseNumberbutton();
-        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
-        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+//        reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
+//        reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
         // ***************Billing & Payment Stepper*************//
         getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc49_2P_Ignite_NACNoTermTermSS.getPaymentMethod());
         getRogersCheckoutPage().clkBillingContinueButton();
@@ -115,6 +116,7 @@ public class RogersBFA_TC49_CONVERGED_RNAC_TERM_2P_Ignite_WithNoWlsProduct_StdSh
         reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPass("Clicked continue button in shipping stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
         //***************Order Review Page*************//

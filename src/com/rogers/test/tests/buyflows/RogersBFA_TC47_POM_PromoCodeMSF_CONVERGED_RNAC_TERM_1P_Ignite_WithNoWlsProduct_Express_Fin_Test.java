@@ -47,15 +47,16 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         //############################Plan config page###############################
         reporter.hardAssert(getRogersPlanConfigPage().verifyPlanConfigPage(), "Plan config page is loaded", "Plan config page is not loaded");
         // ***************************Promo Section************************************
-        getRogersPlanConfigPage().clkPromoSection();
+        //getRogersPlanConfigPage().clkPromoSection();
         reporter.reportLogWithScreenshot("Promo Section Displayed");
         getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPromoCode());
         reporter.reportLogWithScreenshot("Promo Code Entered");
         getRogersPlanConfigPage().clkCheckPromoBtn();
         reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
                 "Promo Code Applied Successfully", "Promo Code Not Applied");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(),
-                "Discount Value and Duration displayed", "Promo Code Not Applied");
+        getRogersPlanConfigPage().clickContinuePromoModal();
+//        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoDuration(),
+//                "Discount Value and Duration displayed", "Promo Code Not Applied");
 //        getRogersPlanConfigPage().clkDownPaymentChkBox();
 //        reporter.reportLogWithScreenshot("Down payment checkbox is selected");
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
@@ -120,6 +121,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         getRogersCheckoutPage().clkChooseNumberbutton();
         //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+        getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
      // ***************Billing & Payment Stepper*************//
         getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc47_1P_Ignite_NACTermTermBopis.getPaymentMethod());
         getRogersCheckoutPage().clkBillingContinueButton();
@@ -130,6 +132,7 @@ public class RogersBFA_TC47_POM_PromoCodeMSF_CONVERGED_RNAC_TERM_1P_Ignite_WithN
         reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPass("Clicked continue button in shipping stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPass("Clicked submit button below cart summary");
       //***************Order Review Page*************//

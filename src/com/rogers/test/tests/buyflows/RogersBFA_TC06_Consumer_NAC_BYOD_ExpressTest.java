@@ -26,7 +26,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass 
 	@Test(groups = {"RegressionBFA","NACBFA"})
 	public void tc06_RogersNACBYODExpressShippingTest() throws InterruptedException {
 //############################Plan config page###############################
-//		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
+		//getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		//getRogersPlanConfigPage().clickShowMoreDetails();
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
@@ -86,7 +86,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass 
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
-		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
 		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");

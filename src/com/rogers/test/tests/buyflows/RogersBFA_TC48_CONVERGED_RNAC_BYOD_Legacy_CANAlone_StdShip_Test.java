@@ -107,6 +107,7 @@ public class RogersBFA_TC48_CONVERGED_RNAC_BYOD_Legacy_CANAlone_StdShip_Test ext
         reporter.reportLogPassWithScreenshot("Selected First Available Phone Number");
         reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(), "Find More Available Number Button Displayed","Find More Available Number Button not disaplayed");
         getRogersCheckoutPage().clkChooseNumberbutton();
+        getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
         //reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         //reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
         // ***************Billing & Payment Stepper*************//
@@ -118,6 +119,7 @@ public class RogersBFA_TC48_CONVERGED_RNAC_BYOD_Legacy_CANAlone_StdShip_Test ext
         reporter.reportLogPass("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Shipping Stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         //***************Order Review Page*************//
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");
