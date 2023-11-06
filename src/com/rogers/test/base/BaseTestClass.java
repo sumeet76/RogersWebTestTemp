@@ -1303,6 +1303,7 @@ public class BaseTestClass {
                 TVDashboardPageThreadLocal.set(new TVDashboardPage(getDriver()));
                 HomePhonedashboardThreadLocal.set(new HomePhonedashboard(getDriver()));
                 RogersIgniteExchangePageThreadLocal.set(new RogersIgniteExchangePage(getDriver()));
+                FulfillmentPageThreadLocal.set(new FulfillmentPage(getDriver()));
                 break;
 
 

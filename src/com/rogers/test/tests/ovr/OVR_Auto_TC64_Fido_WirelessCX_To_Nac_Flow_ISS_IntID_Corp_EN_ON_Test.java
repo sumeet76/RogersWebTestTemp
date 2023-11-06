@@ -23,7 +23,7 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp("ChampTest18.User18@trci.trogers.ca", "RAMP@379");
+        getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getFidoDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -37,7 +37,7 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(),"Check Availability Popup present","Check Availability Popup not present" );
-        getCheckAvailabilityPage().checkAvailability("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailability("642 ABANA MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(),"Address is serviceable","Address is not serviceable");
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();

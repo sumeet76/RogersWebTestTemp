@@ -17,9 +17,8 @@ public class AccountSearchPage extends BasePageClass {
     @FindBy(id = "searchCustomerBtn")
     WebElement btnSearch;
 
-    @FindBy(xpath = "//button[contains(text(),'Accept') or contains(text(),'Accepter')]")
+    @FindBy(xpath = "//button[contains(text(),'Ok') or contains(text(),'Accepter')]")
     WebElement acceptNoticeBtn;
-
 
     @FindBy(xpath = "//table[contains(@class, 'searchResults')]//tr[2]//select")
     WebElement drpdwnPlsSelect;

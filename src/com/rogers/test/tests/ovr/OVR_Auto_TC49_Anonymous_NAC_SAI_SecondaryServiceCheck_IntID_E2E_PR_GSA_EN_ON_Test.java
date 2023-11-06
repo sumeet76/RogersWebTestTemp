@@ -33,9 +33,9 @@ public class OVR_Auto_TC49_Anonymous_NAC_SAI_SecondaryServiceCheck_IntID_E2E_PR_
         reporter.reportLogWithScreenshot("Account Search Page");
         getAccountSearchPage().searchForAccountAndSelectNAC("893216789","L5A1H4",TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         reporter.hardAssert(getCheckAvailabilityPage().verifyCheckAvailabilityPopup(), "Check Availability Popup present", "Check Availability Popup not present");
         getCheckAvailabilityPage().secondServiceabilityCheck("642", "Abana","Ontario","L5A1H4","chrome");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyServiceAvailabilityMessage(), "Address is serviceable", "Address is not serviceable");
