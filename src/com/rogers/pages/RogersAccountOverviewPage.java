@@ -2339,7 +2339,7 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	}
 
 	public boolean isNewOfferModalDisplayed() {
-		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 40);
+		return getReusableActionsInstance().isElementVisible(headerOfferNotificationModal, 20);
 	}
 
 	/**

@@ -238,7 +238,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 */
 	public void clickReviewYourUpgrade() {
 		getReusableActionsInstance().waitForElementVisibility(btnReviewYourUpgrade, 30);
-		getReusableActionsInstance().getWhenReady(btnReviewYourUpgrade, 60).click();
+		getReusableActionsInstance().clickWhenReady(btnReviewYourUpgrade, 60);
 	}
 
 	public void waitForProgressLoaderToComplete(){
@@ -294,10 +294,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public boolean verifyBundleOfferPrice(String offerPrice, String customPrice) {
-		if(offerPrice.equals(customPrice)){
-			return true;
-		}
-		return false;
+		return offerPrice.equals(customPrice);
 	}
 
 	/**
@@ -436,7 +433,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyPriceStrikeThrough() {
-		return getReusableActionsInstance().isElementVisible(txtStrikeThrough, 30);
+		return getReusableActionsInstance().isElementVisible(txtStrikeThrough, 5);
 	}
 
 	/**
@@ -445,7 +442,7 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author manpreet.kaur3
 	 */
 	public boolean verifyPromoDiscounts() {
-		return getReusableActionsInstance().isElementVisible(imgPromoDiscounts, 30);
+		return getReusableActionsInstance().isElementVisible(imgPromoDiscounts, 5);
 	}
 
 	/**
