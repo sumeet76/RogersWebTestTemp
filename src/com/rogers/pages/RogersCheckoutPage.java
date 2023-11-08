@@ -24,7 +24,9 @@ public class RogersCheckoutPage extends BasePageClass {
     @FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
     WebElement oneTimeFeeAfterTax;
 
-    @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]")
+	@FindAll({
+    @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]"),
+	@FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bg-misty')]")})
     WebElement purchaseIncludes;
 
     @FindBy(xpath="//span[contains(@class,'px-24 ds-borders ds-bgcolor-white ds-label px-8 mw-100 ng-star-inserted')]")
@@ -398,7 +400,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
 
-	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//p[3]")
+	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//span[contains(text(),'(')]")
 	WebElement txtCtn;
 
 	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
@@ -449,6 +451,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@id='manageaddons-page-title' or contains(text(),'Manage add ons Page')]")
 	WebElement manageAddonsPageTitle;
 
+	@FindBy(xpath = "//span[contains(text(),'Active add-ons')]")
+	WebElement activeAddonsTitle;
+
 	@FindBy(xpath = "//addons-tile[contains(@data-test,'existing-addon')]/parent::div")
 	WebElement activeAddons;
 
@@ -461,7 +466,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@id='bfa-page-title' and contains(text(),'Premium Device Protection')]")
 	WebElement dpAddonPageTitle;
 
-	@FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']")
+	@FindBy(xpath = "//input[@formcontrolname='imei']/parent::div")
 	WebElement dpimeiField;
 
 	@FindBy(xpath = "//input[@formcontrolname='imei']")
@@ -1200,7 +1205,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * This method enters PortInNumber from yaml file in Existing Number input field
 	 * @author subash.nedunchezhian
 	 */
-	public void setExistingPortInNumber(String eligiblePortInNumber){
+	public void setExistingPortInNumber(String eligiblePortInNumber)
+	{
+		getReusableActionsInstance().staticWait(5000);
 	getReusableActionsInstance().getWhenReady(existingNumberField).click();
 	getReusableActionsInstance().executeJavaScriptClick(inputPortInNumber);
 //	inputPortInNumber.clear();
@@ -1772,7 +1779,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @return String text of Addon under Active Addons section
 	 * @author subash.nedunchezhian
 	 */
-	public String getSelectedAddon(){
+	public String getSelectedAddon()
+	{
+		getReusableActionsInstance().javascriptScrollByVisibleElement(activeAddonsTitle);
 		return  getReusableActionsInstance().getWhenReady(activeAddons).getText().replaceAll("\\n", "");
 	}
 

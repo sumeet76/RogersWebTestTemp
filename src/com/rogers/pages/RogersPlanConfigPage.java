@@ -229,7 +229,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'existing') or contains(.,'actuel')]")
     WebElement lblSelectExistingPlan;
 
-    @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]")
+    @FindAll({
+    @FindBy(xpath = "//label[contains(@class,'ds-selection')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]"),
+    @FindBy(xpath = "//span[contains(@class,'dsa-selection__label')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]")
+
+    })
     WebElement lblSelectSharedPlan;
 
     @FindBy(xpath = "//button[@data-test='shared-nonshared-continue']")
@@ -342,7 +346,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement dpAddonCarLineItem;
 
-    @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]")
+    @FindAll({
+    @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
+    @FindBy(xpath = "//p[text()='Device Protection' or contains(@aria-label,'Protection de l’appareil')]")
+    })
     WebElement BYODdpAddon;
 
     //@FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']/div")
@@ -370,7 +377,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'Your device is eligible') or contains(.,' Bonne nouvelle! Votre appareil est admissible')]")
     WebElement imeiSuccessEligibleMsg;
 
-    @FindBy(xpath = "//label[@aria-label='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
+    @FindBy(xpath = "//p[text()='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
     WebElement byodNoDeviceProtection;
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")

@@ -2,6 +2,7 @@ package com.rogers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.rogers.pages.base.BasePageClass;
@@ -45,8 +46,12 @@ public class RogersNACOrderConfirmationPage extends BasePageClass {
 	 @FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
 	 WebElement oneTimeFeeAfterTax;
 
-	 @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]")
-	 WebElement purchaseIncludes;
+	@FindAll({
+			@FindBy(xpath = "//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]"),
+			@FindBy(xpath = "//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bg-misty')]")
+	})
+		 WebElement purchaseIncludes;
+
 	 
 	 @FindBy(xpath="//div[@class='my-12 ng-star-inserted']/p[@class='text-bold text-title-6']/..")
 	 WebElement appointmentCompleteAddress;

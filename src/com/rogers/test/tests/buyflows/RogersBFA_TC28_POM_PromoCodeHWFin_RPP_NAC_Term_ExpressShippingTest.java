@@ -60,6 +60,7 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_ExpressShippingTest 
 		getRogersPlanConfigPage().clkContinueDeviceProtection();
 		reporter.reportLogPassWithScreenshot("Plan config page clicked on data protection continue button");
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		// ***************Create Profile Stepper*************//
 		reporter.hardAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present", "Create profile Title not present");
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();

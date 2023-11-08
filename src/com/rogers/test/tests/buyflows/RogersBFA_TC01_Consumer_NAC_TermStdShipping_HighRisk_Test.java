@@ -60,7 +60,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_Test extends B
         reporter.reportLogPassWithScreenshot("Cart summary: Monthly & OneTimeFees"+monthlyFeesAmount+"&"+oneTimeFeesAmount);*/
         List<String> planDetails = getRogersPlanConfigPage().getPlanData();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+        getRogersShippingCartPage().clkProceedShoppingCart();
         //############################CheckoutPage############################//
         //***************Cart Summary*************//
         String totalMonthlyFees=getRogersCheckoutPage().getMonthlyFeeAfterTax();

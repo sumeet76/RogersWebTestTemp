@@ -60,11 +60,11 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_PortIn_StandardShipping_Test ext
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
 		reporter.reportLogPassWithScreenshot("Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		// *****************************Create Profile Page*****************************************
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
-		//String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
+		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
 				+ " 2. oneTimeFee" + oneTimeFee /*+ " 3. Purchase Include" + purchaseIncludes*/);
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",

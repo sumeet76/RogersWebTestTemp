@@ -51,13 +51,19 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
     WebElement txtCreditEval;
 
-    @FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
+    @FindBy(xpath = "//*[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
     WebElement sharedNonSharedModal;
 
-    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'partager') or contains(@aria-label,'shared Rogers')]")
+   @FindAll({
+           @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')]//*[contains(@aria-label,'partager') or contains(text(),'shared Rogers')]"),
+           @FindBy(xpath = "//*[contains(@data-test,'shared-nonshared-share-everything-0')]")
+    })
     WebElement sharedOption;
 
-    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]")
+    @FindAll({
+            @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]"),
+            @FindBy(xpath = "//*[contains(@data-test,'shared-nonshared-share-everything-1')]")
+    })
     WebElement nonSharedOption;
 
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
@@ -312,7 +318,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String createXpathForCTAButton(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a";
+        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a[contains(@title,'View details')]";
         return ctaButtonXpath;
     }
 
@@ -352,6 +358,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void selectCTN(String ctnNumber) {
         String xpathCTN =  "//ds-modal-container//input[@value='" +  ctnNumber + "']/following-sibling::span[@class='dsa-radio__checkmark']";
+       // String xpathCTN =  "//div[contains(@data-id,'" +  ctnNumber + "')]//label//div[contains(@class,'outer')]";
+
         getReusableActionsInstance().clickWhenReady(By.xpath(xpathCTN) , 30);
     }
 

@@ -53,6 +53,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass 
 		getRogersPlanConfigPage().clickeSIMContinueButton();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Device Protection Pop-up is not displayed and Proceed to checkout clicked");
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
