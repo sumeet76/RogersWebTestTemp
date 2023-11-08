@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_Test extends BaseTestClass {
+public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_StdShipping_Test extends BaseTestClass {
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void tc18_rogersAalTabletTest() {
+    public void tc18_RogersAALTabletStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -90,6 +90,8 @@ public class RogersBFA_TC18_Consumer_AALShareTerm_TabletDevice_Test extends Base
         reporter.reportLogPassWithScreenshot("Standard Delivery selected");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

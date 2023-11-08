@@ -4,7 +4,6 @@ import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
 import org.apache.http.client.ClientProtocolException;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -15,7 +14,7 @@ import java.lang.reflect.Method;
  * TC02 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(No Term plan)_E2E
  */
 
-public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShipping_Test extends BaseTestClass {
+public class RogersBFA_TC02_Consumer_NAC_NoTerm_PortIn_StandardShipping_Test extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc02_rogersNACNoTermPortInStdShippingTest() throws InterruptedException {
+	public void tc02_RogersNACNoTermPortInStandardShippingTest() throws InterruptedException {
 
 		// **************************Device catalog page*****************************************
 
@@ -61,11 +60,11 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		String oneTimeFeesAmount = getRogersPlanConfigPage().getOneTimeFeesAmount();
 		reporter.reportLogPassWithScreenshot("Cart summary: Monthly & OneTimeFees" + monthlyFeesAmount + "&" + oneTimeFeesAmount);
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		// *****************************Create Profile Page*****************************************
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();
-		//String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
+		String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
 		reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
 				+ " 2. oneTimeFee" + oneTimeFee /*+ " 3. Purchase Include" + purchaseIncludes*/);
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(), "Create profile Title Present",
@@ -129,6 +128,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		getRogersCheckoutPage().clkCheckEligibilityBtn();
 		reporter.hardAssert(getRogersCheckoutPage().verifyPortInSuccess(),"Entered Number is eligible for PortIn","Entered Number is not eligible for PortIn");
 		getRogersCheckoutPage().clkContinueChooseNumber();
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
@@ -145,6 +145,7 @@ public class RogersBFA_TC02_Consumer_NAC_NoTerm_BasicPlan_PortIn_StandardShippin
 		getRogersCheckoutPage().clkDeliveryMethod("standard");
 		reporter.reportLogPass("Standard Delivery selected");
 		getRogersCheckoutPage().clkContinueBtnShipping();
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		String totalMonthlyFeesCheckOut = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFeeCheckOut = getRogersCheckoutPage().getOneTimeFeeAfterTax();

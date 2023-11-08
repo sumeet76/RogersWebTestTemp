@@ -16,8 +16,8 @@ import java.lang.reflect.Method;
  */
 public class RogersBFA_TC37_Consumer_to_RPP_Migration_SL_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test extends BaseTestClass{
 
-        @Test(groups = {"RegressionBFA","RPPHUPBFA"})
-        public void tc37_ConToRppHUP_SL_SE_HUP_NOTERM_KEPOnMainLine_StdShip_Test() {
+        @Test(groups = {"RegressionBFA","RPPBFA"})
+        public void tc37_ConToRppHUP_SLSE_HUPNOTERM_KEPOnMainLine_StdShip_Test() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
@@ -26,7 +26,7 @@ public class RogersBFA_TC37_Consumer_to_RPP_Migration_SL_SE_HUP_NOTERM_KEPOnMain
             reporter.hardAssert(getRogersDeviceCataloguePage().verifyRppPasscodeModal(),"RPP Passcode modal is displayed", "RPP passcode modal is not displayed");
             getRogersDeviceCataloguePage().enterPasscodeInPasscodeModal(TestDataHandler.tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip.getPasscode());
             reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
-            getRogersDeviceCataloguePage().clkContinueBtnPassCodeMoodal();
+            getRogersDeviceCataloguePage().clkContinueBtnPassCodeModal();
             reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
             getRogersDeviceCataloguePage().clickUpgradeMyPhoneButtonOnModal();
             getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc37_RPP_HUP_SL_HUP_NOTERM_KEPOnMainLine_StdShip.getUsername());

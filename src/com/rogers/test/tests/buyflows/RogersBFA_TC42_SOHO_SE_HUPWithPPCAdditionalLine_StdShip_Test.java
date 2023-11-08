@@ -14,10 +14,10 @@ import java.lang.reflect.Method;
  * TC42 - Regression - SOHOHUP - Multi Line Share Everything Account - HUP with PPC on Additional Line with Standard Shipping option
  * @author praveen.kumar7
  */
-public class RogersBFA_TC42_SOHO_SE_HUPWithPPCOnAdditonalLine_StdShip_Test extends BaseTestClass {
+public class RogersBFA_TC42_SOHO_SE_HUPWithPPCAdditionalLine_StdShip_Test extends BaseTestClass {
 
 	@Test(groups = {"RegressionBFA","SOHOHUPBFA","SOHO"})
-    public void tc42_sohoHUP_ML_SE_HUPWithPPCOnAdditionalLine_StdShip_Test() {
+    public void tc42_SOHOHUP_ML_SE_HUPWithPPCAdditionalLine_StdShipTest() {
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
         //getRogersHomePage().clkSignIn();

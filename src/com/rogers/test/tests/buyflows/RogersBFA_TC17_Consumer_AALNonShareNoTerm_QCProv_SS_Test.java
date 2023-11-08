@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends BaseTestClass{
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void tc17_rogersAalNonShareNoTermQCProvTest() {
+    public void tc17_RogersAALNonShareNoTermQCProvStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -93,6 +93,8 @@ public class RogersBFA_TC17_Consumer_AALNonShareNoTerm_QCProv_SS_Test extends Ba
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         //getRogersCheckoutPage().clkNoThanks();
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

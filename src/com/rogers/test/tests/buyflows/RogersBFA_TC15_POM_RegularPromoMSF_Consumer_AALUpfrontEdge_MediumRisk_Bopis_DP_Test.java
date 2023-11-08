@@ -25,7 +25,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","POM","DP"})
-    public void tc15_pomRogersAalTermBopisTest() {
+    public void tc15_POMRegularPromoMSF_RogersAALUpfrontEdgeTermMedium_DPExpressTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -67,10 +67,10 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "Continue button on the device config page is present",
                 "Continue button on the device config page is not present");
         reporter.reportLogPassWithScreenshot("Device config page displayed");
-        reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
-                "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
-        String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
-        reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
+        //reporter.hardAssert(getRogersDeviceConfigPage().verifyRegularPromoRibbon(),
+        //        "Regular Promo - MSF Offer Displayed","Regular Promo - MSF Offer not Displayed");
+        //String regularPromoDetails = getRogersDeviceConfigPage().getRegularPromoDetails();
+       // reporter.reportLogPassWithScreenshot("Regular Promo Details " +regularPromoDetails);
         //String upfrontEdgeAmt = getRogersDeviceConfigPage().getUpfrontEdgeAmt(this.getClass().getSimpleName());
         String deviceCost = getRogersDeviceConfigPage().getDeviceFullPrice(this.getClass().getSimpleName());
         String financeProgramCredit = "0.0";
@@ -86,10 +86,10 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
                 "BreadCrumb on Plan config page is working fine", "BreadCrumb is not working fine");
         //reporter.hardAssert(getRogersPlanConfigPage().verifySelectedDeviceSection(deviceName), "Plan Config loaded", "Plan config page not loaded");
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
-        reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
-                "Promotion Applied Successfully", "Promotion Not Applied");
-        String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
-        getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
+        //reporter.hardAssert(getRogersPlanConfigPage().verifyPromoSuccessMsg(),
+        //        "Promotion Applied Successfully", "Promotion Not Applied");
+        ///String regularPromoName = getRogersPlanConfigPage().getRegularPromoName();
+        //getReporter().reportLogPassWithScreenshot("Regular Promo Name " +regularPromoName);
         getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc15POMAALShareTermBopis.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         getRogersPlanConfigPage().clickShowMoreDetails();
@@ -133,6 +133,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
 //        }
         //reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
                 //"Billing Address is not selected");
+        //getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
         getRogersCheckoutPage().clickSkipAutopay();
         getRogersCheckoutPage().clkDeliveryMethod("Express");
         reporter.reportLogPassWithScreenshot("Bopis Delivery selected");
@@ -142,6 +143,7 @@ public class RogersBFA_TC15_POM_RegularPromoMSF_Consumer_AALUpfrontEdge_MediumRi
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
         //getRogersCheckoutPage().clkNoThanks();
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

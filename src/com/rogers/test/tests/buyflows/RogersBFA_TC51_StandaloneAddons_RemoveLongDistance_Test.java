@@ -19,7 +19,7 @@ public class RogersBFA_TC51_StandaloneAddons_RemoveLongDistance_Test extends Bas
     }
 
     @Test(groups = {"RegressionBFA","SAABFA"})
-    public void tc51_rogersSAARemoveLongDistanceTest() {
+    public void tc51_RogersSAA_RemoveLongDistanceTest() {
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc51SAA_RemoveLongDistance.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc51SAA_RemoveLongDistance.getPassword());

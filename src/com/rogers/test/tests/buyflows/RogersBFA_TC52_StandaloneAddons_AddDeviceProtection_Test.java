@@ -19,7 +19,7 @@ public class RogersBFA_TC52_StandaloneAddons_AddDeviceProtection_Test extends Ba
     }
 
     @Test(groups = {"RegressionBFA","SAABFA"})
-    public void tc52_rogersSAAAddDeviceProtectionTest() {
+    public void tc52_RogersSAA_AddDeviceProtectionTest() {
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc52SAA_AddDeviceProtection.getPassword());

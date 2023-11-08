@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseTestClass {
+public class RogersBFA_TC16_Consumer_AALTERMFinPlan_ExpressShipping_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
     }
 
     @Test(groups = {"RegressionBFA","SanityBFA","AALBFA"})
-    public void tc16_rogersAalFinPlanBopisTest() {
+    public void tc16_rogersAALTERMFinPlanExpressTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         String deviceName = TestDataHandler.tc16AALFinPlanBopisShipping.getNewDevice();
         getDriver().get(System.getProperty("AWSUrl")+"/iphone-13?colour=blue");
@@ -96,6 +96,8 @@ public class RogersBFA_TC16_Consumer_AALFinPlan_BopisShipping_Test extends BaseT
         String purchaseIncludes = getRogersCheckoutPage().getPurchaseIncludesText();
         reporter.reportLog("Checkout page Cart Summary Info" + "1. Total Monthly Fees" + totalMonthlyFees
                 + " 2. oneTimeFee" + oneTimeFee + " 3. Purchase Include" + purchaseIncludes);
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

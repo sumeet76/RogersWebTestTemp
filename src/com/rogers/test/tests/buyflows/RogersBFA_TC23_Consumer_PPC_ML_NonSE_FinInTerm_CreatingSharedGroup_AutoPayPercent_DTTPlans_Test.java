@@ -24,7 +24,7 @@ public class RogersBFA_TC23_Consumer_PPC_ML_NonSE_FinInTerm_CreatingSharedGroup_
     }
 
     @Test(groups = {"RegressionBFA","PPCBFA"})
-    public void tc23_rogersPPC_MLNonSE_FinancingInTerm_CreateSharedGroupDTTPlanTest() {
+    public void tc23_RogersPPC_MLNonSE_FinancingInTerm_CreateSharedGroupDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");

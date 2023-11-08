@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherStore_Test extends BaseTestClass {
+public class RogersBFA_TC19_Consumer_AALBYOD_ExpressShipping_EditSelectAnotherStore_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,12 +24,8 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
     }
 
     @Test(groups = {"RegressionBFA","AALBFA","SanityBFA","SUB"})
-    public void tc19_rogersAalByodBopisTest() {
-        reporter.reportLog("URL:" + System.getProperty("QaUrl"));
-        //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
-        //reporter.reportLogWithScreenshot("Home Page");
-        //getRogersHomePage().clkSignIn();
-        //getRogersLoginPage().switchToSignInIFrame();
+    public void tc19_RogersAALBYODExpressEditStoreTest() {
+        reporter.reportLog("URL:" + System.getProperty("QaUrl"));;
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc19AALBYODBopisShipping.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc19AALBYODBopisShipping.getPassword());
@@ -100,6 +96,8 @@ public class RogersBFA_TC19_Consumer_AAL_BYOD_BopisShipping_EditSelectAnotherSto
                 "Express pickup location map is not available");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Clicked continue button in shipping stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

@@ -103,7 +103,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@formcontrolname='lastName']")
     WebElement setLastName;
 
-    @FindBy(xpath = "//button[contains(@data-test,'stepper-5')]")
+    @FindAll({
+            @FindBy(xpath = "//button[contains(@data-test,'stepper-6')]"),
+            @FindBy(xpath = "//button[@data-test='caller-id-continue']")
+
+    })
     WebElement continueCallerID;
 
     @FindBy(xpath = "//div[contains(@class,'ds-step__content ds-border-bottom ds-brcolor-concrete p-16 p-md-24 ds-bgcolor-misty')]//button[contains(@class,'primary -large')]")
@@ -180,7 +184,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Apportez votre propre appareil') or contains(text(),'Bring Your Own Device')]")
     WebElement bringYourOwnDeviceInBreadCrumb;
 
-    @FindBy(xpath = "//ds-checkbox//div[@class='ds-checkbox__box my-12']")
+    @FindBy(xpath = "//ds-checkbox[@data-test='keep-current-plan-checkbox']/label")
     WebElement checkBoxKeepMyCurrentPlan;
 
     @FindBy(xpath = "//ds-modal")
@@ -192,10 +196,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//input[@value='payUpfrontEdgeAmount']/parent::label[@class='dsa-radio']")
     WebElement keepMyCurrentPhone;
 
-    @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]/parent::ds-checkbox")
+    @FindBy(xpath = "//label[contains(@class,'ds-checkboxLabel')]//input")
     List<WebElement> checkBoxAdditionalLineOPtion;
 
-    @FindBy(xpath = "//button[contains(@data-test,'add-to-cart')]")
+    @FindBy(xpath = "//button[contains(@data-test,'add-to-cart-btn')]")
     WebElement btnAddToCart;
 
     @FindBy(xpath = "//button[contains(@id,'main-continue-button')]")
@@ -207,7 +211,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(@data-test,'stepper-2-completed')]/following-sibling::div//p")
     WebElement planData;
 
-    @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']")
+    @FindBy(xpath = "//ds-checkbox[@data-test='vdp-checkbox']/label")
     WebElement vdpCheckBox;
 
     @FindAll({
@@ -225,7 +229,11 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'existing') or contains(.,'actuel')]")
     WebElement lblSelectExistingPlan;
 
-    @FindBy(xpath = "//label[contains(@class,'dsa-selection')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]")
+    @FindAll({
+    @FindBy(xpath = "//label[contains(@class,'ds-selection')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]"),
+    @FindBy(xpath = "//span[contains(@class,'dsa-selection__label')][contains(.,'Create a shared plan') or contains(.,'forfait partagé')]")
+
+    })
     WebElement lblSelectSharedPlan;
 
     @FindBy(xpath = "//button[@data-test='shared-nonshared-continue']")
@@ -289,8 +297,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement promoSection;
 
     @FindAll({
-    @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/ancestor::ds-form-field"),
-    @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']")
+            @FindBy(xpath = "//input[contains(@class,'ds-input') and contains(@id,'ds-form-input-id')]/parent::div"),
+            @FindBy(xpath = "//dsa-layout//*[@data-test='promo-input']/div")
     })
     WebElement promoCodeField;
 
@@ -300,7 +308,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     })
     WebElement txtPromoCode;
 
-    @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
+    //@FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
+            @FindBy(xpath = "//button[contains(@data-test,'promo-button-check')]")
     WebElement btnCheckPromo;
 
     @FindAll({
@@ -338,10 +347,15 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//span[contains(text(),'Protect supér appareil') or contains(text(),'Device Protection')]//ancestor::div[contains(@class,'dsa-orderTable__row')]")
     WebElement dpAddonCarLineItem;
 
-    @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]")
+    @FindAll({
+            @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
+            @FindBy(xpath = "//p[text()='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
+            @FindBy(xpath = "//input[contains(@value,'BYODDEVICEPROTECTION')]//following-sibling::span[contains(.,'Device Protection')]")
+    })
     WebElement BYODdpAddon;
 
-    @FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']")
+    //@FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']/div")
+    @FindBy(xpath="//input[@formcontrolname='imei']/parent::div")
     WebElement dpimeiField;
 
     @FindBy(xpath = "//input[@formcontrolname='imei']")
@@ -365,7 +379,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'Your device is eligible') or contains(.,' Bonne nouvelle! Votre appareil est admissible')]")
     WebElement imeiSuccessEligibleMsg;
 
-    @FindBy(xpath = "//label[@aria-label='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
+    @FindAll({
+            @FindBy(xpath = "//input[contains(@value,'NOPROTECTION')]//following-sibling::span[contains(.,'No Device Protection')]"),
+            @FindBy(xpath = "//label[@aria-label='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
+    })
     WebElement byodNoDeviceProtection;
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
@@ -876,7 +893,7 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().executeJavaScriptClick(setLastName);
         setLastName.sendKeys(FormFiller.generateRandomName() + FormFiller.generateRandomName());
         getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
-        clickGetBPOOffer();
+        //clickGetBPOOffer();
     }
 
     /**
@@ -1505,6 +1522,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void clkPromoSection() {
         getReusableActionsInstance().waitForElementVisibility(promoSection, 20);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(promoSection);
         getReusableActionsInstance().clickWhenVisible(promoSection);
     }
 
@@ -1515,7 +1533,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void setPromoCode(String promoCode) {
         getReusableActionsInstance().clickWhenReady(promoCodeField);
-        getReusableActionsInstance().getWhenReady(txtPromoCode, 40).click();;
+        getReusableActionsInstance().executeJavaScriptClick(txtPromoCode);;
         txtPromoCode.clear();
         txtPromoCode.sendKeys(promoCode);
     }
@@ -1546,7 +1564,6 @@ public class RogersPlanConfigPage extends BasePageClass {
         getReusableActionsInstance().isElementVisible(promoCodeSuccessMsg);
         getReusableActionsInstance().clickWhenReady(continueBtnPromo);
     }
-
 
     /**
      * Validates the Line Item of the Promotion in cart summary
@@ -1627,7 +1644,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      * @author Subash.Nedunchezhian
      */
     public void enterDPIMEI(String tacCode) {
-        getReusableActionsInstance().clickWhenReady(dpimeiField, 20);
+        getReusableActionsInstance().executeJavaScriptClick(dpimeiField);
         getReusableActionsInstance().getWhenReady(inputDPIMEI, 20).sendKeys(tacCode + FormFiller.generateRandomNumber(7));
         getReusableActionsInstance().clickWhenReady(dpIMEIContinue);
     }
@@ -1731,7 +1748,7 @@ public class RogersPlanConfigPage extends BasePageClass {
     }
 
     /**
-     * get actual dow payment and compares with expected down payment
+     * get actual down payment and compares with expected down payment
      * @param expectedDownPayment
      * @return true actual and expected down payment equal else false
      * @author vedachalam.vasudevan

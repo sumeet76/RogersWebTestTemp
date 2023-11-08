@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC10_Consumer_HUPNonShareNoTermSL_StdShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
-        public void tc10_rogersHUPNonShareNoTermSLStdShipTest() {
+        public void tc10_RogersHUPNonShareNoTermSLStdShipTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();

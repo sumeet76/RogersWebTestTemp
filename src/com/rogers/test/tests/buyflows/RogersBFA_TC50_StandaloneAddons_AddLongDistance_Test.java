@@ -19,7 +19,7 @@ public class RogersBFA_TC50_StandaloneAddons_AddLongDistance_Test extends BaseTe
     }
 
     @Test(groups = {"RegressionBFA","SAABFA"})
-    public void tc50_rogersSAAAddLongDistanceTest() {
+    public void tc50_RogersSAA_AddLongDistanceTest() {
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc50SAA_AddLongDistance.getUsername());
         getRogersLoginPage().clkContinueSignIn();
         getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc50SAA_AddLongDistance.getPassword());

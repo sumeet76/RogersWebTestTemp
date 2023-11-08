@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * @author praveen.kumar7
  */
 
-public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_ChangeAddress_Test extends BaseTestClass {
+public class RogersBFA_TC20_Consumer_AALTERM_SLNonShare_StdShipping_ChangeShippingAddress_Test extends BaseTestClass {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
@@ -24,7 +24,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
     }
 
     @Test(groups = {"RegressionBFA","AALBFA"})
-    public void tc20_rogersAalTermSLNonSEBasicPlanSSTest() {
+    public void tc20_RogersAALTermSLNonSharedStdShippingTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         //reporter.reportLogWithScreenshot("Home Page");
@@ -65,6 +65,7 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         reporter.reportLogPassWithScreenshot("Plan Config page loaded successfully");
         getRogersPlanConfigPage().clkRadioButtonNoTerm();
         getRogersPlanConfigPage().clickPreCartDeviceCostContinueButton();
+        getRogersPlanConfigPage().clickContinueWithSelectedPlanButton();
         //getRogersPlanConfigPage().selectDeviceCostAndClickOnContinueButton(getRogersPlanConfigPage().getUpdatedDeviceCostIndex(TestDataHandler.tc20AALTermMLNonSEBasicPlanStdShipping.getDeviceCostIndex()));
         reporter.reportLogPassWithScreenshot("Device cost option selected");
         //getRogersPlanConfigPage().clkBasicTab();
@@ -110,6 +111,8 @@ public class RogersBFA_TC20_Consumer_AAL_TERM_SLNonShare_BasicPlan_StdShipping_C
         reporter.reportLog("CheckoutpageCartSummaryInfo"+"1.TotalMonthlyFees"+totalMonthlyFeesCheckout
                 +"2.oneTimeFee"+oneTimeFeeCheckout);
         //getRogersCheckoutPage().clkNoThanks();
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
+        reporter.reportLogPass("Clicked Save And Continue button after shipping method");
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
         reporter.reportLogPassWithScreenshot("Clicked submit button below cart summary");
         //--------------------------------------Review Order Page-------------------------------------------------------

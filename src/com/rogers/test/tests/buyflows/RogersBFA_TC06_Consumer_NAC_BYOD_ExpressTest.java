@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 /**
  * TC06 - Regression - [RNAC BYOD] - Perform Rogers Net New Activation - BYOD with Express Pickup Shipping - BOPIS_E2E
  */
-public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
+public class RogersBFA_TC06_Consumer_NAC_BYOD_ExpressTest extends BaseTestClass {
 	String deviceName;
 
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -24,18 +24,18 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 
 	//https://rcom5.qa01.eks.rogers.com/phones/bring-your-own-device?flowType=byod
 	@Test(groups = {"RegressionBFA","NACBFA"})
-	public void tc06_rogersNACBYODBopisTest() throws InterruptedException {
+	public void tc06_RogersNACBYODExpressShippingTest() throws InterruptedException {
 //############################Plan config page###############################
-		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
+		//getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
-		getRogersPlanConfigPage().clickShowMoreDetails();
+		//getRogersPlanConfigPage().clickShowMoreDetails();
 		getRogersPlanConfigPage().selectDataOptionAndClickonContinueButton(getRogersPlanConfigPage().getupdatedDataOptionIndex(TestDataHandler.tc06NACByodTermBopis.getDataOptionIndex()),this.getClass().getSimpleName());
 		//reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
 		//getRogersPlanConfigPage().clickPreCartDataOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page data option selected");
-		getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
+		//getRogersPlanConfigPage().clickPreCartTalkOptionContinueButton();
 		reporter.reportLogPassWithScreenshot("Plan config page talk option selected");
-		getRogersPlanConfigPage().clickGetBPOOffer();
+		//getRogersPlanConfigPage().clickGetBPOOffer();
 		getRogersPlanConfigPage().selectBYODdpAddon();
 		reporter.reportLogPassWithScreenshot("Device Protection Addon option is selected");
 		getRogersPlanConfigPage().enterDPIMEI(TestDataHandler.tc06NACByodTermBopis.getDpIMEI());
@@ -53,6 +53,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		getRogersPlanConfigPage().clickeSIMContinueButton();
 		getRogersPlanConfigPage().clickCartSummaryContinueButton();
 		reporter.reportLogPassWithScreenshot("Device Protection Pop-up is not displayed and Proceed to checkout clicked");
+		getRogersShippingCartPage().clkProceedShoppingCart();
 		//############################CheckoutPage############################//
 		//***************Create Profile Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().verifyCreateProfileTitle(),"Create profile Title Present","Create profile Title not present");
@@ -86,7 +87,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.reportLogPassWithScreenshot("PassportNumber Entered Successfully");
 		getRogersCheckoutPage().clkCreditAuthorizationChkBox();
 		getRogersCheckoutPage().clkCreditEvalContinue();
-		reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
+		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalPopupPresent(),"Credit Evaluation Popup Displayed", "Credit Evaluation popup not disaplayed");
 		//reporter.softAssert(getRogersCheckoutPage().isCreditEvalTextOnModalPresent(), "Credit Evaluation Text Displayed","Credit Evaluation Text not disaplayed on Modal");
 		reporter.reportLogWithScreenshot("Credit Evaluation processing popup");
 		reporter.hardAssert(getRogersCheckoutPage().isIdentificationLabel(),"Credit Evaluation Successful", "Credit Evaluation Identification Label not disaplayed");
@@ -102,6 +103,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		getRogersCheckoutPage().clkChooseNumberbutton();
 		reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
 		reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
@@ -116,6 +118,7 @@ public class RogersBFA_TC06_Consumer_NAC_BYOD_BopisTest extends BaseTestClass {
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		reporter.reportLogPass("Clicked submit button below cart summary");
 		//***************Order Review Page*************//

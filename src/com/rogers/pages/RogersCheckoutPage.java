@@ -24,7 +24,9 @@ public class RogersCheckoutPage extends BasePageClass {
     @FindBy(xpath="(//div[contains(@class,'dsa-orderTable__totalRow d-flex align-items-center')])[2]")
     WebElement oneTimeFeeAfterTax;
 
-    @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]")
+	@FindAll({
+    @FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bgcolor-misty')]"),
+	@FindBy(xpath="//div[contains(@class,'dsa-promoBlock p-md-24 p-16 ds-bg-misty')]")})
     WebElement purchaseIncludes;
 
     @FindBy(xpath="//span[contains(@class,'px-24 ds-borders ds-bgcolor-white ds-label px-8 mw-100 ng-star-inserted')]")
@@ -398,7 +400,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//P[@data-test='timeslot-appointment']")
 	WebElement lblAppointmentTime;
 
-	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//p[3]")
+	@FindBy(xpath = "//div[contains(@id,'completedContent-2')]//span[contains(text(),'(')]")
 	WebElement txtCtn;
 
 	@FindBy(xpath = "//input[@formcontrolname='emailAddressField']")
@@ -437,7 +439,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//*[@data-test='account-number']//input")
 	WebElement inputAccountNumber;
 
-	@FindBy(xpath = "//ds-checkbox[contains(@id,'dsa-terms-conditions')]")
+	@FindBy(xpath = "//input[contains(@name,'autopayTermsConsent')]/..")
 	WebElement chAutoPayConsent;
 
 	@FindBy(xpath = "//div[contains(text(),'Not now')]/parent::label")
@@ -448,6 +450,9 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//h1[@id='manageaddons-page-title' or contains(text(),'Manage add ons Page')]")
 	WebElement manageAddonsPageTitle;
+
+	@FindBy(xpath = "//span[contains(text(),'Active add-ons')]")
+	WebElement activeAddonsTitle;
 
 	@FindBy(xpath = "//addons-tile[contains(@data-test,'existing-addon')]/parent::div")
 	WebElement activeAddons;
@@ -461,7 +466,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	@FindBy(xpath = "//h1[@id='bfa-page-title' and contains(text(),'Premium Device Protection')]")
 	WebElement dpAddonPageTitle;
 
-	@FindBy(xpath = "//ds-form-field[@data-test='imei-input-field']")
+	@FindBy(xpath = "//input[@formcontrolname='imei']/parent::div")
 	WebElement dpimeiField;
 
 	@FindBy(xpath = "//input[@formcontrolname='imei']")
@@ -478,6 +483,22 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	@FindBy(xpath = "//ds-radio-group[@formcontrolname='newNumber']/div/div[4]")
 	WebElement selectAnotherPhoneNumber;
+
+	@FindBy(xpath = "//button[@data-test='activation-options-continue']")
+	WebElement saveAndContinueBtnCheckoutPage;
+
+	@FindBy(xpath = "//*[contains(text(),'Upon order fulfillment')]/ancestor::ds-radio-button")
+	WebElement UponOrdrFulfillmentRadioBtnCheckoutPage;
+
+	@FindBy(xpath = "//button[@data-test='stepper-5-edit-step-continue-button']")
+	WebElement ContinueCallerIdName;
+
+	@FindAll({
+			@FindBy(xpath = "//button[contains(@data-test,'stepper-6')]"),
+			@FindBy(xpath = "//button[@data-test='caller-id-continue']")
+
+	})
+	WebElement continueCallerID;
 
 	/**
 	 * To get the Title of post checkout page
@@ -1184,7 +1205,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * This method enters PortInNumber from yaml file in Existing Number input field
 	 * @author subash.nedunchezhian
 	 */
-	public void setExistingPortInNumber(String eligiblePortInNumber){
+	public void setExistingPortInNumber(String eligiblePortInNumber)
+	{
+		getReusableActionsInstance().staticWait(5000);
 	getReusableActionsInstance().getWhenReady(existingNumberField).click();
 	getReusableActionsInstance().executeJavaScriptClick(inputPortInNumber);
 //	inputPortInNumber.clear();
@@ -1274,7 +1297,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public void clkContinueWithoutPromo(){
-		getReusableActionsInstance().clickWhenVisible(continueWithoutPromoBtn);
+		getReusableActionsInstance().clickIfAvailable(continueWithoutPromoBtn,10);
 	}
 
 	/**
@@ -1370,8 +1393,8 @@ public class RogersCheckoutPage extends BasePageClass {
 
 	public void clkBillingContinueButton() {
 		getReusableActionsInstance().waitForElementTobeClickable(btnBillingContinueButton , 10);
-		getReusableActionsInstance().javascriptScrollToTopOfPage();
-		getReusableActionsInstance().clickWhenVisible(btnBillingContinueButton,30);
+		getReusableActionsInstance().scrollToElement(btnBillingContinueButton);
+		getReusableActionsInstance().executeJavaScriptClick(btnBillingContinueButton);
 		getReusableActionsInstance().staticWait(3000);
 	}
 
@@ -1437,7 +1460,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public boolean verifyShippingPageTitle() {
-		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,10))
+		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,20))
 		{
 			return true;
 		}
@@ -1687,11 +1710,11 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void enterBankDetails() {
-		getReusableActionsInstance().getWhenReady(formTransitNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formTransitNumber);
 		inputTransitNumber.sendKeys("00011");
-		getReusableActionsInstance().getWhenReady(formInstitutionNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formInstitutionNumber);
 		inputInstitutionNumber.sendKeys("001");
-		getReusableActionsInstance().getWhenReady(formAccountNumber).click();
+		getReusableActionsInstance().executeJavaScriptClick(formAccountNumber);
 		inputAccountNumber.sendKeys(FormFiller.generateRandomNumber(10));
 	}
 
@@ -1700,7 +1723,8 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author praveen.kumar7
 	 */
 	public void clkAutoPayConsentCheckBox() {
-		getReusableActionsInstance().clickWhenReady(chAutoPayConsent);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(chAutoPayConsent);
+		getReusableActionsInstance().executeJavaScriptClick(chAutoPayConsent);
 	}
 
 	/**
@@ -1755,7 +1779,9 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @return String text of Addon under Active Addons section
 	 * @author subash.nedunchezhian
 	 */
-	public String getSelectedAddon(){
+	public String getSelectedAddon()
+	{
+		getReusableActionsInstance().javascriptScrollByVisibleElement(activeAddonsTitle);
 		return  getReusableActionsInstance().getWhenReady(activeAddons).getText().replaceAll("\\n", "");
 	}
 
@@ -1786,6 +1812,18 @@ public class RogersCheckoutPage extends BasePageClass {
 	 */
 	public boolean verifyDpAddonPage(){
 		return getReusableActionsInstance().isElementVisible(dpAddonPageTitle,10);
+	}
+
+	public void clksaveAndContinueBtnCheckoutPage(){
+		getReusableActionsInstance().waitForElementTobeClickable(UponOrdrFulfillmentRadioBtnCheckoutPage,40);
+		getReusableActionsInstance().scrollToElement(UponOrdrFulfillmentRadioBtnCheckoutPage);
+		getReusableActionsInstance().executeJavaScriptClick(UponOrdrFulfillmentRadioBtnCheckoutPage);
+		getReusableActionsInstance().executeJavaScriptClick(saveAndContinueBtnCheckoutPage);
+	}
+
+	public void clkContinueAfterFirstNameLastName() {
+		getReusableActionsInstance().clickWhenVisible(ContinueCallerIdName);
+		getReusableActionsInstance().clickWhenReady(continueCallerID, 30);
 	}
 }
 

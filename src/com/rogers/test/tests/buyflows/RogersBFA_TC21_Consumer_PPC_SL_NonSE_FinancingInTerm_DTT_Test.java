@@ -24,7 +24,7 @@ public class RogersBFA_TC21_Consumer_PPC_SL_NonSE_FinancingInTerm_DTT_Test exten
     }
 
     @Test(groups = {"RegressionBFA","SanityBFA","PPCBFA"})
-    public void tc21_rogersPPC_SLNonSE_FINInTerm_DTTPlanTest() {
+    public void tc21_RogersPPC_SLNonSE_FINInTerm_SharedDTTPlanTest() {
         reporter.reportLog("URL:" + System.getProperty("QaUrl"));
         getDriver().get(System.getProperty("AWSUrl")+"/build-plan?flowType=ppc");
         getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc21PPCSLNonSEDTTPlan.getUsername());

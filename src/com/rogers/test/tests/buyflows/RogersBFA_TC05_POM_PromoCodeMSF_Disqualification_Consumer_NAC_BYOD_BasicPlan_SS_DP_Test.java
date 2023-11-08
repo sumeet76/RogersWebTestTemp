@@ -28,11 +28,11 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 	}
 
 	@Test(groups = {"RegressionBFA","NACBFA","DPBYOD"})
-	public void tc05_pomrogersNacByodDPStdShippingTest() throws InterruptedException {
-		getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
+	public void tc05_POMPromoCodeMSF_RogersNacBYODDP_SSTest() throws InterruptedException {
+		//getDriver().get(System.getProperty("AWSUrl")+"/bring-your-own-device?flowType=byod");
 		reporter.hardAssert(getRogersPlanConfigPage().verifyBreadCrumb(), "BreadCrumb on Plan config page is displaying fine","BreadCrumb is not displaying fine");
 		// ***************************Promo Section************************************
-		getRogersPlanConfigPage().clkPromoSection();
+		//getRogersPlanConfigPage().clkPromoSection();
 		reporter.reportLogWithScreenshot("Promo Section Displayed");
 		getRogersPlanConfigPage().setPromoCode(TestDataHandler.tc05NACByodSS.getPromoCode());
 		reporter.reportLogWithScreenshot("Promo Code Entered");
@@ -121,6 +121,7 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 		reporter.hardAssert(getRogersCheckoutPage().verifyAgeDisQualifierMsg(),"Age DisQualifier Messages is displayed","Age DisQualifier Messages is not displayed");
 		reporter.hardAssert(getRogersCheckoutPage().verifyLocationDisQualifierMsg(),"Location DisQualifier Messages is displayed","Location DisQualifier Messages is not displayed");
 		getRogersCheckoutPage().clkContinueWithoutPromo();
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().verifyPromoRemovedFrmCart(),"PromoCode removed from Cart","PromoCode not removed from Cart");
@@ -134,6 +135,7 @@ public class RogersBFA_TC05_POM_PromoCodeMSF_Disqualification_Consumer_NAC_BYOD_
 		reporter.reportLogPassWithScreenshot("Billing Options Stepper");
 		getRogersCheckoutPage().clkContinueBtnShipping();
 		reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		getRogersCheckoutPage().clksubmitBtnCheckoutPage();
 		//***************Order Review Page*************//
 		reporter.softAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");

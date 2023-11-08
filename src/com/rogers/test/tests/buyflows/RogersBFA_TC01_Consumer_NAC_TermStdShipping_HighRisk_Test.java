@@ -10,13 +10,12 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TC01 - Regression - [RNAC TERM] - Perform Rogers Net New Activation - TERM with Standard Shipping(Finance plan with Non POTG)_E2E
  */
 
-public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_Test extends BaseTestClass {
+public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_Test extends BaseTestClass {
 
   
 	@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -25,7 +24,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
 	}
 
     @Test(groups = {"RegressionBFA","NACBFA"})
-    public void tc01_rogersNACTermHighRiskSSTest() throws InterruptedException {
+    public void tc01_RogersNACTermFinHighRiskSSTest() throws InterruptedException {
     	 //**************************Device catalog page****************************************
         reporter.hardAssert(getRogersDeviceCataloguePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
         String deviceName=TestDataHandler.tc01NACTermHighRiskStdShipping.getDeviceName();
@@ -61,7 +60,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.reportLogPassWithScreenshot("Cart summary: Monthly & OneTimeFees"+monthlyFeesAmount+"&"+oneTimeFeesAmount);*/
         List<String> planDetails = getRogersPlanConfigPage().getPlanData();
         getRogersPlanConfigPage().clickCartSummaryContinueButton();
-
+        getRogersShippingCartPage().clkProceedShoppingCart();
         //############################CheckoutPage############################//
         //***************Cart Summary*************//
         String totalMonthlyFees=getRogersCheckoutPage().getMonthlyFeeAfterTax();
@@ -134,7 +133,8 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         getRogersCheckoutPage().clkChooseNumberbutton();
         reporter.hardAssert(getRogersCheckoutPage().isChooseaNumberLabelDisplayed(),"Choose a Number Identification label displayed Successfully", "Choose a Number Identification Label not disaplayed");
         reporter.reportLogPassWithScreenshot("Choose a Number Identification label Displayed");
-     // ***************Billing & Payment Stepper*************//
+        getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
+        // ***************Billing & Payment Stepper*************//
         reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(),"Billing Options Title Displayed","Billing Options Title Not Present");
         reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed","Select Payment Method Dropdown not disaplayed");
 		getRogersCheckoutPage().selectPaymentMethodDropdownOption(TestDataHandler.tc01NACTermHighRiskStdShipping.getPaymentMethod());
@@ -149,6 +149,7 @@ public class RogersBFA_TC01_Consumer_NAC_TermStdShipping_HighRisk_DBValidation_T
         reporter.reportLogWithScreenshot("Shipping stepper");
         getRogersCheckoutPage().clkContinueBtnShipping();
         reporter.reportLogPassWithScreenshot("Continue button clicked from Billing Options Stepper");
+        getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
         getRogersCheckoutPage().clksubmitBtnCheckoutPage();
       //***************Order Review Page*************//
         reporter.hardAssert(getRogersReviewOrderPage().isOrderReviewPageTitlePresent(),"Order Review Page Title Present","Order Review Page Title is not Present");

@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","HUPBFA"})
-        public void tc13_rogersTabletHUPFinMLSEStandardShippingTest() {
+        public void tc13_RogersTabletHUPFinMLSEStdShippingTest() {
             //reporter.hardAssert(getRogersHomePage().verifyHomepage(), "Home Page appeared Successful", "Home Page did not appear");
             //reporter.reportLogWithScreenshot("Home Page");
             //getRogersHomePage().clkSignIn();
@@ -62,9 +62,6 @@ public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test exten
 //            reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
 //                    "Billing Address is not selected");
             reporter.reportLogPassWithScreenshot("On Checkout page");
-//            getRogersCheckoutPage().clkDeliveryMethod("PRO");
-//            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-//            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
             getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
             reporter.reportLogPassWithScreenshot("Standard Delivery selected");

@@ -51,13 +51,19 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//ds-modal-container//p[contains(text(),'Credit Evaluation') or contains(text(),'Évaluation de crédit')]")
     WebElement txtCreditEval;
 
-    @FindBy(xpath = "//ds-modal[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
+    @FindBy(xpath = "//*[contains(@data-test,'sharedNonShared')]/ancestor::ds-modal-container")
     WebElement sharedNonSharedModal;
 
-    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'partager') or contains(@aria-label,'shared Rogers')]")
+   @FindAll({
+           @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')]//*[contains(@aria-label,'partager') or contains(text(),'shared Rogers')]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'modal-shared-nonshared-0')]//label"),
+    })
     WebElement sharedOption;
 
-    @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection d-inline-block ds-pointer')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]")
+    @FindAll({
+            @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]"),
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'modal-shared-nonshared-1')]//label"),
+    })
     WebElement nonSharedOption;
 
     @FindBy(xpath = "//span[contains(text(),'Continue')]/ancestor::button[contains(@data-test,'shared-nonshared-continue')]")
@@ -104,6 +110,9 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
     @FindBy(xpath = "//button[@id='trident-cta-nac']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerGetStartedbutton;
+
+    @FindBy(xpath = "//button[@id='trident-cta-byod']//span[contains(@class,'ds-button__copy')]")
+    WebElement tridentModalByodButton;
 
     @FindBy(xpath = "//button[@id='trident-cta-aal']//span[contains(@class,'ds-button__copy')]")
     WebElement modalContainerAddALinebutton;
@@ -160,7 +169,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     @FindBy(xpath = "//span[contains(@class,'m-navLink__chevron')]/parent::a[@role='button']")
     WebElement provinceDropDown;
 
-    @FindBy(xpath = "//ds-form-field[@data-test='rpp-passcode']")
+    @FindBy(xpath = "//input[@formcontrolname='passCode']/parent::div")
     WebElement frmFieldRppPasscode;
 
     @FindBy(xpath = "//input[@formcontrolname='passCode']")
@@ -309,7 +318,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public String createXpathForCTAButton(String deviceName) {
         xpathDeviceName = createXpathWithDeviceName(deviceName);
-        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a";
+        String ctaButtonXpath = xpathDeviceName + "/ancestor::div[@class='dsa-nacTile__top']//following-sibling::div//following-sibling::div//a[contains(@title,'View details')]";
         return ctaButtonXpath;
     }
 
@@ -349,6 +358,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void selectCTN(String ctnNumber) {
         String xpathCTN =  "//ds-modal-container//input[@value='" +  ctnNumber + "']/following-sibling::span[@class='dsa-radio__checkmark']";
+        //String xpathCTN =  "//div[contains(@data-id,'" +  ctnNumber + "')]//label//div[contains(@class,'outer')]";
+        //String xpathCTN = "//ds-modal-container//input[@name='" +  ctnNumber + "']/ancestor::ds-radio-button";
         getReusableActionsInstance().clickWhenReady(By.xpath(xpathCTN) , 30);
     }
 
@@ -712,28 +723,6 @@ public class RogersDeviceCataloguePage extends BasePageClass {
     }
 
     /**
-     * This method clicks on a Get Started button in SOHO NAC Modal window
-     * @return true if continue button is displayed on the next device config page else false
-     * @author Subash.Nedunchezhian
-     */
-    public boolean clickGetStartedButtonOnModalSoho() {
-        do {
-            getReusableActionsInstance().clickWhenVisible(modalContainerGetStartedbutton);
-            getReusableActionsInstance().staticWait(3000);
-            if (getDriver().getCurrentUrl().toUpperCase().contains("STORAGE")) {
-                return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
-            }
-            do {
-                getDriver().get(System.getProperty("AWSUrl")+"/?type=soho");
-                clickDeviceTileCTAButton("iPhone 13 Pro Max");
-                getReusableActionsInstance().staticWait(2000);
-            } while (!verifyGetStartedButtonOnModal());
-
-        } while(!getDriver().getCurrentUrl().toUpperCase().contains("STORAGE"));
-        return (getReusableActionsInstance().isElementVisible(new RogersDeviceConfigPage(getDriver()).continueButton, 30));
-    }
-
-    /**
      * This method will click on Reset all filters
      * @author saurav.goyal
      */
@@ -901,7 +890,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * @author praveen.kumar7
      */
     public void enterPasscodeInPasscodeModal(String passcode) {
-        getReusableActionsInstance().clickWhenReady(frmFieldRppPasscode);
+        getReusableActionsInstance().executeJavaScriptClick(frmFieldRppPasscode);
         getReusableActionsInstance().getWhenReady(inputRppPasscode).sendKeys(passcode);
     }
 
@@ -909,7 +898,7 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      * This method clicks on continue button in passcode validation modal
      * @author praveen.kumar7
      */
-    public void clkContinueBtnPassCodeMoodal() {
+    public void clkContinueBtnPassCodeModal() {
         getReusableActionsInstance().clickWhenReady(btnContinuePasscodeModal,10);
     }
 

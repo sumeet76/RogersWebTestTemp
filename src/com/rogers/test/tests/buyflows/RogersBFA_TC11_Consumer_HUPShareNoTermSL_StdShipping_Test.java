@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class RogersBFA_TC11_Consumer_HUPShareNoTermSL_StdShipping_Test extends BaseTestClass{
 
         @Test(groups = {"RegressionBFA","SanityBFA","HUPBFA"})
-        public void tc11_rogersHUPShareKEPNoTermSLStdShipTest() {
+        public void tc11_RogersHUPShareKEPNoTermSLStdShipTest() {
             getDriver().get(System.getProperty("AWSUrl"));
             reporter.reportLogWithScreenshot("Device Catalog Page");
             getRogersDeviceCataloguePage().clickBannerSignIn();
