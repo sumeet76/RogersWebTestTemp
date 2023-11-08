@@ -361,7 +361,7 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[contains(text(),' Continue ') or contains(text(),' Continuer ')]")
 	WebElement shmAddonContinue;
 
-	@FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+	@FindBy(xpath = "//rch-shm-monthly-section/descendant::span[text()='Ignite Home Security Add-ons' or text()='Autosurveillance Élan']")
 	WebElement smartHomeMonitoringMonthlyCharges;
 
 	@FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
@@ -1426,14 +1426,12 @@ public void activateHomePhoneltrPopUp() {
 	}
 
 	public boolean validateSmartHomeAddOnsHeader() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 30);
+		getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1, 60);
 		return getReusableActionsInstance().isElementVisible(smartHomeAddOnsPageH1);
 	}
 
 	public void addSHMAddOn(){
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().waitForElementVisibility(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().scrollToElement(smartHomeMonitoringAddOn);
 		getReusableActionsInstance().executeJavaScriptClick(firstAddToCart);
@@ -1454,7 +1452,7 @@ public void activateHomePhoneltrPopUp() {
 			getReusableActionsInstance().javascriptScrollByVisibleElement(monthlyChargesExpandButton);
 			getReusableActionsInstance().executeJavaScriptClick(monthlyChargesExpandButton);
 		}
-		getReusableActionsInstance().scrollToElement(smartHomeMonitoringMonthlyCharges);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(smartHomeMonitoringMonthlyCharges);
 		return getReusableActionsInstance().isElementVisible(smartHomeMonitoringMonthlyCharges, 10);
 	}
 	/**

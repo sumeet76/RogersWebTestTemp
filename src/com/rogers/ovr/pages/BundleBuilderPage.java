@@ -1,7 +1,6 @@
 package com.rogers.ovr.pages;
 
 import com.rogers.pages.base.BasePageClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,7 +58,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath ="//input[@formcontrolname='enrouteEmail']")
     WebElement txtEmail;
 
-    @FindBy(xpath ="//input[@id='8']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
+    @FindBy(xpath ="(//div[@class='a-radio'])[1]/ds-radio-button")
     WebElement rdoTechInstallSlot;
 
     @FindBy(xpath ="//input[@id='12']/ancestor::label[contains(@class,'ds-radioLabel')]//div[@class='ds-radioButton__outerCircle my-12']")
@@ -92,7 +91,7 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "//h3[@translate='global.label.paymentOptionsBilling']/parent::div/following-sibling::div/descendant::span[2]")
     WebElement storedPaymentCardLabel;
 
-    @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Courier Delivery')]")
+    @FindBy(xpath = "//span[text()='Ignite Express Setup – Courier Delivery' or contains(text(),'Configuration express Élan – Livraison par messager')]")
     WebElement courierDeliveryInstall;
 
     @FindBy(xpath = "//span[contains(text(),'Ignite Express Setup – Grab and Go')]")
@@ -136,8 +135,8 @@ public class BundleBuilderPage extends BasePageClass {
 
 
     public void switchToTab(String windowHandle){
+        getReusableActionsInstance().waitForNumberOfWindowsToBe(3);
         getReusableActionsInstance().waitForPageLoad();
-        getReusableActionsInstance().staticWait(3000);
         getReusableActionsInstance().closeCurrentWindow();
         getReusableActionsInstance().switchToMainWindow(windowHandle);
     }

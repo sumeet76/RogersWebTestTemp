@@ -36,7 +36,7 @@ public class OVROrderReviewPage extends BasePageClass {
     @FindBy(xpath = "//*[@translate='global.label.reviewYourOrder']")
     WebElement reviewYourOrderHeader;
 
-    @FindBy(xpath = "//rch-shm-monthly-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")
+    @FindBy(xpath = "//rch-shm-monthly-section/descendant::span[text()='Ignite Home Security Add-ons' or text()='Autosurveillance Élan']")
     WebElement smartHomeMonitoringMonthlyCharges;
 
     @FindBy(xpath = "//rch-shm-onetime-section/descendant::div[text()='Automation Package' or text()='Forfait Automatisation']")

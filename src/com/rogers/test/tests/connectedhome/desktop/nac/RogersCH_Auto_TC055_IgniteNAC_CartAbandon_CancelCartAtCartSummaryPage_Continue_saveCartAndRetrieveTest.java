@@ -51,8 +51,8 @@ public class RogersCH_Auto_TC055_IgniteNAC_CartAbandon_CancelCartAtCartSummaryPa
 
         getRogersIgniteTVBuyPage().selectFlex20PackageMonthToMonthTypeOfContract();
         reporter.reportLogWithScreenshot("Selected month-to-month term contract");
-        getRogersIgniteTVBuyPage().select500MbpsDownloadSpeedFlex20();
-        reporter.reportLogWithScreenshot("Selected 500 Mbps download speed");
+        getRogersIgniteTVBuyPage().selectInternetSpeedFlex20(" 500 Mbps ");
+        reporter.reportLogWithScreenshot("Selected 500 Mbps download speed for Flex 20 Pack");
         getRogersIgniteTVBuyPage().selectFlex20Package();
         reporter.reportLogWithScreenshot("Added to cart");
 

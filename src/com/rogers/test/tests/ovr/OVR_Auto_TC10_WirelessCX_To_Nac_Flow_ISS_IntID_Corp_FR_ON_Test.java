@@ -37,9 +37,9 @@ public class OVR_Auto_TC10_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_FR_ON_Test exte
         reporter.reportLogWithScreenshot("search for account and select environment ");
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
-        getAccountOverViewPage().selectProduction();
-        reporter.reportLogWithScreenshot("Select Environment as Production");
-        getAccountOverViewPage().clickProceed();
+//        getAccountOverViewPage().selectProduction();
+//        reporter.reportLogWithScreenshot("Select Environment as Production");
+//        getAccountOverViewPage().clickProceed();
         getCheckAvailabilityPage().useThisAddress();
         reporter.reportLogWithScreenshot("Service Availability");
         getCheckAvailabilityPage().addressIsServiceable();

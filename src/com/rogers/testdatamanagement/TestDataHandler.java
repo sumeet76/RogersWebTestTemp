@@ -55,7 +55,7 @@ public class TestDataHandler {
 	public static AccountData tc99_3PCxInternetAccount;
 	public static AccountData tc100_SAIonlyAccount;
 	public static AccountData tc101_2P_HTO_HotCableAccount;
-	public static AccountData tc102_2P_HTO_ColdCableAccount;
+	public static AccountData tc130_2P_Leg_HTO_RetiredCampaign;
 	public static AccountData tc108_2PLeg_3PIgnite_otbc;
 	public static AccountData tc109_1P_HTO_DOCSIS;
 	public static AccountData tc112_3P_HTO_RecommendedOffer;
@@ -418,6 +418,7 @@ public class TestDataHandler {
 	public static OvrReusableData tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data;
 	public static OvrReusableData tc_67_FidoToRogers_FooterValidations_Data;
 	public static AccountData Serve_Adding_Ignite_HomeSecurity;
+	public static OvrReusableData tc_75_Rogers_FooterValidations;
 
 
 	public static void dataInit (List<ITestNGMethod> lstTestMethodName) throws FileNotFoundException {
@@ -510,7 +511,7 @@ public class TestDataHandler {
 		tc89_2PMigrationGPON = YamlHandler.getCableAccountData("TC89_2PMigrationGPON");
 		tc90_1P_HTO_GPON_DualTopology = YamlHandler.getCableAccountData("TC90_1P_HTO_GPON_DualTopology");
 		tc101_2P_HTO_HotCableAccount = YamlHandler.getCableAccountData("TC101_2P_HTO_HotCable");
-		tc102_2P_HTO_ColdCableAccount = YamlHandler.getCableAccountData("TC102_2P_HTO_ColdCable");
+		tc130_2P_Leg_HTO_RetiredCampaign = YamlHandler.getCableAccountData("TC130_2P_Leg_HTO_RetiredCampaign");
 		tc108_2PLeg_3PIgnite_otbc = YamlHandler.getCableAccountData("TC108_2PLeg_3PIgnite_OTBC");
 		tc109_1P_HTO_DOCSIS = YamlHandler.getCableAccountData("TC109_1P_HTO_DOCSIS");
 		tc112_3P_HTO_RecommendedOffer = YamlHandler.getCableAccountData("TC112_3P_HTO_Recommended");
@@ -904,5 +905,6 @@ public class TestDataHandler {
 		tc_67_FidoToRogers_FooterValidations_Data = YamlHandler.getOvrReusableData("TC67_FidoToRogers_Footervalidations");
 		tc_73_AddTSU_SAI_to_SAI_ExistingTerm_Data = YamlHandler.getOvrReusableData("TC73_AddTSU_SAI_to_SAI_ExistingTerm");
 		tc_74_AddTSU_SAI_to_ISS_MappedInstallWaiver_Data = YamlHandler.getOvrReusableData("TC74_AddTSU_SAI_to_ISS_mappedInstallWaiver");
+		tc_75_Rogers_FooterValidations = YamlHandler.getOvrReusableData("TC75_Rogers_Footervalidations");
 	}
 }

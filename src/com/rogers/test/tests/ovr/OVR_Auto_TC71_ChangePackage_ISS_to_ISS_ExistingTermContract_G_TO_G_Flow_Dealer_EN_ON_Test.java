@@ -26,7 +26,7 @@ public class OVR_Auto_TC71_ChangePackage_ISS_to_ISS_ExistingTermContract_G_TO_G_
         getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         //Use OSRCP as dealer code for ExistingIgniteAccounts.
-        getUniLoginPage().searchWithDealerCode();
+        getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspIgniteDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");

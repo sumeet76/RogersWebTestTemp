@@ -24,6 +24,9 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath ="//button[@class='ute-btn-secondary']//ins[@translate='global.cta.yes']")
 	WebElement btnActivateLater;
 
+	@FindBy(xpath ="//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
+	WebElement drpDownIgniteStarterContractTypeVisibleText;
+
 	@FindBy(xpath ="//div[@class='bundle-tile-row']//span[@id='ariaBundlesAddToCart_Rogers Ignite Select']/ancestor::a")
 	WebElement btnSolarisSelectPackage;
 
@@ -263,17 +266,20 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnPremierTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
 	WebElement drpdwnStarterPackageTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")
 	WebElement drpdwnFlex20PackageTypeOfContract;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")
-	WebElement drpdwnFlex20PackageDowmloadSpeed;
+	@FindBy(xpath = "//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")
+	WebElement drpdwnFlex20PackageDownloadSpeed;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")
-	WebElement drpdwnPremierPackageDowmloadSpeed;
+	@FindBy(xpath = "//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")
+	WebElement drpdwnStarterPackageDownloadSpeed;
+
+	@FindBy(xpath = "//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")
+	WebElement drpdwnPremierPackageDownloadSpeed;
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Flex 10 Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")
 	WebElement drpdwnFlex10PackageTypeOfContract;
@@ -630,18 +636,49 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To select type of contract to month-to-month
+	 * To select type of contract to month-to-month for Ignite Starter pack
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectStarterPackageMonthToMonthTypeOfContract() {
 		getReusableActionsInstance().waitForElementVisibility(drpdwnStarterPackageTypeOfContract, 120);
 		getReusableActionsInstance().getWhenReady(drpdwnStarterPackageTypeOfContract,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Show contract types and select an option']")));
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select")));
 		monthToMonthContact.selectByVisibleText("Month-to-month");
 	}
 
 	/**
-	 * To select type of contract to month-to-month
+	 * Validates that M2M contract type is disabled on rate card for a specified package
+	 * @author Nandan.Master
+	 */
+	public Boolean validateIfM2MContractTypeIsDisabled(String bundleName) {
+		By strContractM2M = By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//option[contains(text(), 'Month-to-month')]/parent::select[contains(@class,'disabled')]");
+		return getReusableActionsInstance().isElementVisible(strContractM2M, 60);
+	}
+
+	/**
+	 * Validates Guaranteed Price text for Term Contract on Rate Card for a specified package
+	 * @author Nandan.Master
+	 */
+	public Boolean validateGuaranteedPriceTermContract(String bundleName) {
+		By strTermPriceGuarantee= By.xpath("//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']//span[text()='Guaranteed price for 24 months.']");
+		return getReusableActionsInstance().isElementVisible(strTermPriceGuarantee, 120);
+	}
+
+	/**
+	 * Validates "24 months" Term Contract is selected for a specified package
+	 * @author Nandan.Master
+	 */
+	public Boolean validateSelectedTypeOfContractRateCard(String bundleName, String expectedValue) {
+		String strDrpDownValue = "//a[@aria-label='"+ bundleName +" Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select";
+		getReusableActionsInstance().getWhenReady(drpDownIgniteStarterContractTypeVisibleText, 60);
+		Select typeOfContract = new Select(getDriver().findElement(By.xpath(strDrpDownValue)));
+		WebElement strCurrentValue = typeOfContract.getFirstSelectedOption();
+		String selectedValueOption = strCurrentValue.getText();
+		return selectedValueOption.equals(expectedValue);
+	}
+
+	/**
+	 * To select type of contract to month-to-month for Flex 20 pack
 	 * @author Manpreet.Kaur3
 	 */
 	public void selectFlex20PackageMonthToMonthTypeOfContract() {
@@ -653,31 +690,40 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To select 500 Mbps Download Speed
+	 * To select 500 Mbps Download Speed for Flex 20 pack
 	 * @author Manpreet.Kaur3
 	 */
-	public void select500MbpsDownloadSpeedFlex20() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageDowmloadSpeed, 120);
-		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageDowmloadSpeed,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")));
-		monthToMonthContact.selectByVisibleText("500 Mbps");
+	public void selectInternetSpeedFlex20(String internetSpeed) {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(drpdwnFlex20PackageDownloadSpeed, 120);
+		getReusableActionsInstance().getWhenReady(drpdwnFlex20PackageDownloadSpeed,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Flex 20 Including Sports Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")));
+		monthToMonthContact.selectByVisibleText(internetSpeed);
 	}
 
 	/**
-	 * To select 500 Mbps Download Speed
+	 * To select 500 Mbps Download Speed for Premier pack
 	 * @author Manpreet.Kaur3
 	 */
-	public void select500MbpsDownloadSpeedPremier() {
-		getReusableActionsInstance().staticWait(5000);
-		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierPackageDowmloadSpeed, 120);
-		getReusableActionsInstance().getWhenReady(drpdwnPremierPackageDowmloadSpeed,30).click();
-		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::select[@aria-label='Open list of internet speeds and select one']")));
-		monthToMonthContact.selectByVisibleText("500 Mbps");
+	public void selectInternetSpeedPremierPack(String internetSpeed) {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().waitForElementVisibility(drpdwnPremierPackageDownloadSpeed, 120);
+		getReusableActionsInstance().getWhenReady(drpdwnPremierPackageDownloadSpeed,30).click();
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Premier Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")));
+		monthToMonthContact.selectByVisibleText(internetSpeed);
 	}
 
-
-
+	/**
+	 * To select 500 Mbps Download Speed for Starter pack
+	 * @author Manpreet.Kaur3
+	 */
+	public void selectInternetSpeedStarterPack(String internetSpeed) {
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenReady(drpdwnStarterPackageDownloadSpeed,30);
+		getReusableActionsInstance().clickWhenReady(drpdwnStarterPackageDownloadSpeed,30);
+		Select monthToMonthContact = new Select(getDriver().findElement(By.xpath("//a[@aria-label='Ignite Starter Add to cart']/ancestor::div[@class='vertical-tile-component']/descendant::p[contains(text(), 'Download speed')]/following-sibling::ds-form-field//select")));
+		monthToMonthContact.selectByVisibleText(internetSpeed);
+	}
 
 	/**
 	 * To verify Bundles Page
@@ -690,8 +736,8 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Upgrading To Ignite bundels Modal
-	 * @param    bundleName : name of the bundle package
+	 * To verify Upgrading To Ignite bundles Modal
+	 * @param  bundleName : name of the bundle package
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
@@ -720,7 +766,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To click on the chevron of the starter bundel package
+	 * To click on the chevron of the starter bundles package
 	 * @param    bundleName : name of the bundle package
 	 * @author Saurav.Goyal
 	 */
@@ -740,7 +786,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To verify Upgrading To Ignite bundels Modal
+	 * To verify Upgrading To Ignite bundles Modal
 	 * @return true if the modal is available else return false
 	 * @author Saurav.Goyal
 	 */
@@ -750,7 +796,7 @@ public class RogersIgniteTVBuyPage extends BasePageClass {
 	}
 
 	/**
-	 * To click okay on the modal Upgrading To Ignite bundels
+	 * To click okay on the modal Upgrading To Ignite bundles
 	 * @author Saurav.Goyal
 	 */
 	public void clkOkayUpgradingToIgnitebundelsModal() {

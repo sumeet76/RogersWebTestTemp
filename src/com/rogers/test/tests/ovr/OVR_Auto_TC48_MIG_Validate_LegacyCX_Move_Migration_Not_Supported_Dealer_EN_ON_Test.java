@@ -37,7 +37,7 @@ public class OVR_Auto_TC48_MIG_Validate_LegacyCX_Move_Migration_Not_Supported_De
         getAccountOverViewPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getAccountOverViewPage().clickProceed();
-        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA RD. MISSISSAUGA, ON L5A1H4", "chrome");
+        getCheckAvailabilityPage().checkAvailabilityAtOtherAddress("642 ABANA MISSISSAUGA, ON L5A1H4", "chrome");
         reporter.reportLogWithScreenshot("Service Availability");
 
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMoveMigration(),"Move Migration displayed","Move Migration did not display");

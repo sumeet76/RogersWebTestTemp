@@ -62,17 +62,17 @@ public class RogersCH_Auto_TC102_2P_HTO_2P_SignInFromBundlesPage_AdditionalSTBs_
         reporter.hardAssert(getRogersHomePage().verifyServiceabilityPopup(), "Serviceability Modal verified", "Serviceability modal not verified");
         getRogersHomePage().clkSignIntoMyRogers();
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
-        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getUsername());
+        getEnsVerifications().setVerificationCodeCH(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getUsername());
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
 
         if (getRogersAccountOverviewPage().isAccountSelectionPopupDisplayed()) {
             reporter.reportLogWithScreenshot("Select an account.");
-            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc102_2P_HTO_ColdCableAccount.getAccountDetails().getBan());
+            getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc130_2P_Leg_HTO_RetiredCampaign.getAccountDetails().getBan());
             reporter.reportLogWithScreenshot("Account Selected");
         }
 
