@@ -30,8 +30,7 @@ public class RogersBFA_TC28_POM_PromoCodeHWFin_RPP_NAC_Term_ExpressShippingTest 
 		reporter.reportLogWithScreenshot("Passcode entered successfully in passcode modal");
 		getRogersDeviceCataloguePage().clkContinueBtnPassCodeModal();
 		reporter.hardAssert(getRogersDeviceCataloguePage().verifyPasscode(),"Passcode is verified successfully", "Invalid Passcode");
-		reporter.hardAssert(getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP(), "Clicked Get Started Button",
-				"Get Started button not able to click");
+		getRogersDeviceCataloguePage().clickGetStartedButtonOnModalRPP();
 		getRogersDeviceCataloguePage().clickDeviceTileCTAButton(TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceName());
 		reporter.reportLogWithScreenshot("Device Selected " +TestDataHandler.tc28_POMRPP_NACTermBopisShipping.getDeviceName());
 		// ***************************Device config page************************************

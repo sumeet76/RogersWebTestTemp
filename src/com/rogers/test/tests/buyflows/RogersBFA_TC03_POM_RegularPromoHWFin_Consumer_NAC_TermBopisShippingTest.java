@@ -155,7 +155,7 @@ public class RogersBFA_TC03_POM_RegularPromoHWFin_Consumer_NAC_TermBopisShipping
 		reporter.softAssert(getRogersCheckoutPage().isFindMoreAvlNumberButtonPresent(),
 				"Find More Available Number Button Displayed", "Find More Available Number Button not disaplayed");
 		getRogersCheckoutPage().clkChooseNumberbutton();
-
+		getRogersCheckoutPage().clkContinueAfterFirstNameLastName();
 		// ***************Billing & Payment Stepper*************//
 		//reporter.softAssert(getRogersCheckoutPage().isBillingOptionsTitleDisplayed(), "Billing Options Title Displayed", "Billing Options Title Not Present");
 		reporter.softAssert(getRogersCheckoutPage().isPaymentMethodDropdownPresent(), "Select Payment Method Dropdown Displayed", "Select Payment Method Dropdown not disaplayed");
@@ -172,6 +172,7 @@ public class RogersBFA_TC03_POM_RegularPromoHWFin_Consumer_NAC_TermBopisShipping
 		reporter.reportLogPass("Express Delivery selected");
 		reporter.hardAssert(getRogersCheckoutPage().verifyExpressLocationMapPresent() ,"Express location map available", "Express location map not available");
 		getRogersCheckoutPage().clkContinueBtnShipping();
+		getRogersCheckoutPage().clksaveAndContinueBtnCheckoutPage();
 		reporter.reportLogPass("Clicked continue button in shipping stepper");
 		String totalMonthlyFees = getRogersCheckoutPage().getMonthlyFeeAfterTax();
 		String oneTimeFee = getRogersCheckoutPage().getOneTimeFeeAfterTax();

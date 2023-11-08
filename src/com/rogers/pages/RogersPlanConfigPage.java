@@ -308,7 +308,8 @@ public class RogersPlanConfigPage extends BasePageClass {
     })
     WebElement txtPromoCode;
 
-    @FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
+    //@FindBy(xpath = "//button[contains(@data-test,'promo-button-check') and contains(text(),'Check') or contains(text(),'Vérifier')]")
+            @FindBy(xpath = "//button[contains(@data-test,'promo-button-check')]")
     WebElement btnCheckPromo;
 
     @FindAll({
@@ -347,8 +348,9 @@ public class RogersPlanConfigPage extends BasePageClass {
     WebElement dpAddonCarLineItem;
 
     @FindAll({
-    @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
-    @FindBy(xpath = "//p[text()='Device Protection' or contains(@aria-label,'Protection de l’appareil')]")
+            @FindBy(xpath = "//label[@aria-label='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
+            @FindBy(xpath = "//p[text()='Device Protection' or contains(@aria-label,'Protection de l’appareil')]"),
+            @FindBy(xpath = "//input[contains(@value,'BYODDEVICEPROTECTION')]//following-sibling::span[contains(.,'Device Protection')]")
     })
     WebElement BYODdpAddon;
 
@@ -377,7 +379,10 @@ public class RogersPlanConfigPage extends BasePageClass {
     @FindBy(xpath = "//p[contains(.,'Your device is eligible') or contains(.,' Bonne nouvelle! Votre appareil est admissible')]")
     WebElement imeiSuccessEligibleMsg;
 
-    @FindBy(xpath = "//p[text()='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
+    @FindAll({
+            @FindBy(xpath = "//input[contains(@value,'NOPROTECTION')]//following-sibling::span[contains(.,'No Device Protection')]"),
+            @FindBy(xpath = "//label[@aria-label='No Device Protection' or contains(@aria-label,'Aucune protection de l’appareil')]")
+    })
     WebElement byodNoDeviceProtection;
 
     @FindBy(xpath = "//p[contains(.,'not eligible') or contains(.,'Votre appareil n’est pas admissible')]")
@@ -1528,7 +1533,7 @@ public class RogersPlanConfigPage extends BasePageClass {
      */
     public void setPromoCode(String promoCode) {
         getReusableActionsInstance().clickWhenReady(promoCodeField);
-        getReusableActionsInstance().getWhenReady(txtPromoCode, 40).click();;
+        getReusableActionsInstance().executeJavaScriptClick(txtPromoCode);;
         txtPromoCode.clear();
         txtPromoCode.sendKeys(promoCode);
     }

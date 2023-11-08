@@ -56,13 +56,13 @@ public class RogersDeviceCataloguePage extends BasePageClass {
 
    @FindAll({
            @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')]//*[contains(@aria-label,'partager') or contains(text(),'shared Rogers')]"),
-           @FindBy(xpath = "//*[contains(@data-test,'shared-nonshared-share-everything-0')]")
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'modal-shared-nonshared-0')]//label"),
     })
     WebElement sharedOption;
 
     @FindAll({
             @FindBy(xpath = "//ds-modal-container//label[contains(@class,'dsa-selection')][contains(@aria-label,'Forfait distinct sans') or contains(@aria-label,'separate plan')]"),
-            @FindBy(xpath = "//*[contains(@data-test,'shared-nonshared-share-everything-1')]")
+            @FindBy(xpath = "//ds-selection[contains(@data-test,'modal-shared-nonshared-1')]//label"),
     })
     WebElement nonSharedOption;
 
@@ -358,8 +358,8 @@ public class RogersDeviceCataloguePage extends BasePageClass {
      */
     public void selectCTN(String ctnNumber) {
         String xpathCTN =  "//ds-modal-container//input[@value='" +  ctnNumber + "']/following-sibling::span[@class='dsa-radio__checkmark']";
-       // String xpathCTN =  "//div[contains(@data-id,'" +  ctnNumber + "')]//label//div[contains(@class,'outer')]";
-
+        //String xpathCTN =  "//div[contains(@data-id,'" +  ctnNumber + "')]//label//div[contains(@class,'outer')]";
+        //String xpathCTN = "//ds-modal-container//input[@name='" +  ctnNumber + "']/ancestor::ds-radio-button";
         getReusableActionsInstance().clickWhenReady(By.xpath(xpathCTN) , 30);
     }
 

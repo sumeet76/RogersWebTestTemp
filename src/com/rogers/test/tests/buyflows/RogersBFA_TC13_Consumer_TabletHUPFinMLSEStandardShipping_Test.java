@@ -62,9 +62,6 @@ public class RogersBFA_TC13_Consumer_TabletHUPFinMLSEStandardShipping_Test exten
 //            reporter.hardAssert(getRogersCheckoutPage().clkBillingAddress(), "Billing Address radio button is selected ",
 //                    "Billing Address is not selected");
             reporter.reportLogPassWithScreenshot("On Checkout page");
-//            getRogersCheckoutPage().clkDeliveryMethod("PRO");
-//            reporter.reportLogPassWithScreenshot("Pro on the go Delivery selected");
-//            reporter.hardAssert(getRogersCheckoutPage().verifyAppointmentLabel(),"Appointment label is available","Appointment label is not available");
             getRogersCheckoutPage().clickSkipAutopay();
             getRogersCheckoutPage().clkDeliveryMethod("STANDARD");
             reporter.reportLogPassWithScreenshot("Standard Delivery selected");

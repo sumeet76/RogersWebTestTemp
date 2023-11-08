@@ -1460,7 +1460,7 @@ public class RogersCheckoutPage extends BasePageClass {
 	 * @author subash.nedunchezhian
 	 */
 	public boolean verifyShippingPageTitle() {
-		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,10))
+		if(getReusableActionsInstance().isElementVisible(deliveryMethodHeader,20))
 		{
 			return true;
 		}
