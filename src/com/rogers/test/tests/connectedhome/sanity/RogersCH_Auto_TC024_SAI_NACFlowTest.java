@@ -34,7 +34,8 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
         getDriver().get(System.getProperty("QaUrl") + "/internet");
         reporter.hardAssert(getRogersHomePage().verifyInternetpage(), "Internet page has Launched", "Internet page has not Launched");
         reporter.reportLogWithScreenshot("Launched the Internet packages page");
-        getRogersHomePage().clkNLProvinceLnk();
+       // getRogersHomePage().clkNLProvinceLnk();
+        getRogersHomePage().clkONProvinceLnk();
         reporter.reportLogWithScreenshot("Clicked on NL province link");
         getRogersHomePage().clkInternetAvailability();
         reporter.reportLogWithScreenshot("Serviceability check popup has displayed to check the Service availability");

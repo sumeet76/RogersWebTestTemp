@@ -48,7 +48,8 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//input[@formcontrolname='sub']")
 	WebElement inputEmpName;
 
-	@FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
+	//@FindBy(xpath = "//h3[text()='Production']/ancestor::ds-selection-checkbox")
+@FindBy(xpath="//input[@id='ds-selection-checkbox-id-1']")
 	WebElement envProduction;
 
 	@FindBy(xpath = "//div[@class='proceed-button']/button")
@@ -152,8 +153,10 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */
 	public void selectOneViewEnv(String env) {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().selectWhenReadyByVisibleText(ddlenvList, env);
 		getReusableActionsInstance().getWhenReady(btnGo, 30).click();
+		getReusableActionsInstance().staticWait(5000);
 		
 		}
 

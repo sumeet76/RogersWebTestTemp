@@ -971,7 +971,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		
 		return getReusableActionsInstance().getWhenReady(lblCTNWirelessName,20).getText().trim().toLowerCase().contains(strFirstName.toLowerCase());
 	}
-	
+
 	/**
 	 * Validates the Message - 'Your account was successfully linked to your profile!'
 	 * @return true if message displayed ; else false;
@@ -980,7 +980,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyLinkAccountSuccessful() {
 		return getReusableActionsInstance().isElementVisible(lblLinkAccountSuccess,120);
 	}
-	
+
 	/**
 	 * Clicks on the 'Link Another Account' option in the Account menu
 	 * @author rajesh.varalli1
@@ -990,7 +990,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().clickIfAvailable(lnkAccountdropdown);
 		getReusableActionsInstance().clickIfAvailable(lnkLinkAnotherAccount);
 	}
-	
+
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -1000,8 +1000,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//getReusableActionsInstance().clickIfAvailable(lnkBillingAndPayment);
 		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod,60).click();
 	}
-	
-	
+
+
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -1009,17 +1009,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkSetUpAutomaticPaymentMethodMobile() {
 		if(getReusableActionsInstance().isElementVisible(btnOverViewMobile))
 		{
-		
+
 		getReusableActionsInstance().getWhenReady(btnOverViewMobile,30).click();
 		}else if (getReusableActionsInstance().isElementVisible(menuMainBillingAndPaymentsMobile))
 		{
 			getReusableActionsInstance().getWhenReady(menuMainBillingAndPaymentsMobile,30).click();
-		}	
+		}
 		getReusableActionsInstance().getWhenReady(menuBillingAndPaymentsMobile,30).click();
 		getReusableActionsInstance().waitForElementVisibility(submenuSetUpAutomaticPaymentMethodMobile);
 		getReusableActionsInstance().getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();
 	}
-	
+
 	/**
 	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -1028,7 +1028,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(lnkSetUpAutomaticPaymentMethod);
 		getReusableActionsInstance().getWhenReady(lnkSetUpAutomaticPaymentMethod).click();
 	}
-	
+
 	/**
 	 * Clicks on the submenu of 'Billing and Payment'  'Set up automatic payment' option
 	 * @author Mirza.Kamran
@@ -1038,15 +1038,15 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(submenuSetUpAutomaticPaymentMethodMobile).click();
 		//getReusableActionsInstance().clickIfAvailable(submenuSetUpAutomaticPaymentMethodMobile);
 	}
-	
+
 	/**
 	 * Clicks on the 'Billing and Payment' then 'Change Payment Method' option
 	 * @author Mirza.Kamran
 	 */
-	public void clkBillingAndPaymentsSubMenuChangePaymentMethod() {		
+	public void clkBillingAndPaymentsSubMenuChangePaymentMethod() {
 		getReusableActionsInstance().clickIfAvailable(lnkChangePaymentMethod);
 	}
-	
+
 	/**
 	 * Clicks on the 'Make a payment' button
 	 * @author rajesh.varalli1
@@ -1054,7 +1054,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clickMakePayment() {
 		//getReusableActionsInstance().waitForElementTobeClickable(btnMakeAPayment, 20);
 		//getReusableActionsInstance().getWhenReady(btnMakeAPayment,10).click();
-		
+
 		boolean clickSuccess=false;
 		int count=0;
 		while (count<=3 && !clickSuccess) {
@@ -1065,16 +1065,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			if(getReusableActionsInstance().isElementVisible(lblHowWouldYouPay))
 			{
 				System.out.println("Make payment button clicked in attempt: "+(count+1));
-				clickSuccess=true;				
+				clickSuccess=true;
 				break;
-				
+
 			}
 			count++;
 		}
-		
-		
+
+
 	}
-	
+
 	/**
 	 * Clicks on the 'View Your Bill' button
 	 * @author rajesh.varalli1
@@ -1095,16 +1095,16 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().staticWait(3000); //extra static buffers added for firefox
 		return getReusableActionsInstance().isElementVisible(lnkSetUpAutomaticPaymentMethod);
 	}
-	
+
 	/**
 	 * Checks if the auto payment is displayed
 	 * @return true if set automatic payment sub menu is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isLnkSetAutoPaymentDisplayed() {		
+	public boolean isLnkSetAutoPaymentDisplayed() {
 		return getReusableActionsInstance().isElementVisible(lnkSetUpAutomaticPaymentMethodAOPage);
 	}
-	
+
 	/**
 	 * Checks if the auto payment is set
 	 * @return true if set automatic payment sub menu is displayed else false
@@ -1113,7 +1113,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isSetAutoPaymentDisplayedMobile() {
 		if(getReusableActionsInstance().isElementVisible(btnOverViewMobile))
 		{
-		
+
 		getReusableActionsInstance().getWhenReady(btnOverViewMobile,30).click();
 		}else if (getReusableActionsInstance().isElementVisible(menuMainBillingAndPaymentsMobile))
 		{
@@ -1132,8 +1132,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(lblAutoPayment);
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment)
 			 && getReusableActionsInstance().isElementVisible(imgBank));
-	}	
-	
+	}
+
 	/**
 	 * Checks if the auto payment option is set successfully to CC
 	 * @return true if the payment option is set successfully
@@ -1148,35 +1148,35 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			 && getReusableActionsInstance().isElementVisible(imgCC,20));
 	}
 
-		
+
 	/**
 	 * Checks if the auto payment option is set successfully to CC
 	 * @return true if the payment option is set successfully
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyCCEndingWithIsDisplayedCorrectly() {		
+	public boolean verifyCCEndingWithIsDisplayedCorrectly() {
 		return getReusableActionsInstance().isElementVisible(txtCC,30);
 	}
-	
+
 	/**
 	 * Checks if the CC auto payment option is displayed on Account overview
 	 * @return true if the CC payment option is displayed on account overview, else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isCCDisplayedOnAccountOverViewPage() {		
+	public boolean isCCDisplayedOnAccountOverViewPage() {
 		return (getReusableActionsInstance().isElementVisible(lblAutoPayment,30)
 			 && getReusableActionsInstance().isElementVisible(imgCC));
 	}
-	
+
 	/**
 	 * Clicks on the menu Billing and Payments and selects the submenu Make Payment option
 	 * @author Mirza.Kamran
 	 */
-	public void clkBillingAndPaymentsMakeAPayment() {	
-	
+	public void clkBillingAndPaymentsMakeAPayment() {
+
 		boolean clickSuccess=false;
 		int count=0;
-	try {	
+	try {
 		while (count<=3 && !clickSuccess) {
 			System.out.println("Attempt: "+(count+1)+" Billing and payments");
 			getReusableActionsInstance().waitForElementTobeClickable(lnkBillingAndPayment, 360);
@@ -1188,30 +1188,30 @@ public class RogersAccountOverviewPage extends BasePageClass {
 			if(getReusableActionsInstance().isElementVisible(txtAmount))
 			{
 				System.out.println("Billing and payment click successful in attempt: "+(count+1));
-				clickSuccess=true;				
+				clickSuccess=true;
 				break;
-				
+
 			}
 			count++;
 		}
 	}catch (StaleElementReferenceException e) {
 		// TODO:  the stale ref exception if encountered
 	}
-		
-		
+
+
 	}
-	
+
 	/**
 	 * The Wireless usage and service is visible
 	 * @param strFirstName parameter First name
 	 * @return boolean true if the ctn is visible else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyWirelessCallerIdUpdatedInDropDownToSelectWirelessUsage(String strFirstName) {					
+	public boolean verifyWirelessCallerIdUpdatedInDropDownToSelectWirelessUsage(String strFirstName) {
 		return (getReusableActionsInstance().isElementVisible((By.xpath("//a[@class='c-dropdown-item']/span[contains(text(),'" + strFirstName + "')]")),20)
 				|| getReusableActionsInstance().isElementVisible((By.xpath("//span[contains(@data-translate-values,'" + strFirstName + "')]")),20)) ;
 	}
-	
+
 	/**
 	 * Checks if more than one ban present, the count will be more than 3
 	 * @return true if more than one ban present else false
@@ -1219,8 +1219,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isMoreThanOneBanPresent() {
 		return (lstAccountBans.size()>3);
-	} 
-	
+	}
+
 	/**
 	 * Click on the Overview tab
 	 * @author Saurav.Goyal
@@ -1228,7 +1228,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clickOverview() {
 		getReusableActionsInstance().clickWhenReady(clkOverview);
 	}
-	
+
 	/**
 	 * To select first account from the account drop down
 	 * @author Saurav.Goyal
@@ -1242,7 +1242,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the no of CTNS are more than 5
 	 * @author Mirza.Kamran
 	 */
-	public boolean isCTNMoreThanSix() {		
+	public boolean isCTNMoreThanSix() {
 		return lstCtnBadges.size()>5;
 	}
 
@@ -1251,71 +1251,71 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the no of CTNS are more than 5
 	 * @author Mirza.Kamran
 	 */
-	public boolean isCTNMoreThanOne() {		
+	public boolean isCTNMoreThanOne() {
 		return lstCtnBadges.size()>1;
 	}
-	
+
 	/**
 	 * Checks if the no CTNS are displayed
 	 * @return true if the no CTNS are displayed
 	 * @author Mirza.Kamran
 	 */
-	public boolean isCTNNotDisplayed() {		
+	public boolean isCTNNotDisplayed() {
 		return lstCtnBadges.size()==0;
 	}
-	
+
 	/**
 	 * retruns total no of CTNS
 	 * @return int value total no of CTNs
 	 * @author Mirza.Kamran
 	 */
-	public int getTotalCTN() {		
+	public int getTotalCTN() {
 		return lstCtnBadges.size();
 	}
-	
+
 	/**
 	 * Checks if the suspended CTN is displayed
 	 * @return boolean true if the suspended CTN is displayed else false
 	 * @author Mirza.Kamran
 	 */
-	public boolean isSuspendedCTNAvailable() {	
-		
+	public boolean isSuspendedCTNAvailable() {
+
 		return getReusableActionsInstance().isElementVisible(lstSuspendedCTNs.get(0));
-				
+
 	}
-	
+
 	/**
-	 * Checks if the suspended CTN is displayed 
+	 * Checks if the suspended CTN is displayed
 	 * @author Mirza.Kamran
 	 */
-	public void clkSuspendedCTN() {	
+	public void clkSuspendedCTN() {
 		getReusableActionsInstance().getWhenReady(lstSuspendedCTNs.get(0)).click();
 	}
-	
-	
+
+
 	/**
-	 * Click the overview navigation button on the page 
+	 * Click the overview navigation button on the page
 	 * @author ning.xue
 	 */
-	public void clkBtnNavigationMobile() {		
+	public void clkBtnNavigationMobile() {
 		getReusableActionsInstance().getWhenVisible(btnNavigationBarMobile, 30).click();
 	}
-	
+
 	/**
 	 * Clicks on Profile and settings button on mobile
 	 * @author ning.xue
 	 */
-	public void clkBtnProfileSettingsMobile() {		
+	public void clkBtnProfileSettingsMobile() {
 		getReusableActionsInstance().getWhenVisible(btnProfileSettingsMobile, 30).click();
 	}
-	
+
 	/**
 	 * Scroll to middle of page
 	 * @author Mirza.Kamran
 	 */
 	public void scrollToMiddleOfPage() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
-		
+
 	}
 
 	/**
@@ -1324,8 +1324,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void scrollToBottomOfPage() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
-		
-		
+
+
 	}
 
 	/**
@@ -1335,14 +1335,14 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void scrollToTopOfPage() {
 		getReusableActionsInstance().javascriptScrollToTopOfPage();
 	}
-	
+
 	/**
 	 * Clicks on Tupelo entertainment badge
 	 * @author Mirza.Kamran
 	 */
 	public void clkEntertainmentBadge() {
 		getReusableActionsInstance().getWhenReady(btnEntertainmentBadge).click();
-		
+
 	}
 
 	/**
@@ -1351,7 +1351,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkViewBill() {
 	getReusableActionsInstance().clickIfAvailable(btnViewYourBill);
-		
+
 	}
 
 	/**
@@ -1361,17 +1361,17 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isViewBillDisplayed() {
 	return getReusableActionsInstance().isElementVisible(btnViewYourBill);
-		
+
 	}
-	
+
 	/**
 	 * Clicks on Billings and payments sub menu change paymeny mobile
 	 * @author Mirza.Kamran
 	 */
-	public void clkBillingAndPaymentsSubMenuChangePaymentMethodMobile() {			
+	public void clkBillingAndPaymentsSubMenuChangePaymentMethodMobile() {
 		getReusableActionsInstance().waitForElementVisibility(submenuChangePaymentMethod,60);
 		getReusableActionsInstance().getWhenReady(submenuChangePaymentMethod).click();
-		
+
 	}
 
 	/**
@@ -1391,7 +1391,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isAccountCancelledMessageDisplayed() {
 		return getReusableActionsInstance().isElementVisible(divAccountCancelled);
 	}
-	
+
 	/**
 	 * The view billing and payment history is displayed inside account is cancelled message
 	 * @author Mirza.Kamran
@@ -1400,7 +1400,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean isViewBillingAndPaymentHistoryDisplayedInsideAccountCancelledMessage() {
 		return getReusableActionsInstance().isElementVisible(lnkViewBillingAndPayment);
 	}
-	
+
 	/**
 	 * The Manage Profile link is displayed inside account is cancelled message
 	 * @author Mirza.Kamran
@@ -1427,7 +1427,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyLiveChatButtonIsDisplayed() {
 		return getReusableActionsInstance().isElementVisible(btnLiveChat, 30);
 	}
-	
+
 	/**
 	 * Click the button Live chat in wireless dashboard page
 	 * @author Mirza.Kamran
@@ -1435,13 +1435,13 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public void clkBtnLiveChat() {
 		getReusableActionsInstance().getWhenReady(btnLiveChat, 20).click();
 	}
-	
+
 	/**
 	 * To verify if the live chat overlay opened in wireless dashboard page
 	 * @return true if the overlay opened otherwise false
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyLiveChatOverlayOpened() {	
+	public boolean verifyLiveChatOverlayOpened() {
 	  if(getReusableActionsInstance().isElementVisible(fraLiveChat))
 		{
 		getReusableActionsInstance().waitForFrameToBeAvailableAndSwitchToIt(fraLiveChat, 20);
@@ -1450,7 +1450,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			return getReusableActionsInstance().isElementVisible(headerLiveChat, 30);
 		}
-		
+
 	}
 
 	/**
@@ -1458,11 +1458,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @return true if the overlay opened otherwise false
 	 * @author Mirza.Kamran
 	 */
-	public boolean verifyLiveChatOverlayOpenedFromSuspensionNotification() {	
-	  
+	public boolean verifyLiveChatOverlayOpenedFromSuspensionNotification() {
+
 			return getReusableActionsInstance().isElementVisible(headerRogersLiveChat, 30);
 	}
-	
+
 	/**
 	 * Clicks on back to devices page
 	 * @author Mirza.Kamran
@@ -1481,7 +1481,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnOverViewMobile,30).click();
 		getReusableActionsInstance().getWhenReady(menuBillingAndPaymentsMobile,30).click();
 		getReusableActionsInstance().getWhenReady(btnMakeAPayment,30).click();
-		
+
 	}
 
 	/**
@@ -1494,12 +1494,12 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	}
 
 	/**
-	 * Clicks  on Add Link 
+	 * Clicks  on Add Link
 	 * @author Mirza.Kamran
 	 */
 	public void clkAddALink() {
 		getReusableActionsInstance().getWhenReady(lnkAddALine).click();
-		
+
 	}
 
 	/**
@@ -1533,8 +1533,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 				&& lstShareEverythingCTNs.get(0).getLocation().x<lstIndividualWirelessCTNs.get(0).getLocation().x
 				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
 			);
-	} 
-	
+	}
+
 	/**
 	 * Checks if Residential services CTNs displayed
 	 * @return return true if Residential services is displayed else false
@@ -1544,8 +1544,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return (getReusableActionsInstance().isElementVisible(lstResidentialServicesCTNs.get(0))
 				&& lstIndividualWirelessCTNs.get(0).getLocation().x<lstResidentialServicesCTNs.get(0).getLocation().x
 			);
-	} 
-	
+	}
+
 	/**
 	 * Checks if share everything CTNs displayed
 	 * @return return true if share everything is displayed else false
@@ -1578,7 +1578,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		{
 			alignmentStatus = 2;
 		}
-		
+
 		return alignmentStatus;
 	}
 
@@ -1597,7 +1597,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 * @author Mirza.Kamran
 	 */
 	public boolean isCurrentAccountBalanceDisplayed() {
-		
+
 		return (getReusableActionsInstance().isElementVisible(lblCurrentAccountBalance)
 				&& getReusableActionsInstance().isElementVisible(lblCurrentBalanceAmount));
 	}
@@ -1614,7 +1614,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		//return (DateHelpersFunctions.isValidDAte(getReusableActionsInstance().getWhenReady(lblBalanceExpiresOn).getText().trim().split(":")[1].trim()));
 	}
 
-	
+
 	/**
 	 * Checks if Link update payment method is displayed is displayed
 	 * @return true if the element is displayed else false
@@ -1631,7 +1631,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isLnkViewCallTransactionHistoryDisplayedOnAOPage() {
 		return getReusableActionsInstance().isElementVisible(lnkViewCallTransactionHistory);
-		
+
 	}
 
 	/**
@@ -1652,7 +1652,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		return getReusableActionsInstance().isElementVisible(lblAccountPreferences)
 				&& getReusableActionsInstance().isElementVisible(lnkChangeContactInfo)
 				&& getReusableActionsInstance().isElementVisible(lnkChangePassword);
-		
+
 	}
 
 	/**
@@ -1662,7 +1662,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean isOtherServicesDisplayedOnAOPg() {
 		return getReusableActionsInstance().isElementVisible(lblOtherServicesAvailable);
-		
+
 	}
 
 	/**
@@ -1671,7 +1671,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public void clkCTNWidget(String strCTN) {
 		getReusableActionsInstance().getWhenReady(By.xpath("//rss-subscription-detail//span[contains(text(),'"+strCTN.substring(strCTN.length()-4)+"')]")).click();
-		
+
 	}
 
 	/**
@@ -1681,8 +1681,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	 */
 	public boolean verifySubscriptionIsAvailableForRedeem() {
 		return getReusableActionsInstance().isElementVisible(btnSubscriptionSignUp);
-	} 
-	
+	}
+
 	/**
 	 * Verifies if the account has subscription available which can be redeem
 	 * @return true if available else false
@@ -1740,7 +1740,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyIfCurrentlySubscribedPaneIsDisplayed() {
 		return getReusableActionsInstance().isElementVisible(headerCurrentlySubscribed);
 	}
-		
+
 	/**
 	 * Verifies if the button cancel subscription is displayed
 	 * @return true if available else false
@@ -1749,7 +1749,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 	public boolean verifyIfButtonCancelSubscriptionIsDisplayed() {
 		return getReusableActionsInstance().isElementVisible(btnCancelSubscription);
 	}
-	
+
 	/**
 	 * Clicks on cancel subscription button
 	 * @author Mirza.Kamran
@@ -1776,8 +1776,8 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		public boolean verifyIfHeaderCancelSubscriptionIsDisplayed() {
 			return getReusableActionsInstance().isElementVisible(headerCancelSubscription);
 		}
-		
-				
+
+
 		/**
 		 * Verifies if the cancel subscription details are correctly displayed
 		 * @return true if available else false
@@ -1786,7 +1786,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		public boolean verifyIfCancelSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
 			return getReusableActionsInstance().getWhenReady(lblRogersCancellationForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
 		}
-		
+
 		/**
 		 * Selects the cancellation reason
 		 * @author Mirza.Kamran
@@ -1857,11 +1857,11 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		}
 
 		/**
-		 * 
+		 *
 		 * @return true if displayed else false
 		 * @author Mirza.Kamran
 		 */
-		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {			
+		public boolean verifyIfSMPIsDisplayedWithCancelledSubscription() {
 			return (getReusableActionsInstance().isElementVisible(paneSMPCancelled)
 					&& getReusableActionsInstance().isElementVisible(lblSMPpromotionEnds));
 		}
@@ -1884,7 +1884,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void clkSignUpSubscription() {
 			getReusableActionsInstance().getWhenReady(btnSubscriptionSignUp).click();
-			
+
 		}
 
 		/**
@@ -1892,7 +1892,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @return true if available else false
 		 * @author Mirza.Kamran
 		 */
-		public boolean verifyIfSubscriptionIsAvailableForRedeem() {		
+		public boolean verifyIfSubscriptionIsAvailableForRedeem() {
 			return getReusableActionsInstance().isElementVisible(chkRedeemSubs);
 		}
 
@@ -1902,7 +1902,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void clkSignUp() {
 			getReusableActionsInstance().getWhenReady(btnSignUp).click();
-			
+
 		}
 
 		/**
@@ -1918,7 +1918,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @return true if displayed else false
 		 * @author Mirza.Kamran
 		 */
-		public boolean verifyIfTnCForSubscriptionIsDisplayed() {			
+		public boolean verifyIfTnCForSubscriptionIsDisplayed() {
 			return getReusableActionsInstance().isElementVisible(headerTnC);
 		}
 
@@ -1928,7 +1928,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void checkTnC() {
 			getReusableActionsInstance().getWhenReady(chkTnC).click();
-			
+
 		}
 
 		/**
@@ -1937,7 +1937,7 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 */
 		public void clkSubscribeToSubs() {
 		getReusableActionsInstance().getWhenReady(btnSubscribeToSubsscription).click();
-			
+
 		}
 
 		/**
@@ -1946,10 +1946,10 @@ public class RogersAccountOverviewPage extends BasePageClass {
 		 * @return true if details match else false
 		 * @author Mirza.Kamran
 		 */
-		public boolean verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {			
+		public boolean verifyIfRedeemSubscriptionDetailsIsDisplayedCorrectly(String strSubscriberNumber) {
 			return getReusableActionsInstance().getWhenReady(lblRogersRedeemForSubs).getText().trim().replaceAll(" ","").replaceAll("-","").contains(strSubscriberNumber);
 		}
-		
+
 		/**
 		 * verifies if the Subscription success overlay is displayed
 		 * @return true if displayed else false

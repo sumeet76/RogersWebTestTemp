@@ -13,7 +13,11 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	}
 	
 
-	@FindBy(xpath = "//*[text()='We received the order.' or text()='Nous avons reçu la commande.  ']")
+	@FindAll({
+			@FindBy(xpath = "//*[contains(text(),'We received the order.')]" ),
+			@FindBy(xpath =	"//*[text()='Nous avons reçu la commande.  ']"),
+			@FindBy(xpath="//h1[text()= 'Order Confirmation' ]")
+	})
 	WebElement orderConfirmation;
 	
 	@FindAll({
@@ -42,6 +46,7 @@ public class  RogersOVOrderConfirmationPage  extends BasePageClass {
 	public boolean verifyOrder() {
 		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(orderConfirmation,120);
+
 	}
 	
 	/**

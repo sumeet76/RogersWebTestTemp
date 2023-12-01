@@ -163,6 +163,7 @@ public class HomePhoneAddonsPage  extends BasePageClass {
 	 * @author Chinnarao.Vattam
 	 */	
 	public void clkContinue() {
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().isElementVisible(continueButton,60);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);

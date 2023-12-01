@@ -17,6 +17,8 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_SAIAndSmartHomeMonitoring_TMP_Paym
     public void oneViewCH_Auto_1417_TC01_E2E_NAC_SAIAndSmartHomeMonitoring_TMP_PaymentMethod_CreditCard_Test(){
 		reporter.reportLogWithScreenshot("oneview env");
 		getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+		getEnvironmentSelectionPage().selectProduction();
+		getEnvironmentSelectionPage().clickProceed();
 		reporter.reportLogWithScreenshot("address");
 		getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -63,13 +65,14 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_SAIAndSmartHomeMonitoring_TMP_Paym
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		getHomePhoneSelectionPage().clkGeneratePhoneNo();
-		reporter.reportLogWithScreenshot("Phone Number Selected");
-		getCreditCheckPage().goToPageBottom();
-		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+//		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+//		reporter.reportLogWithScreenshot("Phone Number Selected");
+//		getCreditCheckPage().goToPageBottom();
+//		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 		reporter.reportLogWithScreenshot("Installation options");
 		getCreditCheckPage().verifyInstallationOption();
+		getCreditCheckPage().clkCourierDelivery();
 		getCreditCheckPage().goToPageBottom();
 		reporter.reportLogWithScreenshot("in-person delivery");
 		getCreditCheckPage().clickInPersonDelivery();
@@ -84,11 +87,11 @@ public class OneViewCH_Auto_1417_TC01_E2E_NAC_SAIAndSmartHomeMonitoring_TMP_Paym
 		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
 		reporter.reportLogWithScreenshot("added cart details");
 
-//		getPaymentOptionsPage().clkContinue();
-//		reporter.reportLogWithScreenshot("Order Review Page");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
-//		reporter.reportLogWithScreenshot("Order Placed");
+		getPaymentOptionsPage().clkContinue();
+	reporter.reportLogWithScreenshot("Order Review Page");
+	getRogersOVCheckoutPage().clkSubmit();
+	reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+	reporter.reportLogWithScreenshot("Order Placed");
     }
 
 	@BeforeMethod (alwaysRun=true)

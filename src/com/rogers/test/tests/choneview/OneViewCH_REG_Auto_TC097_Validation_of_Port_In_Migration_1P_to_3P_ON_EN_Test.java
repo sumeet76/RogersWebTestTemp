@@ -3,6 +3,7 @@ package com.rogers.test.tests.choneview;
 import com.rogers.test.base.BaseTestClass;
 import com.rogers.test.helpers.RogersEnums;
 import com.rogers.testdatamanagement.TestDataHandler;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.apache.http.client.ClientProtocolException;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -16,7 +17,7 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
     public void oneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_ON_EN_Test(){
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData1PTo3P.getAccountNo(), TestDataHandler.migrationData1PTo3P.getContactID());
         reporter.reportLogWithScreenshot("OneView Interface has Launched");
-        getAccountOverViewPage().enterDealerCodeDialogue();
+       // getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().clickIgnite();
         getAccountOverViewPage().selectProduction();
         getAccountOverViewPage().clickProceed();
@@ -39,7 +40,8 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
         reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
         reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkTVCheckbox();
+        getRogersIgniteBundlesPage().clkInternetCheckbox();
+       // getRogersIgniteBundlesPage().clkTVCheckbox();
         reporter.reportLogWithScreenshot("portin");
         getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
         reporter.reportLogWithScreenshot("Port In initiated");
@@ -53,14 +55,21 @@ public class OneViewCH_REG_Auto_TC097_Validation_of_Port_In_Migration_1P_to_3P_O
 //        getRogersIgniteBundlesPage().clickExchangeLater();
 //        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
         reporter.reportLogWithScreenshot("Product Added");
+        getRogersIgniteBundlesPage().clickAddOnLink();
         getRogersIgniteBundlesPage().clkContinue();
 //        getRogersIgniteBundlesPage().clkExpressCheckOut();
 //        getRogersOVChannelsAndThemePacksPage().clickNoTheyDont();
         getRogersIgniteBundlesPage().fourKTVPopup();
         getRogersIgniteBundlesPage().fourKContinue();
         reporter.reportLogWithScreenshot("Cart Summary");
+
+        //getHomePhoneAddonsPage().chooseAddon(" Add to cart "," Add to cart ");
+        //getHomePhoneAddonsPage().clkContinue();
+
+       getRogersIgniteBundlesPage().clkContinueInternetAddon();
+
         getRogersIgniteBundlesPage().clkContinueInternetAddon();
-        getHomePhoneAddonsPage().clkContinue();
+        getRogersIgniteBundlesPage().clkContinueInternetAddon();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
         reporter.reportLogWithScreenshot("cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

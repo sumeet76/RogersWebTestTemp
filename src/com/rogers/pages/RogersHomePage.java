@@ -192,7 +192,8 @@ public class RogersHomePage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement rdoAddressOnFile;
 
-	@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	//@FindBy(xpath = "//div[@class='ng-star-inserted']/button[@class='ds-button ds-corners ds-pointer text-center mw-100 d-inline-block -primary -large']/span")
+	@FindBy(xpath="//span[text()= 'Use this address']")
 	WebElement btnUseAddress;
 
 	@FindBy(xpath="//p[contains(text(),'Good news!')]")
@@ -239,6 +240,10 @@ public class RogersHomePage extends BasePageClass {
 	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Newfoundland and Labrador']"),
 			@FindBy(xpath = "//span[contains(text(),'Newfoundland and Labrador')]")})
 	WebElement lnkProvinceNL;
+
+	@FindAll({@FindBy(xpath = "//a[@class='m-navLink -dropdownNavbar' and @title='Ontario']"),
+			@FindBy(xpath = "//span[contains(text(),'Ontario')]")})
+	WebElement lnkProvinceON1;
 
 	@FindBy(xpath = "//ngx-smart-modal[@id='loadingModal']")
 	WebElement popupLoadingFingersciam;
@@ -553,6 +558,7 @@ public class RogersHomePage extends BasePageClass {
 	public boolean isSubnavHelpAndSupport()  {
 		return getReusableActionsInstance().isElementVisible(subnavHelpAndSupport, 30);
 	}
+
 
 	/**
 	 * checks if the About Ignite Internet link is displayed
@@ -880,10 +886,18 @@ public class RogersHomePage extends BasePageClass {
 	 */
 	public void clkNLProvinceLnk() {
 //		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
-		getReusableActionsInstance().getWhenReady(lnkProvince, 20).click();
-		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 30);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 10).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceNL, 10);
 		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceNL);
 	}
+
+	public void clkONProvinceLnk() {
+//		getReusableActionsInstance().isElementVisible(lnkOptedON,20);
+		getReusableActionsInstance().getWhenReady(lnkProvince, 10).click();
+		getReusableActionsInstance().getWhenReady(lnkProvinceON1, 10);
+		getReusableActionsInstance().executeJavaScriptClick(lnkProvinceON1);
+	}
+
 
 	public void clkSubscribeNow() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
@@ -1022,13 +1036,25 @@ public class RogersHomePage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 3).clear();
 		getReusableActionsInstance().getWhenReady(txaIgniteAddressLookup, 5).sendKeys(strAddress);
-		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') and contains(text(),'address')]";
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ARROW_DOWN);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.BACK_SPACE);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenVisible(txaIgniteAddressLookup).sendKeys(Keys.ENTER);
+		getReusableActionsInstance().staticWait(3000);
+		//getReusableActionsInstance().getWhenReady(txaIgniteAddressContainerExisting, 3).click();
+		String strAddressResultXpath = "//ul[@role='listbox']/li[contains(@ng-reflect-result,'') or contains(text(),'address')]";
+		getReusableActionsInstance().staticWait(3000);
 		try{
-			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
+			getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 30).click();
+		//	getReusableActionsInstance().getWhenReady(By.xpath(strAddressResultXpath.replace("address", strAddress.trim())), 10).click();
 
 		}catch (Exception e){
+			getReusableActionsInstance().staticWait(10000);
 			getReusableActionsInstance().getWhenReady(By.xpath("//ul[@role='listbox']/li[contains(@ng-reflect-result,'')]"), 10).click();
 		}
+
 	}
 
 	public void setIgniteAddressLookupRetry() {

@@ -11,7 +11,7 @@ public class CustomerProfilePage  extends BasePageClass {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Profile']")
+	@FindBy(xpath = "//h1[text()='Profil client' or text()='Customer Information']")
 	WebElement customerProfile;
 
 	@FindBy(xpath = "//h1[text()='Smart Home Monitoring Add-ons' or text()='Options du Système de domotique Rogers']")

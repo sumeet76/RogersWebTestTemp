@@ -91,8 +91,13 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	@FindBy(xpath = "//a[contains(@aria-label,'Continue to the next step')]/span")
 	WebElement btnInternetBuyContinue;
 
-	@FindBy(xpath = "//a[@aria-label='Ignite Internet 150u Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	@FindBy(xpath = "//a[@aria-label='Ignite Internet Gigabit 1.5 Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternetPackage;
+
+	//@FindBy(xpath = "//a[@aria-label='Ignite Internet Gigabit Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
+	//WebElement btnInternetPackage;
+
+
 
 	@FindBy(xpath = "//a[@aria-label='Ignite Internet 2.5 Gigabit Add to cart']//span[@class='ds-button__copy text-button text-nowrap ds-no-overflow mw-100']//span[text()='Add to cart']")
 	WebElement btnInternet2d5Package;
@@ -228,6 +233,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 
 	@FindBy(xpath = "//input[@aria-label='Select 16 or more']/parent::label//span[contains(@class,'selection__label')]")
 	WebElement btnInternetDevice16OrMore;
+
+	@FindBy(xpath = "//span[@id='dsQ3A1-label']")
+	WebElement btnInternetDevice1to5;
 
 	@FindBy(xpath = "//button[contains(@aria-label,'BEST FIT')]")
 	WebElement VerifyBestFit;
@@ -528,6 +536,10 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 		getReusableActionsInstance().getWhenReady(btnInternetCount6OrMore, 90).click();
 	}
 
+	public void clkInternetCountTwoThree() {
+		getReusableActionsInstance().getWhenReady(btnInternetCount, 90).click();
+	}
+
 	/**
 	 * To select the Internet Devices on DST
 	 * @author Manpreet.Kaur3
@@ -543,7 +555,9 @@ public class RogersInternetPackageSelectionPage extends BasePageClass {
 	public void clkInternetDevice16OrMore() {
 		getReusableActionsInstance().getWhenReady(btnInternetDevice16OrMore, 90).click();
 	}
-
+	public void clkInternetDeviceOneToFive() {
+		getReusableActionsInstance().getWhenReady(btnInternetDevice1to5, 90).click();
+	}
 
 	public void VerifyBestFit() {
 		getReusableActionsInstance().getWhenReady(VerifyBestFit, 90).isDisplayed();

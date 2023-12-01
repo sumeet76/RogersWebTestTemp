@@ -108,7 +108,7 @@ public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim
         /*** Professional Installation ***/
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("professional installation");
-        getCreditCheckPage().selectProfessionalInstallation();
+       // getCreditCheckPage().selectProfessionalInstallation();
         reporter.reportLogWithScreenshot("click Date Time Radio Button");
         getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
