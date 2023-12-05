@@ -168,8 +168,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	@FindAll({
 	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']//following::li[last()]"),
-			@FindBy(xpath="//div[text()='Please inform the customer:']")})
+			@FindBy(xpath="//div[text()='Home Phone']/following::li[2]"),
+			@FindBy(xpath="//div[text()='Please inform the customer:']")
+	})
 	WebElement scrollToLastPoint;
+
+
 
 @FindAll({	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label"),
 	@FindBy(xpath="//span[text()='I have reviewed all the Points to Mention with the customer.']")})
@@ -251,7 +255,9 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "(//span[text()='Select' or text()='Sélectionner']/ancestor::button)[1]")
 	WebElement clickSixMappedRecommendedOffer;
 
-	@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]")
+	@FindAll({@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]"),
+			@FindBy(xpath = "//select[contains(@id,'ds-form-input-id-0')]")
+	})
 	WebElement additionalIgniteTVBoxes;
 
 	@FindBy(xpath="//p[text()='Ignite Home Phone Setup']")
@@ -568,6 +574,22 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 60);
 		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
 	}
+@FindBy(xpath = "//input[@id='ds-checkbox-id-6']//following::div[1]")
+WebElement HomePhoneCheckBox;
+	@FindBy(xpath="//input[@id='ds-checkbox-id-7']//following::div[1]")
+	WebElement TVCheckBox;
+	public void clickHomePhoneAndTVInPortInServices()
+	{
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().waitForElementVisibility(HomePhoneCheckBox);
+		getReusableActionsInstance().executeJavaScriptClick(homePhoneCheckbox);
+		getReusableActionsInstance().waitForElementVisibility(TVCheckBox);
+		getReusableActionsInstance().executeJavaScriptClick(TVCheckBox);
+
+	}
+
+
+
 
 	/**
 	 * Review Terms & Condition
@@ -589,9 +611,12 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 
 	public void clickTermsAndConditionsCheckbox(){
 		getReusableActionsInstance().staticWait(3000);
-		getReusableActionsInstance().javascriptScrollToBottomOfPage();
+		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		//getReusableActionsInstance().javascriptScrollByCoordinates(0,1000);
-		getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		//getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		//getReusableActionsInstance().isElementVisible(scrollToLastPoint,30);
+		//getReusableActionsInstance().scrollToElement(scrollToLastPoint);
+		//getReusableActionsInstance().executeJavaScriptClick(scrollToLastPoint);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(scrollToLastPoint);
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().staticWait(3000);

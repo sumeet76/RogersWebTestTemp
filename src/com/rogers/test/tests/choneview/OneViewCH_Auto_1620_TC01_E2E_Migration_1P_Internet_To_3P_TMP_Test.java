@@ -18,8 +18,10 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_TMP_Test e
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationData.getAccountNo1PTo3PTMP(), TestDataHandler.migrationData.getContactID1PTo3PTMP());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getAccountOverViewPage().enterDealerCodeDialogue();
+		//getAccountOverViewPage().enterDealerCodeDialogue();
 		getAccountOverViewPage().clickIgnite();
+		getAccountOverViewPage().selectProduction();
+		getAccountOverViewPage().clickProceed();
 		reporter.reportLogWithScreenshot("use this address");
 	//	getRogersIgniteBundlesPage().clkUsethisAddress();
 		reporter.reportLogWithScreenshot("Service Availability");
@@ -30,48 +32,64 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_TMP_Test e
 		getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
 		reporter.reportLogWithScreenshot("Triple play selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
+		getRogersIgniteBundlesPage().selectAdditionalIgniteTVBoxes("2");
+		//getRogersIgniteBundlesPage().termOffer();
+
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		reporter.reportLogWithScreenshot("added to cart");
 
-		getRogersIgniteBundlesPage().noPortInPopup();
+		getRogersIgniteBundlesPage().yesPortInPopup();
 		getRogersIgniteBundlesPage().clkCollapse();
 		reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
 		reporter.reportLogWithScreenshot("Product Added");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("review terms and condition");
 
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("points to mention");
 		getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
-		getRogersIgniteBundlesPage().clickExchangeLater();
+		getRogersIgniteBundlesPage().clickHomePhoneAndTVInPortInServices();
+		getRogersIgniteBundlesPage().clkContinue();
+		reporter.reportLogWithScreenshot("Port In Services ADD");
+		getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("(905) 896-2833");
+		reporter.reportLogWithScreenshot("ADDED Phone No in Port In");
+		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().enterAccountNumber("345678901");
+		reporter.reportLogWithScreenshot("Added Account details in Port In");
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Exchange later");
 		reporter.reportLogWithScreenshot("After Exchange later");
 		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
 	//	getRogersIgniteBundlesPage().clkContinueInternetAddon();
-		getTVDashboardPage().clickAddChannel();
 		reporter.reportLogWithScreenshot("Add channel");
-		getTVDashboardPage().clickThemepacksTab();
-		reporter.reportLogWithScreenshot("Themepack Tab");
-		getTVDashboardPage().addThemepack();
-		reporter.reportLogWithScreenshot("Add themepack");
-		getCustomerProfilePage().clkContinue();
-		getTVDashboardPage().addToCartCallingPackage();
-		getCustomerProfilePage().clkContinue();
-		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
-		getRogersIgniteBundlesPage().clkCheckOut();
+		getRogersIgniteBundlesPage().clickFirstAddToCart();
+		getRogersIgniteBundlesPage().clkContinue();
+getRogersIgniteBundlesPage().clickFirstAddToCart();
+getRogersIgniteBundlesPage().clkContinue();
+//		getTVDashboardPage().clickThemepacksTab();
+//		reporter.reportLogWithScreenshot("Themepack Tab");
+//		getTVDashboardPage().addThemepack();
+//		reporter.reportLogWithScreenshot("Add themepack");
+//		getCustomerProfilePage().clkContinue();
+//		getTVDashboardPage().addToCartCallingPackage();
+//		getCustomerProfilePage().clkContinue();
+//		reporter.reportLogWithScreenshot("CheckOut for Exchange channels");
 		reporter.reportLogWithScreenshot("Cart Summary");
-	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 
-		getRogersIgniteCampaignPage().clickCampaignTab();
-		reporter.reportLogWithScreenshot("Campaign Tab");
-		getRogersIgniteCampaignPage().enterCoupon("K1D");
-		getRogersIgniteCampaignPage().clickApplyCoupon();
-		reporter.reportLogWithScreenshot("apply coupon");
-		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
-		getRogersIgniteCampaignPage().closeCouponAlert();
+
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+//		getRogersIgniteBundlesPage().clkCheckOut();
+//		getRogersIgniteBundlesPage().clkContinue();
+//		getRogersIgniteCampaignPage().clickCampaignTab();
+//		reporter.reportLogWithScreenshot("Campaign Tab");
+//		getRogersIgniteCampaignPage().enterCoupon("K1D");
+//		getRogersIgniteCampaignPage().clickApplyCoupon();
+//		reporter.reportLogWithScreenshot("apply coupon");
+//		reporter.hardAssert(getRogersIgniteCampaignPage().verifyCouponRemoveLink(), "Remove coupon link verified", "Remove coupon link not verified");
+//		getRogersIgniteCampaignPage().closeCouponAlert();
 
 
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();

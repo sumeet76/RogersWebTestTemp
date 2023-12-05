@@ -213,7 +213,7 @@ public class EnvironmentSelectionPage extends BasePageClass {
 	}
 
 	public void selectProduction(){
-		getReusableActionsInstance().waitForElementVisibility(envProduction, 40);
+		getReusableActionsInstance().waitForElementVisibility(envProduction, 20);
 		getReusableActionsInstance().clickWhenReady(envProduction);
 	}
 

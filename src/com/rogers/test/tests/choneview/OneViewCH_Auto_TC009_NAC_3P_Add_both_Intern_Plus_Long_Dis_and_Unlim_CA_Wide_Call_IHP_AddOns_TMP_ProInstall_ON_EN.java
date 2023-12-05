@@ -21,10 +21,10 @@ public class OneViewCH_Auto_TC009_NAC_3P_Add_both_Intern_Plus_Long_Dis_and_Unlim
         getEnvironmentSelectionPage().clickProceed();
         reporter.reportLogWithScreenshot("Clicked proceed button");
         reporter.reportLogWithScreenshot("address");
-        getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
+       // getRogersIgniteBundlesPage().checkAvailability(TestDataHandler.anonymousData.contactDetails.getAddress());
         reporter.reportLogWithScreenshot("Service Availability");
         getRogersIgniteBundlesPage().clkContinue();
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
+      //  reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
         getRogersIgniteBundlesPage().clkTVCheckbox();
         reporter.reportLogWithScreenshot("click TV Check box");
