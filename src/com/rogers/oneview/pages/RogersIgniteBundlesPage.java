@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-public class RogersIgniteBundlesPage extends BasePageClass{
+public class RogersIgniteBundlesPage extends BasePageClass {
 
 	public RogersIgniteBundlesPage(WebDriver driver) {
 		super(driver);
@@ -13,21 +13,21 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	}
 
 	//	@FindBy(xpath = "//input[contains(@id,'canada-post-address-complete')]")
-	@FindBy(xpath="//input[@id='algoliaInput']")
+	@FindBy(xpath = "//input[@id='algoliaInput']")
 	WebElement addressInput;
 
 	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-expand']/ancestor::button")
 	WebElement collapse;
 
 	//	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
-	@FindBy(xpath="(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'ds-formField__autoComplete')]//descendant::li)[1]")
 	WebElement searchResult;
 
 	@FindBy(xpath = "//button[@rchtrackclickevent='checkServiceability'] | //button[@ng-reflect-rch-track-click-event='checkServiceability']")
 	WebElement checkAvailabilitybtn;
 
 	//	@FindBy(xpath = "(//*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div/div/div/div)[1] | //*[@id='ds-modal-container-0']/ds-modal/div[2]/div[1]/div/div[2]/div/div/rch-pca-address-lookup/div/ds-form-field/div/div[1] | //*[@id='ds-modal-container-0']/ds-modal/descendant::div[@class='input-search']")
-	@FindBy(xpath="//div[contains(@class,'ds-formField__inputContainer')]")
+	@FindBy(xpath = "//div[contains(@class,'ds-formField__inputContainer')]")
 	WebElement inputContainer;
 
 	@FindBy(xpath = "//span[@translate='global.cta.continue']")
@@ -42,10 +42,10 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' TV ' or text()=' Télé ']")
 	WebElement tvCheckbox;
 
-	@FindBy(xpath="//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
+	@FindBy(xpath = "//span[@translate='global.cta.reviewAddonsLink'] | //span[contains(text(),'reviewed the customer’s add-ons') or contains(text(),'revue les options du client')]")
 	WebElement reviewAddons;
 
-	@FindBy (xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']/preceding-sibling::div")
+	@FindBy(xpath = "//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Internet ']/preceding-sibling::div")
 	WebElement internetCheckbox;
 
 	@FindBy(xpath = "//input[@id='ds-checkbox-id-3']/following-sibling::div//input[@id='ds-checkbox-id-32-label-container']/following-sibling::div | //div[text()=' Home Phone ' or text()=' Téléphonie résidentielle ']")
@@ -78,11 +78,11 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//span[@translate='global.cta.checkout']")
 	WebElement checkOut;
 
-	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]" )
+	@FindBy(xpath = "//span[@translate='global.cta.checkout']/ancestor::button | //span[contains(text(), 'Checkout') or contains(text(), 'Passer à la caisse')]")
 	WebElement checkOutFromCartSummary;
 
 
-	@FindBy(xpath = "//span[contains(text(), 'Express') or contains(text(), 'Paiement')]/ancestor::button" )
+	@FindBy(xpath = "//span[contains(text(), 'Express') or contains(text(), 'Paiement')]/ancestor::button")
 	WebElement expressCheckout;
 
 
@@ -167,29 +167,28 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement exchangeLater;
 
 	@FindAll({
-	@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']//following::li[last()]"),
-			@FindBy(xpath="//div[text()='Home Phone']/following::li[2]"),
-			@FindBy(xpath="//div[text()='Please inform the customer:']")
+			@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']//following::li[last()]"),
+			@FindBy(xpath = "//div[text()='Home Phone']/following::li[2]"),
+			@FindBy(xpath = "//div[text()='Please inform the customer:']")
 	})
 	WebElement scrollToLastPoint;
 
 
-
-@FindAll({	@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label"),
-	@FindBy(xpath="//span[text()='I have reviewed all the Points to Mention with the customer.']")})
+	@FindAll({@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label"),
+			@FindBy(xpath = "//span[text()='I have reviewed all the Points to Mention with the customer.']")})
 	WebElement reviewTermsAndCondition;
 
-	@FindBy(xpath="//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
+	@FindBy(xpath = "//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
 	WebElement reviewTV;
 
 	//@FindBy(xpath="//div[contains(@class,'ng-tns-c16')] //following::div[contains(text(),'Internet') or contains(text(),'Internet']")
-	@FindBy(xpath="//div[@class='text-bold text-body ng-star-inserted']//div[contains(text(),'Internet') or contains(text(),'Internet')]")
+	@FindBy(xpath = "//div[@class='text-bold text-body ng-star-inserted']//div[contains(text(),'Internet') or contains(text(),'Internet')]")
 	WebElement reviewInternet;
 
-	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
+	@FindBy(xpath = "//rch-collapsible//div[contains(text(),'Home Phone') or contains(text(),'Téléphonie résidentielle')]")
 	WebElement reviewHomePhone;
 
-	@FindBy(xpath="//rch-collapsible//div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,')]")
+	@FindBy(xpath = "//rch-collapsible//div[contains(text(),'Battery Back-Up,') or contains(text(),'Pile de secours,')]")
 	WebElement reviewBattery;
 
 	String collapsible = "(//rch-collapsible)";
@@ -198,8 +197,8 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//button[contains(@class,'w-2 ds-button')]")
 	WebElement continueFromPointsToMention;
 
-   	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
-   	WebElement showPriceBreakdown;
+	@FindBy(xpath = "//div[@class='px-24 px-md-48 px-lg-72 pt-32 pb-24 pb-lg-40']/button")
+	WebElement showPriceBreakdown;
 
 	@FindBy(xpath = "//span[@translate='global.label.learnPageText']")
 	WebElement selectServiceCustomerWant;
@@ -240,13 +239,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	@FindBy(xpath = "//h2[text()='Port-In Services' or text()='Transfert de services']")
 	WebElement headerPortInServices;
 
-	@FindBy(xpath ="//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
+	@FindBy(xpath = "//p[contains(text(),'Recommended Offer(s)') or contains(text(),'Offres recommandées')]")
 	WebElement recommendedOffer;
 
-	@FindBy(xpath="//span[text()='Exclusive Offer Available' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
+	@FindBy(xpath = "//span[text()='Exclusive Offer Available' or 'MEILLEUR' and ng-reflect-translate='global.dynamic.offerLevel.1']/parent::div/following-sibling::div//button//span[@translate='global.cta.addToCart']")
 	WebElement clickBstOffer;
 
-	@FindBy(xpath="//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
+	@FindBy(xpath = "//ds-icon[@ng-reflect-name='chevron-right']/ancestor::button")
 	WebElement selectBestOffer;
 
 	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
@@ -260,13 +259,13 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	})
 	WebElement additionalIgniteTVBoxes;
 
-	@FindBy(xpath="//p[text()='Ignite Home Phone Setup']")
+	@FindBy(xpath = "//p[text()='Ignite Home Phone Setup']")
 	WebElement homePhoneSetUp;
 
-	@FindBy(xpath="//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='Yes, keep number']")
+	@FindBy(xpath = "//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='Yes, keep number']")
 	WebElement keepNumber;
 
-	@FindBy(xpath="//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='No, select new number']")
+	@FindBy(xpath = "//span[contains(@translate,'showIgniteHomePhoneSetupModal') and text()='No, select new number']")
 	WebElement newNumber;
 
 
@@ -285,7 +284,6 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement availabilityButton;
 
 
-
 	@FindBy(xpath = "//span[@translate='global.cta.yes']/ancestor::button")
 	WebElement yesButton;
 
@@ -297,16 +295,18 @@ public class RogersIgniteBundlesPage extends BasePageClass{
 	WebElement adddressInputContainer;
 
 
-	@FindBy(xpath="//span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "//span[@translate='global.cta.continue']/ancestor::button")
 	WebElement continueButtonServiceable;
 
-	@FindBy(xpath="(//span[@translate='global.cta.continue']/ancestor::button)[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue']/ancestor::button)[2]")
 	WebElement continueButtonPTM;
 
 	@FindBy(xpath = "//p[contains(text(),'Entrez le numéro') or contains(text(),'Enter number')]/parent::div/child::div/descendant::input")
 	WebElement inputHomePhoneNumberPortIn;
 
-	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
+	@FindAll(
+			{@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]"),
+	@FindBy(xpath = "//input[@id='ds-form-input-id-14' ]") })
 	WebElement inputHomePhoneNumberPortInContainer;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkEligibility']/ancestor::button")
