@@ -51,15 +51,16 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_TMP_Test e
 		getRogersIgniteBundlesPage().clickHomePhoneAndTVInPortInServices();
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Port In Services ADD");
-		getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("(905) 896-2833");
+		getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9058962833");
 		reporter.reportLogWithScreenshot("ADDED Phone No in Port In");
-		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clickPhoneNumberContinue();
+
 		getRogersIgniteBundlesPage().enterAccountNumber("345678901");
 		reporter.reportLogWithScreenshot("Added Account details in Port In");
-		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clickAccountContinueButton();
 		reporter.reportLogWithScreenshot("Exchange later");
 		reporter.reportLogWithScreenshot("After Exchange later");
-		getRogersIgniteBundlesPage().clkContinue();
+		getRogersIgniteBundlesPage().clickPortInServiceContinueButton();
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().fourKTVPopup();
 		getRogersIgniteBundlesPage().contiue4KContent();
@@ -67,8 +68,10 @@ public class OneViewCH_Auto_1620_TC01_E2E_Migration_1P_Internet_To_3P_TMP_Test e
 		reporter.reportLogWithScreenshot("Add channel");
 		getRogersIgniteBundlesPage().clickFirstAddToCart();
 		getRogersIgniteBundlesPage().clkContinue();
-getRogersIgniteBundlesPage().clickFirstAddToCart();
-getRogersIgniteBundlesPage().clkContinue();
+		getHomePhoneAddonsPage().chooseAddon("Unlimited Canada-Wide Calling","Unlimited Canada-Wide Calling");
+//getRogersIgniteBundlesPage().clickFirstAddToCart();
+//getRogersIgniteBundlesPage().clkContinue();
+getHomePhoneAddonsPage().clkContinue();
 //		getTVDashboardPage().clickThemepacksTab();
 //		reporter.reportLogWithScreenshot("Themepack Tab");
 //		getTVDashboardPage().addThemepack();
@@ -104,31 +107,39 @@ getRogersIgniteBundlesPage().clkContinue();
 		reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
 		reporter.reportLogWithScreenshot("Credit Check Information");
 		getCreditCheckPage().clkContinue();
-		getHomePhoneSelectionPage().clkGeneratePhoneNo();
+		//getHomePhoneSelectionPage().clkGeneratePhoneNo();
 //		reporter.softAssert(getHomePhoneSelectionPage().verifySelectedNumber(),"Phone Number Selected","Phone Number Selection Failed");
-		reporter.reportLogWithScreenshot("Phone Number Selected");
-		getCreditCheckPage().goToPageBottom();
-		getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+		reporter.reportLogWithScreenshot("Caller Information Page");
+
+		//getCallerInformationPage().clickContinue();
+		//getCallerInformationPage().goToPageBottom();
+		getCallerInformationPage().clickFinalContinue();
+		//getCreditCheckPage().goToPageBottom();
+		//getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("installation options");
-		getCreditCheckPage().clkCourierDelivery();
-		getCreditCheckPage().clickInPersonDelivery();
+		getCreditCheckPage().selectDeliveryByAppointment();
+		getCreditCheckPage().clickDateTimeRadioButton();
+		getCreditCheckPage().enterTextMobileNumber("9058962833");
+		getCreditCheckPage().clkContinue();
 		reporter.reportLogWithScreenshot("in person delivery");
 		getPaymentOptionsPage().clkContinue();
 		getCreditCheckPage().verifyBillingAndPaymentOption();
 		reporter.reportLogWithScreenshot("Billing and payment");
-	//	getCreditCheckPage().clickDigitalFrontline();
-	//	reporter.reportLogWithScreenshot("Front line");
-
-	//	getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
-	//	getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
-	//	getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
-	//	reporter.reportLogWithScreenshot("Entered card detail");
-
+//		getCreditCheckPage().clickDigitalFrontline();
+//		reporter.reportLogWithScreenshot("Front line");
+//
+//		getRogersOVCheckoutPage().enterCardToken(TestDataHandler.anonymousData.getCreditCardDetails().getNumber());
+//	getRogersOVCheckoutPage().setCardExpiryMonthAndYear();
+//		getRogersOVCheckoutPage().setCardCVV(TestDataHandler.anonymousData.getCreditCardDetails().getCVV());
+//	reporter.reportLogWithScreenshot("Entered card detail");
+		reporter.reportLogWithScreenshot("Payment Option");
+		getPaymentOptionsPage().selectPaymentOption("1");
 		getPaymentOptionsPage().clkContinue();
 		reporter.reportLogWithScreenshot("Submit order");
-//		getRogersOVCheckoutPage().clkSubmit();
-//		reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
+	//getRogersOVCheckoutPage().clkSubmit();
+		//reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
 		reporter.reportLogWithScreenshot("Order Placed");
 
     }
@@ -141,7 +152,7 @@ getRogersIgniteBundlesPage().clkContinue();
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 }

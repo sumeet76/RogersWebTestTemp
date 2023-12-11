@@ -18,7 +18,7 @@ public class CallerInformationPage extends BasePageClass {
     @FindBy(xpath="//span[contains(text(),'Caller Information Review') or contains(text(),'Examen des informations sur')]")
     WebElement callerInfoVerify;
 
-    @FindBy(xpath="//span[@translate='global.cta.continue']")
+    @FindBy(xpath="(//span[@translate='global.cta.continue'])[2]")
     WebElement continueButton;
 
     @FindBy(xpath="(//span[@translate='global.cta.continue']//ancestor::button)[3]")
@@ -37,7 +37,9 @@ public class CallerInformationPage extends BasePageClass {
     */
     public void clickContinue()
     {
-        getReusableActionsInstance().getWhenReady(continueButton,30).click();
+        getReusableActionsInstance().staticWait(3000);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(continueButton);
+        getReusableActionsInstance().executeJavaScriptClick(continueButton);
     }
     /**
      * Go to Page bottom
@@ -49,7 +51,9 @@ public class CallerInformationPage extends BasePageClass {
 
     public void clickFinalContinue()
     {
-        getReusableActionsInstance().staticWait(2000);
-        getReusableActionsInstance().getWhenReady(finalContinueButton,30).click();
+        getReusableActionsInstance().staticWait(50000);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(finalContinueButton);
+        getReusableActionsInstance().executeJavaScriptClick(finalContinueButton);
+       // getReusableActionsInstance().getWhenReady(finalContinueButton,30).click();
     }
 }

@@ -158,7 +158,10 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//span[contains(text(),'Professional') or contains(text(),'Installation professionnelle')]/parent::div/preceding-sibling::div[@class='ds-radioButton__outerCircle my-12']")
 	WebElement installationProfessional;
 
-	@FindBy(xpath ="(//ds-radio-button[@ng-reflect-disabled='false']/descendant::input[@name='dateTime'])[1]")
+	@FindAll({
+			@FindBy(xpath ="(//ds-radio-button[@ng-reflect-disabled='false']/descendant::input[@name='dateTime'])[1]"),
+			@FindBy(xpath="//input[@id='0']/following::div")
+	})
 	WebElement firstEnabledDateTime;
 
 	@FindBy(xpath ="//input[@formControlName='enrouteMobileNumber']")

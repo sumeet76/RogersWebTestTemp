@@ -396,7 +396,7 @@ public class AccountOverViewPage extends BasePageClass {
     public void clickProceed(){
         getReusableActionsInstance().waitForElementVisibility(btnProceed, 5);
         getReusableActionsInstance().clickWhenReady(btnProceed);
-        if (getReusableActionsInstance().isElementVisible(OK, 30)) {
+        if (getReusableActionsInstance().isElementVisible(OK, 10)) {
             getReusableActionsInstance().executeJavaScriptClick(OK);
         }
     }

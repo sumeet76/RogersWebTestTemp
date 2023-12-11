@@ -214,14 +214,19 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 
 	@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
-
-	@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
-	WebElement inputAccountNumber;
+@FindAll({
+		@FindBy(xpath="/input[@id='ds-form-input-id-11']"),
+		@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
+})
+		WebElement inputAccountNumber;
 
 	@FindBy(xpath = "(//span[text()='Select provider']/following::select)[1]")
 	WebElement provider;
 
-	@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
+	@FindAll(
+			{
+					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
+			})
 	WebElement inputAccountNumberContainer;
 
 	@FindBy(xpath = "//rch-service-provider-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
@@ -301,12 +306,17 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "(//span[@translate='global.cta.continue']/ancestor::button)[2]")
 	WebElement continueButtonPTM;
 
+
+	@FindBy(xpath ="(//span[text()='Continue'])[2]")
+	WebElement clickPhoneNoContinue;
+
 	@FindBy(xpath = "//p[contains(text(),'Entrez le numéro') or contains(text(),'Enter number')]/parent::div/child::div/descendant::input")
 	WebElement inputHomePhoneNumberPortIn;
 
 	@FindAll(
-			{@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]"),
-	@FindBy(xpath = "//input[@id='ds-form-input-id-14' ]") })
+			{@FindBy(xpath = "//input[@id='ds-form-input-id-14' ]"),
+					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
+	 })
 	WebElement inputHomePhoneNumberPortInContainer;
 
 	@FindBy(xpath = "//span[@translate='global.cta.checkEligibility']/ancestor::button")
@@ -794,6 +804,11 @@ WebElement HomePhoneCheckBox;
 	public void portInPopup() {
 		getReusableActionsInstance().clickWhenReady(noPortin,120);
 	}
+
+	public void clickPhoneNumberContinue()
+	{
+		getReusableActionsInstance().clickWhenReady(clickPhoneNoContinue);
+	}
 	/**
 	 * Click Add to Cart for Selected Product
 	 * @param planEn is the Plam Name in English
@@ -1170,11 +1185,31 @@ public void activateHomePhoneltrPopUp() {
 	 * @author aditi.jain
 	 */
 	public void enterAccountNumber(String accountNumber) {
-		Point point = inputAccountNumber.getLocation();
-		getReusableActionsInstance().javascriptScrollByCoordinates(point.getX()-20, point.getY()-200);
+		//Point point = inputAccountNumber.getLocation();
+		//getReusableActionsInstance().javascriptScrollByCoordinates(point.getX()-20, point.getY()-200);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(inputAccountNumberContainer);
 		getReusableActionsInstance().executeJavaScriptClick(inputAccountNumberContainer);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(inputAccountNumber);
+		//getReusableActionsInstance().executeJavaScriptClick(inputAccountNumberContainer);
+		getReusableActionsInstance().executeJavaScriptClick(inputAccountNumber);
 		getReusableActionsInstance().enterText(inputAccountNumber, accountNumber, 40);
+	}
+
+
+
+
+	@FindBy(xpath ="(//span[contains(text(),'Continue')])[3]")
+	WebElement accountContinueBtn;
+	public void clickAccountContinueButton()
+	{
+getReusableActionsInstance().clickWhenReady(accountContinueBtn);
+	}
+
+	@FindBy(xpath ="(//span[contains(text(),'Continue')])[4]")
+	WebElement portInServiceContinueBtn;
+	public void clickPortInServiceContinueButton()
+	{
+		getReusableActionsInstance().clickWhenReady(portInServiceContinueBtn);
 	}
 
 
@@ -1469,10 +1504,11 @@ public void activateHomePhoneltrPopUp() {
 	public void enterHomePhoneNumberPortIn(String phoneNumber){
 		getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortInContainer);
 		getReusableActionsInstance().clickWhenReady(inputHomePhoneNumberPortInContainer);
-		getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortIn);
-		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(0,3));
-		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(3,6));
-		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortIn,3).sendKeys(phoneNumber.substring(6));
+		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortInContainer);
+//		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber.substring(0,3));
+//		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber.substring(3,6));
+//		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber.substring(6));
 
 		getReusableActionsInstance().waitForElementTobeClickable(checkHomePhoneNumberEligibilityButton, 10);
 		getReusableActionsInstance().clickWhenReady(checkHomePhoneNumberEligibilityButton);

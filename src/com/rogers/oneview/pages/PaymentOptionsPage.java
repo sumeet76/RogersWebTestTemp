@@ -28,16 +28,18 @@ public class PaymentOptionsPage  extends BasePageClass {
 	 * @author chinnarao.vattam
 	 */	
 	public void selectPaymentOption(String paymentopt) {
-		if(getReusableActionsInstance().isElementVisible(collapse,120))
-			getReusableActionsInstance().clickWhenReady(collapse);
+//		if(getReusableActionsInstance().isElementVisible(collapse,120))
+//			getReusableActionsInstance().clickWhenReady(collapse);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(paymentText);
-		getReusableActionsInstance().selectWhenReady(paymentOption, 1);
+		int index =Integer.parseInt(paymentopt);
+		getReusableActionsInstance().selectWhenReady(paymentOption, index);
 		}
 	/**
 	 * Click Continue Button  
 	 * @author chinnarao.vattam
 	 */	
 	public void clkContinue() {
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().waitForElementTobeClickable(continueButton,10);
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
 	}
