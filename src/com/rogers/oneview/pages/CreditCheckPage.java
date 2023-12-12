@@ -505,7 +505,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 
 	public void clickDateTimeRadioButton() {
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().scrollToElement(firstEnabledDateTime);
 		getReusableActionsInstance().executeJavaScriptClick(firstEnabledDateTime);
 	}
