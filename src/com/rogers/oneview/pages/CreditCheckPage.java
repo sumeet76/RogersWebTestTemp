@@ -160,7 +160,7 @@ public class CreditCheckPage  extends BasePageClass {
 
 	@FindAll({
 			@FindBy(xpath ="(//ds-radio-button[@ng-reflect-disabled='false']/descendant::input[@name='dateTime'])[1]"),
-			@FindBy(xpath="//input[@id='0']/following::div")
+			@FindBy(xpath="//input[@id='0']/following::div[1]")
 	})
 	WebElement firstEnabledDateTime;
 
@@ -168,7 +168,12 @@ public class CreditCheckPage  extends BasePageClass {
 	WebElement mobileNumber;
 
 
-	@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[@class='input_container']")
+
+
+	@FindAll({
+			@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[@class='input_container']"),
+			@FindBy(xpath ="//input[@id='ds-form-input-id-45']")
+	})
 	WebElement mobileNumberContainer;
 
 
@@ -183,7 +188,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath ="//span[contains(text(),'Delivery by Appointment') or contains(text(),'Livraison par rendez-vous')]")
 	WebElement deliveryByAppointment;
 
-	@FindBy(xpath ="//input[@formControlName='specialInstructions']")
+	@FindBy(xpath ="//input[@formcontrolname='specialInstructions']")
 	WebElement specialInstructions;
 
 

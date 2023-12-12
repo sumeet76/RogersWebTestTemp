@@ -58,8 +58,10 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("clk Continue");
 		getRogersIgniteBundlesPage().clickExchangeNow();
+
 		getRogersIgniteBundlesPage().clicklRemoveChannel();
 		getRogersIgniteBundlesPage().clickAddChannel();
+		reporter.reportLogWithScreenshot("Channel added and Removed ");
 		getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("clk Express CheckOut");
 		getRogersIgniteBundlesPage().fourKTVPopup();
@@ -71,10 +73,14 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		reporter.reportLogWithScreenshot("cart summary");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		getRogersIgniteBundlesPage().customerWishtoContinue();
+
+		//Step -1
 		reporter.reportLogWithScreenshot("customer Wish to Continue");
 		reporter.hardAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
 		reporter.reportLogWithScreenshot("Customer Profile");
 		getCustomerProfilePage().clkContinue();
+
+		//Step-2
 		reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Displayed","Credit Evaluation did not Displayed");
 		reporter.reportLogWithScreenshot("Credit Evaluation screen loaded");
 		getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
@@ -88,14 +94,18 @@ public class OneViewCH_REG_Auto_TC015_1408_E2E_NAC_2P_TMP_DBA_CreditCardPayment_
 		reporter.reportLogWithScreenshot("Credit Check Information");
 //		getCreditCheckPage().goToPageBottom();
 		getCreditCheckPage().clkContinue();
+
+		//Step-3
 		reporter.reportLogWithScreenshot("Installation options");
 		reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
 //		reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");
 		getCreditCheckPage().verifyInstallationOption();
 		reporter.reportLogWithScreenshot("go To Page Bottom");
 		getCreditCheckPage().goToPageBottom();
-		reporter.reportLogWithScreenshot("professional installation");
-		getCreditCheckPage().selectDeliveryByAppointment();
+		reporter.reportLogWithScreenshot("Courier installation");
+
+
+		//getCreditCheckPage().selectProfessionalInstallation();
 		reporter.reportLogWithScreenshot("click Date Time Radio Button");
 		getFulfillmentPage().clkFirstAvailableAppointment();
 		reporter.reportLogWithScreenshot(".enter Text Mobile Number");

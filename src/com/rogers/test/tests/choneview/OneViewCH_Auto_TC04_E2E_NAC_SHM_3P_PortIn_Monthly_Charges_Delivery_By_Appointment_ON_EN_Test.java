@@ -86,6 +86,7 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        getHomePhoneSelectionPage().selectDiffNumb();
         reporter.reportLogWithScreenshot("generate phone number");
         getHomePhoneSelectionPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
@@ -93,11 +94,12 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
         reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("in person delivery");
-        getCreditCheckPage().selectDeliveryByAppointment();
-        getFulfillmentPage().clkFirstAvailableAppointment();
+        getCreditCheckPage().selectProfessionalInstallation();
+        //getCreditCheckPage().clickDateTimeRadioButton();
+       getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
         getCreditCheckPage().enterTextMobileNumber(TestDataHandler.anonymousData.contactDetails.getPhoneNo());
-        getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
+       // getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());
         reporter.reportLogWithScreenshot(".enter Special Instructions");
         getCreditCheckPage().enterSpecialInstructions();
         getCreditCheckPage().clkContinueInstallationOption();

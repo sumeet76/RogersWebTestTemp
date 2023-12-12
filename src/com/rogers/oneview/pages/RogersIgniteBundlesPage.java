@@ -1635,6 +1635,9 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 		getReusableActionsInstance().waitForElementVisibility(addChannelNo,10);
 		getReusableActionsInstance().scrollToElement(addChannelNo);
 		getReusableActionsInstance().executeJavaScriptClick(addChannelNo);
+		getReusableActionsInstance().staticWait(10);
+		getReusableActionsInstance().waitForElementVisibility(btnSelect,10);
+		getReusableActionsInstance().executeJavaScriptClick(btnSelect);
 
 	}
 
