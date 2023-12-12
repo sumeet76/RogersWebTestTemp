@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class OneViewCH_REG_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mapped_Offer_ON_EN extends BaseTestClass {
     @Test(groups = {""})
     public void oneViewCH_Auto_TC099_SATV_Validation_SATV_3P_to_3P_Ignite_Mapped_Offer_ON_EN(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.tc099_SATV3P_To_SATV3P_Mapped_Offers.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
+        getEnvironmentSelectionPage().launchOneView(TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
         getAccountOverViewPage().selectProduction();
