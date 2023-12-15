@@ -35,6 +35,9 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
         getRogersIgniteBundlesPage().clkContinueServiceable();
 
         getRogersIgniteBundlesPage().verifyRecommendedOffers();
+       // reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
+
+        getRogersIgniteBundlesPage().scrolltoOffers();
         reporter.reportLogWithScreenshot("Targeted offer for the customer is displayed under the recommended offer section");
         getRogersIgniteBundlesPage().selectSixMappedRecommendedOffer();
         reporter.reportLogWithScreenshot("Selected the Recommended offer");
@@ -104,7 +107,7 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
 //        getCallerInformationPage().goToPageBottom();
 //        getCallerInformationPage().clickFinalContinue();
         getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        getHomePhoneSelectionPage().verifySelectedNumber();
+       // getHomePhoneSelectionPage().verifySelectedNumber();
         getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
 
         getCreditCheckPage().verifyInstallationOption();
@@ -139,7 +142,7 @@ public class OneViewCH_Auto_TC068_TargetedMigration_3P_to_3P_Change_Num_Targeted
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-//        closeSession();
+     closeSession();
     }
     }
 

@@ -169,13 +169,17 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindAll({
 			@FindBy(xpath = "//div[text()='Battery Back-Up, Medical Alert and Security Systems']//following::li[last()]"),
 			@FindBy(xpath = "//div[text()='Home Phone']/following::li[2]"),
+			@FindBy(xpath="//div[text() ='Internet']/following::li[3]"),
 			@FindBy(xpath = "//div[text()='Please inform the customer:']")
+
 	})
 	WebElement scrollToLastPoint;
 
 
 	@FindAll({@FindBy(xpath = "//span[@translate='global.modals.serviceability.ptm.iHaveReviewed']//ancestor::label"),
-			@FindBy(xpath = "//span[text()='I have reviewed all the Points to Mention with the customer.']")})
+			@FindBy(xpath = "//span[text()='I have reviewed all the Points to Mention with the customer.']")
+
+	})
 	WebElement reviewTermsAndCondition;
 
 	@FindBy(xpath = "//div[contains(@class,'ng-tns-c169')] //child::div[contains(text(),'TV')]")
@@ -256,7 +260,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Select' or text()='Sélectionner']/ancestor::button")
 	WebElement clickRecommendedOffer;
 
-	@FindBy(xpath = "(//span[text()='Select' or text()='Sélectionner']/ancestor::button)[1]")
+	@FindBy(xpath = "(//span[text()='Select' or text()='Sélectionner']/ancestor::button)[2]")
 	WebElement clickSixMappedRecommendedOffer;
 
 	@FindAll({@FindBy(xpath = "(//select[contains(@id,'ds-form-input-id') and contains(@class,'select')])[1]"),
@@ -1257,6 +1261,14 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 	}
 
 
+	@FindBy(xpath="(//span[text()= 'GOOD' ])[4]")
+	WebElement Offers;
+	public void scrolltoOffers()
+	{
+		getReusableActionsInstance().javascriptScrollByVisibleElement(Offers);
+	}
+
+
 	/*
 	 *select best offer
 	 * @author aditi.jain
@@ -1275,6 +1287,7 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 	public void selectSixMappedRecommendedOffer(){
 		getReusableActionsInstance().waitForElementTobeClickable(clickSixMappedRecommendedOffer, 30);
 		getReusableActionsInstance().javascriptScrollByVisibleElement(clickSixMappedRecommendedOffer);
+		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().executeJavaScriptClick(clickSixMappedRecommendedOffer);
 	}
 
@@ -1391,6 +1404,26 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 		getReusableActionsInstance().staticWait(5000);
 		getReusableActionsInstance().getWhenReady(continueButtonServiceable,30).click();
 	}
+
+
+	@FindBy(xpath ="//span[text()='BEST']")
+	WebElement BestOffer;
+
+	@FindBy(xpath="//div[text()=' Home Security ']")
+	WebElement HomeSecurityChkBox;
+
+	@FindBy(xpath="//*[text()='Select']")
+	WebElement SelectBtn;
+
+	public void bestofferSelection()
+	{
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollByVisibleElement(BestOffer);
+		getReusableActionsInstance().scrollToElementAndClick(HomeSecurityChkBox);
+		getReusableActionsInstance().scrollToElementAndClick(SelectBtn);
+
+	}
+
 	public void clkContinuePTM()
 	{
 		getReusableActionsInstance().clickWhenReady(continueButtonPTM,120);

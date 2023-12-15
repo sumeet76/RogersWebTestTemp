@@ -18,9 +18,9 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		getEnvironmentSelectionPage().launchOneView(TestDataHandler.migrationDataToISS.getAccountNo(), TestDataHandler.migrationDataToISS.getContactID());
 
 		reporter.reportLogWithScreenshot("OneView Interface has Launched");
-		getAccountOverViewPage().enterDealerCodeDialogue();
+		//getAccountOverViewPage().enterDealerCodeDialogue();
 		reporter.reportLogWithScreenshot("click ignite");
-		getAccountOverViewPage().setLanguageFrench();
+	//	getAccountOverViewPage().setLanguageFrench();
 		getAccountOverViewPage().clickIgnite();
 		getAccountOverViewPage().selectProduction();
 		getAccountOverViewPage().clickProceed();
@@ -29,9 +29,11 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("Service Availability");
 		getRogersIgniteBundlesPage().clkContinue();
 		getRogersIgniteBundlesPage().clkContinueServiceable();
-		getRogersIgniteBundlesPage().clkSmartStream();
+		getRogersIgniteBundlesPage().bestofferSelection();
+
+		//getRogersIgniteBundlesPage().clkSmartStream();
 		reporter.reportLogWithScreenshot("Smart Stream - SAI ISS selected");
-		getRogersIgniteBundlesPage().clkInternetCheckbox();
+		//getRogersIgniteBundlesPage().clkInternetCheckbox();
 		reporter.reportLogWithScreenshot("Internet checkbox is selected");
 		getRogersIgniteBundlesPage().clkLoadOffers();
 		reporter.reportLogWithScreenshot("load offers");
@@ -39,10 +41,8 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		reporter.reportLogWithScreenshot("add to cart");
 		getRogersIgniteBundlesPage().clkCollapse();
 		getRogersIgniteBundlesPage().clkContinue();
-	//	getRogersIgniteBundlesPage().clkExpressCheckOut();
 		reporter.reportLogWithScreenshot("review terms and condition");
-		getRogersIgniteBundlesPage().reviewAllTerms();
-		getRogersIgniteBundlesPage().reviewTermsAndCondition();
+		getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
 		reporter.reportLogWithScreenshot("Reviewed terms anc conditions");
 		getRogersIgniteBundlesPage().clkReviewContinue();
 		getRogersIgniteBundlesPage().addPods(5);
@@ -51,7 +51,7 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 		getRogersIgniteBundlesPage().clkContinueInternetAddon();
 		getRogersIgniteBundlesPage().clkContinue();
 		reporter.reportLogWithScreenshot("Cart Summary");
-	//	reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
+		reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
 		getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
 		reporter.reportLogWithScreenshot("Customer wish to continue");
 		getRogersIgniteBundlesPage().customerWishtoContinue();
@@ -99,7 +99,7 @@ public class OneViewCH_REG_Auto_TC028_MIG_1P_INT_To_ISS_Adding_Pods_Courier_Cred
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		//closeSession();
+		closeSession();
 	}
 
 }

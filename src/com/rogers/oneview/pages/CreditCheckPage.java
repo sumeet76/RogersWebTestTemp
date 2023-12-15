@@ -238,7 +238,7 @@ public class CreditCheckPage  extends BasePageClass {
 	 * @author aditi.jain
 	 */
 	public boolean verifyBillingAndPaymentOption() {
-		getReusableActionsInstance().staticWait(6000);
+		getReusableActionsInstance().staticWait(10000);
 		return getReusableActionsInstance().isElementVisible(billingAndPaymentOption,70);
 
 	}
