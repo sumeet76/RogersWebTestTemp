@@ -11,14 +11,21 @@ import utils.FormFiller;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static com.rogers.testdatamanagement.TestDataHandler.targetedMigration2PInternetAndTVTo2P;
+
 public class OneViewCH_Auto_1555_TC01_TargetedMigration_2P_InternetAndTV_to_2P_Test extends BaseTestClass {
     @Test(groups = {"RegressionCHOV"})
     public void oneViewCH_1547_TC01_TargetedMigrationFlow_2P_InternetAndTV_to_2PTest(){
-        getEnvironmentSelectionPage().launchOneView(TestDataHandler.targetedMigration2PInternetAndTVTo2P.getAccountNo(), TestDataHandler.targetedMigration2PInternetAndTVTo2P.getContactID() );
+        getEnvironmentSelectionPage().launchOneView(targetedMigration2PInternetAndTVTo2P.getAccountNo(), targetedMigration2PInternetAndTVTo2P.getContactID() );
         reporter.reportLogWithScreenshot("Account Overview page has Launched");
         getAccountOverViewPage().enterDealerCodeDialogue();
-        getAccountOverViewPage().clickIgnite();
+      // getAccountOverViewPage().clickIgniteTVBadge();
+      getAccountOverViewPage().clickIgnite();
         reporter.reportLogWithScreenshot("User is prompted with check availability pop up");
+        getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        getAccountOverViewPage().clickProceed();
+        reporter.reportLogWithScreenshot("Click proceed button");
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Service Availability-Success window");
         getRogersIgniteBundlesPage().clkContinueServiceable();
@@ -103,6 +110,6 @@ public class OneViewCH_Auto_1555_TC01_TargetedMigration_2P_InternetAndTV_to_2P_T
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+//        closeSession();
     }
 }

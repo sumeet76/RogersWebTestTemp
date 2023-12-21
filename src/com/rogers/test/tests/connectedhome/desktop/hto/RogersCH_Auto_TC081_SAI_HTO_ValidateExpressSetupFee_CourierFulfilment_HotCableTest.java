@@ -81,9 +81,12 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified New bundle Details");
 
+        getRogersHTOPRomotionPage().scrolltoContractTypeDropDown();
+        reporter.reportLogWithScreenshot("ContractType DropDown");
+
+
         String offerPrice = getRogersOrderReviewPage().getOfferPrice();
         System.out.println(offerPrice);
-
         getRogersHTOPRomotionPage().clickLearnMore();
         reporter.reportLogWithScreenshot("Clicked on Learn More Link");
         getRogersHTOPRomotionPage().clickViewNextFeature();
@@ -144,7 +147,8 @@ public class RogersCH_Auto_TC081_SAI_HTO_ValidateExpressSetupFee_CourierFulfilme
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+
+        //closeSession();
     }
 
 

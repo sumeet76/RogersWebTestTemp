@@ -191,6 +191,16 @@ public class RogersHTOPromotionPage extends BasePageClass {
 //		getReusableActionsInstance().waitForElementVisibility(divOfferBundleContainer, 30);
 		return getReusableActionsInstance().isElementVisible(txtOfferBundle, 60);
 	}
+@FindBy(xpath="//select[@id='ds-form-input-id-0']")
+WebElement contractTypeDropDown;
+	public void scrolltoContractTypeDropDown()
+	{
+
+		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().scrollToElement(contractTypeDropDown);
+		//getReusableActionsInstance().scrollToElementAndClick(contractTypeDropDown);
+		//getReusableActionsInstance().selectWhenReady();
+	}
 
 	public String getOfferBundlePrice() {
 		getReusableActionsInstance().waitForElementVisibility(divOfferPrice, 30);
@@ -227,9 +237,11 @@ public class RogersHTOPromotionPage extends BasePageClass {
 	 * @author Manpreet.Kaur3
 	 */
 	public void clickIWantThisUpgrade() {
-		getReusableActionsInstance().clickIfAvailable(chkUpgrade, 40);
-		getReusableActionsInstance().waitForElementInvisibilityNOException(overlayPromoPage,10);
+		getReusableActionsInstance().scrollToElement(chkUpgrade);
 		getReusableActionsInstance().staticWait(2000);
+		getReusableActionsInstance().clickIfAvailable(chkUpgrade, 40);
+		//getReusableActionsInstance().waitForElementInvisibilityNOException(overlayPromoPage,20);
+		getReusableActionsInstance().staticWait(5000);
 	}
 
 	/**

@@ -260,7 +260,9 @@ public String emailID;
 		// Click on the Email to As Recovery option for OTP
 		if(verifyMFAScreenIsVisible()) {
 			clkEmailToAsRecoveryOption();
+			System.out.println(System.getProperty("ensEnv"));
 			String emailOTP = GetOTP.getEmailOTP(System.getProperty("ensEnv"), emailID);
+			System.out.println("Otp is " +emailOTP);
 			if(emailOTP!=null){
 				getReusableActionsInstance().getWhenReady(inputCode).sendKeys(emailOTP);
 				getReusableActionsInstance().getWhenReady(btnContinueSignIn).click();

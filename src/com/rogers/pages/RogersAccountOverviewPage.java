@@ -2189,6 +2189,9 @@ public boolean verifyPTPWidgetIsDisplayed() {
 	 * @author Manpreet.kaur3
 	 */
 	public void clkSpecialOfferBadge() {
+		//getReusableActionsInstance().staticWait(3000);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(lblSpecialOfferBadge);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(lblSpecialOfferBadge);
 		getReusableActionsInstance().moveToElementAndClick(lblSpecialOfferBadge,60);
 		//getReusableActionsInstance().getWhenReady(lblSpecialOfferBadge, 60).click();
 	}

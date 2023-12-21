@@ -23,6 +23,7 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
         reporter.reportLogWithScreenshot("click View Offers");
         getAccountOverViewPage().selectRecommendedOffer();
         reporter.reportLogWithScreenshot("select Recommended Offer");
+        //getRogersIgniteBundlesPage().scrolltoOffers();
         getAccountOverViewPage().selectFirstExclusiveOffer();
         reporter.reportLogWithScreenshot("select Exclusive Offer");
         getAccountOverViewPage().clickContinueChangePackage();
@@ -60,6 +61,7 @@ public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_
 
         @AfterMethod(alwaysRun=true)
         public void afterTest(){
-            closeSession();
+
+        //closeSession();
     }
 }

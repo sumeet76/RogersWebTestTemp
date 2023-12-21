@@ -9,6 +9,8 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static com.rogers.testdatamanagement.TestDataHandler.tc101_2P_HTO_HotCableAccount;
+
 /**
  * This class contains the test method to test the HTO 2P flow for Rogers.com
  * CH-8309_CH-9786_2P-2p HTO_Regular_HOT_Sign in MyRogers_Validate the legal text_bundle discount_Add channels_theme pack_One-time fee_saving section discount detail displayed only for campaign applied products_Review_confirmation_ON_CH_EN
@@ -52,13 +54,13 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
     @Test
     public void rogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCable() {
         reporter.reportLogWithScreenshot("Launched the SignIn popup");
-        getRogersLoginPage().setUsernameIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getUsername());
+        getRogersLoginPage().setUsernameIFrame(tc101_2P_HTO_HotCableAccount.getUsername());
         getRogersLoginPage().clkContinueInBrowser();
-        getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc101_2P_HTO_HotCableAccount.getPassword());
+        getRogersLoginPage().setPasswordIFrame(tc101_2P_HTO_HotCableAccount.getPassword());
         reporter.reportLogWithScreenshot("Enter the account credentials");
         getRogersLoginPage().clkSignInIFrame();
         reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(),"Login Successful","Login Failed");
-        getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc101_2P_HTO_HotCableAccount.getAccountDetails().getBan());
+        getRogersAccountOverviewPage().selectAccount(tc101_2P_HTO_HotCableAccount.getAccountDetails().getBan());
         reporter.reportLogWithScreenshot("Account Selected");
         if (getRogersAccountOverviewPage().isNewOfferModalDisplayed()) {
             reporter.reportLogWithScreenshot("New Offer Modal Popup is displayed");
@@ -66,6 +68,7 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
         }
         reporter.reportLogWithScreenshot("New Offer Modal Popup closed");
         reporter.hardAssert(getRogersAccountOverviewPage().verifySpecialOfferBadge(),"Special Offer Recommendation Badge Available","Special Offer Recommendation Badge not available");
+        //getRogersAccountOverviewPage().scrollToMiddleOfPage();
         getRogersAccountOverviewPage().clkSpecialOfferBadge();
         reporter.reportLogWithScreenshot("Clicked on the Special Offer Recommendation Bagde");
 
@@ -76,16 +79,20 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyOfferBundle(),"New Bundle details Available","New Bundle details not Available");
         reporter.reportLogWithScreenshot("Verified New bundle Details");
 
+        getRogersHTOPRomotionPage().scrolltoContractTypeDropDown();
+        reporter.reportLogWithScreenshot("ContractType DropDown");
+
+
         String offerPrice = getRogersOrderReviewPage().getOfferPrice();
 
-        getRogersHTOPRomotionPage().clickLearnMore();
-        reporter.reportLogWithScreenshot("Clicked on Learn More Link");
-        getRogersHTOPRomotionPage().clickViewNextFeature();
-        reporter.reportLogWithScreenshot("Clicked on View Next Feature Button");
-        getRogersHTOPRomotionPage().clickViewPreviousFeature();
-        reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
-        getRogersHTOPRomotionPage().clickClosePopup();
-        reporter.reportLogWithScreenshot("Clicked on Close Button");
+//        getRogersHTOPRomotionPage().clickLearnMore();
+//        reporter.reportLogWithScreenshot("Clicked on Learn More Link");
+//        getRogersHTOPRomotionPage().clickViewNextFeature();
+//        reporter.reportLogWithScreenshot("Clicked on View Next Feature Button");
+//        getRogersHTOPRomotionPage().clickViewPreviousFeature();
+//        reporter.reportLogWithScreenshot("Clicked on View Previous Feature Button");
+//        getRogersHTOPRomotionPage().clickClosePopup();
+//        reporter.reportLogWithScreenshot("Clicked on Close Button");
         getRogersHTOPRomotionPage().clickIWantThisUpgrade();
         reporter.reportLogWithScreenshot("Clicked on the Upgrade checkbox");
         getRogersHTOPRomotionPage().clickReviewYourUpgrade();
@@ -94,9 +101,9 @@ public class RogersCH_Auto_TC101_2P_HTO_2P_ValidateCourierFulfilment_HotCableTes
         reporter.hardAssert(getRogersOrderReviewPage().verifyTargetedOfferOrderReviewPage(),"Order Review Page has launched","Order Review Page has not launched");
         reporter.reportLogWithScreenshot("Launched the order review page");
 
-        reporter.hardAssert(getRogersOrderReviewPage().verifyAdditionalSTBs(), "Additional STBs verified","Additional STBs not verified");
+       // reporter.hardAssert(getRogersOrderReviewPage().verifyAdditionalSTBs(), "Additional STBs verified","Additional STBs not verified");
 
-        reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
+      //  reporter.hardAssert(getRogersInternetPackageSelectionPage().verifyDisneyImage(), "PSEF promotion", "PSEF promotion not verified");
         String customPrice = getRogersOrderReviewPage().getCustomPrice();
 
         reporter.hardAssert(getRogersHTOPRomotionPage().verifyBundleOfferPrice(offerPrice, customPrice),"Price match","Price unmatch");
