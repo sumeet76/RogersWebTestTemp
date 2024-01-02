@@ -517,10 +517,10 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.cta.viewPDF']")
 	WebElement viewPdf;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-8' or @id='ds-form-input-id-15']")
+	@FindBy(xpath="//input[@id='ds-form-input-id-8' or @id='ds-form-input-id-15' or @id='ds-form-input-id-13']")
 	WebElement customerEmail;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-9' or @id='ds-form-input-id-16']")
+	@FindBy(xpath="//input[@id='ds-form-input-id-9' or @id='ds-form-input-id-16' or @id ='ds-form-input-id-14']")
 	WebElement confirmCustomerEmail;
 
 
@@ -1881,7 +1881,9 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 	}
 
 	public void clkemailChannelsPdf(){
-		getReusableActionsInstance().waitForElementVisibility(emailChannelsPdf,120);
+
+		getReusableActionsInstance().waitForElementVisibility(emailChannelsPdf,180);
+		getReusableActionsInstance().scrollToElement(emailChannelsPdf);
 		getReusableActionsInstance().executeJavaScriptClick(emailChannelsPdf);
 	}
 
@@ -1906,10 +1908,12 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 		getReusableActionsInstance().waitForElementVisibility(viewPdf,120);
 		getReusableActionsInstance().executeJavaScriptClick(viewPdf);
 		getReusableActionsInstance().switchToMainWindow(mainWindow);
+		getReusableActionsInstance().staticWait(5000);
 	}
 
 	public void enterCustomerEmail(String email){
-		getReusableActionsInstance().staticWait(1000);
+		getReusableActionsInstance().staticWait(2000);
+		//getReusableActionsInstance().waitForElementVisibility(customerEmail);
 		getReusableActionsInstance().scrollToElementAndClick(customerEmail);
 		getReusableActionsInstance().executeJavaScriptClick(customerEmail);
 		getReusableActionsInstance().enterText(customerEmail,email,60);
@@ -1928,6 +1932,14 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 	public void clkCancelPdfResend(){
 		getReusableActionsInstance().waitForElementVisibility(cancelPdfResend,120);
 		getReusableActionsInstance().executeJavaScriptClick(cancelPdfResend);
+	}
+
+	@FindBy(xpath="//button[contains(text(),'Bundles')]")
+	WebElement bundleLink;
+	public void clickBundleLink()
+	{
+		getReusableActionsInstance().clickWhenReady(bundleLink);
+		getReusableActionsInstance().staticWait(2000);
 	}
 	public void clkSelectTvPackage() {
 		getReusableActionsInstance().waitForElementVisibility(selectTvPackage, 60);

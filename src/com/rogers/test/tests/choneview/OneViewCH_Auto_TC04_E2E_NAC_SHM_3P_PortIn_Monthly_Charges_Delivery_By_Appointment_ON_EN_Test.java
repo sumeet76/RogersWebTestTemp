@@ -26,13 +26,40 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
         getRogersIgniteBundlesPage().clkContinue();
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyAvailableServicesCheckboxes(),"Select Services Customer Wants Displayed","Select Services Customer Wants did not Displayed");
         reporter.reportLogWithScreenshot("Select Services Customer Wants");
+
+        String handle =getDriver().getWindowHandle();
         getRogersIgniteBundlesPage().clkTVCheckbox();
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         getRogersIgniteBundlesPage().clickSmartHomeMonitoring();
         reporter.reportLogWithScreenshot("Triple Play & SHM Selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
-        getRogersIgniteBundlesPage().clickFirstAddToCart();
+        reporter.reportLogWithScreenshot("Load Offer Clicked ");
+        getRogersIgniteBundlesPage().clkcompareTvPackages();
+       // getRogersIgniteBundlesPage().selectPackagesToCompare();
+        reporter.reportLogWithScreenshot("Compare Channel lineUp Clicked ");
+        getRogersIgniteBundlesPage().clkcompareChannelLineup();
+//       getRogersIgniteBundlesPage().clkemailChannelsPdf();
+//       reporter.reportLogWithScreenshot("PDF is generated ");
+//        getRogersIgniteBundlesPage().clkViewPdf(handle);
+
+        getRogersIgniteBundlesPage().clkemailChannelsPdf();
+        reporter.reportLogWithScreenshot("Email Channel Clicked ");
+        getRogersIgniteBundlesPage().enterCustomerEmail("124@mainator.com");
+        getRogersIgniteBundlesPage().enterConfirmCustomerEmail("124@mainator.com");
+
+        reporter.reportLogWithScreenshot("View PDF ");
+        getRogersIgniteBundlesPage().clkSendPdf();
+       reporter.hardAssert(getRogersIgniteBundlesPage().verifySuccessPdfSend(),"Success! PDF sent","PDF not sent");
+        getRogersIgniteBundlesPage().clkCloseBtn();
+getRogersIgniteBundlesPage().clkCancelPdfResend();
+       // getRogersIgniteBundlesPage().clkSelectTvPackage();
+
+getRogersIgniteBundlesPage().clickBundleLink();
+        getRogersIgniteBundlesPage().clkCloseBtn();
+      getRogersIgniteBundlesPage().clickFirstAddToCart();
+
+        ///select any bundles
         getRogersIgniteBundlesPage().yesPortInPopup();
         reporter.reportLogWithScreenshot("Select Yes for port in options");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
@@ -122,6 +149,7 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+
+        //closeSession();
     }
 }

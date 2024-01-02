@@ -82,7 +82,7 @@ public class HomePhoneSelectionPage  extends BasePageClass {
 	@FindBy(xpath = "//span[text()='Home Phone Personalization' or text()='Personnalisation du téléphone résidentiel']")
 	WebElement homePhonePersonalizationHeader;
 
-	@FindBy(xpath = "//label[@for='ds-radio-input-id-71']")
+	@FindBy(xpath = "//*[@id='ds-radio-input-id-78-label']")
 	WebElement selectDifferentNumber;
 
 
