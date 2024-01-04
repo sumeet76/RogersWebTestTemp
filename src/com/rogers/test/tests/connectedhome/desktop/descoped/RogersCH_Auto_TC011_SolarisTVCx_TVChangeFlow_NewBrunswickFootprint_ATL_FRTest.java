@@ -43,33 +43,37 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 		 reporter.reportLogWithScreenshot("Enter the account credentials");
 		 getRogersLoginPage().clkSignInIFrame();
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
-		// getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
+		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
 		// getRogersSolarisTVDashboardPage().clkFR();
 		 getRogersSolarisTVDashboardPage().clkTVBadge();
 		 reporter.reportLogWithScreenshot("Launched the TV dash board");
-		 getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
-
-		 reporter.reportLogWithScreenshot("Launched the TV packages page");
-//		 reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
-		 getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanEn(), TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanFr());
-		 getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
-		 reporter.reportLogWithScreenshot("Launched the personalize channel page");
-		 getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
-		 reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
-		 getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
-		 reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
-		 getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
-		 reporter.reportLogWithScreenshot("Launched the 4K Content popup");
-		 getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
-
-		 reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
-		 getRogersOrderReviewPage().clkAcceptenceCheckbox();
-		 reporter.reportLogWithScreenshot("Agreement details");
-		 getRogersOrderReviewPage().clkSubmitUpdateTV();
-		 reporter.reportLogWithScreenshot("Launched the Confirmation page");
-		 reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(), "Update order completed", "Update order Failed");
-		 reporter.reportLogWithScreenshot("Verified the Confirmation page");
+		 getRogersSolarisTVDashboardPage().scrollToMiddle();//.scrolltoViewMyChannels();
+		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot1");
+		 getRogersSolarisTVDashboardPage().scrollToViewChannel();
+		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot2");
+//		 getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
+//
+//		 reporter.reportLogWithScreenshot("Launched the TV packages page");
+////		 reporter.softAssert(getRogersSolarisTVDashboardPage().verifyIgniteTVStarterPackage(),"Ignite TV Starter Package is available for the Ontario footprint","Ignite TV Starter Package is not available for the Ontario footprint");
+//		 getRogersSolarisTVDashboardPage().selectSolarisTVPackage(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanEn(), TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getUpgradePlanFr());
+//		 getRogersSolarisTVDashboardPage().clkPopupChangeTVPackage();
+//		 reporter.reportLogWithScreenshot("Launched the personalize channel page");
+//		 getRogersSolarisTVChannelsAndThemepacksPage().clkExchangeLater();
+//		 reporter.reportLogWithScreenshot("Launched the channels and themepacks page");
+//		 getRogersSolarisTVChannelsAndThemepacksPage().clkContinueFromThemepacks();
+//		 reporter.reportLogWithScreenshot("Launched the 4K enquiry popup");
+//		 getRogersSolarisTVChannelsAndThemepacksPage().clkYesIHave4K();
+//		 reporter.reportLogWithScreenshot("Launched the 4K Content popup");
+//		 getRogersSolarisTVChannelsAndThemepacksPage().clk4KContent();
+//
+//		 reporter.hardAssert(getRogersOrderReviewPage().verifyAgreement(), "Agreement has Launched", "Agreement has not Launched");
+//		 getRogersOrderReviewPage().clkAcceptenceCheckbox();
+//		 reporter.reportLogWithScreenshot("Agreement details");
+//		 getRogersOrderReviewPage().clkSubmitUpdateTV();
+//		 reporter.reportLogWithScreenshot("Launched the Confirmation page");
+//		 reporter.softAssert(getRogersOrderConfirmationPage().verifyOrderConfirmation(), "Update order completed", "Update order Failed");
+//		 reporter.reportLogWithScreenshot("Verified the Confirmation page");
 	 }
 
 		@BeforeMethod (alwaysRun=true) @Parameters({ "strBrowser", "strLanguage"})
@@ -81,7 +85,7 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 
 

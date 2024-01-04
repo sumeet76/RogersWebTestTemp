@@ -10,6 +10,7 @@ public class OvrConfigData {
     private String sspIgniteDealerCode;
 
     private String grabAndGoSerialNumber;
+
     private String sspGrabAndGoDealerCode;
     private String fidoDealerCode;
 

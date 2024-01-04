@@ -19,18 +19,19 @@ public class OVR_ERM_Auto_TC01_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverv
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
     @Test(groups = {"OVR_ERM", "RegressionERM"})
     public void ovr_ERM_Auto_TC01_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverview_E2E_Dealer_ON_FR() {
-        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+    getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
         getUniLoginPage().selectSSPEnvAndSwitchWindow(TestDataHandler.ovrConfigData.getSspEnvironment());
         reporter.reportLogWithScreenshot("Select SSP environment");
         reporter.reportLogWithScreenshot("Account Search Page");
+        getAccountSearchPage().searchForAccount("768903215","L5A1H4");
         getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("QA Env selected for new customer");
         getAccountOverViewPage().selectProduction();
@@ -99,13 +100,12 @@ public class OVR_ERM_Auto_TC01_Buyflow_Anonymous_NAC_2P_TV_INT_IntID_BackToOverv
         getCreditCheckPage().clkContinue();
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Install Options");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Time Slot selected");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
-        getBundleBuilderPage().clkContinueInstallation();
+       getBundleBuilderPage().selectGrabAndGoInstall();
+       getBundleBuilderPage().enterGrabAndGoSerialNumber2(TestDataHandler.ovrConfigData.getGrabAndGoSerialNumber(),"M91844EML849");
+       getBundleBuilderPage().clkContinueInstallation();
+
+
+
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
         getBundleBuilderPage().setDrpSelectBillingPaymentMethod("Monthly charges");

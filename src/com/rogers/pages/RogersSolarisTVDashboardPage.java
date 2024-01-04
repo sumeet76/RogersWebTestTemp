@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Point;
 
 import java.time.Duration;
 
@@ -316,6 +317,28 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(btnSolaristvBadge,60);
 		getReusableActionsInstance().executeJavaScriptClick(btnSolaristvBadge);
 
+	}
+
+
+	@FindBy(xpath="//h1[contains(text(),'TV')]")
+	WebElement linkViewMyChannelLineup;
+
+	public void scrollToViewChannel()
+	{
+
+
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+		getReusableActionsInstance().javascriptScrollByVisibleElement(linkViewMyChannelLineup);
+	}
+	public void  scrollToMiddle()
+	{
+		getReusableActionsInstance().staticWait(18000);
+		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(linkViewMyChannelLineup);
+		//getReusableActionsInstance().waitForElementVisibility(linkViewMyChannelLineup);
+		//getReusableActionsInstance().javascriptScrollByVisibleElement(linkViewMyChannelLineup);//.waitForElementVisibility(linkViewMyChannelLineup, 90);
+		//getReusableActionsInstance().scrollToElement(linkViewMyChannelLineup);
 	}
 
 	/**

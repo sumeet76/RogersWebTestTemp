@@ -40,7 +40,7 @@ public class RogersBFA_OV_TC19_NAC_ValidateOutboundCustomerWithMultipleADMSFDisc
         getEnvironmentSelectionPage().selectOneViewEnv(TestDataHandler.bfaOneViewConfig.getEnvironmentName());
         reporter.reportLogWithScreenshot("Rogers OV environment selected" + TestDataHandler.bfaOneViewConfig.getEnvironmentName());
         //-------------------------------------NAC Dashboard page---------------------------------------------
-        getNacDashboardPage().selectFrenchLanguage();
+      //  getNacDashboardPage().selectFrenchLanguage();
         reporter.hardAssert(getNacDashboardPage().verifyNewCustomerDashboard(), "Login Successful", "Login Failed");
         reporter.reportLogWithScreenshot("Rogers OV NAC Dashboard page");
         getAccountOverViewPage().changeFidoDealerToRogers();

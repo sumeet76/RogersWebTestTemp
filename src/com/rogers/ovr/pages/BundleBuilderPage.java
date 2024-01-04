@@ -124,9 +124,13 @@ public class BundleBuilderPage extends BasePageClass {
     @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]//parent::div")
     WebElement grabAndGoSerialNumber;
 
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[2]//parent::div")
+    WebElement grabAndGoSerialNumberEntertainmentBox;
+
     @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[1]")
     WebElement grabAndGoSerialNumberInput;
-
+    @FindBy(xpath = "(//rch-grab-n-go-install//child::input)[2]")
+    WebElement grabAndGoSerialNumberInput2;
     @FindBy(xpath = "//span[contains(text(),'Customer understands billing starts today and equipment must be self installed')]")
     WebElement grabAndGoCheckbox;
 
@@ -304,12 +308,25 @@ public class BundleBuilderPage extends BasePageClass {
         return getReusableActionsInstance().isElementVisible(loggedOutOfChampLbl,30);
     }
 
+    public void enterGrabAndGoSerialNumber2(String serialNumber,String serialNumber2){
+        getReusableActionsInstance().getWhenVisible(grabAndGoSerialNumber,30);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumber);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumber);
+        getReusableActionsInstance().enterText(grabAndGoSerialNumberInput, serialNumber, 20);
+        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumberEntertainmentBox);
+        getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumberEntertainmentBox);
+        getReusableActionsInstance().enterText(grabAndGoSerialNumberInput2, serialNumber2, 20);
+        getReusableActionsInstance().scrollToElement(grabAndGoCheckbox);
+        getReusableActionsInstance().clickWhenReady(grabAndGoCheckbox);
+    }
     public void enterGrabAndGoSerialNumber(String serialNumber){
         getReusableActionsInstance().getWhenVisible(grabAndGoSerialNumber,30);
         getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumber);
         getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumber);
         getReusableActionsInstance().enterText(grabAndGoSerialNumberInput, serialNumber, 20);
-
+//        getReusableActionsInstance().javascriptScrollByVisibleElement(grabAndGoSerialNumberEntertainmentBox);
+//        getReusableActionsInstance().executeJavaScriptClick(grabAndGoSerialNumberEntertainmentBox);
+//        getReusableActionsInstance().enterText(grabAndGoSerialNumberInput2, serialNumber2, 20);
         getReusableActionsInstance().scrollToElement(grabAndGoCheckbox);
         getReusableActionsInstance().clickWhenReady(grabAndGoCheckbox);
     }

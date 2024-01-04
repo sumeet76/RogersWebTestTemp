@@ -32,6 +32,13 @@ public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Vali
         reporter.reportLogWithScreenshot("Select SSP environment");
         getAccountSearchPage().searchForAccountAndSelectEnv(TestDataHandler.tc_03_Ovr_ERM_Mig_Data_2p_to_3p.getBanNumber(), TestDataHandler.tc_03_Ovr_ERM_Mig_Data_2p_to_3p.getPostalCode(), TestDataHandler.ovrConfigData.getOvrQaEnvironment());
         reporter.reportLogWithScreenshot("search for account and select environment ");
+        reporter.reportLogWithScreenshot("Account Search Page");
+       // getAccountSearchPage().searchForAccount("768903215","L5A1H4");
+       // getAccountSearchPage().selectNewCustomerEnv(TestDataHandler.ovrConfigData.getOvrQaEnvironment());
+        reporter.reportLogWithScreenshot("QA Env selected for new customer");
+        //getAccountOverViewPage().selectProduction();
+        reporter.reportLogWithScreenshot("Select Environment as Production");
+        //getAccountOverViewPage().clickProceed();
         getOvrDashboardPage().clickIgniteLink();
         reporter.reportLogWithScreenshot("Open IgniteLink from dashboard");
         getAccountOverViewPage().selectProduction();
