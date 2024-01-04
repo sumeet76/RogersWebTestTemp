@@ -47,11 +47,14 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 		 reporter.reportLogWithScreenshot("Launched the Account Page");
 		// getRogersSolarisTVDashboardPage().clkFR();
 		 getRogersSolarisTVDashboardPage().clkTVBadge();
+		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot1");
 		 reporter.reportLogWithScreenshot("Launched the TV dash board");
 		 getRogersSolarisTVDashboardPage().scrollToMiddle();//.scrolltoViewMyChannels();
-		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot1");
-		 getRogersSolarisTVDashboardPage().scrollToViewChannel();
 		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot2");
+		 getRogersSolarisTVDashboardPage().scrollToViewChannel();
+		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot3");
+		 getRogersSolarisTVDashboardPage().scrollToTop();
+		 reporter.reportLogWithScreenshot("TVDashBoard Sceenshot4");
 //		 getRogersSolarisTVDashboardPage().clkChangeTVPackageLetency();
 //
 //		 reporter.reportLogWithScreenshot("Launched the TV packages page");

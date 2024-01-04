@@ -341,6 +341,11 @@ public class RogersSolarisTVDashboardPage extends BasePageClass {
 		//getReusableActionsInstance().scrollToElement(linkViewMyChannelLineup);
 	}
 
+	public void scrollToTop()
+	{
+		getReusableActionsInstance().javascriptScrollToTopOfPage();
+	}
+
 	/**
 	 * Click the TV badge on  account details page
 	 * @author Chinnarao.Vattam
