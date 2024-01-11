@@ -48,6 +48,6 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        closeSession();
+        //closeSession();
     }
 }

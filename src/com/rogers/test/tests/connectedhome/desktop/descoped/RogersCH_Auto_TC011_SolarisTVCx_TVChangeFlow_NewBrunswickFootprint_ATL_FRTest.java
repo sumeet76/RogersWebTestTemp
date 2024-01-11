@@ -42,7 +42,6 @@ public class RogersCH_Auto_TC011_SolarisTVCx_TVChangeFlow_NewBrunswickFootprint_
 		 getRogersLoginPage().setPasswordIFrame(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.getPassword());
 		 reporter.reportLogWithScreenshot("Enter the account credentials");
 		 getRogersLoginPage().clkSignInIFrame();
-
 		 reporter.hardAssert(!getRogersLoginPage().verifyLoginFailMsgIframe(), "Login Successful", "Login Failed");
 		 getRogersAccountOverviewPage().selectAccount(TestDataHandler.tc11_SolarisTVAccountForUpgradeNB.accountDetails.getBan());
 		 reporter.reportLogWithScreenshot("Launched the Account Page");

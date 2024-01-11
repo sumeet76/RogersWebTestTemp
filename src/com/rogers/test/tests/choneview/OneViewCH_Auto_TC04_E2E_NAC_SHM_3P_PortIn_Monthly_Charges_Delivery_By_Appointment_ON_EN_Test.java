@@ -150,6 +150,6 @@ getRogersIgniteBundlesPage().clickBundleLink();
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
 
-        //closeSession();
+        closeSession();
     }
 }

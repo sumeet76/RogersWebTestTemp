@@ -239,7 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='button-set']//span[@translate='global.cta.continue'][normalize-space()='Continue']")
 	WebElement continueFromPort;
 
-	@FindBy(xpath = "//rch-port-in-service-selector/descendant::span[@translate='global.cta.continue']/ancestor::button")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
 	WebElement clickContinue3PPortIn;
 
 	@FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")
@@ -318,7 +318,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	WebElement inputHomePhoneNumberPortIn;
 
 	@FindAll(
-			{@FindBy(xpath = "//input[@id='ds-form-input-id-14' ]"),
+			{@FindBy(xpath = "//input[@id='ds-form-input-id-13' ]"),
 					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
 	 })
 	WebElement inputHomePhoneNumberPortInContainer;
@@ -622,7 +622,13 @@ WebElement HomePhoneCheckBox;
 		getReusableActionsInstance().scrollToElement(reviewTermsAndCondition);
 		getReusableActionsInstance().executeJavaScriptClick(reviewTermsAndCondition);
 	}
+@FindBy(xpath = "//span[text()=' I have reviewed the customer’s add-ons. ']")
+WebElement lnkReviewdCustomerAddOns;
 
+	public void clkReviewCustomerAddOns()
+	{
+		getReusableActionsInstance().clickWhenVisible(lnkReviewdCustomerAddOns);
+	}
 	public void clickTermsAndConditionsCheckbox(){
 		getReusableActionsInstance().staticWait(3000);
 		//getReusableActionsInstance().javascriptScrollToBottomOfPage();

@@ -12,6 +12,59 @@ public class AccountData {
 	private String dealerCode;
 	private String contactID;
 	private String accountNo;
+	private String sspEnvironment;
+	private String sspDealerCode;
+	private String ovrQaEnvironment;
+
+	private String sspIgniteDealerCode;
+
+	public String getSspIgniteDealerCode() {
+		return sspIgniteDealerCode;
+	}
+
+	public void setSspIgniteDealerCode(String sspIgniteDealerCode) {
+		this.sspIgniteDealerCode = sspIgniteDealerCode;
+	}
+
+
+
+	public String getSspEnvironment() {
+		return sspEnvironment;
+	}
+
+	public void setSspEnvironment(String sspEnvironment) {
+		this.sspEnvironment = sspEnvironment;
+	}
+
+	public String getSspDealerCode() {
+		return sspDealerCode;
+	}
+
+	public void setSspDealerCode(String sspDealerCode) {
+		this.sspDealerCode = sspDealerCode;
+	}
+
+	public String getOvrQaEnvironment() {
+		return ovrQaEnvironment;
+	}
+
+	public void setOvrQaEnvironment(String ovrQaEnvironment) {
+		this.ovrQaEnvironment = ovrQaEnvironment;
+	}
+
+
+
+	public String getFlexChannelsPackageEN() {
+		return flexChannelsPackageEN;
+	}
+
+	public void setFlexChannelsPackageEN(String flexChannelsPackageEN) {
+		this.flexChannelsPackageEN = flexChannelsPackageEN;
+	}
+
+	private String flexChannelsPackageEN;
+	private String flexChannelsPackageFR;
+	//private String sspIgniteDealerCode;
 
 	public String getAddress() {return address;}
 
@@ -138,4 +191,14 @@ public class AccountData {
 	public void setDBQuery(String dbQuery) {
 		this.dbQuery = dbQuery;
 	}*/
+private String sspPostalCode;
+
+	public String getSspPostalCode() {
+		return sspPostalCode;
+	}
+
+	public void setSspPostalCode(String sspPostalCode) {
+		this.sspPostalCode = sspPostalCode;
+	}
 }
+

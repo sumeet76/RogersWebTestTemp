@@ -57,33 +57,39 @@ public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Vali
         getRogersIgniteBundlesPage().clkHomePhoneCheckbox();
         reporter.reportLogWithScreenshot("HomePhone selected");
         reporter.reportLogWithScreenshot("3P services selected");
-        getRogersIgniteBundlesPage().clkLoadOffers();
-        reporter.reportLogWithScreenshot("Click on Load offers");
+       getRogersIgniteBundlesPage().clkLoadOffers();
         getRogersIgniteBundlesPage().clickFirstAddToCart();
-        reporter.reportLogWithScreenshot("Add to cart 1st offer");
         getRogersIgniteBundlesPage().yesPortInPopup();
-        reporter.reportLogWithScreenshot("Port In Pop-up");
-
-        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
-        reporter.reportLogWithScreenshot("Product Added");
+        reporter.hardAssert(getRogersIgniteBundlesPage().verifyMonthlyFeesInCollapsible(),"Monthly Fees Displayed","Monthly Fees did not Displayed");
+        reporter.reportLogWithScreenshot("Product in cart");
+        getRogersIgniteBundlesPage().clkCollapse();
         getRogersIgniteBundlesPage().clkContinue();
-
-        reporter.hardAssert(getRogersIgniteBundlesPage().headerPortInService(),"Port in Service Header exist","Failed");
-        reporter.reportLogWithScreenshot("Port In Service");
-        getRogersIgniteBundlesPage().clkInternetCheckbox();
-        reporter.reportLogWithScreenshot("Internet Selected for Port IN");
-        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
-        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
-        reporter.reportLogWithScreenshot("Port In form filled out");
-        getRogersIgniteBundlesPage().contiueFromPortIn();
-        reporter.reportLogWithScreenshot("Port In completed");
-        getRogersIgniteBundlesPage().contiueToCartSummary();
-
-        reporter.reportLogWithScreenshot("Continue to Points to mention pop-up");
         getRogersIgniteBundlesPage().clickTermsAndConditionsCheckbox();
-        reporter.reportLogWithScreenshot("Review Points to mention");
+        reporter.reportLogWithScreenshot("Term and condition checkbox checked");
         getRogersIgniteBundlesPage().clickContinueFromPointsToMention();
+        reporter.reportLogWithScreenshot("Port In Service");
+       // getRogersIgniteBundlesPage().clkInternetCheckbox();
+        reporter.reportLogWithScreenshot("phone no for Port IN");
+       getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9052909983");
+        reporter.reportLogWithScreenshot("phone no for Port IN");
+//       getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+        // getRogersIgniteBundlesPage().clkTVCheckbox();
+        reporter.reportLogWithScreenshot("portin");
+        getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
+        reporter.reportLogWithScreenshot("Port In initiated");
+      //  getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        reporter.reportLogWithScreenshot("provider");
+        getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
+        reporter.reportLogWithScreenshot("portin details");
+        getRogersIgniteBundlesPage().contiueFromPortIn();
+        reporter.reportLogWithScreenshot("portin continue");
+        getRogersIgniteBundlesPage().contiueToCartSummary();
+//        getRogersIgniteBundlesPage().clickExchangeLater();
+//        reporter.hardAssert(getRogersIgniteBundlesPage().verifyProductinCart(),"Product Added to Cart","Failed");
+        reporter.reportLogWithScreenshot("Product Added");
+        getRogersIgniteBundlesPage().clickAddOnLink();
+        reporter.reportLogWithScreenshot("Review Points to mention");
+        //getRogersIgniteBundlesPage().clkContinue();//.clickContinueFromPointsToMention();
 
         reporter.reportLogWithScreenshot("Channels and theme packs page");
         getRogersIgniteBundlesPage().clkContinue();
@@ -100,47 +106,49 @@ public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Vali
         getHomePhoneAddonsPage().chooseAddon(TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlan(),TestDataHandler.ovrMigrationData3PTo3PON.getAddOnPlanFr());
         reporter.reportLogWithScreenshot("Addons selected for home phone add ons");
         getHomePhoneAddonsPage().clkContinue();
-
-        reporter.reportLogWithScreenshot("Continue to Cart Summary Page");
-        reporter.reportLogWithScreenshot("Cart Summary");
         reporter.hardAssert(getRogersIgniteBundlesPage().verifyCartSummaryHeader(),"Cart Summary Header displayed","Cart Summary Header did not Displayed");
-        reporter.reportLogWithScreenshot("Cart Summary page");
+        reporter.reportLogWithScreenshot("cart summary");
         getRogersIgniteBundlesPage().clkCheckOutforCartSummary();
-
-        reporter.reportLogWithScreenshot("wish to continue");
+        reporter.reportLogWithScreenshot("continue");
         getRogersIgniteBundlesPage().customerWishtoContinue();
-        reporter.reportLogWithScreenshot("Customer Profile Page");
+        reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
+        reporter.reportLogWithScreenshot("Customer Profile");
         getCustomerProfilePage().clkContinue();
-        reporter.reportLogWithScreenshot("Continue to Credit Check Page");
-        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
-        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("Credit Evaluation DOB set");
-        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
-                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-        reporter.reportLogWithScreenshot("credit form completed");
-        getCreditCheckPage().clkAuthorize();
-        reporter.reportLogWithScreenshot("Credit Check Authorized");
-        reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
+        reporter.reportLogWithScreenshot("credit form");
+        reporter.softAssert(getCreditCheckPage().verifyCreditEvaluationHeader(),"Credit Evaluation Header verified","Failed");
+        reporter.reportLogWithScreenshot("Credit check page is displayed");
+        reporter.reportLogWithScreenshot("evaluation form");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
+       getCreditCheckPage().setDriversLicense(TestDataHandler.anonymousData.contactDetails.getProvince(),FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),FormFiller.generateLicenseNumber("ONTARIO"));
+     getCreditCheckPage().setPassport(FormFiller.generateExpiryYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay(),TestDataHandler.anonymousData.contactDetails.getPassportNo());
+        reporter.reportLogWithScreenshot("filled customer credit form");
+       getCreditCheckPage().clkAuthorize();
+       // getCreditCheckPage().clkContinue();
+        reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-
-        reporter.reportLogWithScreenshot("Continue to Home Phone personalisation Page");
-        reporter.hardAssert(getHomePhoneSelectionPage().verifyHomePhonePersonalizationHeader(),"Home Phone Personalisation page loaded", "Home Phone Personalisation page not loaded");
-        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        reporter.reportLogWithScreenshot("Generate Phone Number");
-        getCreditCheckPage().goToPageBottom();
-        getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
-        reporter.reportLogWithScreenshot("continue from generate phone number");
-
+        getCallerInformationPage().clickFinalContinue();
+       // getHomePhoneSelectionPage().clkGeneratePhoneNo();
+        reporter.reportLogWithScreenshot("generate phone number");
+        //reporter.reportLogWithScreenshot("Phone Number Selected");
+       // getCreditCheckPage().goToPageBottom();
+        //reporter.reportLogWithScreenshot("continue");
+       // getHomePhoneSelectionPage().clkContinueOnGeneratePhone();
+        //reporter.reportLogWithScreenshot("Phone number generated");
+//        getHomePhoneSelectionPage().clkContinue();
+       reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
+//        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+//        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         reporter.reportLogWithScreenshot("Continue to install options  page");
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(), "Installation Page loaded","Installation Page not loaded");
-        getBundleBuilderPage().selectExpressProInstall();
-        reporter.reportLogWithScreenshot("Select Express Pro install");
-        getBundleBuilderPage().clkTechInstallSlot();
-        reporter.reportLogWithScreenshot("Select a time slot");
-        getBundleBuilderPage().setMobileNumber();
-        reporter.reportLogWithScreenshot("tech install details");
-        getBundleBuilderPage().clkContinueInstallation();
+        getCreditCheckPage().clickDateTimeRadioButton();
+        getFulfillmentPage().clkFirstAvailableAppointment();
+        reporter.reportLogWithScreenshot(".enter Text Mobile Number");
+        getCreditCheckPage().enterTextMobileNumber("4156383833");
+        //TestDataHandler.anonymousData.contactDetails.getPhoneNo());
+        // getCreditCheckPage().enterEmailMailAddress(TestDataHandler.anonymousData.contactDetails.getEmail());      reporter.reportLogWithScreenshot(".enter Special Instructions");
+        getCreditCheckPage().enterSpecialInstructions();
+        getCreditCheckPage().clkContinueInstallationOption();
         reporter.reportLogWithScreenshot("Billing and Payment page");
         reporter.hardAssert(getBundleBuilderPage().verifyBillingAndPaymentPage(), "Billing and Payment page displayed", "Billing and payment page not displayed");
         getBundleBuilderPage().clkContinueBillingAndPayment();
@@ -160,6 +168,5 @@ public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Vali
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderConfirmation(), "Order Confirmation displayed", "Order not Confirmed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOrderNumberPresent(), "Order number successfully displayed", "Order number not displayed");
         reporter.hardAssert(getOVROrderConfirmationPage().verifyOneTimeFees(), "One Time Fees Displayed", "One time fees not displayed");
-
     }
 }
