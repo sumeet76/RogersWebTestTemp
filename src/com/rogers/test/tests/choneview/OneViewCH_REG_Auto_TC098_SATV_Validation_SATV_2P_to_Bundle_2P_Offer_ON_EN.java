@@ -26,7 +26,7 @@ public class OneViewCH_REG_Auto_TC098_SATV_Validation_SATV_2P_to_Bundle_2P_Offer
 
         //--
 
-        getChampLoginPage().logIntoChamp("sumeet.garg@rci.rogers.ca","Keshav@21");//System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.tc098_SATV2P_To_Bundle2P.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
