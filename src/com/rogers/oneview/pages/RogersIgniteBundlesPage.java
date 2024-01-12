@@ -228,7 +228,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	WebElement provider;
 
 	@FindAll(
-			{
+			{		@FindBy(xpath ="//input[@formcontrolname='phoneNumber']"),
 					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
 			})
 	WebElement inputAccountNumberContainer;

@@ -16,7 +16,7 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
         //getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
         getEnvironmentSelectionPage().launchOneView(TestDataHandler.RHPManage_AddOns.accountDetails.getBan(),TestDataHandler.RHPManage_AddOns.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
-        getAccountOverViewPage().enterDealerCodeDialogue();
+       // getAccountOverViewPage().enterDealerCodeDialogue();
         getAccountOverViewPage().selectHomePhoneBadge();
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Selected Production");
@@ -48,6 +48,6 @@ public class OneviewCH_REG_Auto_TC031_RHP_ManageHomephone_AddandRemove_AddOns_Im
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //closeSession();
+        closeSession();
     }
 }
