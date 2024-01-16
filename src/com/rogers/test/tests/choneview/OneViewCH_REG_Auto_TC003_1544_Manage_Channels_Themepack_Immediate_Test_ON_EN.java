@@ -35,9 +35,10 @@ public class OneViewCH_REG_Auto_TC003_1544_Manage_Channels_Themepack_Immediate_T
 		//	getRogersIgniteBundlesPage().fourKTVPopup();
 		//	reporter.reportLogWithScreenshot("4k continue");
 		//	getRogersIgniteBundlesPage().fourKContinue();
-		getTVDashboardPage().clickYesContinueIfPresent();
+		getTVDashboardPage().clickContinue();
+		//getTVDashboardPage().clickYesContinueIfPresent();
 		reporter.reportLogWithScreenshot("continue for package");
-		//getTVDashboardPage().clickContinueForPackage();
+	//	getTVDashboardPage().clickContinueForPackage();
 		reporter.reportLogWithScreenshot("immediate date");
 		getTVDashboardPage().immediateDateChangeOption();
 //		reporter.reportLogWithScreenshot("Collapse");
@@ -56,6 +57,6 @@ public class OneViewCH_REG_Auto_TC003_1544_Manage_Channels_Themepack_Immediate_T
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		closeSession();
+		//closeSession();
 	}
 }
