@@ -48,7 +48,38 @@ public class CustomerProfilePage  extends BasePageClass {
 	 * Verify the Customer Profile Page is Displayed
 	 * @return true if Customer Profile is Displayed, else false
 	 * @author chinnarao.vattam
-	 */	
+	 */
+
+	@FindBy(xpath="//input[@formcontrolname='email']")
+	WebElement emailID;
+	@FindBy(xpath="//input[@formcontrolname='confirmEmail']")
+	WebElement confirmemailID;
+	@FindBy(xpath="//input[@formcontrolname='confirmEmail']/parent::div")
+	WebElement containerConfirmemailID;
+	@FindBy(xpath="//input[@formcontrolname='firstName']")
+	WebElement firstName;
+	@FindBy(xpath="//input[@formcontrolname='lastName']")
+	WebElement lastName;
+	@FindBy(xpath="//input[@formcontrolname='contactNumber']")
+	WebElement contactNumber;
+	@FindBy(xpath="//input[@formcontrolname='email']/parent::div")
+	WebElement emailContainer;
+
+	public void fillCustomerData()
+	{
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(emailContainer);
+		getReusableActionsInstance().enterText(emailID,"KatKaif1@mailnator.com",5);
+		getReusableActionsInstance().executeJavaScriptClick(containerConfirmemailID);
+		getReusableActionsInstance().enterText(confirmemailID,"KatKaif1@mailnator.com",3);
+		getReusableActionsInstance().executeJavaScriptClick(firstName);
+		getReusableActionsInstance().enterText(firstName,"Katty",3);
+		getReusableActionsInstance().executeJavaScriptClick(lastName);
+		getReusableActionsInstance().enterText(lastName,"katto",3);
+		getReusableActionsInstance().executeJavaScriptClick(contactNumber);
+		getReusableActionsInstance().enterText(contactNumber,"1010000061",5);
+	}
+
 	public boolean verifyCustomerProfile() {
 		//getReusableActionsInstance().clickIfAvailable(collapse,60);
 		return getReusableActionsInstance().isElementVisible(customerProfile,120);

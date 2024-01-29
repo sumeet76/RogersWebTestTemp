@@ -21,7 +21,7 @@ public class ChampLoginPage extends BasePageClass {
     @FindBy(id= "idBtn_Back")
     WebElement staySignedInNO;
 
-    @FindBy(xpath = "//span[contains(text(),'Sign in') or contains(text(),'identifier')]")
+    @FindBy(xpath = "//*[contains(text(),'Sign in') or contains(text(),'identifier') ]")
     WebElement corpSignInBtn;
 
     @FindBy(xpath = "//input[@value='Next' or @value='suivante']")
@@ -59,7 +59,7 @@ public class ChampLoginPage extends BasePageClass {
         getReusableActionsInstance().getWhenVisible(btnNext).click();
         getReusableActionsInstance().waitForElementStaleness(txtPassword, 15);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
-        getReusableActionsInstance().getWhenVisible(corpSignInBtn).click();
+        getReusableActionsInstance().getWhenVisible(signInButton).click();
         //Skip the 2fa popup if presented
         if(getReusableActionsInstance().isElementVisible(corpLoginNextBtn)){
             getReusableActionsInstance().getWhenVisible(corpLoginNextBtn).click();

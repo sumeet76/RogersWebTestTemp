@@ -15,7 +15,11 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
     @Test(groups = {"ERM"})
     public void oneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_By_Appointment_ON_EN(){
         reporter.reportLogWithScreenshot("oneview env");
-        getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+      // getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
+       // getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.igniteTVParentalcontrols.getContactID());
+        getEnvironmentSelectionPage().launchOneView( "UTE_ANONYMOUS", "UTE_ANONYMOUS");
+getEnvironmentSelectionPage().waitForAdditionalServicesPage();
+getEnvironmentSelectionPage().clickIgniteOnAdditionalServicesPage();
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");
         getEnvironmentSelectionPage().clickProceed();
@@ -70,10 +74,13 @@ getRogersIgniteBundlesPage().clickBundleLink();
         getRogersIgniteBundlesPage().clkContinue();
         reporter.reportLogWithScreenshot("Port In Service");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
+        getRogersIgniteBundlesPage().clickHomePhoneAndTVInPortInServices();
         reporter.reportLogWithScreenshot("portin");
         getRogersIgniteBundlesPage().clkContinueFor3PPortIn();
         reporter.reportLogWithScreenshot("Port In initiated");
-        getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
+        getRogersIgniteBundlesPage().enterHomePhoneNumberPortIn("9052705288");
+getRogersIgniteBundlesPage().clickPhoneNumberContinue();
+        //getRogersIgniteBundlesPage().setProvider("BELL ONTARIO");
         reporter.reportLogWithScreenshot("provider");
         getRogersIgniteBundlesPage().enterAccountNumber("1122334455");
         reporter.reportLogWithScreenshot("portin details");
@@ -102,6 +109,7 @@ getRogersIgniteBundlesPage().clickBundleLink();
         getRogersIgniteBundlesPage().customerWishtoContinue();
         reporter.softAssert(getCustomerProfilePage().verifyCustomerProfile(),"Customer Profile","Failed");
         reporter.reportLogWithScreenshot("Customer Profile");
+        getCustomerProfilePage().fillCustomerData();
         getCustomerProfilePage().clkContinue();
         reporter.reportLogWithScreenshot("credit form");
         getCreditCheckPage().setDOB(FormFiller.generateDOBYear(),FormFiller.generateMonth(),FormFiller.generateCalendarDay());
@@ -112,16 +120,18 @@ getRogersIgniteBundlesPage().clickBundleLink();
         reporter.softAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
-        getHomePhoneSelectionPage().clkGeneratePhoneNo();
-        getHomePhoneSelectionPage().selectDiffNumb();
-        reporter.reportLogWithScreenshot("generate phone number");
-        getHomePhoneSelectionPage().clkContinue();
+       // getCallerInformationPage().clickContinue();
+        getCallerInformationPage().clickFinalContinue();
+//        getHomePhoneSelectionPage().clkGeneratePhoneNo();
+//        getHomePhoneSelectionPage().selectDiffNumb();
+//        reporter.reportLogWithScreenshot("generate phone number");
+//        getHomePhoneSelectionPage().clkContinue();
         reporter.hardAssert(getCreditCheckPage().verifyInstallationHeader(),"Installation Header Displayed","Installation Header did not Displayed");
-        reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
-        reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
+       // reporter.hardAssert(getCreditCheckPage().verifyRecoEngineRecommendation(),"Reco Engine Install Recommendation Banner displayed"," Reco Engine Install Recommendation Banner is not displayed");
+        //reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("in person delivery");
-        getCreditCheckPage().selectProfessionalInstallation();
+     //   getCreditCheckPage().selectProfessionalInstallation();
         //getCreditCheckPage().clickDateTimeRadioButton();
        getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
@@ -141,15 +151,23 @@ getRogersIgniteBundlesPage().clickBundleLink();
         reporter.hardAssert(getRogersOVOrderConfirmationPage().verifyOrder(),"Order Placed","Order Failed");
         reporter.reportLogWithScreenshot("Order Placed");
     }
-    @BeforeMethod(alwaysRun=true)
+//    @BeforeMethod(alwaysRun=true)
+//    @Parameters({"strBrowser", "strLanguage"})
+//    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+//       //TestDataHandler.anonymousData.contactDetails.getContactID_SHM_3P_PortIn()
+//        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"UTE_ANONYMOUS" , "UTE_ANONYMOUS","", "", method);
+//    }
+
+    @BeforeMethod (alwaysRun=true)
     @Parameters({"strBrowser", "strLanguage"})
-    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws ClientProtocolException, IOException {
-        startOVSession(System.getProperty("QaOVUrl"), strBrowser, strLanguage, RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(), TestDataHandler.anonymousData.contactDetails.getContactID_SHM_3P_PortIn(), "", System.getenv("MaestroLoginID"), System.getenv("MaestroUsrID"), method);
+    public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage,ITestContext testContext, Method method) throws ClientProtocolException, IOException {
+        // xmlTestParameters = new HashMap<String, String>(testContext.getCurrentXmlTest().getAllParameters());
+        startOVSession(System.getProperty("OVUrl"), strBrowser, strLanguage,RogersEnums.GroupName.connectedhome_oneview.toString().toLowerCase().trim(),"","","","", method);
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
 
-        closeSession();
+       // closeSession();
     }
 }

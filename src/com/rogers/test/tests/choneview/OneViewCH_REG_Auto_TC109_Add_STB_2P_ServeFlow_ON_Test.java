@@ -14,7 +14,7 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
 
     @Test
     public void oneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test(){
-        getEnvironmentSelectionPage().launchOneView( TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getAddSTBban(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
+        getEnvironmentSelectionPage().launchOneView( TestDataHandler.TC026_TVPackageUpgrade.accountDetails.getBan(),TestDataHandler.TC026_TVPackageUpgrade.getContactID());
         reporter.reportLogWithScreenshot("Launched the account dashboard page");
         getAccountOverViewPage().selectTVBadage();
         getEnvironmentSelectionPage().selectProduction();
@@ -57,6 +57,6 @@ public class OneViewCH_REG_Auto_TC109_Add_STB_2P_ServeFlow_ON_Test extends BaseT
 
     @AfterMethod(alwaysRun=true)
     public void afterTest(){
-        //closeSession();
+        closeSession();
     }
 }

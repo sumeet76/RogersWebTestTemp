@@ -23,7 +23,7 @@ public class OneviewCH_Auto_TC116_TC04_Validation_DOCSIS_to_GPON_regularMappedOf
         reporter.reportLogWithScreenshot("Clicked proceed button");
         getInternetDashboardPage().clickViewOffers();
         // verify modal for D to G confirmation
-        reporter.hardAssert(getTVDashboardPage().verifyDtoGModal(),"Docisis to GPON upgrade modal visible"," Fibre to the home available modal not visible");
+       reporter.hardAssert(getTVDashboardPage().verifyDtoGModal(),"Docisis to GPON upgrade modal visible"," Fibre to the home available modal not visible");
         getTVDashboardPage().clickContinue();
         // select technology verification - fibre
         reporter.reportLogWithScreenshot("view offers link clicked");

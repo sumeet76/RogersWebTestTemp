@@ -164,15 +164,19 @@ public class CreditCheckPage  extends BasePageClass {
 	})
 	WebElement firstEnabledDateTime;
 
-	@FindBy(xpath ="//input[@formControlName='enrouteMobileNumber']")
+	@FindAll(
+			{		@FindBy(xpath = "//input[@formControlName='contactNumber']"),
+					@FindBy(xpath = "//input[@formControlName='enrouteMobileNumber']")
+			}
+	)
 	WebElement mobileNumber;
 
 
 
 
 	@FindAll({
+			@FindBy(xpath ="//input[@formcontrolname='contactNumber']/parent::div"),
 			@FindBy(xpath ="//input[@formcontrolname='enrouteMobileNumber']/ancestor::div[@class='input_container']"),
-			@FindBy(xpath ="//input[@id='ds-form-input-id-45']"),
 			@FindBy(xpath ="//input[@id='ds-form-input-id-39']")
 	})
 	WebElement mobileNumberContainer;
@@ -230,7 +234,15 @@ public class CreditCheckPage  extends BasePageClass {
 	public void goToPageBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
+@FindBy(xpath ="//input[@id='ds-checkbox-id-22']")
+WebElement getAuthorizecheckbox;
 
+	public void clickAuthCheckBox()
+	{
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().executeJavaScriptClick(getAuthorizecheckbox);
+		getReusableActionsInstance().staticWait(1000);
+	}
 	public void goToMiddlePage() {
 		getReusableActionsInstance().javascriptScrollToMiddleOfPage();
 	}

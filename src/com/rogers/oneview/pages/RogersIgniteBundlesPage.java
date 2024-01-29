@@ -219,7 +219,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "//div[@translate='global.label.cartSummary']")
 	WebElement cartSummaryHeader;
 @FindAll({
-		@FindBy(xpath="/input[@id='ds-form-input-id-11']"),
+		@FindBy(xpath="//input[@id='ds-form-input-id-11' or @formcontrolname='accountNumber']"),
 		@FindBy(xpath = "//span[contains(text(),'Account Number') or contains(text(),'Numéro de compte')]/ancestor::span//following-sibling::div/child::input")
 })
 		WebElement inputAccountNumber;
@@ -228,7 +228,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	WebElement provider;
 
 	@FindAll(
-			{		@FindBy(xpath ="//input[@formcontrolname='phoneNumber']"),
+			{		@FindBy(xpath ="//input[@formcontrolname='accountNumber']"),
 					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[1]")
 			})
 	WebElement inputAccountNumberContainer;
@@ -239,7 +239,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "//div[@class='button-set']//span[@translate='global.cta.continue'][normalize-space()='Continue']")
 	WebElement continueFromPort;
 
-	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[2]")
+	@FindBy(xpath = "(//span[@translate='global.cta.continue'])[1]")
 	WebElement clickContinue3PPortIn;
 
 	@FindBy(xpath = "//rch-popup-modal/descendant::span[text()='Yes' or text()='Oui']/ancestor::button")
@@ -318,7 +318,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	WebElement inputHomePhoneNumberPortIn;
 
 	@FindAll(
-			{@FindBy(xpath = "//input[@id='ds-form-input-id-13' ]"),
+			{@FindBy(xpath = "//input[@formcontrolname ='phoneNumber']"),
 					@FindBy(xpath = "(//*/parent::div/parent::div//input/parent::div)[3]")
 	 })
 	WebElement inputHomePhoneNumberPortInContainer;
@@ -588,9 +588,9 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 		getReusableActionsInstance().waitForElementVisibility(continueFromPointsToMention, 60);
 		getReusableActionsInstance().executeJavaScriptClick(continueFromPointsToMention);
 	}
-@FindBy(xpath = "//input[@id='ds-checkbox-id-6']//following::div[1]")
+@FindBy(xpath = " //div[text()=' Home Phone ']/preceding-sibling::div")
 WebElement HomePhoneCheckBox;
-	@FindBy(xpath="//input[@id='ds-checkbox-id-7']//following::div[1]")
+	@FindBy(xpath=" //div[text()=' TV ']/preceding-sibling::div")
 	WebElement TVCheckBox;
 	public void clickHomePhoneAndTVInPortInServices()
 	{
@@ -783,7 +783,7 @@ WebElement lnkReviewdCustomerAddOns;
 	 */
 	public void clkContinue() {
 		getReusableActionsInstance().waitForPageLoad();
-		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().staticWait(13000);
 		getReusableActionsInstance().waitForElementVisibility(continueButton,80);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		getReusableActionsInstance().executeJavaScriptClick(continueButton);
