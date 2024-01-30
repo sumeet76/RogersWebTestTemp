@@ -19,11 +19,12 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        //closeSession();
+        closeSession();
     }
     @Test(groups = {"OVR", "RegressionOVR"})
     public void ovr_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test() {
-        getChampLoginPage().logIntoCorpChamp("sumeet.garg@rci.rogers.ca","Sanyam@21");//System.getenv("champCorpUserName"), System.getenv("champCorpPassword"));
+
+       getChampLoginPage().logIntoCorpChamp(System.getenv("champCorpUserName"),System.getenv("champCorpPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getFidoDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
@@ -45,8 +46,8 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
         reporter.reportLogWithScreenshot("Bundle Builder Page");
         getRogersIgniteBundlesPage().clkInternetCheckbox();
         reporter.reportLogWithScreenshot("Internet Selected");
-        getRogersIgniteBundlesPage().clkSmartStream();
-        reporter.reportLogWithScreenshot("ISS selected");
+//        getRogersIgniteBundlesPage().clkSmartStream();
+//        reporter.reportLogWithScreenshot("ISS selected");
         getRogersIgniteBundlesPage().clkLoadOffers();
         reporter.reportLogWithScreenshot("Load offers");
         getRogersIgniteBundlesPage().clickFirstAddToCart();
@@ -76,13 +77,13 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
         getBundleBuilderPage().scrollAndClickContinue();
         reporter.reportLogWithScreenshot("Continue to credit Check page");
 
-//        reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
-//        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-//        reporter.reportLogWithScreenshot("Credit Evaluation Page");
-//        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
-//                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
-//        reporter.reportLogWithScreenshot("credit form completed");
-//        getCreditCheckPage().clkAuthorize();
+       reporter.hardAssert(getCreditCheckPage().verifyCreditEvaluationHeader(), "Credit Check Page loaded", "Credit Check Page not loaded");
+        getCreditCheckPage().setDOB(FormFiller.generateDOBYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("Credit Evaluation Page");
+        getCreditCheckPage().selectInternationalID(FormFiller.generateRandomNumber(9), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay(),
+                FormFiller.generatePassportNumber(), FormFiller.generateExpiryYear(), FormFiller.generateMonth(), FormFiller.generateCalendarDay());
+        reporter.reportLogWithScreenshot("credit form completed");
+        getCreditCheckPage().clkAuthorize();
         reporter.hardAssert(getCreditCheckPage().verifyCreditInfo(),"Credit Check Information Entered","Credit Check Information Failed");
         reporter.reportLogWithScreenshot("Credit Check Information");
         getCreditCheckPage().clkContinue();
@@ -92,8 +93,8 @@ public class OVR_Auto_TC64_Fido_WirelessCX_To_Nac_Flow_ISS_IntID_Corp_EN_ON_Test
         getBundleBuilderPage().selectDeliveryByCourier();
         reporter.reportLogWithScreenshot("Courier Delivery selected");
         getCreditCheckPage().goToPageBottom();
-        getCreditCheckPage().clickAuthCheckBox();
-        getBundleBuilderPage().clkContinueInstallation();
+       // getCreditCheckPage().clickAuthCheckBox();
+       getBundleBuilderPage().clkContinueInstallation();
 
 //        getBundleBuilderPage().selectExpressProInstall();
 //        reporter.reportLogWithScreenshot("Install Options");

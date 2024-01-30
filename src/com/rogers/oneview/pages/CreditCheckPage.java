@@ -234,13 +234,16 @@ public class CreditCheckPage  extends BasePageClass {
 	public void goToPageBottom() {
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 	}
-@FindBy(xpath ="//input[@id='ds-checkbox-id-22']")
+@FindBy(xpath ="//input[@id='ds-checkbox-id-18']/following::div")
 WebElement getAuthorizecheckbox;
 
 	public void clickAuthCheckBox()
 	{
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(getAuthorizecheckbox);
+		//getReusableActionsInstance().executeJavaScriptClick(getAuthorizecheckbox);
+
+
 		getReusableActionsInstance().staticWait(1000);
 	}
 	public void goToMiddlePage() {

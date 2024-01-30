@@ -240,7 +240,7 @@ public class BundleBuilderPage extends BasePageClass {
     }
 
     public void clkContinueInstallation() {
-        getReusableActionsInstance().javascriptScrollToBottomOfPage();
+       // getReusableActionsInstance().javascriptScrollToBottomOfPage();
         getReusableActionsInstance().staticWait(2000);
         getReusableActionsInstance().waitForElementTobeClickable(continueInstallation,30);
         getReusableActionsInstance().executeJavaScriptClick(continueInstallation);
