@@ -517,10 +517,12 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath="//span[@translate='global.cta.viewPDF']")
 	WebElement viewPdf;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-8' or @id='ds-form-input-id-15' or @id='ds-form-input-id-13']")
+	@FindBy(xpath="//input[@formcontrolname='newEmail']")
 	WebElement customerEmail;
+	@FindBy(xpath="//div[@class='ds-formField__wrapper ng-tns-c84-23']/div[1]")
+	WebElement customerEmailContainer;
 
-	@FindBy(xpath="//input[@id='ds-form-input-id-9' or @id='ds-form-input-id-16' or @id ='ds-form-input-id-14']")
+	@FindBy(xpath="//input[@formcontrolname='confirmEmail']")
 	WebElement confirmCustomerEmail;
 
 
@@ -1917,10 +1919,12 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 		getReusableActionsInstance().staticWait(5000);
 	}
 
-	public void enterCustomerEmail(String email){
+	public void enterCustomerEmail(String email)
+	{
 		getReusableActionsInstance().staticWait(2000);
-		//getReusableActionsInstance().waitForElementVisibility(customerEmail);
+
 		getReusableActionsInstance().scrollToElementAndClick(customerEmail);
+		//getReusableActionsInstance().staticWait(2000);
 		getReusableActionsInstance().executeJavaScriptClick(customerEmail);
 		getReusableActionsInstance().enterText(customerEmail,email,60);
 	}
@@ -1929,6 +1933,7 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 		getReusableActionsInstance().scrollToElementAndClick(confirmCustomerEmail);
 		getReusableActionsInstance().executeJavaScriptClick(confirmCustomerEmail);
 		getReusableActionsInstance().enterText(confirmCustomerEmail,cemail,60);
+
 	}
 
 	public boolean verifySuccessPdfSend() {

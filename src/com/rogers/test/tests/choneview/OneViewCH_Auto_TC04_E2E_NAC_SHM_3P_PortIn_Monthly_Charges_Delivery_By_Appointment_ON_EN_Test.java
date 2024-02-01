@@ -50,6 +50,7 @@ getEnvironmentSelectionPage().clickIgniteOnAdditionalServicesPage();
         getRogersIgniteBundlesPage().clkemailChannelsPdf();
         reporter.reportLogWithScreenshot("Email Channel Clicked ");
         getRogersIgniteBundlesPage().enterCustomerEmail("124@mainator.com");
+       // getRogersIgniteBundlesPage().enterCustomerEmail("124@mainator.com");
         getRogersIgniteBundlesPage().enterConfirmCustomerEmail("124@mainator.com");
 
         reporter.reportLogWithScreenshot("View PDF ");
