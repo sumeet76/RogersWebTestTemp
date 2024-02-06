@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Validation_ON_EN_Dealer extends BaseTestClass {
+
     @BeforeMethod(alwaysRun = true)
     @Parameters({"strBrowser", "strLanguage"})
     public void beforeTest(@Optional("chrome") String strBrowser, @Optional("en") String strLanguage, ITestContext testContext, Method method) throws IOException {
@@ -24,7 +25,7 @@ public class OVR_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Vali
 
     @Test(groups = {"OVR_ERM", "RegressionERM"})
     public void ovr_ERM_Auto_TC03_Bundle_Migration_2P_TV_INT_to_3P_Port_In_E2E_Validation_ON_EN_Dealer() {
-        getChampLoginPage().logIntoChamp("sumeet.garg@rci.rogers.ca","Keshav@21");//System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.ovrConfigData.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");

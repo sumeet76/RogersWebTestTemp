@@ -17,6 +17,26 @@ public class AccountData {
 	private String ovrQaEnvironment;
 
 	private String sspIgniteDealerCode;
+	private String postalCode;
+	private String banNumber;
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode1) {
+		postalCode = postalCode1;
+	}
+
+	public String getBanNumber() {
+		return banNumber;
+	}
+
+	public void setBanNumber(String banNumber1) {
+		banNumber = banNumber1;
+	}
+
+
+
 
 	public String getSspIgniteDealerCode() {
 		return sspIgniteDealerCode;

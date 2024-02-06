@@ -137,7 +137,7 @@ public class RogersCH_Auto_TC024_SAI_NACFlowTest extends BaseTestClass {
 
    @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        closeSession();
+        //closeSession();
     }
 
 

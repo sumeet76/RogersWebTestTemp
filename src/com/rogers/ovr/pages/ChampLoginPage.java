@@ -44,7 +44,7 @@ public class ChampLoginPage extends BasePageClass {
     public void logIntoChamp(String email, String password) {
         getReusableActionsInstance().getWhenVisible(txtEmail).sendKeys(email);
         getReusableActionsInstance().getWhenVisible(btnNext).click();
-        getReusableActionsInstance().waitForElementStaleness(txtPassword, 5);
+       // getReusableActionsInstance().waitForElementStaleness(txtPassword, 10);
         getReusableActionsInstance().getWhenVisible(txtPassword).sendKeys(password);
         getReusableActionsInstance().getWhenVisible(signInButton).click();
         if(getReusableActionsInstance().isElementVisible(staySignedInNO, 10)){
