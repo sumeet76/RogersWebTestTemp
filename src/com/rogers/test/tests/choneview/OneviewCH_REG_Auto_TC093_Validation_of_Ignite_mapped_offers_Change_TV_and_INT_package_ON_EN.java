@@ -13,9 +13,7 @@ import java.lang.reflect.Method;
 public class OneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN extends BaseTestClass {
     @Test (groups = {"Regression"})
     public void oneviewCH_REG_Auto_TC093_Validation_of_Ignite_mapped_offers_Change_TV_and_INT_package_ON_EN() {
-        getChampLoginPage().logIntoChamp("sumeet.garg@rci.rogers.ca","Ishita@21");
-
-        //System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
+        getChampLoginPage().logIntoChamp(System.getenv("champLoginUserName"), System.getenv("champLoginPassword"));
         reporter.reportLogWithScreenshot("Logged into champ successfully");
         getUniLoginPage().searchWithDealerCode(TestDataHandler.IgniteOffersChangeTV_INTpackage.getSspDealerCode());
         reporter.reportLogWithScreenshot("Searching with dealer code");
