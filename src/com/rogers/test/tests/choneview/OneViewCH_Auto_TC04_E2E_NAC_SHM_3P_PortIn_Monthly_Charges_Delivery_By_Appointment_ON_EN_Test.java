@@ -18,7 +18,8 @@ public class OneViewCH_Auto_TC04_E2E_NAC_SHM_3P_PortIn_Monthly_Charges_Delivery_
       // getEnvironmentSelectionPage().selectOneViewEnv(System.getProperty("OneViewEnv"));
        // getEnvironmentSelectionPage().launchOneView(TestDataHandler.igniteTVParentalcontrols.accountDetails.getBan(),TestDataHandler.igniteTVParentalcontrols.getContactID());
         getEnvironmentSelectionPage().launchOneView( "UTE_ANONYMOUS", "UTE_ANONYMOUS");
-getEnvironmentSelectionPage().waitForAdditionalServicesPage();
+getEnvironmentSelectionPage().clickCreateAccount();
+        getEnvironmentSelectionPage().waitForAdditionalServicesPage();
 getEnvironmentSelectionPage().clickIgniteOnAdditionalServicesPage();
         getEnvironmentSelectionPage().selectProduction();
         reporter.reportLogWithScreenshot("Select Environment as Production");

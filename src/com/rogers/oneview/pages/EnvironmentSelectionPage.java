@@ -87,8 +87,23 @@ WebElement consumerButton;
 	}
 	@FindBy(xpath="//*[text()='Ignite']")
 	WebElement igniteButton;
+
+	@FindBy(xpath="//t[text()='Create account']")
+	WebElement createAccount;
+
+	public void clickCreateAccount()
+	{getReusableActionsInstance().staticWait(3000);
+
+		if(createAccount.isDisplayed())
+		{
+			getReusableActionsInstance().executeJavaScriptClick(createAccount);
+		}
+	}
 	public void clickIgniteOnAdditionalServicesPage()
 	{
+
+
+
 		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().javascriptScrollToBottomOfPage();
 		if(igniteButton.isDisplayed())
