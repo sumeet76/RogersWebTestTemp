@@ -62,7 +62,7 @@ public class CreditCheckPage  extends BasePageClass {
 	@FindBy(xpath = "//span[contains(text(),'Second ID') or contains(text(),'Deuxième pièce')]/parent::div/parent::div//input/parent::div")
 	WebElement passportContainer;
 
-	@FindBy(xpath = "//span[contains(text(),'Passport number') or contains(text(),'Numéro de passeport')]/ancestor::span//following-sibling::div/child::input")
+	@FindBy(xpath = "//span[contains(text(),'Passport number') or contains(text(),'Numéro de passeport')]/ancestor::span//following-sibling::input")
 	WebElement passportInput;
 
 
@@ -314,9 +314,11 @@ WebElement getAuthorizecheckbox;
 	 * @author chinnarao.vattam
 	 */	
 	public void setPassport(String expiryYear, String idExpiryMonth,String idExpiryDay,String passportNo ) {
-		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 2)) {
+		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 12)) {
+			getReusableActionsInstance().scrollToElement(secondID);
+			getReusableActionsInstance().staticWait(3000);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(secondID);
-			getReusableActionsInstance().selectWhenReady(secondID, 3);
+			getReusableActionsInstance().selectWhenReady(secondID, 3,20);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportContainer);
 			getReusableActionsInstance().executeJavaScriptClick(passportContainer);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(passportInput);
@@ -341,7 +343,7 @@ WebElement getAuthorizecheckbox;
 	public void setDriversLicense(String provinc,String expiryYear, String idExpiryMonth,String idExpiryDay,String licenseNo) {
 		if(!getReusableActionsInstance().isElementVisible(noIDRequired, 2)) {
 			//getReusableActionsInstance().selectWhenReadyByVisibleText(iD, iD1);
-			getReusableActionsInstance().selectWhenReady(iD, 2);
+			getReusableActionsInstance().selectWhenReady(iD, 2,20);
 			getReusableActionsInstance().selectWhenReadyByVisibleText(province, provinc);
 			getReusableActionsInstance().javascriptScrollByVisibleElement(licenseExpiryYear);
 			getReusableActionsInstance().selectWhenReadyByVisibleText(licenseExpiryYear, expiryYear);

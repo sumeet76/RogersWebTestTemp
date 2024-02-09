@@ -76,8 +76,11 @@ public class CustomerProfilePage  extends BasePageClass {
 		getReusableActionsInstance().enterText(firstName,"Katty",3);
 		getReusableActionsInstance().executeJavaScriptClick(lastName);
 		getReusableActionsInstance().enterText(lastName,"katto",3);
+		getReusableActionsInstance().staticWait(3000);
 		getReusableActionsInstance().executeJavaScriptClick(contactNumber);
-		getReusableActionsInstance().enterText(contactNumber,"1010000061",5);
+		getReusableActionsInstance().staticWait(5000);
+		getReusableActionsInstance().getWhenReady(contactNumber,3).sendKeys("1010000061");
+		//getReusableActionsInstance().enterText(contactNumber,"1010000061",15);
 	}
 
 	public boolean verifyCustomerProfile() {

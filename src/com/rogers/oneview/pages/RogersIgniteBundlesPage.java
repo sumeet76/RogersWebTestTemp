@@ -16,7 +16,7 @@ public class RogersIgniteBundlesPage extends BasePageClass {
 	@FindBy(xpath = "//input[@id='algoliaInput']")
 	WebElement addressInput;
 
-	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-expand']/ancestor::button")
+	@FindBy(xpath = "//span[@class='ds-icon d-inline-flex rds-icon-chevron-down']/ancestor::button")
 	WebElement collapse;
 
 	//	@FindBy(xpath = "//div[@class='pcaautocomplete pcatext' and not(contains(@style,'none'))]")
@@ -1544,8 +1544,10 @@ getReusableActionsInstance().clickWhenReady(accountContinueBtn);
 	 */
 	public void enterHomePhoneNumberPortIn(String phoneNumber){
 		getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortInContainer);
+		//getReusableActionsInstance().clickWhenReady(inputHomePhoneNumberPortInContainer);
 		getReusableActionsInstance().clickWhenReady(inputHomePhoneNumberPortInContainer);
-		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber);
+		getReusableActionsInstance().staticWait(3000);
+		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,13).sendKeys(phoneNumber);
 		//getReusableActionsInstance().javascriptScrollByVisibleElement(inputHomePhoneNumberPortInContainer);
 //		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber.substring(0,3));
 //		getReusableActionsInstance().getWhenReady(inputHomePhoneNumberPortInContainer,3).sendKeys(phoneNumber.substring(3,6));

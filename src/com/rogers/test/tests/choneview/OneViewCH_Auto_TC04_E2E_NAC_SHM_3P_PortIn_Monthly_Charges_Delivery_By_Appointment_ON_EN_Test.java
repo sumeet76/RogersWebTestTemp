@@ -133,7 +133,7 @@ getRogersIgniteBundlesPage().clickPhoneNumberContinue();
         //reporter.hardAssert(getCreditCheckPage().verifyRecommendationBanner(),"Recommended Banner is displayed", "Recommeded Banner is not displayed");reporter.reportLogWithScreenshot("Installation options");
         getCreditCheckPage().verifyInstallationOption();
         reporter.reportLogWithScreenshot("in person delivery");
-     //   getCreditCheckPage().selectProfessionalInstallation();
+        getCreditCheckPage().selectDeliveryByAppointment();
         //getCreditCheckPage().clickDateTimeRadioButton();
        getFulfillmentPage().clkFirstAvailableAppointment();
         reporter.reportLogWithScreenshot(".enter Text Mobile Number");
